@@ -17,7 +17,7 @@ export default {
     now: { t: 'غلاطية · نحو 48–49م', d: 'بولس في أنطاكية سورية يكتب بغيرة لكنائس تنتقل «سريعاً» إلى إنجيل آخر.' },
     after: { t: 'مجمع أورشليم', d: 'أعمال 15: الكنيسة كلها تحسم القضية نفسها بالنعمة.', href: 'book/acts/15.html' }
   },
-  pager: { prev: { t: 'الرحلة التبشيرية الأولى', href: 'paul.html#j1-1' }, next: { t: 'مجمع أورشليم (أعمال 15)', href: 'book/acts/15.html' } },
+  pager: { prev: { t: 'كورنثوس الثانية', href: 'book/2-corinthians.html' }, next: { t: 'أفسس', href: 'book/ephesians.html' } },
   sections: [
     {
       title: 'اقرأ أولاً', short: 'اقرأ أولاً',
