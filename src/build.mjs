@@ -1,7 +1,7 @@
 // Static site generator. Run: node src/build.mjs
 import fs from 'node:fs';
 import path from 'node:path';
-import { PREVIEW, ROOT, config, books, bookById, bookBySlug, bible, ar, esc, md, up, refLabel, refHref, bookHref, chapterHref, shortName, verseText } from './lib.mjs';
+import { PREVIEW, previewSkip, ROOT, config, books, bookById, bookBySlug, bible, ar, esc, md, up, refLabel, refHref, bookHref, chapterHref, shortName, verseText } from './lib.mjs';
 import { layout, logo } from './layout.mjs';
 import { blocks, verseFigure } from './render.mjs';
 
@@ -348,7 +348,7 @@ testament('ot');
 testament('nt');
 for (const b of books) {
   bookPage(b);
-  if (PREVIEW && b.testament === 'ot') continue;
+  if (previewSkip(b)) continue;
   for (let n = 1; n <= b.chapters; n++) chapterPage(b, n);
 }
 journeyPage();

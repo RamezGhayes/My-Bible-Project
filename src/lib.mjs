@@ -79,8 +79,9 @@ export const up = (depth) => (depth ? '../'.repeat(depth) : '');
 
 export const bookHref = (b, depth) => `${up(depth)}book/${b.slug}.html`;
 export const PREVIEW = process.env.PREVIEW === '1';
-export const chapterHref = (b, ch, depth) => (PREVIEW && b.testament === 'ot' ? `${up(depth)}book/${b.slug}.html` : `${up(depth)}book/${b.slug}/${ch}.html`);
+export const previewSkip = (b) => PREVIEW && b.testament === 'ot' && !fs.existsSync(path.join(ROOT, 'content/books', b.slug, 'intro.mjs'));
+export const chapterHref = (b, ch, depth) => (previewSkip(b) ? `${up(depth)}book/${b.slug}.html` : `${up(depth)}book/${b.slug}/${ch}.html`);
 export function refHref(ref, depth) {
   const r = parseRef(ref);
-  return chapterHref(r.book, r.ch, depth) + (r.vs && !(PREVIEW && r.book.testament === 'ot') ? `#v${r.vs}` : '');
+  return chapterHref(r.book, r.ch, depth) + (r.vs && !previewSkip(r.book) ? `#v${r.vs}` : '');
 }
