@@ -6,7 +6,7 @@ import { blocks } from './render.mjs';
 import { page, header, IC, plain, clip, firstSentences, chWord, bkWord, vWord, secWord, countWord } from './v2/ui.mjs';
 import { buildPeople, cardTemplate, cleanName } from './v2/people.mjs';
 import { MAPS, mapForChapter, thumb, mapHref, viewer } from './v2/maps.mjs';
-import { EXPLAINERS, explainersFor, explainPage, storyCard as xStory, bentoTile as xTile, explainHref, glyph } from './v2/explain.mjs';
+import { EXPLAINERS, explainersFor, explainPage, storyCard as xStory, bentoTile as xTile, explainHref, glyph, xCard } from './v2/explain.mjs';
 
 const DIST = path.join(ROOT, 'dist');
 fs.rmSync(DIST, { recursive: true, force: true });
@@ -392,7 +392,7 @@ function mapsPages() {
 ${MAPS.map(card).join('')}
 ${soon('خدمة المسيح', 'الجليل واليهودية والسامرة وأورشليم.')}${soon('الممالك والإمبراطوريات', 'إسرائيل ويهوذا وأشور وبابل وفارس.')}
 </div>`;
-  const xcard = (x) => `<a class="mcard xm" href="${explainHref(x, 0)}"><div class="mv xmv">${x.plagues.map((p) => `<span style="--c:${p.color};--k:${p.ink}">${glyph(p.icon, 22)}</span>`).join('')}</div><div class="mt"><small>العهد القديم · ${esc(shortName(bookById[x.book]))} · شرح مصوّر</small><b>${esc(x.title)}</b><span>${esc(x.sub)}</span></div></a>`;
+  const xcard = xCard;
   const body2 = body.replace('<div class="mcards">', `<div class="sec-t" style="padding:0 20px">شروح مصوّرة</div><div class="mcards">${EXPLAINERS.map(xcard).join('')}</div><div class="sec-t" style="padding:0 20px">الخرائط</div><div class="mcards">`);
   write('maps.html', page({ title: 'الخرائط والشروح', depth: 0, nav: 'maps', body: body2 }));
   for (const x of EXPLAINERS) write(`explain/${x.id}.html`, page({ title: x.title, depth: 1, body: explainPage(x, 1), cls: 'explain' }));

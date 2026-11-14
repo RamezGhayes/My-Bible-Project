@@ -354,3 +354,27 @@
   var h = (location.hash.match(/^#pl(\d+)$/) || [])[1];
   if (h) { var jump = function () { go(h, false); document.getElementById('xnums').scrollIntoView({ block: 'start' }); }; setTimeout(jump, 60); if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { setTimeout(jump, 30); }); } else mark(1);
 })();
+
+/* ---------- tabernacle explainer ---------- */
+(function () {
+  'use strict';
+  var panels = document.getElementById('tpanels');
+  if (!panels) return;
+  function sel(id, scroll) {
+    Array.prototype.forEach.call(panels.children, function (p) { p.hidden = p.getAttribute('data-panel') !== id; });
+    Array.prototype.forEach.call(document.querySelectorAll('.tplan .it'), function (g) { g.classList.toggle('on', g.getAttribute('data-it') === id); });
+    Array.prototype.forEach.call(document.querySelectorAll('#tchips button'), function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-it-go') === id)); });
+    history.replaceState(null, '', '#it-' + id);
+    if (scroll) document.getElementById('tchips').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('[data-it-go]');
+    if (a) { e.preventDefault(); sel(a.getAttribute('data-it-go'), !!a.closest('.tpanel')); return; }
+    var g = e.target.closest('.tplan .it');
+    if (g) { sel(g.getAttribute('data-it'), false); var p = document.getElementById('it-' + g.getAttribute('data-it')); if (p && p.getBoundingClientRect().top > innerHeight - 120) p.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  });
+  document.addEventListener('keydown', function (e) { var g = e.target.closest && e.target.closest('.tplan .it'); if (g && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); sel(g.getAttribute('data-it'), false); } });
+  var h = (location.hash.match(/^#it-(\w+)$/) || [])[1];
+  if (h && document.getElementById('it-' + h)) { sel(h, false); var jump = function () { document.getElementById('tchips').scrollIntoView({ block: 'start' }); }; setTimeout(jump, 60); if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { setTimeout(jump, 30); }); }
+  else sel(panels.children[0].getAttribute('data-panel'), false);
+})();
