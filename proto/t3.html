@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ثلاث أفكار للتصميم · لمجد الله</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Noto+Naskh+Arabic:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;height:100%;overflow:hidden;background:#111}
+body{font-family:'IBM Plex Sans Arabic',system-ui,sans-serif;color:#1d1b18}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+.d{font-family:'Readex Pro',system-ui,sans-serif}
+.s{font-family:'Noto Naskh Arabic',serif}
+svg{display:block}
+
+/* concept switcher */
+#switch{position:fixed;top:0;inset-inline:0;z-index:100;height:46px;display:flex;align-items:center;gap:6px;padding:0 8px;background:#111;color:#fff;font-family:'Readex Pro';font-size:13px}
+#switch span{opacity:.6;margin-inline-end:4px;white-space:nowrap}
+#switch button{flex:1;height:32px;border-radius:16px;background:#2a2a2a;font-size:13px;white-space:nowrap}
+#switch button[aria-pressed=true]{background:#fff;color:#111;font-weight:500}
+#stage{position:fixed;top:46px;bottom:0;inset-inline:0;max-width:520px;margin:0 auto;overflow:hidden;background:#F6EFE3}
+.concept{position:absolute;inset:0;display:none}
+.concept.on{display:block}
+
+/* ===== A: stories ===== */
+#A{background:#1E2A4A}
+.bars{position:absolute;top:10px;inset-inline:12px;display:flex;gap:4px;z-index:5}
+.bars i{flex:1;height:3px;border-radius:2px;background:rgba(255,255,255,.3);overflow:hidden}
+.bars i b{display:block;height:100%;width:0;background:#fff}
+.bars i.done b{width:100%}
+.atop{position:absolute;top:20px;inset-inline:12px;display:flex;align-items:center;justify-content:space-between;z-index:5;color:#fff;font-family:'Readex Pro';font-size:13px;padding-top:6px}
+.atop button{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:rgba(0,0,0,.18)}
+.card{position:absolute;inset:0;padding:84px 26px 110px;display:flex;flex-direction:column;justify-content:center;opacity:0;pointer-events:none;transition:opacity .25s}
+.card.on{opacity:1;pointer-events:auto}
+.card .ey{font-family:'Readex Pro';font-size:14px;opacity:.75;margin-bottom:8px;letter-spacing:.2px}
+.card h1{font-family:'Readex Pro';font-weight:700;font-size:44px;line-height:1.15;margin:0}
+.card h2{font-family:'Readex Pro';font-weight:600;font-size:28px;line-height:1.3;margin:0 0 18px}
+.card p{font-size:19px;line-height:1.8;margin:0}
+.card ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:14px}
+.card li{display:flex;gap:14px;font-size:18px;line-height:1.65}
+.card li em{font-style:normal;font-family:'Readex Pro';font-weight:700;font-size:15px;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;flex:none;background:rgba(255,255,255,.18)}
+.bigq{font-family:'Noto Naskh Arabic';font-size:30px;line-height:1.9}
+.pillbtn{margin-top:26px;align-self:flex-start;height:52px;padding:0 24px;border-radius:26px;font-family:'Readex Pro';font-weight:500;font-size:16px;display:inline-flex;align-items:center;gap:10px}
+.hint{position:absolute;bottom:34px;inset-inline:0;text-align:center;font-family:'Readex Pro';font-size:13px;opacity:.7}
+.tapzone{position:absolute;top:70px;bottom:90px;width:30%;z-index:3}
+.tapzone.r{right:0}.tapzone.l{left:0}
+.amap{border-radius:22px;overflow:hidden;margin:6px -6px 14px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.legend{display:flex;flex-wrap:wrap;gap:8px 14px;font-size:14px;opacity:.9}
+.legend b{font-family:'Readex Pro';font-weight:600}
+.word{font-family:'Noto Naskh Arabic';font-size:56px;line-height:1.2;margin:4px 0 6px}
+/* overlays (shared) */
+.ov{position:absolute;inset:0;z-index:20;background:#FBF7F0;overflow:auto;transform:translateY(100%);transition:transform .3s ease}
+.ov.on{transform:none}
+.ovh{position:sticky;top:0;z-index:2;display:flex;align-items:center;gap:10px;height:58px;padding:0 14px;background:rgba(251,247,240,.94);backdrop-filter:blur(8px);border-bottom:1px solid #ece4d6;font-family:'Readex Pro';font-weight:600;font-size:17px}
+.ovh span{flex:1}
+.ovh button{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:#efe7da}
+.read{padding:8px 22px 60px;max-width:640px;margin:0 auto}
+.peri{font-family:'Readex Pro';font-weight:600;font-size:16px;color:#C2502D;margin:28px 0 4px}
+.scr{font-family:'Noto Naskh Arabic';font-size:21px;line-height:2.15}
+.scr p{margin:0}
+.vn{font-family:'Readex Pro';font-size:.55em;color:#B08A4E;font-weight:600;vertical-align:super;margin:0 2px}
+.key{background:linear-gradient(transparent 58%,#F6D9CC 58%)}
+.acc{margin:14px 0}
+.acc details{background:#fff;border:1px solid #ece4d6;border-radius:18px;margin-bottom:10px;overflow:hidden}
+.acc summary{list-style:none;display:flex;align-items:center;gap:12px;padding:16px;font-family:'Readex Pro';font-weight:500;font-size:16.5px;cursor:pointer}
+.acc summary::-webkit-details-marker{display:none}
+.acc summary i{font-style:normal;width:36px;height:36px;border-radius:11px;display:grid;place-items:center;font-size:18px;flex:none}
+.acc summary span{flex:1}
+.acc summary small{color:#9a9388;font-weight:400}
+.acc .b{padding:0 16px 16px;font-size:16.5px;line-height:1.85}
+.en{padding:10px 0;border-top:1px dashed #ece4d6}
+.en:first-child{border-top:0;padding-top:0}
+.en b{display:block;font-family:'Readex Pro';font-weight:600}
+.en p{margin:2px 0 0;color:#5f5a52}
+.orig{font-family:'Noto Naskh Arabic';color:#B08A4E;font-weight:400}
+.tg{display:inline-block;font-family:'Readex Pro';font-size:12px;border-radius:12px;padding:1px 10px;margin-bottom:4px}
+.tg.agreed{background:#E3F0E8;color:#3E7A5A}.tg.debated{background:#F7EDD6;color:#9A6A12}
+
+/* ===== B: map first ===== */
+#B{background:#EFE6D3}
+#bmap{position:absolute;top:66px;bottom:200px;inset-inline:0;overflow:hidden}
+#bmap svg{width:100%;height:100%}
+.bpill{position:absolute;top:12px;inset-inline:12px;z-index:5;display:flex;align-items:center;gap:6px;background:#fff;border-radius:20px;box-shadow:0 6px 20px rgba(0,0,0,.12);padding:6px}
+.bpill button.nv{width:42px;height:42px;border-radius:14px;display:grid;place-items:center;background:#F3ECE0;font-size:18px}
+.bpill .t{flex:1;text-align:center;line-height:1.25;font-family:'Readex Pro'}
+.bpill .t b{display:block;font-weight:600;font-size:16px}
+.bpill .t small{color:#8d867b;font-size:12.5px}
+.bsheet{position:absolute;inset-inline:0;bottom:0;z-index:6;background:#FBF7F0;border-radius:26px 26px 0 0;box-shadow:0 -8px 30px rgba(0,0,0,.15);height:88%;transform:translateY(calc(100% - 210px));transition:transform .3s ease;display:flex;flex-direction:column}
+.bsheet.half{transform:translateY(45%)}
+.bsheet.full{transform:translateY(0)}
+.grip{padding:10px 0 4px;display:grid;place-items:center;cursor:grab;touch-action:none}
+.grip i{width:44px;height:5px;border-radius:3px;background:#d9cfbf}
+.bhead{padding:4px 18px 10px}
+.bhead h3{font-family:'Readex Pro';font-weight:600;font-size:20px;margin:0}
+.bhead p{margin:4px 0 0;color:#6b655c;font-size:15px;line-height:1.6}
+.btabs{display:flex;gap:8px;padding:0 18px 12px}
+.btabs button{flex:1;height:44px;border-radius:14px;background:#EFE7DA;font-family:'Readex Pro';font-size:14.5px;display:flex;align-items:center;justify-content:center;gap:6px}
+.btabs button[aria-pressed=true]{background:#1d1b18;color:#fff}
+.bbody{flex:1;overflow:auto;padding:0 18px 40px;border-top:1px solid #ece4d6}
+.place{display:flex;gap:12px;align-items:flex-start;margin:10px 0 0;padding:14px;border-radius:18px;background:#fff;border:1px solid #ece4d6}
+.place .n{width:34px;height:34px;border-radius:50%;background:#C2502D;color:#fff;font-family:'Readex Pro';font-weight:600;display:grid;place-items:center;flex:none}
+.place b{font-family:'Readex Pro';font-weight:600;font-size:16px}
+.place p{margin:2px 0 0;color:#5f5a52;font-size:15px;line-height:1.7}
+
+/* ===== C: magazine ===== */
+#C{overflow-y:auto;scroll-behavior:smooth;background:#111}
+.blk{min-height:100%;padding:70px 26px 60px;position:relative}
+.blk .no{font-family:'Readex Pro';font-weight:300;font-size:15px;letter-spacing:1px;opacity:.7}
+.blk h2{font-family:'Readex Pro';font-weight:700;font-size:34px;line-height:1.2;margin:4px 0 20px}
+.blk p{font-size:18px;line-height:1.85;margin:0 0 12px}
+.c-hero{background:#111;color:#F6EFE3;display:flex;flex-direction:column;justify-content:flex-end}
+.c-hero .giant{font-family:'Readex Pro';font-weight:700;font-size:170px;line-height:.9;color:#E4572E;margin:0 -6px 6px}
+.c-hero h1{font-family:'Readex Pro';font-weight:700;font-size:40px;line-height:1.15;margin:0}
+.c-hero .ey{font-family:'Readex Pro';opacity:.7;font-size:14px;margin-bottom:12px}
+.c-sum{background:#F6EFE3}
+.c-sum ol{list-style:none;padding:0;margin:0;counter-reset:s}
+.c-sum li{counter-increment:s;display:flex;gap:16px;padding:16px 0;border-top:2px solid #1d1b18;font-size:18px;line-height:1.7}
+.c-sum li:before{content:counter(s, arabic-indic);font-family:'Readex Pro';font-weight:700;font-size:28px;line-height:1.1;color:#E4572E;width:30px;flex:none}
+.c-text{background:#FBF7F0}
+.c-map{background:#1F3B3A;color:#F6EFE3}
+.c-map .mp{border-radius:22px;overflow:hidden;margin:0 -8px}
+.c-christ{background:#E4572E;color:#fff}
+.c-word{background:#F2C14E}
+.c-deep{background:#F6EFE3}
+.c-live{background:#111;color:#F6EFE3}
+.c-live .q{padding:18px 0;border-top:1px solid #333;font-size:18px;line-height:1.7}
+.c-next{background:#E4572E;color:#fff;min-height:auto;display:block;padding:40px 26px 80px}
+.c-next b{display:block;font-family:'Readex Pro';font-size:30px;font-weight:700;line-height:1.25}
+
+.csec{position:sticky;top:0;z-index:9;height:40px;margin-bottom:-40px;display:flex;align-items:center;padding:0 18px;background:rgba(17,17,17,.88);backdrop-filter:blur(8px);color:#fff;font-family:'Readex Pro';font-size:13.5px;opacity:0;transition:opacity .2s;pointer-events:none}
+.csec.on{opacity:1}
+.csec i{position:absolute;bottom:0;inset-inline-start:0;height:3px;background:#E4572E;width:0}
+.rail{position:sticky;top:50%;float:left;margin-left:8px;transform:translateY(-50%);z-index:9;display:flex;flex-direction:column;gap:6px;height:0;overflow:visible}
+.rail-in{display:flex;flex-direction:column;gap:7px;background:rgba(17,17,17,.75);backdrop-filter:blur(6px);padding:8px 6px;border-radius:20px;transform:translateY(-50%)}
+.rail button{width:26px;height:26px;border-radius:50%;font-family:'Readex Pro';font-size:12px;color:#fff;opacity:.55;display:grid;place-items:center}
+.rail button.on{opacity:1;background:#E4572E}
+.cjump{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);z-index:30;background:#111;color:#fff;font-family:'Readex Pro';font-size:14px;height:46px;padding:0 20px;border-radius:23px;display:none;align-items:center;gap:8px;box-shadow:0 6px 20px rgba(0,0,0,.3)}
+.cjump.on{display:flex}
+.jmenu{position:absolute;inset:0;z-index:40;background:rgba(17,17,17,.96);color:#fff;display:none;flex-direction:column;justify-content:center;padding:30px}
+.jmenu.on{display:flex}
+.jmenu button{display:flex;gap:16px;align-items:baseline;text-align:start;padding:12px 0;font-family:'Readex Pro';font-size:24px;font-weight:600;border-bottom:1px solid #333}
+.jmenu button i{font-style:normal;font-weight:300;font-size:15px;color:#E4572E;width:28px}
+
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);z-index:200;background:#111;color:#fff;font-family:'Readex Pro';font-size:14px;padding:10px 18px;border-radius:14px;opacity:0;transition:.2s;pointer-events:none;white-space:nowrap}
+.toast.on{opacity:1;transform:translateX(-50%)}
+</style>
+</head>
+<body>
+<div id="switch"><span>الفكرة:</span>
+  <button data-c="A" aria-pressed="true">١ · قصص</button>
+  <button data-c="B" aria-pressed="false">٢ · الخريطة أولاً</button>
+  <button data-c="C" aria-pressed="false">٣ · مجلة</button>
+</div>
+<div id="stage">
+  <section class="concept on" id="A"></section>
+  <section class="concept" id="B"></section>
+  <section class="concept" id="C"></section>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+const D = __DATA__;
+const C = D.ch;
+const $ = (s, e = document) => e.querySelector(s);
+const $$ = (s, e = document) => [...e.querySelectorAll(s)];
+const ar = (x) => String(x ?? '').replace(/[0-9]/g, (d) => '٠١٢٣٤٥٦٧٨٩'[d]);
+const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+const md = (s) => ar(esc(s)).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>');
+let tt; const toast = (m) => { const t = $('#toast'); t.textContent = m; t.classList.add('on'); clearTimeout(tt); tt = setTimeout(() => t.classList.remove('on'), 1800); };
+
+const SUM = [
+  'الله يدعو أبرام: اترك أرضك وعشيرتك وبيت أبيك، إلى أرض لا تعرفها.',
+  'وعد من سبعة أجزاء، قلبه: «تتبارك فيك جميع قبائل الأرض».',
+  'أبرام يطيع وهو ابن ٧٥ سنة، ويبني مذبحاً في كل محطة.',
+  'جوع، فينزل إلى مصر، فيخاف ويكذب. لكن الله يحمي ساراي.'
+];
+
+// ---------- map ----------
+const P = (lo, la) => [+((lo - 28) * 30).toFixed(1), +((39 - la) * 30).toFixed(1)];
+const pth = (pts) => 'M' + pts.map((p) => P(...p).join(' ')).join(' L');
+const PLACES = [
+  { id: 'ur', n: 'أور الكلدانيين', ll: [46.1, 30.96], d: 'نقطة البداية (تك ١١: ٣١). مدينة سومرية غنية في جنوب العراق، مركز عبادة إله القمر.', prev: true },
+  { id: 'haran', n: 'حاران', ll: [39.03, 36.87], d: '' },
+  { id: 'shechem', n: 'شكيم', ll: [35.28, 32.21], d: '' },
+  { id: 'bethel', n: 'بيت إيل', ll: [35.22, 31.93], d: '' },
+  { id: 'negev', n: 'النقب', ll: [34.8, 30.85], d: '' },
+  { id: 'egypt', n: 'مصر', ll: [31.25, 29.85], d: '' },
+];
+for (const p of PLACES) { const f = C.places.find((x) => x.n === p.n); if (f) p.d = f.d; }
+function mapSVG({ theme = 'sand', big = false, active = null, labels = true, vb: VB = null, fit = 'slice' } = {}) {
+  const T = {
+    sand: { land: '#EFE6D3', sea: '#A9C7C5', river: '#7FA9AB', ink: '#3b352c', route: '#C2502D', pin: '#C2502D', halo: '#EFE6D3', faint: '#8d7f68' },
+    dark: { land: '#2C4C4A', sea: '#173130', river: '#4F7C79', ink: '#F6EFE3', route: '#F2C14E', pin: '#F2C14E', halo: '#2C4C4A', faint: '#9DB8B4' },
+    navy: { land: '#2D3B5E', sea: '#18223A', river: '#55688F', ink: '#F6EFE3', route: '#E2B53E', pin: '#E2B53E', halo: '#2D3B5E', faint: '#9AA6C2' },
+  }[theme];
+  const sea = [[26, 31.1], [29.9, 31.2], [31.0, 31.6], [31.8, 31.5], [32.3, 31.2], [33.3, 31.1], [34.2, 31.3], [34.6, 31.8], [34.8, 32.1], [34.95, 32.8], [35.1, 33.1], [35.5, 33.9], [35.9, 34.6], [35.8, 35.5], [35.9, 36.2], [36.15, 36.75], [35.6, 36.6], [34.6, 36.8], [33.5, 36.2], [32.5, 36.1], [31.5, 36.6], [30.6, 36.85], [29.5, 36.3], [28.2, 36.7], [26, 37]];
+  const red = [[32.55, 29.95], [32.75, 29.85], [33.6, 28.1], [34.25, 27.9], [34.95, 29.5], [35.05, 29.4], [34.7, 28.2], [35.6, 26.5], [36.6, 24.5], [34.6, 24.5], [33.7, 26.6], [32.9, 28.4]];
+  const gulf = [[47.9, 30.0], [48.5, 29.9], [49.5, 29.3], [51, 28], [51, 26], [49.5, 26], [48.6, 28.2], [48.0, 29.3]];
+  const nile = [[32.9, 24.1], [32.6, 25.7], [32.7, 26.2], [31.2, 27.2], [30.9, 28.5], [31.2, 30.0], [30.6, 30.9], [30.4, 31.4]];
+  const nile2 = [[31.2, 30.0], [31.6, 31.0], [31.85, 31.45]];
+  const euph = [[38.5, 38.6], [38.3, 37.0], [38.0, 36.1], [40.1, 35.3], [41.0, 34.4], [42.4, 33.6], [43.3, 32.6], [44.3, 32.0], [46.0, 31.0], [47.4, 30.5], [48.0, 30.0]];
+  const tig = [[39.9, 38.4], [42.4, 37.3], [43.1, 36.3], [43.9, 35.0], [44.4, 33.3], [46.0, 32.2], [47.1, 31.0], [47.4, 30.5]];
+  const jor = [[35.6, 33.2], [35.55, 32.8], [35.55, 32.0], [35.5, 31.75]];
+  const r1 = [[46.1, 30.96], [44.3, 32.0], [43.3, 32.6], [41.0, 34.4], [40.1, 35.3], [39.03, 36.87]];
+  const r2 = [[39.03, 36.87], [37.2, 36.2], [36.3, 33.5], [35.6, 32.8], [35.28, 32.21], [35.22, 31.93], [34.8, 30.85], [33.8, 30.6], [32.3, 30.5], [31.25, 29.85]];
+  const lbl = (txt, lo, la, sz = 14, op = .55, extra = '') => { const [x, y] = P(lo, la); return `<text x="${x}" y="${y}" font-size="${sz}" fill="${T.faint}" opacity="${op}" font-family="Readex Pro" text-anchor="middle" ${extra}>${txt}</text>`; };
+  const pins = PLACES.map((p, i) => {
+    const [x, y] = P(...p.ll); const a = active === p.id; const r = a ? 15 : 12;
+    const lx = p.id === 'bethel' ? x - 20 : p.id === 'shechem' ? x - 20 : x; const ly = p.id === 'bethel' ? y + 16 : p.id === 'shechem' ? y - 12 : y - 20;
+    const anchor = (p.id === 'bethel' || p.id === 'shechem') ? 'end' : 'middle';
+    return `<g data-pin="${p.id}" style="cursor:pointer">
+      <circle cx="${x}" cy="${y}" r="${r + 10}" fill="transparent"/>
+      ${a ? `<circle cx="${x}" cy="${y}" r="${r + 7}" fill="${T.pin}" opacity=".25"/>` : ''}
+      <circle cx="${x}" cy="${y}" r="${r}" fill="${p.prev ? T.halo : T.pin}" stroke="${T.pin}" stroke-width="2.5"/>
+      <text x="${x}" y="${y + 4.5}" font-size="${a ? 14 : 12}" font-family="Readex Pro" font-weight="600" text-anchor="middle" fill="${p.prev ? T.pin : '#fff'}">${ar(i + 1)}</text>
+      ${labels ? `<text x="${lx}" y="${ly}" font-size="${a ? 17 : 15}" font-weight="600" font-family="Readex Pro" text-anchor="${anchor}" fill="${T.ink}" stroke="${T.halo}" stroke-width="5" paint-order="stroke">${p.n}</text>` : ''}
+    </g>`;
+  }).join('');
+  const vb = VB || (big ? '40 0 560 420' : '40 20 560 380');
+  return `<svg viewBox="${vb}" preserveAspectRatio="xMidYMid ${fit}" style="overflow:visible" role="img" aria-label="خريطة رحلة أبرام">
+    <rect x="-400" y="-400" width="1500" height="1300" fill="${T.land}"/>
+    <path d="${pth(sea)} Z" fill="${T.sea}"/>
+    <ellipse cx="${P(33.2, 35.1)[0]}" cy="${P(33.2, 35.1)[1]}" rx="36" ry="11" transform="rotate(-12 ${P(33.2, 35.1).join(' ')})" fill="${T.land}"/>
+    <path d="${pth(red)} Z" fill="${T.sea}"/><path d="${pth(gulf)} Z" fill="${T.sea}"/>
+    <g fill="none" stroke="${T.river}" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="${pth(nile)}"/><path d="${pth(nile2)}"/><path d="${pth(euph)}"/><path d="${pth(tig)}"/><path d="${pth(jor)}" stroke-width="1.8"/></g>
+    <ellipse cx="${P(35.5, 31.5)[0]}" cy="${P(35.5, 31.5)[1]}" rx="3.5" ry="12" fill="${T.sea}"/>
+    ${lbl('البحر المتوسط', 31.6, 33.4, 16, .8)}${lbl('بلاد ما بين النهرين', 42.6, 34.6, 14, .7, `transform="rotate(-38 ${P(42.6, 34.6).join(' ')})"`)}${lbl('البرية العربية', 40.5, 30.4, 14, .6)}${lbl('كنعان', 36.2, 32.0, 13, .8)}
+    <path d="${pth(r1)}" fill="none" stroke="${T.route}" stroke-width="3" stroke-dasharray="2 7" stroke-linecap="round" opacity=".75"/>
+    <path d="${pth(r2)}" fill="none" stroke="${T.route}" stroke-width="3.5" stroke-dasharray="10 7" stroke-linecap="round"/>
+    ${pins}
+  </svg>`;
+}
+
+// ---------- shared bits ----------
+function scripture() {
+  const kv = /\.(\d+)(?:-(\d+))?$/.exec(C.keyVerse); const k1 = +kv[1], k2 = +(kv[2] || kv[1]);
+  const per = Object.fromEntries(C.pericopes.map((p) => [p.at, p.t]));
+  let h = '', o = false;
+  for (const v of D.text) {
+    if (per[v.number]) { if (o) h += '</p>'; h += `<h3 class="peri">${esc(per[v.number])}</h3><p>`; o = true; } else if (!o) { h += '<p>'; o = true; }
+    h += `<span class="${v.number >= k1 && v.number <= k2 ? 'key' : ''}"><span class="vn">${ar(v.number)}</span>${esc(v.text)} </span>`;
+  }
+  return `<div class="scr">${h}</p></div>`;
+}
+const TAG = { agreed: 'متفق عليه', debated: 'قضية تفسيرية' };
+function deep(colors = ['#F3EBDD', '#E3EEF0', '#F6E3DA', '#E9E4F5', '#E3F0E8', '#F7EDD6', '#EEE']) {
+  const people = [...C.people, ...C.places];
+  const rows = [
+    ['🧭', 'تقسيم الأصحاح', C.outline.length, C.outline.map((o) => `<div class="en"><b>الآيات ${ar(o.r.replace('-', '–'))}</b><p>${md(o.t)}</p></div>`).join('')],
+    ['👤', 'أشخاص وأماكن', people.length, people.map((p) => `<div class="en"><b>${esc(p.n)}</b><p>${md(p.d)}</p></div>`).join('')],
+    ['💡', 'خلفيات تساعدك تفهم', C.background.length, C.background.map((b) => `<div class="en"><b>${esc(b.t)}</b><p>${md(b.d)}</p></div>`).join('')],
+    ['✍️', 'كلمات من الأصل', C.words.length, C.words.map((w) => `<div class="en"><b>${esc(w.w)} <span class="orig">${esc(w.orig)}</span></b><p>${md(w.d)}</p></div>`).join('')],
+    ['🔗', 'شواهد مرتبطة', C.links.length, C.links.map((l) => `<div class="en"><b style="color:#C2502D">${esc(l.label)}</b><p>${md(l.d)}</p></div>`).join('')],
+    ['❓', 'أسئلة صعبة', C.hard.length, C.hard.map((h) => `<div class="en"><span class="tg ${h.tag}">${TAG[h.tag] || ''}</span><b>${md(h.q)}</b>${h.a.map((a) => `<p>${md(a)}</p>`).join('')}</div>`).join('')],
+    ['📚', 'أصوات مُصلَحة', C.voices.length, C.voices.map((v) => `<div class="en"><b>${esc(v.n)}</b><p style="font-size:14px">${ar(esc(v.y))} · ${ar(esc(v.w))}</p><p>${md(v.b)}</p></div>`).join('')],
+  ];
+  return `<div class="acc">${rows.map(([i, l, c, b], k) => `<details><summary><i style="background:${colors[k % colors.length]}">${i}</i><span>${l}</span><small>${ar(c)}</small></summary><div class="b">${b}</div></details>`).join('')}</div>`;
+}
+function overlay(host, id, title, body) {
+  host.insertAdjacentHTML('beforeend', `<div class="ov" id="${id}"><div class="ovh"><span>${title}</span><button data-close="${id}" aria-label="إغلاق">✕</button></div><div class="read">${body}</div></div>`);
+}
+document.addEventListener('click', (e) => { const c = e.target.closest('[data-close]'); if (c) $('#' + c.dataset.close).classList.remove('on'); });
+
+// ===================== A: STORIES =====================
+function buildA() {
+  const A = $('#A');
+  const cards = [
+    { bg: '#1E2A4A', fg: '#fff', html: `<div class="ey">التكوين ١٢ · قصة إبراهيم تبدأ</div><h1>${esc(C.title)}</h1><p style="margin-top:16px;opacity:.85">رجل واحد، ودعوة واحدة، ووعد سيغير العالم كله.</p><div class="hint">اضغط على الجانب الأيسر أو اسحب ←</div>` },
+    { bg: '#F6EFE3', fg: '#1d1b18', html: `<div class="ey" style="color:#C2502D">في دقيقة</div><h2>ماذا يحدث هنا؟</h2><ul>${SUM.map((s, i) => `<li><em style="background:#1E2A4A;color:#fff">${ar(i + 1)}</em><span>${md(s)}</span></li>`).join('')}</ul>` },
+    { bg: '#D2603A', fg: '#fff', html: `<div class="ey">اقرأ</div><h2>النص كاملاً</h2><p class="s" style="font-size:22px;line-height:2;opacity:.95">${esc(D.text[0].text)} ${esc(D.text[1].text)}…</p><button class="pillbtn" style="background:#fff;color:#D2603A" data-open-ov="a-read">اقرأ الأصحاح كاملاً ←</button>` },
+    { bg: '#1E2A4A', fg: '#fff', html: `<div class="ey">الخريطة</div><h2>من أور إلى مصر</h2><div class="amap">${mapSVG({ theme: 'navy' })}</div><div class="legend">${PLACES.map((p, i) => `<span><b>${ar(i + 1)}</b> ${p.n}</span>`).join('')}</div>` },
+    { bg: '#E2B53E', fg: '#1d1b18', html: `<div class="ey">الآية المفتاحية</div><q class="bigq" style="quotes:none">${esc(C.keyVerseText)}</q><div class="ey" style="margin-top:12px">${esc(C.keyVerseLabel)}</div>` },
+    { bg: '#C2502D', fg: '#fff', html: `<div class="ey">المسيح في هذا الأصحاح</div><h2>البركة لكل الأمم لها اسم</h2><p>${md(C.christ[0].split('. ').slice(0, 3).join('. '))}.</p>` },
+    { bg: '#7FA58A', fg: '#14221a', html: `<div class="ey">كلمة من الأصل العبري</div><div class="word">בָּרַךְ</div><h2 style="margin-bottom:10px">بارك</h2><p>${md(C.words.find((w) => w.w.includes('بارك'))?.d || '')} تتكرر خمس مرات في آيتين فقط.</p>` },
+    { bg: '#F6EFE3', fg: '#1d1b18', html: `<div class="ey" style="color:#C2502D">لك أنت</div><h2>${md(C.questions[0])}</h2><p style="color:#5f5a52">${md(C.apply)}</p>` },
+    { bg: '#1E2A4A', fg: '#fff', html: `<div class="ey">انتهيت من الأصحاح</div><h2>تريد أن تتعمق؟</h2><p style="opacity:.85">خلفيات، كلمات، أشخاص وأماكن، أسئلة صعبة، وأصوات مُصلَحة.</p><button class="pillbtn" style="background:#E2B53E;color:#1E2A4A" data-open-ov="a-deep">ادرس أعمق</button><button class="pillbtn" style="background:rgba(255,255,255,.12);color:#fff;margin-top:12px" data-toast="هنا يفتح التكوين ١٣ كقصة جديدة">التالي: التكوين ١٣ ←</button>` },
+  ];
+  A.innerHTML = `<div class="bars">${cards.map(() => '<i><b></b></i>').join('')}</div>
+  <div class="atop"><button data-toast="هنا قائمة أصحاحات التكوين">☰</button><span>التكوين ١٢</span><button data-open-ov="a-read" title="النص">📖</button></div>
+  ${cards.map((c, i) => `<div class="card" data-i="${i}" style="background:${c.bg};color:${c.fg}">${c.html}</div>`).join('')}
+  <div class="tapzone r" data-dir="-1"></div><div class="tapzone l" data-dir="1"></div>`;
+  overlay(A, 'a-read', 'التكوين ١٢', scripture());
+  overlay(A, 'a-deep', 'ادرس أعمق', deep());
+  let i = 0;
+  const show = () => {
+    $$('.card', A).forEach((c, k) => c.classList.toggle('on', k === i));
+    $$('.bars i', A).forEach((b, k) => b.classList.toggle('done', k <= i));
+    $('.atop', A).style.color = cards[i].fg;
+  };
+  const step = (d) => { i = Math.max(0, Math.min(cards.length - 1, i + d)); show(); };
+  $$('.tapzone', A).forEach((z) => z.onclick = () => step(+z.dataset.dir));
+  let sx = 0; A.addEventListener('touchstart', (e) => sx = e.touches[0].clientX, { passive: true });
+  A.addEventListener('touchend', (e) => { if ($('.ov.on', A)) return; const dx = e.changedTouches[0].clientX - sx; if (Math.abs(dx) > 60) step(dx < 0 ? 1 : -1); }, { passive: true });
+  show();
+}
+
+// ===================== B: MAP FIRST =====================
+function buildB() {
+  const B = $('#B');
+  B.innerHTML = `<div id="bmap"></div>
+  <div class="bpill"><button class="nv" data-toast="التكوين ١١">→</button><div class="t"><b>التكوين ١٢</b><small>${esc(C.title)}</small></div><button class="nv" data-toast="التكوين ١٣">←</button></div>
+  <div class="bsheet" id="bsheet">
+    <div class="grip" id="grip"><i></i></div>
+    <div class="bhead" id="bhead"></div>
+    <div class="btabs">
+      <button data-bt="places" aria-pressed="true">📍 الأماكن</button>
+      <button data-bt="text" aria-pressed="false">📖 النص</button>
+      <button data-bt="study" aria-pressed="false">🔍 الدراسة</button>
+    </div>
+    <div class="bbody" id="bbody"></div>
+  </div>`;
+  const sheet = $('#bsheet');
+  const states = ['', 'half', 'full']; let st = 0;
+  const setSt = (n) => { st = Math.max(0, Math.min(2, n)); sheet.className = 'bsheet ' + states[st]; };
+  let tab = 'places', active = null;
+  const drawMap = () => { $('#bmap').innerHTML = mapSVG({ theme: 'sand', active, vb: '80 40 490 250', fit: 'meet' }); };
+  const head = () => {
+    const p = PLACES.find((x) => x.id === active);
+    $('#bhead').innerHTML = p ? `<h3>${ar(PLACES.indexOf(p) + 1)} · ${p.n}</h3><p>${md(p.d)}</p>` : `<h3>رحلة أبرام</h3><p>اضغط أي نقطة على الخريطة، أو اسحب لأعلى للنص والدراسة.</p>`;
+  };
+  const body = () => {
+    const el = $('#bbody');
+    if (tab === 'places') el.innerHTML = PLACES.map((p, i) => `<div class="place" data-goto="${p.id}"><span class="n" style="${p.prev ? 'background:#fff;color:#C2502D;border:2px solid #C2502D' : ''}">${ar(i + 1)}</span><div><b>${p.n}</b><p>${md(p.d)}</p></div></div>`).join('');
+    if (tab === 'text') el.innerHTML = scripture();
+    if (tab === 'study') el.innerHTML = `<div class="place" style="background:#C2502D;color:#fff;border:0;display:block"><b style="font-family:'Readex Pro'">المسيح في هذا الأصحاح</b><p style="color:#fff">${md(C.christ[0])}</p></div>` + deep();
+    $$('.btabs button', B).forEach((b) => b.setAttribute('aria-pressed', b.dataset.bt === tab));
+  };
+  B.addEventListener('click', (e) => {
+    const pin = e.target.closest('[data-pin]'); if (pin) { active = pin.dataset.pin; drawMap(); head(); if (st === 2) setSt(0); return; }
+    const g = e.target.closest('[data-goto]'); if (g) { active = g.dataset.goto; drawMap(); head(); setSt(0); return; }
+    const t = e.target.closest('[data-bt]'); if (t) { tab = t.dataset.bt; body(); if (st === 0) setSt(1); return; }
+  });
+  $('#grip').onclick = () => setSt(st === 2 ? 0 : st + 1);
+  let sy = 0; const gr = $('.bhead', B).parentElement;
+  [$('#grip'), $('#bhead')].forEach((h) => {
+    h.addEventListener('touchstart', (e) => sy = e.touches[0].clientY, { passive: true });
+    h.addEventListener('touchend', (e) => { const dy = e.changedTouches[0].clientY - sy; if (Math.abs(dy) > 30) setSt(st + (dy < 0 ? 1 : -1)); }, { passive: true });
+  });
+  drawMap(); head(); body();
+}
+
+// ===================== C: MAGAZINE =====================
+function buildC() {
+  const Cc = $('#C');
+  const blocks = [
+    ['hero', 'البداية'], ['sum', 'الفكرة'], ['text', 'النص'], ['map', 'الخريطة'], ['christ', 'المسيح'], ['word', 'كلمة'], ['deep', 'أعمق'], ['live', 'عِشها'],
+  ];
+  Cc.innerHTML = `
+  <div class="csec" id="csec"><span id="csecl"></span><i id="cprog"></i></div>
+  <div class="blk c-hero" id="c-hero"><div class="ey">التكوين · الأصحاح</div><div class="giant">١٢</div><h1>${esc(C.title)}</h1><p style="opacity:.75;margin-top:14px">٧ دقائق قراءة · ٢٠ آية</p></div>
+  <div class="blk c-sum" id="c-sum"><div class="no">٠١ · الفكرة</div><h2>الأصحاح في أربعة أسطر</h2><ol>${SUM.map((s) => `<li><span>${md(s)}</span></li>`).join('')}</ol></div>
+  <div class="blk c-text" id="c-text"><div class="no">٠٢ · النص</div><h2>اقرأ</h2>${scripture()}</div>
+  <div class="blk c-map" id="c-map"><div class="no">٠٣ · الخريطة</div><h2>من أور إلى مصر</h2><div class="mp">${mapSVG({ theme: 'dark' })}</div><p style="margin-top:16px;opacity:.85">نحو ١٥٠٠ كم سيراً على الأقدام مع المواشي. الخط المنقط الخفيف من الأصحاح ١١.</p></div>
+  <div class="blk c-christ" id="c-christ"><div class="no">٠٤ · المسيح</div><h2>«وفي نسلك الذي هو المسيح»</h2>${C.christ.map((p) => `<p>${md(p)}</p>`).join('')}</div>
+  <div class="blk c-word" id="c-word"><div class="no">٠٥ · كلمة</div><div class="word" style="font-size:72px">בָּרַךְ</div><h2>بارك</h2><p>${md(C.words.find((w) => w.w.includes('بارك'))?.d || '')}</p></div>
+  <div class="blk c-deep" id="c-deep"><div class="no">٠٦ · أعمق</div><h2>لمن يريد أن يتعمق</h2>${deep(['#F2C14E55', '#2E7D7A33', '#E4572E33'])}</div>
+  <div class="blk c-live" id="c-live"><div class="no">٠٧ · عِشها</div><h2>أسئلة لك</h2>${C.questions.slice(0, 4).map((q) => `<div class="q">${md(q)}</div>`).join('')}<p style="margin-top:20px;padding:18px;border-radius:18px;background:#E4572E;color:#fff">${md(C.apply)}</p></div>
+  <a class="blk c-next" href="#" data-toast="هنا يفتح التكوين ١٣"><small style="opacity:.8;font-family:'Readex Pro'">التالي ←</small><b>التكوين ١٣<br>${esc(D.titles[12])}</b></a>
+  <button class="cjump" id="cjump">☰ أقسام الأصحاح</button>
+  <div class="jmenu" id="jmenu">${blocks.map(([id, l], i) => `<button data-jump="${id}"><i>${ar(String(i).padStart(2, '0'))}</i>${l}</button>`).join('')}<button data-closej style="border:0;font-size:16px;opacity:.6;margin-top:10px">إغلاق</button></div>`;
+  Cc.addEventListener('click', (e) => {
+    const j = e.target.closest('[data-jump]'); if (j) { $('#jmenu').classList.remove('on'); $('#c-' + j.dataset.jump).scrollIntoView({ behavior: 'smooth' }); return; }
+    if (e.target.closest('#cjump')) $('#jmenu').classList.add('on');
+    if (e.target.closest('[data-closej]')) $('#jmenu').classList.remove('on');
+  });
+  const io = new IntersectionObserver((es) => es.forEach((en) => { if (en.isIntersecting) { const id = en.target.id.slice(2); const k = blocks.findIndex((b) => b[0] === id); $('#csecl').textContent = k > 0 ? ar(String(k).padStart(2, '0')) + ' · ' + blocks[k][1] : ''; $('#csec').classList.toggle('on', k > 0); } }), { root: Cc, threshold: .35 });
+  blocks.forEach(([id]) => io.observe($('#c-' + id)));
+  Cc.addEventListener('scroll', () => { $('#cprog').style.width = (Cc.scrollTop / (Cc.scrollHeight - Cc.clientHeight) * 100) + '%'; }); Cc.addEventListener('scroll', () => $('#cjump').classList.toggle('on', Cc.scrollTop > 300 && $('#C').classList.contains('on')));
+}
+
+document.addEventListener('click', (e) => {
+  const t = e.target.closest('[data-toast]'); if (t) { e.preventDefault(); toast(t.dataset.toast); }
+  const o = e.target.closest('[data-open-ov]'); if (o) $('#' + o.dataset.openOv).classList.add('on');
+  const s = e.target.closest('#switch button'); if (s) {
+    $$('#switch button').forEach((b) => b.setAttribute('aria-pressed', b === s));
+    $$('.concept').forEach((c) => c.classList.toggle('on', c.id === s.dataset.c));
+    $('#cjump').classList.toggle('on', s.dataset.c === 'C' && $('#C').scrollTop > 300);
+    try { localStorage.setItem('proto3-c', s.dataset.c); } catch {}
+  }
+});
+buildA(); buildB(); buildC();
+try { const c = localStorage.getItem('proto3-c'); if (c) $(`#switch [data-c=${c}]`).click(); } catch {}
+</script>
+</body>
+</html>
