@@ -5,10 +5,11 @@ import { IC, header } from './ui.mjs';
 import plagues from '../../content/explain/plagues.mjs';
 import tabernacle from '../../content/explain/tabernacle.mjs';
 import offerings from '../../content/explain/offerings.mjs';
+import atonement from '../../content/explain/atonement.mjs';
 
-export const EXPLAINERS = [plagues, tabernacle, offerings];
+export const EXPLAINERS = [plagues, tabernacle, offerings, atonement];
 // Uniform "chips" for strips and cards: {id, name, color, ink, icon, ch:[chapters]}
-const chips = (x) => x.items ? x.items.map((p) => ({ id: 'of-' + p.id, name: p.name, color: p.color, ink: p.ink, icon: p.icon, ch: x.id === 'offerings' && p.id !== 'guilt' && p.id !== 'grain' ? [...p.ch, 9] : p.ch, label: 'ذبيحة ' + p.name })) : x.plagues ? x.plagues.map((p) => ({ id: 'pl' + p.n, name: p.name, color: p.color, ink: p.ink, icon: p.icon, ch: p.n === 10 ? [11, 12] : [p.ch], label: 'الضربة ' + ORD[p.n] })) : x.steps.map((p) => ({ id: 'it-' + p.id, name: p.name, color: p.color, ink: p.ink, icon: p.icon, ch: [p.ch, ...(CH2[p.id] || [])], label: p.name }));
+const chips = (x) => x.items ? x.items.map((p) => ({ id: 'of-' + p.id, name: p.name, color: p.color, ink: p.ink, icon: p.icon, ch: x.id === 'offerings' && p.id !== 'guilt' && p.id !== 'grain' ? [...p.ch, 9] : p.ch, label: x.id === 'offerings' ? 'ذبيحة ' + p.name : p.name })) : x.plagues ? x.plagues.map((p) => ({ id: 'pl' + p.n, name: p.name, color: p.color, ink: p.ink, icon: p.icon, ch: p.n === 10 ? [11, 12] : [p.ch], label: 'الضربة ' + ORD[p.n] })) : x.steps.map((p) => ({ id: 'it-' + p.id, name: p.name, color: p.color, ink: p.ink, icon: p.icon, ch: [p.ch, ...(CH2[p.id] || [])], label: p.name }));
 const CH2 = { gate: [38], altar: [38], laver: [38], table: [37], lamp: [37], incense: [37], veil: [36], ark: [37, 40] };
 const hereOf = (x, n) => chips(x).filter((c) => c.ch.includes(n));
 
@@ -35,6 +36,9 @@ const G = {
   peace: '<path d="M8 34h48"/><path d="M12 34c0 11 9 18 20 18s20-7 20-18" fill="currentColor" fill-opacity=".2"/><path d="M22 26c0-6 4-10 10-10s10 4 10 10" /><path d="M26 58h12"/><path d="M32 52v6"/><path d="M20 12l3 4M44 12l-3 4M32 8v5"/>',
   sin: '<path d="M28 8c5 8 9 13 9 18a9 9 0 0 1-18 0c0-5 4-10 9-18z" fill="currentColor" fill-opacity=".35"/><path d="M8 44h30" stroke-dasharray="3 3"/><path d="M8 38v12M38 38v12"/><path d="M42 44h14m-5-5 5 5-5 5"/>',
   guilt: '<path d="M32 10v44M20 56h24"/><path d="M12 18h40"/><path d="M12 18L6 34h12zM52 18l-6 16h12z"/><path d="M6 34a6 4 0 0 0 12 0M46 34a6 4 0 0 0 12 0" fill="currentColor" fill-opacity=".3"/><circle cx="32" cy="10" r="2.5" fill="currentColor"/>',
+  linen: '<path d="M22 8h20l10 12-8 5-2-5v36H22V20l-2 5-8-5z"/><path d="M22 34h20" opacity=".6"/><path d="M28 8c0 4 8 4 8 0"/>',
+  lots: '<path d="M10 40l12-14 12 14-12 14z" fill="currentColor" fill-opacity=".3"/><path d="M30 26l12-14 12 14-12 14z"/><circle cx="22" cy="40" r="2" fill="currentColor"/><circle cx="42" cy="26" r="2" fill="currentColor"/>',
+  goat: '<path d="M18 14c-2 6 0 12 6 14M46 14c2 6 0 12-6 14"/><path d="M24 26h16c3 0 5 3 5 6v8c0 8-6 14-13 14s-13-6-13-14v-8c0-3 2-6 5-6z"/><circle cx="27" cy="36" r="1.8" fill="currentColor"/><circle cx="37" cy="36" r="1.8" fill="currentColor"/><path d="M28 54c0 4 2 6 4 6s4-2 4-6"/><path d="M14 30l-6-2M50 30l6-2"/>',
   dark: '<circle cx="32" cy="30" r="16"/><circle cx="38" cy="26" r="15" fill="currentColor"/><path d="M6 56h52"/><path d="M14 48h36" opacity=".5"/>',
   door: '<path d="M16 58V10h32v48"/><path d="M16 10h32" stroke-width="7" style="stroke:#C9473A"/><path d="M16 14v40M48 14v40" stroke-width="4" style="stroke:#C9473A"/><path d="M24 58V20h16v38"/><circle cx="36" cy="40" r="1.6" fill="currentColor"/>'
 };
@@ -50,13 +54,13 @@ export const explainersFor = (b, n) => EXPLAINERS.filter((x) => x.book === b.id 
 export function storyCard(x, b, n, depth) {
   const C = chips(x), here = hereOf(x, n);
   return `<div class="lab" style="color:#D7C49A">شرح مصوّر</div><h2 style="margin-bottom:6px">${esc(x.title)}</h2>
-<p style="opacity:.75;font-size:15px;margin-bottom:14px">${here.length ? `في هذا الأصحاح: ${here.map((c) => esc(c.label)).join('، ')}` : esc(x.sub)}</p>
-<div class="xstrip${here.length ? ' part' : ''}">${C.map((c) => `<span class="${!here.length || here.includes(c) ? 'on' : ''}" style="--c:${c.color};--k:${c.ink}">${glyph(c.icon, 26)}</span>`).join('')}</div>
+<p style="opacity:.75;font-size:15px;margin-bottom:14px">${here.length && here.length < C.length ? `في هذا الأصحاح: ${here.map((c) => esc(c.label)).join('، ')}` : esc(x.sub)}</p>
+<div class="xstrip${here.length && here.length < C.length ? ' part' : ''}">${C.map((c) => `<span class="${!here.length || here.includes(c) ? 'on' : ''}" style="--c:${c.color};--k:${c.ink}">${glyph(c.icon, 26)}</span>`).join('')}</div>
 <a class="btn l" style="margin-top:16px" href="${explainHref(x, depth, here[0] ? '#' + here[0].id : '')}">افتح الشرح المصوّر</a>`;
 }
 export function bentoTile(x, n, depth) {
   const C = chips(x), here = hereOf(x, n);
-  return `<a class="tile w t-explain" href="${explainHref(x, depth, here[0] ? '#' + here[0].id : '')}"><span class="tl"><span>شرح مصوّر</span>${IC.chev}</span><span class="xstrip sm${here.length ? ' part' : ''}">${C.map((c) => `<span class="${!here.length || here.includes(c) ? 'on' : ''}" style="--c:${c.color};--k:${c.ink}">${glyph(c.icon, 20)}</span>`).join('')}</span><span class="tt">${esc(x.title)}: ${x.plagues ? 'المعنى والهدف' : x.items ? 'مقارنة ومعنى' : 'خطوة خطوة نحو الحضور'}</span></a>`;
+  return `<a class="tile w t-explain" href="${explainHref(x, depth, here[0] ? '#' + here[0].id : '')}"><span class="tl"><span>شرح مصوّر</span>${IC.chev}</span><span class="xstrip sm${here.length && here.length < C.length ? ' part' : ''}">${C.map((c) => `<span class="${!here.length || here.includes(c) ? 'on' : ''}" style="--c:${c.color};--k:${c.ink}">${glyph(c.icon, 20)}</span>`).join('')}</span><span class="tt">${esc(x.title)}: ${x.plagues ? 'المعنى والهدف' : x.id === 'atonement' ? 'خطوة خطوة' : x.items ? 'مقارنة ومعنى' : 'خطوة خطوة نحو الحضور'}</span></a>`;
 }
 export const xCard = (x) => `<a class="mcard xm" href="${explainHref(x, 0)}"><div class="mv xmv${chips(x).length === 8 ? ' c4' : ''}">${chips(x).map((c) => `<span style="--c:${c.color};--k:${c.ink}">${glyph(c.icon, 22)}</span>`).join('')}</div><div class="mt"><small>العهد القديم · ${esc(bookById[x.book].name.replace(/^سفر /, ''))} · شرح مصوّر</small><b>${esc(x.title)}</b><span>${esc(x.sub)}</span></div></a>`;
 
@@ -64,6 +68,7 @@ const ORD = ['', 'الأولى', 'الثانية', 'الثالثة', 'الراب
 
 export function explainPage(x, depth) {
   if (x.id === 'offerings') return offeringsPage(x, depth);
+  if (x.id === 'atonement') return atonementPage(x, depth);
   if (x.steps) return tabernaclePage(x, depth);
   const b = bookById[x.book];
   const P = x.plagues;
@@ -277,5 +282,57 @@ ${matrix}
 <blockquote>${vq(x.christ.ref)} ${vq(x.christ.ref2)}<small>${refLabel('Heb.10.12-14')}</small></blockquote>
 ${x.christ.p.map((p) => `<p>${md(p)}</p>`).join('')}
 <a class="btn l" href="${chapterHref(b, 1, depth)}">${IC.read}ادرس اللاويين من الأصحاح الأول</a>
+</section>`;
+}
+
+// ---------- the day of atonement ----------
+function atonementPage(x, depth) {
+  const b = bookById[x.book];
+  const S = x.steps;
+  const r = (ref) => `<a class="r" href="${refHref(ref, depth)}">${refLabel(ref)}</a>`;
+  const plan = `<svg class="aplan" viewBox="-14 -8 78 146" role="img" aria-label="مخطط المسكن وما حوله">
+<rect x="-14" y="104" width="78" height="34" fill="#EFE3C8"/>
+<path d="M-14 118c10-4 18 4 28 0s18-4 28 0 18 4 36 0" stroke="#D9C79A" stroke-width=".6" fill="none"/><path d="M-14 128c10-4 18 4 28 0s18-4 28 0 18 4 36 0" stroke="#D9C79A" stroke-width=".6" fill="none"/>
+<text class="zl" x="44" y="134">البرية</text><text class="zl" x="0" y="112">خارج المحلة</text>
+<rect x="0" y="0" width="50" height="100" fill="#F6F1E6" stroke="#C9BFAE" stroke-width=".7" stroke-dasharray="1.6 .8" data-z="court"/>
+<rect x="20" y="20" width="10" height="20" fill="#EADFC6" stroke="#B39459" stroke-width=".4" data-z="holy"/>
+<rect x="20" y="10" width="10" height="10" fill="#D9C79A" stroke="#B39459" stroke-width=".4" data-z="most"/>
+<path d="M20 20h10" stroke="#2C3E7A" stroke-width="1"/>
+<rect x="22.5" y="67.5" width="5" height="5" fill="#9A4E21"/><circle cx="25" cy="52" r="1.8" fill="#2E7D86"/><rect x="23.75" y="14.25" width="2.5" height="1.5" fill="#7A5A12"/>
+<rect x="15" y="98.5" width="20" height="3" fill="#5B3F8C"/>
+<text class="zl" x="25" y="8.4">قدس الأقداس</text><text class="zl" x="25" y="38.3">القدس</text><text class="zl" x="9" y="86">الدار</text>
+<path id="apath" d="" fill="none" stroke="#B39459" stroke-width=".7" stroke-dasharray="1.4 1"/>
+<g id="ahp"><circle r="3.4" fill="#D7C49A" opacity=".35"><animate attributeName="r" values="2.6;4.4;2.6" dur="2s" repeatCount="indefinite"/></circle><circle r="1.9" fill="#B39459" stroke="#17191E" stroke-width=".4"/></g>
+</svg>`;
+  return `${header({ back: `${'../'.repeat(depth)}book/${b.slug}.html`, title: 'شرح مصوّر' })}
+<section class="xhero at">
+<span class="ey" style="color:#D7C49A">${esc(b.name)} ${x.range} · شرح مصوّر</span>
+<h1>${esc(x.title)}</h1>
+<p class="sub">${esc(x.sub)}</p>
+<div class="xrain">${S.map((s) => `<i style="--c:${s.color}"></i>`).join('')}</div>
+<blockquote>${vq(x.heroRef)}<small>${refLabel(x.heroRef)}</small></blockquote>
+</section>
+<div class="xbody">
+<p class="lead">${md(x.intro)}</p>
+<h3 class="xh"><span>١</span>اليوم خطوة خطوة</h3>
+<div class="astage" id="astage" data-steps='${esc(JSON.stringify(S.map((s) => s.at)))}'>
+<div class="amap">${plan}</div>
+<div class="acards">${S.map((s, i) => `<article class="acard" data-i="${i}" style="--c:${s.color}"${i ? ' hidden' : ''}><div class="ah"><span class="an">${ar(s.n)}<small>/${ar(S.length)}</small></span><span class="ai">${glyph(s.icon, 30)}</span><b>${esc(s.t)}</b></div><p>${md(s.d)}</p><blockquote>${vq(s.ref)}<small>${refLabel(s.ref)}</small></blockquote></article>`).join('')}</div>
+<div class="actl"><button type="button" data-a="-1" aria-label="الخطوة السابقة">${IC.back}السابق</button><div class="adots">${S.map((s, i) => `<i data-go="${i}" style="--c:${s.color}"></i>`).join('')}</div><button type="button" data-a="1" aria-label="الخطوة التالية">التالي${IC.chev}</button></div>
+</div>
+<h3 class="xh"><span>٢</span>تيسان، ذبيحة واحدة</h3>
+<div class="agoats">${x.goats.map((g) => `<div style="--c:${g.color};--k:${g.ink}"><span class="gi">${glyph(g.icon, 40)}</span><b>${esc(g.t)}</b><p>${md(g.d)}</p><small>المعنى</small><p>${md(g.m)}</p><small>في المسيح</small><p>${md(g.c)}</p></div>`).join('')}</div>
+<h3 class="xh"><span>٣</span>هارون والمسيح</h3>
+<div class="acmp"><div class="hd"><span></span><b>هارون</b><b>المسيح</b></div>${x.compare.map(([q, a, c, ref]) => `<div><span>${esc(q)}</span><em>${esc(a)}</em><strong>${esc(c)}<a class="r" href="${refHref(ref, depth)}">${refLabel(ref)}</a></strong></div>`).join('')}</div>
+<h3 class="xh"><span>٤</span>سؤال صعب</h3>
+<div class="blk xhard"><h3>${md(x.hard.q)}</h3><p>${md(x.hard.a)}</p></div>
+</div>
+<section class="xchrist">
+<div class="dd">${glyph('veil', 70)}</div>
+<span class="ey" style="color:#D7C49A">من القديم إلى الجديد</span>
+<h2>مرة واحدة</h2>
+<blockquote>${vq(x.christ.ref)}<small>${refLabel(x.christ.ref)}</small></blockquote>
+${x.christ.p.map((p) => `<p>${md(p)}</p>`).join('')}
+<a class="btn l" href="${chapterHref(b, 16, depth)}">${IC.read}ادرس اللاويين ١٦</a>
 </section>`;
 }

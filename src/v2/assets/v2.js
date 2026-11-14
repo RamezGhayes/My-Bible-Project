@@ -397,3 +397,31 @@
   var h = (location.hash.match(/^#of-(\w+)$/) || [])[1];
   if (h && document.getElementById('of-' + h)) { sel(h, false); var jump = function () { document.getElementById('ochips').scrollIntoView({ block: 'start' }); }; setTimeout(jump, 60); if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { setTimeout(jump, 30); }); }
 })();
+
+/* ---------- day of atonement stepper ---------- */
+(function () {
+  'use strict';
+  var st = document.getElementById('astage');
+  if (!st) return;
+  var pts = JSON.parse(st.getAttribute('data-steps')), cards = st.querySelectorAll('.acard'), dots = st.querySelectorAll('.adots i');
+  var hp = document.getElementById('ahp'), path = document.getElementById('apath'), i = 0;
+  var zones = ['court', 'court', 'court', 'most', 'most', 'most', 'court', 'wild', 'court', 'out'];
+  function show(k) {
+    i = Math.max(0, Math.min(cards.length - 1, k));
+    Array.prototype.forEach.call(cards, function (c, n) { c.hidden = n !== i; });
+    Array.prototype.forEach.call(dots, function (d, n) { d.classList.toggle('on', n === i); });
+    hp.setAttribute('transform', 'translate(' + pts[i][0] + ' ' + pts[i][1] + ')');
+    path.setAttribute('d', 'M' + pts.slice(0, i + 1).map(function (p) { return p[0] + ' ' + p[1]; }).join(' L'));
+    Array.prototype.forEach.call(st.querySelectorAll('[data-z]'), function (z) { z.classList.toggle('on', z.getAttribute('data-z') === zones[i]); });
+    st.querySelector('[data-a="-1"]').disabled = i === 0;
+    st.querySelector('[data-a="1"]').disabled = i === cards.length - 1;
+  }
+  st.addEventListener('click', function (e) {
+    var a = e.target.closest('[data-a]'); if (a) { show(i + Number(a.getAttribute('data-a'))); return; }
+    var d = e.target.closest('[data-go]'); if (d) show(Number(d.getAttribute('data-go')));
+  });
+  var x0 = null;
+  st.addEventListener('pointerdown', function (e) { x0 = e.clientX; });
+  st.addEventListener('pointerup', function (e) { if (x0 === null) return; var dx = e.clientX - x0; x0 = null; if (Math.abs(dx) > 50) show(i + (dx > 0 ? 1 : -1)); });
+  show(0);
+})();
