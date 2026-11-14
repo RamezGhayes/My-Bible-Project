@@ -6,6 +6,7 @@ import { blocks } from './render.mjs';
 import { page, header, IC, plain, clip, firstSentences, chWord, bkWord, vWord, secWord, countWord } from './v2/ui.mjs';
 import { buildPeople, cardTemplate, cleanName } from './v2/people.mjs';
 import { MAPS, mapForChapter, thumb, mapHref, viewer } from './v2/maps.mjs';
+import { EXPLAINERS, explainersFor, explainPage, storyCard as xStory, bentoTile as xTile, explainHref, glyph } from './v2/explain.mjs';
 
 const DIST = path.join(ROOT, 'dist');
 fs.rmSync(DIST, { recursive: true, force: true });
@@ -63,7 +64,7 @@ function home() {
 <div class="sec-t">تصفح الكتاب المقدس</div>
 <div class="tst">${tcard('ot', 'من الخلق إلى الأنبياء: الوعد والانتظار.')}${tcard('nt', 'المسيح، والكنيسة، والرجاء الأخير.')}</div>
 <div class="sec-t">أدوات</div>
-<div class="quick"><a href="people.html">${IC.person}الشخصيات</a><a href="maps.html">${IC.map}الخرائط</a><a href="journey.html">${IC.time}القصة في مراحل</a><a href="paul.html">${IC.map}رحلات بولس</a></div>
+<div class="quick"><a href="people.html">${IC.person}الشخصيات</a><a href="maps.html">${IC.map}الخرائط</a><a href="journey.html">${IC.time}القصة في مراحل</a><a href="paul.html">${IC.map}رحلات بولس</a><a href="explain/plagues.html">${IC.list}الضربات العشر</a></div>
 <div class="foot">${esc(config.description)}<br>النص: ${esc(config.bibleVersion)}<br><button type="button" data-splash>شاهد المقدمة مرة أخرى</button></div>`;
   write('index.html', page({ title: '', depth: 0, nav: 'home', body, cls: 'home' }));
 }
@@ -243,6 +244,8 @@ function chapterPage(b, n) {
   } else if (S.places?.length) {
     cards.push(card('#F2EEE6', '#17191E', `<div class="lab">الأماكن</div><h2>أين تجري الأحداث؟</h2><ol>${S.places.slice(0, 4).map((p) => `<li><span><b style="font-family:var(--ui);font-weight:500">${md(p.n)}</b><br><span style="font-size:14.5px;opacity:.75">${md(clip(p.d, 90))}</span></span></li>`).join('')}</ol>`, 'map'));
   }
+  const XS = explainersFor(b, n);
+  for (const x of XS) cards.push(card('#14161C', '#FAF8F4', xStory(x, b, n, depth)));
   if (people.length || groups.length) {
     const rows = [...people.slice(0, 5).map(({ p, d }) => `<a class="pr" href="#p-${p.id}"><span class="av">${esc(p.mono)}</span><span><b>${esc(p.prof ? p.prof.full : p.label)}</b><small>${esc(p.prof ? p.prof.role : clip(d, 60))}</small></span>${IC.chev}</a>`), ...groups.slice(0, Math.max(0, 4 - people.length)).map((g) => `<div class="pr"><span class="av" style="font-size:16px;color:#888">·</span><span><b>${md(g.n)}</b><small>${esc(clip(g.d, 60))}</small></span></div>`)];
     cards.push(card('#17191E', '#FAF8F4', `<div class="lab">الشخصيات</div><h2>من في القصة؟</h2><div>${rows.join('')}</div>`, people.length ? null : null));
@@ -282,6 +285,7 @@ ${cards.map((c, i) => `<section class="sc${i === 0 ? ' on' : ''}" style="backgro
   half.push(T('read', 't-text', vWord(vs.length), 'النص كاملاً', esc(vs[0].text)));
   if (people.length) half.push(T('people', '', countWord(people.length, 'شخصية واحدة', 'شخصيتان', 'شخصيات', 'شخصية'), 'الشخصيات', `<span class="avs">${people.slice(0, 4).map(({ p }) => `<span>${esc(p.mono)}</span>`).join('')}</span>`));
   DET.people = { t: 'الشخصيات', ey: 'من في القصة', h: `${people.map(({ p, d }) => `<div class="blk"><h3>${esc(p.prof ? p.prof.full : p.label)}</h3><p>${md(d)}</p><p style="margin-top:8px"><a class="r" href="#p-${p.id}">بطاقة الشخصية</a> · <a class="r" href="${personHref(p, depth)}">الملف الكامل</a></p></div>`).join('')}${groups.map((g) => `<div class="blk"><h3>${md(g.n)}</h3><p>${md(g.d)}</p></div>`).join('')}` };
+  for (const x of XS) tiles.push({ w: 1, h: xTile(x, n, depth).replace('class="tile w t-explain"', 'class="tile w t-explain" data-k="explain"') });
   // map / places
   if (hit) {
     const J = hit.m.journeys[hit.j];
@@ -322,8 +326,8 @@ ${cards.map((c, i) => `<section class="sc${i === 0 ? ' on' : ''}" style="backgro
   DET.you = { t: 'للتأمل والتطبيق', ey: 'عِشها', h: `${(S.questions || []).map((q, i) => `<div class="blk"><h3><span class="n">${ar(i + 1)}</span><span>${md(q)}</span></h3></div>`).join('')}${S.apply ? `<div class="applyb"><small>للحياة</small>${arr(S.apply).map((p) => `<p>${md(p)}</p>`).join('')}</div>` : ''}<button type="button" class="btn d" style="margin-top:18px" data-read="${b.id}:${n}">علّم الأصحاح كمقروء</button>` };
   // Arrange: christ, [text, people], map, [word, sum], [hard, bg], views, voices, [refs, you]
   if (half.length % 2) half[half.length - 1] = half[half.length - 1].replace('class="tile ', 'class="tile w ');
-  const wide = Object.fromEntries(tiles.map((t) => [t.h.match(/href="#s-(\w+)"/)[1], t.h]));
-  const grid = [wide.christ, ...half.slice(0, 2), wide.map || '', ...half.slice(2, 4), wide.views || '', ...half.slice(4, 6), wide.voices || '', ...half.slice(6)].join('');
+  const wide = Object.fromEntries(tiles.map((t) => [(t.h.match(/href="#s-(\w+)"/) || t.h.match(/data-k="(\w+)"/))[1], t.h]));
+  const grid = [wide.christ, wide.explain || '', ...half.slice(0, 2), wide.map || '', ...half.slice(2, 4), wide.views || '', ...half.slice(4, 6), wide.voices || '', ...half.slice(6)].join('');
   const ORDER = ['christ', 'sum', 'map', 'people', 'word', 'bg', 'hard', 'views', 'refs', 'voices', 'you'].filter((k) => DET[k]);
   const studyHtml = `<div class="ovl" id="study">
 <div class="pg idx" id="pg-idx"><header class="sh"><a class="b" href="#" aria-label="رجوع إلى القصة">${IC.close}</a><span class="t">الدراسة الكاملة</span><a class="b" href="#read" aria-label="النص">${IC.read}</a></header>
@@ -381,14 +385,17 @@ ${map ? `<a class="mcard" href="../maps/${map.id}.html" style="margin:0 0 20px">
 function mapsPages() {
   const card = (m) => `<a class="mcard" href="maps/${m.id}.html"><div class="mv">${thumb({ m, j: 0, idx: m.journeys[0].stops.map((_, i) => i) }, 'navy', 'all', 2.15)}</div><div class="mt"><small>${bookById[m.book].testament === 'nt' ? 'العهد الجديد' : 'العهد القديم'} · ${esc(shortName(bookById[m.book]))}</small><b>${esc(m.title)}</b><span>${esc(m.sub)} · ${ar(m.journeys.reduce((a, j) => a + j.stops.length, 0))} محطة${m.journeys.length > 2 ? ` في ${ar(m.journeys.length)} رحلات` : m.journeys.length === 2 ? ' في رحلتين' : ''}</span></div></a>`;
   const soon = (t, d) => `<div class="mcard off"><div class="mv">قريباً</div><div class="mt"><b>${t}</b><span>${d}</span></div></div>`;
-  const body = `${header({ back: 'index.html', title: 'الخرائط' })}
+  const body = `${header({ back: 'index.html', title: 'الخرائط والشروح' })}
 <div class="pad" style="padding-top:8px"><p class="lead" style="font-size:15.5px">خرائط تربط الأحداث بأماكنها. افتح خريطة، ثم تنقّل بين المحطات بالترتيب، وكل محطة تأخذك إلى الأصحاح الذي جرت فيه.</p></div>
 <div class="mcards">
 <a class="mcard" href="journey.html"><div class="mv" style="background:var(--ink);display:grid;place-items:center;color:var(--gold2);font-family:var(--nas);font-size:40px">١٤</div><div class="mt"><small>الكتاب كله</small><b>القصة في أربع عشرة مرحلة</b><span>من الخليقة إلى السماء الجديدة، بالترتيب التاريخي.</span></div></a>
 ${MAPS.map(card).join('')}
-${soon('رحلة الخروج', 'من مصر عبر البحر إلى سيناء ثم البرية.')}${soon('خدمة المسيح', 'الجليل واليهودية والسامرة وأورشليم.')}${soon('الممالك والإمبراطوريات', 'إسرائيل ويهوذا وأشور وبابل وفارس.')}
+${soon('خدمة المسيح', 'الجليل واليهودية والسامرة وأورشليم.')}${soon('الممالك والإمبراطوريات', 'إسرائيل ويهوذا وأشور وبابل وفارس.')}
 </div>`;
-  write('maps.html', page({ title: 'الخرائط', depth: 0, nav: 'maps', body }));
+  const xcard = (x) => `<a class="mcard xm" href="${explainHref(x, 0)}"><div class="mv xmv">${x.plagues.map((p) => `<span style="--c:${p.color};--k:${p.ink}">${glyph(p.icon, 22)}</span>`).join('')}</div><div class="mt"><small>العهد القديم · ${esc(shortName(bookById[x.book]))} · شرح مصوّر</small><b>${esc(x.title)}</b><span>${esc(x.sub)}</span></div></a>`;
+  const body2 = body.replace('<div class="mcards">', `<div class="sec-t" style="padding:0 20px">شروح مصوّرة</div><div class="mcards">${EXPLAINERS.map(xcard).join('')}</div><div class="sec-t" style="padding:0 20px">الخرائط</div><div class="mcards">`);
+  write('maps.html', page({ title: 'الخرائط والشروح', depth: 0, nav: 'maps', body: body2 }));
+  for (const x of EXPLAINERS) write(`explain/${x.id}.html`, page({ title: x.title, depth: 1, body: explainPage(x, 1), cls: 'explain' }));
   for (const m of MAPS) {
     write(`maps/${m.id}.html`, page({ title: m.title, depth: 1, body: '', cls: 'immersive mappage', after: viewer(m, 1, { back: '../maps.html' }) }));
   }

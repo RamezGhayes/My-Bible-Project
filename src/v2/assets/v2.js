@@ -310,3 +310,47 @@
     drawMarkers(); zoom(Z); paint();
   }
 })();
+
+/* ---------- visual explainers ---------- */
+(function () {
+  'use strict';
+  var cards = document.getElementById('xcards');
+  if (!cards) return;
+  var nums = Array.prototype.slice.call(document.querySelectorAll('#xnums button'));
+  function go(n, smooth) {
+    var c = document.getElementById('pl' + n);
+    if (!c) return;
+    c.scrollIntoView({ behavior: smooth ? 'smooth' : 'auto', inline: 'center', block: 'nearest' });
+    mark(n);
+  }
+  function mark(n) { nums.forEach(function (b) { b.setAttribute('aria-current', String(b.getAttribute('data-go') === String(n))); }); }
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('[data-go]');
+    if (a) {
+      e.preventDefault();
+      var n = a.getAttribute('data-go');
+      go(n, true);
+      if (!a.closest('#xcards') && !a.closest('#xnums')) setTimeout(function () { document.getElementById('xnums').scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 30);
+      history.replaceState(null, '', '#pl' + n);
+      return;
+    }
+    var t = e.target.closest('.tc');
+    if (t) {
+      var row = t.closest('.xtr');
+      Array.prototype.forEach.call(row.querySelectorAll('.tc'), function (x) { x.setAttribute('aria-pressed', String(x === t)); });
+      row.querySelector('.tip').textContent = t.getAttribute('data-tip');
+    }
+  });
+  var tm;
+  cards.addEventListener('scroll', function () {
+    clearTimeout(tm);
+    tm = setTimeout(function () {
+      var mid = cards.getBoundingClientRect().left + cards.clientWidth / 2, best = null, bd = 1e9;
+      Array.prototype.forEach.call(cards.children, function (c) { var r = c.getBoundingClientRect(); var d = Math.abs(r.left + r.width / 2 - mid); if (d < bd) { bd = d; best = c; } });
+      if (best) mark(best.id.slice(2));
+    }, 80);
+  }, { passive: true });
+  Array.prototype.forEach.call(document.querySelectorAll('.xrain i'), function (i, k) { i.style.setProperty('--d', (k * 0.08).toFixed(2)); });
+  var h = (location.hash.match(/^#pl(\d+)$/) || [])[1];
+  if (h) { var jump = function () { go(h, false); document.getElementById('xnums').scrollIntoView({ block: 'start' }); }; setTimeout(jump, 60); if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { setTimeout(jump, 30); }); } else mark(1);
+})();
