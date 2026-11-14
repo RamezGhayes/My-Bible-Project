@@ -41,7 +41,9 @@ fs.mkdirSync(path.join(DIST, 'assets'), { recursive: true });
 for (const f of fs.readdirSync(path.join(ROOT, 'src/v2/assets'))) fs.copyFileSync(path.join(ROOT, 'src/v2/assets', f), path.join(DIST, 'assets', f));
 
 const PEOPLE = buildPeople(books, content);
-const personHref = (p, depth) => `${up(depth)}people/${p.id}.html`;
+// The preview artifact holds at most 512 files, so it keeps full pages only for curated people.
+const hasPage = (p) => !PREVIEW || !!p.prof;
+const personHref = (p, depth) => (hasPage(p) ? `${up(depth)}people/${p.id}.html` : `${up(depth)}book/${p.apps[0].b.slug}/${p.apps[0].n}.html#p-${p.id}`);
 
 // ---------- splash + home ----------
 function home() {
@@ -348,14 +350,14 @@ ${people.map(({ p }) => `<a hidden data-pid="${p.id}" href="${personHref(p, dept
 // ---------- people ----------
 function peoplePages() {
   const list = [...PEOPLE.list].sort((a, b) => (b.prof ? 1 : 0) - (a.prof ? 1 : 0) || b.chapters - a.chapters || a.apps[0].b.order - b.apps[0].b.order);
-  const mini = (p) => `<a class="mini" href="people/${p.id}.html" data-t="${p.testament}" data-q="${esc(p.label + ' ' + (p.prof ? p.prof.full + ' ' + p.prof.role : ''))}"><div class="in"><div class="im"><span>${esc(p.mono)}</span></div><div class="tx"><b>${esc(p.prof ? p.prof.n : p.label)}</b><small>${esc(p.prof ? p.prof.role : ar(`${shortName(p.apps[0].b)} ${p.apps[0].n}`))}</small></div></div></a>`;
+  const mini = (p) => `<a class="mini" href="${personHref(p, 0)}" data-t="${p.testament}" data-q="${esc(p.label + ' ' + (p.prof ? p.prof.full + ' ' + p.prof.role : ''))}"><div class="in"><div class="im"><span>${esc(p.mono)}</span></div><div class="tx"><b>${esc(p.prof ? p.prof.n : p.label)}</b><small>${esc(p.prof ? p.prof.role : ar(`${shortName(p.apps[0].b)} ${p.apps[0].n}`))}</small></div></div></a>`;
   const body = `${header({ back: 'index.html', title: 'الشخصيات' })}
 <div class="pad" style="padding-top:8px"><p class="lead" style="font-size:15.5px">بطاقة تعريف لكل شخص في الأصحاحات المدروسة. اقلب البطاقة لتعرف من هو، وأين يظهر، وكيف ترتبط قصته بالمسيح.</p></div>
 <label class="search">${IC.search}<input type="search" id="pq" placeholder="ابحث باسم الشخصية" aria-label="ابحث باسم الشخصية"></label>
 <div class="chips" id="pchips"><button type="button" data-t="all" aria-pressed="true">الكل · ${ar(list.length)}</button><button type="button" data-t="ot" aria-pressed="false">العهد القديم</button><button type="button" data-t="nt" aria-pressed="false">العهد الجديد</button></div>
 <div class="pgrid" id="pgrid">${list.map(mini).join('')}</div>`;
   write('people.html', page({ title: 'الشخصيات', depth: 0, nav: 'people', body }));
-  for (const p of list) {
+  for (const p of list.filter(hasPage)) {
     const depth = 1;
     const P = p.prof;
     const map = P?.map ? MAPS.find((m) => m.id === P.map) : null;
