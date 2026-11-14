@@ -379,7 +379,7 @@ ${map ? `<a class="mcard" href="../maps/${map.id}.html" style="margin:0 0 20px">
 
 // ---------- maps ----------
 function mapsPages() {
-  const card = (m) => `<a class="mcard" href="maps/${m.id}.html"><div class="mv">${thumb({ m, j: 0, idx: m.journeys[0].stops.map((_, i) => i) }, 'navy', 'all', 2.15)}</div><div class="mt"><small>${m.paul ? 'العهد الجديد · أعمال الرسل' : 'العهد القديم · التكوين'}</small><b>${esc(m.title)}</b><span>${esc(m.sub)} · ${ar(m.journeys.reduce((a, j) => a + j.stops.length, 0))} محطة${m.journeys.length > 1 ? ` في ${ar(m.journeys.length)} رحلات` : ''}</span></div></a>`;
+  const card = (m) => `<a class="mcard" href="maps/${m.id}.html"><div class="mv">${thumb({ m, j: 0, idx: m.journeys[0].stops.map((_, i) => i) }, 'navy', 'all', 2.15)}</div><div class="mt"><small>${bookById[m.book].testament === 'nt' ? 'العهد الجديد' : 'العهد القديم'} · ${esc(shortName(bookById[m.book]))}</small><b>${esc(m.title)}</b><span>${esc(m.sub)} · ${ar(m.journeys.reduce((a, j) => a + j.stops.length, 0))} محطة${m.journeys.length > 2 ? ` في ${ar(m.journeys.length)} رحلات` : m.journeys.length === 2 ? ' في رحلتين' : ''}</span></div></a>`;
   const soon = (t, d) => `<div class="mcard off"><div class="mv">قريباً</div><div class="mt"><b>${t}</b><span>${d}</span></div></div>`;
   const body = `${header({ back: 'index.html', title: 'الخرائط' })}
 <div class="pad" style="padding-top:8px"><p class="lead" style="font-size:15.5px">خرائط تربط الأحداث بأماكنها. افتح خريطة، ثم تنقّل بين المحطات بالترتيب، وكل محطة تأخذك إلى الأصحاح الذي جرت فيه.</p></div>
@@ -399,7 +399,7 @@ ${soon('رحلة الخروج', 'من مصر عبر البحر إلى سيناء
 function journeyPage() {
   const J = readJSON('data/journey.json');
   const ERA_BOOKS = { 1: ['Gen'], 2: ['Gen', 'Job'], 3: ['Exod', 'Lev', 'Num', 'Deut'], 4: ['Josh', 'Judg', 'Ruth'], 5: ['1Sam', '2Sam', '1Chr', 'Ps', 'Prov', 'Eccl', 'Song'], 6: ['1Kgs', '2Kgs', '2Chr', 'Joel', 'Jonah', 'Amos', 'Hos', 'Isa', 'Mic', 'Nah', 'Zeph', 'Hab'], 7: ['Jer', 'Lam', 'Ezek', 'Dan', 'Obad'], 8: ['Ezra', 'Neh', 'Esth', 'Hag', 'Zech', 'Mal'], 9: [], 10: ['Matt', 'Mark', 'Luke', 'John'], 11: ['Acts', 'Jas'], 12: ['Acts', 'Gal', '1Thess', '2Thess', '1Cor', '2Cor', 'Rom', 'Eph', 'Col', 'Phlm', 'Phil', '1Tim', 'Titus', '2Tim'], 13: ['Heb', '1Pet', '2Pet', 'Jude', '1John', '2John', '3John'], 14: ['Rev'] };
-  const ERA_MAP = { 1: 'beginnings', 2: 'abraham', 12: 'paul' };
+  const ERA_MAP = { 1: 'beginnings', 2: 'abraham', 3: 'exodus', 12: 'paul' };
   const cards = J.eras.map((e, i) => `<div class="cc" data-i="${i}">
 <div class="k"><span>المرحلة ${ar(e.n)} من ١٤</span><span class="st">${esc(e.dates)}</span></div>
 <div class="num" style="font-size:40px;line-height:1.35;margin-top:18px">${esc(e.title)}</div>

@@ -26,7 +26,7 @@ const REGIONS = [['البحر المتوسط', 31.6, 33.4, 1.1], ['بلاد ما
 const PLACE = {
   ur: [46.1, 30.96], haran: [39.03, 36.87], shechem: [35.28, 32.21], bethel: [35.22, 31.93], negev: [34.8, 30.85], egypt: [31.25, 29.85],
   hebron: [35.1, 31.53], dan: [35.65, 33.25], sodom: [35.45, 31.1], gerar: [34.6, 31.38], beersheba: [34.79, 31.25], moriah: [35.23, 31.78],
-  gilead: [35.82, 32.45], peniel: [35.68, 32.18], bethlehem: [35.2, 31.7], goshen: [31.9, 30.75], dothan: [35.22, 32.42], ararat: [44.3, 39.7], babel: [44.42, 32.54]
+  gilead: [35.82, 32.45], rameses: [31.83, 30.8], succoth: [32.1, 30.55], sea: [32.55, 30.22], marah: [32.95, 29.6], elim: [33.1, 29.25], sin: [33.35, 28.95], rephidim: [33.65, 28.75], sinai: [33.97, 28.54], midian: [35.2, 28.2], nile: [31.25, 30.05], peniel: [35.68, 32.18], bethlehem: [35.2, 31.7], goshen: [31.9, 30.75], dothan: [35.22, 32.42], ararat: [44.3, 39.7], babel: [44.42, 32.54]
 };
 
 const OT_MAPS = [
@@ -80,6 +80,28 @@ const OT_MAPS = [
       { p: 'goshen', n: 'أرض جاسان', ch: [46, 47, 48], ref: 'Gen.47.27', t: 'أسكن أباه وإخوته في أفضل أرض مصر، وهناك بارك يعقوب ابنَي يوسف.' }
     ]
   }
+  ,{
+    id: 'exodus', title: 'الخروج', sub: 'من مصر إلى جبل سيناء', book: 'Exod', vb: [80, 200, 200, 150], vh: 230, z: 1,
+    note: 'مواقع عبور البحر وجبل سيناء غير مؤكدة. الخريطة تتبع الموقع التقليدي لجبل سيناء في جنوب شبه الجزيرة.',
+    journeys: [
+      { t: 'موسى: من القصر إلى العليقة', sub: 'الخروج ٢–٤', stops: [
+        { p: 'nile', n: 'مصر عند النيل', ch: [1, 2], ref: 'Exod.2.3-10', t: 'وُلد موسى في زمن الاستعباد، ووُضع في سفط على حافة النهر، فانتشلته ابنة فرعون وتربى في القصر.' },
+        { p: 'midian', n: 'أرض مديان', ch: [2, 3, 4, 18], ref: 'Exod.2.15', t: 'هرب موسى من وجه فرعون بعد قتله المصري، فسكن عند يثرو كاهن مديان، وتزوج صفورة، ورعى الغنم أربعين سنة.' },
+        { p: 'sinai', n: 'حوريب جبل الله', ch: [3, 4], ref: 'Exod.3.1-2', t: 'عند العليقة المشتعلة التي لا تحترق دعاه الله باسمه، وأعلن له اسمه: أهيه الذي أهيه، وأرسله إلى فرعون.' },
+        { p: 'rameses', n: 'الرجوع إلى مصر', ch: [4, 5, 6, 7, 8, 9, 10, 11], ref: 'Exod.4.20', t: 'رجع موسى بعصا الله، والتقى هارون في البرية، ووقفا أمام فرعون. ثم الضربات العشر.' }
+      ] },
+      { t: 'طريق الخروج', sub: 'الخروج ١٢–١٩', stops: [
+        { p: 'rameses', n: 'رعمسيس', ch: [1, 12], ref: 'Exod.12.37', t: 'من هنا ارتحل بنو إسرائيل ليلة الفصح، نحو ست مئة ألف ماشٍ من الرجال عدا الأولاد. وكانت رعمسيس من مدن المخازن التي بنوها وهم عبيد (١: ١١).' },
+        { p: 'succoth', n: 'سكوت', ch: [12, 13], ref: 'Exod.13.20', t: 'أول محطة. ومنها لم يهدهم الله في طريق أرض الفلسطينيين وهي قريبة، بل أدارهم في طريق برية بحر سوف، وسار أمامهم في عمود سحاب نهاراً وعمود نار ليلاً.' },
+        { p: 'sea', n: 'عبور البحر', ch: [14, 15], ref: 'Exod.14.21-22', t: 'شق الرب البحر بريح شرقية شديدة الليل كله، فدخل بنو إسرائيل في وسطه على اليابسة، ثم رجع الماء على مركبات فرعون. الموقع الدقيق غير مؤكد، والأرجح قرب البحيرات المرة أو رأس خليج السويس.' },
+        { p: 'marah', n: 'مارة', ch: [15], ref: 'Exod.15.23-25', t: 'ثلاثة أيام بلا ماء، ثم ماء مر. أراه الرب شجرة طرحها في الماء فصار عذباً، وهناك قال: أنا الرب شافيك.' },
+        { p: 'elim', n: 'إيليم', ch: [15, 16], ref: 'Exod.15.27', t: 'اثنتا عشرة عين ماء وسبعون نخلة. استراحة أعدها الله بعد مرارة مارة.' },
+        { p: 'sin', n: 'برية سين', ch: [16], ref: 'Exod.16.1', t: 'تذمر الشعب على الجوع، فأمطر الرب لهم خبزاً من السماء، المن، ومعه السلوى، وعلّمهم السبت.' },
+        { p: 'rephidim', n: 'رفيديم', ch: [17, 18], ref: 'Exod.17.6', t: 'ضرب موسى الصخرة في حوريب فخرج ماء، ثم حارب يشوع عماليق وموسى رافع يديه على التلة.' },
+        { p: 'sinai', n: 'جبل سيناء', ch: [19, 20, 24, 32, 33, 34, 40], ref: 'Exod.19.1-2', t: 'في الشهر الثالث نزل الشعب أمام الجبل. هنا أعطى الله الوصايا العشر، وقطع العهد، وأمر بالمسكن، وهنا صنعوا العجل الذهبي. ويبقون هنا حتى العدد ١٠.' }
+      ] }
+    ]
+  }
 ];
 
 const THEMES = {
@@ -96,17 +118,18 @@ function fitVB(pts, minW, aspect) {
   return [+(cx - w / 2).toFixed(1), +(cy - h / 2).toFixed(1), +w.toFixed(1), +h.toFixed(1)];
 }
 
-function nePlate(m, theme, { route = true, pins = null, active = [], vb = null, k: kk = null } = {}) {
+function nePlate(m, theme, { route = true, pins = null, active = [], vb = null, k: kk = null, stops: ST = null } = {}) {
+  const stopsArr = ST || m.journeys[0].stops;
   const T = THEMES[theme];
   const [x, y, w, h] = vb || m.vb;
   const k = kk || w / 520; // scale relative to the widest map
   const lbl = ([t, lo, la, s, rot]) => { const [px, py] = P(lo, la); return `<text x="${px}" y="${py}" font-size="${(15 * s * k).toFixed(1)}" fill="${T.faint}" font-family="Readex Pro" text-anchor="middle"${rot ? ` transform="rotate(${rot} ${px} ${py})"` : ''}>${t}</text>`; };
-  const pts = m.stops.map((s) => P(...PLACE[s.p]));
+  const pts = stopsArr.map((s) => P(...PLACE[s.p]));
   const routeD = 'M' + pts.map((p) => p.join(' ')).join(' L');
   let pinSvg = '';
   if (pins) {
     const r = 9 * k + 2;
-    pinSvg = m.stops.map((s, i) => {
+    pinSvg = stopsArr.map((s, i) => {
       const [px, py] = pts[i];
       const on = active.includes(i);
       if (!on && pins === 'active') return `<circle cx="${px}" cy="${py}" r="${(r * 0.35).toFixed(1)}" fill="${T.route}" opacity=".6"/>`;
@@ -142,7 +165,7 @@ const PAUL = {
     stops: j.stops.map((s) => ({ p: s.c, n: s.t, ch: paulChs(s.ref.replace(/أع\s*/, '')), ref: paulRef(s.ref), refText: ar(s.ref), t: s.happened, more: { was: s.was, why: s.why, learn: s.learn, q: s.q, qr: s.qr } }))
   }))
 };
-for (const m of OT_MAPS) m.journeys = [{ t: m.title, sub: m.sub, stops: m.stops }];
+for (const m of OT_MAPS) if (!m.journeys) m.journeys = [{ t: m.title, sub: m.sub, stops: m.stops }];
 export const MAPS = [...OT_MAPS, PAUL];
 export const mapById = Object.fromEntries(MAPS.map((m) => [m.id, m]));
 
@@ -182,7 +205,7 @@ export function thumb(hit, theme = 'navy', pins = 'all', aspect = 1.45) {
   const pts = (idx.length ? idx : stops.map((_, i) => i)).map((i) => xy(m, stops[i]));
   const vb = fitVB(pts, m.paul ? 260 : 150, aspect);
   if (m.paul) return paulPlate(m, j, { pins, active: idx, vb });
-  return nePlate(m, theme, { pins, active: idx, vb });
+  return nePlate(m, theme, { pins, active: idx, vb, stops });
 }
 
 export const mapHref = (m, depth) => `${'../'.repeat(depth)}maps/${m.id}.html`;
@@ -198,7 +221,7 @@ function viewerVB(m) {
 export function viewer(m, depth, { back }) {
   const vvb = viewerVB(m);
   const [x, y, w, h] = vvb;
-  const plates = m.paul ? m.journeys.map((_, j) => `<div class="plate" data-j="${j}"${j ? ' hidden' : ''}>${paulPlate(m, j)}</div>`).join('') : `<div class="plate" data-j="0">${nePlate(m, 'sand', { vb: vvb, k: h / 640 })}</div>`;
+  const plates = m.paul ? m.journeys.map((_, j) => `<div class="plate" data-j="${j}"${j ? ' hidden' : ''}>${paulPlate(m, j)}</div>`).join('') : m.journeys.map((J, j) => `<div class="plate" data-j="${j}"${j ? ' hidden' : ''}>${nePlate(m, 'sand', { vb: vvb, k: h / 640, stops: J.stops })}</div>`).join('');
   const data = {
     id: m.id, ar: w / h, z: m.z,
     journeys: m.journeys.map((J) => ({
