@@ -378,3 +378,22 @@
   if (h && document.getElementById('it-' + h)) { sel(h, false); var jump = function () { document.getElementById('tchips').scrollIntoView({ block: 'start' }); }; setTimeout(jump, 60); if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { setTimeout(jump, 30); }); }
   else sel(panels.children[0].getAttribute('data-panel'), false);
 })();
+
+/* ---------- offerings explainer ---------- */
+(function () {
+  'use strict';
+  var panels = document.getElementById('opanels');
+  if (!panels) return;
+  function sel(id, scroll) {
+    Array.prototype.forEach.call(panels.children, function (p) { p.hidden = p.getAttribute('data-panel') !== id; });
+    Array.prototype.forEach.call(document.querySelectorAll('#ochips button'), function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-of-go') === id)); });
+    history.replaceState(null, '', '#of-' + id);
+    if (scroll) document.getElementById('ochips').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('[data-of-go]');
+    if (a) { e.preventDefault(); sel(a.getAttribute('data-of-go'), !a.closest('#ochips')); }
+  });
+  var h = (location.hash.match(/^#of-(\w+)$/) || [])[1];
+  if (h && document.getElementById('of-' + h)) { sel(h, false); var jump = function () { document.getElementById('ochips').scrollIntoView({ block: 'start' }); }; setTimeout(jump, 60); if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { setTimeout(jump, 30); }); }
+})();
