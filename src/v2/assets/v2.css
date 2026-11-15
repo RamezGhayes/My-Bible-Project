@@ -1107,3 +1107,31 @@ body.explain{background:var(--paper)}
 @media (min-width:980px){.tgrid{grid-template-columns:repeat(3,1fr)}.trow{grid-template-columns:repeat(4,1fr)}.topic{max-width:860px;margin:0 auto}.ttoc{top:68px}.trel,.tkeys{grid-template-columns:1fr 1fr}}
 .lrow select{min-width:0;width:100%}
 .thero>*{position:relative;z-index:1}
+/* ---------- feasts explainer ---------- */
+.xhero.fe{background:linear-gradient(160deg,#2B2440,#4A3A2A)}
+.fring{width:100%;max-width:420px;display:block;margin:6px auto 4px}
+.fring .fm{fill:#EFE9DD;stroke:#fff;stroke-width:1.5}
+.fring .fm.sp{fill:#E3EBD3}.fring .fm.au{fill:#F1DFC6}
+.fring .fmt{font-family:var(--ui);font-size:10.5px;text-anchor:middle;fill:var(--ink2)}
+.fring .fc{fill:var(--ink)}
+.fring .fct{font-family:var(--nas);font-size:17px;fill:#fff;text-anchor:middle}
+.fring .fcs{font-family:var(--ui);font-size:11px;fill:var(--gold2);text-anchor:middle}
+.fring line{stroke-width:2}
+.fring a circle{stroke:#fff;stroke-width:2.5;transition:r .2s}
+.fring a:hover circle{r:19}
+.fleg{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-bottom:8px}
+.fleg span{font-family:var(--ui);font-size:12px;border-radius:999px;padding:4px 10px;background:var(--cream)}
+.fleg .sp{background:#E3EBD3}.fleg .au{background:#F1DFC6}
+.fsev{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.fsev a{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+.fsev b{display:block;font-family:var(--ui);font-size:15px}.fsev span{display:block;font-size:13.5px;color:var(--ink2)}.fsev small{font-family:var(--ui);font-size:11px;color:var(--accent)}
+.ftbl{display:grid;gap:8px}
+.ftbl a{display:grid;grid-template-columns:44px 1fr;gap:2px 10px;background:#fff;border:1px solid var(--line);border-inline-start:5px solid var(--c);border-radius:12px;padding:10px 12px}
+.ftbl .fi{grid-row:span 4;width:40px;height:40px;border-radius:10px;background:var(--c);color:var(--k);display:grid;place-items:center}
+.ftbl b{font-family:var(--ui);font-size:15px}
+.ftbl .fs{font-size:13.5px;color:var(--soft)}
+.ftbl .fx{font-size:14px;line-height:1.75}
+.ftag{justify-self:start;font-family:var(--ui);font-size:11px;border-radius:999px;padding:2px 8px;background:var(--cream)}
+.ftag.explicit{background:#E7EEE9;color:#2F5E45}.ftag.likely{background:#E8ECF4;color:#2E3F66}.ftag.possible{background:#F6EADB;color:#8A5513}
+#ochips[style*="repeat(7"] span{font-size:10.5px}
+@media (min-width:980px){.fsev{grid-template-columns:repeat(3,1fr)}.ftbl{grid-template-columns:1fr 1fr}}

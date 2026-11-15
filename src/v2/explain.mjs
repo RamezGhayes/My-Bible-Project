@@ -6,8 +6,9 @@ import plagues from '../../content/explain/plagues.mjs';
 import tabernacle from '../../content/explain/tabernacle.mjs';
 import offerings from '../../content/explain/offerings.mjs';
 import atonement from '../../content/explain/atonement.mjs';
+import feasts from '../../content/explain/feasts.mjs';
 
-export const EXPLAINERS = [plagues, tabernacle, offerings, atonement];
+export const EXPLAINERS = [plagues, tabernacle, offerings, atonement, feasts];
 // Uniform "chips" for strips and cards: {id, name, color, ink, icon, ch:[chapters]}
 export const chips = (x) => x.items ? x.items.map((p) => ({ id: 'of-' + p.id, name: p.name, color: p.color, ink: p.ink, icon: p.icon, ch: x.id === 'offerings' && p.id !== 'guilt' && p.id !== 'grain' ? [...p.ch, 9] : p.ch, label: x.id === 'offerings' ? 'ذبيحة ' + p.name : p.name })) : x.plagues ? x.plagues.map((p) => ({ id: 'pl' + p.n, name: p.name, color: p.color, ink: p.ink, icon: p.icon, ch: p.n === 10 ? [11, 12] : [p.ch], label: 'الضربة ' + ORD[p.n] })) : x.steps.map((p) => ({ id: 'it-' + p.id, name: p.name, color: p.color, ink: p.ink, icon: p.icon, ch: [p.ch, ...(CH2[p.id] || [])], label: p.name }));
 const CH2 = { gate: [38], altar: [38], laver: [38], table: [37], lamp: [37], incense: [37], veil: [36], ark: [37, 40] };
@@ -40,6 +41,10 @@ const G = {
   lots: '<path d="M10 40l12-14 12 14-12 14z" fill="currentColor" fill-opacity=".3"/><path d="M30 26l12-14 12 14-12 14z"/><circle cx="22" cy="40" r="2" fill="currentColor"/><circle cx="42" cy="26" r="2" fill="currentColor"/>',
   goat: '<path d="M18 14c-2 6 0 12 6 14M46 14c2 6 0 12-6 14"/><path d="M24 26h16c3 0 5 3 5 6v8c0 8-6 14-13 14s-13-6-13-14v-8c0-3 2-6 5-6z"/><circle cx="27" cy="36" r="1.8" fill="currentColor"/><circle cx="37" cy="36" r="1.8" fill="currentColor"/><path d="M28 54c0 4 2 6 4 6s4-2 4-6"/><path d="M14 30l-6-2M50 30l6-2"/>',
   dark: '<circle cx="32" cy="30" r="16"/><circle cx="38" cy="26" r="15" fill="currentColor"/><path d="M6 56h52"/><path d="M14 48h36" opacity=".5"/>',
+  matzah: '<rect x="10" y="14" width="44" height="36" rx="7"/><g fill="currentColor" stroke="none"><circle cx="20" cy="24" r="1.8"/><circle cx="32" cy="24" r="1.8"/><circle cx="44" cy="24" r="1.8"/><circle cx="20" cy="32" r="1.8"/><circle cx="32" cy="32" r="1.8"/><circle cx="44" cy="32" r="1.8"/><circle cx="20" cy="40" r="1.8"/><circle cx="32" cy="40" r="1.8"/><circle cx="44" cy="40" r="1.8"/></g>',
+  loaves: '<path d="M4 42c0-11 8-18 17-18s17 7 17 18z"/><path d="M26 46c0-11 8-18 17-18s17 7 17 18z"/><path d="M12 34l4-4M20 32l4-4M34 38l4-4M42 36l4-4"/>',
+  shofar: '<path d="M8 46c9 4 22 1 31-8 7-7 11-17 17-22l3 4c-3 4-5 14-14 25-9 10-23 13-34 9z"/><path d="M8 46l-3 2 3 4 3-2"/><path d="M48 46c3 2 5 5 6 9M54 40c4 1 7 4 8 7" opacity=".6"/>',
+  booth: '<path d="M10 54V30M54 54V30"/><path d="M6 30c8-10 18-14 26-14s18 4 26 14"/><path d="M14 24l-4-8M24 19l-2-9M40 19l2-9M50 24l4-8"/><path d="M10 54h44"/><path d="M26 54V40h12v14"/>',
   door: '<path d="M16 58V10h32v48"/><path d="M16 10h32" stroke-width="7" style="stroke:#C9473A"/><path d="M16 14v40M48 14v40" stroke-width="4" style="stroke:#C9473A"/><path d="M24 58V20h16v38"/><circle cx="36" cy="40" r="1.6" fill="currentColor"/>'
 };
 export const glyph = (k, size = 48) => `<svg class="glyph" viewBox="0 0 64 64" width="${size}" height="${size}" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">${G[k] || ''}</svg>`;
@@ -69,6 +74,7 @@ const ORD = ['', 'الأولى', 'الثانية', 'الثالثة', 'الراب
 export function explainPage(x, depth) {
   if (x.id === 'offerings') return offeringsPage(x, depth);
   if (x.id === 'atonement') return atonementPage(x, depth);
+  if (x.id === 'feasts') return feastsPage(x, depth);
   if (x.steps) return tabernaclePage(x, depth);
   const b = bookById[x.book];
   const P = x.plagues;
@@ -353,4 +359,65 @@ export function scene3d(depth, mode = 'explore') {
 <div class="t3tour"><div class="th"><span class="n"></span><b class="tt"></b><button type="button" data-c="exit" aria-label="إنهاء الجولة">${IC.close}</button></div><p class="d"></p><blockquote class="v"></blockquote><div class="tn"><button type="button" data-c="prev">${IC.back}السابق</button><span class="dots">${A.steps.map(() => '<i></i>').join('')}</span><button type="button" data-c="next">التالي${IC.chev}</button></div></div>
 </div>
 <script src="${'../'.repeat(depth)}assets/t3d.js" defer></script>`;
+}
+
+// ---------- the feasts of the LORD ----------
+const FTAG = { explicit: 'صريح في العهد الجديد', likely: 'ارتباط راجح', possible: 'اقتراح تفسيري' };
+function feastsPage(x, depth) {
+  const b = bookById[x.book];
+  const I = x.items;
+  const r = (ref) => `<a class="r" href="${refHref(ref, depth)}">${refLabel(ref)}</a>`;
+  // calendar ring: month 1 (Nisan) at top, clockwise
+  const C = 160, R1 = 128, R2 = 98, ang = (m, d) => ((m - 1 + (d - 1) / 30) / 12) * 2 * Math.PI - Math.PI / 2;
+  const pt = (a, r0) => [C + r0 * Math.cos(a), C + r0 * Math.sin(a)];
+  const arc = (a0, a1, r0, r1) => { const [x0, y0] = pt(a0, r1), [x1, y1] = pt(a1, r1), [x2, y2] = pt(a1, r0), [x3, y3] = pt(a0, r0); const lg = a1 - a0 > Math.PI ? 1 : 0; return `M${x0.toFixed(1)} ${y0.toFixed(1)}A${r1} ${r1} 0 ${lg} 1 ${x1.toFixed(1)} ${y1.toFixed(1)}L${x2.toFixed(1)} ${y2.toFixed(1)}A${r0} ${r0} 0 ${lg} 0 ${x3.toFixed(1)} ${y3.toFixed(1)}Z`; };
+  const seg = x.months.map((mn, k) => { const a0 = ang(k + 1, 1), a1 = ang(k + 2, 1); const [tx, ty] = pt((a0 + a1) / 2, (R1 + R2) / 2); const cls = k < 3 ? 'sp' : k === 6 ? 'au' : ''; return `<path class="fm ${cls}" d="${arc(a0 + 0.012, a1 - 0.012, R2, R1)}"/><text class="fmt" x="${tx.toFixed(1)}" y="${(ty + 4).toFixed(1)}">${mn}</text>`; }).join('');
+  const marks = I.map((i, k) => { const a = ang(i.m, i.d); const [mx, my] = pt(a + (i.off || 0) * Math.PI / 180, R2 - 28); const [lx, ly] = pt(a, R2 - 1); return `<a href="#of-${i.id}" data-of-go="${i.id}"><line x1="${lx.toFixed(1)}" y1="${ly.toFixed(1)}" x2="${mx.toFixed(1)}" y2="${my.toFixed(1)}" stroke="${i.color}"/><circle cx="${mx.toFixed(1)}" cy="${my.toFixed(1)}" r="15.5" fill="${i.color}"/><g transform="translate(${(mx - 10).toFixed(1)} ${(my - 10).toFixed(1)})" color="${i.ink}">${glyph(i.icon, 20)}</g></a>`; }).join('');
+  const ring = `<svg class="fring" viewBox="0 0 320 320" role="img" aria-label="السنة العبرية وأعيادها">${seg}<circle cx="${C}" cy="${C}" r="38" class="fc"/><text x="${C}" y="${C - 2}" class="fct">السنة</text><text x="${C}" y="${C + 15}" class="fcs">المقدسة</text>${marks}</svg>`;
+  const card = (i, k) => `<article class="xc oc" id="of-${i.id}" data-panel="${i.id}" style="--c:${i.color};--k:${i.ink}"${k ? ' hidden' : ''}>
+<div class="xc-top"><span class="no">العيد ${ORD[k + 1]}</span><span class="cy">${esc(i.season)}</span></div>
+<div class="xc-ic">${glyph(i.icon, 84)}</div>
+<h2>${esc(i.name)}</h2>
+<div class="xc-ref">«${esc(i.heb)}»: ${esc(i.mean)} · ${esc(i.when)} · ${r(i.ref)}</div>
+<blockquote>${vq(i.key)}<small>${refLabel(i.key)}</small></blockquote>
+<div class="xc-sec"><small>كيف يُحفظ؟</small><p>${md(i.what)}</p></div>
+<div class="xc-god"><div class="h"><small>ماذا يتذكر؟</small></div><b>${esc(i.need)}</b></div>
+<div class="xc-sec"><small>في حياة إسرائيل</small><p>${md(i.share)}</p><p style="margin-top:6px;opacity:.85">انظر أيضاً ${r(i.law)}</p></div>
+<div class="xc-sec tp-x"><small>يتمم في المسيح · ${r(i.christ.ref)} · <span class="ftag ${i.christ.tag}">${FTAG[i.christ.tag]}</span></small><p>${md(i.christ.t)}</p></div>
+<div class="xc-nav">${k ? `<a href="#of-${I[k - 1].id}" data-of-go="${I[k - 1].id}">${IC.back}${esc(I[k - 1].name)}</a>` : '<span></span>'}<a class="ch" href="${chapterHref(b, 23, depth)}#v${String(i.ref.split('.')[2]).split('-')[0]}">${IC.read}اللاويين ٢٣</a>${k < I.length - 1 ? `<a href="#of-${I[k + 1].id}" data-of-go="${I[k + 1].id}">${esc(I[k + 1].name)}${IC.chev}</a>` : '<span></span>'}</div>
+</article>`;
+  const table = `<div class="ftbl">${I.map((i) => `<a href="#of-${i.id}" data-of-go="${i.id}" style="--c:${i.color};--k:${i.ink}"><span class="fi">${glyph(i.icon, 26)}</span><b>${esc(i.name)}</b><span class="fs">${esc(i.need)}</span><span class="fx">${esc(i.nt)}</span><span class="ftag ${i.christ.tag}">${FTAG[i.christ.tag]}</span></a>`).join('')}</div>`;
+  return `${header({ back: `${'../'.repeat(depth)}book/${b.slug}.html`, title: 'شرح مصوّر' })}
+<section class="xhero of fe">
+<span class="ey" style="color:#D7C49A">${esc(b.name)} ${x.range} · شرح مصوّر</span>
+<h1>${esc(x.title)}</h1>
+<p class="sub">${esc(x.sub)}</p>
+<div class="ofan">${I.map((i) => `<span style="--c:${i.color};--k:${i.ink}">${glyph(i.icon, 28)}<small>${esc(i.short)}</small></span>`).join('')}</div>
+<blockquote>${vq(x.heroRef)}<small>${refLabel(x.heroRef)}</small></blockquote>
+</section>
+<div class="xbody">
+<p class="lead">${md(x.intro)}</p>
+<h3 class="xh"><span>١</span>السنة في دائرة</h3>
+<p class="xp">الشهر الأول في الأعلى، والسنة تدور مع عقارب الساعة. أعياد الربيع في الأشهر الأولى، وأعياد الخريف كلها في الشهر السابع. اضغط على أي عيد.</p>
+${ring}
+<div class="fleg"><span class="sp">الربيع: الفصح، والفطير، والباكورة</span><span>أول الصيف: الخمسين</span><span class="au">الخريف: الهتاف، والكفارة، والمظال</span></div>
+<h3 class="xh"><span>٢</span>كل عيد بالتفصيل</h3>
+<div class="tchips" id="ochips" style="grid-template-columns:repeat(7,1fr)">${I.map((i, k) => `<button type="button" data-of-go="${i.id}" style="--c:${i.color};--k:${i.ink}" aria-pressed="${k ? 'false' : 'true'}">${glyph(i.icon, 20)}<span>${esc(i.short)}</span></button>`).join('')}</div>
+<div class="opanels" id="opanels">${I.map(card).join('')}</div>
+<h3 class="xh"><span>٣</span>إيقاع السبعة</h3>
+<p class="xp">التقويم كله مبني على رقم الخليقة: ستة وسابع. والإيقاع يمتد من الأيام إلى السنين.</p>
+<div class="fsev">${x.sevens.map((s) => `<a href="${refHref(s.ref, depth)}"><b>${esc(s.n)}</b><span>${esc(s.t)}</span><small>${refLabel(s.ref)}</small></a>`).join('')}</div>
+<h3 class="xh"><span>٤</span>من الظل إلى الجسد</h3>
+<p class="xp">كل عيد كما عاشته إسرائيل، وكيف يقرأه العهد الجديد. لاحظ قوة الارتباط: بعضه صريح، وبعضه اقتراح.</p>
+${table}
+<h3 class="xh"><span>٥</span>سؤال صعب</h3>
+<div class="blk xhard"><h3>${md(x.hard.q)}</h3><p>${md(x.hard.a)}</p></div>
+</div>
+<section class="xchrist">
+<span class="ey" style="color:#D7C49A">من القديم إلى الجديد</span>
+<h2>الظل والجسد</h2>
+<blockquote>${vq(x.christ.ref)}<small>${refLabel(x.christ.ref)}</small></blockquote>
+${x.christ.p.map((p) => `<p>${md(p)}</p>`).join('')}
+<a class="btn l" href="${chapterHref(b, 23, depth)}">${IC.read}ادرس اللاويين ٢٣</a>
+</section>`;
 }
