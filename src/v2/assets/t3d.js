@@ -44,35 +44,73 @@
   el('q-glab', {}, 'translate3d(' + px(-36) + 'px,' + py(108) + 'px,1px)', W, 'خارج المحلة');
   // court floor and linen fence (5 cubits high), gate on the east
   plane('q-court', 0, 0, 50, 100, 0.05, '#F4EEDF');
-  var linen = 'repeating-linear-gradient(90deg,#FBF8F0 0 ' + (5 * U - 3) + 'px,#B9A57A ' + (5 * U - 3) + 'px ' + 5 * U + 'px)';
+  var linen = 'linear-gradient(180deg,#C9CDD2 0 3px,transparent 3px),repeating-linear-gradient(90deg,#FFFDF7 0,#F3EEE2 ' + (1.2 * U) + 'px,#FFFDF7 ' + (2.5 * U) + 'px)';
   wallY('q-fence', 0, 0, 100, 5, linen); wallY('q-fence', 50, 0, 100, 5, linen);
   wallX('q-fence', 0, 0, 50, 5, linen);
   wallX('q-fence', 0, 100, 15, 5, linen); wallX('q-fence', 35, 100, 15, 5, linen);
-  wallX('q-gate q-hot', 15, 100, 20, 5, 'linear-gradient(90deg,#2C3E7A,#5B3F8C 35%,#8C2F1E 70%,#F4EEDF)').setAttribute('data-it', 'gate');
+  wallX('q-gate q-hot', 15, 100, 20, 5, 'linear-gradient(180deg,#C9CDD2 0 3px,transparent 3px),repeating-linear-gradient(90deg,rgba(255,255,255,.12) 0 2px,transparent 2px 10px),linear-gradient(90deg,#2C3E7A,#5B3F8C 30%,#8C2F1E 62%,#FBF8F0 100%)').setAttribute('data-it', 'gate');
+  // 60 pillars: bronze sockets, silver-capped posts (two crossed planes each, cheap to draw)
+  var POST = 'linear-gradient(0deg,#8A5A2B 0 10%,#C9A87A 10% 88%,#D9DDE2 88%)';
+  function pillar(x, y, h, bg) {
+    el('q-post', { width: 0.45 * U + 'px', height: h * U + 'px', background: bg || POST }, 'translate3d(' + (px(x) - 0.22 * U) + 'px,' + py(y) + 'px,0) rotateX(90deg)');
+    el('q-post', { width: 0.45 * U + 'px', height: h * U + 'px', background: bg || POST }, 'translate3d(' + px(x) + 'px,' + (py(y) - 0.22 * U) + 'px,0) rotateZ(90deg) rotateX(90deg)');
+  }
+  for (var k = 0; k <= 20; k++) { pillar(0, k * 5, 5.3); pillar(50, k * 5, 5.3); }
+  for (var k2 = 1; k2 < 10; k2++) { pillar(k2 * 5, 0, 5.3); if (k2 * 5 <= 15 || k2 * 5 >= 35) pillar(k2 * 5, 100, 5.3); }
+  [15, 20, 25, 30, 35].forEach(function (x) { pillar(x, 100, 5.3); });
+  // soft contact shadows
+  function shadow(x, y, w, d, o) { plane('q-shadow', x, y, w, d, 0.06, 'radial-gradient(ellipse,rgba(60,40,10,' + (o || .35) + ') 0,rgba(60,40,10,0) 70%)'); }
+  shadow(17, 7, 16, 37, .45); shadow(21, 66, 8, 8); shadow(23, 49.5, 5, 5, .25);
+  // the camp of Israel around the court: simple A-frame tents (two planes each)
+  function tentlet(x, y, c, r) {
+    var w = 4, d = 3, h = 2.4;
+    el('q-tl', { width: w * U + 'px', height: Math.hypot(d / 2, h) * U + 'px', background: c }, 'translate3d(' + px(x) + 'px,' + py(y) + 'px,0) rotateZ(' + r + 'deg) rotateX(' + (90 - Math.atan2(h, d / 2) * 180 / Math.PI) + 'deg)');
+    el('q-tl q-tl2', { width: w * U + 'px', height: Math.hypot(d / 2, h) * U + 'px', background: c }, 'translate3d(' + px(x) + 'px,' + py(y) + 'px,0) rotateZ(' + (r + 180) + 'deg) translateX(' + (-w * U) + 'px) translateY(' + (-d * U) + 'px) rotateX(' + (90 - Math.atan2(h, d / 2) * 180 / Math.PI) + 'deg)');
+  }
+  var TC = ['#8B7355', '#6E5B45', '#9C8462', '#7D6650'];
+  for (var t = 0; t < 46; t++) {
+    var a = t / 46 * Math.PI * 2, rx = 46 + (t % 3) * 4, ry = 78 + (t % 2) * 5;
+    var tx = 25 + Math.cos(a) * rx, ty = 50 + Math.sin(a) * ry;
+    if (ty > 108 && Math.abs(tx - 25) < 18) continue; // keep the east approach open
+    if (tx < G.x0 + 3 || tx > G.x0 + G.w - 6 || ty < G.y0 + 2 || ty > G.y0 + G.h - 4) continue;
+    tentlet(tx, ty, TC[t % 4], (a * 180 / Math.PI) + 90);
+  }
 
-  // the tent: gold boards, coloured screen at the door, coverings as a roof
-  var boards = 'repeating-linear-gradient(90deg,#C9A13B 0 ' + (1.5 * U - 2) + 'px,#9C7A22 ' + (1.5 * U - 2) + 'px ' + 1.5 * U + 'px)';
+  // the tent: gold boards on silver sockets; the four coverings drape over the top and down the sides
+  var boards = 'linear-gradient(0deg,#C8CCD1 0 7%,transparent 7%),repeating-linear-gradient(90deg,#D4AF46 0,#E6C766 ' + (0.75 * U) + 'px,#B8932F ' + (1.5 * U - 2) + 'px,#7A5F1C ' + (1.5 * U - 2) + 'px ' + 1.5 * U + 'px)';
   wallY('q-tent', 20, 10, 30, 10, boards); wallY('q-tent', 30, 10, 30, 10, boards);
   wallX('q-tent', 20, 10, 10, 10, boards);
-  wallX('q-tent q-door', 20, 40, 10, 10, 'linear-gradient(90deg,#2C3E7A,#5B3F8C,#8C2F1E)').classList.add('q-fade');
-  var veil = wallX('q-veil q-hot', 20, 20, 10, 10, 'radial-gradient(circle at 50% 45%,rgba(215,196,154,.55) 0 14%,transparent 15%),linear-gradient(90deg,#2C3E7A,#4B3A86,#8C2F1E)');
+  var screen = 'repeating-linear-gradient(90deg,rgba(255,255,255,.10) 0 2px,transparent 2px 9px),linear-gradient(90deg,#2C3E7A,#5B3F8C 35%,#8C2F1E 70%,#F4EEDF)';
+  wallX('q-tent q-door q-fade', 20, 40, 10, 10, screen);
+  [20, 22.5, 25, 27.5, 30].forEach(function (x) { pillar(x, 40, 10, 'linear-gradient(0deg,#9C7A3A 0 6%,#E3C25A 6%)'); });
+  var veil = wallX('q-veil q-hot', 20, 20, 10, 10, 'radial-gradient(ellipse at 30% 45%,rgba(232,201,120,.55) 0 9%,transparent 10%),radial-gradient(ellipse at 70% 45%,rgba(232,201,120,.55) 0 9%,transparent 10%),repeating-linear-gradient(90deg,rgba(255,255,255,.08) 0 2px,transparent 2px 8px),linear-gradient(90deg,#24346B,#4B3A86 45%,#8C2F1E)');
   veil.setAttribute('data-it', 'veil');
-  plane('q-floor-in', 20, 10, 10, 30, 0.08, '#E2D2A6');
-  var roof = plane('q-roof', 19.4, 9.4, 11.2, 31.2, 10.05, 'linear-gradient(90deg,#4A4038,#5E5146 50%,#4A4038)');
-  plane('q-roof2', 19.6, 9.6, 10.8, 30.8, 10.02, '#8C2F1E', null).classList.add('q-roofc');
+  [21.25, 23.75, 26.25, 28.75].forEach(function (x) { pillar(x, 20.2, 10, 'linear-gradient(0deg,#C8CCD1 0 6%,#E3C25A 6%)'); });
+  plane('q-floor-in', 20, 10, 10, 30, 0.08, 'repeating-linear-gradient(0deg,#E7D9B3 0 ' + 1.5 * U + 'px,#DCCB9E ' + 1.5 * U + 'px ' + (1.5 * U + 1) + 'px)');
+  // coverings: tachash on top, ram skins (red) and goat hair showing at the hem
+  var cover = 'linear-gradient(180deg,#5A4C40 0 86%,#3E3530 86% 92%,#8C2F1E 92%)';
+  var roof = plane('q-roof', 19.3, 9.3, 11.4, 31.4, 10.05, 'repeating-linear-gradient(90deg,rgba(0,0,0,.06) 0 1px,transparent 1px ' + 2 * U + 'px),linear-gradient(90deg,#4E4238,#62554A 50%,#4E4238)');
+  el('q-roof q-drape', { width: 31.4 * U + 'px', height: 7 * U + 'px', background: cover }, 'translate3d(' + px(19.3) + 'px,' + py(9.3) + 'px,' + 10.05 * U + 'px) rotateZ(90deg) rotateX(-90deg)');
+  el('q-roof q-drape', { width: 31.4 * U + 'px', height: 7 * U + 'px', background: cover }, 'translate3d(' + px(30.7) + 'px,' + py(9.3) + 'px,' + 10.05 * U + 'px) rotateZ(90deg) rotateX(-90deg)');
+  el('q-roof q-drape', { width: 11.4 * U + 'px', height: 7 * U + 'px', background: cover }, 'translate3d(' + px(19.3) + 'px,' + py(9.3) + 'px,' + 10.05 * U + 'px) rotateX(-90deg)');
 
   // furniture
   function addItem(id, parts) { parts.forEach(function (p) { p.classList.add('q-hot'); p.setAttribute('data-it', id); }); }
   addItem('altar', box('q-brz', 22.5, 67.5, 5, 5, 3, 'radial-gradient(circle,#F2A13B 0 18%,#9A4E21 40%,#6A3414)', '#8A4A20', '#73401C'));
   ['22.5,67.5', '27,67.5', '22.5,72', '27,72'].forEach(function (c) { var a = c.split(','); box('q-brz q-horn', +a[0], +a[1], 0.5, 0.5, 0.6, '#B8642B', '#8A4A20', null, 3); });
+  plane('q-grate', 22.4, 67.4, 5.2, 5.2, 1.4, 'transparent').style.boxShadow = 'inset 0 0 0 3px #5A3315';
+  box('q-brz', 21.2, 69.5, 7.6, 0.25, 0.25, '#B8642B', '#8A4A20', null, 1.6);
   var fire = el('q-fire', {}, 'translate3d(' + px(25) + 'px,' + py(70) + 'px,' + 3 * U + 'px) rotateX(-90deg)');
-  addItem('laver', box('q-brz', 24, 51, 2, 2, 2.2, 'radial-gradient(circle,#8FC6D0 0 55%,#2E7D86 56%,#7A4A20 70%)', '#9A6A2E', '#87592A'));
+  box('q-brz', 24.6, 51.6, 0.8, 0.8, 1.2, '#7A4A20', '#87592A', '#73401C');
+  addItem('laver', box('q-brz q-basin', 23.9, 50.9, 2.2, 2.2, 0.9, 'radial-gradient(circle,#8FC6D0 0 55%,#2E7D86 56%,#7A4A20 70%)', '#9A6A2E', '#87592A', 1.2));
   addItem('table', box('q-gld', 27.5, 25, 1.5, 3, 1.5, 'repeating-linear-gradient(0deg,#E8D9A8 0 10px,#C49A2C 10px 12px)', '#C49A2C', '#A9831F'));
+  [[27.6, 25.3], [27.6, 26.6]].forEach(function (c) { box('q-gld', c[0] + 0.1, c[1], 1.1, 1.1, 0.5, 'repeating-linear-gradient(90deg,#E9C98C 0 5px,#D6AE6B 5px 6px)', '#C99A55', '#B88A48', 1.5); });
   addItem('incense', box('q-gld', 24.5, 21.5, 1, 1, 2, 'radial-gradient(circle,#F7E2A0,#B08A2E)', '#B08A2E', '#977620'));
   var lamp = el('q-lamp q-hot', {}, 'translate3d(' + px(21.75) + 'px,' + py(26.5) + 'px,0) rotateZ(90deg) rotateX(90deg)', W,
     '<svg viewBox="0 0 64 64"><path d="M32 18v36M22 58h20M32 46c-14 0-20-10-20-28M32 46c14 0 20-10 20-28M32 40c-8 0-12-8-12-22M32 40c8 0 12-8 12-22M32 34c-3 0-5-6-5-16M32 34c3 0 5-6 5-16" fill="none" stroke="#E2B53C" stroke-width="3" stroke-linecap="round"/><g fill="#FFD36B"><circle cx="12" cy="14" r="3"/><circle cx="20" cy="14" r="3"/><circle cx="27" cy="14" r="3"/><circle cx="32" cy="12" r="3"/><circle cx="37" cy="14" r="3"/><circle cx="44" cy="14" r="3"/><circle cx="52" cy="14" r="3"/></g></svg>');
   lamp.setAttribute('data-it', 'lamp');
   addItem('ark', box('q-gld q-ark', 23.75, 14.25, 2.5, 1.5, 1.5, 'linear-gradient(90deg,#FFE9A8,#D9B04A)', '#C9A13B', '#B08A2E'));
+  box('q-gld', 23.6, 14.1, 0.18, 1.8, 0.18, '#E8C35A', '#C9A13B', null, 0.5); box('q-gld', 26.22, 14.1, 0.18, 1.8, 0.18, '#E8C35A', '#C9A13B', null, 0.5);
   [23.9, 25.8].forEach(function (x, k) {
     var c = el('q-cher q-hot', {}, 'translate3d(' + px(x) + 'px,' + py(15) + 'px,' + 1.5 * U + 'px) rotateZ(90deg) rotateX(90deg)', W,
       '<svg viewBox="0 0 40 40"><path d="' + (k ? 'M4 38C8 22 20 10 36 4C30 16 24 26 22 38z' : 'M36 38C32 22 20 10 4 4C10 16 16 26 18 38z') + '" fill="#E8C35A" stroke="#9C7A22" stroke-width="1"/></svg>');
