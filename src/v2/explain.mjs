@@ -7,8 +7,9 @@ import tabernacle from '../../content/explain/tabernacle.mjs';
 import offerings from '../../content/explain/offerings.mjs';
 import atonement from '../../content/explain/atonement.mjs';
 import feasts from '../../content/explain/feasts.mjs';
+import camp from '../../content/explain/camp.mjs';
 
-export const EXPLAINERS = [plagues, tabernacle, offerings, atonement, feasts];
+export const EXPLAINERS = [plagues, tabernacle, offerings, atonement, feasts, camp];
 // Uniform "chips" for strips and cards: {id, name, color, ink, icon, ch:[chapters]}
 export const chips = (x) => x.items ? x.items.map((p) => ({ id: 'of-' + p.id, name: p.name, color: p.color, ink: p.ink, icon: p.icon, ch: x.id === 'offerings' && p.id !== 'guilt' && p.id !== 'grain' ? [...p.ch, 9] : p.ch, label: x.id === 'offerings' ? 'ذبيحة ' + p.name : p.name })) : x.plagues ? x.plagues.map((p) => ({ id: 'pl' + p.n, name: p.name, color: p.color, ink: p.ink, icon: p.icon, ch: p.n === 10 ? [11, 12] : [p.ch], label: 'الضربة ' + ORD[p.n] })) : x.steps.map((p) => ({ id: 'it-' + p.id, name: p.name, color: p.color, ink: p.ink, icon: p.icon, ch: [p.ch, ...(CH2[p.id] || [])], label: p.name }));
 const CH2 = { gate: [38], altar: [38], laver: [38], table: [37], lamp: [37], incense: [37], veil: [36], ark: [37, 40] };
@@ -75,6 +76,7 @@ export function explainPage(x, depth) {
   if (x.id === 'offerings') return offeringsPage(x, depth);
   if (x.id === 'atonement') return atonementPage(x, depth);
   if (x.id === 'feasts') return feastsPage(x, depth);
+  if (x.id === 'camp') return campPage(x, depth);
   if (x.steps) return tabernaclePage(x, depth);
   const b = bookById[x.book];
   const P = x.plagues;
@@ -419,5 +421,77 @@ ${table}
 <blockquote>${vq(x.christ.ref)}<small>${refLabel(x.christ.ref)}</small></blockquote>
 ${x.christ.p.map((p) => `<p>${md(p)}</p>`).join('')}
 <a class="btn l" href="${chapterHref(b, 23, depth)}">${IC.read}ادرس اللاويين ٢٣</a>
+</section>`;
+}
+
+// ---------- the camp of Israel ----------
+function campPage(x, depth) {
+  const b = bookById[x.book];
+  const I = x.items, by = Object.fromEntries(I.map((i) => [i.side, i]));
+  const r = (ref) => `<a class="r" href="${refHref(ref, depth)}">${refLabel(ref)}</a>`;
+  const n = (v) => ar(v.toLocaleString('en-US')).replace(/,/g, '٬');
+  // west at top (holy of holies), east (door) at bottom
+  const block = (i, x0, y0, w, h, vert) => {
+    const cells = i.tribes.map((t, k) => {
+      const cx = vert ? x0 + w / 2 : x0 + (w / 3) * k + w / 6, cy = vert ? y0 + (h / 3) * k + h / 6 : y0 + h / 2;
+      return `<text class="ct" x="${cx}" y="${cy - 3}">${t[0]}</text><text class="cn" x="${cx}" y="${cy + 12}">${n(t[1])}</text>`;
+    }).join('');
+    return `<a href="#of-${i.id}" data-of-go="${i.id}"><rect class="cb" x="${x0}" y="${y0}" width="${w}" height="${h}" rx="10" style="fill:${i.color}"/>${cells}</a>`;
+  };
+  const L = by.C;
+  const plan = `<svg class="cplan" viewBox="0 0 360 380" role="img" aria-label="مخطط المحلة حول المسكن">
+<text class="cd" x="180" y="12">الغرب</text><text class="cd" x="180" y="376">الشرق · الباب</text><text class="cd" x="8" y="194" transform="rotate(-90 8 194)">الجنوب</text><text class="cd" x="352" y="194" transform="rotate(90 352 194)">الشمال</text>
+${block(by.W, 70, 20, 220, 62, false)}
+${block(by.S, 14, 96, 62, 190, true)}
+${block(by.N, 284, 96, 62, 190, true)}
+${block(by.E, 70, 300, 220, 62, false)}
+<a href="#of-levites" data-of-go="levites">
+<rect class="lv" x="96" y="96" width="168" height="22" rx="6"/><text class="lt" x="180" y="111">الجرشونيون ٧٬٥٠٠</text>
+<rect class="lv" x="84" y="124" width="22" height="146" rx="6"/><text class="lt" x="95" y="197" transform="rotate(-90 95 197)">القهاتيون ٨٬٦٠٠</text>
+<rect class="lv" x="254" y="124" width="22" height="146" rx="6"/><text class="lt" x="265" y="197" transform="rotate(90 265 197)">المراريون ٦٬٢٠٠</text>
+<rect class="lv k" x="96" y="276" width="168" height="18" rx="6"/><text class="lt k" x="180" y="289">موسى وهارون والكهنة</text>
+<rect class="court" x="118" y="128" width="124" height="142" rx="3"/>
+<rect class="tent" x="160" y="140" width="40" height="70"/><rect class="hh" x="160" y="140" width="40" height="22"/>
+<rect class="alt" x="172" y="236" width="16" height="14"/><text class="tt" x="180" y="228">المسكن</text>
+</a></svg>`;
+  const march = [['judah', 'يهوذا ويساكر وزبولون'], ['levites', 'الجرشونيون والمراريون يحملون المسكن'], ['reuben', 'رأوبين وشمعون وجاد'], ['levites', 'القهاتيون يحملون الأقداس'], ['ephraim', 'أفرايم ومنسى وبنيامين'], ['dan', 'دان وأشير ونفتالي']];
+  const byId = Object.fromEntries(I.map((i) => [i.id, i]));
+  const card = (i, k) => `<article class="xc oc" id="of-${i.id}" data-panel="${i.id}" style="--c:${i.color};--k:${i.ink}"${k ? ' hidden' : ''}>
+<div class="xc-top"><span class="no">${esc(i.dir)}</span><span class="cy">${i.id === 'levites' ? 'لا يُعدّون للحرب' : 'يرحل ' + ['', 'أولاً', 'ثانياً', '', 'ثالثاً', 'أخيراً'][i.order]}</span></div>
+<div class="xc-ic">${glyph(i.icon, 72)}</div>
+<h2>${esc(i.name)}</h2>
+<div class="xc-ref">${r(i.ref)}${i.id !== 'levites' ? ` · المجموع ${n(i.total)}` : ' · ٢٢٬٠٠٠ ذكر من ابن شهر'}</div>
+<div class="ctr">${i.tribes.map((t) => `<div><b>${esc(t[0])}</b><span>${t[1] ? n(t[1]) : ''}</span><small>${esc(t[2])}</small></div>`).join('')}</div>
+<div class="xc-sec"><p>${md(i.note)}</p></div>
+<div class="xc-nav">${k ? `<a href="#of-${I[k - 1].id}" data-of-go="${I[k - 1].id}">${IC.back}${esc(I[k - 1].short)}</a>` : '<span></span>'}<a class="ch" href="${chapterHref(b, i.id === 'levites' ? 3 : 2, depth)}">${IC.read}العدد ${i.id === 'levites' ? '٣' : '٢'}</a>${k < I.length - 1 ? `<a href="#of-${I[k + 1].id}" data-of-go="${I[k + 1].id}">${esc(I[k + 1].short)}${IC.chev}</a>` : '<span></span>'}</div>
+</article>`;
+  return `${header({ back: `${'../'.repeat(depth)}book/${b.slug}.html`, title: 'شرح مصوّر' })}
+<section class="xhero of cp">
+<span class="ey" style="color:#D7C49A">${esc(b.name)} ${x.range} · شرح مصوّر</span>
+<h1>${esc(x.title)}</h1>
+<p class="sub">${esc(x.sub)}</p>
+<div class="ofan">${I.map((i) => `<span style="--c:${i.color};--k:${i.ink}">${glyph(i.icon, 28)}<small>${esc(i.short)}</small></span>`).join('')}</div>
+<blockquote>${vq(x.heroRef)}<small>${refLabel(x.heroRef)}</small></blockquote>
+</section>
+<div class="xbody">
+<p class="lead">${md(x.intro)}</p>
+<h3 class="xh"><span>١</span>المحلة من فوق</h3>
+<p class="xp">الغرب في الأعلى حيث قدس الأقداس، والباب في الشرق أسفل. اضغط على أي محلة.</p>
+${plan}
+<p class="note">الأعداد للرجال من ابن عشرين سنة فصاعداً (العدد 1–2)، واللاويون من ابن شهر (العدد 3). المجموع ${n(603550)}. المساحات للتوضيح لا للقياس.</p>
+<h3 class="xh"><span>٢</span>كل محلة بالتفصيل</h3>
+<div class="tchips" id="ochips" style="grid-template-columns:repeat(5,1fr)">${I.map((i, k) => `<button type="button" data-of-go="${i.id}" style="--c:${i.color};--k:${i.ink}" aria-pressed="${k ? 'false' : 'true'}">${glyph(i.icon, 20)}<span>${esc(i.short)}</span></button>`).join('')}</div>
+<div class="opanels" id="opanels">${I.map(card).join('')}</div>
+<h3 class="xh"><span>٣</span>ترتيب الرحيل</h3>
+<p class="xp">حين ترتفع السحابة يرحل الشعب بهذا الترتيب (العدد 10: 14–28). المسكن يُفكك ويُحمل في الوسط.</p>
+<div class="cmarch">${march.map(([id, t], k) => `<a href="#of-${id}" data-of-go="${id}" style="--c:${byId[id].color};--k:${byId[id].ink}"><b>${ar(k + 1)}</b><span>${esc(t)}</span></a>`).join('<i>←</i>')}</div>
+<p class="note">${r('Num.10.14-28')}</p>
+</div>
+<section class="xchrist">
+<span class="ey" style="color:#D7C49A">من القديم إلى الجديد</span>
+<h2>الله في الوسط</h2>
+<blockquote>${vq(x.christ.ref)}<small>${refLabel(x.christ.ref)}</small></blockquote>
+${x.christ.p.map((p) => `<p>${md(p)}</p>`).join('')}
+<a class="btn l" href="${chapterHref(b, 2, depth)}">${IC.read}ادرس العدد ٢</a>
 </section>`;
 }
