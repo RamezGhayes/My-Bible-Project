@@ -12,7 +12,7 @@ for (const f of files.filter((f) => f.endsWith('.html'))) {
     const u = m[1];
     if (/^(https?:|mailto:|data:)/.test(u)) continue;
     n++;
-    const target = path.resolve(path.dirname(f), u.split('#')[0]);
+    const target = path.resolve(path.dirname(f), u.split('#')[0].split('?')[0]);
     if (!fs.existsSync(target)) { bad++; if (bad < 20) console.log('✗', path.relative(DIST, f), '→', u); }
   }
 }

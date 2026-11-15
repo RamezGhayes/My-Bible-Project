@@ -992,3 +992,118 @@ body.explain{background:var(--paper)}
 .w3 .q-drape{filter:brightness(.82)}
 .w3 .q-grate{pointer-events:none}
 .t3d.open .q-drape{opacity:0;pointer-events:none}
+/* ---------- theological library ---------- */
+.lib{padding:6px 20px 30px}
+.lib .lead{font-size:15.5px;line-height:1.9;color:var(--ink2);margin:6px 0 14px}
+.lstats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px}
+.lstats div{background:var(--cream);border-radius:12px;padding:10px;text-align:center}
+.lstats b{display:block;font-family:var(--ui);font-size:22px;font-weight:600}
+.lstats span{font-family:var(--ui);font-size:12px;color:var(--soft)}
+.lhonest{border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin-bottom:14px;background:#fff}
+.lhonest summary{font-family:var(--ui);font-size:14px;cursor:pointer}
+.lhonest p{font-size:14px;line-height:1.85;color:var(--ink2)}
+.lfilters{position:sticky;top:56px;z-index:5;background:var(--paper);padding:8px 0 6px;border-bottom:1px solid var(--line);margin-bottom:6px}
+.lfilters input{width:100%;height:44px;border:1px solid var(--line);border-radius:10px;padding:0 14px;font:inherit;font-size:15px;background:#fff}
+.lrow{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px}
+.lrow select{height:40px;border:1px solid var(--line);border-radius:10px;padding:0 8px;font-family:var(--ui);font-size:13px;background:#fff;color:var(--ink)}
+.lcount{font-family:var(--ui);font-size:12px;color:var(--soft);margin-top:6px}
+.lsec{font-family:var(--ui);font-size:17px;font-weight:600;margin:22px 0 10px}
+.lnote{font-size:13.5px;color:var(--soft);margin:-4px 0 10px}
+.lgrid{display:grid;gap:10px}
+.lw{background:#fff;border:1px solid var(--line);border-radius:14px;padding:13px 15px;scroll-margin-top:190px}
+.lw.hit{border-color:var(--gold);box-shadow:0 0 0 3px rgba(179,148,89,.25)}
+.lwh{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.lwh b{font-family:var(--ui);font-size:15.5px;font-weight:600;line-height:1.5}
+.ly{font-family:var(--ui);font-size:12.5px;color:var(--soft);white-space:nowrap}
+.la{font-size:14px;margin-top:3px}.la small{color:var(--soft);font-size:12px;margin-inline-start:4px}
+.lt{font-size:13.5px;color:var(--soft);margin:4px 0 0;line-height:1.75}
+.lf{font-size:12.5px;color:var(--faint);margin-top:6px;line-height:1.7}
+.lm{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
+.lb{font-family:var(--ui);font-size:11.5px;border-radius:999px;padding:3px 9px;background:var(--cream);color:var(--ink2)}
+.lb.t-ref{background:#E7EEE9;color:#2F5E45}.lb.t-acad{background:#E8ECF4;color:#2E3F66}.lb.t-crit{background:#F6EADB;color:#8A5513}
+.lb.l-pd,.lb.l-open{background:#EAF2E4;color:#3B6B22}.lb.l-paid{background:#F1ECE6;color:#6E6A63}
+.lb.ai-no{background:#F7E3DF;color:var(--accent)}
+.lch{display:flex;flex-wrap:wrap;gap:5px;margin-top:9px;align-items:center;font-family:var(--ui);font-size:12px;color:var(--soft)}
+.lchip{border:1px solid var(--line);border-radius:7px;padding:2px 8px;color:var(--ink);font-size:12px}
+.lchip:hover{border-color:var(--gold)}
+.lch .more{color:var(--faint)}
+.ll{margin-top:9px;display:flex;flex-wrap:wrap;gap:12px}
+.ll a{font-family:var(--ui);font-size:13px;color:var(--accent)}
+.lw.conf{border-color:#D9CCAE;background:#FFFDF8}
+.who2 a{color:inherit;text-decoration:underline;text-decoration-color:var(--gold2);text-underline-offset:3px}
+@media (min-width:980px){.lgrid{grid-template-columns:1fr 1fr}.lrow{grid-template-columns:repeat(4,1fr)}.lib{max-width:1040px;margin:0 auto}.lfilters{top:68px}}
+/* ---------- biblical topics ---------- */
+.tgrid{display:grid;gap:10px}
+.tpc{display:flex;flex-direction:column;gap:4px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 16px;border-inline-start:4px solid var(--gc,var(--gold))}
+.tpc small{font-family:var(--ui);font-size:11.5px;color:var(--soft)}
+.tpc b{font-family:var(--ui);font-size:17px;font-weight:600}
+.tpc span{font-size:14px;line-height:1.75;color:var(--ink2)}
+.tpc em{font-style:normal;font-family:var(--ui);font-size:11.5px;color:var(--faint);margin-top:2px}
+.g1{--gc:#B39459}.g2{--gc:#8C2F1E}.g3{--gc:#3E7A5A}.g4{--gc:#1F2A44}.g5{--gc:#6B4E8A}
+.tseg{display:flex;gap:6px;margin-top:8px}
+.tseg button{flex:1;height:38px;border:1px solid var(--line);border-radius:10px;font-family:var(--ui);font-size:13px;background:#fff;color:var(--soft)}
+.tseg button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.tpath{background:var(--cream);border-radius:16px;padding:4px 16px 14px;margin:6px 0 14px}
+.tpath ol{list-style:none;margin:0;padding:0;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:4px}
+.tpath li a{display:flex;align-items:center;gap:6px;white-space:nowrap;background:#fff;border-radius:999px;padding:6px 12px 6px 8px;font-family:var(--ui);font-size:13px}
+.tpath li span{display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--ink);color:#fff;font-size:11px}
+.trow{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:0 20px;margin-bottom:8px}
+.tmini{display:flex;flex-direction:column;gap:2px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:11px 13px;border-inline-start:4px solid var(--gc,var(--gold))}
+.tmini small{font-family:var(--ui);font-size:11px;color:var(--soft)}.tmini b{font-family:var(--ui);font-size:15px;font-weight:600}
+.tmini.all{background:var(--ink);color:#fff;border-color:var(--ink)}.tmini.all small{color:var(--gold2)}
+.topic{padding:4px 20px 40px}
+.crumbs{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-family:var(--ui);font-size:12.5px;color:var(--soft);margin:4px 0 8px}
+.crumbs a{color:var(--soft)}.crumbs b{color:var(--ink);font-weight:500}
+.tback{display:inline-flex;align-items:center;gap:4px;font-family:var(--ui);font-size:13px;color:var(--accent);border:1px solid var(--line);border-radius:999px;padding:5px 12px;margin-bottom:8px;background:#fff}
+.tback[hidden]{display:none}
+.thero{border-radius:18px;padding:20px 18px;background:var(--ink);color:#fff;position:relative;overflow:hidden}
+.thero:after{content:"";position:absolute;inset:auto -40px -60px auto;width:180px;height:180px;border-radius:50%;background:var(--gc);opacity:.35}
+.thero small{font-family:var(--ui);font-size:12px;color:var(--gold2)}
+.thero h1{font-family:var(--nas);font-size:34px;font-weight:700;margin:4px 0 6px;line-height:1.4}
+.thero p{margin:0;font-size:15px;line-height:1.85;color:#E8E3D8;position:relative;z-index:1}
+.ttoc{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;margin:12px -20px 4px;padding:0 20px;position:sticky;top:56px;z-index:4;background:var(--paper);padding-block:8px}
+.ttoc a{white-space:nowrap;font-family:var(--ui);font-size:12.5px;border:1px solid var(--line);border-radius:999px;padding:5px 11px;background:#fff}
+.tsec{scroll-margin-top:110px;padding-top:10px}
+.tsec h2{font-family:var(--ui);font-size:18px;font-weight:600;margin:18px 0 8px;display:flex;align-items:center;gap:8px}
+.tsec h2:before{content:"";width:6px;height:18px;border-radius:3px;background:var(--gc)}
+.tsec p{font-size:var(--fs);line-height:2;margin:0 0 10px}
+.tsub{font-family:var(--ui);font-size:15px;margin:16px 0 6px}
+.tterms{display:grid;gap:8px;margin-top:6px}
+.tterms div{background:var(--cream);border-radius:12px;padding:10px 14px}
+.tterms b{font-family:var(--ui)}.tterms .orig{font-size:13px;color:var(--soft)}
+.tterms p{font-size:15px;line-height:1.85;margin:4px 0 0}
+.tkeys{display:grid;gap:8px}
+.tkeys a{display:block;background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 14px}
+.tkeys b{display:block;font-family:var(--ui);font-size:13px;color:var(--accent);margin-bottom:3px}
+.tkeys span{font-family:var(--nas);font-size:16px;line-height:1.9}
+.tchrist{background:#FFFDF8;border:1px solid #E7DCC4;border-radius:14px;padding:12px 16px}
+.tview{border:1px solid var(--line);border-radius:14px;padding:12px 16px;margin-bottom:10px;background:#fff}
+.tview h3{font-family:var(--ui);font-size:15.5px;line-height:1.7;margin:0 0 8px}
+.tview .tag{font-size:11px;border-radius:999px;padding:2px 8px;background:var(--cream);color:var(--soft);white-space:nowrap}
+.tview .tag.debated{background:#F6EADB;color:#8A5513}.tview .tag.agreed{background:#E7EEE9;color:#2F5E45}
+.tview p{font-size:15.5px;line-height:1.9}
+.cmap{width:100%;max-width:440px;display:block;margin:4px auto 10px}
+.cmap line{stroke:var(--line);stroke-width:2}
+.cmap circle{fill:#fff;stroke:var(--gc);stroke-width:2.5}
+.cmap .c0 circle{fill:var(--ink);stroke:var(--gc)}
+.cmap text{font-family:var(--ui);font-size:12.5px;text-anchor:middle;fill:var(--ink)}
+.cmap .c0 text{fill:#fff;font-size:14px;font-weight:600}
+.cmap a:hover circle{fill:var(--cream)}
+.trel{display:grid;gap:8px}
+.trel a{display:block;background:#fff;border:1px solid var(--line);border-inline-start:4px solid var(--gc);border-radius:12px;padding:10px 14px}
+.trel b{font-family:var(--ui);font-size:15px}.trel span{display:block;font-size:14.5px;line-height:1.8;color:var(--ink2);margin-top:2px}
+.tch{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.tch li{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 14px;scroll-margin-top:110px}
+.tch li:target{border-color:var(--gold);box-shadow:0 0 0 3px rgba(179,148,89,.25)}
+.tch b{font-family:var(--ui);font-size:14px;color:var(--accent)}
+.tch span{display:block;font-size:15px;line-height:1.8;margin-top:2px}
+.tq{padding-inline-start:20px}.tq li{font-size:16px;line-height:1.9;margin-bottom:6px}
+.tsrc{padding-inline-start:20px}.tsrc li{font-size:15px;line-height:1.9}.tsrc a{color:var(--accent)}
+.tnext{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:24px}
+.tnext a{background:var(--cream);border-radius:12px;padding:10px 14px}
+.tnext a:last-child{text-align:left}
+.tnext small{display:block;font-family:var(--ui);font-size:11.5px;color:var(--soft)}.tnext b{font-family:var(--ui)}
+.tref{color:var(--soft)}
+@media (min-width:980px){.tgrid{grid-template-columns:repeat(3,1fr)}.trow{grid-template-columns:repeat(4,1fr)}.topic{max-width:860px;margin:0 auto}.ttoc{top:68px}.trel,.tkeys{grid-template-columns:1fr 1fr}}
+.lrow select{min-width:0;width:100%}
+.thero>*{position:relative;z-index:1}

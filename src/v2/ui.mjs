@@ -16,12 +16,14 @@ export const IC = {
   home: '<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H19v15H5.5A1.5 1.5 0 0 0 4 20.5zM4 20.5V5.5"/></svg>',
   search: '<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/></svg>',
   time: '<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h18"/><circle cx="6" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="18" cy="12" r="2"/></svg>',
+  shelf: '<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4v16M9 4v16M13.5 5l4 15M3 20h18"/></svg>',
+  web: '<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="6" r="2.4"/><circle cx="18" cy="7" r="2.4"/><circle cx="12" cy="18" r="2.4"/><path d="M8.2 7l7.5.2M7.2 8.2l3.8 7.7M16.8 9.2L13 15.8"/></svg>',
   check: '<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>'
 };
 
 const NAV = [['index.html', 'home', 'الرئيسية', IC.home], ['people.html', 'people', 'الشخصيات', IC.person], ['maps.html', 'maps', 'الخرائط', IC.map]];
 // Desktop top bar. Extra sections register themselves here (topics, library) once their pages exist.
-export const TOPNAV = [['index.html', 'home', 'الرئيسية'], ['ot.html', 'ot', 'العهد القديم'], ['nt.html', 'nt', 'العهد الجديد'], ['people.html', 'people', 'الشخصيات'], ['maps.html', 'maps', 'الخرائط والشروح']];
+export const TOPNAV = [['index.html', 'home', 'الرئيسية'], ['ot.html', 'ot', 'العهد القديم'], ['nt.html', 'nt', 'العهد الجديد'], ['people.html', 'people', 'الشخصيات'], ['maps.html', 'maps', 'الخرائط والشروح'], ['topics.html', 'topics', 'الموضوعات'], ['library.html', 'library', 'المكتبة']];
 export const BRAND = '<svg class="bm" viewBox="0 0 40 32" aria-hidden="true"><path d="M20 7c-4-3-10-4-16-3v22c6-1 12 0 16 3 4-3 10-4 16-3V4c-6-1-12 0-16 3z"/><path d="M20 7v22"/><path d="M8 10c3 0 6 .5 8 1.6M8 15c3 0 6 .5 8 1.6M24 11.6c2-1.1 5-1.6 8-1.6M24 16.6c2-1.1 5-1.6 8-1.6" opacity=".55"/></svg>';
 
 export function page({ title, depth = 0, nav = null, body, cls = '', after = '' }) {

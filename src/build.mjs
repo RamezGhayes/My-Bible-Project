@@ -6,6 +6,8 @@ import { blocks } from './render.mjs';
 import { page, header, IC, plain, clip, firstSentences, chWord, bkWord, vWord, secWord, countWord, BRAND } from './v2/ui.mjs';
 import { buildPeople, cardTemplate, cleanName } from './v2/people.mjs';
 import { MAPS, mapForChapter, thumb, mapHref, viewer } from './v2/maps.mjs';
+import { TOPICS, topicLinks, chapterTopicsBlock, topicsIndex, topicPage, topicsHomeSection } from './v2/topics.mjs';
+import { buildLibrary, libraryPage, workId } from './v2/library.mjs';
 import { EXPLAINERS, explainersFor, explainPage, storyCard as xStory, bentoTile as xTile, explainHref, glyph, xCard, chips as xChips } from './v2/explain.mjs';
 
 const DIST = path.join(ROOT, 'dist');
@@ -26,6 +28,7 @@ for (const slug of fs.readdirSync(path.join(ROOT, 'content/books'))) {
   }
   content[b.id] = c;
 }
+const TLINKS = topicLinks();
 const study = (b, n) => content[b.id]?.chapters[n];
 const studiedCount = (b) => Object.keys(content[b.id]?.chapters || {}).length;
 const isFull = (b) => content[b.id]?.intro && studiedCount(b) === b.chapters;
@@ -77,8 +80,9 @@ function home() {
 <h2 class="hsec"><span>شروح مصوّرة</span></h2>
 <p class="hsub">أحداث ومواضع شرحها النص بالتفصيل، مرسومة لتراها خطوة خطوة.</p>
 <div class="xrow">${xcards}</div>
+${topicsHomeSection(0)}
 <h2 class="hsec"><span>أدوات الدراسة</span></h2>
-<div class="tools">${tool('people.html', IC.person, 'الشخصيات', 'بطاقات وملفات')}${tool('maps.html', IC.map, 'الخرائط', 'رحلات وأماكن')}${tool('journey.html', IC.time, 'القصة في مراحل', 'تاريخ الخلاص')}${tool('paul.html', IC.map, 'رحلات بولس', 'أربع رحلات')}</div>
+<div class="tools">${tool('people.html', IC.person, 'الشخصيات', 'بطاقات وملفات')}${tool('maps.html', IC.map, 'الخرائط', 'رحلات وأماكن')}${tool('journey.html', IC.time, 'القصة في مراحل', 'تاريخ الخلاص')}${tool('paul.html', IC.map, 'رحلات بولس', 'أربع رحلات')}${tool('topics.html', IC.web, 'موضوعات كتابية', 'عقائد عبر الأسفار')}${tool('library.html', IC.shelf, 'المكتبة اللاهوتية', 'مصادر وإقرارات')}</div>
 <div class="hfoot"><div class="s">${esc(quoteText('2Tim.3.16'))}</div><small>${refLabel('2Tim.3.16')}</small></div>
 <div class="foot">${esc(config.description)}<br>النص: ${esc(config.bibleVersion)}<br><button type="button" data-splash>شاهد المقدمة مرة أخرى</button></div>`;
   write('index.html', page({ title: '', depth: 0, nav: 'home', body, cls: 'home' }));
@@ -327,7 +331,7 @@ ${cards.map((c, i) => `<section class="sc${i === 0 ? ' on' : ''}" style="backgro
   const refs = [...(S.otQuotes || []).map((q) => q.src), ...(S.parallels || []).map((q) => q.ref), ...(S.links || []).map((q) => q.ref)];
   if (refs.length) {
     half.push(T('refs', 't-refs', countWord(refs.length, 'شاهد واحد', 'شاهدان', 'شواهد', 'شاهداً'), 'شواهد وروابط', refs.slice(0, 6).map((r) => `<span>${refLabel(r)}</span>`).join('')));
-    DET.refs = { t: 'شواهد وروابط', ey: 'الكتاب يفسر الكتاب', h: `${S.otQuotes?.length ? `<div class="blk"><h3>من العهد القديم</h3>${S.otQuotes.map((q) => `<p><a class="r" href="${refHref(q.src, depth)}">${refLabel(q.src)}</a> ← <a class="r" href="#v${String(q.at).split(/[-–]/)[0]}">الآية ${ar(q.at)}</a>: ${md(q.d)}</p>`).join('')}</div>` : ''}${S.parallels?.length ? `<div class="blk"><h3>في الأناجيل الأخرى</h3>${S.parallels.map((q) => `<p><a class="r" href="${refHref(q.ref, depth)}">${refLabel(q.ref)}</a>: ${md(q.d)}</p>`).join('')}</div>` : ''}${S.links?.length ? `<div class="blk"><h3>شواهد مرتبطة</h3>${S.links.map((q) => `<p><a class="r" href="${refHref(q.ref, depth)}">${refLabel(q.ref)}</a>: ${md(q.d)}</p>`).join('')}</div>` : ''}` };
+    DET.refs = { t: 'شواهد وروابط', ey: 'الكتاب يفسر الكتاب', h: `${S.otQuotes?.length ? `<div class="blk"><h3>من العهد القديم</h3>${S.otQuotes.map((q) => `<p><a class="r" href="${refHref(q.src, depth)}">${refLabel(q.src)}</a> ← <a class="r" href="#v${String(q.at).split(/[-–]/)[0]}">الآية ${ar(q.at)}</a>: ${md(q.d)}</p>`).join('')}</div>` : ''}${S.parallels?.length ? `<div class="blk"><h3>في الأناجيل الأخرى</h3>${S.parallels.map((q) => `<p><a class="r" href="${refHref(q.ref, depth)}">${refLabel(q.ref)}</a>: ${md(q.d)}</p>`).join('')}</div>` : ''}${S.links?.length ? `<div class="blk"><h3>شواهد مرتبطة</h3>${S.links.map((q) => `<p><a class="r" href="${refHref(q.ref, depth)}">${refLabel(q.ref)}</a>: ${md(q.d)}</p>`).join('')}</div>` : ''}${chapterTopicsBlock(TLINKS[b.id + ':' + n], b, n, depth)}` };
   }
   if (S.views) {
     tiles.push({ w: 1, h: `<a class="tile w t-views" href="#s-views"><span class="tl"><span>${md(S.views.t || 'قراءتان للنص')}</span>${IC.chev}</span><span class="vis"><span>لاهوت العهد</span><span>التدبيرية</span></span><span class="tt">كيف يُقرأ هذا النص؟</span></a>` });
@@ -335,7 +339,7 @@ ${cards.map((c, i) => `<section class="sc${i === 0 ? ' on' : ''}" style="backgro
   }
   if (S.voices?.length) {
     tiles.push({ w: 1, h: `<a class="tile w t-voice" href="#s-voices"><span class="tl"><span>${countWord(S.voices.length, 'صوت واحد', 'صوتان', 'أصوات', 'صوتاً')}</span>${IC.chev}</span><span class="vis"><q>${esc(firstSentences(S.voices[0].b, 60))}</q><span class="names">${S.voices.map((v) => esc(plain(v.n))).join(' · ')}</span></span><span class="tt">من التقليد المُصلَح</span></a>` });
-    DET.voices = { t: 'من التقليد المُصلَح', ey: 'ماذا قال معلمو الكنيسة', h: `${S.voices.map((v) => `<div class="blk"><h3>${md(v.n)}</h3><span class="who2">${md(v.y || '')}${v.w ? ' · ' + md(v.w) : ''}</span><p>${md(v.b)}</p></div>`).join('')}<p class="note">ملخصات بتصرّف لأفكارهم، وليست اقتباسات حرفية.</p>` };
+    DET.voices = { t: 'من التقليد المُصلَح', ey: 'ماذا قال معلمو الكنيسة', h: `${S.voices.map((v) => `<div class="blk"><h3>${md(v.n)}</h3><span class="who2">${md(v.y || '')}${v.w ? ` · <a href="${up(2)}library.html#${workId(v.n, v.w)}">${md(v.w)}</a>` : ''}</span><p>${md(v.b)}</p></div>`).join('')}<p class="note">ملخصات بتصرّف لأفكارهم، وليست اقتباسات حرفية. الأعمال المذكورة مقترحة للتوسع، وتجدها مصنّفة في <a href="${up(2)}library.html">المكتبة اللاهوتية</a>.</p>` };
   }
   half.push(`<a class="tile t-you" href="#s-you"><span class="tl"><span>${countWord(S.questions?.length || 0, 'سؤال واحد', 'سؤالان', 'أسئلة', 'سؤالاً')}</span>${IC.chev}</span><span class="vis">${esc(clip(S.questions?.[0] || '', 90))}</span><span class="tt">للتأمل والتطبيق</span></a>`);
   DET.you = { t: 'للتأمل والتطبيق', ey: 'عِشها', h: `${(S.questions || []).map((q, i) => `<div class="blk"><h3><span class="n">${ar(i + 1)}</span><span>${md(q)}</span></h3></div>`).join('')}${S.apply ? `<div class="applyb"><small>للحياة</small>${arr(S.apply).map((p) => `<p>${md(p)}</p>`).join('')}</div>` : ''}<button type="button" class="btn d" style="margin-top:18px" data-read="${b.id}:${n}">علّم الأصحاح كمقروء</button>` };
@@ -447,6 +451,8 @@ function searchIndex() {
   for (const p of PEOPLE.list) add('p', p.prof ? p.prof.full : p.label, p.prof ? p.prof.role : `${shortName(p.apps[0].b)} ${ar(p.apps[0].n)}`, personHref(p, 0));
   for (const x of EXPLAINERS) add('x', x.title, 'شرح مصوّر · ' + x.sub, `explain/${x.id}.html`);
   for (const m of MAPS) add('m', m.title, 'خريطة', mapHref(m, 0));
+  for (const t of TOPICS) add('t', t.ar, 'موضوع كتابي · ' + t.short.slice(0, 60), `topics/${t.id}.html`);
+  for (const w of buildLibrary({ books, content }).works) add('l', w.title, 'المكتبة · ' + w.n, 'library.html#' + w.id);
   const refs = books.map((b) => [b.name, b.abbr, b.slug, b.chapters, previewSkip(b) ? 1 : 0]);
   fs.writeFileSync(path.join(DIST, 'assets/search.js'), `window.SIDX=${JSON.stringify({ refs, items })};`);
 }
@@ -464,6 +470,10 @@ for (const b of books) {
 peoplePages();
 mapsPages();
 journeyPage();
+const LIB = buildLibrary({ books, content });
+write('topics.html', page({ title: 'موضوعات كتابية', depth: 0, nav: 'topics', body: topicsIndex(0), cls: 'library' }));
+for (const t of TOPICS) write(`topics/${t.id}.html`, page({ title: t.ar, depth: 1, nav: 'topics', body: topicPage(t, 1), cls: 'library topicpage' }));
+write('library.html', page({ title: 'المكتبة اللاهوتية', depth: 0, nav: 'library', body: libraryPage(LIB, 0), cls: 'library' }));
 searchIndex();
 const count = (d) => fs.readdirSync(d, { withFileTypes: true }).reduce((a, e) => a + (e.isDirectory() ? count(path.join(d, e.name)) : 1), 0);
 console.log('Built', count(DIST), 'files');

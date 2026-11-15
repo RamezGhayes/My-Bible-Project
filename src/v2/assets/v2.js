@@ -478,7 +478,7 @@
   if (!box) return;
   var root = document.body.getAttribute('data-root') || '';
   var q = document.getElementById('sq'), res = document.getElementById('sres'), loaded = false, last = null;
-  var KIND = { r: 'شاهد', b: 'سفر', i: 'مقدمة', c: 'أصحاح', p: 'شخصية', x: 'شرح مصوّر', m: 'خريطة' };
+  var KIND = { l: 'المكتبة', t: 'موضوع',  r: 'شاهد', b: 'سفر', i: 'مقدمة', c: 'أصحاح', p: 'شخصية', x: 'شرح مصوّر', m: 'خريطة' };
   var AR = function (n) { return String(n).replace(/\d/g, function (d) { return '٠١٢٣٤٥٦٧٨٩'[d]; }); };
   function norm(s) {
     return String(s).replace(/[ً-ٰٟـ]/g, '').replace(/[أإآٱ]/g, 'ا').replace(/ة/g, 'ه').replace(/ى/g, 'ي')
@@ -520,7 +520,7 @@
     window.SIDX.items.forEach(function (it) {
       var hay = it.n + ' ' + it.s, ok = toks.every(function (t) { return hay.indexOf(t) >= 0; });
       if (!ok) return;
-      var sc = (it.n.indexOf(v) === 0 ? 0 : it.n.indexOf(v) >= 0 ? 1 : 2) * 10 + ('bixmpc'.indexOf(it[0]) + 1);
+      var sc = (it.n.indexOf(v) === 0 ? 0 : it.n.indexOf(v) >= 0 ? 1 : 2) * 10 + ('bitxmplc'.indexOf(it[0]) + 1);
       scored.push([sc, it]);
     });
     scored.sort(function (a, b) { return a[0] - b[0]; });
@@ -542,4 +542,57 @@
   });
   q.addEventListener('input', function () { if (loaded) run(); });
   q.addEventListener('keydown', function (e) { if (e.key === 'Enter') { var a = res.querySelector('a'); if (a) location.href = a.href; } });
+})();
+
+/* ---------- theological library filters ---------- */
+(function () {
+  var list = document.getElementById('lworks'); if (!list) return;
+  var q = document.getElementById('lq'), cat = document.getElementById('lcat'), bk = document.getElementById('lbook'), tg = document.getElementById('ltag'), lc = document.getElementById('llic'), cnt = document.getElementById('lcount');
+  var cards = [].slice.call(list.children);
+  var AR = function (n) { return String(n).replace(/[0-9]/g, function (d) { return '٠١٢٣٤٥٦٧٨٩'[d]; }); };
+  var norm = function (s) { return String(s).toLowerCase().replace(/[أإآ]/g, 'ا').replace(/ة/g, 'ه').replace(/ى/g, 'ي').replace(/[ً-ْ]/g, ''); };
+  cards.forEach(function (c) { c._q = norm(c.dataset.q); });
+  function run() {
+    var t = norm(q.value.trim()), n = 0;
+    cards.forEach(function (c) {
+      var ok = (!t || t.split(/\s+/).every(function (x) { return c._q.indexOf(x) >= 0; })) && (!cat.value || c.dataset.cat === cat.value) && (!tg.value || c.dataset.tag === tg.value) && (!lc.value || c.dataset.lic === lc.value) && (!bk.value || (' ' + c.dataset.books + ' ').indexOf(' ' + bk.value + ' ') >= 0);
+      c.hidden = !ok; if (ok) n++;
+    });
+    cnt.textContent = AR(n) + ' من ' + AR(cards.length) + ' عملاً';
+  }
+  [q, cat, bk, tg, lc].forEach(function (el) { el.addEventListener('input', run); });
+  run();
+  if (location.hash) { var el = document.getElementById(location.hash.slice(1)); if (el) { el.classList.add('hit'); setTimeout(function () { el.scrollIntoView({ block: 'center' }); }, 60); } }
+})();
+/* ---------- topics: index filters, views, back-to-chapter context ---------- */
+(function () {
+  var q = document.getElementById('tq');
+  if (q) {
+    var vg = document.getElementById('tviewg'), va = document.getElementById('tviewa');
+    var norm = function (s) { return String(s).toLowerCase().replace(/[أإآ]/g, 'ا').replace(/ة/g, 'ه').replace(/ى/g, 'ي').replace(/[ً-ْ]/g, ''); };
+    var run = function () {
+      var t = norm(q.value.trim());
+      [].forEach.call(document.querySelectorAll('.topics .tpc'), function (c) { c.hidden = !!t && norm(c.dataset.q).indexOf(t) < 0; });
+      [].forEach.call(document.querySelectorAll('.tgrp'), function (g) { g.hidden = !g.querySelector('.tpc:not([hidden])'); });
+    };
+    q.addEventListener('input', run);
+    [].forEach.call(document.querySelectorAll('.tseg button'), function (b) {
+      b.addEventListener('click', function () {
+        [].forEach.call(document.querySelectorAll('.tseg button'), function (x) { x.classList.toggle('on', x === b); });
+        var a = b.dataset.view === 'a'; vg.hidden = a; va.hidden = !a;
+        try { localStorage.setItem('tview', b.dataset.view); } catch (e) {}
+      });
+    });
+    try { if (localStorage.getItem('tview') === 'a') document.querySelector('.tseg [data-view=a]').click(); } catch (e) {}
+    [].forEach.call(document.querySelectorAll('.tgrp'), function (g) { g.id = 'g' + g.dataset.g; });
+  }
+  var back = document.getElementById('tback');
+  if (back) {
+    var from = new URLSearchParams(location.search).get('from');
+    if (from && /^[a-z0-9-]+\/\d+$/.test(from)) {
+      back.href = document.body.dataset.root + 'book/' + from + '.html#s-refs';
+      back.hidden = false;
+      try { sessionStorage.setItem('tfrom', from); } catch (e) {}
+    }
+  }
 })();
