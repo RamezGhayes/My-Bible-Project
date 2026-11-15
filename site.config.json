@@ -5,5 +5,7 @@
   "description": "دراسة الكتاب المقدس سفراً سفراً وإصحاحاً إصحاحاً، بخرائط ورحلات وشروح من منظور مُصلَح.",
   "bibleVersion": "ترجمة فاندايك (١٨٦٥)، ملكية عامة",
   "lang": "ar",
-  "verseRef": "Ps.119.105"
+  "verseRef": "Ps.119.105",
+  "nameEn": "Sola",
+  "domain": "https://sola-study.com"
 }

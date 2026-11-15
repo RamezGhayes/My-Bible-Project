@@ -12,7 +12,8 @@ import { EXPLAINERS, explainersFor, explainPage, storyCard as xStory, bentoTile 
 
 const DIST = path.join(ROOT, 'dist');
 fs.rmSync(DIST, { recursive: true, force: true });
-const write = (rel, html) => { const f = path.join(DIST, rel); fs.mkdirSync(path.dirname(f), { recursive: true }); fs.writeFileSync(f, html); };
+const PAGES = [];
+const write = (rel, html) => { if (rel.endsWith('.html')) { PAGES.push(rel); const url = config.domain + '/' + (rel === 'index.html' ? '' : rel.replace(/index\.html$/, '')); html = html.replace('</head>', `<link rel="canonical" href="${url}">\n<meta property="og:url" content="${url}">\n</head>`); } const f = path.join(DIST, rel); fs.mkdirSync(path.dirname(f), { recursive: true }); fs.writeFileSync(f, html); };
 const readJSON = (rel) => JSON.parse(fs.readFileSync(path.join(ROOT, rel), 'utf8'));
 
 // ---------- content ----------
@@ -475,5 +476,9 @@ write('topics.html', page({ title: 'موضوعات كتابية', depth: 0, nav:
 for (const t of TOPICS) write(`topics/${t.id}.html`, page({ title: t.ar, depth: 1, nav: 'topics', body: topicPage(t, 1), cls: 'library topicpage' }));
 write('library.html', page({ title: 'المكتبة اللاهوتية', depth: 0, nav: 'library', body: libraryPage(LIB, 0), cls: 'library' }));
 searchIndex();
+// sitemap, robots, icon
+fs.writeFileSync(path.join(DIST, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${PAGES.filter((r) => !r.startsWith('maps/')).map((r) => `<url><loc>${config.domain}/${r === 'index.html' ? '' : r}</loc></url>`).join('\n')}\n</urlset>\n`);
+fs.writeFileSync(path.join(DIST, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap: ${config.domain}/sitemap.xml\n`);
+fs.writeFileSync(path.join(DIST, 'assets/icon.svg'), '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#17191E"/><g fill="none" stroke="#D7C49A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"><path d="M32 19c-6-4-13-5-20-4v30c7-1 14 0 20 4 6-4 13-5 20-4V15c-7-1-14 0-20 4z"/><path d="M32 19v30"/></g></svg>');
 const count = (d) => fs.readdirSync(d, { withFileTypes: true }).reduce((a, e) => a + (e.isDirectory() ? count(path.join(d, e.name)) : 1), 0);
 console.log('Built', count(DIST), 'files');
