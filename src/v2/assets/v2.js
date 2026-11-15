@@ -470,3 +470,76 @@
   st.addEventListener('pointerup', function (e) { if (x0 === null) return; var dx = e.clientX - x0; x0 = null; if (Math.abs(dx) > 50) show(i + (dx > 0 ? 1 : -1)); });
   show(0);
 })();
+
+/* ---------- search ---------- */
+(function () {
+  'use strict';
+  var box = document.getElementById('srch');
+  if (!box) return;
+  var root = document.body.getAttribute('data-root') || '';
+  var q = document.getElementById('sq'), res = document.getElementById('sres'), loaded = false, last = null;
+  var KIND = { r: 'شاهد', b: 'سفر', i: 'مقدمة', c: 'أصحاح', p: 'شخصية', x: 'شرح مصوّر', m: 'خريطة' };
+  var AR = function (n) { return String(n).replace(/\d/g, function (d) { return '٠١٢٣٤٥٦٧٨٩'[d]; }); };
+  function norm(s) {
+    return String(s).replace(/[ً-ٰٟـ]/g, '').replace(/[أإآٱ]/g, 'ا').replace(/ة/g, 'ه').replace(/ى/g, 'ي')
+      .replace(/[٠-٩]/g, function (d) { return '٠١٢٣٤٥٦٧٨٩'.indexOf(d); }).replace(/^سفر\s+/, '').replace(/\s+/g, ' ').trim();
+  }
+  function load(cb) {
+    if (loaded) return cb();
+    var s = document.createElement('script'); s.src = root + 'assets/search.js';
+    s.onload = function () { loaded = true; prep(); cb(); }; document.head.appendChild(s);
+  }
+  var alias = [];
+  function prep() {
+    window.SIDX.refs.forEach(function (r) {
+      var n = norm(r[0]), a = norm(r[1]).replace(/\s+/g, '');
+      [n, n.replace(/^انجيل /, ''), a].forEach(function (k) { if (k) alias.push([k.replace(/\s+/g, ''), r]); });
+    });
+    alias.sort(function (x, y) { return y[0].length - x[0].length; });
+    window.SIDX.items.forEach(function (it) { it.n = norm(it[1]); it.s = norm(it[2]); });
+  }
+  function ref(v) {
+    var m = v.match(/^(.*?[^\d\s:.])\s*(\d+)(?:\s*[:.\s]\s*(\d+))?\s*$/);
+    if (!m) return null;
+    var name = m[1].replace(/\s+/g, ''), hit = null;
+    for (var i = 0; i < alias.length; i++) if (alias[i][0] === name) { hit = alias[i][1]; break; }
+    if (!hit && name.length >= 2) for (var j = 0; j < alias.length; j++) if (alias[j][0].indexOf(name) === 0) { hit = alias[j][1]; break; }
+    if (!hit) return null;
+    var ch = +m[2], vs = m[3] ? +m[3] : 0;
+    if (ch < 1 || ch > hit[3]) return null;
+    var href = hit[4] ? 'book/' + hit[2] + '.html' : 'book/' + hit[2] + '/' + ch + '.html' + (vs ? '#v' + vs : '');
+    return ['r', hit[0] + ' ' + AR(ch) + (vs ? ': ' + AR(vs) : ''), vs ? 'افتح الآية في القارئ' : 'افتح الأصحاح', href];
+  }
+  function run() {
+    var v = norm(q.value);
+    if (v === last) return; last = v;
+    if (!v) { res.innerHTML = '<p class="shint">جرّب: الخروج، أو يوم الكفارة، أو إبراهيم، أو رو ٨: ٢٨</p>'; return; }
+    var out = [], r = ref(v); if (r) out.push(r);
+    var toks = v.split(' ');
+    var scored = [];
+    window.SIDX.items.forEach(function (it) {
+      var hay = it.n + ' ' + it.s, ok = toks.every(function (t) { return hay.indexOf(t) >= 0; });
+      if (!ok) return;
+      var sc = (it.n.indexOf(v) === 0 ? 0 : it.n.indexOf(v) >= 0 ? 1 : 2) * 10 + ('bixmpc'.indexOf(it[0]) + 1);
+      scored.push([sc, it]);
+    });
+    scored.sort(function (a, b) { return a[0] - b[0]; });
+    scored.slice(0, 40).forEach(function (x) { out.push(x[1]); });
+    res.innerHTML = out.length ? out.map(function (it) {
+      return '<a href="' + root + it[3] + '"><small>' + KIND[it[0]] + '</small><b>' + esc(it[1]) + '</b>' + (it[2] ? '<span>' + esc(it[2]) + '</span>' : '') + '</a>';
+    }).join('') : '<p class="shint">لا نتائج. جرّب كلمة أقصر.</p>';
+  }
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function open() { box.hidden = false; document.documentElement.classList.add('noscroll'); setTimeout(function () { q.focus(); }, 30); load(function () { last = null; run(); }); }
+  function close() { box.hidden = true; document.documentElement.classList.remove('noscroll'); }
+  document.addEventListener('click', function (e) {
+    if (e.target.closest('[data-search]')) { e.preventDefault(); open(); return; }
+    if (e.target.closest('[data-sclose]') || e.target === box) close();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !box.hidden) close();
+    if ((e.key === '/' || (e.key === 'k' && (e.metaKey || e.ctrlKey))) && box.hidden && !/INPUT|TEXTAREA/.test(e.target.tagName)) { e.preventDefault(); open(); }
+  });
+  q.addEventListener('input', function () { if (loaded) run(); });
+  q.addEventListener('keydown', function (e) { if (e.key === 'Enter') { var a = res.querySelector('a'); if (a) location.href = a.href; } });
+})();

@@ -9,7 +9,7 @@ import atonement from '../../content/explain/atonement.mjs';
 
 export const EXPLAINERS = [plagues, tabernacle, offerings, atonement];
 // Uniform "chips" for strips and cards: {id, name, color, ink, icon, ch:[chapters]}
-const chips = (x) => x.items ? x.items.map((p) => ({ id: 'of-' + p.id, name: p.name, color: p.color, ink: p.ink, icon: p.icon, ch: x.id === 'offerings' && p.id !== 'guilt' && p.id !== 'grain' ? [...p.ch, 9] : p.ch, label: x.id === 'offerings' ? 'ذبيحة ' + p.name : p.name })) : x.plagues ? x.plagues.map((p) => ({ id: 'pl' + p.n, name: p.name, color: p.color, ink: p.ink, icon: p.icon, ch: p.n === 10 ? [11, 12] : [p.ch], label: 'الضربة ' + ORD[p.n] })) : x.steps.map((p) => ({ id: 'it-' + p.id, name: p.name, color: p.color, ink: p.ink, icon: p.icon, ch: [p.ch, ...(CH2[p.id] || [])], label: p.name }));
+export const chips = (x) => x.items ? x.items.map((p) => ({ id: 'of-' + p.id, name: p.name, color: p.color, ink: p.ink, icon: p.icon, ch: x.id === 'offerings' && p.id !== 'guilt' && p.id !== 'grain' ? [...p.ch, 9] : p.ch, label: x.id === 'offerings' ? 'ذبيحة ' + p.name : p.name })) : x.plagues ? x.plagues.map((p) => ({ id: 'pl' + p.n, name: p.name, color: p.color, ink: p.ink, icon: p.icon, ch: p.n === 10 ? [11, 12] : [p.ch], label: 'الضربة ' + ORD[p.n] })) : x.steps.map((p) => ({ id: 'it-' + p.id, name: p.name, color: p.color, ink: p.ink, icon: p.icon, ch: [p.ch, ...(CH2[p.id] || [])], label: p.name }));
 const CH2 = { gate: [38], altar: [38], laver: [38], table: [37], lamp: [37], incense: [37], veil: [36], ark: [37, 40] };
 const hereOf = (x, n) => chips(x).filter((c) => c.ch.includes(n));
 

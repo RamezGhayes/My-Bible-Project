@@ -20,6 +20,9 @@ export const IC = {
 };
 
 const NAV = [['index.html', 'home', 'الرئيسية', IC.home], ['people.html', 'people', 'الشخصيات', IC.person], ['maps.html', 'maps', 'الخرائط', IC.map]];
+// Desktop top bar. Extra sections register themselves here (topics, library) once their pages exist.
+export const TOPNAV = [['index.html', 'home', 'الرئيسية'], ['ot.html', 'ot', 'العهد القديم'], ['nt.html', 'nt', 'العهد الجديد'], ['people.html', 'people', 'الشخصيات'], ['maps.html', 'maps', 'الخرائط والشروح']];
+export const BRAND = '<svg class="bm" viewBox="0 0 40 32" aria-hidden="true"><path d="M20 7c-4-3-10-4-16-3v22c6-1 12 0 16 3 4-3 10-4 16-3V4c-6-1-12 0-16 3z"/><path d="M20 7v22"/><path d="M8 10c3 0 6 .5 8 1.6M8 15c3 0 6 .5 8 1.6M24 11.6c2-1.1 5-1.6 8-1.6M24 16.6c2-1.1 5-1.6 8-1.6" opacity=".55"/></svg>';
 
 export function page({ title, depth = 0, nav = null, body, cls = '', after = '' }) {
   const u = up(depth);
@@ -38,12 +41,14 @@ export function page({ title, depth = 0, nav = null, body, cls = '', after = '' 
 <link rel="stylesheet" href="${u}assets/v2.css">
 </head>
 <body class="${cls}" data-root="${u}">
+<header id="top"><div class="in"><a class="brand" href="${u}index.html">${BRAND}<span><b>${esc(config.nameAr)}</b><small>${esc(config.tagline)}</small></span></a><nav aria-label="الأقسام">${TOPNAV.map(([h, k, l]) => `<a href="${u}${h}"${k === nav || false ? ' aria-current="page"' : ''}>${l}</a>`).join('')}</nav><button type="button" class="sbtn" data-search aria-label="بحث">${IC.search}<span>ابحث</span></button></div></header>
 <div id="app"><main class="main">
 ${body}
 </main>
-${nav ? `<nav id="nav" aria-label="التنقل الرئيسي">${NAV.map(([h, k, l, i]) => `<a href="${u}${h}"${k === nav ? ' aria-current="page"' : ''}>${i}${l}</a>`).join('')}</nav>` : ''}
+${nav ? `<nav id="nav" aria-label="التنقل الرئيسي">${NAV.map(([h, k, l, i]) => `<a href="${u}${h}"${k === nav || (k === 'home' && (nav === 'ot' || nav === 'nt')) ? ' aria-current="page"' : ''}>${i}${l}</a>`).join('')}<button type="button" data-search>${IC.search}بحث</button></nav>` : ''}
 </div>
 ${after}
+<div class="srch" id="srch" hidden role="dialog" aria-label="بحث"><div class="sbox"><div class="sin">${IC.search}<input type="search" id="sq" placeholder="ابحث عن سفر، أو أصحاح، أو شخصية، أو اكتب شاهداً مثل يو ٣: ١٦" autocomplete="off" enterkeyhint="search"><button type="button" data-sclose aria-label="إغلاق">${IC.close}</button></div><div class="sres" id="sres"></div></div></div>
 <div class="toast" id="toast" role="status"></div>
 <script src="${u}assets/v2.js"></script>
 </body>
