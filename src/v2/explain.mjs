@@ -360,7 +360,7 @@ export function scene3d(depth, mode = 'explore') {
 <div class="t3i" hidden></div>
 <div class="t3tour"><div class="th"><span class="n"></span><b class="tt"></b><button type="button" data-c="exit" aria-label="إنهاء الجولة">${IC.close}</button></div><p class="d"></p><blockquote class="v"></blockquote><div class="tn"><button type="button" data-c="prev">${IC.back}السابق</button><span class="dots">${A.steps.map(() => '<i></i>').join('')}</span><button type="button" data-c="next">التالي${IC.chev}</button></div></div>
 </div>
-<script src="${'../'.repeat(depth)}assets/t3d.js" defer></script>`;
+<script type="module" src="${'../'.repeat(depth)}assets/t3d.js"></script>`;
 }
 
 // ---------- the feasts of the LORD ----------
