@@ -740,3 +740,22 @@ body.explain{background:var(--paper)}
 .acmp em{font-style:normal;color:var(--soft)}
 .acmp strong{font-weight:500;color:var(--ink)}
 .acmp strong .r{display:block;font-family:var(--ui);font-size:11px;font-weight:400}
+
+/* ---------- carousel frame, arrows, quick range ---------- */
+.carw{position:relative}
+.carnav{position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.92);border:1px solid var(--line);color:var(--ink);display:grid;place-items:center;box-shadow:0 6px 16px rgba(23,25,30,.10);cursor:pointer;transition:opacity .2s,transform .2s}
+.carnav:hover{transform:translateY(-50%) scale(1.06)}
+.carnav.pv{right:6px}.carnav.nx{left:6px}
+@media (hover:none){.carnav{width:34px;height:34px;opacity:.85}}
+.car.drag{scroll-snap-type:none;cursor:grabbing;user-select:none}
+.car.drag *{pointer-events:none}
+@media (hover:hover){.car{cursor:grab}}
+.crange{position:relative;padding:22px 26px 6px}
+.crange input{-webkit-appearance:none;appearance:none;width:100%;height:28px;background:transparent;margin:0;cursor:pointer}
+.crange input::-webkit-slider-runnable-track{height:4px;border-radius:2px;background:linear-gradient(to left,var(--ink) var(--p,0%),var(--line) var(--p,0%))}
+.crange input::-moz-range-track{height:4px;border-radius:2px;background:var(--line)}
+.crange input::-moz-range-progress{height:4px;border-radius:2px;background:var(--ink)}
+.crange input::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:#fff;border:2px solid var(--ink);margin-top:-9px;box-shadow:0 2px 6px rgba(0,0,0,.15)}
+.crange input::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:#fff;border:2px solid var(--ink)}
+.crange output{position:absolute;top:-6px;transform:translateX(50%);background:var(--ink);color:#fff;font-family:var(--ui);font-size:12px;padding:4px 10px;border-radius:8px;white-space:nowrap;max-width:240px;overflow:hidden;text-overflow:ellipsis;opacity:0;pointer-events:none;transition:opacity .15s}
+.crange.act output,.crange:hover output{opacity:1}
