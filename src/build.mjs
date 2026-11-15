@@ -262,7 +262,7 @@ function chapterPage(b, n) {
     const J = hit.m.journeys[hit.j];
     cards.push(card('#1F2A44', '#FAF8F4', `<div class="lab">الخريطة · ${esc(hit.m.title)}</div><h2 style="margin-bottom:12px">${esc(J.stops[hit.idx[0]].n)}${hit.idx.length > 1 ? ' إلى ' + esc(J.stops[hit.idx[hit.idx.length - 1]].n) : ''}</h2><div class="smap">${thumb(hit, 'navy', 'active')}</div><div class="legend">${hit.idx.slice(0, 6).map((i) => `<span><b>${ar(i + 1)}</b>${esc(J.stops[i].n)}</span>`).join('')}</div>`, 'map'));
   } else if (S.places?.length) {
-    cards.push(card('#F2EEE6', '#17191E', `<div class="lab">الأماكن</div><h2>أين تجري الأحداث؟</h2><ol>${S.places.slice(0, 4).map((p) => `<li><span><b style="font-family:var(--ui);font-weight:500">${md(p.n)}</b><br><span style="font-size:14.5px;opacity:.75">${md(clip(p.d, 90))}</span></span></li>`).join('')}</ol>`, 'map'));
+    cards.push(card('#F2EEE6', '#17191E', `<div class="lab">الأماكن</div><h2>أماكن في هذا الأصحاح</h2><ol>${S.places.slice(0, 4).map((p) => `<li><span><b style="font-family:var(--ui);font-weight:500">${md(p.n)}</b><br><span style="font-size:14.5px;opacity:.75">${md(clip(p.d, 90))}</span></span></li>`).join('')}</ol>`, 'map'));
   }
   const XS = explainersFor(b, n);
   for (const x of XS) cards.push(card('#14161C', '#FAF8F4', xStory(x, b, n, depth)));
@@ -313,7 +313,7 @@ ${cards.map((c, i) => `<section class="sc${i === 0 ? ' on' : ''}" style="backgro
     DET.map = { t: 'الأماكن والخريطة', ey: esc(hit.m.title), h: `<div class="smap" style="height:auto;aspect-ratio:1.45;border-color:var(--line);margin-bottom:16px">${thumb(hit, 'sand', 'all')}</div>${hit.idx.map((i) => `<div class="blk"><h3><span class="n">${ar(i + 1)}</span>${esc(J.stops[i].n)}</h3><p>${md(J.stops[i].t)}</p></div>`).join('')}${(S.places || []).length ? `<div class="blk"><h3>أماكن أخرى في الأصحاح</h3>${S.places.map((p) => `<p><b>${md(p.n)}:</b> ${md(p.d)}</p>`).join('')}</div>` : ''}<a class="btn d" href="${mapHref(hit.m, depth)}#j${hit.j + 1}-${hit.idx[0] + 1}">${IC.map}افتح الخريطة كاملة</a>` };
   } else if (S.places?.length) {
     half.push(T('map', 't-places', countWord(S.places.length, 'مكان واحد', 'مكانان', 'أماكن', 'مكاناً'), 'الأماكن', S.places.slice(0, 4).map((p) => `<span>${esc(plain(p.n).replace(/\s*\([^)]*\)/g, ''))}</span>`).join('')));
-    DET.map = { t: 'الأماكن', ey: 'أين تجري الأحداث', h: S.places.map((p) => `<div class="blk"><h3>${md(p.n)}</h3><p>${md(p.d)}</p></div>`).join('') };
+    DET.map = { t: 'الأماكن', ey: 'أين تجري الأحداث وما يُذكر من أماكن', h: S.places.map((p) => `<div class="blk"><h3>${md(p.n)}</h3><p>${md(p.d)}</p></div>`).join('') };
   }
   if (W) half.push(T('word', 't-word', countWord(S.words.length, 'كلمة واحدة', 'كلمتان', 'كلمات', 'كلمة'), `كلمات من الأصل ${isHeb ? 'العبري' : 'اليوناني'}`, `<span style="font-size:${String(W.orig || '').split(' (')[0].length > 7 ? 24 : 36}px">${esc(String(W.orig || plain(W.w)).split(' (')[0])}</span><small>${esc(plain(W.w))}</small>`));
   if (S.words?.length) DET.word = { t: `كلمات من الأصل ${isHeb ? 'العبري' : 'اليوناني'}`, ey: 'تعمّق', h: S.words.map((w) => `<div class="blk">${w.orig ? `<span class="hw">${esc(w.orig)}</span>` : ''}<h3>${md(w.w)}</h3><p>${md(w.d)}</p></div>`).join('') };

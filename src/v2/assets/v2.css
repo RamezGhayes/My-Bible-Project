@@ -1189,3 +1189,35 @@ body.explain{background:var(--paper)}
 .wrefs summary{font-family:var(--ui);font-size:12px;color:var(--soft);cursor:pointer;padding:3px 8px;list-style:none}
 .wrefs summary::-webkit-details-marker{display:none}
 .wrefs details[open] summary{display:none}
+/* Day of Atonement film: captions over the scene */
+.t3cap{display:none;position:absolute;inset:0;pointer-events:none;z-index:3}
+.t3d.tour .t3cap{display:block}
+.t3d.tour .t3c,.t3d.tour .p3l{display:none}
+.t3d.tour .t3v{cursor:pointer}
+.t3ct{position:absolute;top:0;inset-inline:0;display:flex;align-items:center;gap:10px;padding:14px 16px 34px;background:linear-gradient(rgba(10,12,16,.62),rgba(10,12,16,0));color:#fff;font-family:var(--ui)}
+.t3ct .n{width:30px;height:30px;border-radius:50%;background:var(--c);display:grid;place-items:center;font-size:13px;flex:none}
+.t3ct b{font-weight:500;font-size:16.5px;text-shadow:0 1px 6px rgba(0,0,0,.5)}
+.t3cb{position:absolute;bottom:34px;inset-inline:12px;margin:0 auto;max-width:640px;text-align:center;font-family:var(--ui);font-size:16px;line-height:1.7;color:#fff;background:rgba(10,12,16,.62);backdrop-filter:blur(4px);padding:8px 16px;border-radius:12px;width:fit-content}
+.t3cb:empty{display:none}
+.t3cb.in{animation:capin .5s var(--ease)}
+@keyframes capin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.t3bar{position:absolute;bottom:0;inset-inline:0;height:4px;background:rgba(255,255,255,.18)}
+.t3bar i{display:block;height:100%;width:0;background:var(--c)}
+.t3pp{pointer-events:auto;position:absolute;bottom:14px;inset-inline-end:12px;width:40px;height:40px;border-radius:50%;background:rgba(10,12,16,.6);display:grid;place-items:center}
+.t3pp::before{content:'';width:12px;height:14px;border-inline:4px solid #fff;box-sizing:border-box}
+.t3d.paused .t3pp::before{width:0;height:0;border-inline:0;border-block:8px solid transparent;border-inline-end:13px solid #fff;margin-inline-start:-3px}
+.t3d.ended .t3pp::before{width:14px;height:14px;border:3px solid #fff;border-inline-end-color:transparent;border-radius:50%;transform:none}
+@media (max-width:600px){.t3cb{font-size:14.5px;bottom:30px;inset-inline:8px;padding:6px 12px}.t3ct b{font-size:15px}}
+/* a little more air between sections (Nov 2026) */
+.bento{gap:14px;padding:28px 16px 40px}
+.blk{padding:26px 0}
+.blk h3{margin-bottom:10px}
+.blk p{line-height:1.95}
+.blk p+p{margin-top:10px}
+.sc ol li{padding:15px 0}
+.sc h2{margin-bottom:18px}
+.tsec{margin-block:44px}
+.lsec{margin-top:40px}
+.chnav{padding-top:22px}
+@media (min-width:980px){.bento{gap:18px;padding:36px 24px 52px}.tsec{margin-block:56px}}
+.hsec{margin-top:46px}

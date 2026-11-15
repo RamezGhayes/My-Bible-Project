@@ -356,7 +356,7 @@ export function scene3d(depth, mode = 'explore') {
 <div class="t3v" role="img" aria-label="مجسم ثلاثي الأبعاد للمسكن"></div>
 <div class="t3c"><button type="button" data-c="in" aria-label="تكبير">+</button><button type="button" data-c="out" aria-label="تصغير">−</button><button type="button" data-c="top" aria-label="منظر علوي">${IC.up}</button><button type="button" data-c="roof" class="w">السقف</button><button type="button" data-c="reset" aria-label="إعادة">↺</button></div>
 <div class="t3hint">اسحب للتدوير · قرّب بإصبعين أو بالعجلة · اضغط على أي قطعة</div>
-<button type="button" class="t3go" data-c="atone">${glyph('veil', 22)}<span>عِش يوم الكفارة خطوة خطوة</span></button>
+<button type="button" class="t3go" data-c="atone">${glyph('veil', 22)}<span>شاهد يوم الكفارة: محاكاة كاملة</span></button>
 <div class="t3i" hidden></div>
 <div class="t3tour"><div class="th"><span class="n"></span><b class="tt"></b><button type="button" data-c="exit" aria-label="إنهاء الجولة">${IC.close}</button></div><p class="d"></p><blockquote class="v"></blockquote><div class="tn"><button type="button" data-c="prev">${IC.back}السابق</button><span class="dots">${A.steps.map(() => '<i></i>').join('')}</span><button type="button" data-c="next">التالي${IC.chev}</button></div></div>
 </div>
