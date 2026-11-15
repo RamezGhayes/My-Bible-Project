@@ -191,26 +191,29 @@ ${S.map((s, i) => `<g class="it" data-it="${s.id}" tabindex="0" role="button" ar
 </section>
 <div class="xbody">
 <p class="lead">${md(x.intro)}</p>
-<h3 class="xh"><span>١</span>الطريق إلى الحضور</h3>
+<h3 class="xh"><span>١</span>المسكن بالأبعاد الثلاثة</h3>
+<p class="xp">مجسّم تقريبي بالمقاسات المذكورة في الخروج ٢٥–٢٧. لفّه وقرّبه، واكشف السقف لترى ما بالداخل، ثم ابدأ جولة يوم الكفارة.</p>
+${scene3d(depth, 'explore')}
+<h3 class="xh"><span>٢</span>الطريق إلى الحضور</h3>
 <p class="xp">ثماني محطات من الباب في الشرق إلى التابوت في الغرب. اضغط على أي قطعة في المخطط، أو تنقّل بالترتيب.</p>
 <div class="tchips" id="tchips">${S.map((s, i) => `<button type="button" data-it-go="${s.id}" style="--c:${s.color};--k:${s.ink}" aria-pressed="${i ? 'false' : 'true'}">${glyph(s.icon, 22)}<span>${ar(i + 1)}</span></button>`).join('')}</div>
 <div class="tlay"><div class="tmap">${plan}</div></div>
 <div class="tpanels" id="tpanels">${S.map(panel).join('')}</div>
 
-<h3 class="xh"><span>٢</span>ثلاث دوائر من القداسة</h3>
+<h3 class="xh"><span>٣</span>ثلاث دوائر من القداسة</h3>
 <p class="xp">كلما اقتربت من التابوت ازدادت القداسة، وقلّ عدد من يستطيع الدخول.</p>
 <div class="tzones">${x.zones.map((z, i) => `<div class="tz${i}" style="--c:${z.color}"><b>${esc(z.t)}</b><span>${esc(z.who)}</span><small>${esc(z.metal)} · ${ar(esc(z.size))}</small></div>`).join('')}</div>
 <p class="note">${md(x.zoneNote)}</p>
 
-<h3 class="xh"><span>٣</span>من الخارج ومن الداخل</h3>
+<h3 class="xh"><span>٤</span>من الخارج ومن الداخل</h3>
 <p class="xp">أربع طبقات تغطي الخيمة، من الداخل إلى الخارج.</p>
 <div class="tlayers">${x.layers.map((l, i) => `<div style="--c:${l.color};--i:${i}"><b>${ar(i + 1)}</b><span><strong>${esc(l.t)}</strong>${md(l.d)}</span></div>`).join('')}</div>
 <p class="note">${md(x.layerNote)}</p>
 
-<h3 class="xh"><span>٤</span>قصة السكنى عبر الكتاب</h3>
+<h3 class="xh"><span>٥</span>قصة السكنى عبر الكتاب</h3>
 <div class="tstory">${x.story.map((s, i) => `<a href="${refHref(s.ref, depth)}"><i>${ar(i + 1)}</i><span><b>${esc(s.t)}</b><small>${md(s.d)} · ${refLabel(s.ref)}</small></span></a>`).join('')}</div>
 
-<h3 class="xh"><span>٥</span>سؤال صعب</h3>
+<h3 class="xh"><span>٦</span>سؤال صعب</h3>
 <div class="blk xhard"><h3>${md(x.hard.q)}</h3><p>${md(x.hard.a)}</p></div>
 </div>
 <section class="xchrist">
@@ -315,11 +318,8 @@ function atonementPage(x, depth) {
 <div class="xbody">
 <p class="lead">${md(x.intro)}</p>
 <h3 class="xh"><span>١</span>اليوم خطوة خطوة</h3>
-<div class="astage" id="astage" data-steps='${esc(JSON.stringify(S.map((s) => s.at)))}'>
-<div class="amap">${plan}</div>
-<div class="acards">${S.map((s, i) => `<article class="acard" data-i="${i}" style="--c:${s.color}"${i ? ' hidden' : ''}><div class="ah"><span class="an">${ar(s.n)}<small>/${ar(S.length)}</small></span><span class="ai">${glyph(s.icon, 30)}</span><b>${esc(s.t)}</b></div><p>${md(s.d)}</p><blockquote>${vq(s.ref)}<small>${refLabel(s.ref)}</small></blockquote></article>`).join('')}</div>
-<div class="actl"><button type="button" data-a="-1" aria-label="الخطوة السابقة">${IC.back}السابق</button><div class="adots">${S.map((s, i) => `<i data-go="${i}" style="--c:${s.color}"></i>`).join('')}</div><button type="button" data-a="1" aria-label="الخطوة التالية">التالي${IC.chev}</button></div>
-</div>
+<p class="xp">تابع رئيس الكهنة (النور الذهبي) في المسكن، من الدار إلى ما وراء الحجاب ثم إلى البرية. تقدر في أي وقت تلفّ المجسّم وتقرّبه بإصبعك.</p>
+${scene3d(depth, 'atone')}
 <h3 class="xh"><span>٢</span>تيسان، ذبيحة واحدة</h3>
 <div class="agoats">${x.goats.map((g) => `<div style="--c:${g.color};--k:${g.ink}"><span class="gi">${glyph(g.icon, 40)}</span><b>${esc(g.t)}</b><p>${md(g.d)}</p><small>المعنى</small><p>${md(g.m)}</p><small>في المسيح</small><p>${md(g.c)}</p></div>`).join('')}</div>
 <h3 class="xh"><span>٣</span>هارون والمسيح</h3>
@@ -335,4 +335,22 @@ function atonementPage(x, depth) {
 ${x.christ.p.map((p) => `<p>${md(p)}</p>`).join('')}
 <a class="btn l" href="${chapterHref(b, 16, depth)}">${IC.read}ادرس اللاويين ١٦</a>
 </section>`;
+}
+
+// ---------- 3D tabernacle scene (geometry is built in assets/t3d.js) ----------
+export function scene3d(depth, mode = 'explore') {
+  const T = tabernacle, A = atonement;
+  const first = (s) => String(s).split(/(?<=\.)\s/)[0];
+  const items = T.steps.map((s, i) => ({ id: s.id, num: ar(i + 1), name: s.name, color: s.color, mat: s.mat, what: first(s.what) + (first(s.what) !== s.what ? ' ' + String(s.what).split(/(?<=\.)\s/)[1] : ''), christ: s.christ.t.replace(/«|»/g, '"'), href: mode === 'explore' ? `#it-${s.id}` : `${'../'.repeat(depth)}explain/tabernacle.html#it-${s.id}` }));
+  const steps = A.steps.map((s) => ({ num: ar(s.n), t: s.t, d: s.d.replace(/«|»/g, '"'), v: String(verseText(s.ref) || ''), ref: refLabel(s.ref), at: s.at, zone: s.zone, color: s.color }));
+  const J = (o) => esc(JSON.stringify(o));
+  return `<div class="t3d" data-mode="${mode}" data-items="${J(items)}" data-steps="${J(steps)}">
+<div class="t3v" role="img" aria-label="مجسم ثلاثي الأبعاد للمسكن"></div>
+<div class="t3c"><button type="button" data-c="in" aria-label="تكبير">+</button><button type="button" data-c="out" aria-label="تصغير">−</button><button type="button" data-c="top" aria-label="منظر علوي">${IC.up}</button><button type="button" data-c="roof" class="w">السقف</button><button type="button" data-c="reset" aria-label="إعادة">↺</button></div>
+<div class="t3hint">اسحب للتدوير · قرّب بإصبعين أو بالعجلة · اضغط على أي قطعة</div>
+<button type="button" class="t3go" data-c="atone">${glyph('veil', 22)}<span>عِش يوم الكفارة خطوة خطوة</span></button>
+<div class="t3i" hidden></div>
+<div class="t3tour"><div class="th"><span class="n"></span><b class="tt"></b><button type="button" data-c="exit" aria-label="إنهاء الجولة">${IC.close}</button></div><p class="d"></p><blockquote class="v"></blockquote><div class="tn"><button type="button" data-c="prev">${IC.back}السابق</button><span class="dots">${A.steps.map(() => '<i></i>').join('')}</span><button type="button" data-c="next">التالي${IC.chev}</button></div></div>
+</div>
+<script src="${'../'.repeat(depth)}assets/t3d.js" defer></script>`;
 }
