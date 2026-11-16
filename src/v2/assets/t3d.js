@@ -434,24 +434,25 @@ function init(host) {
       beats: [[0, 'هارون في ثياب المجد، يتقدم وحده إلى المرحضة'], [4, 'يغتسل بالماء قبل أن يخدم'], [7, 'يخلع ثياب المجد ويلبس الكتان الأبيض البسيط']],
       setup() { garb(true); priest.position.copy(v(28, 64)); },
       act(t) { walk(priest, [[0, 28, 64], [3.5, 26.6, 53.6]], t); if (t > 3.5) lookAt(priest, 25, 52); splash.visible = t > 4 && t < 7; if (t > 7 && priest.userData.glory) { garb(false); flashT = 0; } } },
-    { dur: 13, // 2. the bull for himself and his house
-      cam: [[0, [45, 55, 13], [29, 71, 2]], [6, [43, 84, 9], [30, 72, 2]], [13, [20, 86, 12], [29.5, 71.5, 1.8]]],
-      beats: [[0, 'يُقدَّم ثور ذبيحة خطية عن هارون وبيته'], [5, 'يذبح الثور، ويأخذ من دمه'], [9, 'قبل أن يكفّر عن الشعب، يكفّر عن نفسه']],
-      setup() { garb(false); bull.visible = true; bull.userData.body.rotation.x = 0; bull.position.copy(v(32, 73)); face(bull, -1, -0.2); },
-      act(t) { walk(priest, [[0, 26.6, 53.6], [1, 23, 58], [4.5, 29.6, 71.5]], t); if (t > 4.5) lookAt(priest, 32, 73); const k = ease(seg(t, 5, 6.5)); bull.userData.body.rotation.x = k * 1.45; bull.userData.body.position.y = -k * 0.35; bowl.visible = t > 6.5; fireBoost = 1 + ease(seg(t, 6, 8)) * 0.6; } },
-    { dur: 12, // 3. two goats, two lots
-      cam: [[0, [34, 51, 7], [25, 44.5, 1.8]], [6, [17, 50, 6], [25, 44.5, 2]], [12, [31, 53, 6], [25, 44.5, 1.8]]],
-      beats: [[0, 'تيسان من الماعز يقفان أمام باب الخيمة'], [3, 'تُلقى قرعتان'], [7, 'قرعة للرب، وقرعة لعزازيل']],
-      setup() { garb(false); bowl.visible = false; bull.visible = false; [goatA, goatB].forEach((g) => { g.visible = true; g.userData.tag.visible = false; g.userData.body.rotation.x = 0; g.userData.body.position.y = 0; }); goatA.position.copy(v(23.6, 44)); goatB.position.copy(v(26.4, 44)); face(goatA, 0, 1); face(goatB, 0, 1); },
-      act(t) { walk(priest, [[0, 29.6, 71.5], [1, 23, 60], [4, 25, 47.5]], t); if (t > 4) lookAt(priest, 25, 44);
-        lots.forEach((d, i) => { d.visible = t > 3 && t < 8.2; const up = ease(seg(t, 3, 5)), go = ease(seg(t, 5.5, 7.5)); const from = v(25 + (i ? 0.25 : -0.25), 46.9, 1.4 + up * 1.4), to = (i ? goatB : goatA).position.clone().add(new THREE.Vector3(0, 1.4, 0)); d.position.lerpVectors(from, to, go); d.rotation.z = t * 4; });
-        goatA.userData.tag.visible = goatB.userData.tag.visible = t > 7.5; } },
-    { dur: 17, // 4. cloudAmt behind the veil
-      cam: [[0, [46, 74, 22], [25, 58, 1]], [7, [40, 44, 20], [25, 38, 1]], [11.5, [39, 28, 16], [25, 21, 1.5]], [17, [38, 13, 13], [25, 16.5, 2]]],
-      beats: [[0, 'يأخذ مجمرة مملوءة جمر نار من على المذبح'], [5, 'ويدخل بالبخور إلى ما وراء الحجاب'], [12, 'سحابة البخور تغطي الغطاء الذي على الشهادة، لئلا يموت']],
-      setup() { garb(false); censer.visible = true; bowl.visible = false; cloudAmt = 0; },
-      act(t) { walk(priest, [[0, 25, 47.5], [1.2, 22, 53], [3.6, 25, 65.6], [4.4, 25, 65.6], [6, 22, 53], [8, 25, 43], [10.4, 25, 24], [12.4, 25, 17.6]], t); if (t > 12.4) lookAt(priest, 25, 15);
-        cloudAmt = ease(seg(t, 12, 16.5)); } },
+    { dur: 11, // 2. the bull for himself and his house (presented now, killed after the lots, 16:11)
+      cam: [[0, [45, 55, 13], [29, 71, 2]], [6, [43, 84, 9], [30, 72, 2]], [11, [36, 88, 12], [29.5, 71.5, 1.8]]],
+      beats: [[0, 'يُقدَّم ثور ذبيحة خطية عن هارون وبيته'], [5, 'قبل أن يكفّر عن الشعب، يكفّر عن نفسه']],
+      setup() { garb(false); bull.visible = true; bull.position.copy(v(32, 73)); face(bull, -1, -0.2); },
+      act(t) { walk(priest, [[0, 26.6, 53.6], [1, 23, 58], [4.5, 29.6, 71.5]], t); if (t > 4.5) lookAt(priest, 32, 73); } },
+    { dur: 15, // 3. two goats, two lots; then the bull is killed
+      cam: [[0, [34, 51, 7], [25, 44.5, 1.8]], [5, [17, 50, 6], [25, 44.5, 2]], [9, [30, 56, 8], [26, 50, 1.8]], [15, [42, 82, 10], [30, 72, 1.6]]],
+      beats: [[0, 'تيسان من الماعز يقفان أمام باب الخيمة'], [2.5, 'تُلقى قرعتان'], [5.5, 'قرعة للرب، وقرعة لعزازيل'], [10, 'ثم يذبح ثور الخطية الذي له، ويأخذ من دمه']],
+      setup() { garb(false); bowl.visible = false; bull.visible = true; bull.position.copy(v(32, 73)); face(bull, -1, -0.2); [goatA, goatB].forEach((g) => { g.visible = true; g.userData.tag.visible = false; }); goatA.position.copy(v(23.6, 44)); goatB.position.copy(v(26.4, 44)); face(goatA, 0, 1); face(goatB, 0, 1); },
+      act(t) { walk(priest, [[0, 29.6, 71.5], [1, 23, 60], [3.4, 25, 47.5], [8.4, 25, 47.5], [9.4, 23, 58], [11.4, 29.6, 71.5]], t); if (t > 3.4 && t < 8.4) lookAt(priest, 25, 44); if (t > 11.4) lookAt(priest, 32, 73);
+        lots.forEach((d, i) => { d.visible = t > 2.5 && t < 7.6; const up = ease(seg(t, 2.5, 4.3)), go = ease(seg(t, 4.8, 6.8)); const from = v(25 + (i ? 0.25 : -0.25), 46.9, 2.2 + up * 1.6), to = (i ? goatB : goatA).position.clone().add(new THREE.Vector3(0, 2, 0)); d.position.lerpVectors(from, to, go); d.rotation.z = t * 4; });
+        goatA.userData.tag.visible = goatB.userData.tag.visible = t > 6.8;
+        const k = ease(seg(t, 11.8, 13)); bull.userData.body.rotation.x = k * 1.45; bull.userData.body.position.y = -k * 0.35; bowl.visible = t > 13.2; fireBoost = 1 + ease(seg(t, 12.5, 14.5)) * 0.6; } },
+    { dur: 16, // 4. incense behind the veil
+      cam: [[0, [46, 80, 22], [27, 66, 1]], [6, [40, 44, 20], [25, 38, 1]], [10, [39, 28, 16], [25, 21, 1.5]], [16, [38, 13, 13], [25, 16.5, 2]]],
+      beats: [[0, 'يأخذ مجمرة مملوءة جمر نار من على المذبح'], [4, 'ويدخل بالبخور إلى ما وراء الحجاب'], [11, 'سحابة البخور تغطي الغطاء الذي على الشهادة، لئلا يموت']],
+      setup() { garb(false); censer.visible = false; bowl.visible = false; cloudAmt = 0; },
+      act(t) { walk(priest, [[0, 29.6, 71.5], [1.6, 25, 65.6], [2.6, 25, 65.6], [4.4, 22, 53], [6.4, 25, 43], [8.8, 25, 24], [10.8, 25, 17.6]], t); censer.visible = t > 2.2; if (t > 1.6 && t < 2.6) lookAt(priest, 25, 70); if (t > 10.8) lookAt(priest, 25, 15);
+        cloudAmt = ease(seg(t, 10.5, 15)); } },
     { dur: 13, // 5. the bull's blood on the mercy seat
       cam: [[0, [38, 22, 13], [25, 17, 2]], [6, [36, 12, 10], [25, 16, 2]], [13, [34, 8, 9], [25, 16, 1.8]]],
       beats: [[0, 'يرجع بدم الثور إلى قدس الأقداس'], [3.5, 'ينضح بإصبعه على وجه الغطاء شرقاً'], [6, 'وقدام الغطاء سبع مرات']],
@@ -505,8 +506,8 @@ function init(host) {
     setOpen(si >= 3 && si <= 6);
     S[si].setup(); S[si].act(0);
     const s = steps[si] || {};
-    capN.textContent = s.num || ''; capT.textContent = s.t || ''; capB.textContent = '';
-    tourBox.querySelector('.n').textContent = s.num || ''; tourBox.querySelector('.tt').textContent = s.t || '';
+    capN.textContent = s.n || s.num || ''; capT.textContent = s.t || ''; capB.textContent = '';
+    tourBox.querySelector('.n').textContent = s.n || s.num || ''; tourBox.querySelector('.tt').textContent = s.t || '';
     tourBox.querySelector('.d').textContent = s.d || ''; tourBox.querySelector('.v').innerHTML = (s.v || '') + '<small>' + (s.ref || '') + '</small>';
     tourBox.style.setProperty('--c', s.color || '#B39459'); cap.style.setProperty('--c', s.color || '#B39459');
     tourBox.querySelector('[data-c="prev"]').disabled = si === 0;
