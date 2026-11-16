@@ -8,8 +8,9 @@ import offerings from '../../content/explain/offerings.mjs';
 import atonement from '../../content/explain/atonement.mjs';
 import feasts from '../../content/explain/feasts.mjs';
 import camp from '../../content/explain/camp.mjs';
+import serpent from '../../content/explain/serpent.mjs';
 
-export const EXPLAINERS = [plagues, tabernacle, offerings, atonement, feasts, camp];
+export const EXPLAINERS = [plagues, tabernacle, offerings, atonement, feasts, camp, serpent];
 // Uniform "chips" for strips and cards: {id, name, color, ink, icon, ch:[chapters]}
 export const chips = (x) => x.items ? x.items.map((p) => ({ id: 'of-' + p.id, name: p.name, color: p.color, ink: p.ink, icon: p.icon, ch: x.id === 'offerings' && p.id !== 'guilt' && p.id !== 'grain' ? [...p.ch, 9] : p.ch, label: x.id === 'offerings' ? 'ذبيحة ' + p.name : p.name })) : x.plagues ? x.plagues.map((p) => ({ id: 'pl' + p.n, name: p.name, color: p.color, ink: p.ink, icon: p.icon, ch: p.n === 10 ? [11, 12] : [p.ch], label: 'الضربة ' + ORD[p.n] })) : x.steps.map((p) => ({ id: 'it-' + p.id, name: p.name, color: p.color, ink: p.ink, icon: p.icon, ch: [p.ch, ...(CH2[p.id] || [])], label: p.name }));
 const CH2 = { gate: [38], altar: [38], laver: [38], table: [37], lamp: [37], incense: [37], veil: [36], ark: [37, 40] };
@@ -46,6 +47,11 @@ const G = {
   loaves: '<path d="M4 42c0-11 8-18 17-18s17 7 17 18z"/><path d="M26 46c0-11 8-18 17-18s17 7 17 18z"/><path d="M12 34l4-4M20 32l4-4M34 38l4-4M42 36l4-4"/>',
   shofar: '<path d="M8 46c9 4 22 1 31-8 7-7 11-17 17-22l3 4c-3 4-5 14-14 25-9 10-23 13-34 9z"/><path d="M8 46l-3 2 3 4 3-2"/><path d="M48 46c3 2 5 5 6 9M54 40c4 1 7 4 8 7" opacity=".6"/>',
   booth: '<path d="M10 54V30M54 54V30"/><path d="M6 30c8-10 18-14 26-14s18 4 26 14"/><path d="M14 24l-4-8M24 19l-2-9M40 19l2-9M50 24l4-8"/><path d="M10 54h44"/><path d="M26 54V40h12v14"/>',
+  serpent: '<path d="M32 6v54"/><path d="M22 11h20"/><path d="M33 16c-11 2-11 9 0 11s11 9 0 11-11 9 0 11" stroke-width="3.2"/><circle cx="34" cy="15" r="2.2" fill="currentColor"/>',
+  snake: '<path d="M6 46c5-11 13-11 18 0s13 11 18 0 9-11 14-6"/><circle cx="54" cy="40" r="4" fill="currentColor" fill-opacity=".35"/><path d="M58 40l4-3M58 41l4 2"/>',
+  grumble: '<path d="M8 12h48v28H28L17 51V40H8z"/><path d="M16 28l6-7 6 7 6-7 6 7 6-7"/>',
+  confess: '<circle cx="32" cy="14" r="7"/><path d="M18 58V38c0-8 6-14 14-14s14 6 14 14v20"/><path d="M24 42l8 8 8-8"/>',
+  eye: '<path d="M4 32c8-12 18-18 28-18s20 6 28 18c-8 12-18 18-28 18S12 44 4 32z"/><circle cx="32" cy="32" r="9" fill="currentColor" fill-opacity=".3"/><circle cx="32" cy="32" r="3.5" fill="currentColor"/>',
   door: '<path d="M16 58V10h32v48"/><path d="M16 10h32" stroke-width="7" style="stroke:#C9473A"/><path d="M16 14v40M48 14v40" stroke-width="4" style="stroke:#C9473A"/><path d="M24 58V20h16v38"/><circle cx="36" cy="40" r="1.6" fill="currentColor"/>'
 };
 export const glyph = (k, size = 48) => `<svg class="glyph" viewBox="0 0 64 64" width="${size}" height="${size}" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">${G[k] || ''}</svg>`;
@@ -77,6 +83,7 @@ export function explainPage(x, depth) {
   if (x.id === 'atonement') return atonementPage(x, depth);
   if (x.id === 'feasts') return feastsPage(x, depth);
   if (x.id === 'camp') return campPage(x, depth);
+  if (x.id === 'serpent') return serpentPage(x, depth);
   if (x.steps) return tabernaclePage(x, depth);
   const b = bookById[x.book];
   const P = x.plagues;
@@ -493,5 +500,76 @@ ${plan}
 <blockquote>${vq(x.christ.ref)}<small>${refLabel(x.christ.ref)}</small></blockquote>
 ${x.christ.p.map((p) => `<p>${md(p)}</p>`).join('')}
 <a class="btn l" href="${chapterHref(b, 2, depth)}">${IC.read}ادرس العدد ٢</a>
+</section>`;
+}
+
+// ---------- the bronze serpent ----------
+function serpentPage(x, depth) {
+  const b = bookById[x.book], I = x.items;
+  const r = (ref) => `<a class="r" href="${refHref(ref, depth)}">${refLabel(ref)}</a>`;
+  // the camp scene: twelve people around the pole; each one who looks, lives
+  const N = 12, cx = 180, cy = 150;
+  const people = Array.from({ length: N }, (_, k) => {
+    const a = (k / N) * Math.PI * 2 + 0.26, rx = 140, ry = 92;
+    const px = cx + Math.cos(a) * rx, py = cy + 18 + Math.sin(a) * ry;
+    return `<g class="sp" data-i="${k}" transform="translate(${px.toFixed(1)} ${py.toFixed(1)})" tabindex="0" role="button" aria-label="ملدوغ رقم ${ar(k + 1)}: اضغط لينظر"><line class="sl" x1="0" y1="-14" x2="${(cx - px).toFixed(1)}" y2="${(cy - 40 - py).toFixed(1)}"/><circle class="halo" r="17" cy="-4"/><circle class="hd" r="5.5" cy="-17"/><path class="bd" d="M-8 10c0-12 3-20 8-20s8 8 8 20z"/></g>`;
+  }).join('');
+  const scene = `<div class="spx" id="spx"><svg viewBox="0 0 360 290" role="img" aria-label="المحلة والحية النحاسية على الراية">
+<defs><linearGradient id="spsand" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F1E3C4"/><stop offset="1" stop-color="#DCC394"/></linearGradient></defs>
+<rect width="360" height="290" fill="url(#spsand)"/>
+<g class="tents">${[[28, 40], [70, 22], [290, 24], [330, 44], [16, 250], [344, 252]].map(([tx, ty]) => `<path d="M${tx - 14} ${ty + 12}l14-14 14 14z"/>`).join('')}</g>
+<g class="snk">${[[60, 200], [300, 210], [110, 270], [250, 64], [96, 92]].map(([sx, sy]) => `<path d="M${sx} ${sy}c4-6 8-6 12 0s8 6 12 0"/>`).join('')}</g>
+<line x1="${cx}" y1="${cy + 24}" x2="${cx}" y2="${cy - 92}" class="pole"/><line x1="${cx - 14}" y1="${cy - 84}" x2="${cx + 14}" y2="${cy - 84}" class="pole"/>
+<path class="brz" d="M${cx + 1} ${cy - 78}c-15 3-15 12 0 15s15 12 0 15-15 12 0 15"/><circle class="brz-h" cx="${cx + 2}" cy="${cy - 79}" r="3.4"/>
+${people}
+</svg>
+<div class="spbar"><span id="spn">لم ينظر أحد بعد</span><button type="button" class="btn" id="splook">انظر إلى الحية</button><button type="button" class="btn ghost" id="spreset">من جديد</button></div>
+<p class="note">اضغط على أي شخص ليرفع عينيه إلى الراية، أو اضغط «انظر إلى الحية». لم يُطلب من أحد شيء آخر.</p></div>
+<script>(function(){var w=document.getElementById('spx');if(!w)return;var P=w.querySelectorAll('.sp'),n=document.getElementById('spn');
+function cnt(){var k=w.querySelectorAll('.sp.lv').length;n.textContent=k===0?'لم ينظر أحد بعد':k===P.length?'كل من نظر حيا':('نظر '+k.toLocaleString('ar-EG')+' من '+P.length.toLocaleString('ar-EG')+' فحيوا');}
+function look(g){if(g.classList.contains('lv'))return;g.classList.add('lk');setTimeout(function(){g.classList.add('lv');cnt();},650);}
+P.forEach(function(g){g.addEventListener('click',function(){look(g);});g.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();look(g);}});});
+document.getElementById('splook').addEventListener('click',function(){Array.prototype.forEach.call(P,function(g,i){setTimeout(function(){look(g);},i*160);});});
+document.getElementById('spreset').addEventListener('click',function(){P.forEach(function(g){g.classList.remove('lk','lv');});cnt();});})();</script>`;
+  const card = (i, k) => `<article class="xc oc" id="of-${i.id}" data-panel="${i.id}" style="--c:${i.color};--k:${i.ink}"${k ? ' hidden' : ''}>
+<div class="xc-top"><span class="no">الخطوة ${ORD[k + 1]}</span><span class="cy">${r(i.ref)}</span></div>
+<div class="xc-ic">${glyph(i.icon, 72)}</div>
+<h2>${esc(i.name)}</h2>
+<blockquote>${vq(i.ref)}<small>${refLabel(i.ref)}</small></blockquote>
+<div class="xc-sec"><small>ماذا حدث؟</small><p>${md(i.what)}</p></div>
+<div class="xc-sec"><small>المعنى</small><p>${md(i.meaning)}</p></div>
+<div class="xc-nav">${k ? `<a href="#of-${I[k - 1].id}" data-of-go="${I[k - 1].id}">${IC.back}${esc(I[k - 1].short)}</a>` : '<span></span>'}<a class="ch" href="${chapterHref(b, 21, depth)}">${IC.read}العدد ٢١</a>${k < I.length - 1 ? `<a href="#of-${I[k + 1].id}" data-of-go="${I[k + 1].id}">${esc(I[k + 1].short)}${IC.chev}</a>` : '<span></span>'}</div>
+</article>`;
+  return `${header({ back: `${'../'.repeat(depth)}book/${b.slug}.html`, title: 'شرح مصوّر' })}
+<section class="xhero of sp-h">
+<span class="ey" style="color:#D7C49A">${esc(b.name)} ${x.range} · شرح مصوّر</span>
+<h1>${esc(x.title)}</h1>
+<p class="sub">${esc(x.sub)}</p>
+<div class="ofan">${I.map((i) => `<span style="--c:${i.color};--k:${i.ink}">${glyph(i.icon, 28)}<small>${esc(i.short)}</small></span>`).join('')}</div>
+<blockquote>${vq(x.heroRef)}<small>${refLabel(x.heroRef)}</small></blockquote>
+</section>
+<div class="xbody">
+<p class="lead">${md(x.intro)}</p>
+<h3 class="xh"><span>١</span>في المحلة: انظر فتحيا</h3>
+<p class="xp">الملدوغون حول الراية. السم واحد في الجميع، والعلاج واحد للجميع.</p>
+${scene}
+<h3 class="xh"><span>٢</span>القصة في خمس خطوات</h3>
+<div class="tchips" id="ochips" style="grid-template-columns:repeat(5,1fr)">${I.map((i, k) => `<button type="button" data-of-go="${i.id}" style="--c:${i.color};--k:${i.ink}" aria-pressed="${k ? 'false' : 'true'}">${glyph(i.icon, 20)}<span>${esc(i.short)}</span></button>`).join('')}</div>
+<div class="opanels" id="opanels">${I.map(card).join('')}</div>
+<h3 class="xh"><span>٣</span>من الراية إلى الصليب</h3>
+<p class="xp">يسوع نفسه ربط بين الحية والصليب (يو 3: 14–15). قارن العمودين.</p>
+<div class="sptype"><div class="sph"><span></span><b>العدد ٢١</b><b>يوحنا ٣ والصليب</b></div>${x.type.map((t) => `<div class="spr"><span>${esc(t[0])}</span><p>${md(t[1])}</p><p>${md(t[2])}</p></div>`).join('')}</div>
+<h3 class="xh"><span>٤</span>قصة الحية عبر الكتاب</h3>
+<div class="sptl">${x.timeline.map((t) => `<a href="${refHref(t.ref, depth)}"><small>${esc(t.y)} · ${refLabel(t.ref)}</small><b>${esc(t.t)}</b><span>${md(t.d)}</span></a>`).join('')}</div>
+<h3 class="xh"><span>٥</span>سؤال صعب</h3>
+<div class="blk xhard"><h3>${md(x.hard.q)}</h3><p>${md(x.hard.a)}</p></div>
+</div>
+<section class="xchrist">
+<div class="dd">${glyph('serpent', 70)}</div>
+<span class="ey" style="color:#D7C49A">من القديم إلى الجديد</span>
+<h2>هكذا ينبغي أن يُرفع ابن الإنسان</h2>
+<blockquote>${vq(x.christ.ref)}<small>${refLabel(x.christ.ref)}</small></blockquote>
+${x.christ.p.map((p) => `<p>${md(p)}</p>`).join('')}
+<a class="btn l" href="${chapterHref(b, 21, depth)}">${IC.read}ادرس العدد ٢١</a>
 </section>`;
 }
