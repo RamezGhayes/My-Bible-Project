@@ -39,6 +39,8 @@ const chTitle = (b, n) => `${shortName(b)} ${ar(n)}`;
 const prevOf = (b, n) => (n > 1 ? { b, n: n - 1 } : b.order > 1 ? { b: books[b.order - 2], n: books[b.order - 2].chapters } : null);
 const nextOf = (b, n) => (n < b.chapters ? { b, n: n + 1 } : b.order < 66 ? { b: books[b.order], n: 1 } : null);
 const quoteText = (ref) => { const t = verseText(ref).replace(/[.،:؛,]\s*$/, ''); return t; };
+// the site's verse, without a psalm title (superscription) if the range starts at verse 1
+const mainVerse = () => quoteText(config.verseRef).replace(/^مَزْمُورٌ[^،.]*?يَهُوذَا\s+/, '');
 const firstRef = (r) => arr(r)[0];
 
 // ---------- assets ----------
@@ -52,7 +54,7 @@ const personHref = (p, depth) => (hasPage(p) ? `${up(depth)}people/${p.id}.html`
 
 // ---------- splash + home ----------
 function home() {
-  const ps = quoteText(config.verseRef);
+  const ps = mainVerse();
   const splash = `<div id="splash" hidden role="dialog" aria-label="مقدمة"><div class="wm">${esc(config.nameAr)}</div><div class="vs">${esc(ps)}</div><div class="rf">${refLabel(config.verseRef)}</div><div class="ln"></div><button type="button" data-enter>ادخل</button><small>دراسة الكتاب المقدس من منظور مُصلَح</small></div>`;
   const g = bookById.Gen;
   const studied = (t) => books.filter((b) => b.testament === t).reduce((n, b) => n + Object.keys(content[b.id]?.chapters || {}).length, 0);

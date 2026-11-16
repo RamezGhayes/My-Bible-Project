@@ -45,7 +45,7 @@ ${body}
 </main>
 <footer class="site-footer">
   <div class="wrap footer-row">
-    <p class="footer-verse">«${esc(verseText(config.verseRef).replace(/\.$/, ''))}» <span>${refLabel(config.verseRef)}</span></p>
+    <p class="footer-verse">«${esc(verseText(config.verseRef).replace(/^مَزْمُورٌ[^،.]*?يَهُوذَا\s+/, '').replace(/\.$/, ''))}» <span>${refLabel(config.verseRef)}</span></p>
     <p class="footer-meta">${esc(config.name)} · نص الكتاب المقدس: ${esc(config.bibleVersion)}</p>
   </div>
 </footer>
