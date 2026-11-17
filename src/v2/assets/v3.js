@@ -245,7 +245,7 @@
   $$('[data-share]').forEach(function (box) {
     var parts = box.getAttribute('data-share').split('|'), book = parts[0], ch = +parts[1];
     var bar = document.createElement('div'); bar.className = 'shr3'; bar.hidden = true;
-    bar.innerHTML = '<span data-sl></span><button type="button" data-copy>نسخ</button><button type="button" data-img>صورة للمشاركة</button><button type="button" data-clear aria-label="إلغاء التحديد">×</button>';
+    bar.innerHTML = '<span data-sl></span><button type="button" data-xr hidden>شواهد مرتبطة</button><button type="button" data-copy>نسخ</button><button type="button" data-img>صورة للمشاركة</button><button type="button" data-clear aria-label="إلغاء التحديد">×</button>';
     document.body.appendChild(bar);
     var sel = [];
     var picked = function () { return sel.slice().sort(function (a, b) { return a - b; }); };
@@ -254,7 +254,10 @@
     var paint = function () {
       $$('.v', box).forEach(function (v) { v.classList.toggle('sel3', sel.indexOf(+v.id.slice(1)) >= 0); });
       bar.hidden = !sel.length; if (sel.length) $('[data-sl]', bar).textContent = refOf();
+      var xb = $('[data-xr]', bar); if (xb) xb.hidden = !(sel.length === 1 && box.hasAttribute('data-xref'));
     };
+    var xb0 = $('[data-xr]', bar);
+    if (xb0) xb0.addEventListener('click', function () { if (window.openXref) window.openXref(box.getAttribute('data-xref') + '.' + sel[0], refOf()); });
     box.addEventListener('click', function (e) {
       var v = e.target.closest('.v'); if (!v || e.target.closest('a') || e.target.closest('.gw')) return;
       var n = +v.id.slice(1), i = sel.indexOf(n);
@@ -344,4 +347,52 @@
     var hashG = function () { var c = location.hash && document.getElementById(decodeURIComponent(location.hash.slice(1))); if (c && c.classList.contains('gl3c')) { toggle(c, true); c.classList.add('hit'); setTimeout(function () { c.classList.remove('hit'); }, 1800); setTimeout(function () { c.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' }); }, 40); } };
     window.addEventListener('hashchange', hashG); hashG();
   }
+  // ---------- cross references (Treasury of Scripture Knowledge) ----------
+  (function () {
+    var rootX = document.body.getAttribute('data-root') || '';
+    var sheet = null, cache = {};
+    var AR3 = function (n) { return String(n).replace(/\d/g, function (d) { return '٠١٢٣٤٥٦٧٨٩'[d]; }); };
+    var needScript = function (src, test, cb) { if (test()) return cb(); var s = document.createElement('script'); s.src = rootX + src; s.onload = cb; document.head.appendChild(s); };
+    var bookOf = function (id) { var R = window.SIDX.refs; for (var i = 0; i < R.length; i++) if (R[i][5] === id) return [i, R[i]]; return null; };
+    var label = function (r) {
+      var m = r.match(/^(\w+)\.(\d+)\.(\d+)(?:-(?:(\w+)\.(\d+)\.)?(\d+))?$/); if (!m) return r;
+      var b = bookOf(m[1]); if (!b) return r;
+      var s = b[1][0] + ' ' + AR3(m[2]) + ': ' + AR3(m[3]);
+      if (m[6]) s += m[4] && (m[4] !== m[1] || m[5] !== m[2]) ? '–' + AR3(m[5]) + ': ' + AR3(m[6]) : '–' + AR3(m[6]);
+      return s;
+    };
+    var textOf = function (r) {
+      var m = r.match(/^(\w+)\.(\d+)\.(\d+)/), b = m && bookOf(m[1]); if (!b) return '';
+      if (!window.__BT) window.__BT = window.BTXT.split('\v');
+      var ch = window.__BT[b[0]].split('\f')[+m[2] - 1]; return ch ? (ch.split('\n')[+m[3] - 1] || '') : '';
+    };
+    var hrefOf = function (r) { var m = r.match(/^(\w+)\.(\d+)\.(\d+)/), b = m && bookOf(m[1]); if (!b) return '#'; return rootX + (b[1][4] ? 'book/' + b[1][2] + '.html' : 'book/' + b[1][2] + '/' + m[2] + '.html#v' + m[3]); };
+    var close = function () { if (sheet) sheet.hidden = true; };
+    window.openXref = function (key, title) {
+      if (!sheet) {
+        sheet = document.createElement('div'); sheet.className = 'xr3'; sheet.setAttribute('role', 'dialog'); sheet.setAttribute('aria-label', 'شواهد مرتبطة');
+        sheet.innerHTML = '<div class="pn"><header><div><small>شواهد مرتبطة</small><b data-xt></b></div><button type="button" class="x" aria-label="إغلاق">×</button></header><div class="ls" data-xl></div><footer>المصدر: كنز المعرفة الكتابية (Treasury of Scripture Knowledge)، ملكية عامة. الشواهد فقط، والنص من فاندايك بلا تشكيل. اضغط الشاهد لتقرأه مشكولاً في سياقه.</footer></div>';
+        document.body.appendChild(sheet);
+        sheet.addEventListener('click', function (e) { if (e.target === sheet || e.target.closest('.x')) close(); });
+        document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+      }
+      $('[data-xt]', sheet).textContent = title; var list = $('[data-xl]', sheet); list.innerHTML = '<p class="shint">جارٍ التحميل…</p>'; sheet.hidden = false;
+      var p = key.split('.'), file = 'xref/' + p[0] + '/' + p[1] + '.json';
+      var show = function (data) {
+        var refs = (data && data[p[2]]) || [];
+        if (!refs.length) { list.innerHTML = '<p class="shint">لا توجد شواهد مرتبطة بهذه الآية في المصدر.</p>'; return; }
+        var draw = function (n) {
+          list.innerHTML = refs.slice(0, n).map(function (r) { var t = textOf(r); return '<a href="' + hrefOf(r) + '"><small>' + label(r) + '</small><span>' + (t.length > 180 ? t.slice(0, 178).replace(/\s+\S*$/, '') + '…' : t).replace(/[&<>]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]; }) + '</span></a>'; }).join('') + (refs.length > n ? '<button type="button" class="all" data-more>عرض كل الشواهد (' + AR3(refs.length) + ')</button>' : '');
+          var mb = $('[data-more]', list); if (mb) mb.addEventListener('click', function () { draw(refs.length); });
+        };
+        draw(12);
+      };
+      needScript('assets/search.js', function () { return !!window.SIDX; }, function () {
+        needScript('assets/bible-search.js', function () { return !!window.BTXT; }, function () {
+          if (cache[file]) return show(cache[file]);
+          fetch(rootX + file).then(function (r) { return r.ok ? r.json() : {}; }).then(function (d) { cache[file] = d; show(d); }).catch(function () { list.innerHTML = '<p class="shint">تعذّر تحميل الشواهد. تأكد من الاتصال.</p>'; });
+        });
+      });
+    };
+  })();
 })();

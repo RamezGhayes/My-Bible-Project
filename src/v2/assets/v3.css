@@ -835,3 +835,19 @@ html[data-read=night] .rtools button:not(.thm3 button),html[data-read=contrast] 
 .sgrp .vh span{font-family:var(--nas);font-size:15.5px;line-height:1.9;color:#3B3833}
 .sgrp mark{background:rgba(179,148,89,.35);color:inherit;border-radius:3px;padding:0 1px}
 .sgrp h3{padding-inline:16px}.sgrp .vh{padding-inline:16px}
+/* ---------- cross references sheet ---------- */
+.xr3{position:fixed;inset:0;z-index:220;background:rgba(23,25,30,.45);display:flex;align-items:flex-end;justify-content:center;animation:v3fade .25s both}
+.xr3[hidden]{display:none}
+.xr3 .pn{width:min(560px,100%);max-height:82vh;background:var(--paper);border-radius:24px 24px 0 0;display:flex;flex-direction:column;animation:v3rise .35s var(--ease) both}
+.xr3 header{display:flex;justify-content:space-between;align-items:flex-start;padding:18px 20px 12px;border-bottom:1px solid var(--line)}
+.xr3 header small{font-family:var(--ui);font-size:12px;color:#7A6232;font-weight:600}
+.xr3 header b{display:block;font-family:var(--ui);font-weight:600;font-size:20px}
+.xr3 .x{width:36px;height:36px;border-radius:18px;background:var(--cream);font-size:20px}
+.xr3 .ls{overflow:auto;padding:6px 0}
+.xr3 .ls a{display:flex;flex-direction:column;gap:2px;padding:12px 20px;border-bottom:1px solid var(--line)}
+.xr3 .ls a:hover{background:#fff}
+.xr3 .ls small{font-family:var(--ui);font-size:12.5px;font-weight:600;color:var(--accent)}
+.xr3 .ls span{font-family:var(--nas);font-size:16px;line-height:1.9;color:#3B3833}
+.xr3 .all{margin:12px 20px;height:44px;border-radius:22px;background:var(--ink);color:var(--paper);font-family:var(--ui);font-size:14px;width:calc(100% - 40px)}
+.xr3 footer{padding:10px 20px 16px;font-family:var(--ui);font-size:11.5px;color:var(--faint);border-top:1px solid var(--line)}
+@media (min-width:760px){.xr3{align-items:center}.xr3 .pn{border-radius:24px}}

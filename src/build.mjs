@@ -260,7 +260,7 @@ function readerHTML(b, n, S, depth, { overlay }) {
   return `${head}
 <div class="rtools"><span>${esc(config.bibleVersion)}</span><span style="display:flex;gap:6px"><button type="button" data-size="-1" aria-label="تصغير الخط">أ−</button><button type="button" data-size="1" aria-label="تكبير الخط">أ+</button></span><span class="thm3" role="group" aria-label="ألوان القراءة (لهذه الزيارة فقط)">${[['light', 'فاتح'], ['paper', 'ورقي'], ['night', 'ليلي'], ['contrast', 'تباين عالٍ']].map(([k, l]) => `<button type="button" data-theme3="${k}" aria-label="${l}" title="${l}"></button>`).join('')}</span></div>
 ${overlay ? '' : `<div class="dh"><span class="ey">${esc(b.name)} · الأصحاح ${ar(n)} من ${ar(b.chapters)}</span><h1>${chTitle(b, n)}</h1></div><div class="soon">دراسة هذا الأصحاح قيد الإعداد. اقرأ النص الآن، وستُضاف قريباً القصة والخريطة والشخصيات والدراسة الكاملة.</div>`}
-<div class="rbody" data-share="${esc(b.name)}|${n}"><p class="shint">اضغط أي آية (حتى ست آيات) لتنسخها أو تحفظها صورة للمشاركة. والكلمة التي تحتها خط منقّط لها شرح في القاموس.</p><div class="scr" lang="ar">${vs.map((v) => `${per[v.number] ? `</div><div class="peri">${md(per[v.number])}</div><div class="scr">` : ''}<span class="v${v.number >= key[0] && v.number <= key[1] ? ' key' : ''}" id="v${v.number}"><span class="vn">${ar(v.number)}</span>${GL.html(v)}</span> `).join('')}</div></div>${GL.cards}
+<div class="rbody" data-share="${esc(b.name)}|${n}" data-xref="${b.id}.${n}"><p class="shint">اضغط أي آية لتنسخها، أو تحفظها صورة، أو ترى الشواهد المرتبطة بها. والكلمة التي تحتها خط منقّط لها شرح في القاموس.</p><div class="scr" lang="ar">${vs.map((v) => `${per[v.number] ? `</div><div class="peri">${md(per[v.number])}</div><div class="scr">` : ''}<span class="v${v.number >= key[0] && v.number <= key[1] ? ' key' : ''}" id="v${v.number}"><span class="vn">${ar(v.number)}</span>${GL.html(v)}</span> `).join('')}</div></div>${GL.cards}
 ${nav}`;
 }
 
@@ -529,7 +529,7 @@ function searchIndex() {
   for (const t of TOPICS) add('t', t.ar, 'موضوع كتابي · ' + t.short.slice(0, 60), `topics/${t.id}.html`);
   for (const w of buildLibrary({ books, content }).works) add('l', w.title, 'المكتبة · ' + w.n, 'library.html#' + w.id);
   for (const e of GLOSSARY) add('g', e.w, 'القاموس · ' + e.d.slice(0, 70), 'glossary.html#' + e.id);
-  const refs = books.map((b) => [b.name, b.abbr, b.slug, b.chapters, previewSkip(b) ? 1 : 0]);
+  const refs = books.map((b) => [b.name, b.abbr, b.slug, b.chapters, previewSkip(b) ? 1 : 0, b.id]);
   fs.writeFileSync(path.join(DIST, 'assets/search.js'), `window.SIDX=${JSON.stringify({ refs, items })};`);
   // Full text of Van Dyck for searching inside verses, loaded only when someone searches the text.
   // Shown as written, without vowel marks (spelling, hamza, ة and ى kept). The page folds a copy for matching; folding is one letter for one letter, so positions line up.
@@ -577,6 +577,23 @@ if (process.env.OG) {
   for (const t of TOPICS) card(`topic-${t.id}`, `موضوع كتابي · ${GN[t.group]}`, t.ar, t.short, `<div class="em" style="background:${GC[t.group]};color:#FAF8F4">${glyph(EMB[t.group], 120)}</div>`);
   card('tree', 'شجرة العائلة · سفر التكوين', 'خط الوعد', 'من آدم إلى أسباط إسرائيل الاثني عشر، وكل اسم مربوط بآيته.', []);
   card('harmony', 'الأناجيل جنباً إلى جنب', 'إشباع الخمسة الآلاف', 'حادثة واحدة في الأناجيل الأربعة: ما تتفق عليه، وما ينفرد به كل إنجيل.', []);
+}
+
+// ---------- cross references (Treasury of Scripture Knowledge) ----------
+// One small file per chapter: { verse: [refs...] } in TSK order. Every reference must exist in Van Dyck, or the build stops.
+{
+  const X = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/sources/tsk-xref.json'), 'utf8')).x;
+  const has = (id, c, v) => { const B = bookById[id] && bible(id); return !!(B && B.chapters[c - 1] && B.chapters[c - 1].verses[v - 1]); };
+  const per = {};
+  for (const [k, refs] of Object.entries(X)) {
+    const [id, c, v] = k.split('.');
+    for (const r of refs) { const m = r.match(/^(\w+)\.(\d+)\.(\d+)(?:-(\w+)\.(\d+)\.(\d+))?$/); if (!m || !has(m[1], +m[2], +m[3]) || (m[4] && !has(m[4], +m[5], +m[6]))) throw new Error(`TSK: ${k} -> ${r} not in Van Dyck`); }
+    ((per[id] ||= {})[c] ||= {})[v] = refs.map((r) => r.replace(/^(\w+)\.(\d+)\.(\d+)-\1\.\2\.(\d+)$/, '$1.$2.$3-$4'));
+  }
+  for (const [id, chs] of Object.entries(per)) for (const [c, vs] of Object.entries(chs)) {
+    const dir = path.join(DIST, 'xref', id); fs.mkdirSync(dir, { recursive: true });
+    fs.writeFileSync(path.join(dir, `${c}.json`), JSON.stringify(vs));
+  }
 }
 
 // ---------- offline reading (PWA) ----------
