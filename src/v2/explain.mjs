@@ -110,61 +110,106 @@ export function explainPage(x, depth) {
 <div class="xc-sec"><small>فرعون</small><p>${md(p.pharaoh)}</p></div>
 <div class="xc-nav">${p.n > 1 ? `<a href="#pl${p.n - 1}" data-go="${p.n - 1}">${IC.back}${esc(P[p.n - 2].name)}</a>` : '<span></span>'}<a class="ch" href="${chapterHref(b, p.ch, depth)}">${IC.read}${esc(b.name.replace(/^سفر /, ''))} ${ar(p.ch)}</a>${p.n < 10 ? `<a href="#pl${p.n + 1}" data-go="${p.n + 1}">${esc(P[p.n].name)}${IC.chev}</a>` : '<span></span>'}</div>
 </article>`;
+  // Literal Van Dyck fragments for the Passover scene; the build stops if any is not found in the verse.
+  const norm = (w) => w.replace(/[ً-ْٰـ]/g, '').replace(/[ٱأإآ]/g, 'ا').replace(/[.،:؛,«»]/g, '');
+  const piece = (ref, t) => {
+    const vw = verseText(ref).split(/\s+/), tw = t.split(/\s+/).map(norm);
+    for (let i = 0; i + tw.length <= vw.length; i++) if (tw.every((w, j) => norm(vw[i + j]) === w)) return vw.slice(i, i + tw.length).join(' ').replace(/[.،:؛,]$/, '');
+    throw new Error(`Passover caption not in ${ref}: ${t}`);
+  };
+  const caps = [
+    [piece('Exod.12.7', 'ويأخذون من الدم ويجعلونه على القائمتين والعتبة العليا'), 'Exod.12.7'],
+    [piece('Exod.12.12', 'فاني اجتاز في ارض مصر هذه الليلة'), 'Exod.12.12'],
+    [piece('Exod.12.13', 'فارى الدم واعبر عنكم'), 'Exod.12.13']
+  ];
+  const thread = (k) => P.map((p) => {
+    let c = '', t = '';
+    if (k === 'magi') { if (p.magi) { c = p.n <= 2 ? 'imit' : 'fail'; t = p.magi; } }
+    if (k === 'goshen') { if (p.goshen) { c = 'kept'; t = `التمييز مذكور صراحة (${refLabel(p.goshen)}).`; } }
+    if (k === 'heart') { c = p.heart.who === 'l' ? 'lord' : 'self'; t = `${p.heart.t} (${refLabel(p.heart.ref)}).`; }
+    return `<button type="button" class="pt3c ${c || 'none'}" style="--pc:${p.color}" data-t="${esc(t || 'النص لا يذكر هذا الخيط في هذه الضربة.')}" data-h="${esc(`الضربة ${ORD[p.n]} · ${p.name}`)}" aria-label="الضربة ${ORD[p.n]}">${ar(p.n)}</button>`;
+  }).join('');
+  const legend = { magi: [['imit', 'قلّدوها'], ['fail', 'عجزوا']], goshen: [['kept', 'تمييز صريح بين مصر وجاسان']], heart: [['self', 'فرعون يقسّي قلبه'], ['lord', 'الرب يشدد قلب فرعون']] };
+  const sh = (n, t, sub, dark) => `<div class="p3h${dark ? ' dk' : ''}"><div><span>${ar(n)}</span><h2>${t}</h2></div><p>${sub}</p></div>`;
+  const bigTile = (p, last) => `<a class="p3t${last ? ' last' : ''}" href="#pl${p.n}" data-go="${p.n}" style="--c:${p.color};--k:${p.ink}"><em>${ar(p.n)}</em>${glyph(p.icon, last ? 44 : 40)}${last ? `<span><b>${ar(10)} · ${esc(p.name)}</b><small>الرب نفسه يجتاز في مصر نصف الليل، والدم على الأبواب هو الفرق الوحيد.</small></span>` : `<b>${esc(p.name)}</b>`}</a>`;
+  const deep = [
+    ['لماذا الضربات؟', 'عبارة واحدة تتكرر: «أني أنا الرب».', `<div class="xpurp">${x.purposes.map((u, i) => `<div class="xpu" style="--i:${i}"><b>${esc(u.t)}</b><q>${vq(u.ref)}</q><small>${r(u.ref)}</small><p>${md(u.d)}</p></div>`).join('')}</div>`],
+    ['الخليقة تنقلب', 'ما رتبه الله في التكوين ينقلب على مصر.', `<div class="xcre">${x.creation.map((c) => { const p = P[c.n - 1]; return `<div class="xcr"><span class="g">${esc(c.g)}</span><span class="ar">←</span><span class="e" style="--c:${p.color};--k:${p.ink}">${glyph(p.icon, 22)}${esc(c.e)}</span></div>`; }).join('')}</div><p class="note">${md(x.creationNote)}</p>`],
+    ['أصداء في الرؤيا', `${ar(x.echoes.length)} ضربات تعود في دينونة الله الأخيرة.`, `<div class="xecho">${x.echoes.map((e) => { const p = P[e.n - 1]; return `<a href="${refHref(e.ref, depth)}" style="--c:${p.color};--k:${p.ink}"><span class="ic2">${glyph(p.icon, 26)}</span><span><b>${esc(p.name)}</b><small>${esc(e.t)} · ${refLabel(e.ref)}</small></span></a>`; }).join('')}</div><p class="note">${md(x.echoNote)}</p>`],
+    ['سؤال صعب', esc(x.hard.q.replace(/\*\*/g, '')), `<p>${md(x.hard.a)}</p>`]
+  ];
   const body = `${header({ back: `${'../'.repeat(depth)}book/${b.slug}.html`, title: 'شرح مصوّر' })}
-<section class="xhero">
-<span class="ey" style="color:#D7C49A">${esc(b.name)} ٧ – ١٢ · شرح مصوّر</span>
-<h1>${esc(x.title)}</h1>
-<p class="sub">${esc(x.sub)}</p>
-<div class="xrain">${P.map((p) => `<i style="--c:${p.color}"></i>`).join('')}</div>
-<blockquote>${vq(x.heroRef)}<small>${refLabel(x.heroRef)}</small></blockquote>
+<section class="p3hero">
+<div class="in">
+<div class="tx"><span class="ey">شرح مصوّر · ${esc(b.name)} ${ar(x.chapters[0])}–${ar(x.chapters[x.chapters.length - 1])}</span><h1>${esc(x.title)}</h1><p class="sub">${esc(x.sub)}</p>
+<blockquote>${vq(x.heroRef)}<small>${refLabel(x.heroRef)}</small></blockquote></div>
+<div class="mo" aria-hidden="true">${P.map((p, k) => `<i style="--c:${p.color};--k:${p.ink};--d:${(0.15 + k * 0.08).toFixed(2)}s">${glyph(p.icon, 44)}</i>`).join('')}</div>
+</div>
+<nav class="p3nav" aria-label="أقسام الشرح">${['النمط', 'الضربات واحدة واحدة', 'القصة تشتد', 'الفصح', 'للتعمق', 'اختبر نفسك'].map((t, k) => `<a href="#s${k + 1}">${t}</a>`).join('')}</nav>
 </section>
-<div class="xbody">
-<p class="lead">${md(x.intro)}</p>
+<div class="p3b">
+<p class="p3lead">${md(x.intro)}</p>
 
-<h3 class="xh"><span>١</span>النمط: ثلاث جولات وضربة أخيرة</h3>
-<p class="xp">الضربات ليست عشوائية. تأتي في ثلاث جولات، كل جولة فيها ثلاث ضربات بنفس الترتيب. اضغط على أي ضربة لتفتحها.</p>
-<div class="xgrid">
-<div class="xcol"><span></span>${x.cycles.map((c) => `<span class="xch">${esc(c.t)}</span>`).join('')}</div>
-${[0, 1, 2].map((row) => `<div class="xrow"><span class="xrl">الجولة ${['الأولى', 'الثانية', 'الثالثة'][row]}</span>${grid.slice(row * 3, row * 3 + 3).map(tile).join('')}</div>`).join('')}
-<div class="xrow last"><span class="xrl">الختام</span>${tile(P[9])}<span class="xlast">الرب نفسه يجتاز في مصر نصف الليل، والدم على الأبواب هو الفرق الوحيد.</span></div>
+<section id="s1" class="p3s">${sh(1, 'ثلاث جولات، وضربة أخيرة', 'كل جولة فيها ثلاث ضربات بالترتيب نفسه. اضغط أي ضربة لتفتح بطاقتها.')}
+<div class="p3grid">
+<span></span>${x.cycles.map((c) => `<span class="ch">${esc(c.t)}</span>`).join('')}
+${[0, 1, 2].map((row) => `<span class="rl">الجولة ${['الأولى', 'الثانية', 'الثالثة'][row]}</span>${grid.slice(row * 3, row * 3 + 3).map((p) => bigTile(p)).join('')}`).join('')}
+<span class="rl">الختام</span>${bigTile(P[9], true)}
 </div>
 <div class="xkeys">${x.cycles.map((c, i) => `<div><b>${ar(i + 1)}</b><span><strong>${esc(c.t)}:</strong> ${md(c.d)}</span></div>`).join('')}</div>
+</section>
 
-<h3 class="xh"><span>٢</span>القصة تشتد</h3>
-<p class="xp">تابع ثلاثة خيوط عبر الضربات العشر. اضغط على أي رقم لترى ما يقوله النص.</p>
-<div class="xtracks">${x.tracks.map((t) => `<div class="xtr" data-track="${t.k}"><div class="xtl"><b>${esc(t.t)}</b><small>${md(t.d)}</small></div><div class="tcs">${track(t.k)}</div><div class="tip" aria-live="polite"></div></div>`).join('')}
-<div class="xleg"><span><i class="mid"></i>${'فرعون / السحرة يقلّدون'}</span><span><i class="on"></i>${'الرب يشدد / تمييز / عجز'}</span><span><i class="off"></i>لا يُذكر</span></div></div>
-
-<h3 class="xh"><span>٣</span>الضربات واحدة واحدة</h3>
-<p class="xp">اسحب يميناً ويساراً، أو اضغط على شريط الأرقام.</p>
-<div class="xnums" id="xnums">${P.map((p) => `<button type="button" data-go="${p.n}" style="--c:${p.color};--k:${p.ink}">${ar(p.n)}</button>`).join('')}</div>
+<section id="s2" class="p3s">${sh(2, 'الضربات واحدة واحدة', 'اسحب أو اضغط على الأرقام. كل بطاقة: ماذا حدث، وضد من، وماذا تعني.')}
+<div class="xnums" id="xnums">${P.map((p) => `<button type="button" data-go="${p.n}" style="--c:${p.color};--k:${p.ink}" aria-label="الضربة ${ORD[p.n]}: ${esc(p.name)}">${ar(p.n)}</button>`).join('')}</div>
+</section>
 </div>
-<div class="xcards" id="xcards">${P.map(card).join('')}</div>
-<div class="xbody">
+<div class="xcards p3cards" id="xcards">${P.map(card).join('')}</div>
+<div class="p3b">
 
-<h3 class="xh"><span>٤</span>لماذا الضربات؟</h3>
-<p class="xp">عبارة واحدة تتكرر في القصة: «أني أنا الرب». الضربات رسالة قبل أن تكون عقوبة.</p>
-<div class="xpurp">${x.purposes.map((u, i) => `<div class="xpu" style="--i:${i}"><b>${esc(u.t)}</b><q>${vq(u.ref)}</q><small>${r(u.ref)}</small><p>${md(u.d)}</p></div>`).join('')}</div>
-
-<h3 class="xh"><span>٥</span>الخليقة تنقلب على مصر</h3>
-<div class="xcre">${x.creation.map((c) => { const p = P[c.n - 1]; return `<div class="xcr"><span class="g">${esc(c.g)}</span><span class="ar">←</span><span class="e" style="--c:${p.color};--k:${p.ink}">${glyph(p.icon, 22)}${esc(c.e)}</span></div>`; }).join('')}</div>
-<p class="note">${md(x.creationNote)}</p>
-
-<h3 class="xh"><span>٦</span>صدى الضربات في سفر الرؤيا</h3>
-<div class="xecho">${x.echoes.map((e) => { const p = P[e.n - 1]; return `<a href="${refHref(e.ref, depth)}" style="--c:${p.color};--k:${p.ink}"><span class="ic2">${glyph(p.icon, 26)}</span><span><b>${esc(p.name)}</b><small>${esc(e.t)} · ${refLabel(e.ref)}</small></span></a>`; }).join('')}</div>
-<p class="note">${md(x.echoNote)}</p>
-
-<h3 class="xh"><span>٧</span>سؤال صعب</h3>
-<div class="blk xhard"><h3>${md(x.hard.q)}</h3><p>${md(x.hard.a)}</p></div>
+<section id="s3" class="p3s">${sh(3, 'القصة تشتد', 'ثلاثة خيوط تمتد عبر الضربات العشر. اختر خيطاً، ثم اضغط أي ضربة.')}
+<div class="p3th" data-threads>
+<div class="tabs" role="tablist" aria-label="الخيوط">${x.tracks.map((t, i) => `<button type="button" role="tab" aria-selected="${i === 2}" data-th="${t.k}">${esc(t.t)}</button>`).join('')}</div>
+${x.tracks.map((t, i) => `<div class="pane" data-pane="${t.k}"${i === 2 ? '' : ' hidden'}><p class="d">${md(t.d)}</p><div class="cells">${thread(t.k)}</div><div class="leg">${legend[t.k].map(([c, l]) => `<span><i class="pt3c ${c}"></i>${l}</span>`).join('')}<span><i class="pt3c none"></i>لا يُذكر</span></div></div>`).join('')}
+<div class="det" aria-live="polite"><b>اختر ضربة</b><span>اضغط أي رقم لترى ما يقوله النص.</span></div>
 </div>
-<section class="xchrist">
-<div class="dd">${glyph('door', 70)}</div>
-<span class="ey" style="color:#D7C49A">من القديم إلى الجديد</span>
-<h2>الدم على الباب</h2>
-<blockquote>${vq(x.christ.ref)}<small>${refLabel(x.christ.ref)}</small></blockquote>
-${x.christ.p.map((p) => `<p>${md(p)}</p>`).join('')}
-<a class="btn l" href="${chapterHref(b, 12, depth)}">${IC.read}ادرس الأصحاح الثاني عشر: الفصح</a>
-</section>`;
+</section>
+</div>
+
+<section id="s4" class="p3pass" data-pass>
+<div class="p3b">${sh(4, 'الفصح: الفرق الوحيد كان الدم', 'الضربة العاشرة لم تميز بين بيت وبيت على أساس الجنس أو الصلاح. شاهد المشهد.', true)}</div>
+<svg class="stars" viewBox="0 0 1440 200" preserveAspectRatio="none" aria-hidden="true"><path d="M120 60h2M300 40h2M520 90h2M760 30h2M980 70h2M1180 50h2M1320 100h2M210 120h2M640 140h2M880 120h2M1080 150h2M420 70h2"/></svg>
+<div class="houses" aria-hidden="true">${[0, 1, 1, 0, 1].map((m) => `<div class="hs${m ? ' m' : ''}"><i class="wall"></i><i class="win"></i><i class="door"></i>${m ? '<i class="lin"></i><i class="po a"></i><i class="po b"></i>' : ''}</div>`).join('')}</div>
+<div class="ground"></div>
+<div class="cap">
+<p class="q" data-cap>اضغط لتشاهد ليلة الفصح</p><small data-capref></small>
+<button type="button" data-play>شاهد المشهد</button>
+<noscript><p class="q">${caps.map((c) => esc(c[0])).join(' … ')}</p></noscript>
+<template data-caps>${caps.map(([t, ref]) => `<i data-t="${esc(t)}" data-r="${refLabel(ref)}"></i>`).join('')}</template>
+<div class="end">${x.christ.p.map((p) => `<p>${md(p)}</p>`).join('')}</div>
+</div>
+</section>
+
+<div class="p3b">
+<section id="s5" class="p3s">${sh(5, 'للتعمق', 'نوافذ لمن يريد أكثر. كل واحدة تُفتح وحدها.')}
+<div class="p3deep">${deep.map(([t, d], k) => `<button type="button" aria-expanded="false" aria-controls="dp${k}" data-deep="${k}"><b>${t}</b><span>${d}</span><em>افتح</em></button>`).join('')}</div>
+${deep.map(([t, , h], k) => `<div class="p3panel" id="dp${k}" hidden><h3>${t}</h3>${h}</div>`).join('')}
+</section>
+
+<section id="s6" class="p3s">${sh(6, 'اختبر نفسك', `${ar(x.quiz.length)} أسئلة سريعة. كل جواب له شاهد من النص. لا يُحفظ شيء.`)}
+<div class="p3quiz" data-quiz>
+<div class="qtop"><span data-qn>السؤال ${ar(1)} من ${ar(x.quiz.length)}</span><span class="bar"><i data-qbar></i></span></div>
+${x.quiz.map((q, i) => `<article class="qz" data-a="${q.a}"${i ? ' hidden' : ''}><h3>${esc(q.q)}</h3><div class="op">${q.o.map((o, k) => `<button type="button" data-k="${k}">${esc(o)}</button>`).join('')}</div><div class="why" hidden><b></b><p>${esc(q.why)} <a class="r" href="${refHref(q.ref, depth)}">${refLabel(q.ref)}</a></p></div></article>`).join('')}
+<div class="qend" hidden><b data-qscore></b><p>راجع أي ضربة من البطاقات أعلاه، أو أعد الاختبار.</p><button type="button" data-qagain>أعد الاختبار</button></div>
+<button type="button" class="qnext" data-qnext hidden>السؤال التالي</button>
+</div>
+<a class="p3present" href="plagues-present.html">${IC.read}<span><b>وضع العرض</b><small>شرائح للبروجكتور ومدارس الأحد، مع ملاحظات للمعلم</small></span>${IC.chev}</a>
+</section>
+
+<section class="p3s p3next">
+<a href="${'../'.repeat(depth)}maps.html"><small>عودة</small><b>كل الشروح المصوّرة</b></a>
+<a class="dk" href="${chapterHref(b, 12, depth)}"><small>التالي</small><b>ادرس الأصحاح الثاني عشر: الفصح</b>${IC.chev}</a>
+</section>
+</div>`;
   return body;
 }
 
@@ -572,4 +617,31 @@ ${scene}
 ${x.christ.p.map((p) => `<p>${md(p)}</p>`).join('')}
 <a class="btn l" href="${chapterHref(b, 21, depth)}">${IC.read}ادرس العدد ٢١</a>
 </section>`;
+}
+
+// ---------- plagues: presentation mode (projector / Sunday school) ----------
+export function plaguesPresent(x, depth) {
+  const P = x.plagues;
+  const norm = (w) => w.replace(/[ً-ْٰـ]/g, '').replace(/[ٱأإآ]/g, 'ا').replace(/[.،:؛,«»؟]/g, '');
+  const piece = (ref, t) => {
+    const vw = verseText(ref).split(/\s+/), tw = t.split(/\s+/).map(norm);
+    for (let i = 0; i + tw.length <= vw.length; i++) if (tw.every((w, j) => norm(vw[i + j]) === w)) return vw.slice(i, i + tw.length).join(' ').replace(/[«»]/g, '').replace(/[.،:؛,]$/, '');
+    throw new Error(`Present: fragment not in ${ref}: ${t}`);
+  };
+  const slides = [];
+  slides.push({ bg: '#17191E', fg: '#FAF8F4', title: x.title, note: 'ابدأ بسؤال: ماذا تعرف عن الضربات العشر؟ ثم اقرأ الخروج ٥: ٢ بصوت عالٍ. سؤال فرعون هو مفتاح القصة: الضربات جواب الله عليه.',
+    h: `<div class="ps-title"><small>${esc(bookById[x.book].name)} ${ar(x.chapters[0])}–${ar(x.chapters[x.chapters.length - 1])}</small><h1>${esc(x.title)}</h1><p class="v">${esc(piece('Exod.5.2', 'من هو الرب حتى اسمع لقوله'))}…</p><span class="rf">${refLabel('Exod.5.2')} · فرعون لموسى وهارون</span><div class="mo">${P.map((p) => `<i style="--c:${p.color};--k:${p.ink}">${glyph(p.icon, 40)}</i>`).join('')}</div></div>` });
+  slides.push({ bg: '#17191E', fg: '#FAF8F4', title: 'ثلاث جولات وضربة أخيرة', note: 'اطلب من المجموعة أن تكتشف النمط قبل أن تشرحه: ماذا يتكرر في كل جولة من الجولات الثلاث؟',
+    h: `<div class="ps-grid"><h2>ثلاث جولات وضربة أخيرة</h2><div class="g">${x.cycles.map((c) => `<span class="ch">${esc(c.t)}</span>`).join('')}${[0, 1, 2].map((r) => [0, 1, 2].map((c) => P[r * 3 + c])).flat().map((p) => `<span class="t" style="--c:${p.color};--k:${p.ink}">${glyph(p.icon, 34)}${ar(p.n)} · ${esc(p.name)}</span>`).join('')}<span class="t last" style="--c:${P[9].color};--k:${P[9].ink}">${glyph(P[9].icon, 34)}${ar(10)} · ${esc(P[9].name)}</span></div></div>` });
+  for (const p of P) slides.push({ bg: p.color, fg: p.ink, title: `${ar(p.n)} · ${p.name}`,
+    note: `اقرأ ${refLabel(p.ref)} معاً. سؤال للنقاش: ماذا تعلن هذه الضربة عن الرب؟${p.god.tag === 'explicit' ? '' : ` تنبيه: الربط بـ${p.god.n} ${TAGS[p.god.tag]}، فقدّمه كذلك لا كحقيقة مؤكدة.`}`,
+    h: `<div class="ps-pl"><span class="ic">${glyph(p.icon, 170)}</span><div><small>الضربة ${ORD[p.n]} · ${refLabel(p.ref)}</small><h2>${esc(p.name)}</h2><p class="v">${vq(p.key)}</p><span class="rf">${refLabel(p.key)}</span><span class="god">ضد من؟ ${esc(p.god.n)} <em>${TAGS[p.god.tag]}</em></span></div></div>` });
+  slides.push({ bg: '#101216', fg: '#FAF8F4', title: 'الفصح', note: 'اختم بالخروج ١٢: ١٣ ثم ١ كورنثوس ٥: ٧. اسأل: لماذا كان الدم هو الفرق الوحيد؟ وماذا يعني أن المسيح فصحنا؟',
+    h: `<div class="ps-end"><span class="ic">${glyph('door', 90)}</span><p class="v">${esc(piece('Exod.12.13', 'فارى الدم واعبر عنكم'))}</p><span class="rf">${refLabel('Exod.12.13')}</span><p class="v s">${vq('1Cor.5.7')}</p><span class="rf">${refLabel('1Cor.5.7')}</span></div>` });
+  return `<div class="ps" data-present>
+<div class="ps-top"><a href="plagues.html">${IC.close}<span>خروج من العرض</span></a><b>وضع العرض · ${esc(x.title)}</b><span><button type="button" data-notes aria-pressed="false">ملاحظات المعلم</button><button type="button" data-fs>ملء الشاشة</button></span></div>
+<div class="ps-main"><div class="ps-stage">${slides.map((s, i) => `<section class="sl" style="--bg:${s.bg};--fg:${s.fg}" aria-label="${esc(s.title)}"${i ? ' hidden' : ''}>${s.h}<span class="brand">لمجد الله</span><span class="num">${ar(i + 1)} / ${ar(slides.length)}</span></section>`).join('')}</div>
+<aside class="ps-notes" hidden><small>ملاحظات للمعلم</small>${slides.map((s, i) => `<p data-n="${i}"${i ? ' hidden' : ''}>${esc(s.note)}</p>`).join('')}<small class="k">المفاتيح: الأسهم للتنقل · N للملاحظات · F لملء الشاشة</small></aside></div>
+<div class="ps-ctl"><button type="button" data-prev aria-label="الشريحة السابقة">${IC.chev.replace('class="ic"', 'class="ic" style="transform:scaleX(-1)"')}</button><div class="th" role="tablist" aria-label="الشرائح">${slides.map((s, i) => `<button type="button" role="tab" data-go-sl="${i}" aria-selected="${i === 0}" style="--bg:${s.bg};--fg:${s.fg}">${esc(s.title)}</button>`).join('')}</div><button type="button" data-next aria-label="الشريحة التالية">${IC.chev}</button></div>
+</div>`;
 }
