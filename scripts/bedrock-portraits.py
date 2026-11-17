@@ -54,7 +54,9 @@ def main():
     ap.add_argument('--redo', action='store_true', help='overwrite existing images')
     a = ap.parse_args()
 
-    ids = a.only or list(PROMPTS)
+    # most important / best-known people first (docs/portrait-priority.json), then the rest in book order
+    prio = json.loads((ROOT / 'docs/portrait-priority.json').read_text('utf-8'))
+    ids = a.only or prio + [k for k in PROMPTS if k not in prio]
     todo = [i for i in ids if i in PROMPTS and (a.redo or not (OUT / f'person-{i}.webp').exists())]
     if a.limit:
         todo = todo[:a.limit]
