@@ -28,7 +28,8 @@ SUF = (' Real people with natural skin texture, visible pores, sun-weathered fac
 NEG = ('anime, manga, cartoon, illustration, painting, digital art, CGI, 3d render, doll, smooth plastic skin, airbrushed, '
        'beauty retouch, fashion model, makeup, oversaturated, text, watermark, halo, deformed hands, extra fingers, nudity, blood, '
        'book, bound book, codex, notebook, paper, pen, ballpoint pen, microphone, wristwatch, watch, glasses, cross, crucifix, '
-       'banknotes, paper money, modern clothing, modern people, t-shirt, cap')
+       'banknotes, paper money, modern clothing, modern people, t-shirt, cap, church, dome, cathedral, tourist, sun hat, '
+       'asphalt road, power line, leather satchel with buckle, glass jar')
 
 
 def prompt(pid):
