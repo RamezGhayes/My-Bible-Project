@@ -1048,4 +1048,5 @@ html[data-read=night] .rtools button:not(.thm3 button),html[data-read=contrast] 
 .t3co .cd button{margin-top:10px;font-family:var(--ui);font-size:13px;background:#F1D79A;color:#17191E;border:0;border-radius:999px;padding:6px 14px;cursor:pointer}
 @media (max-width:620px){.t3co .cd{padding:12px 13px 10px}.t3co .cd p{font-size:14.5px;line-height:1.75}}
 .t3d.co .t3cb{opacity:0;transition:opacity .2s}
-.h3p .im.pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.h3p .im.pic em{z-index:1}
+.h3p .im.pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 28%}.h3p .im.pic em{z-index:1}
+.portrait img{object-position:50% 28%}
