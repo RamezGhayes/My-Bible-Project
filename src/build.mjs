@@ -116,11 +116,17 @@ function testament(t) {
 <div class="kv2"><small>${chWord(b.chapters)}${done && done < b.chapters ? ` · ${ar(done)} مدروس` : ''}</small></div>
 <div class="ft"><span data-prog></span><span class="go">افتح ${IC.chev}</span></div></a>`;
   };
-  const body = `${header({ back: 'index.html', title: T_NAME[t] })}
+  const SPC = { torah: '#8C2F1E', history: '#9A5A24', poetry: '#B39459', major: '#4E5D32', minor: '#6B7A4A', gospels: '#1F2A44', acts: '#2E4A6B', paul: '#4B3D63', general: '#34496B', prophecy: '#5A3A22' };
+  const chs = list.reduce((a, b) => a + b.chapters, 0);
+  const gl = groups.map((g) => { const n = list.filter((b) => b.groupName === g).length; return `<span style="flex:${n}">${esc(g)}</span>`; }).join('');
+  const shelf = `<section class="ts3h"><div class="in"><div class="top"><div><span class="ey">${bkWord(list.length)} · ${chWord(chs)}</span><h1>${T_NAME[t]}</h1></div><div class="leg"><span><i class="f"></i>دراسة كاملة</span><span><i class="p"></i>دراسة جارية</span><span><i></i>النص متاح</span></div></div>
+<div class="shelf" role="list">${list.map((b, i) => `<a role="listitem" href="#b-${b.slug}" data-spine="${b.slug}" class="${isFull(b) ? 'f' : studiedCount(b) ? 'p' : ''}" style="--c:${SPC[b.group]};--h:${Math.round(70 + Math.sqrt(b.chapters) * 12)}px;--d:${(i * 0.025).toFixed(3)}s" title="${esc(b.name)} · ${chWord(b.chapters)}"><span>${esc(shortName(b))}</span></a>`).join('')}</div>
+<div class="gl" aria-hidden="true">${gl}</div></div></section>`;
+  const body = `${shelf}
 <div class="chips" id="gchips">${groups.map((g) => `<button type="button" data-g="${esc(g)}" aria-pressed="false">${esc(g)}</button>`).join('')}</div>
 <div class="car" id="car" data-kind="books">${list.map(card).join('')}</div>
 <div class="count" id="ccount"></div>`;
-  write(`${t}.html`, page({ title: T_NAME[t], depth: 0, nav: t, body }));
+  write(`${t}.html`, page({ title: T_NAME[t], depth: 0, nav: t, body, cls: 'v3 ts3' }));
 }
 
 // ---------- book: chapters carousel ----------
@@ -155,12 +161,29 @@ ${kv ? `<div class="kv2"><div class="s">${esc(quoteText(kv))}</div><small>${refL
 <p style="font-family:var(--nas);font-size:16.5px;line-height:1.95">${esc(clip(ch.verses.slice(0, 3).map((v) => v.text).join(' '), 200))}</p>
 <div class="ft" style="margin-top:auto"><span>${vWord(ch.verses.length)}</span><span class="go">اقرأ ${IC.chev}</span></div></a>`;
   }).join('');
-  const body = `${header({ back: `../${b.testament}.html#b-${b.slug}`, title: esc(b.name), end: c?.intro ? `<a class="b" href="${b.slug}/about.html">عن السفر</a>` : '<span style="width:44px"></span>' })}
+  // design-v3 head: hero, map of the book from the chapters' own section labels, facts, place in the story, intro sections.
+  const I = c?.intro;
+  const parts = [];
+  for (let n = 1; n <= b.chapters; n++) { const S = study(b, n); const lab = S ? plain(S.section).replace(/\s*\([^)]*\)\s*$/, '') : ''; const last = parts[parts.length - 1]; if (last && last.t === lab) last.z = n; else parts.push({ t: lab, a: n, z: n }); }
+  const PC = ['#8C2F1E', '#A8584A', '#B39459', '#4E5D32', '#1F2A44', '#4B3D63', '#7A6232', '#34496B'];
+  const TG = { agreed: 'متفق عليه', likely: 'راجح', debated: 'مختلف عليه' };
+  const first = bible(b.id).chapters[0].verses[0].text;
+  const hero = `<section class="bk3h"><svg class="rings" viewBox="0 0 760 760" aria-hidden="true"><circle cx="380" cy="380" r="370"/><circle cx="380" cy="380" r="290" stroke-dasharray="2 10"/></svg>
+<div class="in"><nav class="crumbs" aria-label="مسار التنقل"><a href="../${b.testament}.html#b-${b.slug}">${T_NAME[b.testament]}</a><span>‹</span><span>${esc(b.groupName)}</span></nav>
+<div class="row"><div class="tx"><span class="ey">${esc(b.groupName)} · السفر ${ar(b.order)} من ٦٦</span><h1>${esc(shortName(b))}</h1><p class="v">${esc(first)}<small>${refLabel(`${b.id}.1.1`)}</small></p>${I ? `<p class="s">${esc(firstSentences(I.summary, 200))}</p>` : '<p class="s">النص كاملاً متاح الآن، أصحاحاً أصحاحاً. والمقدمة والدراسة لهذا السفر قيد الإعداد.</p>'}</div>
+<div class="bt"><a class="p" href="${skip ? '#' : `${b.slug}/1.html`}">${IC.read}ابدأ من الأصحاح الأول</a>${I ? `<a href="${b.slug}/about.html">مقدمة السفر في ${secWord(I.sections.length)}</a>` : ''}<span>${chWord(b.chapters)}${studiedCount(b) ? ` · ${studiedCount(b) === b.chapters ? 'كلها مدروسة' : `${ar(studiedCount(b))} مدروساً`}` : ''}</span></div></div>
+${parts.length > 1 || parts[0]?.t ? `<div class="map"><small>خريطة السفر · عرض كل قسم يتبع عدد أصحاحاته</small><div class="mbar">${parts.map((q, i) => `<a href="#c${q.a}" style="flex:${q.z - q.a + 1};--c:${PC[i % PC.length]};--d:${(0.6 + i * 0.12).toFixed(2)}s" title="${esc(q.t)}"></a>`).join('')}</div><div class="mlb">${parts.map((q) => `<span style="flex:${q.z - q.a + 1}"><b>${esc(q.t || 'بلا دراسة بعد')}</b><em>${ar(q.a)}${q.z > q.a ? '–' + ar(q.z) : ''}</em></span>`).join('')}</div></div>` : ''}
+</div></section>`;
+  const facts = I ? `<section class="bk3s"><div class="bk3f">${I.facts.map((f, i) => `<div style="--d:${(i * 0.06).toFixed(2)}s"><small>${esc(f.k)}${f.tag && TG[f.tag] ? `<em class="t-${f.tag}">${TG[f.tag]}</em>` : ''}</small><span>${md(f.v)}</span></div>`).join('')}</div></section>
+<section class="bk3s"><h2>أين يقع في القصة؟</h2><div class="bk3c">${[['before', 'قبله'], ['now', 'الآن'], ['after', 'بعده']].map(([k, l]) => { const x = I.context[k]; if (!x) return ''; const inner = `<small>${l}</small><b>${md(x.t)}</b><span>${md(x.d)}</span>`; return x.href ? `<a class="${k}" href="${up(1)}${x.href}">${inner}</a>` : `<div class="${k}">${inner}</div>`; }).join(`<i aria-hidden="true">${IC.chev}</i>`)}</div></section>
+<section class="bk3s"><h2>مقدمة السفر في ${secWord(I.sections.length)}</h2><div class="bk3i">${I.sections.map((x, i) => `<a href="${b.slug}/about.html#sec${i + 1}"><em>${ar(i + 1)}</em><b>${md(x.title || x.t || '')}</b>${IC.chev}</a>`).join('')}</div></section>` : '';
+  const body = `${hero}${facts}
+<section class="bk3s bk3ch"><h2>الأصحاحات</h2><p>اسحب البطاقات، أو اختر رقماً.</p></section>
 <div class="secl" id="secl"></div>
 <div class="car" id="car" data-kind="chapters" data-book="${b.id}" data-total="${b.chapters}">${cards}</div>
 <div class="scrub" id="scrub">${vs.map((_, i) => `<button type="button" data-jump="${i}" data-key="${b.id}:${i + 1}">${ar(i + 1)}</button>`).join('')}</div>
 ${c?.intro ? `<a class="wide" href="${b.slug}/about.html" style="background:#fff;color:var(--ink);border:1px solid var(--line)">${IC.read}مقدمة السفر في ${secWord(c.intro.sections.length)}</a>` : ''}`;
-  write(`book/${b.slug}.html`, page({ title: b.name, depth: 1, nav: 'home', body }));
+  write(`book/${b.slug}.html`, page({ title: b.name, depth: 1, nav: b.testament, body, cls: 'v3 bk3' }));
 }
 
 // ---------- book introduction (about) ----------
@@ -227,7 +250,7 @@ function readerHTML(b, n, S, depth, { overlay }) {
   const prev = prevOf(b, n), next = nextOf(b, n);
   const nav = `<div class="chnav">${next ? `<a href="${chapterHref(next.b, next.n, depth)}"><small>التالي</small><b>${chTitle(next.b, next.n)}</b></a>` : '<span></span>'}${prev ? `<a class="n" href="${chapterHref(prev.b, prev.n, depth)}"><small>السابق</small><b>${chTitle(prev.b, prev.n)}</b></a>` : '<span></span>'}</div>`;
   const head = overlay
-    ? `<header class="sh"><a class="b" href="#" aria-label="رجوع إلى القصة">${IC.close}</a><span class="t">${chTitle(b, n)}${S ? ' · ' + md(S.title) : ''}</span><a class="b" href="#study3" aria-label="الدراسة">${IC.menu}</a></header>`
+    ? `<header class="sh"><a class="b" href="#" aria-label="إغلاق النص">${IC.close}</a><span class="t">${chTitle(b, n)}${S ? ' · ' + md(S.title) : ''}</span><a class="b" href="#study3" aria-label="الدراسة">${IC.menu}</a></header>`
     : `<header class="sh"><a class="b" href="../${b.slug}.html#c${n}" aria-label="الأصحاحات">${IC.back}</a><span class="t">${chTitle(b, n)}</span><span style="width:44px"></span></header>`;
   return `${head}
 <div class="rtools"><span>${esc(config.bibleVersion)}</span><span style="display:flex;gap:6px"><button type="button" data-size="-1" aria-label="تصغير الخط">أ−</button><button type="button" data-size="1" aria-label="تكبير الخط">أ+</button></span></div>

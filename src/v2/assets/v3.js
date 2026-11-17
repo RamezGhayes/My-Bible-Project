@@ -194,4 +194,20 @@
     setTimeout(function () { d.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' }); }, 30);
   };
   window.addEventListener('hashchange', openAcc); openAcc();
+  // ---------- testament shelf: a spine moves the books carousel to that book ----------
+  var spines = $$('[data-spine]');
+  if (spines.length) {
+    var mark = function (slug) { spines.forEach(function (a) { a.classList.toggle('on', a.getAttribute('data-spine') === slug); }); };
+    spines.forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        e.preventDefault();
+        var slug = a.getAttribute('data-spine'), card = $('.car [data-slug="' + slug + '"]');
+        if (card) { card.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', inline: 'center', block: 'nearest' }); setTimeout(function () { var c = $('.car'); if (c) c.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' }); }, 350); }
+        mark(slug);
+      });
+    });
+    var m = location.hash.match(/^#b-(.+)$/); if (m) mark(m[1]);
+    var car = $('.car'), tsc;
+    if (car) car.addEventListener('scroll', function () { clearTimeout(tsc); tsc = setTimeout(function () { var h = location.hash.match(/^#b-(.+)$/); if (h) { mark(h[1]); var sp = $('[data-spine="' + h[1] + '"]'); if (sp) sp.parentNode.scrollTo({ left: sp.offsetLeft - sp.parentNode.clientWidth / 2, behavior: 'auto' }); } }, 150); }, { passive: true });
+  }
 })();
