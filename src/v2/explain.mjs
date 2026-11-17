@@ -18,6 +18,10 @@ const hereOf = (x, n) => chips(x).filter((c) => c.ch.includes(n));
 
 // Line icons, 64-unit box, drawn with currentColor.
 const G = {
+  house: '<path d="M10 30 32 12l22 18"/><path d="M16 26v26h32V26"/><path d="M27 52V38h10v14"/>',
+  bag: '<rect x="10" y="22" width="44" height="30" rx="4"/><path d="M24 22v-6h16v6"/><path d="M10 34h44"/>',
+  phone: '<rect x="20" y="8" width="24" height="48" rx="5"/><path d="M29 49h6"/>',
+  people: '<circle cx="24" cy="22" r="7"/><circle cx="42" cy="24" r="6"/><path d="M12 50c0-9 6-15 12-15s12 6 12 15"/><path d="M34 50c0-7 4-12 8-12s9 5 9 12"/>',
   blood: '<path d="M6 40c5-4 9-4 14 0s9 4 14 0 9-4 14 0 9 4 10 2"/><path d="M6 50c5-4 9-4 14 0s9 4 14 0 9-4 14 0 9 4 10 2"/><path d="M32 6c5 8 9 13 9 18a9 9 0 0 1-18 0c0-5 4-10 9-18z" fill="currentColor" fill-opacity=".35"/>',
   frog: '<ellipse cx="32" cy="40" rx="20" ry="13"/><circle cx="22" cy="24" r="6"/><circle cx="42" cy="24" r="6"/><circle cx="22" cy="24" r="2" fill="currentColor"/><circle cx="42" cy="24" r="2" fill="currentColor"/><path d="M24 42q8 5 16 0"/><path d="M12 50l-6 6M52 50l6 6"/>',
   gnats: '<g fill="currentColor"><circle cx="14" cy="16" r="1.8"/><circle cx="24" cy="10" r="1.8"/><circle cx="36" cy="18" r="1.8"/><circle cx="48" cy="12" r="1.8"/><circle cx="18" cy="30" r="1.8"/><circle cx="30" cy="28" r="1.8"/><circle cx="44" cy="30" r="1.8"/><circle cx="54" cy="24" r="1.8"/><circle cx="10" cy="42" r="1.8"/><circle cx="26" cy="40" r="1.8"/><circle cx="40" cy="42" r="1.8"/><circle cx="52" cy="40" r="1.8"/></g><path d="M4 56h56"/><path d="M12 56c2-3 4-3 6 0M28 56c2-3 4-3 6 0M44 56c2-3 4-3 6 0"/>',

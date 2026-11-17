@@ -11,6 +11,7 @@ import { treePage } from './v2/tree.mjs';
 import { harmonyPage } from './v2/harmony.mjs';
 import { glossChapter, glossaryPage } from './v2/glossary.mjs';
 import { GLOSSARY } from '../content/glossary.mjs';
+import { applySection, APPLY } from './v2/apply.mjs';
 import { buildLibrary, libraryPage, workId } from './v2/library.mjs';
 import { EXPLAINERS, explainersFor, explainPage, explainPresent, storyCard as xStory, bentoTile as xTile, explainHref, glyph, xCard, chips as xChips } from './v2/explain.mjs';
 
@@ -393,7 +394,7 @@ ${XS.map((x) => `<a class="xa" href="${explainHref(x, depth)}"><small>شرح م�
   const head = `<section class="ch3h">
 <nav class="crumbs" aria-label="مسار التنقل"><a href="../../${b.testament}.html">${T_NAME[b.testament]}</a><span>‹</span><a href="../${b.slug}.html">${esc(b.name)}</a><span>‹</span><a href="../${b.slug}.html#c${n}">الأصحاحات</a></nav>
 <div class="hd"><span class="big">${ar(n)}</span><div><small>${esc(b.name)} · ${md(S.section)}</small><h1>${md(S.title)}</h1><p>${vWord(vs.length)} · نحو ${ar(mins)} دقائق قراءة</p></div></div>
-<div class="cgo">${prev ? `<a href="${chapterHref(prev.b, prev.n, depth)}" aria-label="السابق: ${chTitle(prev.b, prev.n)}">${IC.chev.replace('class="ic"', 'class="ic" style="transform:scaleX(-1)"')}${chTitle(prev.b, prev.n)}</a>` : ''}<a class="rd" href="#read">${IC.read}اقرأ النص</a><a href="#study3">${IC.list}الدراسة</a>${next ? `<a href="${chapterHref(next.b, next.n, depth)}" aria-label="التالي: ${chTitle(next.b, next.n)}">${chTitle(next.b, next.n)}${IC.chev}</a>` : ''}</div>
+<div class="cgo">${prev ? `<a href="${chapterHref(prev.b, prev.n, depth)}" aria-label="السابق: ${chTitle(prev.b, prev.n)}">${IC.chev.replace('class="ic"', 'class="ic" style="transform:scaleX(-1)"')}${chTitle(prev.b, prev.n)}</a>` : ''}<a class="rd" href="#read">${IC.read}اقرأ النص</a><a href="#study3">${IC.list}الدراسة</a>${APPLY[`${b.id}.${n}`] ? `<a class="lv" href="#live3">${IC.person}عِشها</a>` : ''}${next ? `<a href="${chapterHref(next.b, next.n, depth)}" aria-label="التالي: ${chTitle(next.b, next.n)}">${chTitle(next.b, next.n)}${IC.chev}</a>` : ''}</div>
 </section>`;
   const foot = `<nav class="ch3n">${prev ? `<a href="${chapterHref(prev.b, prev.n, depth)}"><small>الأصحاح السابق</small><b>${chTitle(prev.b, prev.n)}${study(prev.b, prev.n) ? ' · ' + md(study(prev.b, prev.n).title) : ''}</b></a>` : '<span></span>'}${next ? `<a class="dk" href="${chapterHref(next.b, next.n, depth)}"><small>الأصحاح التالي</small><b>${chTitle(next.b, next.n)}${study(next.b, next.n) ? ' · ' + md(study(next.b, next.n).title) : ''}</b></a>` : ''}</nav>`;
   const readerOv = `<div class="ovl" id="read"><div class="pg">${readerHTML(b, n, S, depth, { overlay: true })}</div></div>`;
@@ -419,7 +420,7 @@ ${S.questions?.length ? `<h2>أسئلة للمناقشة</h2><ol class="hq">${S.
 <footer>النص: ${esc(config.bibleVersion)} · ${esc(config.domain.replace(/^https?:\/\//, ''))}/book/${b.slug}/${n}.html</footer>
 </section>`;
   const body = `<div data-chapter="${b.id}:${n}"></div>${handout}`;
-  write(`book/${b.slug}/${n}.html`, page({ title: `${chTitle(b, n)}: ${plain(S.title)}`, depth, nav: b.testament, body: head + story + studyHtml + foot + body, cls: 'chapter v3 ch3', after: readerOv + viewerHtml }));
+  write(`book/${b.slug}/${n}.html`, page({ title: `${chTitle(b, n)}: ${plain(S.title)}`, depth, nav: b.testament, body: head + story + studyHtml + applySection(b, n, depth) + foot + body, cls: 'chapter v3 ch3', after: readerOv + viewerHtml }));
 }
 
 // ---------- people ----------

@@ -421,3 +421,12 @@
    - طريقة التعامل مع اختلاف المخطوطات (شرح القراءتين) طُبّقت في الموقع كله. هل هي مقبولة؟
    - علامات «» حول كلمتين فقط لا يفحصها السكربت (يفحص 3 كلمات فأكثر)؛ قد يبقى القليل منها.
 8. **تحديث ملف خطة المشروع** في claude.ai بهذه الحالة (هذا الملف يغطيه).
+
+### 11. «عِش النص»: practical application at the end of a chapter (pilot: Genesis 12)
+- Content per chapter in `content/apply/<book>-<ch>.mjs`; rendered by `src/v2/apply.mjs` after the study section (anchor `#live3`, head link «عِشها»).
+- Every principle comes from a known Reformed source, with the English original shown under «المصادر والنص الأصلي». Build fails unless each `basis` excerpt is found word-for-word in the saved source file (`data/sources/mhc/*.md`, `data/sources/westminster.json`).
+- Allowed voices so far: Matthew Henry (Complete Commentary), Westminster Confession, Westminster Larger Catechism. Any new voice needs its public-domain text saved in `data/sources` first.
+- The quoted verse piece (`cut`) must be literal Van Dyck words; checked at build.
+- «مثال من حياتنا في 2026», «اسأل نفسك» and «خطوة هذا الأسبوع» are written by the site and labelled as such; they apply the sourced principle and never add doctrine.
+- Each chapter ends with a Christ card (also sourced) and a commitment card: picked steps can be saved as an image or printed. Nothing is stored.
+- Inner class names are prefixed `l3` to avoid v2 clashes (`.pr`, `.st`, `.in` broke layout).

@@ -395,4 +395,49 @@
       });
     };
   })();
+  // ---------- عِش النص: arenas, pick steps, this week's commitment (nothing saved) ----------
+  $$('.lv3').forEach(function (sec) {
+    var cards = $$('.lv3c', sec), tabs = $$('[data-arena]', sec), list = $('[data-list]', sec), steps = $('template[data-steps]', sec).content, chosen = [];
+    var bImg = $('[data-cimg]', sec), bPr = $('[data-cprint]', sec), title = $('.lv3m h3', sec).textContent;
+    tabs.forEach(function (t) { t.addEventListener('click', function () { var a = t.getAttribute('data-arena'); tabs.forEach(function (o) { o.setAttribute('aria-selected', o === t ? 'true' : 'false'); }); cards.forEach(function (c) { c.hidden = !(a === 'all' || (' ' + c.getAttribute('data-arenas') + ' ').indexOf(' ' + a + ' ') >= 0); }); }); });
+    var paint = function () {
+      if (!chosen.length) { list.innerHTML = '<li class="l3em">اختر خطوة أو اثنتين من البطاقات أعلاه.</li>'; bImg.disabled = bPr.disabled = true; return; }
+      list.innerHTML = chosen.map(function (id) { var i = steps.querySelector('[data-id="' + id + '"]'); return '<li><b>' + i.getAttribute('data-t') + ':</b> ' + i.getAttribute('data-s') + '</li>'; }).join('');
+      bImg.disabled = bPr.disabled = false;
+    };
+    $$('[data-pick]', sec).forEach(function (b) {
+      b.addEventListener('click', function () {
+        var id = b.getAttribute('data-pick'), k = chosen.indexOf(id);
+        if (k >= 0) chosen.splice(k, 1); else chosen.push(id);
+        b.setAttribute('aria-pressed', k >= 0 ? 'false' : 'true'); $('span', b).textContent = k >= 0 ? 'اخترها لهذا الأسبوع' : 'اخترتها';
+        paint();
+      });
+    });
+    bPr.addEventListener('click', function () { document.body.classList.add('print-commit'); window.print(); setTimeout(function () { document.body.classList.remove('print-commit'); }, 500); });
+    bImg.addEventListener('click', function () {
+      var W = 1080, H = 1350, c = document.createElement('canvas'); c.width = W; c.height = H; var x = c.getContext('2d');
+      var wrap = function (t, max) { var w = t.split(/\s+/), L = [], ln = ''; w.forEach(function (p) { var tt = ln ? ln + ' ' + p : p; if (x.measureText(tt).width > max && ln) { L.push(ln); ln = p; } else ln = tt; }); if (ln) L.push(ln); return L; };
+      var draw = function () {
+        x.fillStyle = '#FAF8F4'; x.fillRect(0, 0, W, H);
+        x.strokeStyle = '#B39459'; x.setLineDash([14, 10]); x.lineWidth = 4; x.strokeRect(60, 60, W - 120, H - 120); x.setLineDash([]);
+        x.direction = 'rtl'; x.textAlign = 'right'; var R = W - 120;
+        x.fillStyle = '#7A6232'; x.font = '600 34px "IBM Plex Sans Arabic", sans-serif'; x.fillText('التزامي هذا الأسبوع', R, 170);
+        x.fillStyle = '#17191E'; x.font = '700 64px "Readex Pro", sans-serif'; x.fillText(title, R, 250);
+        var y = 340;
+        chosen.forEach(function (id, n) {
+          var i = steps.querySelector('[data-id="' + id + '"]');
+          x.fillStyle = '#8C2F1E'; x.font = '600 36px "IBM Plex Sans Arabic", sans-serif'; x.fillText((n + 1) + '. ' + i.getAttribute('data-t'), R, y); y += 58;
+          x.fillStyle = '#3B3833'; x.font = '36px "IBM Plex Sans Arabic", sans-serif';
+          wrap(i.getAttribute('data-s'), W - 260).forEach(function (l) { x.fillText(l, R, y); y += 56; }); y += 30;
+        });
+        x.textAlign = 'center'; x.fillStyle = '#A8A296'; x.font = '500 30px "Readex Pro", sans-serif'; x.fillText('لمجد الله', W / 2, H - 100);
+        c.toBlob(function (blob) {
+          var name = 'التزامي-' + title.replace(/\s+/g, '-') + '.png', file = window.File ? new File([blob], name, { type: 'image/png' }) : null;
+          if (file && navigator.canShare && navigator.canShare({ files: [file] })) { navigator.share({ files: [file], title: 'التزامي هذا الأسبوع' }).catch(function () {}); return; }
+          var a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = name; document.body.appendChild(a); a.click(); setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 500);
+        }, 'image/png');
+      };
+      if (document.fonts && document.fonts.load) Promise.all([document.fonts.load('600 36px "IBM Plex Sans Arabic"'), document.fonts.load('700 64px "Readex Pro"')]).then(draw, draw); else draw();
+    });
+  });
 })();
