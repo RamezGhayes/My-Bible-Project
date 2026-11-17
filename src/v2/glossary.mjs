@@ -41,7 +41,7 @@ for (const e of GLOSSARY) {
 
 // ---------- where each word appears in Van Dyck ----------
 const allowed = (e, bid) => !e.books || e.books.includes(bid);
-const firstHit = (e, text) => { for (const re of e.re) { re.lastIndex = 0; const m = re.exec(text); if (m) return m; } return null; };
+const firstHit = (e, text) => { if (e.not && e.not.some((p) => text.includes(p))) return null; for (const re of e.re) { re.lastIndex = 0; const m = re.exec(text); if (m) return m; } return null; };
 export const STATS = {};
 for (const e of GLOSSARY) STATS[e.id] = { n: 0, per: {}, first: null };
 for (const b of books) {

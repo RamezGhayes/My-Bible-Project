@@ -9,6 +9,7 @@
 //  - checks: [شاهد، عبارة] كل رقم أو تفصيلة مأخوذة من الكتاب نفسه. البناء يتوقف إن لم توجد العبارة في الآية (بلا تشكيل).
 //  - حين يخالف المصدر نص الكتاب نتبع نص الكتاب (مثال: إيستون يذكر طول التابوت ذراعين، والخروج 25: 10 يقول ذراعين ونصفاً).
 //  - find: صيغ الكلمة كما في فاندايك (بلا تشكيل). auto: false للكلمات التي لها معنى آخر شائع (ذراع، رَبّي...) فلا تُعلَّم في النص تلقائياً.
+//  - not: عبارات تعني شيئاً آخر (بيد رفيعة = بتحدٍّ)، فلا تُعلَّم الآية التي فيها.
 //  - books: يقصر التعليم التلقائي على أسفار بعينها حين يتغير معنى الكلمة في غيرها.
 //  - لا علامات «» هنا: كل ما بينها يجب أن يكون نصاً حرفياً من فاندايك.
 
@@ -153,7 +154,46 @@ export const GLOSSARY = [
     src: { k: 'easton', t: 'Thummim' },
     basis: ['What the "Urim and Thummim" were cannot be determined with any certainty.', 'they were a certain divinely-given means by which God imparted, through the high priest, direction and counsel to Israel when these were needed.']
   },
-
+  {
+    id: 'teraphim', w: 'الترافيم', en: 'Teraphim', cat: 'worship', icon: 'eye',
+    find: ['الترافيم', 'ترافيم'],
+    d: 'أصنام على هيئة إنسان، كبيرة أو صغيرة، كانت تُحفظ في البيوت.',
+    more: 'وضعت ميكال الترافيم في الفراش وغطته بثوب لتخدع رسل شاول فينجو داود. ويضعها صموئيل مع العرافة في الإدانة: التمرد كخطية العرافة، والعناد كالوثن والترافيم.',
+    refs: ['1Sam.19.13', '1Sam.15.23', 'Judg.18.17'],
+    checks: [['1Sam.19.13', 'فاخذت ميكال الترافيم ووضعته في الفراش'], ['1Sam.15.23', 'والعناد كالوثن والترافيم']],
+    src: { k: 'easton', t: 'Teraphim' },
+    basis: ['idols in human shape, large or small', 'Michal his wife prepared one of the household teraphim']
+  },
+  {
+    id: 'high-place', w: 'المرتفعات', en: 'High places', cat: 'worship', icon: 'altar',
+    find: ['المرتفعات'], books: ['1Kgs', '2Kgs', '2Chr'],
+    d: 'أماكن عالية، طبيعية أو مصنوعة، كانت تُقدَّم فيها الذبائح والقرابين.',
+    more: 'أُمر بنو إسرائيل أن يخرّبوا أماكن عبادة الكنعانيين على الجبال والتلال، وأن يقدّموا ذبائحهم في المكان الذي يختاره الرب. لكن الوصية لم تُطَع كما يجب، فيتكرر في سفري الملوك: وأما المرتفعات فلم تنزع.',
+    refs: ['Deut.12.2', 'Deut.12.11', '1Kgs.15.14', '2Kgs.18.4'],
+    checks: [['Deut.12.2', 'على الجبال الشامخة وعلى التلال'], ['Deut.12.11', 'فالمكان الذي يختاره الرب'], ['1Kgs.15.14', 'واما المرتفعات فلم تنزع'], ['2Kgs.18.4', 'هو ازال المرتفعات']],
+    src: { k: 'easton', t: 'High place' },
+    basis: ['An eminence, natural or artificial, where worship by sacrifice or offerings was made', 'they were strictly enjoined to overthrow the high places of the Canaanites', 'The injunction against high places was, however, very imperfectly obeyed']
+  },
+  {
+    id: 'phylacteries', w: 'العصائب', en: 'Phylacteries', cat: 'worship', icon: 'linen',
+    find: ['عصائبهم'],
+    d: 'رقائق كُتبت عليها أربعة نصوص من الشريعة، توضع في علبة من جلد تُربط على الجبهة بين العينين، وأخرى على الذراع.',
+    more: 'تُذكر في العهد الجديد مرة واحدة: يعرّضون عصائبهم، أي يكبّرون العلبة لتلفت الأنظار. والنصوص المكتوبة فيها من الخروج 13 والتثنية 6 و11، ومنها: ولتكن عصائب بين عينيك.',
+    refs: ['Matt.23.5', 'Deut.6.8', 'Exod.13.9'],
+    checks: [['Matt.23.5', 'فيعرضون عصائبهم'], ['Deut.6.8', 'ولتكن عصائب بين عينيك']],
+    src: { k: 'easton', t: 'Phylacteries' },
+    basis: ['are mentioned only in Matt. 23:5', 'strips of parchment on which were inscribed these four texts', 'fastened by certain straps to the forehead just between the eyes', 'The "making broad the phylacteries" refers to the enlarging of the case so as to make it conspicuous.', 'This was worn on the left arm near the elbow']
+  },
+  {
+    id: 'sackcloth', w: 'المِسْح', en: 'Sackcloth', cat: 'worship', icon: 'linen', auto: false,
+    find: ['مسح', 'مسوح', 'المسوح'],
+    d: 'قماش خشن غليظ من شعر الماعز الأسود، تُصنع منه الأكياس، ويلبسه الحزين والتائب.',
+    more: 'لبسه يعقوب حين ناح على يوسف، وتغطى به ملك نينوى حين تاب، وغُطّي به الناس والبهائم هناك. وقال الرب إن صور وصيداء لو رأتا قواته لتابتا في المسوح والرماد.',
+    refs: ['Gen.37.34', 'Jonah.3.6', 'Matt.11.21'],
+    checks: [['Gen.37.34', 'ووضع مسحا على حقويه'], ['Jonah.3.6', 'وتغطى بمسح'], ['Jonah.3.8', 'وليتغط بمسوح الناس والبهائم'], ['Matt.11.21', 'لتابتا قديما في المسوح والرماد']],
+    src: { k: 'easton', t: 'Sackcloth' },
+    basis: ["Cloth made of black goats' hair, coarse, rough, and thick, used for sacks, and also worn by mourners", 'and as a sign of repentance (Matt. 11:21)', 'It was put upon animals by the people of Nineveh']
+  },
   // ---------- الذبائح والأعياد ----------
   {
     id: 'burnt-offering', w: 'المحرقة', en: 'Burnt offering', cat: 'sacrifice', icon: 'burnt',
@@ -305,7 +345,106 @@ export const GLOSSARY = [
     src: { k: 'easton', t: 'Manna' },
     basis: ['the food miraculously supplied to them during their wanderings in the wilderness (Ex. 16:15-35)', 'as on the Sabbath none fell, on the preceding day a double portion was given']
   },
-
+  {
+    id: 'peace-offering', w: 'ذبيحة السلامة', en: 'Peace offering', cat: 'sacrifice', icon: 'burnt',
+    find: ['ذبيحة السلامة', 'ذبائح السلامة', 'ذبيحة سلامة', 'ذبائح سلامتهم', 'ذبائح سلامتكم'],
+    d: 'ذبيحة شريعتها في اللاويين 3 و7، وهي ثلاثة أنواع: للشكر على بركة نالها صاحبها، ووفاءً لنذر، وتطوّعاً من القلب.',
+    more: 'يسمّي فاندايك ذبيحة التطوع نافلة: وإن كانت ذبيحة قربانه نذراً أو نافلة.',
+    refs: ['Lev.3.1', 'Lev.7.11', 'Lev.7.12', 'Lev.7.16'],
+    checks: [['Lev.7.11', 'وهذه شريعة ذبيحة السلامة'], ['Lev.7.12', 'ان قربها لاجل الشكر'], ['Lev.7.16', 'نذرا او نافلة']],
+    src: { k: 'easton', t: 'Peace offerings' },
+    basis: ['detailed regulations regarding given in Lev. 3; 7:11-21, 29-34. They were of three kinds', 'eucharistic or thanksgiving offerings, expressive of gratitude for blessings received', 'in fulfilment of a vow', 'free-will offerings, something spontaneously devoted to God']
+  },
+  {
+    id: 'heave-offering', w: 'الرفيعة', en: 'Heave offering', cat: 'sacrifice', icon: 'grain',
+    find: ['رفيعة', 'الرفيعة'], books: ['Exod', 'Lev', 'Num'], not: ['بيد رفيعة'],
+    d: 'الكلمة العبرية تعني ببساطة تقدمة أو هدية للرب. ومنها الساق اليمنى من ذبائح السلامة التي كانت للكاهن، وأول العجين من الحصاد.',
+    more: 'يقول بعض معلمي اليهود إن الرفيعة كانت تُرفع إلى فوق وتُنزل، أما الترديد فكان يُحرَّك أفقياً. لكن معنى الكلمة في الأصل هو التقدمة.',
+    refs: ['Lev.7.32', 'Lev.7.34', 'Num.15.20'],
+    checks: [['Lev.7.32', 'والساق اليمنى تعطونها رفيعة للكاهن'], ['Num.15.20', 'اول عجينكم ترفعون قرصا رفيعة']],
+    src: { k: 'easton', t: 'Heave offering' },
+    basis: ['means simply an offering, a present', 'Some of the rabbis attach to the word the meaning of elevation', 'The right shoulder, which fell to the priests in presenting thank offerings, was called the heave shoulder', 'The first fruits offered in harvest-time (Num. 15:20, 21) were heave offerings.']
+  },
+  {
+    id: 'meat-offering', w: 'التقدمة', en: 'Meat offering (minhah)', cat: 'sacrifice', icon: 'grain', auto: false,
+    find: ['تقدمة', 'التقدمة'],
+    d: 'قربان بلا دم، من دقيق أو أقراص مخبوزة، عليه زيت ولبان. شريعته في اللاويين 2، وكان يُقدَّم كل يوم مع المحرقة.',
+    more: 'الكلمة العبرية منحة، ومعناها في الأصل هدية من أي نوع. كانت اعترافاً بسيادة الله وبأنه معطي كل البركات الأرضية، وكان يرافقها عادة سكيب.',
+    refs: ['Lev.2.1', 'Exod.29.40', 'Exod.29.41'],
+    checks: [['Lev.2.1', 'يكون قربانه من دقيق ويسكب عليها زيتا ويجعل عليها لبانا']],
+    src: { k: 'easton', t: 'Meat-offering' },
+    basis: ['originally a gift of any kind', 'came latterly to denote an "unbloody" sacrifice', 'A "drink-offering" generally accompanied it.', 'It was a recognition of the sovereignty of God and of his bounty in giving all earthly blessings', 'It was presented every day with the burnt-offering (Ex. 29:40, 41), and consisted of flour or of cakes prepared in a special way with oil and frankincense.']
+  },
+  {
+    id: 'drink-offering', w: 'السكيب', en: 'Drink offering', cat: 'sacrifice', icon: 'laver',
+    find: ['سكيب', 'السكيب', 'سكيبه', 'سكائب'],
+    d: 'خمر تُسكب للرب مع التقدمة، كل يوم وفي السبوت والأعياد.',
+    more: 'ربع الهين من الخمر للخروف، وثلث الهين للكبش، ونصف الهين للثور.',
+    refs: ['Exod.29.40', 'Num.15.5', 'Num.15.7', 'Num.15.10'],
+    checks: [['Exod.29.40', 'وسكيب ربع الهين من الخمر للخروف الواحد'], ['Num.15.5', 'وخمرا للسكيب ربع الهين'], ['Num.15.7', 'ثلث الهين'], ['Num.15.10', 'نصف الهين']],
+    src: { k: 'easton', t: 'Drink-offering' },
+    basis: ['Consisted of wine (Num. 15:5; Hos. 9:4) poured around the altar', 'Joined with meat-offerings', 'presented daily (Ex. 29:40), on the Sabbath (Num. 28:9), and on feast-days', 'One-fourth of an hin of wine was required for one lamb, one-third for a ram, and one-half for a bullock']
+  },
+  {
+    id: 'firstfruits', w: 'الباكورة', en: 'First-fruits', cat: 'sacrifice', icon: 'grain',
+    find: ['باكورة', 'الباكورة'],
+    d: 'أول ثمر الأرض، يُقدَّم لله كما يُقدَّم له بكر الإنسان والحيوان.',
+    more: 'في غد السبت يردّد الكاهن حزمة أول الحصيد أمام الرب، وفي الخمسين رغيفان مخبوزان خميراً باكورة للرب. ويقول بولس إن المسيح قام من الأموات وصار باكورة الراقدين.',
+    refs: ['Lev.23.10', 'Lev.23.17', '1Cor.15.20'],
+    checks: [['Lev.23.11', 'في غد السبت يرددها الكاهن'], ['Lev.23.17', 'ويخبزان خميرا باكورة للرب'], ['1Cor.15.20', 'وصار باكورة الراقدين']],
+    src: { k: 'easton', t: 'First-fruits' },
+    basis: ['The first-fruits of the ground were offered unto God just as the first-born of man and animals.', 'a sheaf of new corn should be waved by the priest before the altar', 'two loaves of leavened bread, made from the new flour, were to be waved in like manner']
+  },
+  {
+    id: 'trumpets', w: 'تذكار هتاف البوق', en: 'Feast of Trumpets', cat: 'sacrifice', icon: 'shofar',
+    find: ['هتاف البوق', 'هتاف بوق'], books: ['Lev', 'Num'],
+    d: 'عيد في أول الشهر السابع، يوم عطلة ومحفل مقدس.',
+    more: 'كانت الأبواق تُضرب في أول كل شهر، لكنها في هذا اليوم كانت تُضرب بوقار خاص. ولا يُعرف الغرض الخاص من هذا العيد.',
+    refs: ['Lev.23.24', 'Num.29.1', 'Num.10.10'],
+    checks: [['Lev.23.24', 'في الشهر السابع في اول الشهر يكون لكم عطلة تذكار هتاف البوق محفل مقدس'], ['Num.29.1', 'يوم هتاف بوق يكون لكم']],
+    src: { k: 'easton', t: 'Trumpets, Feast of' },
+    basis: ['the trumpets usually blown at the commencement of each month were on that occasion blown with unusual solemnity', 'It was one of the seven days of holy convocation. The special design of this feast, which is described in these verses, is not known.']
+  },
+  {
+    id: 'purim', w: 'الفوريم', en: 'Purim', cat: 'sacrifice', icon: 'lots',
+    find: ['الفوريم', 'فوريم'],
+    d: 'عيد أقامه اليهود في أيام أستير، في اليومين الرابع عشر والخامس عشر من شهر أذار، تذكاراً لنجاتهم من مؤامرة هامان.',
+    more: 'الاسم من كلمة فور، أي قرعة، لأن هامان ألقى فوراً ليختار يوماً لإبادة اليهود.',
+    refs: ['Esth.9.21', 'Esth.9.24', 'Esth.9.26'],
+    checks: [['Esth.9.21', 'في اليوم الرابع عشر من شهر اذار واليوم الخامس عشر منه'], ['Esth.9.24', 'والقى فورا اي قرعة'], ['Esth.9.26', 'على اسم الفور']],
+    src: { k: 'easton', t: 'Pur, Purim' },
+    basis: ['A lot, lots, a festival instituted by the Jews (Esther 9:24-32)', 'on the 14th and 15th of the month Adar']
+  },
+  {
+    id: 'dedication', w: 'عيد التجديد', en: 'Feast of Dedication', cat: 'sacrifice', icon: 'lamp',
+    find: ['عيد التجديد'],
+    d: 'عيد ثمانية أيام يذكّر بتطهير الهيكل وتجديد المذبح بعد أن نجّسه أنطيوخس أبيفانس. يذكره يوحنا مرة واحدة، وكان يسوع حينئذ في أورشليم.',
+    more: 'أُقيم سنة 164 ق.م. وكان يبدأ في الخامس والعشرين من شهر كسلو، في الشتاء.',
+    refs: ['John.10.22', 'John.10.23'],
+    checks: [['John.10.22', 'وكان عيد التجديد في اورشليم وكان شتاء']],
+    src: { k: 'easton', t: 'Dedication, Feast of the' },
+    basis: ['It was instituted B.C. 164 to commemorate the purging of the temple after its pollution by Antiochus Epiphanes', 'the rebuilding of the altar', 'It lasted for eight days, beginning on the 25th of the month Chisleu (December)']
+  },
+  {
+    id: 'leaven', w: 'الخمير', en: 'Leaven', cat: 'sacrifice', icon: 'matzah',
+    find: ['خمير', 'الخمير', 'خميرة', 'الخميرة', 'خميرا'],
+    d: 'بقية عجين من خبزة سابقة تخمّرت، يُخمَّر بها العجين الجديد.',
+    more: 'كان ممنوعاً في كل قربان يوقد للرب. ويستعمله الكتاب صورة لقوته الخفية في الانتشار: لنمو ملكوت السماوات في مثل الخميرة، وللفساد في خمير الفريسيين والخميرة العتيقة.',
+    refs: ['Lev.2.11', 'Matt.13.33', 'Matt.16.6', '1Cor.5.7'],
+    checks: [['Lev.2.11', 'لا توقدوا منهما وقودا للرب'], ['Matt.13.33', 'يشبه ملكوت السماوات خميرة'], ['Matt.16.6', 'خمير الفريسيين'], ['1Cor.5.7', 'الخميرة العتيقة']],
+    src: { k: 'easton', t: 'Leaven' },
+    basis: ['the remnant of dough from the preceding baking which had fermented and become acid', 'The use of leaven was strictly forbidden in all offerings made to the Lord by fire', 'Its secretly penetrating and diffusive power is referred to in 1 Cor. 5:6.', 'it is used to illustrate the growth of the kingdom of heaven', 'It is a figure also of corruptness and of perverseness of heart and life']
+  },
+  {
+    id: 'hyssop', w: 'الزوفا', en: 'Hyssop', cat: 'sacrifice', icon: 'grain',
+    find: ['زوفا', 'الزوفا'],
+    d: 'نبات يُذكر أولاً ليلة الفصح، حين أُمر بنو إسرائيل أن يغمسوا باقة منه في الدم ويمسّوا به العتبة العليا والقائمتين. ثم استُعمل في طقوس التطهير.',
+    more: 'يصفه الكتاب بأنه ينبت في الحائط. ولا يُعرف على وجه اليقين أي نبات هو. وعلى زوفا قُدّم الخل ليسوع على الصليب.',
+    refs: ['Exod.12.22', 'Num.19.18', 'Ps.51.7', 'John.19.29'],
+    checks: [['Exod.12.22', 'وخذوا باقة زوفا واغمسوها في الدم'], ['1Kgs.4.33', 'الزوفا النابت في الحائط'], ['John.19.29', 'ووضعوها على زوفا']],
+    src: { k: 'easton', t: 'Hyssop' },
+    basis: ['first mentioned in Ex. 12:22 in connection with the institution of the Passover', 'It is spoken of as a plant "springing out of the wall" (1 Kings 4:33). Many conjectures have been formed as to what this plant really was.']
+  },
   // ---------- جماعات ووظائف ----------
   {
     id: 'levites', w: 'اللاويون', en: 'Levites', cat: 'people', icon: 'table',
@@ -387,7 +526,56 @@ export const GLOSSARY = [
     src: { k: 'easton', t: 'Leprosy' },
     basis: ['(Heb. tsara\'ath, a "smiting," a "stroke," because the disease was regarded as a direct providential infliction).', 'Lepers were required to live outside the camp or city']
   },
-
+  {
+    id: 'nethinim', w: 'النثينيم', en: 'Nethinim', cat: 'people', icon: 'gate',
+    find: ['النثينيم'],
+    d: 'خدّام الهيكل بالوراثة في أسفار ما بعد السبي، جعلهم داود والرؤساء لخدمة اللاويين.',
+    more: 'الاسم معناه المُعطَون، أي المعطَون للاويين ليخدموهم. ولا يذكرهم العهد الجديد، والأرجح أنهم ذابوا في عموم الشعب اليهودي.',
+    refs: ['Ezra.8.20', 'Ezra.2.58', 'Neh.7.46'],
+    checks: [['Ezra.8.20', 'الذين جعلهم داود مع الرؤساء لخدمة اللاويين']],
+    src: { k: 'easton', t: 'Nethinim' },
+    basis: ['The name given to the hereditary temple servants in all the post-Exilian books of Scripture. The word means given', 'No reference to them appears in the New Testament, because it is probable that they became merged in the general body of the Jewish people.']
+  },
+  {
+    id: 'herodians', w: 'الهيرودسيون', en: 'Herodians', cat: 'people', icon: 'eye',
+    find: ['الهيرودسيين', 'الهيرودسيون'],
+    d: 'حزب سياسي يهودي أيّد حكام بيت هيرودس في سياستهم، ووافق الصدوقيين في وجوب الخضوع لروما.',
+    more: 'تشاوروا مع الفريسيين على يسوع ليهلكوه، وجاءوا معهم يسألونه: أيجوز أن تعطى جزية لقيصر؟',
+    refs: ['Mark.3.6', 'Matt.22.16', 'Mark.12.13'],
+    checks: [['Mark.3.6', 'فخرج الفريسيون للوقت مع الهيرودسيين وتشاوروا عليه لكي يهلكوه'], ['Matt.22.17', 'ايجوز ان تعطى جزية لقيصر']],
+    src: { k: 'easton', t: 'Herodians' },
+    basis: ['A Jewish political party who sympathized with', 'the Herodian rulers in their general policy of government', 'They were at one with the Sadducees in holding the duty of submission to Rome']
+  },
+  {
+    id: 'proselyte', w: 'الدخيل', en: 'Proselyte', cat: 'people', icon: 'door',
+    find: ['دخيلا', 'دخلاء'], books: ['Matt', 'Acts'],
+    d: 'في العهد الجديد: من دخل ديانة اليهود وهو ليس من بني إسرائيل.',
+    more: 'نظّمت شريعة موسى قبول الغرباء في جماعة إسرائيل. ومن الدخلاء نيقولاوس، أحد السبعة الذين اختيروا في أورشليم. ويُسمّون في العهد الجديد غالباً الأتقياء أو خائفي الله.',
+    refs: ['Matt.23.15', 'Acts.2.10', 'Acts.6.5', 'Acts.13.43'],
+    checks: [['Matt.23.15', 'لتكسبوا دخيلا واحدا'], ['Acts.6.5', 'ونيقولاوس دخيلا انطاكيا']],
+    src: { k: 'easton', t: 'Proselyte' },
+    basis: ['in the New Testament for a convert to Judaism', 'The law of Moses made specific regulations regarding the admission into the Jewish church of such as were not born Israelites', 'The name by which they are commonly designated is that of "devout men," or men "fearing God" or "worshipping God."']
+  },
+  {
+    id: 'centurion', w: 'قائد المئة', en: 'Centurion', cat: 'people', icon: 'gate',
+    find: ['قائد المئة', 'قائد مئة'],
+    d: 'ضابط روماني يقود مئة جندي.',
+    more: 'كرنيليوس الذي بشّره بطرس كان قائد مئة. وقائد المئة عند الصليب قال: حقاً كان هذا ابن الله.',
+    refs: ['Acts.10.1', 'Matt.8.5', 'Matt.27.54'],
+    checks: [['Acts.10.1', 'كرنيليوس قائد مئة'], ['Matt.27.54', 'حقا كان هذا ابن الله']],
+    src: { k: 'easton', t: 'Centurion' },
+    basis: ['A Roman officer in command of a hundred men', 'was a centurion (Acts 10:1, 22)', 'A centurion watched the crucifixion of our Lord']
+  },
+  {
+    id: 'tetrarch', w: 'رئيس الربع', en: 'Tetrarch', cat: 'people', icon: 'gate',
+    find: ['رئيس الربع', 'رئيس ربع'],
+    d: 'حرفياً حاكم ربع مقاطعة، لكن اللقب صار يعني حاكم مقاطعة عموماً.',
+    more: 'هيرودس رئيس الربع كان حاكماً على الجليل، وهو الذي قطع رأس يوحنا. ويسمّيه متى الملك أيضاً.',
+    refs: ['Luke.3.1', 'Matt.14.1', 'Matt.14.9'],
+    checks: [['Luke.3.1', 'وهيرودس رئيس ربع على الجليل'], ['Matt.14.9', 'فاغتم الملك'], ['Matt.14.10', 'وقطع راس يوحنا']],
+    src: { k: 'easton', t: 'Tetrarch' },
+    basis: ['Strictly the ruler over the fourth part of a province; but the word denotes a ruler of a province generally', 'Herod the tetrarch had the title of king (Matt. 14:9).']
+  },
   // ---------- مقاييس وعملات ----------
   {
     id: 'cubit', w: 'الذراع', en: 'Cubit', cat: 'measure', icon: 'gate', auto: false,
@@ -449,7 +637,53 @@ export const GLOSSARY = [
     src: { k: 'easton', t: 'Ephah' },
     basis: ['a grain measure containing "three seahs or ten omers,"']
   },
-
+  {
+    id: 'homer', w: 'الحومر', en: 'Homer', cat: 'measure', icon: 'grain',
+    find: ['حومر', 'الحومر', 'للحومر'],
+    d: 'أكبر مكاييل الجافّ، يساوي عشر إيفات.',
+    refs: ['Ezek.45.11', 'Lev.27.16'],
+    checks: [['Ezek.45.11', 'والايفة عشر الحومر']],
+    src: { k: 'easton', t: 'Homer' },
+    basis: ['the largest of dry measures', '= 10 ephahs']
+  },
+  {
+    id: 'omer', w: 'العُمِر', en: 'Omer', cat: 'measure', icon: 'grain',
+    find: ['العمر', 'عمرا'], books: ['Exod'],
+    d: 'مكيال يساوي عُشر الإيفة. به جمع بنو إسرائيل المنّ: عمراً لكل شخص.',
+    refs: ['Exod.16.16', 'Exod.16.36'],
+    checks: [['Exod.16.36', 'واما العمر فهو عشر الايفة'], ['Exod.16.16', 'عمرا للراس']],
+    src: { k: 'easton', t: 'Omer' },
+    basis: ['one-tenth of an ephah']
+  },
+  {
+    id: 'bath', w: 'البث', en: 'Bath', cat: 'measure', icon: 'laver', auto: false,
+    find: ['البث', 'بثا'],
+    d: 'مكيال عبري للسوائل يساوي عُشر الحومر.',
+    more: 'يقول إشعياء: عشرة فدادين كرم تصنع بثاً واحداً، أي محصولاً قليلاً جداً.',
+    refs: ['Ezek.45.11', 'Isa.5.10'],
+    checks: [['Ezek.45.11', 'لكي يسع البث عشر الحومر'], ['Isa.5.10', 'عشرة فدادين كرم تصنع بثا واحدا']],
+    src: { k: 'easton', t: 'Bath' },
+    basis: ['A Hebrew liquid measure, the tenth part of an homer', 'denotes great unproductiveness']
+  },
+  {
+    id: 'gerah', w: 'الجيرة', en: 'Gerah', cat: 'measure', icon: 'grain',
+    find: ['جيرة'],
+    d: 'أصغر وزن وأصغر قطعة نقد عند العبرانيين، تساوي جزءاً من عشرين من الشاقل.',
+    refs: ['Exod.30.13', 'Num.3.47'],
+    checks: [['Exod.30.13', 'الشاقل هو عشرون جيرة']],
+    src: { k: 'easton', t: 'Gerah' },
+    basis: ['the smallest weight, and also the smallest piece of money, among the Hebrews, equal to the twentieth part of a shekel']
+  },
+  {
+    id: 'furlong', w: 'الغلوة', en: 'Furlong (stadium)', cat: 'measure', icon: 'gate',
+    find: ['غلوة'],
+    d: 'مقياس يوناني للمسافة يساوي 606 أقدام و9 بوصات، أي نحو 185 متراً.',
+    more: 'كانت بيت عنيا قريبة من أورشليم نحو خمس عشرة غلوة، وعمواس على ستين غلوة.',
+    refs: ['John.11.18', 'Luke.24.13'],
+    checks: [['John.11.18', 'نحو خمس عشرة غلوة'], ['Luke.24.13', 'ستين غلوة']],
+    src: { k: 'easton', t: 'Furlong' },
+    basis: ['A stadium, a Greek measure of distance equal to 606 feet and 9 inches']
+  },
   // ---------- كلمات بلغتها الأصلية ----------
   {
     id: 'amen', w: 'آمين', en: 'Amen', cat: 'words', icon: 'confess',
@@ -539,7 +773,109 @@ export const GLOSSARY = [
     src: { k: 'easton', t: 'Covenant' },
     basis: ['A contract or agreement between two parties.', 'with reference to the cutting or dividing of animals into two parts, and the contracting parties passing between them, in making a covenant (Gen. 15; Jer. 34:18, 19).']
   },
-
+  {
+    id: 'selah', w: 'سلاه', en: 'Selah', cat: 'words', icon: 'shofar',
+    find: ['سلاه'],
+    d: 'كلمة تتكرر في المزامير وفي حبقوق 3، نحو أربع وسبعين مرة. معناها غير مؤكد: قيل سكوت أو وقفة، وقيل غير ذلك.',
+    refs: ['Ps.3.2', 'Hab.3.3'],
+    checks: [['Ps.3.2', 'سلاه'], ['Hab.3.3', 'سلاه']],
+    src: { k: 'easton', t: 'Selah' },
+    basis: ['about seventy-four times in all in Scripture. Its meaning is doubtful. Some interpret it as meaning "silence" or "pause;"']
+  },
+  {
+    id: 'maranatha', w: 'ماران أثا', en: 'Maranatha', cat: 'words', icon: 'confess',
+    find: ['ماران أثا'],
+    d: 'كلمتان أراميتان معناهما: ربنا آتٍ، أو ربنا يأتي.',
+    refs: ['1Cor.16.22'],
+    checks: [['1Cor.16.22', 'ماران اثا']],
+    src: { k: 'easton', t: 'Maranatha' },
+    basis: ['consists of two Aramean words', 'meaning, "our Lord comes," or is "coming."']
+  },
+  {
+    id: 'raca', w: 'رَقا', en: 'Raca', cat: 'words', icon: 'confess',
+    find: ['رقا'], books: ['Matt'],
+    d: 'كلمة احتقار عند اليهود، معناها: فارغ، تافه، لا قيمة له. وردت مرة واحدة، في كلام المسيح عن الغضب.',
+    refs: ['Matt.5.22'],
+    checks: [['Matt.5.22', 'ومن قال لاخيه رقا']],
+    src: { k: 'easton', t: 'Raca' },
+    basis: ['Vain, empty, worthless, only found in Matt. 5:22. The Jews used it as a word of contempt.']
+  },
+  {
+    id: 'ephphatha', w: 'إفثا', en: 'Ephphatha', cat: 'words', icon: 'confess',
+    find: ['إفثا'],
+    d: 'كلمة أرامية معناها: انفتح. قالها المسيح حين شفى الأصم الأعقد.',
+    more: 'من سمات إنجيل مرقس أنه يحفظ الكلمات الأرامية نفسها التي نطق بها الرب.',
+    refs: ['Mark.7.34'],
+    checks: [['Mark.7.34', 'افثا اي انفتح'], ['Mark.7.32', 'باصم اعقد']],
+    src: { k: 'easton', t: 'Ephphatha' },
+    basis: ['meaning "Be opened," uttered by Christ when healing the man who was deaf and dumb', "It is one of the characteristics of Mark that he uses the very Aramaic words which fell from our Lord's lips."]
+  },
+  {
+    id: 'talitha', w: 'طليثا قومي', en: 'Talitha cumi', cat: 'words', icon: 'confess',
+    find: ['طليثا'],
+    d: 'عبارة أرامية قالها المسيح لابنة يايرس حين أقامها، معناها: يا صبية قومي.',
+    refs: ['Mark.5.41', 'Mark.5.22'],
+    checks: [['Mark.5.41', 'الذي تفسيره يا صبية لك اقول قومي'], ['Mark.5.22', 'اسمه يايرس']],
+    src: { k: 'easton', t: 'Talitha cumi' },
+    basis: ['a Syriac or Aramaic expression, meaning, "Little maid, arise."']
+  },
+  {
+    id: 'mammon', w: 'المال (مامون)', en: 'Mammon', cat: 'words', icon: 'confess', auto: false,
+    find: ['المال', 'بمال الظلم'],
+    d: 'كلمة أرامية معناها الثروة أو الغنى، وتأتي أيضاً مشخّصة كإله للغنى. يترجمها فاندايك المال: لا تقدرون أن تخدموا الله والمال.',
+    refs: ['Matt.6.24', 'Luke.16.9', 'Luke.16.13'],
+    checks: [['Matt.6.24', 'لا تقدرون ان تخدموا الله والمال'], ['Luke.16.9', 'بمال الظلم']],
+    src: { k: 'easton', t: 'Mammon' },
+    basis: ['meaning "wealth" or "riches"', 'by personification, the god of riches']
+  },
+  {
+    id: 'anathema', w: 'أناثيما', en: 'Anathema', cat: 'words', icon: 'confess',
+    find: ['أناثيما'],
+    d: 'كلمة يونانية تعني في العهد الجديد دائماً: ملعون، محروم.',
+    more: 'يقابلها في العهد القديم المُحرَّم: ما كُرّس للرب نهائياً فلا يُباع ولا يُفك. ويقول بولس: إن بشّركم أحد بغير ما بشّرناكم فليكن أناثيما.',
+    refs: ['Gal.1.8', '1Cor.16.22', 'Lev.27.28'],
+    checks: [['Gal.1.8', 'فليكن اناثيما'], ['Lev.27.28', 'فلا يباع ولا يفك']],
+    src: { k: 'easton', t: 'Anathema' },
+    basis: ['Any object so devoted to the Lord could not be redeemed', 'In the New Testament this word always implies execration.', 'If any one preached another gospel, the apostle says, "let him be accursed"']
+  },
+  {
+    id: 'golgotha', w: 'جلجثة', en: 'Golgotha', cat: 'words', icon: 'dark',
+    find: ['جلجثة'],
+    d: 'اسم المكان الذي صُلب فيه يسوع، ومعناه موضع الجمجمة. كان خارج الباب، قريباً من المدينة، وفيه بستان.',
+    more: 'وهو نفسه الموضع الذي يسمّيه لوقا جمجمة.',
+    refs: ['Matt.27.33', 'John.19.17', 'Heb.13.12'],
+    checks: [['Matt.27.33', 'وهو المسمى موضع الجمجمة'], ['John.19.20', 'كان قريبا من المدينة'], ['John.19.41', 'وكان في الموضع الذي صلب فيه بستان'], ['Heb.13.12', 'تالم خارج الباب'], ['Luke.23.33', 'الموضع الذي يدعى جمجمة']],
+    src: { k: 'easton', t: 'Golgotha' },
+    basis: ['It is interpreted by the evangelists as meaning "the place of a skull"', 'It is identical with the word Calvary', 'some well-known spot outside the gate', 'near the city (Luke 23:26), containing a "garden" (John 19:41)']
+  },
+  {
+    id: 'immanuel', w: 'عمانوئيل', en: 'Immanuel', cat: 'words', icon: 'lamp',
+    find: ['عمانوئيل'],
+    d: 'اسم معناه: الله معنا. ورد في نبوة إشعياء، ويقول متى إنها تمّت في ميلاد يسوع من العذراء.',
+    refs: ['Isa.7.14', 'Matt.1.22', 'Matt.1.23'],
+    checks: [['Isa.7.14', 'ها العذراء تحبل وتلد ابنا'], ['Matt.1.22', 'لكي يتم ما قيل من الرب بالنبي'], ['Matt.1.23', 'الذي تفسيره الله معنا']],
+    src: { k: 'easton', t: 'Immanuel' },
+    basis: ['God with us. In the Old Testament it occurs only in Isa. 7:14 and 8:8.', 'an interpretation borne out by the words of the evangelist Matthew (1:23)']
+  },
+  // ---------- doctrine (WSC) ----------
+  {
+    id: 'baptism', w: 'المعمودية', en: 'Baptism', cat: 'doctrine', icon: 'laver',
+    find: ['المعمودية', 'معمودية', 'بالمعمودية'], books: ['Rom', '1Cor', 'Gal', 'Eph', 'Col', '1Pet'],
+    d: 'المعمودية سرّ مقدس فيه الغسل بالماء باسم الآب والابن والروح القدس يرمز إلى اتحادنا بالمسيح (تطعيمنا فيه) ويختمه، وإلى اشتراكنا في بركات عهد النعمة، وتعهّدنا أن نكون للرب.',
+    refs: ['Matt.28.19', 'Rom.6.4', 'Gal.3.27'],
+    checks: [['Matt.28.19', 'باسم الاب والابن والروح القدس']],
+    src: { k: 'wsc', q: 94 },
+    basis: ["Baptism is a sacrament, wherein the washing with water in the name of the Father, and of the Son, and of the Holy Ghost, doth signify and seal our ingrafting into Christ, and partaking of the benefits of the covenant of grace, and our engagement to be the Lord's."]
+  },
+  {
+    id: 'lords-supper', w: 'عشاء الرب', en: "Lord's Supper", cat: 'doctrine', icon: 'loaves',
+    find: ['عشاء الرب'],
+    d: 'عشاء الرب سرّ مقدس، فيه بإعطاء الخبز والخمر وتناولهما حسب ترتيب المسيح يُخبَر بموته. والذين يتناولون باستحقاق يشتركون في جسده ودمه مع كل بركاته، لا بطريقة جسدية مادية بل بالإيمان، لغذائهم الروحي ونموّهم في النعمة.',
+    refs: ['1Cor.11.23', '1Cor.11.26', '1Cor.10.16'],
+    checks: [['1Cor.11.20', 'عشاء الرب'], ['1Cor.11.26', 'تخبرون بموت الرب الى ان يجيء']],
+    src: { k: 'wsc', q: 96 },
+    basis: ["The Lord's Supper is a sacrament, wherein, by giving and receiving bread and wine, according to Christ's appointment, his death is showed forth; and the worthy receivers are, not after a corporal and carnal manner, but by faith, made partakers of his body and blood, with all his benefits, to their spiritual nourishment, and growth in grace."]
+  },
   // ---------- كلمات عقائدية (التعليم المختصر لوستمنستر) ----------
   {
     id: 'sin', w: 'الخطية', en: 'Sin', cat: 'doctrine', icon: 'sin',

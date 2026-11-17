@@ -430,3 +430,8 @@
 - «مثال من حياتنا في 2026», «اسأل نفسك» and «خطوة هذا الأسبوع» are written by the site and labelled as such; they apply the sourced principle and never add doctrine.
 - Each chapter ends with a Christ card (also sourced) and a commitment card: picked steps can be saved as an image or printed. Nothing is stored.
 - Inner class names are prefixed `l3` to avoid v2 clashes (`.pr`, `.st`, `.in` broke layout).
+
+### 12. Glossary expanded: 58 → 93 words
+- 33 new Easton entries (offerings, feasts, measures, groups, Aramaic/Greek words) and 2 WSC answers (Q94 baptism, Q96 Lord's Supper). Easton text for each is copied raw into `data/sources/easton-glossary.json`.
+- New entry field `not`: phrases that carry a different sense, so that verse is never auto-marked (e.g. بيد رفيعة in Exod 14:8, Num 15:30, 33:3 is not the heave offering).
+- Easton claims we left out on purpose: the site of Golgotha, the identity of hyssop, Peter as Mark's informant, Cornelius as the first Gentile convert. Where Easton is unsure (Selah, Feast of Trumpets) the entry says so.
