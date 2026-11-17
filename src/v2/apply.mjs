@@ -63,7 +63,7 @@ const dir = path.join(ROOT, 'content/apply');
 for (const f of fs.existsSync(dir) ? fs.readdirSync(dir).filter((x) => x.endsWith('.mjs') && !x.startsWith('_')) : []) {
   const mod = (await import(path.join(dir, f))).default;
   for (const A of Array.isArray(mod) ? mod : [mod]) {
-  const check = (v, where, ref) => { const S = flat(sourceText(v, ref)); for (const b of v.basis) if (!S.includes(flat(b))) throw new Error(`Apply ${f} ${where}: basis not word for word in source: "${b}"`); };
+  const check = (v, where, ref) => { if (v.basis.some((b) => b.includes('—'))) throw new Error(`Apply ${f} ${where}: no em dash in basis`); const S = flat(sourceText(v, ref)); for (const b of v.basis) if (!S.includes(flat(b))) throw new Error(`Apply ${f} ${where}: basis not word for word in source: "${b}"`); };
   for (const it of A.items) {
     check(it.by, it.id, it.ref); if (it.also) check(it.also, it.id + '/also', it.ref);
     it.q = piece(it.ref, it.cut);

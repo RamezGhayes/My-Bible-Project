@@ -306,7 +306,7 @@ export default [
         id: 'martha', t: 'الحاجة إلى واحد', ref: 'Luke.10.42', cut: 'ولكن الحاجة إلى واحد', arenas: ['home', 'work', 'church'],
         p: 'لم تكن مرثا تعمل شيئاً خطأ، لكنها انشغلت عن الأهم. يقول هنري: يصير العمل الدنيوي فخاً لنا حين يعيقنا عن خدمة الله وعن خير نفوسنا.',
         by: H('Worldly business is *then* a snare to us when it hinders us from serving God and getting good to our souls.'),
-        also: also(C('but that we must pay a proper attention to order, lest what is accessory—as the phrase is—become our chief concern.'), 'ويقول كالفن: يجب أن ننتبه للترتيب، لئلا يصير الثانوي هو شغلنا الأول.'),
+        also: also(C('but that we must pay a proper attention to order'), 'ويقول كالفن: يجب أن ننتبه للترتيب في أولوياتنا.'),
         today: 'تحضير عزومة، وتنظيف البيت قبل الضيوف، وتحضير برنامج الخدمة. وفي وسط كل هذا لا تجلس لحظة عند قدمي يسوع.',
         ask: 'ما الشيء الجيد الذي يسرق مكان الأفضل في يومك؟',
         step: 'اجلس كل يوم هذا الأسبوع عشر دقائق مع الكلمة قبل أن تبدأ أي عمل في البيت.'
@@ -370,6 +370,374 @@ export default [
         today: 'الآب الذي أعطاك الملكوت لن يبخل عليك بالعيش. القلق على المستقبل المادي يتلاشى أمام عظمة ما أعطاه.',
         ask: 'إن كان الله أعطاك الملكوت، لماذا تخاف أن ينساك في الخبز؟',
         step: 'كلما قلقت على المال هذا الأسبوع، اقرأ لوقا 12: 32 بصوت، واشكر الله على الملكوت.'
+      }
+    ]
+  },
+{
+    book: 'Luke', ch: 13,
+    lead: 'كارثة برج سلوام، وتينة بلا ثمر تُعطى سنة أخرى، وامرأة منحنية تُشفى، والباب الضيق.',
+    items: [
+      {
+        id: 'tragedy', t: 'حين تسمع عن كارثة', ref: 'Luke.13.5', cut: 'بل إن لم تتوبوا فجميعكم كذلك تهلكون', arenas: ['online', 'home'],
+        p: 'سألوا يسوع عن ضحايا مأساة، فوجّه السؤال إليهم. يقول كالفن: إن أمهلنا الله زمناً، فليس لنا أن نأخذ لطفه فرصة للنوم، بل دعوة للتوبة.',
+        by: C('If he spares us for a time, we are so far from having a right to take such kindness and forbearance as an opportunity for slumber, that we ought to regard it as an invitation to repentance.'),
+        also: also(H('Sad providences ought to be observed by us, and the knowledge of them communicated to others, that they and we may be suitably affected with them, and make a good use of them.'), 'ويقول هنري: يجب أن نلاحظ الأحداث المحزنة ونتأثر بها وننتفع منها، نحن وغيرنا.'),
+        today: 'زلزال، أو حادث قطار، أو عمارة انهارت. نسأل: هل كانوا أشر من غيرهم؟ يسوع يقول: لا. السؤال الحقيقي: هل أنت مستعد؟',
+        ask: 'هل تجعلك الكوارث تحكم على الضحايا، أم تفحص نفسك؟',
+        step: 'حين تقرأ خبراً محزناً هذا الأسبوع، صلِّ لأجل المتألمين، ثم اسأل نفسك: ما الذي أحتاج أن أتوب عنه؟'
+      },
+      {
+        id: 'fig', t: 'سنة أخرى', ref: 'Luke.13.8', cut: 'يا سيد اتركها هذه السنة أيضا', arenas: ['church', 'home'],
+        p: 'ثلاث سنين بلا ثمر، والكرام يطلب سنة أخرى. يقول هنري: محزن أن كثيرين يتمتعون بامتيازات الإنجيل ولا يعملون شيئاً لمجد الله، وهذا يخيّب أمله ويحزن روح نعمته.',
+        by: H('It is sad to think how many enjoy the privileges of the gospel, and yet do nothing at all to the honour of God'),
+        today: 'سنة جديدة في الكنيسة، ونفس الحال: لا نمو ولا ثمر. كل سنة تُعطى لنا هي فرصة رحمة، لا ضماناً.',
+        ask: 'لو كانت هذه السنة الأخيرة المعطاة لك، ماذا ستغير؟',
+        step: 'اكتب هدفاً روحياً واحداً لبقية هذه السنة، وشاركه مع شخص يتابعك فيه.'
+      },
+      {
+        id: 'narrow', t: 'اسأل: ماذا أفعل أنا؟', ref: 'Luke.13.24', cut: 'اجتهدوا أن تدخلوا من الباب الضيق', arenas: ['online', 'church'],
+        p: 'سأله واحد: أقليل هم الذين يخلصون؟ فأجاب: اجتهدوا أنتم. يقول هنري: كثيرون يسألون باهتمام عمن سيخلص ومن لا، أكثر مما يسألون عما يجب أن يفعلوه هم ليخلصوا.',
+        by: H('Many are more inquisitive respecting who shall be saved, and who not, than respecting what they shall do to be saved.'),
+        today: 'نقاشات طويلة: هل فلان سيخلص؟ وماذا عن من لم يسمعوا؟ أسئلة مشروعة، لكن يسوع يعيدك لسؤال أهم: هل أنت داخل؟',
+        ask: 'هل تنشغل بمصير الآخرين أكثر من مصيرك؟',
+        step: 'بدل أن تدخل نقاشاً عن خلاص الآخرين هذا الأسبوع، افحص أساس رجائك أنت.'
+      }
+    ]
+  },
+  {
+    book: 'Luke', ch: 14,
+    lead: 'يسوع على مائدة فريسي: من يجلس في الصدارة، ومن يُدعى، ومثل العشاء العظيم، وحساب النفقة.',
+    items: [
+      {
+        id: 'seat', t: 'المكان الأخير', ref: 'Luke.14.10', cut: 'فاذهب واتكئ في الموضع الأخير', arenas: ['work', 'church', 'home'],
+        p: 'لاحظ يسوع كيف يختار المدعوون المتكآت الأولى. يقول هنري: يجب أن يكسر كبرياءنا أن نفكر كم من الناس أكرم منا، لا في المراتب الدنيوية فقط بل في الفضائل الشخصية. والطريق لترتفع أن تبدأ من أسفل.',
+        by: H('It ought to check our high thoughts of ourselves to think how many there are that are *more honourable* than we', 'The way to *rise high* is to *begin low,*'),
+        today: 'في الفرح، أو الاجتماع، أو صورة الفريق، أو ترتيب الأسماء في البرنامج. صراع خفي على الصف الأول.',
+        ask: 'أين تبحث عن مكان الصدارة؟',
+        step: 'اختر هذا الأسبوع عمداً المكان الأقل في مناسبة أو اجتماع، وراقب قلبك.'
+      },
+      {
+        id: 'table', t: 'كلام المائدة', ref: 'Luke.14.15', cut: 'طوبى لمن يأكل خبزا في ملكوت الله', arenas: ['home'],
+        p: 'على المائدة تحول الحديث إلى ملكوت الله. يقول هنري: لا نسمح بكلام فاسد على موائدنا فقط، بل نتجاوز الكلام العادي، وننتهز فرصة صلاح الله لنا على المائدة لنتكلم حسناً عنه.',
+        by: H('We must not only not allow any corrupt communication at our tables, such as that of the *hypocritical mockers at feasts,* but we must go beyond common harmless talk, and should take occasion from God\'s goodness to us at our tables to speak well of him'),
+        today: 'العائلة تأكل والتلفزيون مفتوح، وكل واحد في موبايله. أو الحديث كله شكوى ونميمة.',
+        ask: 'عن ماذا تتكلم عائلتك على المائدة؟',
+        step: 'في وجبة عائلية هذا الأسبوع، اسأل كل واحد: ما الشيء الذي تشكر الله عليه اليوم؟'
+      },
+      {
+        id: 'cost', t: 'احسب النفقة', ref: 'Luke.14.28', cut: 'لا يجلس أولا ويحسب النفقة', arenas: ['church', 'work'],
+        p: 'لا يريد يسوع أتباعاً متحمسين ينسحبون عند أول ثمن. يقول كالفن: يجب أن نفكر مسبقاً فيما يتطلبه الاعتراف بالإنجيل.',
+        by: C('We must consider beforehand what the profession of the gospel demands.'),
+        today: 'شاب يريد أن يخدم، أو مؤمن جديد يريد أن يتعمد. قبل الحماس، اسأل: ما الذي سيكلفني هذا في وقتي وعلاقاتي وفلوسي؟',
+        ask: 'هل حسبت ما يكلفك اتباع المسيح، أم تتبعه حتى يكلفك؟',
+        step: 'اكتب ما يكلفك اتباع المسيح الآن، وصلِّ أن يعطيك الله أمانة حتى النهاية.'
+      }
+    ]
+  },
+  {
+    book: 'Luke', ch: 15,
+    lead: 'خروف ضال، ودرهم مفقود، وابن ضال، وأخ أكبر غاضب.',
+    items: [
+      {
+        id: 'waste', t: 'بذر ماله', ref: 'Luke.15.13', cut: 'وهناك بذر ماله بعيش مسرف', arenas: ['home', 'work'],
+        p: 'أخذ الابن الأصغر نصيبه مقدماً وأنفقه سريعاً. يقول هنري: حماقة الخطاة الكبرى، التي تهلكهم، أنهم يرضون بنصيبهم في اليد، أن ينالوا خيراتهم في هذه الحياة. والتبذير المتعمد يجلب عوزاً مرّاً.',
+        by: H('The great folly of sinners, and that which ruins them, is being content to have *their portion in hand,* now in this lifetime to *receive their good things.', 'Wilful waste brings woeful want.'),
+        today: 'قرض لسفرية، أو أقساط على كماليات، أو مرتب يخلص في أول أسبوع. نريد كل شيء الآن.',
+        ask: 'أين تبذر ما أعطاه الله لك: مال، أو وقت، أو صحة؟',
+        step: 'اكتب ميزانية بسيطة لهذا الشهر، وحدد بنداً واحداً للتبذير توقفه.'
+      },
+      {
+        id: 'came', t: 'رجع إلى نفسه', ref: 'Luke.15.17', cut: 'فرجع إلى نفسه وقال', arenas: ['home'],
+        p: 'المجاعة والخنازير أيقظته. يقول هنري: الضيقات، حين تقدّسها النعمة الإلهية، تصير وسائل سعيدة لرجوع الخطاة عن ضلال طرقهم.',
+        by: H('Afflictions, when they are sanctified by divine grace, prove happy means of turning sinners from the error of their ways.'),
+        today: 'ابن بعيد يمر بأزمة: ديون، أو فشل، أو علاقة انتهت. لا تشمت ولا تنقذه فوراً من كل نتيجة. صلِّ أن تقوده الأزمة إلى نفسه وإلى أبيه.',
+        ask: 'هل تصلي أن يستعمل الله ضيقة شخص تحبه ليرده؟',
+        step: 'صلِّ هذا الأسبوع لأجل شخص بعيد يمر بضيقة، أن يرجع إلى نفسه وإلى الآب.'
+      },
+      {
+        id: 'elder', t: 'الأخ الذي لم يدخل', ref: 'Luke.15.28', cut: 'فغضب ولم يرد أن يدخل', arenas: ['church', 'home'],
+        p: 'الابن الأكبر كان في البيت لكنه بعيد عن قلب أبيه. يقول هنري: يجب أن يتأثر أولاد الله وخدامه بالأمور كما يتأثر هو.',
+        by: H("God's children and servants ought to be affected with things as he is."),
+        also: also(C('if we are desirous to be reckoned the children of God, we must forgive in a brotherly manner the faults of brethren, which He forgives with fatherly kindness.'), 'ويقول كالفن: إن أردنا أن نُحسب أولاد الله، يجب أن نغفر بروح الأخوة زلات إخوتنا التي يغفرها هو بلطف أبوي.'),
+        today: 'أخ رجع للكنيسة بعد سنين بعيداً، والكل يحتفل. وأنت الذي لم تغب يوماً تشعر بالظلم.',
+        ask: 'هل تفرح برجوع الخطاة كما يفرح الآب؟',
+        step: 'رحب هذا الأسبوع بشخص رجع للكنيسة بعد غياب، بكلمة فرح لا بلوم.'
+      }
+    ]
+  },
+  {
+    book: 'Luke', ch: 16,
+    lead: 'وكيل ظالم يتصرف بحكمة، وفريسيون محبون للمال، وغني ولعازر.',
+    items: [
+      {
+        id: 'steward', t: 'وكيل لا مالك', ref: 'Luke.16.2', cut: 'أعط حساب وكالتك', arenas: ['work', 'home'],
+        p: 'الوكيل عرف أن وكالته ستنتهي، فاستعد. يقول هنري: إذ جاءنا جميعاً إنذار بأننا سنخرج قريباً من وكالتنا، يهمنا أن نفكر ماذا سنفعل حينئذ. ويقول كالفن: غرض المثل أن نتعامل مع قريبنا بلطف وكرم.',
+        by: H('Since we have all received notice that we must shortly be turned out of our stewardship, we are concerned to consider what we shall do then.'),
+        also: also(C('The leading object of this parable is, to show that we ought to deal kindly and generously with our neighbors;'), 'ويقول كالفن: غرض المثل الأساسي أن نتعامل مع قريبنا بلطف وكرم.'),
+        today: 'المرتب، والبيت، والعربية، والمواهب. كلها عهدة. ويوماً سنسلّم الحساب.',
+        ask: 'لو طُلب منك الحساب اليوم عن مالك ووقتك، ماذا ستقول؟',
+        step: 'راجع هذا الأسبوع كيف أنفقت مالك الشهر الماضي، وحدد تغييراً واحداً يجعلك وكيلاً أكثر أمانة.'
+      },
+      {
+        id: 'mock', t: 'محبون للمال فاستهزأوا', ref: 'Luke.16.14', cut: 'وهم محبون للمال فاستهزأوا به', arenas: ['church', 'work'],
+        p: 'المتدينون جداً سخروا من كلام يسوع عن المال. يقول هنري: كثيرون ممن يعترفون بالدين اعترافاً عظيماً، ولهم معرفة كثيرة، ويكثرون من العبادة، تهلكهم محبة العالم، ولا شيء يقسّي القلب ضد كلمة المسيح أكثر منها.',
+        by: H('Many that make a great profession of religion, have much knowledge, and abound in the exercise of devotion, are yet ruined by the love of the world; nor does any thing harden the heart more against the word of Christ.'),
+        today: 'حين تتكلم العظة عن العطاء أو الطمع، نتضايق أو نسخر: هو الكنيسة عايزة فلوس وبس. لماذا يضايقنا هذا الموضوع بالذات؟',
+        ask: 'هل يضايقك كلام الكتاب عن المال أكثر من أي موضوع آخر؟',
+        step: 'اقرأ 1 تيموثاوس 6: 6-10 و17-19 هذا الأسبوع، واسمح للكلمة أن تفحص علاقتك بالمال.'
+      },
+      {
+        id: 'lazarus', t: 'لعازر على بابك', ref: 'Luke.16.20', cut: 'وكان مسكين اسمه لعازر', arenas: ['home', 'church'],
+        p: 'لم يُذكر أن الغني ظلم لعازر، بل أنه تجاهله. يقول هنري: لا يكفي ألا نظلم الفقراء، فسنوجد وكلاء غير أمناء على أموال ربنا في اليوم العظيم إن لم نساعدهم ونريحهم.',
+        by: H("It is not enough not to oppress and trample upon the poor; we shall be found unfaithful stewards of our Lord's goods, in the great day, if we do not succour and relieve them."),
+        also: also(C('we ought not to pronounce men to be accursed by God, because they drag out, in incessant pain, a life which is full of distresses.'), 'ويقول كالفن: لا نحكم بأن من يعيش حياة مليئة بالضيقات والألم ملعون من الله.'),
+        today: 'متسول تراه كل يوم عند باب العمارة أو الكنيسة. تعودت عليه حتى صار جزءاً من المكان. له اسم عند الله.',
+        ask: 'من لعازر الذي يجلس على بابك؟ هل تعرف اسمه؟',
+        step: 'اعرف هذا الأسبوع اسم محتاج تراه بانتظام، واسأله عن احتياجه، وساعده.'
+      }
+    ]
+  },
+{
+    book: 'Luke', ch: 17,
+    lead: 'اغفر سبع مرات، وعبيد بطالون، وعشرة برص طهروا وواحد رجع يشكر.',
+    items: [
+      {
+        id: 'seven', t: 'سبع مرات في اليوم', ref: 'Luke.17.4', cut: 'وإن أخطأ إليك سبع مرات في اليوم', arenas: ['home', 'work'],
+        p: 'الغفران المتكرر لمن يرجع تائباً. يقول هنري: يجب أن يكون للمسيحيين روح غافرة، يحملون كل إنسان على أحسن وجه، ويهوّنون الأخطاء ولا يضخّمونها، ويجتهدون أن يُظهروا أنهم غفروا الإساءة كما يجتهد غيرهم أن يُظهروا أنهم ناقمون عليها.',
+        by: H('Christians should be of a forgiving spirit, willing to make the best of every body, and to make all about them easy; forward to extenuate faults, and not to aggravate them; and they should contrive as much to show that they have forgiven an injury as others to show that they resent it.'),
+        today: 'زوج أو زوجة يكرر نفس الغلطة، أو ابن مراهق يعتذر ويرجع يخطئ. التعب حقيقي، لكن يسوع لم يضع سقفاً لمن يرجع تائباً.',
+        ask: 'هل تُظهر غفرانك بنفس الوضوح الذي تُظهر به زعلك؟',
+        step: 'لمن اعتذر لك مؤخراً، أظهر هذا الأسبوع بتصرف عملي أنك سامحته فعلاً.'
+      },
+      {
+        id: 'servants', t: 'عبيد بطالون', ref: 'Luke.17.10', cut: 'إننا عبيد بطالون لأننا إنما عملنا ما كان يجب علينا', arenas: ['church', 'work'],
+        p: 'مهما خدمنا، لم نعطِ الله أكثر من حقه. يقول كالفن: نحن لا نقدم لله شيئاً فوق ما له حق أن يطلبه، بل نحن مرتبطون بخدمته بقوة حتى إننا مدينون له بكل ما في قدرتنا.',
+        by: C('we render nothing to God beyond what he has a right to claim, but are so strongly bound to his service, that we owe him every thing that lies in our power.'),
+        today: 'خدمت سنين في الكنيسة، وتنتظر تقديراً أو مكانة. حين لا يأتي، تشعر بالمرارة كأن الله مدين لك.',
+        ask: 'هل تخدم وكأن الله مدين لك بشيء؟',
+        step: 'بعد كل خدمة هذا الأسبوع، قل في قلبك: إنما عملت ما كان يجب عليّ، واشكر الله على امتياز الخدمة.'
+      },
+      {
+        id: 'nine', t: 'فأين التسعة؟', ref: 'Luke.17.17', cut: 'أليس العشرة قد طهروا فأين التسعة', arenas: ['home', 'church'],
+        p: 'عشرة صرخوا، وواحد فقط رجع يشكر. يقول هنري: يجب أن نشكر على المعروف الذي يصنعه المسيح معنا، وخصوصاً على الشفاء من المرض، وأن نسرع بالشكر ولا نؤجله، لئلا يُضعف الوقت إحساسنا بالرحمة.',
+        by: H('We ought to give thanks for the favours Christ bestows upon us, and particularly for recoveries from sickness; and we ought to be *speedy* in our returns of praise, and not defer them, lest time wear out the sense of the mercy.'),
+        also: also(C('Let us learn that this complaint is brought generally against all of us, if we do not at least repay the divine favors by the duty of gratitude.'), 'ويقول كالفن: هذه الشكوى موجهة لنا جميعاً إن لم نرد على عطايا الله على الأقل بواجب الشكر.'),
+        today: 'صليت بلجاجة لأجل نتيجة التحاليل، وجاءت سليمة. فرحت وكلمت الكل، ونسيت أن ترجع لله.',
+        ask: 'ما الصلاة التي استجابها الله ولم ترجع لتشكره عليها؟',
+        step: 'اكتب ثلاث استجابات حديثة لصلواتك، واشكر الله عليها بالاسم اليوم.'
+      }
+    ]
+  },
+  {
+    book: 'Luke', ch: 18,
+    lead: 'أرملة لا تمل، وفريسي وعشار في الهيكل، وأطفال، وغني، وأعمى أريحا.',
+    items: [
+      {
+        id: 'persist', t: 'صلِّ ولا تمل', ref: 'Luke.18.1', cut: 'ينبغي أن يصلى كل حين ولا يمل', arenas: ['home'],
+        p: 'المثل كله غرضه أن نستمر في الصلاة. يقول كالفن: لنجاهد ضد نفاد صبرنا، حتى لا يجعلنا التأخير الطويل نتوقف عن الصلاة.',
+        by: C('let us contend against our impatience, so that the long delay may not induce us to discontinue our prayers.'),
+        today: 'صليت لأجل زواج، أو شغل، أو إيمان ابن، لسنين. والتعب يقول: كفى، الله لا يسمع.',
+        ask: 'ما الطلب الذي تعبت من الصلاة لأجله؟',
+        step: 'ارجع هذا الأسبوع لطلب توقفت عن الصلاة لأجله، وصلِّ لأجله كل يوم.'
+      },
+      {
+        id: 'pharisee', t: 'لست مثل باقي الناس', ref: 'Luke.18.11', cut: 'اللهم أنا أشكرك أني لست مثل باقي الناس', arenas: ['church', 'online'],
+        p: 'الفريسي شكر الله، لكنه كان يتكل على أعماله. يقول كالفن: حتى لو نسب الإنسان لله الفضل في أعماله، لكن إن ظن أن بر هذه الأعمال هو سبب خلاصه أو اتكل عليه، فهو مُدان بكبرياء شريرة.',
+        by: C('though a man may ascribe to God the praise of works, yet if he imagines the righteousness of those works to be the cause of his salvation, or rests upon it, he is condemned for wicked arrogance.'),
+        today: 'الحمد لله إني مش زي فلان اللي ساب الكنيسة، أو زي الشباب ده. شكر في ظاهره، واحتقار في داخله.',
+        ask: 'بمن تقارن نفسك لتشعر أنك أفضل؟',
+        step: 'صلِّ هذا الأسبوع صلاة العشار كل يوم: اللهم ارحمني أنا الخاطئ.'
+      },
+      {
+        id: 'others', t: 'سبّحوا لأجل غيرهم', ref: 'Luke.18.43', cut: 'وجميع الشعب إذ رأوا سبحوا الله', arenas: ['church'],
+        p: 'أبصر الأعمى، فسبّح الشعب كله. يقول هنري: يجب أن نسبّح الله على مراحمه لغيرنا كما نسبّحه على مراحمه لنا.',
+        by: H('We must give praise to God for his mercies to others as well as for mercies to ourselves.'),
+        today: 'صديقك شُفي، أو أخ في الكنيسة وجد شغلاً، أو قريب تاب. هل تسبّح الله معه أم تقارن؟',
+        ask: 'متى كانت آخر مرة سبّحت الله على بركة نالها غيرك؟',
+        step: 'اشكر الله في صلاتك هذا الأسبوع على بركة نالها شخص آخر، وقل له أنك فرحت بها.'
+      }
+    ]
+  },
+  {
+    book: 'Luke', ch: 19,
+    lead: 'زكا على الجميزة، ومثل الأمناء، ودخول أورشليم، ويسوع يبكي على المدينة.',
+    items: [
+      {
+        id: 'climb', t: 'صعد ليراه', ref: 'Luke.19.4', cut: 'فركض متقدما وصعد إلى جميزة لكي يراه', arenas: ['church'],
+        p: 'رجل غني قصير القامة ركض وتسلق شجرة. يقول هنري: من يرغبون بصدق في رؤية المسيح يستعملون الوسائل المناسبة، ويقتحمون صعوبات ومعارضة كثيرة، ويرضون أن يتعبوا ليروه.',
+        by: H('Those that sincerely desire a sight of Christ will use the proper means for gaining a sight of him, and will break through a deal of difficulty and opposition, and be willing to take pains to see him.'),
+        today: 'زكا لم يهتم بمنظره. أنت ربما تمنعك الكسوف، أو المواعيد، أو أنك لا تعرف أحداً، من الذهاب لدراسة الكتاب.',
+        ask: 'ما الحاجز الذي يمنعك من أن تقترب أكثر من المسيح، وهل أنت مستعد أن تتعب لتتخطاه؟',
+        step: 'اكسر هذا الأسبوع حاجزاً واحداً: انضم لدراسة كتاب، أو اطلب من شخص أن يقرأ معك.'
+      },
+      {
+        id: 'restore', t: 'أرد أربعة أضعاف', ref: 'Luke.19.8', cut: 'وإن كنت قد وشيت بأحد أرد أربعة أضعاف', arenas: ['work'],
+        p: 'التوبة الحقيقية تعيد ما أُخذ ظلماً. يقول هنري: من يقتنع بأنه أخطأ لا يقدر أن يبرهن على صدق توبته إلا بالتعويض.',
+        by: H('Those who are convinced of having done wrong cannot evidence the sincerity of their repentance but by *making restitution.'),
+        also: also(C('We ought therefore to begin with the heart, but our repentance ought also to be evinced by works.'), 'ويقول كالفن: نبدأ بالقلب، لكن يجب أن تظهر توبتنا في الأعمال.'),
+        today: 'فاتورة مزورة في الشغل، أو فلوس استلفتها ولم تردها، أو شيء أخذته من مكان عملك. التوبة تعني أن ترد.',
+        ask: 'ما الذي أخذته بغير حق ولم ترده؟',
+        step: 'رد هذا الأسبوع شيئاً أخذته بغير حق، أو ابدأ خطة لسداده.'
+      },
+      {
+        id: 'mina', t: 'مَناك ربح', ref: 'Luke.19.16', cut: 'يا سيد مناك ربح عشرة أمناء', arenas: ['work', 'church'],
+        p: 'العبد الأمين لم يقل: أنا ربحت، بل: مناك ربح. يقول هنري: لله كل المجد في كل أرباحنا، لا لنا بل له يكون الحمد.',
+        by: H('God must have all the glory of all our gains; *not unto us,* but unto him, must be *the praise,*'),
+        today: 'ترقية، أو نجاح مشروع، أو خدمة مثمرة. تقول: أنا تعبت. صحيح، لكن الموهبة والفرصة والصحة كلها منه.',
+        ask: 'حين تنجح، لمن تنسب النجاح في قلبك وكلامك؟',
+        step: 'في أي نجاح هذا الأسبوع، اذكر أمام الآخرين بتواضع أن الله هو الذي أعطاك.'
+      }
+    ]
+  },
+  {
+    book: 'Luke', ch: 20,
+    lead: 'أسئلة فخ في الهيكل: عن السلطان، والكرامين، والجزية، والقيامة.',
+    items: [
+      {
+        id: 'warning', t: 'التحذير لم يغيّرهم', ref: 'Luke.20.19', cut: 'لأنهم عرفوا أنه قال هذا المثل عليهم', arenas: ['home'],
+        p: 'فهموا أن المثل عنهم، فبدل أن يتوبوا أرادوا قتله. يقول هنري: حين تمتلئ قلوب الناس بالعزم على الشر، لا تؤثر فيهم أوضح التحذيرات عن الخطية التي يقدمون عليها ولا عن عواقبها.',
+        by: H('When the hearts of the sons of men are fully set in them to do evil, the fairest warnings both of the sin they are about to commit and of the consequences of it make no impression upon them.'),
+        today: 'تحذير الطبيب من التدخين، أو نصيحة الأصدقاء من علاقة مدمرة، أو عظة تمس جرحاً بالضبط. تغضب بدل أن تتغير.',
+        ask: 'ما التحذير الذي تسمعه مراراً وتغضب منه بدل أن تسمعه؟',
+        step: 'ارجع هذا الأسبوع لنصيحة أو تحذير أغضبك مؤخراً، وفكر فيه بهدوء أمام الله.'
+      },
+      {
+        id: 'spies', t: 'يتراءون أنهم أبرار', ref: 'Luke.20.20', cut: 'وأرسلوا جواسيس يتراءون أنهم أبرار', arenas: ['work', 'online'],
+        p: 'جاءوا بوجه تقي ونية خبيثة. يقول هنري: ليس جديداً أن يتظاهر الأشرار بأنهم أبرار، ويغطوا أشر المكايد بأحلى المظاهر وأكثرها إقناعاً.',
+        by: H('It is no new thing for *bad men* to feign themselves *just men,* and to cover the most wicked projects with the most specious and plausible pretences.'),
+        today: 'رسالة تبدأ بآية وتنتهي بطلب تحويل فلوس، أو مشروع استثمار بالكلام الروحي، أو شخص يقترب بكلام لطيف وغرض خبيث.',
+        ask: 'هل تثق بسرعة في كل من يتكلم كلاماً روحياً؟',
+        step: 'قبل أي التزام مالي أو شراكة هذا الشهر، اطلب رأي شخص حكيم وتحقق بنفسك.'
+      },
+      {
+        id: 'worlds', t: 'عالمان', ref: 'Luke.20.35', cut: 'ولكن الذين حسبوا أهلا للحصول على ذلك الدهر', arenas: ['home', 'work'],
+        p: 'يتكلم يسوع عن دهر آتٍ مختلف تماماً. يقول هنري: هناك أكثر من عالم: عالم حاضر منظور، وعالم آتٍ غير منظور، ويهم كل واحد منا أن يقارن بينهما، ويعطي الأولوية في أفكاره واهتماماته لما يستحقها.',
+        by: H('There are more worlds than one; a present visible world, and a future invisible world; and it is the concern of every one of us to compare worlds'),
+        today: 'كل الكلام عن الشقة والجواز والمستقبل والمعاش. قليل جداً عن الدهر الآتي الذي سنعيش فيه إلى الأبد.',
+        ask: 'كم من تفكيرك اليومي عن العالم الآتي؟',
+        step: 'اقرأ هذا الأسبوع رؤيا 21: 1-7 واكتب كيف يغيّر هذا الرجاء طريقة عيشك الآن.'
+      }
+    ]
+  },
+{
+    book: 'Luke', ch: 21,
+    lead: 'أرملة تلقي فلسين، ثم يسوع يتكلم عن خراب أورشليم والأيام الأخيرة، ويختم: اسهروا.',
+    items: [
+      {
+        id: 'curious', t: 'الفضول يحتاج حراسة', ref: 'Luke.21.8', cut: 'انظروا لا تضلوا', arenas: ['online'],
+        p: 'أول ما قاله يسوع لمن سألوا عن العلامات: لا تضلوا. يقول هنري: أكثر الناس فضولاً في أمور الله، مع أن هذا حسن، هم الأكثر عرضة للخداع، والأكثر حاجة للحذر.',
+        by: H('Those that are most *inquisitive* in the things of God (though it is very good to be so) are in most danger of being imposed upon, and have most need to be upon their guard.'),
+        today: 'تحب البحث في النبوات وأسرار الكتاب، فتجد قنوات تعطيك تفسيرات مثيرة وجديدة كل يوم. الشغف جميل، والحذر ضروري.',
+        ask: 'هل يجذبك الجديد والمثير أكثر من الحق الواضح؟',
+        step: 'قبل أن تصدق تفسيراً جديداً مثيراً هذا الأسبوع، اعرضه على خادم ناضج أو تفسير موثوق.'
+      },
+      {
+        id: 'souls', t: 'بصبركم اقتنوا أنفسكم', ref: 'Luke.21.19', cut: 'بصبركم اقتنوا أنفسكم', arenas: ['home', 'work'],
+        p: 'وسط الاضطهاد والخيانة، المطلوب صبر يحفظ النفس. يقول هنري: واجبنا ومصلحتنا في كل وقت، وخصوصاً في الأوقات الخطرة، أن نحفظ امتلاكنا لنفوسنا: لا أن لا تهلك فقط، بل ألا تضطرب الآن.',
+        by: H('It is our duty and interest at all times, especially in perilous trying times, to secure the possession of our own souls; not only that they be not destroyed and lost for ever, but that they be not distempered now'),
+        today: 'أزمة اقتصادية أو سياسية أو عائلية، وأنت تفقد هدوءك وسلامك ونومك. الصبر هنا ليس سلبية، بل حراسة للقلب.',
+        ask: 'ما الذي يسرق سلام نفسك الآن؟',
+        step: 'خذ وقتاً يومياً هذا الأسبوع للصمت أمام الله، وسلّمه ما يقلقك بالاسم.'
+      },
+      {
+        id: 'heavy', t: 'قلب ثقيل', ref: 'Luke.21.34', cut: 'فاحترزوا لأنفسكم لئلا تثقل قلوبكم', arenas: ['home', 'online'],
+        p: 'ليس الخمر والسكر وحدهما، بل هموم الحياة أيضاً. يقول هنري: لا نقدر أن نكون في أمان إن كنا مطمئنين بلا حذر.',
+        by: H('We cannot be *safe* if we be *secure.'),
+        today: 'السهر على المسلسلات، وهموم الأقساط، وإدمان الموبايل. كلها تثقل القلب حتى لا يعود منتبهاً لله.',
+        ask: 'ما الذي يثقل قلبك ويجعله بطيئاً نحو الله؟',
+        step: 'اختر شيئاً واحداً يثقل قلبك وخفّف منه هذا الأسبوع بشكل واضح.'
+      }
+    ]
+  },
+  {
+    book: 'Luke', ch: 22,
+    lead: 'العشاء الأخير، وجدال على الأعظم، وتحذير لبطرس، وصلاة في الجهاد، والقبض على يسوع.',
+    items: [
+      {
+        id: 'lord', t: 'ليس هكذا أنتم', ref: 'Luke.22.26', cut: 'وأما أنتم فليس هكذا', arenas: ['church', 'work', 'home'],
+        p: 'في ليلة الصليب نفسها، تجادل التلاميذ من الأعظم. يقول هنري: ممارسة السيادة تليق بملوك الأمم أكثر مما تليق بخدام المسيح.',
+        by: H('The *exercising of lordship* better becomes the *kings of the Gentiles* than the ministers of Christ.'),
+        today: 'خادم يتعامل مع الشباب كمدير شركة، أو أب في البيت كديكتاتور، أو مسؤول خدمة يحب السيطرة.',
+        ask: 'أين تتسلط بدل أن تخدم؟',
+        step: 'اسأل هذا الأسبوع من هم تحت مسؤوليتك: كيف أقدر أن أخدمكم أفضل؟ واسمع.'
+      },
+      {
+        id: 'sift', t: 'الشيطان طلبكم، والمسيح صلى', ref: 'Luke.22.31', cut: 'هوذا الشيطان طلبكم لكي يغربلكم كالحنطة', arenas: ['home', 'church'],
+        p: 'الشيطان طلب، والمسيح صلّى. يقول هنري: ما كان الشيطان يقدر أن يغربلهم إلا بإذن الله، كما طلب إذناً ليجرّب أيوب.',
+        by: H('Satan could not sift them unless God gave him leave'),
+        also: also(C('Before there is apparent necessity for fighting, let us already prepare ourselves;'), 'ويقول كالفن: قبل أن تظهر ضرورة القتال، لنستعد من الآن.'),
+        today: 'فترة غربلة: كل شيء يهتز، والإيمان يبدو ضعيفاً. الشيطان ليس حراً، والمسيح يصلي لأجلك.',
+        ask: 'هل تتذكر وقت التجربة أن المسيح يشفع فيك؟',
+        step: 'اقرأ عبرانيين 7: 25 هذا الأسبوع، وتعزَّ بأن المسيح يصلي لأجلك الآن.'
+      },
+      {
+        id: 'agony', t: 'صلاة بأشد لجاجة', ref: 'Luke.22.44', cut: 'وإذ كان في جهاد كان يصلي بأشد لجاجة', arenas: ['home'],
+        p: 'كلما اشتد الجهاد، اشتدت صلاته. يقول هنري: الصلاة ليست أبداً في غير وقتها، لكنها مناسبة بشكل خاص حين نكون في ضيق شديد، وكلما اشتد الضيق يجب أن تكون صلواتنا أكثر حرارة وتكراراً.',
+        by: H('Prayer, though never out of season, is in a special manner seasonable when we are in an agony; and the stronger our agonies are the more lively and frequent our prayers should be.'),
+        today: 'في الأزمة نتصل بالكل: الأصحاب والأهل والدكاترة. وآخر واحد نكلمه هو الله، أو نكلمه كلمتين.',
+        ask: 'في أزمتك الحالية، هل زادت صلاتك أم قلّت؟',
+        step: 'في أصعب أوقات هذا الأسبوع، توقف وصلِّ قبل أن تكلم أي شخص آخر.'
+      }
+    ]
+  },
+  {
+    book: 'Luke', ch: 23,
+    lead: 'محاكمة أمام بيلاطس وهيرودس، وبنات أورشليم يبكين، ولص يتوب على الصليب.',
+    items: [
+      {
+        id: 'weep', t: 'ابكين على أنفسكن', ref: 'Luke.23.28', cut: 'لا تبكين علي بل ابكين على أنفسكن', arenas: ['church'],
+        p: 'لم يرد يسوع شفقة على آلامه، بل توبة. يقول هنري: حين ننظر بعين الإيمان إلى المسيح مصلوباً، يجب أن نبكي، لا عليه، بل على أنفسنا.',
+        by: H('When with an eye of faith we behold Christ crucified we ought to weep, not for him, but for ourselves.'),
+        today: 'نتأثر في الجمعة العظيمة بفيلم أو ترنيمة عن آلام المسيح، ونبكي. ثم نرجع لنفس الخطايا التي صُلب لأجلها.',
+        ask: 'هل يقودك التأمل في الصليب إلى تأثر عاطفي فقط، أم إلى توبة؟',
+        step: 'في المرة القادمة التي تتأثر فيها بالصليب، حوّل الدموع إلى اعتراف بخطية محددة.'
+      },
+      {
+        id: 'justly', t: 'أما نحن فبعدل', ref: 'Luke.23.41', cut: 'أما نحن فبعدل لأننا ننال استحقاق ما فعلنا', arenas: ['home'],
+        p: 'اللص اعترف أنه يستحق العقاب. يقول كالفن: قدّم اللص برهاناً على توبته، توبة يطلبها الله منا جميعاً، حين اعترف أنه ينال جزاء أعماله.',
+        by: C('the robber gave a proof of his repentance, such as God demands from all of us, when he acknowledged that he was now receiving the reward due to his actions.'),
+        today: 'نتيجة طبيعية لخطية: خسارة شغل بعد غش، أو علاقة انتهت بعد خيانة. أسهل شيء أن نلوم الظروف والناس.',
+        ask: 'هل تعترف بمسؤوليتك عن نتائج خطيتك، أم تلوم غيرك؟',
+        step: 'في موقف تعاني فيه من نتيجة خطأ ارتكبته، قل أمام الله: أنا أستحق هذا، واطلب رحمته.'
+      },
+      {
+        id: 'today', t: 'اليوم تكون معي', ref: 'Luke.23.43', cut: 'إنك اليوم تكون معي في الفردوس', arenas: ['church', 'home'],
+        p: 'لص في آخر لحظات حياته، بلا أعمال ولا معمودية ولا خدمة، سمع هذا الوعد. يقول هنري: أن يذكرنا المسيح وهو في ملكوته هو ما يجب أن نشتهيه ونصلي لأجله، وهو يكفي لضمان خيرنا في الحياة والموت.',
+        by: H('To be remembered by Christ, now that he is in his kingdom, is what we should earnestly desire and pray for, and it will be enough to secure our welfare living and dying.'),
+        also: also(C('we ought to observe his inconceivable readiness in so kindly receiving the robber without delay, and promising to make him a partaker of a happy life.'), 'ويقول كالفن: لاحظ استعداده الذي لا يُتصوّر لقبول اللص بلطف بلا تأخير.'),
+        today: 'قريب على فراش الموت بعد حياة بعيدة عن الله، أو شخص تظنه ضاع تماماً. ما دام فيه نفس، باب الرحمة مفتوح.',
+        ask: 'هل تظن أن أحداً تجاوز رحمة المسيح؟',
+        step: 'إن كان لك قريب مريض أو مسن بعيد عن الله، اذهب إليه هذا الأسبوع وحدّثه عن رحمة المسيح.'
+      }
+    ]
+  },
+  {
+    book: 'Luke', ch: 24,
+    lead: 'القبر الفارغ، وتلميذان في الطريق إلى عمواس، ويسوع يفتح أذهانهم ليفهموا الكتب.',
+    items: [
+      {
+        id: 'sad', t: 'ماشيان عابسين', ref: 'Luke.24.17', cut: 'وأنتما ماشيان عابسين', arenas: ['home'],
+        p: 'كانا حزينين، والقيامة قد حدثت. يقول هنري: تلاميذ المسيح كثيراً ما يكونون حزانى حين يكون عندهم سبب للفرح، لكنهم بسبب ضعف إيمانهم لا يأخذون التعزية المقدمة لهم.',
+        by: H("Christ's disciples are often sad and sorrowful even when they have reason to rejoice, but through the weakness of their faith they cannot take the comfort that is offered to them."),
+        today: 'إحباط من الكنيسة، أو خيبة أمل في الخدمة، أو حزن على ما لم يحدث. والمسيح يمشي بجانبك ولا تعرفه.',
+        ask: 'ما سبب حزنك الآن؟ وهل تعرف أن المسيح القائم يمشي معك فيه؟',
+        step: 'احكِ للمسيح بصراحة سبب حزنك، كما حكى التلميذان، ثم اقرأ لوقا 24: 25-27.'
+      },
+      {
+        id: 'bread', t: 'أخذ خبزاً وبارك', ref: 'Luke.24.30', cut: 'أخذ خبزا وبارك وكسر وناولهما', arenas: ['home'],
+        p: 'عرفاه عند كسر الخبز. يقول كالفن: لنتعلم من مثال سيدنا أن نقدّم الشكر لواهب الحياة كلما أكلنا خبزاً.',
+        by: C('let us learn by the example of our Master, whenever we eat bread, to offer thanksgiving to the Author of life'),
+        today: 'ساندويتش على المكتب، أو أكل سريع في الشارع، أو غداء أمام التلفزيون. الشكر قبل الأكل عادة صغيرة تذكّرك كل يوم بمن يعطيك.',
+        ask: 'هل تشكر الله قبل كل وجبة، حتى وأنت وحدك أو مع غير المؤمنين؟',
+        step: 'اشكر الله قبل كل وجبة هذا الأسبوع، حتى السريعة منها.'
+      },
+      {
+        id: 'burning', t: 'قلب ملتهب', ref: 'Luke.24.32', cut: 'ألم يكن قلبنا ملتهبا فينا', arenas: ['church', 'home'],
+        p: 'شرح لهما يسوع كل ما في الكتب عنه، فالتهب قلبهما. يقول هنري: شرح الكتب التي تتكلم عن المسيح له ميل مباشر لإشعال قلوب تلاميذه، لينعشها ويعزيها.',
+        by: H('The expounding of those scriptures which speak of Christ has a direct tendency to warm the hearts of his disciples, both to quicken and to comfort them.'),
+        today: 'قراءة الكتاب صارت روتيناً جافاً. جرّب أن تبحث عن المسيح في كل أصحاح: في الوعود والذبائح والأنبياء.',
+        ask: 'متى كانت آخر مرة التهب فيها قلبك وأنت تقرأ الكتاب؟',
+        step: 'اقرأ هذا الأسبوع إشعياء 53 أو مزمور 22، وابحث عن المسيح في كل عدد.'
       }
     ]
   }
