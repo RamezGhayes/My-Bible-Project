@@ -471,7 +471,7 @@ export default [
     items: [
       {
         id: 'steward', t: 'وكيل لا مالك', ref: 'Luke.16.2', cut: 'أعط حساب وكالتك', arenas: ['work', 'home'],
-        p: 'الوكيل عرف أن وكالته ستنتهي، فاستعد. يقول هنري: إذ جاءنا جميعاً إنذار بأننا سنخرج قريباً من وكالتنا، يهمنا أن نفكر ماذا سنفعل حينئذ. ويقول كالفن: غرض المثل أن نتعامل مع قريبنا بلطف وكرم.',
+        p: 'الوكيل عرف أن وكالته ستنتهي، فاستعد. يقول هنري: إذ جاءنا جميعاً إنذار بأننا سنخرج قريباً من وكالتنا، يهمنا أن نفكر ماذا سنفعل حينئذ.',
         by: H('Since we have all received notice that we must shortly be turned out of our stewardship, we are concerned to consider what we shall do then.'),
         also: also(C('The leading object of this parable is, to show that we ought to deal kindly and generously with our neighbors;'), 'ويقول كالفن: غرض المثل الأساسي أن نتعامل مع قريبنا بلطف وكرم.'),
         today: 'المرتب، والبيت، والعربية، والمواهب. كلها عهدة. ويوماً سنسلّم الحساب.',
