@@ -18,8 +18,11 @@ import boto3
 from PIL import Image
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-PROMPTS = json.loads((ROOT / 'docs/portrait-prompts.json').read_text('utf-8'))
+import os
+SET = 'places' if '--places' in sys.argv else 'people'
+PROMPTS = json.loads((ROOT / ('docs/place-prompts.json' if SET == 'places' else 'docs/portrait-prompts.json')).read_text('utf-8'))
 OUT = ROOT / 'src/v2/assets'
+PREFIX = 'place-' if SET == 'places' else 'person-'
 
 PRE = 'Real documentary photograph from the ancient biblical world. '
 SUF = (' Real people with natural skin texture, visible pores, sun-weathered faces and slight imperfections; '
@@ -33,6 +36,8 @@ NEG = ('anime, manga, cartoon, illustration, painting, digital art, CGI, 3d rend
 
 
 def prompt(pid):
+    if SET == 'places':
+        return ('Photorealistic historical reconstruction, wide landscape view, natural light, rich detail, accurate first-century Roman-era architecture. ' + PROMPTS[pid] + ' No text, no modern objects.')
     s = PROMPTS[pid].replace('a beautiful young', 'a young').replace('beautiful young', 'young').replace('a beautiful ', 'a ')
     return PRE + s + SUF
 
@@ -55,12 +60,13 @@ def main():
     ap.add_argument('--limit', type=int, default=0)
     ap.add_argument('--only', nargs='*')
     ap.add_argument('--redo', action='store_true', help='overwrite existing images')
+    ap.add_argument('--places', action='store_true', help='make place images for the Paul map (docs/place-prompts.json)')
     a = ap.parse_args()
 
     # most important / best-known people first (docs/portrait-priority.json), then the rest in book order
-    prio = json.loads((ROOT / 'docs/portrait-priority.json').read_text('utf-8'))
+    prio = json.loads((ROOT / 'docs/portrait-priority.json').read_text('utf-8')) if SET == 'people' else []
     ids = a.only or prio + [k for k in PROMPTS if k not in prio]
-    todo = [i for i in ids if i in PROMPTS and (a.redo or not (OUT / f'person-{i}.webp').exists())]
+    todo = [i for i in ids if i in PROMPTS and (a.redo or not (OUT / f'{PREFIX}{i}.webp').exists())]
     if a.limit:
         todo = todo[:a.limit]
     print(f'{len(todo)} portraits to generate with {a.model} in {a.region}')
@@ -83,7 +89,7 @@ def main():
             reason = (out.get('finish_reasons') or [None])[0]
             if reason:  # e.g. content filtered
                 raise RuntimeError(f'finish_reason={reason}')
-            to_webp(base64.b64decode(out['images'][0]), OUT / f'person-{pid}.webp')
+            to_webp(base64.b64decode(out['images'][0]), OUT / f'{PREFIX}{pid}.webp')
             print(f'[{n}/{len(todo)}] ok   {pid}')
         except Exception as e:
             failed.append(pid)

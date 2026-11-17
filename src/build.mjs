@@ -5,6 +5,7 @@ import { PREVIEW, previewSkip, ROOT, config, books, bookById, bookBySlug, bible,
 import { blocks } from './render.mjs';
 import { page, header, IC, plain, clip, firstSentences, chWord, bkWord, vWord, secWord, countWord, BRAND } from './v2/ui.mjs';
 import { buildPeople, cardTemplate, cleanName } from './v2/people.mjs';
+import { paulMapPage } from './v2/paulmap.mjs';
 import { MAPS, mapForChapter, thumb, mapHref, viewer } from './v2/maps.mjs';
 import { TOPICS, topicLinks, chapterTopicsBlock, topicsIndex, topicPage, topicsHomeSection } from './v2/topics.mjs';
 import { treePage } from './v2/tree.mjs';
@@ -500,10 +501,13 @@ ${soon('خدمة المسيح', 'الجليل واليهودية والسامر�
   for (const x of EXPLAINERS) write(`explain/${x.id}.html`, page({ title: x.title, depth: 1, body: explainPage(x, 1), cls: 'explain' }));
   for (const x of EXPLAINERS) write(`explain/${x.id}-present.html`, page({ title: `وضع العرض · ${x.title}`, depth: 1, body: explainPresent(x, 1), cls: 'present immersive' }));
   for (const m of MAPS) {
+    if (m.paul) continue;
     write(`maps/${m.id}.html`, page({ title: m.title, depth: 1, body: '', cls: 'immersive mappage', after: viewer(m, 1, { back: '../maps.html' }) }));
   }
-  const pm = MAPS.find((m) => m.paul);
-  write('paul.html', page({ title: pm.title, depth: 0, body: '', cls: 'immersive mappage', after: viewer(pm, 0, { back: 'maps.html' }) }));
+  // Paul: story map (real geography + ordered cards)
+  const pmArgs = (depth) => ({ depth, people: PEOPLE.list, personHref, imgOf: (id, d) => (PIMG.has(id) ? `${'../'.repeat(d)}assets/${PIMG.get(id)}` : '') });
+  write('maps/paul.html', page({ title: 'رحلات بولس', depth: 1, nav: 'maps', body: paulMapPage(pmArgs(1)), cls: 'v3 pmpage' }));
+  write('paul.html', page({ title: 'رحلات بولس', depth: 0, nav: 'maps', body: paulMapPage(pmArgs(0)), cls: 'v3 pmpage' }));
 }
 
 function journeyPage() {

@@ -1,0 +1,35 @@
+{
+ "_note": "Per-journey intro and per-stop people (page ids) and letters (book ids). Letters: 'to' = written to this place/person; 'from' = probably written here (hedged in the note).",
+ "journeys": [
+  { "intro": "انطلق بولس وبرنابا من أنطاكية سورية، ومعهما يوحنا مرقس، فعبروا قبرس ثم صعدوا إلى مدن جنوب الأناضول. ورجعا في الطريق نفسه يثبّتان الكنائس الجديدة.", "with": ["p1kt8hbm", "p1s7jpr4"], "withText": "برنابا، ويوحنا مرقس حتى برجة" },
+  { "intro": "بعد مجمع أورشليم (أع 15) انطلق بولس مع سيلا ليفتقد الكنائس، فقاده الروح إلى أوروبا: فيلبي وتسالونيكي وبيرية وأثينا وكورنثوس.", "with": ["p1s5xudb", "p6owxen", "p1s6x8do"], "withText": "سيلا، وتيموثاوس من لسترة، ولوقا من ترواس (صيغة «نحن»)" },
+  { "intro": "أطول إقامة لبولس في رحلاته: نحو ثلاث سنين في أفسس. ثم افتقد مكدونية واليونان، وصعد إلى أورشليم حاملاً عطايا كنائس الأمم.", "with": ["p6owxen", "p16ta0gy", "p1s6x8do"], "withText": "تيموثاوس، وأرسترخس، وآخرون يذكرهم أع 20: 4، ولوقا" },
+  { "intro": "قُبض على بولس في أورشليم، وبقي سجيناً في قيصرية سنتين، ثم رفع دعواه إلى قيصر. فأُرسل أسيراً إلى روما في رحلة بحرية انتهت بانكسار السفينة.", "with": ["p1s6x8do", "p16ta0gy", "pglnl6a"], "withText": "لوقا وأرسترخس (أع 27: 2)، وقائد المئة يوليوس" }
+ ],
+ "stops": {
+  "0.0": { "people": ["p1kt8hbm"] }, "0.1": { "people": ["p1kt8hbm"] }, "0.2": { "people": ["p1kt8hbm", "p1s7jpr4"] },
+  "0.3": { "people": ["p17zrkd", "p1s64cuv", "p1kt8hbm"] }, "0.4": { "people": ["p1s7jpr4", "p1kt8hbm"] },
+  "0.5": { "people": ["p1kt8hbm"], "letters": [{ "b": "Gal", "n": "يرى كثيرون أن رسالة غلاطية كُتبت لكنائس هذه المدن: أنطاكية بيسيدية وإيقونية ولسترة ودربة." }] },
+  "0.6": { "people": ["p1kt8hbm"] }, "0.7": { "people": ["p1kt8hbm"] }, "0.8": { "people": ["p1kt8hbm"] }, "0.9": { "people": ["p1kt8hbm"] }, "0.10": { "people": ["p1kt8hbm"] },
+  "1.0": { "people": ["p1s5xudb", "p1kt8hbm", "p1s7jpr4"] },
+  "1.1": { "people": ["p6owxen", "p1s5xudb"], "letters": [{ "b": "1Tim", "n": "تيموثاوس الذي انضم هنا كتب له بولس لاحقاً رسالتين." }, { "b": "2Tim" }] },
+  "1.2": { "people": ["p1s5xudb", "p6owxen"], "letters": [{ "b": "Gal", "n": "رسالة إلى كنائس غلاطية." }] },
+  "1.3": { "people": ["p1s6x8do", "p1s5xudb", "p6owxen"] }, "1.4": { "people": ["p1s5xudb", "p1s6x8do"] },
+  "1.5": { "people": ["p1mg7qjr", "p1s5xudb", "p1s6x8do"], "letters": [{ "b": "Phil", "n": "كتبها لهم بولس لاحقاً من السجن." }] },
+  "1.6": { "people": ["p1mprslx", "p1s5xudb"], "letters": [{ "b": "1Thess" }, { "b": "2Thess" }] },
+  "1.7": { "people": ["p1s5xudb", "p6owxen"] }, "1.8": { "people": ["p18bzrpm", "p1jhklyi"] },
+  "1.9": { "people": ["pbxoprp", "p1lsd32w", "p1onftr3", "p1s5xudb", "p6owxen"], "letters": [{ "b": "1Cor", "n": "كتبها لهم بولس لاحقاً من أفسس (1 كو 16: 8)." }, { "b": "2Cor" }] },
+  "2.2": { "people": ["p1l0jvdy", "p1mjune7", "p16ta0gy", "p6owxen"], "letters": [{ "b": "Eph" }, { "b": "1Cor", "n": "من هنا كتب رسالة كورنثوس الأولى (1 كو 16: 8)." }] },
+  "2.1": { "letters": [{ "b": "Gal" }] },
+  "2.3": { "letters": [{ "b": "2Cor", "n": "يُرجَّح أنه كتب كورنثوس الثانية من مكدونية (2 كو 7: 5؛ 9: 2)." }] },
+  "2.4": { "letters": [{ "b": "Rom", "n": "يُرجَّح أنه كتب رسالة رومية في هذه الأشهر الثلاثة من كورنثوس (رو 16: 1، 23)." }] },
+  "2.5": { "people": ["p1s6x8do"] }, "2.6": { "people": ["pv0ll3m", "p1s6x8do"] },
+  "2.12": { "people": ["p1m3pupm", "p1h0yf1k"] },
+  "3.0": { "people": ["pky2c7r", "paovsh0"] },
+  "3.1": { "people": ["p1mgwem2", "p1lctktf", "p1jkmpqb", "p1mftew6", "p1jteh4o", "p1kta8u1"] },
+  "3.2": { "people": ["pglnl6a", "p16ta0gy", "p1s6x8do"] }, "3.3": { "people": ["pglnl6a"] },
+  "3.4": { "people": ["pglnl6a"], "letters": [{ "b": "Titus", "n": "كنائس كريت يذكرها بولس لاحقاً في رسالته إلى تيطس (تي 1: 5)." }] },
+  "3.5": { "people": ["pglnl6a", "p1s6x8do"] }, "3.6": { "people": ["p1jajm1k"] },
+  "3.10": { "letters": [{ "b": "Rom", "n": "كتبها إليهم قبل أن يصل بسنوات." }, { "b": "Eph", "n": "يُرجَّح أن رسائل السجن الأربع كُتبت في هذه الإقامة." }, { "b": "Phil" }, { "b": "Col" }, { "b": "Phlm" }] }
+ }
+}
