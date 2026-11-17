@@ -90,7 +90,7 @@ export function applySection(b, n, depth) {
 <h3>${esc(it.t)}</h3>
 <blockquote class="l3vq"><span>${esc(it.q)}</span><a href="${refHref(it.ref, depth)}">${refLabel(it.ref)}</a></blockquote>
 <div class="l3p"><small>المبدأ</small><p>${esc(it.p)}</p>${vchip(it.by, it.ref)}${it.also ? `<p class="l3al">${esc(it.also.p)}</p>${vchip(it.also, it.ref)}` : ''}</div>
-<div class="l3td"><small><span class="l3ics">${it.arenas.map((a) => glyph(ARENA[a][1], 18)).join('')}</span>مثال من حياتنا في 2026</small><p>${esc(it.today)}</p></div>
+<div class="l3td"><small><span class="l3ics">${it.arenas.map((a) => glyph(ARENA[a][1], 18)).join('')}</span>مثال من حياتنا الآن</small><p>${esc(it.today)}</p></div>
 <div class="l3ak"><small>اسأل نفسك</small><p>${esc(it.ask)}</p></div>
 <div class="l3st"><small>خطوة هذا الأسبوع</small><p>${esc(it.step)}</p><button type="button" aria-pressed="false" data-pick="${it.id}">${IC.list}<span>اخترها لهذا الأسبوع</span></button></div>
 ${srcBox(it)}

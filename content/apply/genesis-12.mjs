@@ -17,7 +17,7 @@ export default {
       p: 'لم يقل الله لأبرام: أرضاً سأعطيك إياها، بل: أرضاً سأريك إياها. ويعلّق ماثيو هنري: من يتعامل مع الله يتعامل معه بالثقة، فنترك ما يُرى لأجل ما لا يُرى. ويرى أن هذه الدعوة تشبه دعوة الإنجيل: من يترك خطاياه ويرجع إلى الله هو الرابح بلا شك.',
       by: { k: 'mhc', file: 'genesis-12', basis: ['He does not say, "It is a land that I will give thee," but merely, "a land that I will show thee."', 'Those that will deal with God must deal upon trust; we must quit the things that are seen for things that are not seen', 'This command which God gave to Abram is much the same with the gospel call', 'Those who leave their sins, and turn to God, will themselves be unspeakable gainers by the change'] },
       also: { k: 'wcf', at: '1.1', p: 'تنبيه: الله كلّم أبرام مباشرة. أما نحن فنسمع صوته اليوم في الكتاب المقدس المكتوب، لأن الطرق السابقة التي أعلن بها مشيئته لشعبه قد انتهت. فلا تنتظر صوتاً أو علامة، بل أطع ما هو مكتوب بوضوح.', basis: ["those former ways of God's revealing his will unto his people being now ceased"] },
-      today: 'أنت تعرف بوضوح ما يقوله الكتاب عن عادة أو علاقة في حياتك، لكن تركها يكلّفك شيئاً تراه الآن: أصحاباً، أو متعة، أو فرصة. هذا هو امتحان أبرام في 2026: هل تثق في الله أكثر مما ترى؟',
+      today: 'أنت تعرف بوضوح ما يقوله الكتاب عن عادة أو علاقة في حياتك، لكن تركها يكلّفك شيئاً تراه الآن: أصحاباً، أو متعة، أو فرصة. هذا هو امتحان أبرام في حياتنا الآن: هل تثق في الله أكثر مما ترى؟',
       ask: 'ما الشيء الذي تعرف أن الكتاب يطلب منك تركه، وتؤجله لأنك لا ترى ما بعده؟',
       step: 'اكتب هذا الشيء في ورقة، وصلِّ لأجله كل يوم هذا الأسبوع، واحكِ عنه لمؤمن تثق فيه.'
     },
