@@ -18,7 +18,7 @@ const MODERN = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/sources/modern.j
 const WHO = {
   sproul: { n: 'آر. سي. سبرول', d: 'لاهوتي مشيخي أمريكي (1939–2017)', i: 'س' },
   piper: { n: 'جون بايبر', d: 'خادم معمداني مُصلَح أمريكي، مؤسس خدمة Desiring God', i: 'ب' },
-  keller: { n: 'تيم كيلر', d: 'خادم مشيخي أمريكي في نيويورك (1950–2023)', i: 'ك' }
+  keller: { n: 'تيم كيلر', d: 'خادم مشيخي أمريكي في نيويورك (1950–2023)', i: 'ت' }
 };
 const slugOf = (b) => bookById[b].slug;
 const lastVerse = (b, c) => { for (let v = 200; v > 0; v--) { try { verseText(`${b}.${c}.${v}`); return v; } catch { /* keep looking */ } } return 1; };
@@ -67,6 +67,7 @@ for (const f of fs.existsSync(dir) ? fs.readdirSync(dir).filter((x) => x.endsWit
   for (const it of A.items) {
     check(it.by, it.id, it.ref); if (it.also) check(it.also, it.id + '/also', it.ref);
     it.q = piece(it.ref, it.cut);
+    if (it.also && it.also.p && it.p.includes(it.also.p.replace(/^[^:]*: /, '').slice(0, 30))) throw new Error(`Apply ${f} ${it.id}: the second voice is repeated in p`);
     for (const a of it.arenas) if (!ARENA[a]) throw new Error(`Apply ${f}: unknown arena ${a}`);
     for (const k of ['t', 'p', 'today', 'ask', 'step']) if (/[«»]|—/.test(it[k] + (it.also?.p || ''))) throw new Error(`Apply ${f} ${it.id}: no «» or em dash in ${k}`);
   }
