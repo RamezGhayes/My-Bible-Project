@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Make the social preview images (1200x630) in src/v2/assets/og-*.png.
+"""Make the social preview images (1200x630) in src/v2/assets/og-*.jpg: site, explainers, tree, harmony, every book and every topic.
 
 Needs: Python with Playwright, a Chrome/Chromium, and the site fonts as woff2 files
 (for example from npm: @fontsource/ibm-plex-sans-arabic, @fontsource/readex-pro).
@@ -51,8 +51,8 @@ def main():
                 await pg.goto('http://127.0.0.1:%d/%s' % (port, os.path.basename(f)))
                 await pg.evaluate('document.fonts.ready')
                 await pg.wait_for_timeout(300)
-                out = os.path.join(ROOT, 'src', 'v2', 'assets', 'og-%s.png' % k)
-                await pg.screenshot(path=out)
+                out = os.path.join(ROOT, 'src', 'v2', 'assets', 'og-%s.jpg' % k)
+                await pg.screenshot(path=out, type='jpeg', quality=86)
                 print('wrote', os.path.relpath(out, ROOT))
             await b.close()
     asyncio.run(shoot())
