@@ -104,7 +104,7 @@ function home() {
 <button type="button" class="hs" data-search style="--d:${(0.8 + words.length * 0.09).toFixed(1)}s">${IC.search}<span>ابحث عن سفر، أو شاهد مثل يو ٣: ١٦، أو شخصية، أو موضوع</span><b>ابحث</b></button>
 <nav class="q" aria-label="انتقال سريع" style="--d:${(1 + words.length * 0.09).toFixed(1)}s"><a href="ot.html">العهد القديم</a><a href="nt.html">العهد الجديد</a><a href="maps.html">الشروح المصوّرة</a><a href="topics.html">الموضوعات</a><a href="people.html">الشخصيات</a></nav>
 </div></section>
-<section class="h3s">${head('دراسة الكتاب المقدس', 'ادرس الكتاب سفراً بعد سفر، وأصحاحاً بعد أصحاح. كل عمود في الرسم سفر: الممتلئ دُرس كله، ونصف الممتلئ دُرس جزء منه.')}
+<section class="h3s">${head('دراسة الكتاب المقدس', 'ادرس الكتاب سفراً بعد سفر، وأصحاحاً بعد أصحاح.')}
 <div class="h3tg">${tcard('ot', 'من الخلق إلى الأنبياء: الوعد والانتظار.')}${tcard('nt', 'المسيح، والكنيسة، والرجاء الأخير.')}</div></section>
 <section class="h3s">${head('شروح مصوّرة', 'أحداث ومواضع شرحها النص بالتفصيل، مرسومة لتراها خطوة خطوة.', arrows('x'))}
 <div class="h3r" data-rail="x">${xcards}</div></section>
