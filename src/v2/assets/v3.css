@@ -740,3 +740,20 @@
 .shr3 [data-clear]{width:38px;padding:0;font-size:18px}
 @media (max-width:600px){.shr3{left:10px;right:10px;transform:none;bottom:12px;justify-content:space-between;flex-wrap:wrap;border-radius:20px}.shr3 [data-sl]{flex-basis:100%;text-align:center;padding:2px 0 4px}.shr3 button{flex:1}.shr3 [data-clear]{flex:none}}
 .shint{margin:0 0 10px;font-family:var(--ui);font-size:12px;color:var(--faint)}
+/* ---------- reading colours (reader only) ---------- */
+.thm3{display:flex;gap:6px;align-items:center}
+.thm3 button{width:26px;height:26px;border-radius:13px;border:1px solid var(--line)}
+.thm3 [data-theme3=light]{background:#fff}.thm3 [data-theme3=paper]{background:#F2EAD8}.thm3 [data-theme3=night]{background:#17191E}.thm3 [data-theme3=contrast]{background:linear-gradient(135deg,#000 50%,#fff 50%)}
+.thm3 button[aria-pressed=true]{box-shadow:0 0 0 2px var(--paper),0 0 0 4px var(--gold)}
+.rtools{flex-wrap:wrap;gap:8px}
+html[data-read=light] #read,html[data-read=light] .reader-page{--rbg:#fff;--rfg:#17191E}
+html[data-read=paper] #read,html[data-read=paper] .reader-page{--rbg:#FAF8F4;--rfg:#17191E}
+html[data-read=night] #read,html[data-read=night] .reader-page{--rbg:#14161B;--rfg:#E8E3D8}
+html[data-read=contrast] #read,html[data-read=contrast] .reader-page{--rbg:#000;--rfg:#fff}
+html[data-read] #read,html[data-read] #read .pg,html[data-read] .reader-page{background:var(--rbg);color:var(--rfg)}
+html[data-read=night] #read .scr,html[data-read=night] .reader-page .scr,html[data-read=contrast] #read .scr,html[data-read=contrast] .reader-page .scr{color:var(--rfg)}
+html[data-read=night] #read .peri,html[data-read=night] .reader-page .peri{color:var(--gold2)}
+html[data-read=contrast] #read .vn,html[data-read=contrast] .reader-page .vn{color:#FFD873}
+html[data-read=night] #read .sh,html[data-read=contrast] #read .sh{background:var(--rbg);color:var(--rfg);border-color:#2A2D34}
+html[data-read=night] #read .rtools,html[data-read=contrast] #read .rtools,html[data-read=night] .reader-page .rtools,html[data-read=contrast] .reader-page .rtools{color:var(--rfg)}
+html[data-read=night] .rtools button:not(.thm3 button),html[data-read=contrast] .rtools button:not(.thm3 button){background:#2A2D34;color:var(--rfg);border-color:#3A3D45}

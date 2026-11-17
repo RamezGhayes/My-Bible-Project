@@ -295,4 +295,12 @@
       if (document.fonts && document.fonts.load) Promise.all([document.fonts.load('58px "Noto Naskh Arabic"'), document.fonts.load('600 34px "IBM Plex Sans Arabic"')]).then(draw, draw); else draw();
     });
   });
+  // ---------- reading colours: light / paper / night / high contrast, for this tab only ----------
+  var thb = $$('[data-theme3]');
+  if (thb.length) {
+    var getT = function () { try { return sessionStorage.getItem('bs:theme3') || 'paper'; } catch (e) { return 'paper'; } };
+    var setT = function (k) { document.documentElement.setAttribute('data-read', k); try { sessionStorage.setItem('bs:theme3', k); } catch (e) {} thb.forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-theme3') === k ? 'true' : 'false'); }); };
+    thb.forEach(function (b) { b.addEventListener('click', function () { setT(b.getAttribute('data-theme3')); }); });
+    setT(getT());
+  }
 })();
