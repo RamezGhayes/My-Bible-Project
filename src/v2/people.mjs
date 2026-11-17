@@ -75,8 +75,9 @@ export function cardFaces(p, { hrefChapter, hrefPerson }) {
   const P = p.prof;
   const first = p.apps[0];
   const total = P ? 3 : 2;
-  const foot = (i) => `<div class="pf"><span>${P && P.img ? esc(P.imgCredit || '') : 'الصورة قريباً'}</span><span>${ar(i)} / ${ar(total)}</span></div>`;
-  const portrait = `<div class="portrait">${P && P.img ? `<img src="${P.img}" alt="">` : `<span class="mono">${esc(p.mono)}</span>`}${P && P.era ? `<span class="era">${md(P.era)}</span>` : `<span class="era">${p.testament === 'ot' ? 'العهد القديم' : 'العهد الجديد'}</span>`}</div>`;
+  const IMG = p.img || (P && P.img), CRED = p.imgCredit || (P && P.imgCredit) || '';
+  const foot = (i) => `<div class="pf"><span>${IMG ? esc(CRED) : 'الصورة قريباً'}</span><span>${ar(i)} / ${ar(total)}</span></div>`;
+  const portrait = `<div class="portrait">${IMG ? `<img src="${IMG}" alt="">` : `<span class="mono">${esc(p.mono)}</span>`}${P && P.era ? `<span class="era">${md(P.era)}</span>` : `<span class="era">${p.testament === 'ot' ? 'العهد القديم' : 'العهد الجديد'}</span>`}</div>`;
   const cells = P ? P.cells : [['أول ظهور', chLabel(first)], ['يظهر في', p.chapters === 1 ? 'أصحاح واحد' : p.chapters === 2 ? 'أصحاحين' : ar(p.chapters) + (p.chapters <= 10 ? ' أصحاحات' : ' أصحاحاً')], ['العهد', p.testament === 'ot' ? 'القديم' : 'الجديد']];
   const front = `<div class="ph"><b>${esc(P ? P.full : p.label)}</b>${P && P.he ? `<small>${esc(P.he)}</small>` : ''}</div>${portrait}
 <div class="role"><div class="r">${md(P ? P.role : chLabel(first))}</div><p>${md(P ? P.line : firstSentence(first.d))}</p></div>

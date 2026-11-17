@@ -1050,3 +1050,4 @@ html[data-read=night] .rtools button:not(.thm3 button),html[data-read=contrast] 
 .t3d.co .t3cb{opacity:0;transition:opacity .2s}
 .h3p .im.pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 28%}.h3p .im.pic em{z-index:1}
 .portrait img{object-position:50% 28%}
+.mini .im.pic{background:#1e1c19}.mini .im.pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 28%}

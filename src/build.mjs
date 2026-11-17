@@ -56,6 +56,8 @@ fs.mkdirSync(path.join(DIST, 'assets'), { recursive: true });
 // person-<id>.webp (photo-style image) wins over person-<id>.svg (drawn trial); PIMG: id -> file name
 const PIMG = new Map();
 for (const f of fs.readdirSync(path.join(ROOT, 'src/v2/assets')).sort((a, b) => (a.endsWith('.svg') ? 0 : 1) - (b.endsWith('.svg') ? 0 : 1))) { const m = f.match(/^person-(.+)\.(svg|webp|jpg)$/); if (m) PIMG.set(m[1], f); }
+// some people appear under two page ids (e.g. «يثرون» and «رعوئيل»): share one portrait
+for (const [a, b] of Object.entries(JSON.parse(fs.readFileSync(path.join(ROOT, 'docs/portrait-alias.json'), 'utf8')))) if (!PIMG.has(a) && PIMG.has(b)) PIMG.set(a, PIMG.get(b));
 for (const f of fs.readdirSync(path.join(ROOT, 'src/v2/assets'))) fs.copyFileSync(path.join(ROOT, 'src/v2/assets', f), path.join(DIST, 'assets', f));
 
 const PEOPLE = buildPeople(books, content);
@@ -430,7 +432,7 @@ ${S.questions?.length ? `<h2>أسئلة للمناقشة</h2><ol class="hq">${S.
 // ---------- people ----------
 function peoplePages() {
   const list = [...PEOPLE.list].sort((a, b) => (b.prof ? 1 : 0) - (a.prof ? 1 : 0) || b.chapters - a.chapters || a.apps[0].b.order - b.apps[0].b.order);
-  const mini = (p) => `<a class="mini" href="${personHref(p, 0)}" data-t="${p.testament}" data-q="${esc(p.label + ' ' + (p.prof ? p.prof.full + ' ' + p.prof.role : ''))}"><div class="in"><div class="im"><span>${esc(p.mono)}</span></div><div class="tx"><b>${esc(p.prof ? p.prof.n : p.label)}</b><small>${esc(p.prof ? p.prof.role : ar(`${shortName(p.apps[0].b)} ${p.apps[0].n}`))}</small></div></div></a>`;
+  const mini = (p) => `<a class="mini" href="${personHref(p, 0)}" data-t="${p.testament}" data-q="${esc(p.label + ' ' + (p.prof ? p.prof.full + ' ' + p.prof.role : ''))}"><div class="in"><div class="im${PIMG.has(p.id) ? ' pic' : ''}">${PIMG.has(p.id) ? `<img src="assets/${PIMG.get(p.id)}" alt="" loading="lazy">` : `<span>${esc(p.mono)}</span>`}</div><div class="tx"><b>${esc(p.prof ? p.prof.n : p.label)}</b><small>${esc(p.prof ? p.prof.role : ar(`${shortName(p.apps[0].b)} ${p.apps[0].n}`))}</small></div></div></a>`;
   // design-v3: the curated profiles as a deck of flip cards, grouped by era (from where each first appears).
   const eraOf = (p) => { const a = p.apps[0]; return p.testament === 'nt' ? 'العهد الجديد' : a.b.id === 'Gen' ? (a.n <= 11 ? 'البدايات' : 'الآباء') : 'الخروج والبرية'; };
   const curated = PEOPLE.list.filter((p) => p.prof && hasPage(p)).sort((a, b) => a.apps[0].b.order - b.apps[0].b.order || a.apps[0].n - b.apps[0].n);
@@ -454,7 +456,7 @@ function peoplePages() {
     const depth = 1;
     const P = p.prof;
     const map = P?.map ? MAPS.find((m) => m.id === P.map) : null;
-    if (P && PIMG.has(P.id)) { P.img = `../assets/${PIMG.get(P.id)}`; P.imgCredit = PIMG.get(P.id).endsWith('.svg') ? 'رسم توضيحي (تجريبي)' : 'صورة تخيلية'; }
+    if (PIMG.has(p.id)) { p.img = `../assets/${PIMG.get(p.id)}`; p.imgCredit = PIMG.get(p.id).endsWith('.svg') ? 'رسم توضيحي (تجريبي)' : 'صورة تخيلية'; }
     const after = `<div class="viewer on inline" id="viewer">
 <div class="vtop"><a href="../people.html" aria-label="الشخصيات">${IC.back}</a><span>${esc(P ? P.full : p.label)}</span><span style="width:44px"></span></div>
 <div class="stage"><div class="pcard"><div class="pin"></div></div></div>
@@ -468,7 +470,7 @@ ${map ? `<a class="mcard" href="../maps/${map.id}.html" style="margin:0 0 20px">
 <h3>في الأصحاحات المدروسة</h3>${p.apps.map((a) => `<div class="blk"><h3><a class="r" href="../book/${a.b.slug}/${a.n}.html#p-${p.id}">${chTitle(a.b, a.n)}</a>${study(a.b, a.n) ? `<span class="meta" style="margin-inline-start:auto">${md(study(a.b, a.n).title)}</span>` : ''}</h3><p>${md(a.d)}</p></div>`).join('')}
 </div></div>`;
     write(`people/${p.id}.html`, page({ title: P ? P.full : p.label, depth, nav: 'people', body, cls: 'person', after: '' }).replace('<main class="main">', `<main class="main">${after}`));
-    if (P) { delete P.img; delete P.imgCredit; }
+    delete p.img; delete p.imgCredit;
   }
 }
 
