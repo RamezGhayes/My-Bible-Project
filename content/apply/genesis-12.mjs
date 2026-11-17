@@ -52,7 +52,7 @@ export default {
     }
   ],
   christ: {
-    t: 'البركة الأولى في بيتك', ref: 'Gen.12.3', cut: 'وتتبارك فيك جميع قبائل الارض', also: 'Gal.3.8',
+    t: 'البركة الأولى في بيتك', ref: 'Gen.12.3', cut: 'وتتبارك فيك جميع قبائل الارض', also: 'Gal.3.8', alsoT: 'وانظر كيف يقرأ بولس هذا الوعد',
     p: 'يرى ماثيو هنري أن هذا الوعد يتوّج كل الوعود لأنه يشير إلى المسيا. يسوع المسيح هو بركة العالم العظمى، وهو بركة للعائلات. وحين نعدّ بركات بيتنا، فلنضع المسيح في المقام الأول، بركة البركات.',
     by: { k: 'mhc', file: 'genesis-12', basis: ['This was the promise that crowned all the rest; for it points at the Messiah', 'Jesus Christ is the great blessing of the world', 'He is a family blessing', 'when we reckon up our family blessings, let us put Christ in the', 'as the blessing of blessings'] }
   }
