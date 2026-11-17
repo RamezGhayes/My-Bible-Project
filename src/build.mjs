@@ -227,7 +227,7 @@ function readerHTML(b, n, S, depth, { overlay }) {
   const prev = prevOf(b, n), next = nextOf(b, n);
   const nav = `<div class="chnav">${next ? `<a href="${chapterHref(next.b, next.n, depth)}"><small>التالي</small><b>${chTitle(next.b, next.n)}</b></a>` : '<span></span>'}${prev ? `<a class="n" href="${chapterHref(prev.b, prev.n, depth)}"><small>السابق</small><b>${chTitle(prev.b, prev.n)}</b></a>` : '<span></span>'}</div>`;
   const head = overlay
-    ? `<header class="sh"><a class="b" href="#" aria-label="رجوع إلى القصة">${IC.close}</a><span class="t">${chTitle(b, n)}${S ? ' · ' + md(S.title) : ''}</span><a class="b" href="#study" aria-label="الدراسة">${IC.menu}</a></header>`
+    ? `<header class="sh"><a class="b" href="#" aria-label="رجوع إلى القصة">${IC.close}</a><span class="t">${chTitle(b, n)}${S ? ' · ' + md(S.title) : ''}</span><a class="b" href="#study3" aria-label="الدراسة">${IC.menu}</a></header>`
     : `<header class="sh"><a class="b" href="../${b.slug}.html#c${n}" aria-label="الأصحاحات">${IC.back}</a><span class="t">${chTitle(b, n)}</span><span style="width:44px"></span></header>`;
   return `${head}
 <div class="rtools"><span>${esc(config.bibleVersion)}</span><span style="display:flex;gap:6px"><button type="button" data-size="-1" aria-label="تصغير الخط">أ−</button><button type="button" data-size="1" aria-label="تكبير الخط">أ+</button></span></div>
@@ -296,13 +296,14 @@ ${christ[0] ? `<p style="font-size:15.5px;margin-top:16px;opacity:.75" class="cl
 <a class="btn l" href="#study">${IC.list}الدراسة الكاملة</a>
 ${next ? `<a class="btn o" style="margin-top:10px" href="${chapterHref(next.b, next.n, depth)}">${chTitle(next.b, next.n)}${study(next.b, next.n) ? ' · ' + md(study(next.b, next.n).title) : ''}</a>` : ''}`));
 
-  const story = `<div class="story" id="story">
-<div class="bars">${cards.map(() => '<i></i>').join('')}</div>
-<div class="stop"><a href="../${b.slug}.html#c${n}" aria-label="رجوع إلى الأصحاحات">${IC.close}</a><span>${chTitle(b, n)}</span><a href="#study" aria-label="الدراسة الكاملة">${IC.menu}</a></div>
-${cards.map((c, i) => `<section class="sc${i === 0 ? ' on' : ''}" style="background:${c.bg};color:${c.fg}" data-fg="${c.fg}">${c.html}${c.more ? `<a class="more" href="#s-${c.more}">${IC.up}التفاصيل</a>` : ''}</section>`).join('')}
-<div class="tz r" data-dir="-1"></div><div class="tz l" data-dir="1"></div></div>`;
+  // Story: cards in a horizontal row (design-v3), each card as before.
+  const story = `<section class="ch3s" aria-label="القصة في بطاقات">
+<div class="ch3sh"><div><h2>القصة في بطاقات</h2><p>الأصحاح في ${countWord(cards.length, 'بطاقة واحدة', 'بطاقتين', 'بطاقات', 'بطاقة')}. اسحب أو استخدم الأسهم.</p></div><span class="h3a"><button type="button" data-rail-prev="st" aria-label="السابق">${IC.chev.replace('class="ic"', 'class="ic" style="transform:scaleX(-1)"')}</button><button type="button" data-rail-next="st" aria-label="التالي">${IC.chev}</button></span></div>
+<div class="ch3seg" aria-hidden="true">${cards.map(() => '<i></i>').join('')}</div>
+<div class="h3r ch3r" data-rail="st">${cards.map((c, i) => `<article class="sc" style="background:${c.bg};color:${c.fg}" aria-label="بطاقة ${ar(i + 1)} من ${ar(cards.length)}"><span class="no">${ar(i + 1)} / ${ar(cards.length)}</span>${c.html.replace(/href="#study"/g, 'href="#study3"')}${c.more ? `<a class="more" href="#s-${c.more}">${IC.up}التفاصيل</a>` : ''}</article>`).join('')}</div>
+</section>`;
 
-  // --- study: tiles + detail pages ---
+  // --- study sections (DET). The old bento tiles are still built alongside; only DET is used on the page. ---
   const DET = {};
   const T = (k, cls, label, title, vis) => `<a class="tile ${cls}" href="#s-${k}"><span class="tl"><span>${label}</span>${IC.chev}</span><span class="vis">${vis}</span><span class="tt">${title}</span></a>`;
   const tiles = [];
@@ -352,20 +353,21 @@ ${cards.map((c, i) => `<section class="sc${i === 0 ? ' on' : ''}" style="backgro
   }
   half.push(`<a class="tile t-you" href="#s-you"><span class="tl"><span>${countWord(S.questions?.length || 0, 'سؤال واحد', 'سؤالان', 'أسئلة', 'سؤالاً')}</span>${IC.chev}</span><span class="vis">${esc(clip(S.questions?.[0] || '', 90))}</span><span class="tt">للتأمل والتطبيق</span></a>`);
   DET.you = { t: 'للتأمل والتطبيق', ey: 'عِشها', h: `${(S.questions || []).map((q, i) => `<div class="blk"><h3><span class="n">${ar(i + 1)}</span><span>${md(q)}</span></h3></div>`).join('')}${S.apply ? `<div class="applyb"><small>للحياة</small>${arr(S.apply).map((p) => `<p>${md(p)}</p>`).join('')}</div>` : ''}` };
-  // Arrange: christ, [text, people], map, [word, sum], [hard, bg], views, voices, [refs, you]
-  if (half.length % 2) half[half.length - 1] = half[half.length - 1].replace('class="tile ', 'class="tile w ');
-  const wide = Object.fromEntries(tiles.map((t) => [(t.h.match(/href="#s-(\w+)"/) || t.h.match(/data-k="(\w+)"/))[1], t.h]));
-  const grid = [wide.christ, wide.explain || '', ...half.slice(0, 2), wide.map || '', ...half.slice(2, 4), wide.views || '', ...half.slice(4, 6), wide.voices || '', ...half.slice(6)].join('');
-  const ORDER = ['christ', 'sum', 'map', 'people', 'word', 'bg', 'hard', 'views', 'refs', 'voices', 'you'].filter((k) => DET[k]);
-  const studyHtml = `<div class="ovl" id="study">
-<div class="pg idx" id="pg-idx"><header class="sh"><a class="b" href="#" aria-label="رجوع إلى القصة">${IC.close}</a><span class="t">الدراسة الكاملة</span><a class="b" href="#read" aria-label="النص">${IC.read}</a></header>
-<div class="dh"><span class="ey">${md(S.section)}</span><h1>${chTitle(b, n)} · ${md(S.title)}</h1><p>${vWord(vs.length)} · ${secWord(ORDER.length + 1)}</p></div>
+  const ORDER = ['sum', 'christ', 'map', 'people', 'word', 'bg', 'hard', 'views', 'refs', 'voices', 'you'].filter((k) => DET[k]);
+  const AIC = { sum: IC.list, christ: IC.read, map: IC.map, people: IC.person, word: IC.read, bg: IC.shelf, hard: IC.search, views: IC.web, refs: IC.web, voices: IC.shelf, you: IC.person };
+  const studyHtml = `<section class="ch3st" id="study3"><div class="ch3sh"><div><h2>الدراسة الكاملة</h2><p>افتح ما تحتاجه. كل قسم يُفتح ويُطوى وحده.</p></div></div>
+<div class="ch3sg"><div class="ch3acc">${ORDER.map((k, i) => `<details class="acc" id="s-${k}"${i === 0 ? ' open' : ''}><summary><span class="ai">${AIC[k] || IC.list}</span><span class="at"><b>${esc(DET[k].t)}</b><small>${DET[k].ey}</small></span><span class="ar" aria-hidden="true">${IC.chev}</span></summary><div class="dc">${DET[k].h}</div></details>`).join('')}</div>
+<aside class="ch3as">
+<div class="rd"><small>النص · ${esc(config.bibleVersion)}</small><p>${vs.slice(0, 3).map((v) => `<sup>${ar(v.number)}</sup> ${esc(v.text)}`).join(' ')}…</p><a class="btn3 l" href="#read">${IC.read}اقرأ الأصحاح كاملاً</a></div>
+${XS.map((x) => `<a class="xa" href="${explainHref(x, depth)}"><small>شرح مصوّر</small><b>${esc(x.title)}</b><span>${esc(x.sub)}</span></a>`).join('')}
 <div class="prt"><button type="button" data-print>${IC.read}اطبع ورقة الدراسة</button><span>ورقة للطباعة: الآية المفتاحية، والتقسيم، والأسئلة، ومساحة للكتابة.</span></div>
-<div class="bento">${grid}</div></div>
-${ORDER.map((k, i) => `<div class="pg det" id="s-${k}" data-det><header class="sh"><a class="b" href="#study">${IC.back}الدراسة</a><span class="t"></span><a class="b" href="#" aria-label="إغلاق">${IC.close}</a></header>
-<div class="dh"><span class="ey">${DET[k].ey}</span><h1>${esc(DET[k].t)}</h1><p>${chTitle(b, n)} · ${md(S.title)}</p></div><div class="dc">${DET[k].h}</div>
-${ORDER[i + 1] ? `<a class="nextsec" href="#s-${ORDER[i + 1]}"><span><small>القسم التالي</small><b>${esc(DET[ORDER[i + 1]].t)}</b></span>${IC.chev}</a>` : next ? `<a class="nextsec" href="${chapterHref(next.b, next.n, depth)}"><span><small>الأصحاح التالي</small><b>${chTitle(next.b, next.n)}</b></span>${IC.chev}</a>` : ''}</div>`).join('')}
-</div>`;
+</aside></div></section>`;
+  const head = `<section class="ch3h">
+<nav class="crumbs" aria-label="مسار التنقل"><a href="../../${b.testament}.html">${T_NAME[b.testament]}</a><span>‹</span><a href="../${b.slug}.html">${esc(b.name)}</a><span>‹</span><a href="../${b.slug}.html#c${n}">الأصحاحات</a></nav>
+<div class="hd"><span class="big">${ar(n)}</span><div><small>${esc(b.name)} · ${md(S.section)}</small><h1>${md(S.title)}</h1><p>${vWord(vs.length)} · نحو ${ar(mins)} دقائق قراءة</p></div></div>
+<div class="cgo">${prev ? `<a href="${chapterHref(prev.b, prev.n, depth)}" aria-label="السابق: ${chTitle(prev.b, prev.n)}">${IC.chev.replace('class="ic"', 'class="ic" style="transform:scaleX(-1)"')}${chTitle(prev.b, prev.n)}</a>` : ''}<a class="rd" href="#read">${IC.read}اقرأ النص</a><a href="#study3">${IC.list}الدراسة</a>${next ? `<a href="${chapterHref(next.b, next.n, depth)}" aria-label="التالي: ${chTitle(next.b, next.n)}">${chTitle(next.b, next.n)}${IC.chev}</a>` : ''}</div>
+</section>`;
+  const foot = `<nav class="ch3n">${prev ? `<a href="${chapterHref(prev.b, prev.n, depth)}"><small>الأصحاح السابق</small><b>${chTitle(prev.b, prev.n)}${study(prev.b, prev.n) ? ' · ' + md(study(prev.b, prev.n).title) : ''}</b></a>` : '<span></span>'}${next ? `<a class="dk" href="${chapterHref(next.b, next.n, depth)}"><small>الأصحاح التالي</small><b>${chTitle(next.b, next.n)}${study(next.b, next.n) ? ' · ' + md(study(next.b, next.n).title) : ''}</b></a>` : ''}</nav>`;
   const readerOv = `<div class="ovl" id="read"><div class="pg">${readerHTML(b, n, S, depth, { overlay: true })}</div></div>`;
   const viewerHtml = people.length ? `<div class="viewer" id="viewer" aria-label="بطاقة الشخصية">
 <div class="vtop"><a href="#" aria-label="إغلاق">${IC.close}</a><span data-vname></span><span style="width:44px"></span></div>
@@ -389,7 +391,7 @@ ${S.questions?.length ? `<h2>أسئلة للمناقشة</h2><ol class="hq">${S.
 <footer>النص: ${esc(config.bibleVersion)} · ${esc(config.domain.replace(/^https?:\/\//, ''))}/book/${b.slug}/${n}.html</footer>
 </section>`;
   const body = `<div data-chapter="${b.id}:${n}"></div>${handout}`;
-  write(`book/${b.slug}/${n}.html`, page({ title: `${chTitle(b, n)}: ${plain(S.title)}`, depth, body, cls: 'immersive chapter', after: story + studyHtml + readerOv + viewerHtml }));
+  write(`book/${b.slug}/${n}.html`, page({ title: `${chTitle(b, n)}: ${plain(S.title)}`, depth, nav: b.testament, body: head + story + studyHtml + foot + body, cls: 'chapter v3 ch3', after: readerOv + viewerHtml }));
 }
 
 // ---------- people ----------

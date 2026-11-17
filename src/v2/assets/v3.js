@@ -186,4 +186,12 @@
   if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
     window.addEventListener('load', function () { navigator.serviceWorker.register((document.body.getAttribute('data-root') || '') + 'sw.js').catch(function () {}); });
   }
+  // ---------- chapter study: #s-xxx opens and shows its section ----------
+  var openAcc = function () {
+    var id = decodeURIComponent(location.hash.slice(1)), d = id && document.getElementById(id);
+    if (!d || d.tagName !== 'DETAILS') return;
+    d.open = true; d.classList.add('hit'); setTimeout(function () { d.classList.remove('hit'); }, 1600);
+    setTimeout(function () { d.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' }); }, 30);
+  };
+  window.addEventListener('hashchange', openAcc); openAcc();
 })();
