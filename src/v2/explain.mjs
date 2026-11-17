@@ -79,6 +79,16 @@ export const xCard = (x) => `<a class="mcard xm" href="${explainHref(x, 0)}"><di
 const ORD = ['', 'الأولى', 'الثانية', 'الثالثة', 'الرابعة', 'الخامسة', 'السادسة', 'السابعة', 'الثامنة', 'التاسعة', 'العاشرة'];
 
 export function explainPage(x, depth) {
+  const html = explainBody(x, depth);
+  if (x.id === 'plagues') return html;
+  // design-v3: icon mosaic beside every explainer's hero (the same items the page explains).
+  const C = chips(x);
+  const mo = `<div class="xmo3 c${C.length > 8 ? 5 : 4}" aria-hidden="true">${C.map((c, k) => `<i style="--c:${c.color};--k:${c.ink};--d:${(0.15 + k * 0.07).toFixed(2)}s">${glyph(c.icon, 40)}</i>`).join('')}</div>`;
+  const h0 = html.indexOf('class="xhero'), i = html.indexOf('</section>', h0);
+  if (h0 < 0 || i < 0 || html.slice(h0, i).split('<svg').length > 3) return html; // hero already draws its own icons
+  return html.slice(0, i) + mo + html.slice(i);
+}
+function explainBody(x, depth) {
   if (x.id === 'offerings') return offeringsPage(x, depth);
   if (x.id === 'atonement') return atonementPage(x, depth);
   if (x.id === 'feasts') return feastsPage(x, depth);
@@ -257,8 +267,8 @@ ${scene3d(depth, 'explore')}
 <h3 class="xh"><span>٢</span>الطريق إلى الحضور</h3>
 <p class="xp">ثماني محطات من الباب في الشرق إلى التابوت في الغرب. اضغط على أي قطعة في المخطط، أو تنقّل بالترتيب.</p>
 <div class="tchips" id="tchips">${S.map((s, i) => `<button type="button" data-it-go="${s.id}" style="--c:${s.color};--k:${s.ink}" aria-pressed="${i ? 'false' : 'true'}">${glyph(s.icon, 22)}<span>${ar(i + 1)}</span></button>`).join('')}</div>
-<div class="tlay"><div class="tmap">${plan}</div></div>
-<div class="tpanels" id="tpanels">${S.map(panel).join('')}</div>
+<div class="tst3"><div class="tlay"><div class="tmap">${plan}</div></div>
+<div class="tpanels" id="tpanels">${S.map(panel).join('')}</div></div>
 
 <h3 class="xh"><span>٣</span>ثلاث دوائر من القداسة</h3>
 <p class="xp">كلما اقتربت من التابوت ازدادت القداسة، وقلّ عدد من يستطيع الدخول.</p>
