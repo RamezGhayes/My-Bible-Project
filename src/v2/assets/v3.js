@@ -220,4 +220,23 @@
       $$('.fl3').forEach(function (c) { c.hidden = !(e === 'all' || c.getAttribute('data-era') === e); });
     });
   });
+  // ---------- map journeys: play the journey stop by stop (camera follows) ----------
+  var mapv = $('#mapv');
+  if (mapv) {
+    var pb = document.createElement('button');
+    pb.type = 'button'; pb.className = 'mplay'; pb.setAttribute('aria-pressed', 'false');
+    pb.innerHTML = '<span>▶</span> شاهد الرحلة';
+    var anchor = $('.minfo', mapv); anchor.parentNode.insertBefore(pb, anchor);
+    var tm = null;
+    var stop = function () { clearInterval(tm); tm = null; pb.setAttribute('aria-pressed', 'false'); pb.innerHTML = '<span>▶</span> شاهد الرحلة'; };
+    var tick = function () { var n = $('[data-step="1"]', mapv); if (!n || n.disabled) { stop(); return; } n.click(); };
+    pb.addEventListener('click', function () {
+      if (tm) { stop(); return; }
+      if (!mapv.classList.contains('z2')) { var z = $('[data-zoom]', mapv); if (z) z.click(); }
+      var first = $('.mk[data-i="0"]', mapv); if (first) first.click();
+      pb.setAttribute('aria-pressed', 'true'); pb.innerHTML = '<span>❚❚</span> إيقاف';
+      tm = setInterval(tick, reduce ? 4500 : 3400);
+    });
+    mapv.addEventListener('click', function (e) { if (e.isTrusted && tm && !e.target.closest('.mplay')) stop(); });
+  }
 })();
