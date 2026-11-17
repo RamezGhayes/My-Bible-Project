@@ -21,10 +21,17 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 PROMPTS = json.loads((ROOT / 'docs/portrait-prompts.json').read_text('utf-8'))
 OUT = ROOT / 'src/v2/assets'
 
-PRE = ('Photorealistic cinematic film still, shot on 35mm film with natural light, rich vivid colors, '
-       'fine realistic skin and fabric detail, historically accurate faces, clothing and setting for the ancient biblical world. ')
-NEG = ('text, letters, watermark, signature, logo, halo, nimbus, glowing head, cartoon, illustration, painting, 3d render, '
-       'anime, modern clothing, glasses, deformed hands, extra fingers, extra limbs, distorted face, nudity, blood, gore')
+PRE = 'Real documentary photograph from the ancient biblical world. '
+SUF = (' Real people with natural skin texture, visible pores, sun-weathered faces and slight imperfections; '
+       'rough handwoven wool and linen with real fabric texture. Shot on Canon EOS R5, 50mm lens, natural light, '
+       'National Geographic documentary style, muted earthy colors, subtle film grain.')
+NEG = ('anime, manga, cartoon, illustration, painting, digital art, CGI, 3d render, doll, smooth plastic skin, airbrushed, '
+       'beauty retouch, fashion model, makeup, oversaturated, text, watermark, halo, deformed hands, extra fingers, nudity, blood')
+
+
+def prompt(pid):
+    s = PROMPTS[pid].replace('a beautiful young', 'a young').replace('beautiful young', 'young').replace('a beautiful ', 'a ')
+    return PRE + s + SUF
 
 
 def to_webp(png_bytes, dest):
@@ -56,7 +63,7 @@ def main():
     failed = []
     model = a.model
     for n, pid in enumerate(todo, 1):
-        body = {'prompt': PRE + PROMPTS[pid], 'negative_prompt': NEG, 'aspect_ratio': '3:2', 'output_format': 'png'}
+        body = {'prompt': prompt(pid), 'negative_prompt': NEG, 'aspect_ratio': '5:4', 'output_format': 'png'}
         try:
             try:
                 r = br.invoke_model(modelId=model, body=json.dumps(body))
@@ -79,6 +86,7 @@ def main():
             time.sleep(2)
     if failed:
         print('failed:', ' '.join(failed))
+    print('Done. Now: git add src/v2/assets && git commit -m "portraits" && git push')
 
 
 if __name__ == '__main__':
