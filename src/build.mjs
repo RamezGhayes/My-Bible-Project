@@ -53,7 +53,9 @@ const firstRef = (r) => arr(r)[0];
 // ---------- assets ----------
 fs.mkdirSync(path.join(DIST, 'assets'), { recursive: true });
 // illustrated scenes for people, where one exists (src/v2/assets/person-<id>.svg)
-const PIMG = new Set(fs.readdirSync(path.join(ROOT, 'src/v2/assets')).filter((f) => /^person-.+\.svg$/.test(f)).map((f) => f.slice(7, -4)));
+// person-<id>.webp (photo-style image) wins over person-<id>.svg (drawn trial); PIMG: id -> file name
+const PIMG = new Map();
+for (const f of fs.readdirSync(path.join(ROOT, 'src/v2/assets')).sort((a, b) => (a.endsWith('.svg') ? 0 : 1) - (b.endsWith('.svg') ? 0 : 1))) { const m = f.match(/^person-(.+)\.(svg|webp|jpg)$/); if (m) PIMG.set(m[1], f); }
 for (const f of fs.readdirSync(path.join(ROOT, 'src/v2/assets'))) fs.copyFileSync(path.join(ROOT, 'src/v2/assets', f), path.join(DIST, 'assets', f));
 
 const PEOPLE = buildPeople(books, content);
@@ -77,7 +79,7 @@ function home() {
   const tcards = TOPICS.map((t) => `<a class="h3c g${t.group}" href="topics/${t.id}.html" data-g="${t.group}"${t.group === 1 ? '' : ' hidden'}><span class="hd"><i></i><span dir="ltr">${esc(t.en)}</span></span><b>${esc(t.ar)}</b><span>${esc(t.short)}</span></a>`).join('');
   const PBG = ['#26231F', '#1F2A44', '#3A2A2E', '#2A3328', '#33281F', '#2B2F40'];
   const ppl = PEOPLE.list.filter((p) => p.prof && hasPage(p)).sort((a, b) => a.apps[0].b.order - b.apps[0].b.order || a.apps[0].n - b.apps[0].n);
-  const pcards = ppl.map((p, i) => { const P = p.prof; return `<a class="h3p" href="${personHref(p, 0)}"><span class="hd"><b>${esc(P.n)}</b>${P.he ? `<span lang="${p.testament === 'ot' ? 'he' : 'el'}">${esc(P.he)}</span>` : ''}</span><span class="im${PIMG.has(P.id) ? ' pic' : ''}" style="--bg:${PBG[i % 6]}">${PIMG.has(P.id) ? `<img src="assets/person-${P.id}.svg" alt="" loading="lazy">` : `<span>${esc([...P.n][0])}</span>`}<em>${esc(P.era || '')}</em></span><span class="rl">${esc(P.role)}</span><span class="ln">${esc(P.line)}</span><span class="cl">${(P.cells || []).slice(0, 3).map(([k, v]) => `<span><small>${esc(k)}</small>${esc(v)}</span>`).join('')}</span></a>`; }).join('');
+  const pcards = ppl.map((p, i) => { const P = p.prof; return `<a class="h3p" href="${personHref(p, 0)}"><span class="hd"><b>${esc(P.n)}</b>${P.he ? `<span lang="${p.testament === 'ot' ? 'he' : 'el'}">${esc(P.he)}</span>` : ''}</span><span class="im${PIMG.has(P.id) ? ' pic' : ''}" style="--bg:${PBG[i % 6]}">${PIMG.has(P.id) ? `<img src="assets/${PIMG.get(P.id)}" alt="" loading="lazy">` : `<span>${esc([...P.n][0])}</span>`}<em>${esc(P.era || '')}</em></span><span class="rl">${esc(P.role)}</span><span class="ln">${esc(P.line)}</span><span class="cl">${(P.cells || []).slice(0, 3).map(([k, v]) => `<span><small>${esc(k)}</small>${esc(v)}</span>`).join('')}</span></a>`; }).join('');
   const T = (h, ic, t, d) => `<a href="${h}"><span class="ti">${ic}</span><span><b>${t}</b><small>${d}</small></span></a>`;
   const arrows = (k) => `<span class="h3a"><button type="button" data-rail-prev="${k}" aria-label="السابق">${IC.chev.replace('class="ic"', 'class="ic" style="transform:scaleX(-1)"')}</button><button type="button" data-rail-next="${k}" aria-label="التالي">${IC.chev}</button></span>`;
   const head = (t, s, extra = '') => `<div class="h3h"><div><h2>${t}</h2><p>${s}</p></div>${extra}</div>`;
@@ -435,7 +437,7 @@ function peoplePages() {
   const eras = [...new Set(curated.map(eraOf))];
   const PBG = ['#26231F', '#1F2A44', '#3A2A2E', '#2A3328', '#33281F', '#2B2F40'];
   const flip = (p, i) => { const P = p.prof; return `<div class="fl3" data-era="${esc(eraOf(p))}" style="--d:${(i * 0.04).toFixed(2)}s"><button type="button" class="in" aria-pressed="false" aria-label="اقلب بطاقة ${esc(P.n)}">
-<span class="fc h3p"><span class="hd"><b>${esc(P.n)}</b>${P.he ? `<span lang="${p.testament === 'ot' ? 'he' : 'el'}">${esc(P.he)}</span>` : ''}</span><span class="im${PIMG.has(P.id) ? ' pic' : ''}" style="--bg:${PBG[i % 6]}">${PIMG.has(P.id) ? `<img src="assets/person-${P.id}.svg" alt="" loading="lazy">` : `<span>${esc([...P.n][0])}</span>`}<em>${esc(P.era || '')}</em></span><span class="rl">${esc(P.role)}</span><span class="ln">${esc(P.line)}</span><span class="cl">${(P.cells || []).slice(0, 3).map(([k, v]) => `<span><small>${esc(k)}</small>${esc(v)}</span>`).join('')}</span><span class="tip">اضغط لتقلب البطاقة</span></span>
+<span class="fc h3p"><span class="hd"><b>${esc(P.n)}</b>${P.he ? `<span lang="${p.testament === 'ot' ? 'he' : 'el'}">${esc(P.he)}</span>` : ''}</span><span class="im${PIMG.has(P.id) ? ' pic' : ''}" style="--bg:${PBG[i % 6]}">${PIMG.has(P.id) ? `<img src="assets/${PIMG.get(P.id)}" alt="" loading="lazy">` : `<span>${esc([...P.n][0])}</span>`}<em>${esc(P.era || '')}</em></span><span class="rl">${esc(P.role)}</span><span class="ln">${esc(P.line)}</span><span class="cl">${(P.cells || []).slice(0, 3).map(([k, v]) => `<span><small>${esc(k)}</small>${esc(v)}</span>`).join('')}</span><span class="tip">اضغط لتقلب البطاقة</span></span>
 <span class="bc"><b>${esc(P.full)}</b>${(P.facts || []).slice(0, 3).map(([k, v]) => `<span class="f"><small>${esc(k)}</small>${esc(v)}</span>`).join('')}${P.strong ? `<span class="f"><small>القوة</small>${esc(P.strong)}</span>` : ''}${P.weak ? `<span class="f"><small>الضعف</small>${esc(P.weak)}</span>` : ''}</span>
 </button><a class="go3" href="${personHref(p, 0)}">الملف الكامل ${IC.chev}</a></div>`; };
   const deck = `<section class="pp3"><div class="top"><div><span class="ey">مجموعة بطاقات</span><h1>الشخصيات</h1><p>${ar(curated.length)} بطاقة منسّقة: الاسم، والمعنى، والدور. اقلب البطاقة لترى الحقائق، ونقاط القوة والضعف.</p></div>
@@ -452,7 +454,7 @@ function peoplePages() {
     const depth = 1;
     const P = p.prof;
     const map = P?.map ? MAPS.find((m) => m.id === P.map) : null;
-    if (P && PIMG.has(P.id)) { P.img = `../assets/person-${P.id}.svg`; P.imgCredit = 'رسم توضيحي (تجريبي)'; }
+    if (P && PIMG.has(P.id)) { P.img = `../assets/${PIMG.get(P.id)}`; P.imgCredit = PIMG.get(P.id).endsWith('.svg') ? 'رسم توضيحي (تجريبي)' : 'صورة تخيلية'; }
     const after = `<div class="viewer on inline" id="viewer">
 <div class="vtop"><a href="../people.html" aria-label="الشخصيات">${IC.back}</a><span>${esc(P ? P.full : p.label)}</span><span style="width:44px"></span></div>
 <div class="stage"><div class="pcard"><div class="pin"></div></div></div>
@@ -513,7 +515,7 @@ ${ERA_MAP[e.n] ? `<a class="go" style="margin-top:12px;align-self:flex-start" hr
 // ---------- search index (loaded on demand by the search panel) ----------
 function treeHtml() {
   const profiles = {};
-  for (const p of PEOPLE.list) if (p.prof && hasPage(p)) profiles[p.prof.id] = { prof: p.prof, href: personHref(p, 0), img: PIMG.has(p.prof.id) ? `assets/person-${p.prof.id}.svg` : '' };
+  for (const p of PEOPLE.list) if (p.prof && hasPage(p)) profiles[p.prof.id] = { prof: p.prof, href: personHref(p, 0), img: PIMG.has(p.prof.id) ? `assets/${PIMG.get(p.prof.id)}` : '' };
   write('tree.html', page({ title: 'شجرة العائلة', depth: 0, nav: 'people', body: treePage({ profiles }), cls: 'v3' }));
 }
 treeHtml();
