@@ -175,8 +175,14 @@
     var pickN = function (b) {
       $$('[data-node]', tree).forEach(function (o) { o.setAttribute('aria-pressed', o === b ? 'true' : 'false'); });
       var c = tpl.querySelector('[data-card="' + b.getAttribute('data-node') + '"]');
-      if (c) { slot.innerHTML = c.innerHTML; if (window.innerWidth < 980) slot.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' }); }
+      if (c) {
+        slot.innerHTML = c.innerHTML;
+        var aside = $('.tr3a', tree), sheet = $('.tsheet', tree);
+        if (window.innerWidth < 980) { sheet.classList.add('open'); document.body.classList.add('tsheet-on'); sheet.scrollTop = 0; }
+        else if (aside) aside.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+      }
     };
+    var cl = $('.tclose', tree); if (cl) cl.addEventListener('click', function () { $('.tsheet', tree).classList.remove('open'); document.body.classList.remove('tsheet-on'); });
     $$('[data-node]', tree).forEach(function (b) { b.addEventListener('click', function () { pickN(b); }); });
     var a0 = $('[data-node="abraham"]', tree); if (a0) a0.setAttribute('aria-pressed', 'true');
   }

@@ -1217,3 +1217,22 @@ body.pmpage #app{max-width:none}
 .htc .pk{width:100%;color:var(--gold2)}.htc b{font-family:var(--ui);font-size:22px}.htc span{font-family:var(--ui);font-size:15px;color:#D8D2C6}
 .htc .go{margin-inline-start:auto;display:inline-flex;align-items:center;gap:6px;color:#fff;font-weight:500}.htc .go .ic{width:18px;height:18px}
 .htc[hidden]{display:none}
+/* family tree: the card stays in view */
+.tr3a .tahd h1{margin:4px 0 12px}
+.tr3a .tjump{margin:0}
+.tsheet{position:relative}
+.tclose{display:none}
+.tabout{margin-top:14px;border-top:1px solid #2E3138;padding-top:12px}
+.tabout summary{cursor:pointer;font-family:var(--ui);font-size:14px;color:var(--gold2);list-style:none}
+.tabout summary::-webkit-details-marker{display:none}
+.tabout p{margin:10px 0 0;font-size:14.5px;color:#C9C3B8;line-height:1.85}
+@media (min-width:980px){
+  .tr3a{max-height:calc(100vh - 68px);min-height:0!important;overflow-y:auto;scrollbar-width:thin}
+}
+@media (max-width:979px){
+  .tsheet{position:fixed;left:0;right:0;bottom:0;z-index:70;max-height:78vh;overflow-y:auto;background:var(--ink);color:var(--paper);border-radius:20px 20px 0 0;padding:18px 20px calc(24px + env(safe-area-inset-bottom));box-shadow:0 -10px 40px rgba(0,0,0,.35);transform:translateY(105%);transition:transform .35s var(--ease)}
+  .tsheet.open{transform:none}
+  .tclose{display:grid;place-items:center;position:sticky;top:0;margin-inline-start:auto;width:40px;height:40px;border-radius:50%;background:#2A2D34;color:#fff;font-size:22px;z-index:2}
+  .tsheet .tcd{margin-top:0}
+  .tr3a{padding-bottom:18px}
+}
