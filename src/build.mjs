@@ -10,6 +10,7 @@ import { TOPICS, topicLinks, chapterTopicsBlock, topicsIndex, topicPage, topicsH
 import { treePage } from './v2/tree.mjs';
 import { harmonyPage } from './v2/harmony.mjs';
 import { glossChapter, glossaryPage } from './v2/glossary.mjs';
+import { GLOSSARY } from '../content/glossary.mjs';
 import { buildLibrary, libraryPage, workId } from './v2/library.mjs';
 import { EXPLAINERS, explainersFor, explainPage, explainPresent, storyCard as xStory, bentoTile as xTile, explainHref, glyph, xCard, chips as xChips } from './v2/explain.mjs';
 
@@ -527,8 +528,14 @@ function searchIndex() {
   for (const m of MAPS) add('m', m.title, 'خريطة', mapHref(m, 0));
   for (const t of TOPICS) add('t', t.ar, 'موضوع كتابي · ' + t.short.slice(0, 60), `topics/${t.id}.html`);
   for (const w of buildLibrary({ books, content }).works) add('l', w.title, 'المكتبة · ' + w.n, 'library.html#' + w.id);
+  for (const e of GLOSSARY) add('g', e.w, 'القاموس · ' + e.d.slice(0, 70), 'glossary.html#' + e.id);
   const refs = books.map((b) => [b.name, b.abbr, b.slug, b.chapters, previewSkip(b) ? 1 : 0]);
   fs.writeFileSync(path.join(DIST, 'assets/search.js'), `window.SIDX=${JSON.stringify({ refs, items })};`);
+  // Full text of Van Dyck for searching inside verses, loaded only when someone searches the text.
+  // Shown as written, without vowel marks (spelling, hamza, ة and ى kept). The page folds a copy for matching; folding is one letter for one letter, so positions line up.
+  // Books separated by \v, chapters by \f, verses by \n (verse numbers are contiguous).
+  const bare = (t) => t.replace(/[\u064B-\u065F\u0670\u0640]/g, '').replace(/ٱ/g, 'ا');
+  fs.writeFileSync(path.join(DIST, 'assets/bible-search.js'), `window.BTXT=${JSON.stringify(books.map((b) => bible(b.id).chapters.map((c) => c.verses.map((v) => bare(v.text)).join('\n')).join('\f')).join('\v'))};`);
 }
 
 // ---------- run ----------

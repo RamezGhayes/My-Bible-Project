@@ -437,7 +437,7 @@
   if (!box) return;
   var root = document.body.getAttribute('data-root') || '';
   var q = document.getElementById('sq'), res = document.getElementById('sres'), loaded = false, last = null;
-  var KIND = { l: 'المكتبة', t: 'موضوع',  r: 'شاهد', b: 'سفر', i: 'مقدمة', c: 'أصحاح', p: 'شخصية', x: 'شرح مصوّر', m: 'خريطة' };
+  var KIND = { l: 'المكتبة', t: 'موضوع', g: 'القاموس', r: 'شاهد', b: 'سفر', i: 'مقدمة', c: 'أصحاح', p: 'شخصية', x: 'شرح مصوّر', m: 'خريطة' };
   var AR = function (n) { return String(n).replace(/\d/g, function (d) { return '٠١٢٣٤٥٦٧٨٩'[d]; }); };
   function norm(s) {
     return String(s).replace(/[ً-ٰٟـ]/g, '').replace(/[أإآٱ]/g, 'ا').replace(/ة/g, 'ه').replace(/ى/g, 'ي')
@@ -469,24 +469,81 @@
     var href = hit[4] ? 'book/' + hit[2] + '.html' : 'book/' + hit[2] + '/' + ch + '.html' + (vs ? '#v' + vs : '');
     return ['r', hit[0] + ' ' + AR(ch) + (vs ? ': ' + AR(vs) : ''), vs ? 'افتح الآية في القارئ' : 'افتح الأصحاح', href];
   }
-  function run() {
+  // Results are grouped. Searching inside the Bible text loads assets/bible-search.js (about 1 MB) on first use.
+  var GROUPS = [['r', 'شاهد'], ['bic', 'أسفار وأصحاحات'], ['tg', 'موضوعات وقاموس'], ['p', 'شخصيات'], ['xm', 'شروح وخرائط'], ['l', 'المكتبة']];
+  var BOOKS = null, textLoading = false;
+  function loadText(cb) {
+    if (window.BTXT) {
+      if (!BOOKS) {
+        var F = function (t) { return t.replace(/[أإآٱ]/g, 'ا').replace(/ة/g, 'ه').replace(/ى/g, 'ي'); }; // one letter for one letter
+        BOOKS = window.BTXT.split('\v').map(function (b) { return b.split('\f').map(function (c) { return c.split('\n').map(function (t) { return [t, F(t)]; }); }); });
+      }
+      return cb();
+    }
+    if (textLoading) return; textLoading = true;
+    var s = document.createElement('script'); s.src = root + 'assets/bible-search.js';
+    s.onload = function () { textLoading = false; loadText(cb); }; document.head.appendChild(s);
+  }
+  function verseHits(v, max) {
+    var toks = v.split(' ').filter(function (t) { return t.length > 1; }), all = [];
+    if (!toks.length) return { hits: [], total: 0 };
+    var R = window.SIDX.refs;
+    for (var bi = 0; bi < BOOKS.length; bi++) for (var ci = 0; ci < BOOKS[bi].length; ci++) {
+      var ch = BOOKS[bi][ci];
+      for (var vi = 0; vi < ch.length; vi++) {
+        var f = ch[vi][1];
+        if (f.indexOf(toks[0]) < 0) continue;
+        var ok = true; for (var k = 1; k < toks.length; k++) if (f.indexOf(toks[k]) < 0) { ok = false; break; }
+        if (ok) all.push([f.indexOf(v) >= 0 ? 0 : 1, R[bi], ci + 1, vi + 1, ch[vi][0], f]);
+      }
+    }
+    all.sort(function (a, b) { return a[0] - b[0]; }); // the whole phrase first, then Bible order
+    return { hits: all.slice(0, max), total: all.length };
+  }
+  // Highlight using positions found in the folded copy; the text shown is Van Dyck's spelling.
+  function snip(t, f, v) {
+    var toks = v.split(' ').filter(function (x) { return x.length > 1; }), marks = [];
+    toks.forEach(function (x) { var i = f.indexOf(x); while (i >= 0) { marks.push([i, i + x.length]); i = f.indexOf(x, i + x.length); } });
+    var first = marks.length ? Math.min.apply(null, marks.map(function (m) { return m[0]; })) : 0;
+    var a = Math.max(0, first - 40), z = Math.min(t.length, first + 110);
+    marks = marks.filter(function (m) { return m[0] >= a && m[1] <= z; }).sort(function (p, q) { return p[0] - q[0]; });
+    var out = a ? '…' : '', i = a;
+    marks.forEach(function (m) { if (m[0] < i) return; out += esc(t.slice(i, m[0])) + '<mark>' + esc(t.slice(m[0], m[1])) + '</mark>'; i = m[1]; });
+    return out + esc(t.slice(i, z)) + (z < t.length ? '…' : '');
+  }
+  function row(it) { return '<a href="' + root + it[3] + '"><small>' + KIND[it[0]] + '</small><b>' + esc(it[1]) + '</b>' + (it[2] ? '<span>' + esc(it[2]) + '</span>' : '') + '</a>'; }
+  function run(force) {
     var v = norm(q.value);
-    if (v === last) return; last = v;
-    if (!v) { res.innerHTML = '<p class="shint">جرّب: الخروج، أو يوم الكفارة، أو إبراهيم، أو رو ٨: ٢٨</p>'; return; }
-    var out = [], r = ref(v); if (r) out.push(r);
-    var toks = v.split(' ');
-    var scored = [];
+    if (v === last && !force) return; last = v;
+    if (!v) { res.innerHTML = '<p class="shint">جرّب: الخروج، أو يوم الكفارة، أو إبراهيم، أو رو ٨: ٢٨، أو جملة من آية مثل: الرب راعي</p>'; return; }
+    var r = ref(v), toks = v.split(' '), scored = [];
     window.SIDX.items.forEach(function (it) {
       var hay = it.n + ' ' + it.s, ok = toks.every(function (t) { return hay.indexOf(t) >= 0; });
       if (!ok) return;
-      var sc = (it.n.indexOf(v) === 0 ? 0 : it.n.indexOf(v) >= 0 ? 1 : 2) * 10 + ('bitxmplc'.indexOf(it[0]) + 1);
+      var sc = (it.n.indexOf(v) === 0 ? 0 : it.n.indexOf(v) >= 0 ? 1 : 2) * 10 + ('bigtxmplc'.indexOf(it[0]) + 1);
       scored.push([sc, it]);
     });
     scored.sort(function (a, b) { return a[0] - b[0]; });
-    scored.slice(0, 40).forEach(function (x) { out.push(x[1]); });
-    res.innerHTML = out.length ? out.map(function (it) {
-      return '<a href="' + root + it[3] + '"><small>' + KIND[it[0]] + '</small><b>' + esc(it[1]) + '</b>' + (it[2] ? '<span>' + esc(it[2]) + '</span>' : '') + '</a>';
-    }).join('') : '<p class="shint">لا نتائج. جرّب كلمة أقصر.</p>';
+    var html = '';
+    GROUPS.forEach(function (g) {
+      var list = g[0] === 'r' ? (r ? [r] : []) : scored.filter(function (x) { return g[0].indexOf(x[1][0]) >= 0; }).map(function (x) { return x[1]; });
+      if (!list.length) return;
+      html += '<section class="sgrp"><h3>' + g[1] + ' <span>' + AR(list.length) + '</span></h3>' + list.slice(0, 8).map(row).join('') + '</section>';
+    });
+    html += '<section class="sgrp sv"><h3>في نص الكتاب <span data-vcount></span></h3><div data-vres>' + (v.length < 3 ? '<p class="shint">اكتب ثلاثة أحرف على الأقل للبحث داخل الآيات.</p>' : '<p class="shint">جارٍ البحث في الآيات…</p>') + '</div></section>';
+    res.innerHTML = html;
+    if (v.length < 3 || r) { if (r) { var sv = res.querySelector('.sv'); if (sv) sv.remove(); } return; }
+    var mine = v;
+    loadText(function () {
+      if (mine !== last) return;
+      var R = verseHits(v, 30), box2 = res.querySelector('[data-vres]'), cnt = res.querySelector('[data-vcount]');
+      if (!box2) return;
+      cnt.textContent = R.total ? AR(R.total) + (R.total > 30 ? ' · أول ٣٠' : '') : '';
+      box2.innerHTML = R.hits.length ? R.hits.map(function (h) {
+        var bk = h[1], href = bk[4] ? 'book/' + bk[2] + '.html' : 'book/' + bk[2] + '/' + h[2] + '.html#v' + h[3];
+        return '<a class="vh" href="' + root + href + '"><small>' + esc(bk[0]) + ' ' + AR(h[2]) + ': ' + AR(h[3]) + '</small><span>' + snip(h[4], h[5], v) + '</span></a>';
+      }).join('') : '<p class="shint">لا توجد آية فيها هذه الكلمات معاً. جرّب كلمة واحدة.</p>';
+    });
   }
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   function open() { box.hidden = false; document.documentElement.classList.add('noscroll'); setTimeout(function () { q.focus(); }, 30); load(function () { last = null; run(); }); }
@@ -499,7 +556,7 @@
     if (e.key === 'Escape' && !box.hidden) close();
     if ((e.key === '/' || (e.key === 'k' && (e.metaKey || e.ctrlKey))) && box.hidden && !/INPUT|TEXTAREA/.test(e.target.tagName)) { e.preventDefault(); open(); }
   });
-  q.addEventListener('input', function () { if (loaded) run(); });
+  var tq; q.addEventListener('input', function () { if (loaded) { clearTimeout(tq); tq = setTimeout(run, 160); } });
   q.addEventListener('keydown', function (e) { if (e.key === 'Enter') { var a = res.querySelector('a'); if (a) location.href = a.href; } });
 })();
 

@@ -826,3 +826,12 @@ html[data-read=night] .rtools button:not(.thm3 button),html[data-read=contrast] 
 @media (min-width:760px){.gl3g{grid-template-columns:1fr 1fr}.gl3h h1{font-size:60px}}
 @media (min-width:980px){.main>.gl3h{max-width:none!important}.gl3h .in{padding:56px 28px 56px}.gl3b{padding:0 28px 96px}.gl3g{grid-template-columns:repeat(3,1fr)}.gl3f{top:60px}.gl3f{flex-direction:row;align-items:center}.gl3f .q{flex:0 0 340px}.gl3f .h3g{flex:1}}
 .gl3c .gmore[hidden]{display:none}
+/* ---------- search results: grouped, with verse text ---------- */
+.sgrp{margin-bottom:14px}
+.sgrp h3{display:flex;align-items:center;gap:8px;margin:6px 0 6px;font-family:var(--ui);font-weight:600;font-size:13px;color:#7A6232}
+.sgrp h3 span{font-weight:500;color:var(--faint)}
+.sgrp .vh{display:flex;flex-direction:column;gap:2px}
+.sgrp .vh small{font-family:var(--ui);font-size:12px;color:var(--accent);font-weight:600}
+.sgrp .vh span{font-family:var(--nas);font-size:15.5px;line-height:1.9;color:#3B3833}
+.sgrp mark{background:rgba(179,148,89,.35);color:inherit;border-radius:3px;padding:0 1px}
+.sgrp h3{padding-inline:16px}.sgrp .vh{padding-inline:16px}
