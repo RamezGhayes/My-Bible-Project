@@ -256,7 +256,7 @@
       bar.hidden = !sel.length; if (sel.length) $('[data-sl]', bar).textContent = refOf();
     };
     box.addEventListener('click', function (e) {
-      var v = e.target.closest('.v'); if (!v || e.target.closest('a')) return;
+      var v = e.target.closest('.v'); if (!v || e.target.closest('a') || e.target.closest('.gw')) return;
       var n = +v.id.slice(1), i = sel.indexOf(n);
       if (i >= 0) sel.splice(i, 1); else if (sel.length < 6) sel.push(n);
       paint();
@@ -302,5 +302,46 @@
     var setT = function (k) { document.documentElement.setAttribute('data-read', k); try { sessionStorage.setItem('bs:theme3', k); } catch (e) {} thb.forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-theme3') === k ? 'true' : 'false'); }); };
     thb.forEach(function (b) { b.addEventListener('click', function () { setT(b.getAttribute('data-theme3')); }); });
     setT(getT());
+  }
+  // ---------- glossary: tap a marked word in the reader ----------
+  var gtpl = $('#glcards');
+  if (gtpl) {
+    var pop = document.createElement('div'); pop.className = 'glpop'; pop.hidden = true; pop.setAttribute('role', 'dialog'); pop.setAttribute('aria-live', 'polite');
+    document.body.appendChild(pop);
+    var openBtn = null;
+    var closeP = function () { pop.hidden = true; if (openBtn) { openBtn.setAttribute('aria-expanded', 'false'); openBtn = null; } };
+    document.addEventListener('click', function (e) {
+      var w = e.target.closest('.gw');
+      if (w) {
+        e.preventDefault(); e.stopPropagation();
+        if (openBtn === w) { closeP(); return; }
+        var c = gtpl.content.querySelector('[data-g="' + w.getAttribute('data-g') + '"]'); if (!c) return;
+        if (openBtn) openBtn.setAttribute('aria-expanded', 'false');
+        pop.innerHTML = '<button type="button" class="x" aria-label="إغلاق">×</button>' + c.innerHTML; pop.hidden = false; openBtn = w; w.setAttribute('aria-expanded', 'true');
+        $('.x', pop).addEventListener('click', closeP);
+        return;
+      }
+      if (!pop.hidden && !e.target.closest('.glpop')) closeP();
+    }, true);
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeP(); });
+  }
+
+  // ---------- glossary page: search, categories, open a card ----------
+  var gq = $('[data-gq]');
+  if (gq) {
+    var gcards = $$('.gl3c'), gcat = 'all', none = $('[data-gnone]');
+    var fold = function (s) { return s.replace(/[ً-ْٰـ]/g, '').replace(/[ٱأإآ]/g, 'ا').replace(/ة/g, 'ه').replace(/ى/g, 'ي').toLowerCase().trim(); };
+    var applyG = function () {
+      var q = fold(gq.value), shown = 0;
+      gcards.forEach(function (c) { var ok = (gcat === 'all' || c.getAttribute('data-cat') === gcat) && (!q || fold(c.getAttribute('data-k')).indexOf(q) >= 0 || fold($('.d', c).textContent).indexOf(q) >= 0); c.hidden = !ok; if (ok) shown++; });
+      none.hidden = shown > 0;
+    };
+    gq.addEventListener('input', applyG);
+    var gtabs = $$('[data-gc]');
+    gtabs.forEach(function (t) { t.addEventListener('click', function () { gcat = t.getAttribute('data-gc'); gtabs.forEach(function (o) { o.setAttribute('aria-selected', o === t ? 'true' : 'false'); }); applyG(); }); });
+    var toggle = function (c, open) { var h = $('.hd', c), m = $('.gmore', c); var o = open === undefined ? h.getAttribute('aria-expanded') !== 'true' : open; h.setAttribute('aria-expanded', o ? 'true' : 'false'); m.hidden = !o; };
+    gcards.forEach(function (c) { $('.hd', c).addEventListener('click', function () { toggle(c); }); });
+    var hashG = function () { var c = location.hash && document.getElementById(decodeURIComponent(location.hash.slice(1))); if (c && c.classList.contains('gl3c')) { toggle(c, true); c.classList.add('hit'); setTimeout(function () { c.classList.remove('hit'); }, 1800); setTimeout(function () { c.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' }); }, 40); } };
+    window.addEventListener('hashchange', hashG); hashG();
   }
 })();

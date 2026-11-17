@@ -761,3 +761,68 @@ html[data-read=night] .rtools button:not(.thm3 button),html[data-read=contrast] 
 .xpres:hover{border-color:var(--gold)}
 .xpres .ic{width:18px;height:18px;color:var(--gold2)}
 .ps-pl .d{font-size:1em;line-height:1.85;margin:0;opacity:.95}
+
+/* ---------- glossary: words in the reader ---------- */
+.gw{display:inline;font:inherit;color:inherit;background:none;border:0;padding:0;margin:0;cursor:pointer;text-decoration:underline dotted;text-decoration-color:var(--gold);text-decoration-thickness:2px;text-underline-offset:.45em;border-radius:3px}
+.gw:hover,.gw[aria-expanded=true]{background:rgba(179,148,89,.18)}
+.glpop{position:fixed;z-index:210;left:50%;bottom:20px;transform:translateX(-50%);width:min(420px,calc(100vw - 24px));background:var(--ink);color:var(--paper);border-radius:20px;padding:18px 20px 16px;box-shadow:0 20px 50px rgba(0,0,0,.4);animation:v3rise .3s var(--ease) both;font-family:var(--ui)}
+.glpop[hidden]{display:none}
+.glpop small{font-size:11.5px;color:var(--gold2)}
+.glpop b{display:block;font-weight:600;font-size:21px;margin-top:2px}
+.glpop p{margin:6px 0 10px;font-family:var(--body,inherit);font-size:15px;line-height:1.85;color:#E8E3D8}
+.glpop a{font-size:13px;color:var(--gold2);border-bottom:1px solid #3A3D45}
+.glpop .x{position:absolute;top:10px;left:10px;width:34px;height:34px;border-radius:17px;background:#2A2D34;color:var(--paper);font-size:18px}
+
+/* ---------- glossary page ---------- */
+.gl3h{background:var(--ink);color:var(--paper);overflow:hidden}
+.gl3h .in{max-width:1140px;margin:0 auto;padding:30px 22px 34px;display:flex;flex-wrap:wrap;gap:28px;align-items:center}
+.gl3h .tx{flex:1 1 520px}
+.gl3h .ey{font-family:var(--ui);font-size:13px;color:var(--gold2);font-weight:500}
+.gl3h h1{font-family:var(--ui);font-weight:700;font-size:44px;line-height:1.1;margin:6px 0 0;animation:v3rise .7s var(--ease) both}
+.gl3h .tx>p{margin:12px 0 0;color:#C9C3B8;line-height:1.9;max-width:680px}
+.gl3h .srcs{display:grid;gap:8px;margin-top:18px}
+.gl3h .srcs span{display:block;font-size:13.5px;line-height:1.7;color:#C9C3B8;border-inline-start:2px solid var(--gold);padding-inline-start:12px}
+.gl3h .srcs b{color:var(--paper);font-family:var(--ui);font-weight:600;margin-inline-end:6px}
+.gl3h .mo{flex:0 1 330px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.gl3h .mo i{aspect-ratio:1;border-radius:16px;background:var(--c);color:var(--k);display:grid;place-items:center;animation:v3pop .6s var(--ease) both;animation-delay:var(--d)}
+.gl3h .mo svg{width:56%;height:56%}
+.gl3b{max-width:1140px;margin:0 auto;padding:0 22px 64px}
+.gl3f{position:sticky;top:0;z-index:4;background:var(--paper);padding:16px 0 10px;display:flex;flex-direction:column;gap:12px}
+.gl3f .q{display:flex;align-items:center;gap:10px;height:50px;border-radius:25px;border:1px solid var(--line);background:#fff;padding:0 16px}
+.gl3f input{flex:1;border:0;outline:0;background:none;font:inherit;font-size:16px}
+.gl3f .h3g{margin:0;padding:0}
+.gl3n{color:var(--soft);text-align:center;padding:30px 0}
+.gl3g{display:grid;gap:14px;align-items:start}
+.gl3c{background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;scroll-margin-top:150px;animation:v3rise .4s var(--ease) both}
+.gl3c[hidden]{display:none}
+.gl3c.hit{box-shadow:0 0 0 3px var(--gold)}
+.gl3c .hd{display:flex;align-items:center;gap:14px;width:100%;padding:16px 18px 6px;text-align:start}
+.gl3c .ic{width:52px;height:52px;border-radius:15px;background:var(--c);color:var(--k);display:grid;place-items:center;flex:none}
+.gl3c .tt{flex:1;display:flex;flex-direction:column;min-width:0}
+.gl3c .tt b{font-family:var(--ui);font-weight:600;font-size:21px}
+.gl3c .tt small{font-family:var(--ui);font-size:12px;color:var(--soft)}
+.gl3c .ar{width:30px;height:30px;border-radius:15px;background:var(--cream);display:grid;place-items:center;transition:transform .3s var(--ease)}
+.gl3c .ar .ic{width:16px;height:16px;background:none;color:inherit;transform:rotate(-90deg)}
+.gl3c .hd[aria-expanded=true] .ar{transform:rotate(180deg)}
+.gl3c .d{margin:0;padding:6px 18px 0;font-size:15.5px;line-height:1.9}
+.gl3c .mt{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;padding:10px 18px 16px;font-family:var(--ui);font-size:12px;color:var(--soft)}
+.gl3c .sp{display:flex;align-items:flex-end;gap:1px;height:26px;width:150px;border-bottom:1px solid var(--line);flex:none}
+.gl3c .sp i{flex:1;background:var(--c);opacity:.75;border-radius:1px 1px 0 0;min-width:1px}
+.gl3c .sp i.nt{margin-inline-start:4px}
+.gl3c .gmore{padding:0 18px 18px;border-top:1px dashed var(--line);animation:v3rise .3s var(--ease) both}
+.gl3c .gmore>p{font-size:15px;line-height:1.9;margin:14px 0 0}
+.gl3c .rf{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:12px}
+.gl3c .rf small{font-family:var(--ui);font-size:12px;color:var(--soft);margin-inline-end:4px}
+.gl3c .rf a{font-family:var(--ui);font-size:12.5px;padding:4px 10px;border-radius:12px;background:var(--cream)}
+.gl3c .rf a.f{background:none;border:1px solid var(--line)}
+.gl3c .tp{display:inline-flex;align-items:center;gap:4px;margin-top:12px;font-family:var(--ui);font-size:13.5px;font-weight:600;color:var(--accent)}
+.gl3c .tp .ic{width:16px;height:16px;background:none;color:inherit}
+.gl3c .src{margin-top:14px;border-radius:14px;background:var(--cream);padding:10px 14px}
+.gl3c .src summary{cursor:pointer;font-family:var(--ui);font-size:12.5px;color:#7A6232;font-weight:600}
+.gl3c .src p{margin:8px 0 4px;font-size:12.5px;color:var(--soft)}
+.gl3c .src blockquote{margin:6px 0;padding:8px 12px;border-radius:10px;background:#fff;font-family:Georgia,serif;font-size:13.5px;line-height:1.6;text-align:left;color:#3B3833}
+.gl3c .src a{font-family:var(--ui);font-size:12.5px;color:var(--accent)}
+.gl3x{margin-top:28px;font-size:13.5px;color:var(--soft);line-height:1.8;text-align:center}
+@media (min-width:760px){.gl3g{grid-template-columns:1fr 1fr}.gl3h h1{font-size:60px}}
+@media (min-width:980px){.main>.gl3h{max-width:none!important}.gl3h .in{padding:56px 28px 56px}.gl3b{padding:0 28px 96px}.gl3g{grid-template-columns:repeat(3,1fr)}.gl3f{top:60px}.gl3f{flex-direction:row;align-items:center}.gl3f .q{flex:0 0 340px}.gl3f .h3g{flex:1}}
+.gl3c .gmore[hidden]{display:none}

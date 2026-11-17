@@ -9,6 +9,7 @@ import { MAPS, mapForChapter, thumb, mapHref, viewer } from './v2/maps.mjs';
 import { TOPICS, topicLinks, chapterTopicsBlock, topicsIndex, topicPage, topicsHomeSection } from './v2/topics.mjs';
 import { treePage } from './v2/tree.mjs';
 import { harmonyPage } from './v2/harmony.mjs';
+import { glossChapter, glossaryPage } from './v2/glossary.mjs';
 import { buildLibrary, libraryPage, workId } from './v2/library.mjs';
 import { EXPLAINERS, explainersFor, explainPage, explainPresent, storyCard as xStory, bentoTile as xTile, explainHref, glyph, xCard, chips as xChips } from './v2/explain.mjs';
 
@@ -96,7 +97,7 @@ function home() {
 <section class="h3s h3dark full"><div class="wrap">${head('الشخصيات', 'بطاقات تُقلب: الاسم، والمعنى، والدور، ورحلة كل شخصية.', arrows('p'))}
 <div class="h3r" data-rail="p">${pcards}</div></div></section>
 <section class="h3s">${head('أدوات الدراسة', 'كل ما تحتاجه بجانب النص.')}
-<div class="h3tools">${T('maps.html', IC.map, 'الخرائط والشروح', 'رحلات وأماكن وشروح مصوّرة')}${T('journey.html', IC.time, 'القصة في مراحل', 'تاريخ الخلاص على خط واحد')}${T('paul.html', IC.map, 'رحلات بولس', 'أربع رحلات على الخريطة')}${T('tree.html', IC.person, 'شجرة العائلة', 'من آدم إلى أسباط إسرائيل')}${T('harmony.html', IC.list, 'الأناجيل جنباً إلى جنب', 'إشباع الخمسة الآلاف في الأربعة')}${T('library.html', IC.shelf, 'المكتبة اللاهوتية', 'مصادر وإقرارات')}</div></section>
+<div class="h3tools">${T('maps.html', IC.map, 'الخرائط والشروح', 'رحلات وأماكن وشروح مصوّرة')}${T('journey.html', IC.time, 'القصة في مراحل', 'تاريخ الخلاص على خط واحد')}${T('paul.html', IC.map, 'رحلات بولس', 'أربع رحلات على الخريطة')}${T('tree.html', IC.person, 'شجرة العائلة', 'من آدم إلى أسباط إسرائيل')}${T('harmony.html', IC.list, 'الأناجيل جنباً إلى جنب', 'إشباع الخمسة الآلاف في الأربعة')}${T('glossary.html', IC.list, 'القاموس', 'كلمات الكتاب الصعبة من مصادر مُصلحة')}${T('library.html', IC.shelf, 'المكتبة اللاهوتية', 'مصادر وإقرارات')}</div></section>
 <footer class="h3f full"><div><p class="s">${esc(quoteText('2Tim.3.16'))}</p><small>${refLabel('2Tim.3.16')}</small><span>${esc(config.description)} · النص: ${esc(config.bibleVersion)}</span><button type="button" data-splash>شاهد المقدمة مرة أخرى</button></div></footer>`;
   write('index.html', page({ title: '', depth: 0, nav: 'home', body, cls: 'home v3' }));
 }
@@ -246,6 +247,7 @@ const rng = (r) => { const [a, z] = String(r).split(/[-–]/).map(Number); retur
 
 function readerHTML(b, n, S, depth, { overlay }) {
   const vs = bible(b.id).chapters[n - 1].verses;
+  const GL = glossChapter(b.id, vs);
   const per = Object.fromEntries((S?.pericopes || []).map((p) => [p.at, p.t]));
   let key = [0, -1];
   if (S?.keyVerse) { try { const p = parseRef(firstRef(S.keyVerse)); if (p.ch === n && p.vs) key = [p.vs, p.ve]; } catch {} }
@@ -257,7 +259,7 @@ function readerHTML(b, n, S, depth, { overlay }) {
   return `${head}
 <div class="rtools"><span>${esc(config.bibleVersion)}</span><span style="display:flex;gap:6px"><button type="button" data-size="-1" aria-label="تصغير الخط">أ−</button><button type="button" data-size="1" aria-label="تكبير الخط">أ+</button></span><span class="thm3" role="group" aria-label="ألوان القراءة (لهذه الزيارة فقط)">${[['light', 'فاتح'], ['paper', 'ورقي'], ['night', 'ليلي'], ['contrast', 'تباين عالٍ']].map(([k, l]) => `<button type="button" data-theme3="${k}" aria-label="${l}" title="${l}"></button>`).join('')}</span></div>
 ${overlay ? '' : `<div class="dh"><span class="ey">${esc(b.name)} · الأصحاح ${ar(n)} من ${ar(b.chapters)}</span><h1>${chTitle(b, n)}</h1></div><div class="soon">دراسة هذا الأصحاح قيد الإعداد. اقرأ النص الآن، وستُضاف قريباً القصة والخريطة والشخصيات والدراسة الكاملة.</div>`}
-<div class="rbody" data-share="${esc(b.name)}|${n}"><p class="shint">اضغط أي آية (حتى ست آيات) لتنسخها أو تحفظها صورة للمشاركة.</p><div class="scr" lang="ar">${vs.map((v) => `${per[v.number] ? `</div><div class="peri">${md(per[v.number])}</div><div class="scr">` : ''}<span class="v${v.number >= key[0] && v.number <= key[1] ? ' key' : ''}" id="v${v.number}"><span class="vn">${ar(v.number)}</span>${esc(v.text)}</span> `).join('')}</div></div>
+<div class="rbody" data-share="${esc(b.name)}|${n}"><p class="shint">اضغط أي آية (حتى ست آيات) لتنسخها أو تحفظها صورة للمشاركة. والكلمة التي تحتها خط منقّط لها شرح في القاموس.</p><div class="scr" lang="ar">${vs.map((v) => `${per[v.number] ? `</div><div class="peri">${md(per[v.number])}</div><div class="scr">` : ''}<span class="v${v.number >= key[0] && v.number <= key[1] ? ' key' : ''}" id="v${v.number}"><span class="vn">${ar(v.number)}</span>${GL.html(v)}</span> `).join('')}</div></div>${GL.cards}
 ${nav}`;
 }
 
@@ -509,6 +511,7 @@ function treeHtml() {
   write('tree.html', page({ title: 'شجرة العائلة', depth: 0, nav: 'people', body: treePage({ profiles }), cls: 'v3' }));
 }
 treeHtml();
+write('glossary.html', page({ title: 'القاموس: كلمات الكتاب الصعبة', depth: 0, nav: 'home', body: glossaryPage(0), cls: 'v3' }));
 write('harmony.html', page({ title: 'الأناجيل جنباً إلى جنب: إشباع الخمسة الآلاف', depth: 0, nav: 'nt', body: harmonyPage(0), cls: 'v3' }));
 
 function searchIndex() {
