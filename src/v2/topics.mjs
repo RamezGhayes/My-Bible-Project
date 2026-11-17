@@ -71,16 +71,16 @@ ${nodes.map((n) => { const o = topicById[n.r.id]; return `<a href="${topicHref(o
 const card = (t, depth) => `<a class="tpc g${t.group}" href="${topicHref(t, depth)}" data-q="${esc((t.ar + ' ' + t.en + ' ' + t.short).toLowerCase())}" data-g="${t.group}"><small>${GROUPS[t.group]}</small><b>${esc(t.ar)}</b><span>${esc(t.short)}</span><em>${ar(t.chapters.length)} أصحاحاً مرتبطاً · ${ar(t.related.length)} موضوعات مرتبطة</em></a>`;
 
 export function topicsIndex(depth = 0) {
-  const byGroup = Object.entries(GROUPS).map(([g, name]) => `<section class="tgrp" data-g="${g}"><h2 class="lsec">${ar(g)}. ${name}</h2><div class="tgrid">${TOPICS.filter((t) => t.group === +g).map((t) => card(t, depth)).join('')}</div></section>`).join('');
+  const byGroup = Object.entries(GROUPS).map(([g, name]) => `<section class="tgrp" data-g="${g}"><h2 class="lsec tbig">${ar(g)}. ${name}</h2><div class="tgrid">${TOPICS.filter((t) => t.group === +g).map((t) => card(t, depth)).join('')}</div></section>`).join('');
   const alpha = [...TOPICS].sort((a, b) => a.ar.replace(/^ال/, '').localeCompare(b.ar.replace(/^ال/, ''), 'ar'));
   const nLinks = TOPICS.reduce((a, t) => a + t.chapters.length, 0);
   return `${header({ back: 'index.html', title: 'موضوعات كتابية' })}
 <div class="lib topics">
 <p class="lead">اكتشف الموضوعات الكتابية واللاهوتية، وتتبع ارتباطها عبر أسفار الكتاب المقدس. كل موضوع يبدأ من النص، ويتتبع الفكرة من العهد القديم إلى المسيح، ويربطك بالأصحاحات التي تشرحها.</p>
 <div class="lstats"><div><b>${ar(WCF.length)}</b><span>فصلاً من الإقرار</span></div><div><b>${ar(TOPICS.length)}</b><span>موضوعاً</span></div><div><b>${ar(nLinks)}</b><span>رابطاً بالأصحاحات</span></div></div>
-<section class="wcfi" id="wcf"><h2 class="lsec">على ترتيب إقرار إيمان وستمنستر</h2><p class="lnote">إقرار وستمنستر (1647) من أوضح الملخصات المُصلحة للتعليم الكتابي، وهو مرتب في ٣٣ فصلاً تبدأ بالكتاب المقدس وتنتهي بالدينونة الأخيرة. كل فصل هنا له صفحة تشرح ما يعلّمه الإقرار بلغة بسيطة، مع الشواهد، ثم تتعمق في الموضوع من الكتاب كله.</p><ol class="wcfl">${WCF.map((c) => { const t = topicById[c.id]; return `<li><a class="g${t.group}" href="${topicHref(t, depth)}"><span>${ar(c.n)}</span><b>${esc(c.ar)}</b>${t.ar !== c.ar ? `<small>${esc(t.ar)}</small>` : ''}</a></li>`; }).join('')}</ol>
-<h3 class="tsub">موضوعات مكمّلة</h3><p class="lnote">موضوعات كتابية تتقاطع مع فصول الإقرار وتعمّقها.</p><div class="wcfx">${EXTRA.map((id) => `<a class="g${topicById[id].group}" href="${topicHref(topicById[id], depth)}">${esc(topicById[id].ar)}</a>`).join('')}</div></section>
-<h2 class="lsec">كل الموضوعات</h2>
+<section class="wcfi" id="wcf"><h2 class="lsec tbig">على ترتيب إقرار إيمان وستمنستر</h2><p class="lnote">إقرار وستمنستر (1647) من أوضح الملخصات المُصلحة للتعليم الكتابي، وهو مرتب في ٣٣ فصلاً تبدأ بالكتاب المقدس وتنتهي بالدينونة الأخيرة. كل فصل هنا له صفحة تشرح ما يعلّمه الإقرار بلغة بسيطة، مع الشواهد، ثم تتعمق في الموضوع من الكتاب كله.</p><ol class="wcfl">${WCF.map((c) => { const t = topicById[c.id]; return `<li><a class="g${t.group}" href="${topicHref(t, depth)}"><span>${ar(c.n)}</span><b>${esc(c.ar)}</b>${t.ar !== c.ar ? `<small>${esc(t.ar)}</small>` : ''}</a></li>`; }).join('')}</ol>
+<h3 class="tsub tbig2">موضوعات مكمّلة</h3><p class="lnote">موضوعات كتابية تتقاطع مع فصول الإقرار وتعمّقها.</p><div class="wcfx">${EXTRA.map((id) => `<a class="g${topicById[id].group}" href="${topicHref(topicById[id], depth)}">${esc(topicById[id].ar)}</a>`).join('')}</div></section>
+<h2 class="lsec tbig">كل الموضوعات</h2>
 <div class="lfilters"><input type="search" id="tq" placeholder="ابحث عن موضوع" aria-label="بحث في الموضوعات"><div class="tseg" role="tablist"><button type="button" class="on" data-view="g">حسب المجموعات</button><button type="button" data-view="a">أبجدياً</button></div></div>
 <div id="tviewg">${byGroup}</div>
 <div id="tviewa" hidden><div class="tgrid">${alpha.map((t) => card(t, depth)).join('')}</div></div>
