@@ -60,9 +60,9 @@ export function block(b, ctx) {
   if (b.confessions) return `<div class="callout" style="background:var(--paper-2);border:1px solid var(--rule)"><span class="callout-title" style="color:var(--ink-2);font-size:19px">${md(b.title || 'وفي الإقرارات المُصلَحة')}</span>${b.confessions.map((c) => `<p><b>${md(c.t)}:</b> ${md(c.b)}</p>`).join('')}</div>`;
   if (b.checklist) {
     const { book, items } = b.checklist;
-    return `<div class="check-grid">${items.map((t, i) => `<button type="button" data-read="${book}:${i + 1}" aria-pressed="false"><span class="box"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FBF7EE" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span><span class="k">الأصحاح ${ar(i + 1)}</span><span class="t">${md(t)}</span></span></button>`).join('')}</div>`;
+    return `<ol class="check-grid">${items.map((t, i) => `<li><span class="k">الأصحاح ${ar(i + 1)}</span><span class="t">${md(t)}</span></li>`).join('')}</ol>`;
   }
-  if (b.reflect) return `<label for="reflect-${depth}" style="font-family:var(--f-display);font-size:15px">تأمّلي الشخصي</label><textarea id="reflect-${depth}" class="reflect" rows="5" placeholder="${esc(b.reflect === true ? 'اكتب ما تعلّمته، أو صلاة قصيرة' : b.reflect)}"></textarea>`;
+  if (b.reflect) return `<label for="reflect-${depth}" style="font-family:var(--f-display);font-size:15px">تأمّلي الشخصي</label><textarea id="reflect-${depth}" class="reflect" rows="5" placeholder="${esc(b.reflect === true ? 'اكتب ما تعلّمته، أو صلاة قصيرة' : b.reflect)}"></textarea><small class="nosave">لا يُحفظ ما تكتبه هنا. انسخه إلى دفترك إن أردت الاحتفاظ به.</small>`;
   if (b.html) return b.html;
   throw new Error('Unknown block: ' + JSON.stringify(b).slice(0, 80));
 }

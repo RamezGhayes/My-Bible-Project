@@ -1,31 +1,19 @@
-/* v2 behaviour: carousels, chapter story, study, reader, person cards, maps. Progress stays in this browser. */
+/* v2 behaviour: carousels, chapter story, study, reader, person cards, maps.
+   Nothing is saved between visits: no accounts, no progress. Reading settings last for this tab only (sessionStorage). */
 (function () {
   'use strict';
   var $ = function (s, e) { return (e || document).querySelector(s); };
   var $$ = function (s, e) { return Array.prototype.slice.call((e || document).querySelectorAll(s)); };
   var AR = function (x) { return String(x).replace(/[0-9]/g, function (d) { return '٠١٢٣٤٥٦٧٨٩'[d]; }); };
   var store = {
-    get: function (k, d) { try { var v = localStorage.getItem('bs:' + k); return v === null ? d : JSON.parse(v); } catch (e) { return d; } },
-    set: function (k, v) { try { localStorage.setItem('bs:' + k, JSON.stringify(v)); } catch (e) {} }
+    get: function (k, d) { try { var v = sessionStorage.getItem('bs:' + k); return v === null ? d : JSON.parse(v); } catch (e) { return d; } },
+    set: function (k, v) { try { sessionStorage.setItem('bs:' + k, JSON.stringify(v)); } catch (e) {} }
   };
   var ss = { get: function (k) { try { return sessionStorage.getItem(k); } catch (e) { return null; } }, set: function (k, v) { try { sessionStorage.setItem(k, v); } catch (e) {} } };
   var root = document.body.getAttribute('data-root') || '';
   var tt;
   function toast(m) { var t = $('#toast'); if (!t) return; t.textContent = m; t.classList.add('on'); clearTimeout(tt); tt = setTimeout(function () { t.classList.remove('on'); }, 1900); }
-  var read = store.get('read', {});
-  function setRead(k, on) { read[k] = on ? 1 : 0; if (!on) delete read[k]; store.set('read', read); paintRead(); }
-  function paintRead() {
-    $$('[data-read]').forEach(function (b) {
-      var on = !!read[b.getAttribute('data-read')];
-      b.setAttribute('aria-pressed', on ? 'true' : 'false');
-      b.textContent = on ? 'قرأت هذا الأصحاح ✓' : 'علّم الأصحاح كمقروء';
-    });
-  }
-  document.addEventListener('click', function (e) {
-    var b = e.target.closest('[data-read]');
-    if (b) { var k = b.getAttribute('data-read'); setRead(k, !read[k]); toast(read[k] ? 'أُضيف إلى ما قرأته' : 'أُزيل من ما قرأته'); }
-  });
-  paintRead();
+  var read = {};
 
   // sticky headers get a rule once scrolled
   function bindHeaders(scroller) {
@@ -44,21 +32,6 @@
     if (!ss.get('seen')) showSplash();
     sp.addEventListener('click', function (e) { if (e.target.closest('[data-enter]')) { ss.set('seen', '1'); sp.classList.add('out'); setTimeout(function () { sp.hidden = true; }, 600); } });
     var again = $('[data-splash]'); if (again) again.addEventListener('click', showSplash);
-  }
-
-  // ---------- home: continue ----------
-  var cont = $('#cont');
-  if (cont) {
-    var last = store.get('last', null);
-    if (last && last.href && last.b) {
-      cont.href = root + last.href;
-      var cnt = Object.keys(read).filter(function (k) { return k.indexOf(last.b + ':') === 0; }).length;
-      $('[data-k]', cont).textContent = 'تابع القراءة · ' + last.bn;
-      $('[data-n]', cont).textContent = AR(last.n);
-      $('[data-t]', cont).textContent = last.title || last.t;
-      $('[data-p]', cont).style.width = Math.round(cnt / last.total * 100) + '%';
-      $('[data-m]', cont).textContent = AR(cnt) + ' من ' + AR(last.total) + ' مقروءة';
-    }
   }
 
   // ---------- carousels ----------
@@ -149,16 +122,8 @@
     if (kind === 'chapters') {
       var book = car.getAttribute('data-book');
       var cs = $$('.cc', car), sb = $$('#scrub button');
-      var lastB = store.get('last', null);
-      var nextIdx = -1;
-      cs.forEach(function (c, i) {
-        var k = c.getAttribute('data-key'), st = $('[data-stat]', c);
-        if (read[k]) { st.className = 'st done'; st.textContent = 'قرأته'; sb[i].classList.add('d'); }
-      });
-      for (var i = 0; i < cs.length; i++) { if (!read[cs[i].getAttribute('data-key')]) { nextIdx = i; break; } }
-      if (nextIdx >= 0 && Object.keys(read).some(function (k) { return k.indexOf(book + ':') === 0; })) { var st2 = $('[data-stat]', cs[nextIdx]); st2.className = 'st next'; st2.textContent = 'التالي'; sb[nextIdx].classList.add('nx'); }
       var hc = (location.hash.match(/^#c(\d+)$/) || [])[1];
-      var start = hc ? +hc - 1 : (lastB && lastB.b === book ? lastB.n - 1 : Math.max(0, nextIdx));
+      var start = hc ? +hc - 1 : 0;
       var goC = bindCarousel(car, function (el, i) {
         $('#secl').textContent = el.getAttribute('data-sec') || '';
         sb.forEach(function (b, k) { b.classList.toggle('on', k === i); });
@@ -174,10 +139,6 @@
     }
   }
 
-  // ---------- chapter: remember place ----------
-  var lastEl = $('[data-last]');
-  if (lastEl) { try { store.set('last', JSON.parse(lastEl.getAttribute('data-last'))); } catch (e) {} }
-
   // ---------- reader text size ----------
   var size = store.get('textSize', 0);
   function applySize() { $$('.scr').forEach(function (s) { s.style.fontSize = (21 + size * 2) + 'px'; }); }
@@ -192,7 +153,6 @@
     $$('.bars i', story).forEach(function (b, k) { b.classList.toggle('on', k <= si); });
     var fg = scs[si].getAttribute('data-fg');
     $('.bars', story).style.color = fg; $('.stop', story).style.color = fg;
-    if (si === scs.length - 1) { var ch = $('[data-chapter]'); if (ch && !read[ch.getAttribute('data-chapter')]) setRead(ch.getAttribute('data-chapter'), true); }
   }
   function step(d) {
     var n = Math.max(0, Math.min(scs.length - 1, si + d));
@@ -259,7 +219,6 @@
     var btns = $$('[data-part]', wrap);
     btns.forEach(function (b) { b.addEventListener('click', function () { btns.forEach(function (o) { var on = o === b; o.setAttribute('aria-pressed', on ? 'true' : 'false'); var p = document.getElementById(o.getAttribute('data-part')); if (p) p.hidden = !on; }); }); });
   });
-  $$('textarea.reflect').forEach(function (t, i) { var k = 'reflect:' + location.pathname + ':' + i; t.value = store.get(k, ''); t.addEventListener('input', function () { store.set(k, t.value); }); });
 
   // ---------- person card ----------
   var faces = [], fi = 0, curP = null;
@@ -580,10 +539,10 @@
       b.addEventListener('click', function () {
         [].forEach.call(document.querySelectorAll('.tseg button'), function (x) { x.classList.toggle('on', x === b); });
         var a = b.dataset.view === 'a'; vg.hidden = a; va.hidden = !a;
-        try { localStorage.setItem('tview', b.dataset.view); } catch (e) {}
+        try { sessionStorage.setItem('tview', b.dataset.view); } catch (e) {}
       });
     });
-    try { if (localStorage.getItem('tview') === 'a') document.querySelector('.tseg [data-view=a]').click(); } catch (e) {}
+    try { if (sessionStorage.getItem('tview') === 'a') document.querySelector('.tseg [data-view=a]').click(); } catch (e) {}
     [].forEach.call(document.querySelectorAll('.tgrp'), function (g) { g.id = 'g' + g.dataset.g; });
   }
   var back = document.getElementById('tback');

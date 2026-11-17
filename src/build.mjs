@@ -56,39 +56,45 @@ const personHref = (p, depth) => (hasPage(p) ? `${up(depth)}people/${p.id}.html`
 function home() {
   const ps = mainVerse();
   const splash = `<div id="splash" hidden role="dialog" aria-label="مقدمة"><div class="wm">${esc(config.nameAr)}</div><div class="vs">${esc(ps)}</div><div class="rf">${refLabel(config.verseRef)}</div><div class="ln"></div><button type="button" data-enter>ادخل</button><small>دراسة الكتاب المقدس من منظور مُصلَح</small></div>`;
-  const g = bookById.Gen;
-  const studied = (t) => books.filter((b) => b.testament === t).reduce((n, b) => n + Object.keys(content[b.id]?.chapters || {}).length, 0);
-  const tcard = (t, d, ic) => { const list = books.filter((b) => b.testament === t); const ch = list.reduce((n, b) => n + b.chapters, 0); return `<a class="tcard ${t}" href="${t}.html"><span class="tic">${ic}</span><b>${T_NAME[t]}</b><span class="d">${d}</span><span class="tm">${bkWord(list.length)} · ${chWord(ch)} · ${ar(studied(t))} مدروساً</span><span class="tgo">ابدأ ${IC.chev}</span></a>`; };
-  const scroll = '<svg viewBox="0 0 48 48" aria-hidden="true"><path d="M12 10h22a4 4 0 0 1 4 4v24H16a4 4 0 0 1-4-4z"/><path d="M12 10a4 4 0 0 0-4 4v2h4M38 38a4 4 0 0 0 4-4v-2h-4"/><path d="M18 18h14M18 24h14M18 30h9" opacity=".6"/></svg>';
-  const codex = '<svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 12c-5-3-11-4-17-3v26c6-1 12 0 17 3 5-3 11-4 17-3V9c-6-1-12 0-17 3z"/><path d="M24 12v26"/><path d="M30 20h6M33 17v8" /></svg>';
-  const tool = (h, ic, t, d) => `<a href="${h}"><span class="ti">${ic}</span><span><b>${t}</b><small>${d}</small></span></a>`;
-  const xcards = EXPLAINERS.map((x) => `<a class="xmini" href="${explainHref(x, 0)}"><span class="xs">${xChips(x).slice(0, 5).map((c) => `<i style="--c:${c.color};--k:${c.ink}">${glyph(c.icon, 18)}</i>`).join('')}</span><b>${esc(x.title)}</b><small>${esc(shortName(bookById[x.book]))} · ${esc(x.sub)}</small></a>`).join('');
+  const studiedIn = (t) => books.filter((b) => b.testament === t).reduce((n, b) => n + studiedCount(b), 0);
+  // Book spines: height follows chapter count; a filled spine is a fully studied book.
+  const SPINE = { torah: '#8C2F1E', history: '#9A5A24', poetry: '#B39459', major: '#4E5D32', minor: '#6B7A4A', gospels: '#1F2A44', acts: '#1F2A44', paul: '#4B3D63', general: '#34496B', prophecy: '#34496B' };
+  const spines = (t) => books.filter((b) => b.testament === t).map((b, i) => `<i class="${isFull(b) ? 'f' : studiedCount(b) ? 'p' : ''}" style="--c:${SPINE[b.group]};--h:${Math.round(30 + Math.sqrt(b.chapters) * 6.2)}px;--d:${(i * 0.02).toFixed(2)}s" title="${esc(b.name)}"></i>`).join('');
+  const tcard = (t, d) => { const list = books.filter((b) => b.testament === t); const ch = list.reduce((n, b) => n + b.chapters, 0); const st = studiedIn(t); return `<a class="h3t" href="${t}.html"><span class="sp" aria-hidden="true">${spines(t)}</span><b>${T_NAME[t]}</b><span class="d">${d}</span><span class="mt"><span>${bkWord(list.length)} · ${chWord(ch)} · ${st === ch ? 'كلها مدروسة' : `${ar(st)} مدروساً`}</span><span class="go">ابدأ ${IC.chev}</span></span></a>`; };
+  const words = ps.split(/\s+/);
+  const xcards = EXPLAINERS.map((x) => { const c = xChips(x); const b = bookById[x.book]; const chs = x.chapters; return `<a class="h3x" href="${explainHref(x, 0)}"><span class="ch c${c.length > 8 ? 5 : 4}" aria-hidden="true">${c.map((k, j) => `<i style="--c:${k.color};--k:${k.ink};--d:${(j * 0.05).toFixed(2)}s">${glyph(k.icon, 30)}</i>`).join('')}</span><span class="tx"><small>${esc(b.name)} · ${ar(chs[0])}${chs.length > 1 ? '–' + ar(chs[chs.length - 1]) : ''}</small><b>${esc(x.title)}</b><span>${esc(x.sub)}</span></span></a>`; }).join('');
+  const GN = { 1: 'الأسس', 2: 'الخلاص', 3: 'حياة المؤمن', 4: 'الكنيسة والعبادة', 5: 'الأمور الأخيرة' };
+  const tgroups = Object.keys(GN).map((g, i) => `<button type="button" role="tab" aria-selected="${i === 0}" data-tg="${g}"><i class="g${g}"></i>${GN[g]} <span>${ar(TOPICS.filter((t) => t.group === +g).length)}</span></button>`).join('');
+  const tcards = TOPICS.map((t) => `<a class="h3c g${t.group}" href="topics/${t.id}.html" data-g="${t.group}"${t.group === 1 ? '' : ' hidden'}><span class="hd"><i></i><span dir="ltr">${esc(t.en)}</span></span><b>${esc(t.ar)}</b><span>${esc(t.short)}</span></a>`).join('');
+  const PBG = ['#26231F', '#1F2A44', '#3A2A2E', '#2A3328', '#33281F', '#2B2F40'];
+  const ppl = PEOPLE.list.filter((p) => p.prof && hasPage(p)).sort((a, b) => a.apps[0].b.order - b.apps[0].b.order || a.apps[0].n - b.apps[0].n);
+  const pcards = ppl.map((p, i) => { const P = p.prof; return `<a class="h3p" href="${personHref(p, 0)}"><span class="hd"><b>${esc(P.n)}</b>${P.he ? `<span lang="${p.testament === 'ot' ? 'he' : 'el'}">${esc(P.he)}</span>` : ''}</span><span class="im" style="--bg:${PBG[i % 6]}"><span>${esc([...P.n][0])}</span><em>${esc(P.era || '')}</em></span><span class="rl">${esc(P.role)}</span><span class="ln">${esc(P.line)}</span><span class="cl">${(P.cells || []).slice(0, 3).map(([k, v]) => `<span><small>${esc(k)}</small>${esc(v)}</span>`).join('')}</span></a>`; }).join('');
+  const T = (h, ic, t, d) => `<a href="${h}"><span class="ti">${ic}</span><span><b>${t}</b><small>${d}</small></span></a>`;
+  const arrows = (k) => `<span class="h3a"><button type="button" data-rail-prev="${k}" aria-label="السابق">${IC.chev.replace('class="ic"', 'class="ic" style="transform:scaleX(-1)"')}</button><button type="button" data-rail-next="${k}" aria-label="التالي">${IC.chev}</button></span>`;
+  const head = (t, s, extra = '') => `<div class="h3h"><div><h2>${t}</h2><p>${s}</p></div>${extra}</div>`;
   const body = `${splash}
-<section class="hero">
-<div class="hbrand">${BRAND}<span>${esc(config.nameAr)}</span></div>
-<div class="hverse"><div class="s">${esc(ps)}</div><small>${refLabel(config.verseRef)}</small></div>
-<button type="button" class="hsearch" data-search>${IC.search}<span>ابحث عن سفر أو أصحاح أو شخصية، أو اكتب شاهداً</span><b>بحث</b></button>
-<div class="hquick"><span>الانتقال السريع:</span><a href="ot.html">العهد القديم</a><a href="nt.html">العهد الجديد</a><a href="maps.html">الخرائط والشروح</a><a href="people.html">الشخصيات</a></div>
-</section>
-<div class="hgrid">
-<a class="cont" id="cont" href="book/genesis/1.html">
-  <small data-k>ابدأ القراءة · سفر التكوين</small>
-  <div class="big"><b data-n>${ar(1)}</b><span data-t>${esc(study(g, 1)?.title || 'الأصحاح الأول')}</span></div>
-  <div class="pb"><i data-p style="width:0"></i></div>
-  <div class="mt"><span data-m>من ${chWord(g.chapters)}</span><span>تابع ${IC.chev.replace('class="ic"', 'class="ic" style="width:14px;height:14px;display:inline"')}</span></div>
-</a>
-</div>
-<h2 class="hsec"><span>دراسة الكتاب المقدس</span></h2>
-<div class="tst">${tcard('ot', 'من الخلق إلى الأنبياء: الوعد والانتظار.', scroll)}${tcard('nt', 'المسيح، والكنيسة، والرجاء الأخير.', codex)}</div>
-<h2 class="hsec"><span>شروح مصوّرة</span></h2>
-<p class="hsub">أحداث ومواضع شرحها النص بالتفصيل، مرسومة لتراها خطوة خطوة.</p>
-<div class="xrow">${xcards}</div>
-${topicsHomeSection(0)}
-<h2 class="hsec"><span>أدوات الدراسة</span></h2>
-<div class="tools">${tool('people.html', IC.person, 'الشخصيات', 'بطاقات وملفات')}${tool('maps.html', IC.map, 'الخرائط', 'رحلات وأماكن')}${tool('journey.html', IC.time, 'القصة في مراحل', 'تاريخ الخلاص')}${tool('paul.html', IC.map, 'رحلات بولس', 'أربع رحلات')}${tool('topics.html', IC.web, 'موضوعات كتابية', 'عقائد عبر الأسفار')}${tool('library.html', IC.shelf, 'المكتبة اللاهوتية', 'مصادر وإقرارات')}</div>
-<div class="hfoot"><div class="s">${esc(quoteText('2Tim.3.16'))}</div><small>${refLabel('2Tim.3.16')}</small></div>
-<div class="foot">${esc(config.description)}<br>النص: ${esc(config.bibleVersion)}<br><button type="button" data-splash>شاهد المقدمة مرة أخرى</button></div>`;
-  write('index.html', page({ title: '', depth: 0, nav: 'home', body, cls: 'home' }));
+<section class="h3hero full">
+<svg class="rings" viewBox="0 0 900 900" aria-hidden="true"><circle cx="450" cy="450" r="440"/><circle cx="450" cy="450" r="360" stroke-dasharray="2 10"/><circle cx="450" cy="450" r="280"/></svg>
+<div class="in">
+<span class="mark">${BRAND}</span>
+<p class="v" lang="ar">${words.map((w, i) => `<span style="--d:${(0.3 + i * 0.09).toFixed(2)}s">${esc(w)} </span>`).join('')}</p>
+<small class="rf" style="--d:${(0.5 + words.length * 0.09).toFixed(1)}s">${refLabel(config.verseRef)}</small>
+<button type="button" class="hs" data-search style="--d:${(0.8 + words.length * 0.09).toFixed(1)}s">${IC.search}<span>ابحث عن سفر، أو شاهد مثل يو ٣: ١٦، أو شخصية، أو موضوع</span><b>ابحث</b></button>
+<nav class="q" aria-label="انتقال سريع" style="--d:${(1 + words.length * 0.09).toFixed(1)}s"><a href="ot.html">العهد القديم</a><a href="nt.html">العهد الجديد</a><a href="maps.html">الشروح المصوّرة</a><a href="topics.html">الموضوعات</a><a href="people.html">الشخصيات</a></nav>
+</div></section>
+<section class="h3s">${head('دراسة الكتاب المقدس', 'سفراً سفراً، وأصحاحاً أصحاحاً. الكعب الممتلئ سفر مدروس بالكامل.')}
+<div class="h3tg">${tcard('ot', 'من الخلق إلى الأنبياء: الوعد والانتظار.')}${tcard('nt', 'المسيح، والكنيسة، والرجاء الأخير.')}</div></section>
+<section class="h3s">${head('شروح مصوّرة', 'أحداث ومواضع شرحها النص بالتفصيل، مرسومة لتراها خطوة خطوة.', arrows('x'))}
+<div class="h3r" data-rail="x">${xcards}</div></section>
+<section class="h3s">${head('موضوعات كتابية', `فصول إقرار إيمان وستمنستر الـ٣٣، وموضوعات مكمّلة، مرتبطة بالأصحاحات.`, '<a class="all" href="topics.html">كل الموضوعات ‹</a>')}
+<div class="h3g" role="tablist" aria-label="مجموعات الموضوعات">${tgroups}</div>
+<div class="h3cg" aria-live="polite">${tcards}</div></section>
+<section class="h3s h3dark full"><div class="wrap">${head('الشخصيات', 'بطاقات تُقلب: الاسم، والمعنى، والدور، ورحلة كل شخصية.', arrows('p'))}
+<div class="h3r" data-rail="p">${pcards}</div></div></section>
+<section class="h3s">${head('أدوات الدراسة', 'كل ما تحتاجه بجانب النص.')}
+<div class="h3tools">${T('maps.html', IC.map, 'الخرائط والشروح', 'رحلات وأماكن وشروح مصوّرة')}${T('journey.html', IC.time, 'القصة في مراحل', 'تاريخ الخلاص على خط واحد')}${T('paul.html', IC.map, 'رحلات بولس', 'أربع رحلات على الخريطة')}${T('tree.html', IC.person, 'شجرة العائلة', 'من آدم إلى أسباط إسرائيل')}${T('harmony.html', IC.list, 'الأناجيل جنباً إلى جنب', 'إشباع الخمسة الآلاف في الأربعة')}${T('library.html', IC.shelf, 'المكتبة اللاهوتية', 'مصادر وإقرارات')}</div></section>
+<footer class="h3f full"><div><p class="s">${esc(quoteText('2Tim.3.16'))}</p><small>${refLabel('2Tim.3.16')}</small><span>${esc(config.description)} · النص: ${esc(config.bibleVersion)}</span><button type="button" data-splash>شاهد المقدمة مرة أخرى</button></div></footer>`;
+  write('index.html', page({ title: '', depth: 0, nav: 'home', body, cls: 'home v3' }));
 }
 
 // ---------- testaments: books carousel ----------
@@ -232,9 +238,8 @@ function chapterPage(b, n) {
   const depth = 2;
   const S = study(b, n);
   const vs = bible(b.id).chapters[n - 1].verses;
-  const last = { href: `book/${b.slug}/${n}.html`, t: chTitle(b, n), title: S ? plain(S.title) : '', b: b.id, bn: b.name, n, total: b.chapters, v: vs.length };
   if (!S) {
-    const body = `<div class="reader-page" data-last='${esc(JSON.stringify(last))}'>${readerHTML(b, n, null, depth, { overlay: false })}</div>`;
+    const body = `<div class="reader-page">${readerHTML(b, n, null, depth, { overlay: false })}</div>`;
     write(`book/${b.slug}/${n}.html`, page({ title: chTitle(b, n), depth, body, cls: 'immersive' }));
     return;
   }
@@ -287,8 +292,7 @@ ${christ[0] ? `<p style="font-size:15.5px;margin-top:16px;opacity:.75" class="cl
   if (S.questions?.length) cards.push(card('#FAF8F4', '#17191E', `<div class="lab">للتأمل</div><h2 style="font-size:23px">${md(S.questions[0])}</h2>${S.apply ? `<div style="border-top:1px solid #E4DED3;padding-top:14px;margin-top:4px"><div class="lab" style="margin-bottom:6px">خطوة للحياة</div><p style="font-size:16.5px" class="clip">${md(clip(arr(S.apply)[0], 300))}</p></div>` : ''}`, 'you'));
   cards.push(card('#17191E', '#FAF8F4', `<div class="lab">نهاية الأصحاح</div><h2>تريد أن تتعمق؟</h2><p style="opacity:.75">الخلفيات، والكلمات، والأسئلة الصعبة، وما قاله معلمو الكنيسة.</p>
 <a class="btn l" href="#study">${IC.list}الدراسة الكاملة</a>
-${next ? `<a class="btn o" style="margin-top:10px" href="${chapterHref(next.b, next.n, depth)}">${chTitle(next.b, next.n)}${study(next.b, next.n) ? ' · ' + md(study(next.b, next.n).title) : ''}</a>` : ''}
-<button type="button" class="btn" style="margin-top:6px;height:40px;padding:0;opacity:.7;font-size:13.5px" data-read="${b.id}:${n}">علّم الأصحاح كمقروء</button>`));
+${next ? `<a class="btn o" style="margin-top:10px" href="${chapterHref(next.b, next.n, depth)}">${chTitle(next.b, next.n)}${study(next.b, next.n) ? ' · ' + md(study(next.b, next.n).title) : ''}</a>` : ''}`));
 
   const story = `<div class="story" id="story">
 <div class="bars">${cards.map(() => '<i></i>').join('')}</div>
@@ -345,7 +349,7 @@ ${cards.map((c, i) => `<section class="sc${i === 0 ? ' on' : ''}" style="backgro
     DET.voices = { t: 'من التقليد المُصلَح', ey: 'ماذا قال معلمو الكنيسة', h: `${S.voices.map((v) => `<div class="blk"><h3>${md(v.n)}</h3><span class="who2">${md(v.y || '')}${v.w ? ` · <a href="${up(2)}library.html#${workId(v.n, v.w)}">${md(v.w)}</a>` : ''}</span><p>${md(v.b)}</p></div>`).join('')}<p class="note">ملخصات بتصرّف لأفكارهم، وليست اقتباسات حرفية. الأعمال المذكورة مقترحة للتوسع، وتجدها مصنّفة في <a href="${up(2)}library.html">المكتبة اللاهوتية</a>.</p>` };
   }
   half.push(`<a class="tile t-you" href="#s-you"><span class="tl"><span>${countWord(S.questions?.length || 0, 'سؤال واحد', 'سؤالان', 'أسئلة', 'سؤالاً')}</span>${IC.chev}</span><span class="vis">${esc(clip(S.questions?.[0] || '', 90))}</span><span class="tt">للتأمل والتطبيق</span></a>`);
-  DET.you = { t: 'للتأمل والتطبيق', ey: 'عِشها', h: `${(S.questions || []).map((q, i) => `<div class="blk"><h3><span class="n">${ar(i + 1)}</span><span>${md(q)}</span></h3></div>`).join('')}${S.apply ? `<div class="applyb"><small>للحياة</small>${arr(S.apply).map((p) => `<p>${md(p)}</p>`).join('')}</div>` : ''}<button type="button" class="btn d" style="margin-top:18px" data-read="${b.id}:${n}">علّم الأصحاح كمقروء</button>` };
+  DET.you = { t: 'للتأمل والتطبيق', ey: 'عِشها', h: `${(S.questions || []).map((q, i) => `<div class="blk"><h3><span class="n">${ar(i + 1)}</span><span>${md(q)}</span></h3></div>`).join('')}${S.apply ? `<div class="applyb"><small>للحياة</small>${arr(S.apply).map((p) => `<p>${md(p)}</p>`).join('')}</div>` : ''}` };
   // Arrange: christ, [text, people], map, [word, sum], [hard, bg], views, voices, [refs, you]
   if (half.length % 2) half[half.length - 1] = half[half.length - 1].replace('class="tile ', 'class="tile w ');
   const wide = Object.fromEntries(tiles.map((t) => [(t.h.match(/href="#s-(\w+)"/) || t.h.match(/data-k="(\w+)"/))[1], t.h]));
@@ -369,7 +373,7 @@ ${ORDER[i + 1] ? `<a class="nextsec" href="#s-${ORDER[i + 1]}"><span><small>ال
 ${people.map(({ p }) => cardTemplate(p, {})).join('')}
 ${people.map(({ p }) => `<a hidden data-pid="${p.id}" href="${personHref(p, depth)}"></a>`).join('')}
 </div>` : '';
-  const body = `<div data-last='${esc(JSON.stringify(last))}' data-chapter="${b.id}:${n}"></div>`;
+  const body = `<div data-chapter="${b.id}:${n}"></div>`;
   write(`book/${b.slug}/${n}.html`, page({ title: `${chTitle(b, n)}: ${plain(S.title)}`, depth, body, cls: 'immersive chapter', after: story + studyHtml + readerOv + viewerHtml }));
 }
 

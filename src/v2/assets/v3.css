@@ -1,0 +1,136 @@
+/* v3 design layer (design-v3): built on the v2 cards look. Calmer spacing, more visuals, motion that explains.
+   Rules: text never waits for motion; everything respects prefers-reduced-motion (see v2.css). */
+@keyframes v3rise{from{transform:translateY(18px);opacity:0}to{transform:none;opacity:1}}
+@keyframes v3pop{from{transform:scale(.6) translateY(14px);opacity:0}to{transform:none;opacity:1}}
+@keyframes v3fade{from{opacity:0}to{opacity:1}}
+@keyframes v3spin{to{transform:rotate(360deg)}}
+#top .brand b{font-family:var(--ui);font-weight:600;font-size:20px}
+
+/* ---------- home ---------- */
+.v3 .main{background:var(--paper)}
+.h3hero{position:relative;overflow:hidden;background:var(--ink);color:var(--paper);text-align:center}
+.h3hero .rings{position:absolute;width:900px;height:900px;top:-300px;left:50%;margin-left:-450px;opacity:.14;fill:none;stroke:var(--gold);stroke-width:1;animation:v3spin 120s linear infinite;pointer-events:none}
+.h3hero .in{position:relative;max-width:980px;margin:0 auto;padding:64px 22px 54px;display:flex;flex-direction:column;align-items:center}
+.h3hero .mark svg{width:44px;height:36px;color:var(--gold);animation:v3fade 1s both}
+.h3hero .mark svg *{stroke:var(--gold)}
+.h3hero .v{font-family:var(--nas);font-size:24px;line-height:1.95;margin:20px 0 0}
+.h3hero .v span{display:inline-block;animation:v3rise .7s var(--ease) both;animation-delay:var(--d);white-space:pre}
+.h3hero .rf{margin-top:10px;font-family:var(--ui);font-size:13.5px;color:var(--gold2);animation:v3fade 1s both;animation-delay:var(--d)}
+.h3hero .hs{margin-top:30px;width:100%;max-width:620px;display:flex;align-items:center;gap:10px;background:#fff;color:var(--soft);border-radius:30px;padding:6px 6px 6px 6px;text-align:start;animation:v3rise .8s var(--ease) both;animation-delay:var(--d)}
+.h3hero .hs .ic{margin-inline-start:12px;color:var(--faint)}
+.h3hero .hs span{flex:1;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.h3hero .hs b{height:44px;padding:0 22px;border-radius:22px;background:var(--gold);color:var(--ink);display:flex;align-items:center;font-family:var(--ui);font-weight:600;font-size:14.5px;flex:none}
+.h3hero .q{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:16px;animation:v3fade 1s both;animation-delay:var(--d)}
+.h3hero .q a{font-family:var(--ui);font-size:13px;color:#E8E3D8;border:1px solid #3A3D45;border-radius:18px;padding:5px 14px}
+.h3hero .q a:hover{border-color:var(--gold)}
+
+.h3s{padding:56px 22px 0}
+.h3h{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;margin-bottom:22px;flex-wrap:wrap}
+.h3h h2{font-family:var(--ui);font-weight:600;font-size:25px;margin:0}
+.h3h p{margin:4px 0 0;font-size:15px;color:var(--soft);line-height:1.7}
+.h3h .all{font-family:var(--ui);font-size:14px;font-weight:600;color:var(--accent);white-space:nowrap}
+.h3a{display:flex;gap:8px}
+.h3a button{width:44px;height:44px;border-radius:22px;border:1px solid var(--line);background:#fff;display:grid;place-items:center}
+.h3a button[disabled]{opacity:.35;cursor:default}
+.h3dark .h3a button{background:#23262D;border-color:#3A3D45;color:var(--paper)}
+
+.h3tg{display:grid;gap:16px}
+.h3t{display:flex;flex-direction:column;gap:10px;padding:24px 22px;border-radius:24px;background:#fff;border:1px solid var(--line);transition:transform .3s var(--ease),box-shadow .3s}
+.h3t:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(23,25,30,.08)}
+.h3t .sp{display:flex;align-items:flex-end;gap:2px;height:96px;border-bottom:3px solid var(--ink);padding:0 2px;overflow:hidden}
+.h3t .sp i{flex:1;max-width:9px;height:var(--h);border-radius:2px 2px 0 0;box-shadow:inset 0 0 0 1.5px var(--c);opacity:.5;animation:v3rise .6s var(--ease) both;animation-delay:var(--d)}
+.h3t .sp i.f{background:var(--c);opacity:1;box-shadow:none}
+.h3t .sp i.p{background:linear-gradient(to top,var(--c) 45%,transparent 45%);opacity:.8}
+.h3t b{font-family:var(--ui);font-weight:600;font-size:28px;margin-top:6px}
+.h3t .d{color:var(--soft)}
+.h3t .mt{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-top:4px;font-family:var(--ui);font-size:12.5px;color:var(--soft)}
+.h3t .go{display:flex;align-items:center;gap:4px;height:42px;padding:0 20px;border-radius:21px;background:var(--accent);color:#fff;font-weight:600;font-size:14px}
+.h3t .go .ic{width:16px;height:16px}
+
+.h3r{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin:0 -22px;padding:6px 22px 14px;scroll-padding-inline:22px}
+.h3r::-webkit-scrollbar{display:none}
+.h3r>*{scroll-snap-align:start;flex:none}
+.h3x{width:78%;max-width:340px;border-radius:24px;background:#17191E;color:var(--paper);overflow:hidden;display:flex;flex-direction:column;transition:transform .3s var(--ease)}
+.h3x:hover{transform:translateY(-3px)}
+.h3x .ch{display:grid;gap:7px;padding:20px 20px 0}
+.h3x .ch.c4{grid-template-columns:repeat(4,1fr)}
+.h3x .ch.c5{grid-template-columns:repeat(5,1fr)}
+.h3x .ch i{aspect-ratio:1;border-radius:11px;background:var(--c);color:var(--k);display:grid;place-items:center;animation:v3pop .5s var(--ease) both;animation-delay:var(--d)}
+.h3x .ch i svg{width:62%;height:62%}
+.h3x .tx{padding:18px 22px 24px;display:flex;flex-direction:column;gap:5px}
+.h3x small{font-family:var(--ui);font-size:12.5px;color:var(--gold2)}
+.h3x b{font-family:var(--ui);font-weight:600;font-size:22px}
+.h3x .tx>span{font-size:14.5px;color:#C9C3B8;line-height:1.75}
+
+.h3g{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin:0 -22px 18px;padding:0 22px}
+.h3g::-webkit-scrollbar{display:none}
+.h3g button{flex:none;display:flex;align-items:center;gap:8px;height:42px;padding:0 16px;border-radius:21px;border:1px solid var(--line);background:#fff;font-family:var(--ui);font-size:14px}
+.h3g button span{opacity:.6}
+.h3g button[aria-selected=true]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.h3g i{width:10px;height:10px;border-radius:5px;background:var(--gc)}
+.g1{--gc:#B39459}.g2{--gc:#8C2F1E}.g3{--gc:#3E7A5A}.g4{--gc:#1F2A44}.g5{--gc:#5A4A7A}
+.h3cg{display:grid;gap:12px}
+.h3c{display:flex;flex-direction:column;gap:6px;padding:20px;border-radius:20px;background:#fff;border:1px solid var(--line);animation:v3rise .45s var(--ease) both;transition:border-color .2s}
+.h3c:hover{border-color:var(--gc)}
+.h3c[hidden]{display:none}
+.h3c .hd{display:flex;justify-content:space-between;align-items:center}
+.h3c .hd i{width:30px;height:30px;border-radius:9px;background:var(--gc);opacity:.18}
+.h3c .hd span{font-family:var(--ui);font-size:11.5px;color:var(--soft)}
+.h3c b{font-family:var(--ui);font-weight:600;font-size:19px}
+.h3c>span:last-child{font-size:14px;line-height:1.75;color:#4A463F}
+
+.h3dark{background:var(--ink);color:var(--paper);margin-top:56px;padding:52px 22px 56px}
+.h3dark .h3h p{color:#C9C3B8}
+.h3p{width:250px;border-radius:22px;background:var(--paper);color:var(--ink);padding:12px;display:flex;flex-direction:column;gap:9px;border:1px solid var(--gold);transition:transform .3s var(--ease)}
+.h3p:hover{transform:translateY(-4px) rotate(-.6deg)}
+.h3p .hd{display:flex;justify-content:space-between;align-items:baseline;padding:4px 6px 0}
+.h3p .hd b{font-family:var(--ui);font-weight:600;font-size:19px}
+.h3p .hd span{font-size:16px;color:#8C6E2E}
+.h3p .im{height:160px;border-radius:14px;background:linear-gradient(160deg,var(--bg),#101216);display:grid;place-items:center;position:relative;overflow:hidden}
+.h3p .im>span{font-family:var(--nas);font-size:88px;line-height:1;color:var(--gold2);opacity:.85}
+.h3p .im em{position:absolute;top:10px;left:10px;font-style:normal;font-family:var(--ui);font-size:11px;background:var(--paper);color:var(--ink);border-radius:8px;padding:1px 8px}
+.h3p .rl{font-family:var(--ui);font-size:12.5px;color:var(--accent);font-weight:600;padding:0 6px}
+.h3p .ln{font-size:13.5px;line-height:1.7;color:#3B3833;padding:0 6px;min-height:70px}
+.h3p .cl{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);padding-top:8px;text-align:center}
+.h3p .cl span{display:flex;flex-direction:column;line-height:1.4;padding:0 3px;font-family:var(--ui);font-size:11.5px;font-weight:600}
+.h3p .cl small{font-size:10.5px;font-weight:400;color:var(--soft)}
+
+.h3tools{display:grid;gap:12px}
+.h3tools a{display:flex;align-items:center;gap:14px;padding:16px 18px;border-radius:18px;background:#fff;border:1px solid var(--line);transition:border-color .2s}
+.h3tools a:hover{border-color:var(--gold)}
+.h3tools .ti{width:46px;height:46px;border-radius:14px;background:var(--cream);display:grid;place-items:center;flex:none}
+.h3tools b{display:block;font-family:var(--ui);font-weight:600;font-size:16px}
+.h3tools small{display:block;font-size:13.5px;color:var(--soft)}
+
+.h3f{margin-top:64px;background:var(--cream);border-top:1px solid var(--line)}
+.h3f>div{max-width:900px;margin:0 auto;padding:48px 22px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:8px}
+.h3f .s{font-family:var(--nas);font-size:21px;line-height:2;margin:0;color:var(--ink)}
+.h3f small{font-family:var(--ui);font-size:13px;color:#8C6E2E}
+.h3f span{font-family:var(--ui);font-size:12.5px;color:var(--soft);margin-top:14px;line-height:1.8}
+.h3f button{font-family:var(--ui);font-size:12.5px;color:var(--soft);border-bottom:1px solid var(--line)}
+
+@media (min-width:760px){
+  .h3hero .v{font-size:32px}
+  .h3tg{grid-template-columns:1fr 1fr;gap:22px}
+  .h3cg{grid-template-columns:repeat(2,1fr)}
+  .h3tools{grid-template-columns:1fr 1fr}
+  .h3x{width:340px}
+}
+@media (min-width:980px){
+  .main>.full{max-width:none!important}
+  .h3hero .in{padding:110px 28px 90px}
+  .h3hero .v{font-size:36px}
+  .h3s{padding:96px 28px 0}
+  .h3h h2{font-size:34px}
+  .h3h p{font-size:17px}
+  .h3t{padding:30px 32px}
+  .h3t .sp{height:110px;gap:3px}
+  .h3t b{font-size:36px}
+  .h3cg{grid-template-columns:repeat(4,1fr)}
+  .h3tools{grid-template-columns:repeat(3,1fr)}
+  .h3r{margin:0 -10px;padding:10px 10px 18px}
+  .h3dark{margin-top:96px;padding:88px 28px 96px}
+  .h3dark .wrap{max-width:1140px;margin:0 auto}
+  .h3p{width:270px}
+  .h3f{margin-top:104px}
+}

@@ -49,9 +49,10 @@ export function page({ title, depth = 0, nav = null, body, cls = '', after = '' 
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="${FONTS}">
 <link rel="stylesheet" href="${u}assets/v2.css">
+<link rel="stylesheet" href="${u}assets/v3.css">
 </head>
 <body class="${cls}" data-root="${u}">
-<header id="top"><div class="in"><a class="brand" href="${u}index.html">${BRAND}<span><b>${esc(config.nameAr)}</b><small><span dir="ltr" class="en">${esc(config.nameEn)}</span> · ${esc(config.tagline)}</small></span></a><nav aria-label="الأقسام">${TOPNAV.map(([h, k, l]) => `<a href="${u}${h}"${k === nav || false ? ' aria-current="page"' : ''}>${l}</a>`).join('')}</nav><button type="button" class="sbtn" data-search aria-label="بحث">${IC.search}<span>ابحث</span></button></div></header>
+<header id="top"><div class="in"><a class="brand" href="${u}index.html">${BRAND}<span><b>${esc(config.nameAr)}</b></span></a><nav aria-label="الأقسام">${TOPNAV.map(([h, k, l]) => `<a href="${u}${h}"${k === nav || false ? ' aria-current="page"' : ''}>${l}</a>`).join('')}</nav><button type="button" class="sbtn" data-search aria-label="بحث">${IC.search}<span>ابحث</span></button></div></header>
 <div id="app"><main class="main">
 ${body}
 </main>
@@ -61,6 +62,7 @@ ${after}
 <div class="srch" id="srch" hidden role="dialog" aria-label="بحث"><div class="sbox"><div class="sin">${IC.search}<input type="search" id="sq" placeholder="ابحث عن سفر، أو أصحاح، أو شخصية، أو اكتب شاهداً مثل يو ٣: ١٦" autocomplete="off" enterkeyhint="search"><button type="button" data-sclose aria-label="إغلاق">${IC.close}</button></div><div class="sres" id="sres"></div></div></div>
 <div class="toast" id="toast" role="status"></div>
 <script src="${u}assets/v2.js"></script>
+<script src="${u}assets/v3.js"></script>
 </body>
 </html>`;
 }
