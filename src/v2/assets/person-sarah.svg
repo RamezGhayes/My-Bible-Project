@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 360" width="480" height="360"><defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E9C48A"/><stop offset="1" stop-color="#C98E5A"/></linearGradient>
+<radialGradient id="glow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#FFF4D6" stop-opacity=".9"/><stop offset="1" stop-color="#FFF4D6" stop-opacity="0"/></radialGradient>
+<linearGradient id="shade" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".22"/></linearGradient></defs>
+<rect width="480" height="360" fill="url(#sky)"/><circle cx="380" cy="90" r="46" fill="#F6E2B4" opacity=".85"/><path d="M0 290 Q200 270 480 290 L480 360 L0 360Z" fill="#9B6B42"/><g transform="translate(40 150)"><path d="M0 150 L120 0 L250 150Z" fill="#5A3E28"/><path d="M120 0 L170 150 L95 150Z" fill="#2E2016"/><path d="M60 75 L190 75" stroke="#7A5A3A" stroke-width="3"/></g><path d="M279.2 218.3 Q275.4 274.1 267.8 330.0 L332.2 330.0 Q324.6 274.1 320.8 218.3 Q300.0 212.6 279.2 218.3Z" fill="#6A3B2E"/>
+<path d="M300.0 218.3 Q318.7 274.1 332.2 330.0 L311.3 330.0Z" fill="url(#shade)"/>
+<path d="M278.8 254.0 L321.2 254.0 L321.7 260.7 L278.3 260.7Z" fill="#C9A24A"/>
+<ellipse cx="300" cy="218.29333333333335" rx="0" ry="0"/>
+<path d="M282.0 222.1 L298.1 246.7" stroke="#6A3B2E" stroke-width="10.4" stroke-linecap="round"/>
+<circle cx="298.1" cy="246.7" r="4.4" fill="#B98A5E"/>
+<path d="M318.0 222.1 L301.9 246.7" stroke="#6A3B2E" stroke-width="10.4" stroke-linecap="round"/>
+<circle cx="301.9" cy="246.7" r="4.4" fill="#B98A5E"/>
+<rect x="296.2" y="209.8" width="7.6" height="7.6" fill="#A2774F"/>
+<path d="M283.0 233.4 Q282.0 184.2 300.0 183.3 Q318.0 184.2 317.0 233.4Z" fill="#E3D6BF"/>
+<circle cx="300.0" cy="200.3" r="12.3" fill="#B98A5E"/>
+<path d="M303.1 188.0 A12.3 12.3 0 0 1 303.1 212.6 A12.9 12.3 0 0 0 303.1 188.0" fill="#000" opacity=".12"/><ellipse cx="300" cy="244" rx="18" ry="11" fill="#F2EEE6"/><circle cx="314" cy="238" r="7.5" fill="#C9A27A"/><path d="M283 258 Q300 270 317 258" stroke="#F2EEE6" stroke-width="3" fill="none"/></svg>

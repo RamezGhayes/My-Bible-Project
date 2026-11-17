@@ -138,7 +138,7 @@ export function treePage({ profiles, depth = 0 }) {
     const vs = `<blockquote class="tvq">«${esc(verseText(p.ref))}»</blockquote>`;
     if (!pr) return `<div class="tcd">${head}<b>${esc(p.n)}</b>${p.note ? `<p>${esc(p.note)}</p>` : ''}${vs}</div>`;
     const Q = pr.prof;
-    return `<div class="tcd">${head}<div class="h3p"><span class="hd"><b>${esc(Q.n)}</b>${Q.he ? `<span lang="he">${esc(Q.he)}</span>` : ''}</span><span class="im" style="--bg:#2A3328"><span>${esc([...Q.n][0])}</span><em>${esc(Q.era || '')}</em></span><span class="rl">${esc(Q.role)}</span><span class="ln">${esc(Q.line)}</span><span class="cl">${(Q.cells || []).slice(0, 3).map(([k, v]) => `<span><small>${esc(k)}</small>${esc(v)}</span>`).join('')}</span></div>${p.note ? `<p>${esc(p.note)}</p>` : ''}${vs}<a class="full" href="${pr.href}">الملف الكامل للشخصية</a></div>`;
+    return `<div class="tcd">${head}<div class="h3p"><span class="hd"><b>${esc(Q.n)}</b>${Q.he ? `<span lang="he">${esc(Q.he)}</span>` : ''}</span><span class="im${pr.img ? ' pic' : ''}" style="--bg:#2A3328">${pr.img ? `<img src="${pr.img}" alt="" loading="lazy">` : `<span>${esc([...Q.n][0])}</span>`}<em>${esc(Q.era || '')}</em></span><span class="rl">${esc(Q.role)}</span><span class="ln">${esc(Q.line)}</span><span class="cl">${(Q.cells || []).slice(0, 3).map(([k, v]) => `<span><small>${esc(k)}</small>${esc(v)}</span>`).join('')}</span></div>${p.note ? `<p>${esc(p.note)}</p>` : ''}${vs}<a class="full" href="${pr.href}">الملف الكامل للشخصية</a></div>`;
   };
   const start = all.find((p) => p.id === 'abraham');
   return `${header({ back: 'index.html', title: 'شجرة العائلة' })}
