@@ -96,16 +96,31 @@ function home() {
 <p class="v" lang="ar">${words.map((w, i) => `<span style="--d:${(0.3 + i * 0.09).toFixed(2)}s">${esc(w)} </span>`).join('')}</p>
 <small class="rf" style="--d:${(0.5 + words.length * 0.09).toFixed(1)}s">${refLabel(config.verseRef)}</small>
 <button type="button" class="hs" data-search style="--d:${(0.8 + words.length * 0.09).toFixed(1)}s">${IC.search}<span>ابحث عن سفر، أو شاهد مثل يو ٣: ١٦، أو شخصية، أو موضوع</span><b>ابحث</b></button>
-<nav class="q" aria-label="انتقال سريع" style="--d:${(1 + words.length * 0.09).toFixed(1)}s"><a href="ot.html">العهد القديم</a><a href="nt.html">العهد الجديد</a><a href="maps.html">الشروح المصوّرة</a><a href="topics.html">الموضوعات</a><a href="people.html">الشخصيات</a></nav>
+<div class="q hcta" style="--d:${(1 + words.length * 0.09).toFixed(1)}s"><a class="p" href="today.html">ابدأ خلوة اليوم</a><a href="nt.html">العهد الجديد</a><a href="ot.html">العهد القديم</a></div>
 </div></section>
-<section class="h3s htoday">${head('خلوة اليوم', 'أصحاح واحد كل يوم في نحو ٢٠ دقيقة: تقرأ، وتفهم، وتتأمل، وتطبّق.', '<a class="all" href="plans.html">كل الخطط ‹</a>')}
+<section class="hx hxx hxtoday"><div class="hxw">
+<div class="hxh"><span class="hxk">كل يوم</span><h2>خلوة اليوم</h2><p>أصحاح واحد في نحو ٢٠ دقيقة: تقرأ، وتفهم، وتتأمل، وتخرج بخطوة عملية.</p></div>
 <a class="htc" data-today-card hidden href="plans.html"><span class="pk">تابع من حيث توقفت</span><b data-today-name></b><span data-today-day></span><span class="go">اقرأ الآن ${IC.chev}</span></a>
 <div class="hplans" data-today-start>${['start', 'mark', 'philippians'].map((id) => PLANS_UI.card(PLANS_UI.PLANS.find((P) => P.id === id), 0)).join('')}</div>
-<div hidden>${PLANS_UI.PLANS.map((P) => PLANS_UI.card(P, 0)).join('')}</div></section>
-<section class="h3s">${head('دراسة الكتاب المقدس', 'ادرس الكتاب سفراً بعد سفر، وأصحاحاً بعد أصحاح.')}
-<div class="h3tg">${tcard('ot', 'من الخلق إلى الأنبياء: الوعد والانتظار.')}${tcard('nt', 'المسيح، والكنيسة، والرجاء الأخير.')}</div></section>
-<section class="h3s">${head('استكشف', 'أدوات تساعدك على فهم النص.')}
-<div class="h3tools">${T('maps.html', IC.map, 'الشروح المصوّرة', 'المسكن، والضربات، ويوم الكفارة وغيرها')}${T('maps/paul.html', IC.map, 'رحلات بولس', 'على الخريطة محطة بعد محطة')}${T('topics.html', IC.shelf, 'الموضوعات', 'العقائد الكتابية مرتبطة بالأصحاحات')}${T('people.html', IC.person, 'الشخصيات', 'من هم، وماذا فعلوا، وأين ظهروا')}${T('tree.html', IC.web, 'شجرة العائلة', 'نسب المسيح من آدم')}${T('journey.html', IC.time, 'القصة في مراحل', 'تاريخ الخلاص على خط واحد')}</div></section>
+<div hidden>${PLANS_UI.PLANS.map((P) => PLANS_UI.card(P, 0)).join('')}</div>
+<a class="hxmore" href="plans.html">كل خطط القراءة ${IC.chev}</a></div></section>
+${(() => { // a few well-known faces
+  const pool = PEOPLE.list.filter((p) => PIMG.has(p.id) && hasPage(p));
+  return `<section class="hx hxx hxdark"><div class="hxw hxsplit"><div class="hxh"><span class="hxk">تعرّف على</span><h2>شخصيات الكتاب</h2><p>${ar(PEOPLE.list.filter((p) => PIMG.has(p.id)).length)} شخصية بصورها، وقصة كل واحد، وأين ظهر في الكتاب.</p><a class="hxbtn" href="people.html">كل الشخصيات ${IC.chev}</a></div>
+<div class="hxpeople">${pool.filter((p) => ['abraham', 'moses', 'p1s3owui', 'peter', 'paul', 'joseph', 'sarah', 'pc0ohq7'].includes(p.id)).map((p) => `<a href="${personHref(p, 0)}"><img src="assets/${PIMG.get(p.id)}" alt=""><span>${esc(p.prof ? p.prof.n : p.label)}</span></a>`).join('')}</div></div></section>`;
+})()}
+<section class="hx hxx"><div class="hxw">
+<div class="hxh"><span class="hxk">سفراً بعد سفر</span><h2>ادرس الكتاب المقدس</h2><p>مقدمة لكل سفر، ودراسة لكل أصحاح، وتطبيق عملي.</p></div>
+<div class="h3tg">${tcard('ot', 'من الخلق إلى الأنبياء: الوعد والانتظار.')}${tcard('nt', 'المسيح، والكنيسة، والرجاء الأخير.')}</div></div></section>
+<section class="hx hxx hxsoft"><div class="hxw">
+<div class="hxh"><span class="hxk">بالصور والخرائط</span><h2>افهم ما تقرأ</h2><p>أماكن وأحداث وعقائد، مرسومة ومشروحة لتراها بعينك.</p></div>
+<div class="hxtiles">
+<a class="hxt big" href="maps/paul.html"><img src="assets/place-ephesus.webp" alt=""><span><b>رحلات بولس</b><small>على الخريطة، محطة بعد محطة</small></span></a>
+<a class="hxt" href="tree.html"><img src="assets/person-abraham.webp" alt=""><span><b>شجرة العائلة</b><small>نسب المسيح من آدم</small></span></a>
+<a class="hxt" href="maps.html"><img src="assets/person-aaron.webp" alt=""><span><b>الشروح المصوّرة</b><small>المسكن، والضربات، ويوم الكفارة</small></span></a>
+<a class="hxt" href="topics.html"><img src="assets/place-athens.webp" alt=""><span><b>الموضوعات</b><small>العقائد الكتابية من النص</small></span></a>
+<a class="hxt" href="journey.html"><img src="assets/person-moses.webp" alt=""><span><b>القصة في مراحل</b><small>تاريخ الخلاص على خط واحد</small></span></a>
+</div></div></section>
 <footer class="h3f full"><div><p class="s">${esc(quoteText('2Tim.3.16'))}</p><small>${refLabel('2Tim.3.16')}</small><span>${esc(config.description)} · النص: ${esc(config.bibleVersion)}</span><button type="button" data-splash>شاهد المقدمة مرة أخرى</button></div></footer>`;
   write('index.html', page({ title: '', depth: 0, nav: 'home', body, cls: 'home v3', after: '<script src="assets/plans.js" defer></script>' }));
 }
@@ -563,6 +578,23 @@ function searchIndex() {
 // ---------- run ----------
 const PLANS_UI = buildPlans({ content, write, page, people: PEOPLE, personHref, pimg: (id, d) => (PIMG.has(id) ? `${'../'.repeat(d)}assets/${PIMG.get(id)}` : ''), topicLinks, explainersFor, explainHref, mapForChapter });
 home();
+// ---------- sign in (works once site.config.json auth keys are set; see docs/login-setup.md) ----------
+write('login.html', page({ title: 'تسجيل الدخول', depth: 0, nav: 'home', cls: 'v3 loginpage', body: `<section class="lg" data-login>
+<div class="lgart" aria-hidden="true"><img src="assets/person-p129y7pi.webp" alt=""><div><p>«${esc(quoteText('Ps.119.105'))}»</p><small>${refLabel('Ps.119.105')}</small></div></div>
+<div class="lgbox">
+<div class="lgout">
+<span class="lgk">${BRAND}</span><h1>أهلاً بك</h1>
+<p class="lgs">سجّل دخولك ليُحفظ تقدّمك في خطط القراءة، وتكمل من حيث توقفت على أي جهاز.</p>
+<button type="button" class="lgg" data-google><svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9 3.6l6.7-6.7C35.6 2.4 30.2 0 24 0 14.6 0 6.6 5.4 2.7 13.2l7.8 6.1C12.4 13.6 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.7c-.6 3-2.3 5.5-4.8 7.2l7.5 5.8c4.4-4.1 7.1-10.1 7.1-17.5z"/><path fill="#FBBC05" d="M10.5 28.7A14.5 14.5 0 0 1 9.5 24c0-1.6.3-3.2.8-4.7l-7.8-6.1A24 24 0 0 0 0 24c0 3.9.9 7.5 2.6 10.8l7.9-6.1z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.5-5.8c-2.1 1.4-4.9 2.3-8.4 2.3-6.3 0-11.6-4.1-13.5-9.8l-7.9 6.1C6.6 42.6 14.6 48 24 48z"/></svg>المتابعة بحساب Google</button>
+<div class="lgor"><span>أو</span></div>
+<form data-email-form novalidate><label for="lgemail">البريد الإلكتروني</label><input id="lgemail" name="email" type="email" inputmode="email" autocomplete="email" placeholder="name@example.com" dir="ltr"><button type="submit">أرسل لي رابط الدخول</button></form>
+<p class="lgmsg" data-msg hidden role="status"></p>
+<p class="lgfine">بلا كلمة مرور: نرسل لك رابطاً تدخل به. لا نستخدم بريدك إلا للدخول، ولا نرسل رسائل أخرى.</p>
+<a class="lgskip" href="index.html">المتابعة بدون حساب ${IC.chev}</a>
+<p class="lgsoon">تسجيل الدخول غير مفعّل بعد في هذه النسخة من الموقع. يمكنك استخدام كل شيء بدون حساب، ويُحفظ تقدّمك على هذا الجهاز.</p>
+</div>
+<div class="lgin"><span class="lgk">${BRAND}</span><h1>أنت مسجّل الدخول</h1><p class="lgs" data-who></p><p class="lgs">تقدّمك في خطط القراءة محفوظ ومتزامن على أجهزتك.</p><a class="lgbtn" href="plans.html">خطط القراءة ${IC.chev}</a><button type="button" class="lgsignout" data-signout>تسجيل الخروج</button></div>
+</div></section>` }));
 testament('ot');
 testament('nt');
 for (const b of books) {

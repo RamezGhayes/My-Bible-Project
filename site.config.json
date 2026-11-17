@@ -7,5 +7,11 @@
   "lang": "ar",
   "verseRef": "Ps.63.1-2",
   "nameEn": "Sola",
-  "domain": "https://sola-study.com"
+  "domain": "https://sola-study.com",
+  "auth": {
+    "provider": "supabase",
+    "url": "",
+    "anonKey": "",
+    "_note": "Fill url and anonKey from the Supabase project (Settings, API) to turn sign-in on. See docs/login-setup.md."
+  }
 }

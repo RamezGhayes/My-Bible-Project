@@ -106,7 +106,7 @@ ${nav}
   const card = (P, depth) => `<a class="plcard" href="${up(depth)}plans/${P.id}.html" data-plan="${P.id}" data-total="${P.days.length}"><span class="pk">${esc(P.level)}، ${ar(P.days.length)} ${P.days.length <= 10 ? 'أيام' : 'يوماً'}</span><b>${esc(P.t)}</b><span class="d">${esc(P.sub)}</span><span class="pbar"><i data-bar style="width:0%"></i></span></a>`;
   const indexBody = `<article class="pindex"><header class="rph"><span class="pk">خطط القراءة</span><h1>اقرأ كل يوم، وابنِ عادة</h1><p>اختر خطة واحدة وابدأ. كل يوم أصحاح واحد في نحو ٢٠ دقيقة: تقرأ النص، وتفهم فكرته، وترى المسيح فيه، وتتأمل، وتخرج بخطوة عملية. وإن فاتك يوم، تكمل من حيث توقفت.</p></header>
 <div class="rpgrid">${PLANS.map((P) => card(P, 0)).join('')}</div>
-<p class="pfine">تقدّمك يُحفظ على هذا الجهاز وهذا المتصفح فقط. لا حساب ولا تسجيل.</p></article>`;
+<p class="pfine">تقدّمك يُحفظ على هذا الجهاز. <a href="login.html">سجّل الدخول</a> ليُحفظ على كل أجهزتك.</p></article>`;
   write('plans.html', page({ title: 'خطط القراءة', depth: 0, nav: 'plans', body: indexBody, cls: 'v3 plan', after: '<script src="assets/plans.js" defer></script>' }));
   write('today.html', page({ title: 'خلوة اليوم', depth: 0, nav: 'plans', body: `<article class="pindex"><header class="rph"><span class="pk">خلوة اليوم</span><h1 data-today-title>جارٍ فتح قراءة اليوم…</h1><p data-today-text>إن لم تبدأ خطة بعد، اختر واحدة من خطط القراءة.</p><a class="pgo" href="plans.html">خطط القراءة ${IC.chev}</a></header></article>`, cls: 'v3 plan', after: '<script src="assets/plans.js" defer></script>' }));
   for (const P of PLANS) { planPage(P); P.days.forEach((_, i) => dayPage(P, i)); }
