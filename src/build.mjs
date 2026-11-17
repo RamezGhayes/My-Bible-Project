@@ -7,6 +7,8 @@ import { page, header, IC, plain, clip, firstSentences, chWord, bkWord, vWord, s
 import { buildPeople, cardTemplate, cleanName } from './v2/people.mjs';
 import { MAPS, mapForChapter, thumb, mapHref, viewer } from './v2/maps.mjs';
 import { TOPICS, topicLinks, chapterTopicsBlock, topicsIndex, topicPage, topicsHomeSection } from './v2/topics.mjs';
+import { treePage } from './v2/tree.mjs';
+import { harmonyPage } from './v2/harmony.mjs';
 import { buildLibrary, libraryPage, workId } from './v2/library.mjs';
 import { EXPLAINERS, explainersFor, explainPage, plaguesPresent, storyCard as xStory, bentoTile as xTile, explainHref, glyph, xCard, chips as xChips } from './v2/explain.mjs';
 
@@ -358,6 +360,7 @@ ${cards.map((c, i) => `<section class="sc${i === 0 ? ' on' : ''}" style="backgro
   const studyHtml = `<div class="ovl" id="study">
 <div class="pg idx" id="pg-idx"><header class="sh"><a class="b" href="#" aria-label="رجوع إلى القصة">${IC.close}</a><span class="t">الدراسة الكاملة</span><a class="b" href="#read" aria-label="النص">${IC.read}</a></header>
 <div class="dh"><span class="ey">${md(S.section)}</span><h1>${chTitle(b, n)} · ${md(S.title)}</h1><p>${vWord(vs.length)} · ${secWord(ORDER.length + 1)}</p></div>
+<div class="prt"><button type="button" data-print>${IC.read}اطبع ورقة الدراسة</button><span>ورقة للطباعة: الآية المفتاحية، والتقسيم، والأسئلة، ومساحة للكتابة.</span></div>
 <div class="bento">${grid}</div></div>
 ${ORDER.map((k, i) => `<div class="pg det" id="s-${k}" data-det><header class="sh"><a class="b" href="#study">${IC.back}الدراسة</a><span class="t"></span><a class="b" href="#" aria-label="إغلاق">${IC.close}</a></header>
 <div class="dh"><span class="ey">${DET[k].ey}</span><h1>${esc(DET[k].t)}</h1><p>${chTitle(b, n)} · ${md(S.title)}</p></div><div class="dc">${DET[k].h}</div>
@@ -373,7 +376,19 @@ ${ORDER[i + 1] ? `<a class="nextsec" href="#s-${ORDER[i + 1]}"><span><small>ال
 ${people.map(({ p }) => cardTemplate(p, {})).join('')}
 ${people.map(({ p }) => `<a hidden data-pid="${p.id}" href="${personHref(p, depth)}"></a>`).join('')}
 </div>` : '';
-  const body = `<div data-chapter="${b.id}:${n}"></div>`;
+  // Printable study sheet: hidden on screen, the only thing printed from a chapter page.
+  const handout = `<section class="handout" aria-hidden="true">
+<header><span>${esc(config.nameAr)} · ورقة دراسة</span><span>${esc(b.name)} · الأصحاح ${ar(n)}</span></header>
+<h1>${chTitle(b, n)}: ${md(S.title)}</h1><p class="sec">${md(S.section)}</p>
+${kvRef ? `<blockquote>${esc(quoteText(kvRef))}<small>${refLabel(kvRef)}</small></blockquote>` : ''}
+<h2>أين نحن؟</h2><p>${md(firstSentences(S.where, 160))}</p>
+${outline.length ? `<h2>تقسيم الأصحاح</h2><ol class="hol">${outline.map((o) => `<li><b>${ar(o.r)}</b> ${esc(clip(o.t, 110))}</li>`).join('')}</ol>` : ''}
+${christ[0] ? `<h2>المسيح في هذا الأصحاح</h2><p>${md(firstSentences(christ[0], 200))}</p>` : ''}
+${S.questions?.length ? `<h2>أسئلة للمناقشة</h2><ol class="hq">${S.questions.slice(0, 5).map((q) => `<li>${md(q)}<span class="ln"></span></li>`).join('')}</ol>` : ''}
+<h2>ملاحظاتي</h2><div class="notes">${'<span class="ln"></span>'.repeat(4)}</div>
+<footer>النص: ${esc(config.bibleVersion)} · ${esc(config.domain.replace(/^https?:\/\//, ''))}/book/${b.slug}/${n}.html</footer>
+</section>`;
+  const body = `<div data-chapter="${b.id}:${n}"></div>${handout}`;
   write(`book/${b.slug}/${n}.html`, page({ title: `${chTitle(b, n)}: ${plain(S.title)}`, depth, body, cls: 'immersive chapter', after: story + studyHtml + readerOv + viewerHtml }));
 }
 
@@ -449,6 +464,14 @@ ${ERA_MAP[e.n] ? `<a class="go" style="margin-top:12px;align-self:flex-start" hr
 }
 
 // ---------- search index (loaded on demand by the search panel) ----------
+function treeHtml() {
+  const profiles = {};
+  for (const p of PEOPLE.list) if (p.prof && hasPage(p)) profiles[p.prof.id] = { prof: p.prof, href: personHref(p, 0) };
+  write('tree.html', page({ title: 'شجرة العائلة', depth: 0, nav: 'people', body: treePage({ profiles }), cls: 'v3' }));
+}
+treeHtml();
+write('harmony.html', page({ title: 'الأناجيل جنباً إلى جنب: إشباع الخمسة الآلاف', depth: 0, nav: 'nt', body: harmonyPage(0), cls: 'v3' }));
+
 function searchIndex() {
   const items = [];
   const add = (k, t, sub, h) => items.push([k, t, sub, h]);

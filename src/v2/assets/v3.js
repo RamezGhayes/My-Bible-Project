@@ -167,4 +167,19 @@
       h.classList.add('reset'); void h.offsetWidth; h.classList.remove('reset');
     });
   });
+
+  // ---------- family tree: pick a name, show its card ----------
+  var tree = $('.tr3');
+  if (tree) {
+    var slot = $('.slot', tree), tpl = $('template[data-cards]', tree).content;
+    var pickN = function (b) {
+      $$('[data-node]', tree).forEach(function (o) { o.setAttribute('aria-pressed', o === b ? 'true' : 'false'); });
+      var c = tpl.querySelector('[data-card="' + b.getAttribute('data-node') + '"]');
+      if (c) { slot.innerHTML = c.innerHTML; if (window.innerWidth < 980) slot.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' }); }
+    };
+    $$('[data-node]', tree).forEach(function (b) { b.addEventListener('click', function () { pickN(b); }); });
+    var a0 = $('[data-node="abraham"]', tree); if (a0) a0.setAttribute('aria-pressed', 'true');
+  }
+  // ---------- print the chapter study sheet ----------
+  $$('[data-print]').forEach(function (b) { b.addEventListener('click', function () { window.print(); }); });
 })();
