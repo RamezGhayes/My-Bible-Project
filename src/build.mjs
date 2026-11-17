@@ -99,7 +99,7 @@ function home() {
 <section class="h3s h3dark full"><div class="wrap">${head('الشخصيات', 'بطاقات تُقلب: الاسم، والمعنى، والدور، ورحلة كل شخصية.', arrows('p'))}
 <div class="h3r" data-rail="p">${pcards}</div></div></section>
 <section class="h3s">${head('أدوات الدراسة', 'كل ما تحتاجه بجانب النص.')}
-<div class="h3tools">${T('maps.html', IC.map, 'الخرائط والشروح', 'رحلات وأماكن وشروح مصوّرة')}${T('journey.html', IC.time, 'القصة في مراحل', 'تاريخ الخلاص على خط واحد')}${T('paul.html', IC.map, 'رحلات بولس', 'أربع رحلات على الخريطة')}${T('tree.html', IC.person, 'شجرة العائلة', 'من آدم إلى أسباط إسرائيل')}${T('harmony.html', IC.list, 'الأناجيل جنباً إلى جنب', 'إشباع الخمسة الآلاف في الأربعة')}${T('glossary.html', IC.list, 'القاموس', 'كلمات الكتاب الصعبة من مصادر مُصلحة')}${T('library.html', IC.shelf, 'المكتبة اللاهوتية', 'مصادر وإقرارات')}</div></section>
+<div class="h3tools">${T('maps.html', IC.map, 'الخرائط والشروح', 'رحلات وأماكن وشروح مصوّرة')}${T('journey.html', IC.time, 'القصة في مراحل', 'تاريخ الخلاص على خط واحد')}${T('paul.html', IC.map, 'رحلات بولس', 'أربع رحلات على الخريطة')}${T('tree.html', IC.person, 'شجرة العائلة', 'نسب المسيح من آدم جيلاً بعد جيل')}${T('harmony.html', IC.list, 'الأناجيل جنباً إلى جنب', 'إشباع الخمسة الآلاف في الأربعة')}${T('glossary.html', IC.list, 'القاموس', 'كلمات الكتاب الصعبة من مصادر مُصلحة')}${T('library.html', IC.shelf, 'المكتبة اللاهوتية', 'مصادر وإقرارات')}</div></section>
 <footer class="h3f full"><div><p class="s">${esc(quoteText('2Tim.3.16'))}</p><small>${refLabel('2Tim.3.16')}</small><span>${esc(config.description)} · النص: ${esc(config.bibleVersion)}</span><button type="button" data-splash>شاهد المقدمة مرة أخرى</button></div></footer>`;
   write('index.html', page({ title: '', depth: 0, nav: 'home', body, cls: 'home v3' }));
 }
@@ -576,7 +576,7 @@ if (process.env.OG) {
   }
   const GC = { 1: '#B39459', 2: '#8C2F1E', 3: '#3E7A5A', 4: '#1F2A44', 5: '#5A4A7A' }, EMB = { 1: 'lamp', 2: 'door', 3: 'loaves', 4: 'table', 5: 'shofar' }, GN = { 1: 'الأسس', 2: 'الخلاص', 3: 'حياة المؤمن', 4: 'الكنيسة والعبادة', 5: 'الأمور الأخيرة' };
   for (const t of TOPICS) card(`topic-${t.id}`, `موضوع كتابي · ${GN[t.group]}`, t.ar, t.short, `<div class="em" style="background:${GC[t.group]};color:#FAF8F4">${glyph(EMB[t.group], 120)}</div>`);
-  card('tree', 'شجرة العائلة · سفر التكوين', 'خط الوعد', 'من آدم إلى أسباط إسرائيل الاثني عشر، وكل اسم مربوط بآيته.', []);
+  card('tree', 'شجرة العائلة · من آدم إلى المسيح', 'نسل الوعد', 'نسب المسيح جيلاً بعد جيل، ومعه الزوجات والإخوة وأهم الأقارب، وكل اسم مربوط بآيته.', []);
   card('harmony', 'الأناجيل جنباً إلى جنب', 'إشباع الخمسة الآلاف', 'حادثة واحدة في الأناجيل الأربعة: ما تتفق عليه، وما ينفرد به كل إنجيل.', []);
 }
 
