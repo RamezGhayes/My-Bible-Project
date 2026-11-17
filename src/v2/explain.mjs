@@ -85,8 +85,10 @@ export function explainPage(x, depth) {
   const C = chips(x);
   const mo = `<div class="xmo3 c${C.length > 8 ? 5 : 4}" aria-hidden="true">${C.map((c, k) => `<i style="--c:${c.color};--k:${c.ink};--d:${(0.15 + k * 0.07).toFixed(2)}s">${glyph(c.icon, 40)}</i>`).join('')}</div>`;
   const h0 = html.indexOf('class="xhero'), i = html.indexOf('</section>', h0);
-  if (h0 < 0 || i < 0 || html.slice(h0, i).split('<svg').length > 3) return html; // hero already draws its own icons
-  return html.slice(0, i) + mo + html.slice(i);
+  if (h0 < 0 || i < 0) return html;
+  const pres = `<a class="xpres" href="${x.id}-present.html">${IC.read}<span>وضع العرض: شرائح للبروجكتور ومدارس الأحد</span></a>`;
+  const own = html.slice(h0, i).split('<svg').length > 3; // hero already draws its own icons
+  return html.slice(0, i) + pres + (own ? '' : mo) + html.slice(i);
 }
 function explainBody(x, depth) {
   if (x.id === 'offerings') return offeringsPage(x, depth);
@@ -648,10 +650,41 @@ export function plaguesPresent(x, depth) {
     h: `<div class="ps-pl"><span class="ic">${glyph(p.icon, 170)}</span><div><small>الضربة ${ORD[p.n]} · ${refLabel(p.ref)}</small><h2>${esc(p.name)}</h2><p class="v">${vq(p.key)}</p><span class="rf">${refLabel(p.key)}</span><span class="god">ضد من؟ ${esc(p.god.n)} <em>${TAGS[p.god.tag]}</em></span></div></div>` });
   slides.push({ bg: '#101216', fg: '#FAF8F4', title: 'الفصح', note: 'اختم بالخروج ١٢: ١٣ ثم ١ كورنثوس ٥: ٧. اسأل: لماذا كان الدم هو الفرق الوحيد؟ وماذا يعني أن المسيح فصحنا؟',
     h: `<div class="ps-end"><span class="ic">${glyph('door', 90)}</span><p class="v">${esc(piece('Exod.12.13', 'فارى الدم واعبر عنكم'))}</p><span class="rf">${refLabel('Exod.12.13')}</span><p class="v s">${vq('1Cor.5.7')}</p><span class="rf">${refLabel('1Cor.5.7')}</span></div>` });
+  return presentShell(x, slides);
+}
+
+function presentShell(x, slides) {
   return `<div class="ps" data-present>
-<div class="ps-top"><a href="plagues.html">${IC.close}<span>خروج من العرض</span></a><b>وضع العرض · ${esc(x.title)}</b><span><button type="button" data-notes aria-pressed="false">ملاحظات المعلم</button><button type="button" data-fs>ملء الشاشة</button></span></div>
+<div class="ps-top"><a href="${x.id}.html">${IC.close}<span>خروج من العرض</span></a><b>وضع العرض · ${esc(x.title)}</b><span><button type="button" data-notes aria-pressed="false">ملاحظات المعلم</button><button type="button" data-fs>ملء الشاشة</button></span></div>
 <div class="ps-main"><div class="ps-stage">${slides.map((s, i) => `<section class="sl" style="--bg:${s.bg};--fg:${s.fg}" aria-label="${esc(s.title)}"${i ? ' hidden' : ''}>${s.h}<span class="brand">لمجد الله</span><span class="num">${ar(i + 1)} / ${ar(slides.length)}</span></section>`).join('')}</div>
 <aside class="ps-notes" hidden><small>ملاحظات للمعلم</small>${slides.map((s, i) => `<p data-n="${i}"${i ? ' hidden' : ''}>${esc(s.note)}</p>`).join('')}<small class="k">المفاتيح: الأسهم للتنقل · N للملاحظات · F لملء الشاشة</small></aside></div>
 <div class="ps-ctl"><button type="button" data-prev aria-label="الشريحة السابقة">${IC.chev.replace('class="ic"', 'class="ic" style="transform:scaleX(-1)"')}</button><div class="th" role="tablist" aria-label="الشرائح">${slides.map((s, i) => `<button type="button" role="tab" data-go-sl="${i}" aria-selected="${i === 0}" style="--bg:${s.bg};--fg:${s.fg}">${esc(s.title)}</button>`).join('')}</div><button type="button" data-next aria-label="الشريحة التالية">${IC.chev}</button></div>
 </div>`;
+}
+
+// ---------- presentation mode for the other explainers (same shell, slides from each explainer's own data) ----------
+const ASK = {
+  offerings: 'ماذا تكشف هذه الذبيحة عن حاجتنا، وكيف تمّت في المسيح؟',
+  atonement: 'ماذا يحدث في هذه الخطوة، ولماذا كانت ضرورية؟',
+  feasts: 'ماذا كان الشعب يتذكر في هذا العيد، وإلى ماذا يشير؟',
+  camp: 'ماذا يعلّمنا ترتيب الأسباط حول المسكن؟',
+  serpent: 'أين نرى في هذا المشهد خطية الشعب، وأين نرى رحمة الله؟',
+  tabernacle: 'ماذا علّمت هذه القطعة إسرائيل عن الاقتراب إلى الله؟'
+};
+export function explainPresent(x, depth) {
+  if (x.id === 'plagues') return plaguesPresent(x, depth);
+  const plainT = (t) => String(t || '').replace(/\*\*/g, '').replace(/\s+/g, ' ').trim();
+  const lead = (t, n = 190) => { const p = plainT(t); if (p.length <= n) return p; const cut = p.slice(0, n); const i = Math.max(cut.lastIndexOf('. '), cut.lastIndexOf('، ')); return (i > 80 ? cut.slice(0, i + 1) : cut.replace(/\s+\S*$/, '')) + (i > 80 ? '' : '…'); };
+  const C = chips(x);
+  const list = x.id === 'atonement' ? x.steps.map((s) => ({ name: s.t, ref: s.ref, icon: s.icon, color: s.color, ink: '#FFFFFF', what: s.d, label: `الخطوة ${ar(s.n)}` }))
+    : (x.items || x.steps).map((it, i) => ({ name: it.name, ref: it.ref, key: it.key, icon: it.icon, color: it.color, ink: it.ink, what: it.what || it.note || it.meaning, label: x.id === 'offerings' ? `ذبيحة ${ar(i + 1)} من ${ar(x.items.length)}` : x.id === 'camp' ? 'جهة من المحلة' : `${ar(i + 1)} من ${ar((x.items || x.steps).length)}` }));
+  const slides = [];
+  slides.push({ bg: '#17191E', fg: '#FAF8F4', title: x.title, note: `ابدأ بقراءة ${refLabel(x.heroRef)} بصوت عالٍ، ثم اسأل: ماذا تعرف عن ${x.title}؟`,
+    h: `<div class="ps-title"><small>شرح مصوّر · ${esc(bookById[x.book].name)}</small><h1>${esc(x.title)}</h1><p class="v">${vq(x.heroRef)}</p><span class="rf">${refLabel(x.heroRef)}</span><div class="mo">${C.slice(0, 10).map((c) => `<i style="--c:${c.color};--k:${c.ink}">${glyph(c.icon, 40)}</i>`).join('')}</div></div>` });
+  for (const it of list) slides.push({ bg: it.color, fg: it.ink || '#FFFFFF', title: it.name,
+    note: `${it.ref ? `اقرأ ${refLabel(it.ref)} معاً. ` : ''}سؤال للنقاش: ${ASK[x.id] || 'ماذا يعلّمنا هذا عن الله؟'}`,
+    h: `<div class="ps-pl"><span class="ic">${glyph(it.icon, 170)}</span><div><small>${esc(it.label)}${it.ref ? ` · ${refLabel(it.ref)}` : ''}</small><h2>${esc(it.name)}</h2>${it.key ? `<p class="v">${vq(it.key)}</p><span class="rf">${refLabel(it.key)}</span>` : it.what ? `<p class="d">${esc(lead(it.what))}</p>` : ''}</div></div>` });
+  slides.push({ bg: '#101216', fg: '#FAF8F4', title: 'في المسيح', note: `اختم بقراءة ${refLabel(x.christ.ref)}. اسأل: كيف تمّ هذا في المسيح؟`,
+    h: `<div class="ps-end"><span class="ic">${glyph(C[C.length - 1].icon, 90)}</span><p class="v">${vq(x.christ.ref)}</p><span class="rf">${refLabel(x.christ.ref)}</span><p class="v s">${esc(lead(x.christ.p[0], 220))}</p></div>` });
+  return presentShell(x, slides);
 }

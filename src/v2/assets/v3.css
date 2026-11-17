@@ -757,3 +757,7 @@ html[data-read=contrast] #read .vn,html[data-read=contrast] .reader-page .vn{col
 html[data-read=night] #read .sh,html[data-read=contrast] #read .sh{background:var(--rbg);color:var(--rfg);border-color:#2A2D34}
 html[data-read=night] #read .rtools,html[data-read=contrast] #read .rtools,html[data-read=night] .reader-page .rtools,html[data-read=contrast] .reader-page .rtools{color:var(--rfg)}
 html[data-read=night] .rtools button:not(.thm3 button),html[data-read=contrast] .rtools button:not(.thm3 button){background:#2A2D34;color:var(--rfg);border-color:#3A3D45}
+.xpres{display:inline-flex;align-items:center;gap:8px;margin-top:18px;height:44px;padding:0 18px;border-radius:22px;border:1px solid rgba(215,196,154,.5);color:#F2EEE6;font-family:var(--ui);font-size:13.5px;align-self:flex-start;width:max-content;max-width:100%}
+.xpres:hover{border-color:var(--gold)}
+.xpres .ic{width:18px;height:18px;color:var(--gold2)}
+.ps-pl .d{font-size:1em;line-height:1.85;margin:0;opacity:.95}

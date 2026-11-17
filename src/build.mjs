@@ -10,7 +10,7 @@ import { TOPICS, topicLinks, chapterTopicsBlock, topicsIndex, topicPage, topicsH
 import { treePage } from './v2/tree.mjs';
 import { harmonyPage } from './v2/harmony.mjs';
 import { buildLibrary, libraryPage, workId } from './v2/library.mjs';
-import { EXPLAINERS, explainersFor, explainPage, plaguesPresent, storyCard as xStory, bentoTile as xTile, explainHref, glyph, xCard, chips as xChips } from './v2/explain.mjs';
+import { EXPLAINERS, explainersFor, explainPage, explainPresent, storyCard as xStory, bentoTile as xTile, explainHref, glyph, xCard, chips as xChips } from './v2/explain.mjs';
 
 const DIST = path.join(ROOT, 'dist');
 fs.rmSync(DIST, { recursive: true, force: true });
@@ -477,8 +477,7 @@ ${soon('خدمة المسيح', 'الجليل واليهودية والسامر�
   const body2 = body.replace('<div class="mcards">', `<div class="sec-t" style="padding:0 20px">شروح مصوّرة</div><div class="mcards">${EXPLAINERS.map(xcard).join('')}</div><div class="sec-t" style="padding:0 20px">الخرائط</div><div class="mcards">`);
   write('maps.html', page({ title: 'الخرائط والشروح', depth: 0, nav: 'maps', body: body2 }));
   for (const x of EXPLAINERS) write(`explain/${x.id}.html`, page({ title: x.title, depth: 1, body: explainPage(x, 1), cls: 'explain' }));
-  const PL = EXPLAINERS.find((x) => x.id === 'plagues');
-  write('explain/plagues-present.html', page({ title: `وضع العرض · ${PL.title}`, depth: 1, body: plaguesPresent(PL, 1), cls: 'present immersive' }));
+  for (const x of EXPLAINERS) write(`explain/${x.id}-present.html`, page({ title: `وضع العرض · ${x.title}`, depth: 1, body: explainPresent(x, 1), cls: 'present immersive' }));
   for (const m of MAPS) {
     write(`maps/${m.id}.html`, page({ title: m.title, depth: 1, body: '', cls: 'immersive mappage', after: viewer(m, 1, { back: '../maps.html' }) }));
   }
