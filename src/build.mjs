@@ -511,5 +511,37 @@ searchIndex();
 fs.writeFileSync(path.join(DIST, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${PAGES.filter((r) => !r.startsWith('maps/')).map((r) => `<url><loc>${config.domain}/${r === 'index.html' ? '' : r}</loc></url>`).join('\n')}\n</urlset>\n`);
 fs.writeFileSync(path.join(DIST, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap: ${config.domain}/sitemap.xml\n`);
 fs.writeFileSync(path.join(DIST, 'assets/icon.svg'), '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#17191E"/><g fill="none" stroke="#D7C49A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"><path d="M32 19c-6-4-13-5-20-4v30c7-1 14 0 20 4 6-4 13-5 20-4V15c-7-1-14 0-20 4z"/><path d="M32 19v30"/></g></svg>');
+// ---------- offline reading (PWA) ----------
+// Pages are kept in the browser's cache as you open them, so they can be read again without a connection.
+// This is a cache of public pages only: nothing about the reader is stored.
+write('offline.html', page({ title: 'لا يوجد اتصال', depth: 0, nav: 'home', cls: 'v3', body: `<section class="off3"><span class="ic">${IC.read}</span><h1>لا يوجد اتصال بالإنترنت</h1><p>هذه الصفحة لم تُفتح من قبل على هذا الجهاز، فلا توجد نسخة محفوظة منها. الصفحات التي فتحتها سابقاً تعمل بدون إنترنت.</p><a class="btn3" href="index.html">الرئيسية</a></section>` }));
+fs.writeFileSync(path.join(DIST, 'manifest.webmanifest'), JSON.stringify({
+  name: config.nameAr, short_name: config.nameAr, description: config.description, lang: 'ar', dir: 'rtl',
+  start_url: './index.html', scope: './', display: 'standalone', background_color: '#FAF8F4', theme_color: '#17191E',
+  icons: [{ src: 'assets/icon-192.png', sizes: '192x192', type: 'image/png' }, { src: 'assets/icon-512.png', sizes: '512x512', type: 'image/png' }, { src: 'assets/icon-512-mask.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' }]
+}, null, 1));
+{
+  const hash = (str) => { let h = 2166136261; for (let i = 0; i < str.length; i++) { h ^= str.charCodeAt(i); h = Math.imul(h, 16777619); } return (h >>> 0).toString(36); };
+  const core = ['index.html', 'offline.html', 'assets/v2.css', 'assets/v3.css', 'assets/v2.js', 'assets/v3.js', 'assets/search.js', 'assets/icon.svg'];
+  const ver = hash(core.map((f) => fs.readFileSync(path.join(DIST, f), 'utf8')).join(''));
+  fs.writeFileSync(path.join(DIST, 'sw.js'), `/* offline reading: network first for pages, cache as you go. Version ${ver} */
+const V = 'lmg-${ver}', CORE = ${JSON.stringify(core)};
+self.addEventListener('install', (e) => { e.waitUntil(caches.open(V).then((c) => c.addAll(CORE)).then(() => self.skipWaiting())); });
+self.addEventListener('activate', (e) => { e.waitUntil(caches.keys().then((ks) => Promise.all(ks.filter((k) => k !== V).map((k) => caches.delete(k)))).then(() => self.clients.claim())); });
+self.addEventListener('fetch', (e) => {
+  const r = e.request; if (r.method !== 'GET') return;
+  const u = new URL(r.url);
+  const font = u.hostname === 'fonts.googleapis.com' || u.hostname === 'fonts.gstatic.com';
+  if (u.origin !== location.origin && !font) return;
+  if (r.mode === 'navigate') {
+    e.respondWith(fetch(r).then((res) => { const c = res.clone(); caches.open(V).then((ca) => ca.put(r, c)); return res; })
+      .catch(() => caches.match(r).then((m) => m || caches.match('offline.html'))));
+    return;
+  }
+  e.respondWith(caches.match(r).then((m) => { const net = fetch(r).then((res) => { if (res.ok || res.type === 'opaque') { const c = res.clone(); caches.open(V).then((ca) => ca.put(r, c)); } return res; }).catch(() => m); return m || net; }));
+});
+`);
+}
+
 const count = (d) => fs.readdirSync(d, { withFileTypes: true }).reduce((a, e) => a + (e.isDirectory() ? count(path.join(d, e.name)) : 1), 0);
 console.log('Built', count(DIST), 'files');

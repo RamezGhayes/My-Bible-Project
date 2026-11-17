@@ -45,6 +45,8 @@ export function page({ title, depth = 0, nav = null, body, cls = '', after = '' 
 <meta property="og:locale" content="ar_AR">
 <meta name="twitter:card" content="summary">
 <link rel="icon" href="${u}assets/icon.svg" type="image/svg+xml">
+<link rel="manifest" href="${u}manifest.webmanifest">
+<link rel="apple-touch-icon" href="${u}assets/icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="${FONTS}">

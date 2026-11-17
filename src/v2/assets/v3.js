@@ -182,4 +182,8 @@
   }
   // ---------- print the chapter study sheet ----------
   $$('[data-print]').forEach(function (b) { b.addEventListener('click', function () { window.print(); }); });
+  // ---------- offline reading: register the service worker (pages you open stay readable offline) ----------
+  if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
+    window.addEventListener('load', function () { navigator.serviceWorker.register((document.body.getAttribute('data-root') || '') + 'sw.js').catch(function () {}); });
+  }
 })();
