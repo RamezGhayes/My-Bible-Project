@@ -1,1 +1,50 @@
-{}
+{
+ "piper-glorified": {
+  "who": "piper",
+  "title": "What Is Christian Hedonism?",
+  "url": "https://www.desiringgod.org/articles/what-is-christian-hedonism",
+  "quote": "God is most glorified in us when we are most satisfied in him."
+ },
+ "piper-walkie-talkie": {
+  "who": "piper",
+  "title": "Why Comfortable Christians Go Prayerless",
+  "url": "https://www.desiringgod.org/interviews/why-comfortable-christians-go-prayerless",
+  "quote": "they try to take a wartime walkie-talkie and turn it into a domestic intercom"
+ },
+ "piper-missions": {
+  "who": "piper",
+  "title": "Driving Convictions Behind Foreign Missions",
+  "url": "https://www.desiringgod.org/articles/driving-convictions-behind-foreign-missions",
+  "quote": "Missions exists because worship doesn’t."
+ },
+ "sproul-coram-deo": {
+  "who": "sproul",
+  "title": "What Does “Coram Deo” Mean?",
+  "url": "https://www.ligonier.org/blog/what-does-coram-deo-mean/",
+  "quote": "To live coram Deo is to live one’s entire life in the presence of God"
+ },
+ "sproul-right-now": {
+  "who": "sproul",
+  "title": "Right Now Counts Forever",
+  "url": "https://www.ligonier.org/blog/right-now-counts-forever/",
+  "quote": "If all right now counts for is right now, then it doesn't count at all."
+ },
+ "sproul-holy": {
+  "who": "sproul",
+  "title": "Holy, Holy, Holy (Ultimately with R.C. Sproul)",
+  "url": "https://www.ligonier.org/podcasts/ultimately-with-rc-sproul/holy-holy-holy",
+  "quote": "only one attribute of God that is ever raised to the third degree of repetition"
+ },
+ "keller-saved": {
+  "who": "keller",
+  "title": "SIN! (Do I Have Your Attention?)",
+  "url": "https://gospelinlife.com/article/sin-do-i-have-your-attention/",
+  "quote": "The gospel message is: we are saved by Christ’s work, not by our work."
+ },
+ "keller-hub": {
+  "who": "keller",
+  "title": "The Centrality of the Gospel (2000)",
+  "url": "https://rpc-download.s3.amazonaws.com/The_Centrality_of_the_Gospel-2025.pdf",
+  "quote": "The gospel is not the first step in a stairway of truths"
+ }
+}

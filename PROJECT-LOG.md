@@ -435,3 +435,11 @@
 - 33 new Easton entries (offerings, feasts, measures, groups, Aramaic/Greek words) and 2 WSC answers (Q94 baptism, Q96 Lord's Supper). Easton text for each is copied raw into `data/sources/easton-glossary.json`.
 - New entry field `not`: phrases that carry a different sense, so that verse is never auto-marked (e.g. بيد رفيعة in Exod 14:8, Num 15:30, 33:3 is not the heave offering).
 - Easton claims we left out on purpose: the site of Golgotha, the identity of hyssop, Peter as Mark's informant, Cornelius as the first Gentile convert. Where Easton is unsure (Selah, Feast of Trumpets) the entry says so.
+
+## 13. التطبيقات العملية: العهد الجديد كله (نوفمبر 2026)
+- القسم صار اسمه «تطبيقات عملية» (كان «عِش النص»). يغطي التكوين 12 + كل أصحاحات العهد الجديد (260 أصحاحاً)، حوالي 750 بطاقة.
+- المصادر: ماثيو هنري (من رومية للرؤيا: التكملة التي كتبها خدام آخرون بعد وفاته، ومعلَّمة كذلك) وجون كالفن.
+  - كالفن غير متاح في نسختنا المحفوظة لأعمال الرسل والرسائل الرعوية (1و2 تيموثاوس وتيطس) مع أنه كتب عليها؛ ولم يكتب أصلاً على 2 و3 يوحنا والرؤيا. هذه الأسفار على هنري.
+- أصوات حديثة (سبرول، بايبر، كيلر): 8 اقتباسات قصيرة (15 كلمة أو أقل) من مواقعهم الرسمية، في data/sources/modern.json، مع رابط المصدر. تم التحقق من نص كل اقتباس ومن كاتبه (استبعدنا مقالاً على موقع Gospel in Life ليس من كتابة كيلر).
+- حواجز البناء: كل basis موجود حرفياً في المصدر، كل cut كلمات فاندايك حرفياً، لا شرطة طويلة، لا تكرار للصوت الثاني في الفقرة الأساسية، لا أصحاح مكرر.
+- الرؤيا: نتجنب ربط الرموز بأحداث أو أشخاص بعينهم، لأن التفسير مختلف فيه بين المصلحين أنفسهم.

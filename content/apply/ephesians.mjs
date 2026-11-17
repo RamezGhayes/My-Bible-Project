@@ -147,6 +147,7 @@ export default [
         id: 'time', t: 'مفتدين الوقت', ref: 'Eph.5.16', cut: 'مفتدين الوقت لأن الأيام شريرة', arenas: ['work', 'online', 'home'],
         p: 'الوقت يُشترى ويُستثمر. يقول كالفن: لنجتهد في استرداده بكل طريقة ممكنة، ولتكن العثرات الكثيرة والتعب الشاق، التي يتخذها كثيرون عذراً للكسل، دافعاً ليقظتنا.',
         by: C('Let us be eager to recover it in every possible way, and let the numerous offenses and arduous toil, which many are in the habit of alleging as an apology for indolence, serve rather to awaken our vigilance.'),
+        also: also({ k: 'sproul', id: 'sproul-right-now', basis: ['If all right now counts for is right now, then it doesn\'t count at all.'] }, 'ويقول سبرول: لو كانت اللحظة الحاضرة لا تحسب إلا لنفسها، فهي لا تحسب شيئاً.'),
         today: 'ساعات على التطبيقات، ومسلسلات متتالية، وتأجيل مستمر. الأيام شريرة، والوقت أثمن من أن يُهدر.',
         ask: 'أين تُهدر أكثر وقتك؟',
         step: 'راجع وقت الشاشة على موبايلك، وحوّل ساعة واحدة يومياً هذا الأسبوع لشيء له قيمة أبدية.'
@@ -193,6 +194,7 @@ export default [
         id: 'pray', t: 'مصلين كل وقت', ref: 'Eph.6.18', cut: 'مصلين بكل صلاة وطلبة كل وقت في الروح', arenas: ['home', 'church'],
         p: 'الصلاة ليست قطعة من السلاح، بل الطريقة التي نلبسه بها. يقول كالفن: يجب أن نستمر في صلواتنا بحرارة لا تفتر، حتى لو لم ننل ما نطلبه في الحال.',
         by: C('With unabated ardor we must continue our prayers, though we do not immediately obtain what we desire.'),
+        also: also({ k: 'piper', id: 'piper-walkie-talkie', basis: ['they try to take a wartime walkie-talkie and turn it into a domestic intercom'] }, 'ويقول جون بايبر إن كثيرين يحاولون أن يحوّلوا الصلاة من جهاز لاسلكي للحرب إلى جرس داخلي للبيت.'),
         today: 'تصلي يومين بحرارة، ثم تتوقف لأن شيئاً لم يتغير. المعركة طويلة، والصلاة سلاحها الدائم.',
         ask: 'ما الصلاة التي توقفت عنها لأن الجواب تأخر؟',
         step: 'ارجع هذا الأسبوع لصلاة توقفت عنها، وصلِّ لأجل جميع القديسين أيضاً كما يطلب بولس.'

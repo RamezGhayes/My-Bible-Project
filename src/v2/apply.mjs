@@ -83,7 +83,7 @@ export function applySection(b, n, depth) {
   const A = APPLY[`${b.id}.${n}`];
   if (!A) return '';
   const used = [...new Set(A.items.flatMap((x) => x.arenas))];
-  const vchip = (v, ref) => { const V = voice(v, ref); return `<span class="l3vc"><i>${V.i}</i><span><b>${V.n}</b><small>${V.d} · ${V.w}</small></span></span>`; };
+  const vchip = (v, ref) => { const V = voice(v, ref); return `<span class="l3vc"><i>${V.i}</i><span><b>${V.n}</b><small>${V.d} · <bdi>${V.w}</bdi></small></span></span>`; };
   const srcBox = (it) => { const vs = [it.by, ...(it.also ? [it.also] : [])]; return `<details class="l3src"><summary>المصادر والنص الأصلي</summary>${vs.map((v) => { const V = voice(v, it.ref); return `<div><b>${V.n}، ${V.w}</b>${v.basis.map((x) => `<blockquote dir="ltr" lang="en">${esc(x.replace(/\*/g, ''))}</blockquote>`).join('')}${WHO[v.k] ? '<p class="l3nt">اقتباس قصير. اقرأ الكلام كاملاً في المصدر.</p>' : ''}<a href="${V.u}" rel="noopener">افتح المصدر</a></div>`; }).join('')}<p class="l3nt">المبدأ ملخص أمين لكلام المصدر. أما المثال من حياتنا فمن إعداد الموقع، لتقريب المبدأ ليومنا.</p></details>`; };
   const card = (it, i) => `<article class="lv3c" data-arenas="${it.arenas.join(' ')}" style="--d:${(i * 0.08).toFixed(2)}s">
 <span class="l3no" aria-hidden="true">${ar(i + 1)}</span>

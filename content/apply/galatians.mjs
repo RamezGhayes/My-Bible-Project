@@ -41,6 +41,7 @@ export default [
         id: 'justified', t: 'لا يتبرر بأعمال الناموس', ref: 'Gal.2.16', cut: 'إذ نعلم أن الإنسان لا يتبرر بأعمال الناموس بل بإيمان يسوع المسيح', arenas: ['church', 'home'],
         p: 'هذا قلب الإنجيل. يقول كالفن: أول ما يجب ملاحظته أن نطلب التبرير بالإيمان بالمسيح، لأننا لا نقدر أن نتبرر بالأعمال.',
         by: C('The first thing to be noticed is, that we must seek justification by the faith of Christ, because we cannot be justified by works.'),
+        also: also({ k: 'keller', id: 'keller-hub', basis: ['The gospel is not the first step in a stairway of truths'] }, 'ويقول تيم كيلر: الإنجيل ليس الدرجة الأولى في سلّم من الحقائق نتركها ونصعد.'),
         today: 'صوم، وحضور، وخدمة، وعطاء. كلها حسنة كثمر للإيمان، لكن لا أحد منها يبررك أمام الله.',
         ask: 'على أي شيء تعتمد لتكون مقبولاً أمام الله؟',
         step: 'اكتب ما تعتمد عليه لتشعر أنك مقبول، ثم اشطب كل شيء ليس المسيح.'

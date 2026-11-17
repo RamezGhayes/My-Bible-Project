@@ -19,6 +19,7 @@ export default [
         id: 'fear', t: 'سيروا بخوف', ref: '1Pet.1.17', cut: 'فسيروا زمان غربتكم بخوف', arenas: ['home', 'work'],
         p: 'الآب يرى القلب. يقول كالفن: لأن عيني الله تخترقان خفايا القلب، يجب أن نسلك معه بعناية لا بإهمال.',
         by: C('For, as God’s eyes are such that they penetrate into the hidden recesses of the heart, we ought to walk with him carefully and not negligently.'),
+        also: also({ k: 'sproul', id: 'sproul-coram-deo', basis: ['To live coram Deo is to live one’s entire life in the presence of God'] }, 'ويقول سبرول: أن تعيش أمام وجه الله يعني أن تعيش حياتك كلها في حضرته.'),
         today: 'تهتم بما يراه الناس، وتهمل ما يراه الله وحده: أفكارك، ودوافعك، وما تفعله حين لا يراك أحد.',
         ask: 'هل تعيش أمام عيني الله أم أمام عيون الناس فقط؟',
         step: 'في لحظة خصوصية هذا الأسبوع (موبايل، أو قرار مالي)، تذكر أن الله يرى، واختر بحسب ذلك.'
