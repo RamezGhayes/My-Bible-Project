@@ -41,7 +41,7 @@ def to_webp(png_bytes, dest):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--model', default='stability.stable-image-ultra-v1:1')
-    ap.add_argument('--region', default='us-west-2')
+    ap.add_argument('--region', default='us-east-1')
     ap.add_argument('--limit', type=int, default=0)
     ap.add_argument('--only', nargs='*')
     ap.add_argument('--redo', action='store_true', help='overwrite existing images')
@@ -54,10 +54,19 @@ def main():
     print(f'{len(todo)} portraits to generate with {a.model} in {a.region}')
     br = boto3.client('bedrock-runtime', region_name=a.region)
     failed = []
+    model = a.model
     for n, pid in enumerate(todo, 1):
         body = {'prompt': PRE + PROMPTS[pid], 'negative_prompt': NEG, 'aspect_ratio': '3:2', 'output_format': 'png'}
         try:
-            r = br.invoke_model(modelId=a.model, body=json.dumps(body))
+            try:
+                r = br.invoke_model(modelId=model, body=json.dumps(body))
+            except br.exceptions.ValidationException:
+                # In some regions Stability models are reachable only through the US cross-Region profile ("us." prefix)
+                if model.startswith('us.'):
+                    raise
+                model = 'us.' + model
+                print(f'  switching to inference profile {model}')
+                r = br.invoke_model(modelId=model, body=json.dumps(body))
             out = json.loads(r['body'].read())
             reason = (out.get('finish_reasons') or [None])[0]
             if reason:  # e.g. content filtered
