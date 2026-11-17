@@ -392,6 +392,7 @@ function init(host) {
       if (c === 'next') go(si + 1);
       if (c === 'prev') go(Math.max(0, si - 1));
       if (c === 'replay') go(0);
+      if (c === 'co-next') { coHide(); }
       return;
     }
     const p = e.target.closest('.p3');
@@ -406,6 +407,7 @@ function init(host) {
   vp.appendChild(cap);
   const capN = cap.querySelector('.n'), capT = cap.querySelector('b'), capB = cap.querySelector('.t3cb'), capBar = cap.querySelector('.t3bar i'), ppBtn = cap.querySelector('.t3pp');
   const v = (x, y, h = 0) => W(x, y, h);
+  const FILM_SPEED = 0.7 * (/[?&]filmtest\b/.test(location.search) ? 8 : 1); // slower than real time, so each moment can be followed (filmtest: fast, for automated checks)
   const ease = (u) => u * u * (3 - 2 * u);
   const seg = (t, a, b) => Math.min(1, Math.max(0, (t - a) / (b - a)));
   // Catmull-Rom through timed keys: smooth, no stops at intermediate keys
@@ -492,11 +494,52 @@ function init(host) {
       setup() { garb(true); ramA.visible = ramB.visible = false; outFire.visible = true; man.visible = true; },
       act(t) { walk(man, [[0, OUT[0] + 6, OUT[1] - 16], [5, OUT[0] + 3, OUT[1] - 3]], t); if (t > 5) lookAt(man, OUT[0], OUT[1]); walk(priest, [[0, 25, 65.6]], t); } }
   ];
+  // Callouts: at a moment in a shot the film pauses, an arrow points at the object, a card explains it,
+  // then it fades and the film goes on. [time in shot, () => point in 3D, title, text, ref]
+  const above = (o, h) => () => o.position.clone().add(new THREE.Vector3(0, h, 0));
+  const CO = [
+    [[3.8, () => v(25.9, 52.6, 1.6), 'المرحضة', 'حوض من نحاس بين خيمة الاجتماع والمذبح، فيه ماء للاغتسال.', 'خر ٣٠: ١٨'],
+     [7.6, above(priest, 2.2), 'ثياب الكتان', 'قميص وسراويل ومنطقة وعمامة، كلها من كتان أبيض. «إنها ثياب مقدسة».', 'لا ١٦: ٤']],
+    [[2.2, () => v(25, 70, 3.2), 'مذبح المحرقة', 'مذبح من نحاس في الدار. «نار دائمة تتقد على المذبح، لا تطفأ».', 'لا ٦: ١٣'],
+     [6, above(bull, 1.6), 'ثور ذبيحة الخطية', 'يقدمه هارون عن نفسه وعن بيته، قبل أن يكفّر عن الشعب.', 'لا ١٦: ٦']],
+    [[7.2, above(goatB, 2.6), 'قرعتان على التيسين', '«قرعة للرب وقرعة لعزازيل». الله هو الذي يعيّن لكل تيس دوره.', 'لا ١٦: ٨'],
+     [13.6, above(priest, 1.6), 'دم الثور', 'يأخذ من دمه ليدخل به إلى قدس الأقداس.', 'لا ١٦: ١٤']],
+    [[2.8, above(priest, 2), 'المجمرة والبخور', 'ملء المجمرة جمر نار عن المذبح، وملء راحتيه بخوراً عطراً دقيقاً.', 'لا ١٦: ١٢'],
+     [8.4, () => v(25, 20, 4), 'الحجاب', 'ستارة تفصل القدس عن قدس الأقداس. لا يدخل وراءها إلا رئيس الكهنة، مرة في السنة، ومعه دم.', 'خر ٢٦: ٣٣ · عب ٩: ٧'],
+     [12.6, () => v(25, 15, 2), 'التابوت والغطاء', 'غطاء من ذهب نقي فوق تابوت الشهادة، ومن هناك يتكلم الله. سحابة البخور تغطيه «فلا يموت».', 'خر ٢٥: ١٧، ٢٢ · لا ١٦: ١٣']],
+    [[4.4, () => v(25, 15, 1.9), 'النضح على الغطاء', 'بإصبعه على وجه الغطاء إلى الشرق، وقدام الغطاء سبع مرات.', 'لا ١٦: ١٤']],
+    [[1.4, above(goatA, 1.4), 'تيس الخطية الذي للشعب', 'الذي وقعت عليه قرعة الرب. يُذبح ويدخل بدمه داخل الحجاب، كما فعل بدم الثور.', 'لا ١٦: ١٥']],
+    [[6.2, () => v(25, 70, 3.4), 'قرون المذبح', 'يجعل من دم الثور ومن دم التيس على قرون المذبح مستديراً، فيكفّر عنه.', 'لا ١٦: ١٨']],
+    [[2.4, above(goatB, 1.5), 'وضع اليدين والإقرار', 'يضع هارون يديه على رأس التيس الحي، ويقر عليه بكل ذنوب بني إسرائيل.', 'لا ١٦: ٢١'],
+     [14.2, above(goatB, 1.5), 'إلى البرية', '«ليحمل التيس عليه كل ذنوبهم إلى أرض مقفرة».', 'لا ١٦: ٢٢']],
+    [[7.8, () => v(25, 70, 3.2), 'المحرقتان', 'بعد أن يغتسل ويلبس ثيابه، يقدّم محرقته ومحرقة الشعب.', 'لا ١٦: ٢٤']],
+    [[9.6, () => v(OUT[0], OUT[1], 3), 'خارج المحلة', 'يُحرق الثور والتيس خارج المحلة. والرسالة إلى العبرانيين تقول: «لذلك يسوع أيضاً... تألم خارج الباب».', 'لا ١٦: ٢٧ · عب ١٣: ١١–١٢']]
+  ];
+  const coBox = document.createElement('div'); coBox.className = 't3co'; coBox.hidden = true;
+  coBox.innerHTML = '<span class="ring" aria-hidden="true"></span><svg class="ar" aria-hidden="true"><line/></svg><div class="cd" role="status"><b></b><p></p><small></small><div class="bar"><i></i></div><button type="button" data-c="co-next">متابعة</button></div>';
+  vp.appendChild(coBox);
+  const coRing = coBox.querySelector('.ring'), coLine = coBox.querySelector('line'), coCard = coBox.querySelector('.cd'), coBar = coBox.querySelector('.bar i');
+  const CO_HOLD = 8; let coOn = null, coT = 0, coFired = new Set();
+  const coShow = (c) => { coOn = c; coT = 0; coCard.querySelector('b').textContent = c[2]; coCard.querySelector('p').textContent = c[3]; coCard.querySelector('small').textContent = c[4]; coBox.hidden = false; host.classList.add('co'); coBox.classList.remove('in'); void coBox.offsetWidth; coBox.classList.add('in'); };
+  const coHide = () => { coOn = null; coBox.hidden = true; host.classList.remove('co'); };
+  function coPlace() {
+    if (!coOn) return;
+    const p = coOn[1]().project(cam3), w = vp.clientWidth, h = vp.clientHeight;
+    const x = ((p.x + 1) / 2) * w, y = ((1 - p.y) / 2) * h;
+    coRing.style.transform = `translate(${x}px,${y}px)`;
+    const cw = coCard.offsetWidth, ch = coCard.offsetHeight, gap = 70;
+    const minY = Math.max(8, 76 - vp.getBoundingClientRect().top); // stay clear of the site header
+    const above = y - gap - ch > minY; let cy = above ? y - gap - ch : Math.max(minY, Math.min(h - ch - 8, y + gap));
+    let cx = Math.min(w - cw - 8, Math.max(8, x - cw / 2));
+    coCard.style.left = cx + 'px'; coCard.style.top = cy + 'px';
+    const ax = Math.min(cx + cw - 16, Math.max(cx + 16, x)), ay = above ? cy + ch : cy;
+    coLine.setAttribute('x1', ax); coLine.setAttribute('y1', ay); coLine.setAttribute('x2', x); coLine.setAttribute('y2', y + (above ? -12 : 12));
+  }
   // which props belong to which shot (everything else is hidden on entering a shot)
   const ACTORS = [priest, man, bull, goatA, goatB, ramA, ramB];
   let si = -1, ft = 0, playing = true, done = false;
   function enter(k) {
-    si = clamp(k, 0, S.length - 1); ft = 0; done = false;
+    si = clamp(k, 0, S.length - 1); ft = 0; done = false; coHide(); coFired = new Set();
     ACTORS.forEach((a) => { a.visible = false; if (a.userData.body) { a.userData.body.rotation.x = 0; a.userData.body.position.y = 0; } }); priest.visible = true;
     lots.forEach((d) => { d.visible = false; }); splash.visible = false; censer.visible = bowl.visible = false; outFire.visible = false; fireBoost = 1;
     // cumulative state: blood already applied and horns already touched in earlier shots
@@ -517,7 +560,7 @@ function init(host) {
   }
   const setPlay = (p) => { playing = p; host.classList.toggle('paused', !p); ppBtn.setAttribute('aria-label', p ? 'إيقاف مؤقت' : 'تشغيل'); };
   function startTour() { host.classList.add('tour'); info.hidden = true; select(null); setPlay(true); enter(0); }
-  function endTour() { host.classList.remove('tour', 'paused', 'ended'); si = -1; ACTORS.forEach((a) => { a.visible = false; }); lots.forEach((d) => { d.visible = false; }); outFire.visible = splash.visible = false; cloudAmt = 0; fireBoost = 1; seatBlood.concat(floorBlood, [altarBlood]).forEach((g) => showDrops(g, 0)); horns.forEach((h) => { h.material = M.bronze; }); tgt = homeFor(); cur = Object.assign({}, tgt); setOpen(false); }
+  function endTour() { coHide(); host.classList.remove('tour', 'paused', 'ended'); si = -1; ACTORS.forEach((a) => { a.visible = false; }); lots.forEach((d) => { d.visible = false; }); outFire.visible = splash.visible = false; cloudAmt = 0; fireBoost = 1; seatBlood.concat(floorBlood, [altarBlood]).forEach((g) => showDrops(g, 0)); horns.forEach((h) => { h.material = M.bronze; }); tgt = homeFor(); cur = Object.assign({}, tgt); setOpen(false); }
   const go = (k) => { if (k >= S.length) { host.classList.add('ended'); setPlay(false); return; } setPlay(true); enter(k); };
   ppBtn.addEventListener('click', (e) => { e.stopPropagation(); if (host.classList.contains('ended')) { go(0); return; } setPlay(!playing); });
   vp.addEventListener('click', (e) => { if (host.classList.contains('tour') && !e.target.closest('button')) { if (host.classList.contains('ended')) go(0); else setPlay(!playing); } });
@@ -525,7 +568,13 @@ function init(host) {
   const camFit = () => { const a = vp.clientWidth / vp.clientHeight; return a < 0.8 ? 1.75 : a < 1.2 ? 1.3 : 1; };
   function tick(dt, time) { // advance the film and place the camera
     const s = S[si];
-    if (playing && !done) { ft += dt; if (ft >= s.dur) { ft = s.dur; done = true; setTimeout(() => { if (playing && done && host.classList.contains('tour')) go(si + 1); }, 1400); } }
+    if (coOn) { if (playing) { coT += dt; if (coT >= CO_HOLD) coHide(); } coBar.style.width = (100 * Math.min(1, coT / CO_HOLD)).toFixed(1) + '%'; }
+    else if (playing && !done) {
+      ft += dt * FILM_SPEED;
+      const due = (CO[si] || []).find((c) => !coFired.has(c) && ft >= c[0]);
+      if (due) { ft = due[0]; coFired.add(due); coShow(due); }
+      if (ft >= s.dur) { ft = s.dur; done = true; setTimeout(() => { if (playing && done && !coOn && host.classList.contains('tour')) go(si + 1); }, 2600); }
+    }
     s.act(ft);
     let beat = ''; for (const [bt, tx] of s.beats) if (ft >= bt) beat = tx;
     if (capB.textContent !== beat) { capB.textContent = beat; capB.classList.remove('in'); void capB.offsetWidth; capB.classList.add('in'); }
@@ -533,6 +582,7 @@ function init(host) {
     const look = track(s.cam, ft, (k) => v(k[2][0], k[2][1], k[2][2])), pos = track(s.cam, ft, (k) => v(k[1][0], k[1][1], k[1][2]));
     pos.sub(look).multiplyScalar(camFit()).add(look); if (pos.y < 1.2) pos.y = 1.2;
     cam3.position.copy(pos); cam3.lookAt(look);
+    cam3.updateMatrixWorld(); coPlace();
     // keep the orbit camera in sync so leaving the film doesn't jump
     const d = pos.clone().sub(look); cur.tx = tgt.tx = look.x; cur.ty = tgt.ty = look.y; cur.tz = tgt.tz = look.z; cur.r = tgt.r = d.length(); cur.ph = tgt.ph = Math.acos(clamp(d.y / cur.r, -1, 1)); cur.th = tgt.th = Math.atan2(d.x, d.z);
   }

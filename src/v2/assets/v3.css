@@ -1031,3 +1031,20 @@ html[data-read=night] .rtools button:not(.thm3 button),html[data-read=contrast] 
   .x4b{padding:18px}
   .x4s p{font-size:16px}
 }
+/* ---------- atonement film: pause, point, explain (Nov 2026) ---------- */
+.t3co{position:absolute;inset:0;z-index:6;pointer-events:none}
+.t3co .ring{position:absolute;left:0;top:0;width:34px;height:34px;margin:-17px 0 0 -17px;border-radius:50%;border:3px solid #F1D79A;box-shadow:0 0 0 4px rgba(241,215,154,.25);animation:t3ring 1.4s ease-out infinite}
+@keyframes t3ring{0%{box-shadow:0 0 0 0 rgba(241,215,154,.55)}100%{box-shadow:0 0 0 18px rgba(241,215,154,0)}}
+.t3co .ar{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.t3co .ar line{stroke:#F1D79A;stroke-width:2.5;stroke-dasharray:6 5;animation:t3dash 1s linear infinite}
+@keyframes t3dash{to{stroke-dashoffset:-11}}
+.t3co .cd{position:absolute;left:0;top:0;width:min(340px,calc(100% - 16px));background:rgba(17,19,24,.94);color:#F4EFE6;border:1px solid #5A4B2A;border-radius:16px;padding:14px 16px 12px;pointer-events:auto;box-shadow:0 18px 40px -16px rgba(0,0,0,.7)}
+.t3co.in .cd{animation:v3rise .45s var(--ease) both}
+.t3co .cd b{display:block;font-family:var(--ui);font-weight:700;font-size:18px;color:#F1D79A;margin-bottom:4px}
+.t3co .cd p{margin:0;font-size:15.5px;line-height:1.85}
+.t3co .cd small{display:block;margin-top:6px;font-family:var(--ui);font-size:12px;color:#B8B0A2}
+.t3co .cd .bar{height:3px;background:#2C2F37;border-radius:2px;margin-top:10px;overflow:hidden}
+.t3co .cd .bar i{display:block;height:100%;width:0;background:#F1D79A}
+.t3co .cd button{margin-top:10px;font-family:var(--ui);font-size:13px;background:#F1D79A;color:#17191E;border:0;border-radius:999px;padding:6px 14px;cursor:pointer}
+@media (max-width:620px){.t3co .cd{padding:12px 13px 10px}.t3co .cd p{font-size:14.5px;line-height:1.75}}
+.t3d.co .t3cb{opacity:0;transition:opacity .2s}
