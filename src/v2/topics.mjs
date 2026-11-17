@@ -3,6 +3,7 @@
 import { ar, esc, md, up, parseRef, refLabel, refHref, verseText, shortName, chapterHref } from '../lib.mjs';
 import { header, IC } from './ui.mjs';
 import { workId } from './library.mjs';
+import { glyph } from './explain.mjs';
 import F from '../../content/topics/foundations.mjs';
 import S from '../../content/topics/salvation.mjs';
 import L from '../../content/topics/life.mjs';
@@ -93,11 +94,30 @@ export function topicPage(t, depth = 1) {
   const W = wcfFor[t.id] || [];
   const wcfHtml = W.map((c) => `<div class="wch"><div class="wchh"><span>الفصل ${ar(c.n)}</span><b>${esc(c.ar)}</b><small dir="ltr">${esc(c.en)}</small></div><ol class="wsec">${c.secs.map((x) => { const rs = [...new Set(x.refs)], chip = (r) => `<a href="${refHref(r, depth)}">${refLabel(r)}</a>`; return `<li><p>${md(x.t)}</p><div class="wrefs">${rs.slice(0, 5).map(chip).join('')}${rs.length > 5 ? `<details><summary>+${ar(rs.length - 5)} شواهد</summary>${rs.slice(5).map(chip).join('')}</details>` : ''}</div></li>`; }).join('')}</ol></div>`).join('');
   const toc = [['t-wcf', W.length ? 'الإقرار' : ''], ['t-def', 'التعريف'], ['t-keys', 'نصوص مفتاحية'], ['t-ot', 'في العهد القديم'], ['t-nt', 'في العهد الجديد'], ['t-christ', 'والمسيح'], ['t-ref', 'الرؤية المُصلحة'], ['t-views', t.views.length ? 'اختلافات تفسيرية' : ''], ['t-rel', 'موضوعات مرتبطة'], ['t-ch', 'في الأصحاحات'], ['t-q', 'للتأمل'], ['t-src', 'المراجع']].filter((x) => x[1]);
+  // Animated intro (about 6 s, skippable, replayable). Everything shown comes from the topic data:
+  // the title, its short definition, its key texts as a line through Scripture, and the first key verse.
+  const EMB = { 1: 'lamp', 2: 'door', 3: 'loaves', 4: 'table', 5: 'shofar' };
+  const words = t.short.split(/\s+/);
+  const pos = (k) => { const r = parseRef(k); return r.book.order * 1e6 + r.ch * 1e3 + (r.vs || 0); };
+  const nodes = t.keys.slice(0, 5).sort((a, b) => pos(a) - pos(b)); // shown in canonical order
+  const k0 = parseRef(t.keys[0]), kref = `${k0.book.id}.${k0.ch}.${k0.vs}`; // first verse of the first key text
+  const kv = verseText(kref);
+  const t0 = 0.9, tw = Math.min(0.12, 2.2 / words.length), t1 = t0 + words.length * tw + 0.2;
+  const intro = `<section class="t3hero full g${t.group}" data-intro>
+<div class="in">
+<div class="top"><small>${W.length ? `إقرار وستمنستر · الفصل ${W.map((c) => ar(c.n)).join(' و')}` : `${GROUPS[t.group]} · موضوع مكمّل`} · <span dir="ltr">${esc(t.en)}</span></small><span><button type="button" data-replay>أعد المقدمة</button><button type="button" data-skip>تخطَّ</button></span></div>
+<span class="em" aria-hidden="true">${glyph(EMB[t.group], 96)}</span>
+<h1>${esc(t.ar)}</h1>
+<p class="sh3">${words.map((w, i) => `<span style="--d:${(t0 + i * tw).toFixed(2)}s">${esc(w)} </span>`).join('')}</p>
+<ol class="line" aria-label="نصوص مفتاحية عبر الكتاب" style="--d:${t1.toFixed(2)}s;--n:${nodes.length}">${nodes.map((k, i) => `<li style="--d:${(t1 + 0.3 + i * 0.35).toFixed(2)}s"><a href="${refHref(k, depth)}"><i></i><span>${refLabel(k)}</span></a></li>`).join('')}</ol>
+<blockquote style="--d:${(t1 + 0.6 + nodes.length * 0.35).toFixed(2)}s">${esc(kv.length > 220 ? kv.slice(0, 218).replace(/\s+\S*$/, '') + '…' : kv)}<small>${refLabel(kref)}</small></blockquote>
+</div><span class="bar" style="--t:${(t1 + 1.2 + nodes.length * 0.35).toFixed(2)}s" aria-hidden="true"></span></section>`;
   const body = `${header({ back: '../topics.html', title: t.ar, backLabel: 'الموضوعات' })}
+${intro}
 <article class="topic g${t.group}">
 <nav class="crumbs" aria-label="مسار التنقل"><a href="${up(depth)}index.html">الرئيسية</a><span>›</span><a href="${up(depth)}topics.html">الموضوعات</a><span>›</span><a href="${up(depth)}topics.html#g${t.group}">${GROUPS[t.group]}</a><span>›</span><b>${esc(t.ar)}</b></nav>
 <a class="tback" id="tback" hidden href="#">${IC.back}<span>رجوع إلى الأصحاح</span></a>
-<header class="thero"><small>${W.length ? `إقرار وستمنستر · الفصل ${W.map((c) => ar(c.n)).join(' و')}` : `${GROUPS[t.group]} · موضوع مكمّل`} · <span dir="ltr">${esc(t.en)}</span></small><h1>${esc(t.ar)}</h1><p>${esc(t.short)}</p></header>
+
 <nav class="ttoc" aria-label="أقسام الموضوع">${toc.map(([h, l]) => `<a href="#${h}">${l}</a>`).join('')}</nav>
 ${sec('t-wcf', 'ماذا يعلّم إقرار وستمنستر؟', wcfHtml && wcfHtml + '<p class="note">صياغة مبسطة بتصرّف لنص الإقرار (1647)، فقرة فقرة، مع مختارات من الشواهد التي وضعها واضعوه. اضغط على أي شاهد لتقرأه في سياقه.</p>')}
 ${sec('t-def', 'التعريف الكتابي واللاهوتي', paras(t.def) + `<div class="tterms">${t.term.map((w) => `<div><b>${esc(w.w)}</b> <span class="orig">${esc(w.orig)}</span><p>${md(w.d)}</p></div>`).join('')}</div>`)}

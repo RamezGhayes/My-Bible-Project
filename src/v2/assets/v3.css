@@ -68,7 +68,7 @@
 .h3g button span{opacity:.6}
 .h3g button[aria-selected=true]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
 .h3g i{width:10px;height:10px;border-radius:5px;background:var(--gc)}
-.g1{--gc:#B39459}.g2{--gc:#8C2F1E}.g3{--gc:#3E7A5A}.g4{--gc:#1F2A44}.g5{--gc:#5A4A7A}
+
 .h3cg{display:grid;gap:12px}
 .h3c{display:flex;flex-direction:column;gap:6px;padding:20px;border-radius:20px;background:#fff;border:1px solid var(--line);animation:v3rise .45s var(--ease) both;transition:border-color .2s}
 .h3c:hover{border-color:var(--gc)}
@@ -346,3 +346,43 @@
 .ps-ctl .th button{flex:none;height:44px;padding:0 12px;border-radius:8px;background:var(--bg);color:var(--fg);font-family:var(--ui);font-size:12px;opacity:.5;border:2px solid transparent;white-space:nowrap}
 .ps-ctl .th button[aria-selected=true]{opacity:1;border-color:var(--gold2)}
 @media (max-width:760px){.ps-notes{position:fixed;inset:auto 0 80px 0;width:auto;max-height:40vh;background:#0B0C0F;border-top:1px solid #1E2026;border-inline-start:0;z-index:5}.ps-top b{display:none}}
+
+/* ---------- topic intro (design-v3) ---------- */
+.t3hero{position:relative;overflow:hidden;background:var(--ink);color:var(--paper);text-align:center}
+.t3hero:before{content:"";position:absolute;width:520px;height:520px;border-radius:50%;background:var(--gc);opacity:.16;top:-260px;left:50%;margin-left:-260px;filter:blur(10px)}
+.t3hero .in{position:relative;max-width:1000px;margin:0 auto;padding:22px 22px 40px;display:flex;flex-direction:column;align-items:center}
+.t3hero .top{align-self:stretch;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px;text-align:start}
+.t3hero .top small{font-family:var(--ui);font-size:12.5px;color:var(--gold2)}
+.t3hero .top>span{display:flex;gap:6px}
+.t3hero .top button{height:34px;padding:0 12px;border-radius:17px;border:1px solid #3A3D45;font-family:var(--ui);font-size:12.5px;color:#C9C3B8}
+.t3hero .em{color:var(--gold)}
+.t3hero .em svg{width:84px;height:84px}
+@keyframes t3draw{to{stroke-dashoffset:0}}
+.t3hero h1{font-family:var(--ui);font-weight:700;font-size:48px;line-height:1.15;margin:10px 0 0;animation:v3rise .8s var(--ease) .3s both}
+.t3hero .sh3{max-width:760px;margin:14px 0 0;font-size:18px;line-height:1.85;color:#E8E3D8}
+.t3hero .sh3 span{display:inline-block;white-space:pre;animation:v3fade .5s both;animation-delay:var(--d)}
+.t3hero .line{list-style:none;margin:30px 0 0;padding:0;align-self:stretch;display:grid;grid-template-columns:repeat(var(--n),1fr);position:relative}
+.t3hero .line:before,.t3hero .line:after{content:"";position:absolute;top:8px;height:2px;inset-inline:calc(50% / var(--n))}
+.t3hero .line:before{background:#3A3D45}
+.t3hero .line:after{background:var(--gold);transform-origin:right}
+@keyframes t3line{to{transform:scaleX(1)}}
+.t3hero .line li{animation:v3rise .5s var(--ease) both;animation-delay:var(--d)}
+.t3hero .line a{display:flex;flex-direction:column;align-items:center;gap:6px;position:relative;z-index:1}
+.t3hero .line i{width:18px;height:18px;border-radius:9px;background:var(--ink);border:2px solid var(--gold)}
+.t3hero .line a:hover i{background:var(--gold)}
+.t3hero .line span{font-family:var(--ui);font-size:11.5px;color:#C9C3B8;line-height:1.4}
+.t3hero blockquote{margin:28px 0 0;max-width:720px;font-family:var(--nas);font-size:19px;line-height:2;animation:v3rise .8s var(--ease) both;animation-delay:var(--d)}
+.t3hero blockquote small{display:block;font-family:var(--ui);font-size:12.5px;color:var(--gold2);margin-top:4px}
+.t3hero .bar{position:absolute;top:0;right:0;height:3px;width:100%;background:var(--gold);transform-origin:right;opacity:0}
+.t3hero.skip *,.t3hero.skip:before{animation-delay:0s!important;animation-duration:.01s!important}
+.t3hero.skip .bar{opacity:0}
+.topic .crumbs{margin-top:14px}
+@media (min-width:760px){.t3hero h1{font-size:72px}.t3hero .sh3{font-size:21px}.t3hero .line span{font-size:13px}.t3hero blockquote{font-size:22px}.t3hero .em svg{width:110px;height:110px}}
+@media (min-width:980px){.t3hero .in{padding:40px 28px 64px}.t3hero h1{font-size:88px}}
+.t3hero.reset *,.t3hero.reset .bar{animation:none!important}
+@media (prefers-reduced-motion:no-preference){
+  .t3hero .em svg *{stroke-dasharray:420;stroke-dashoffset:420;animation:t3draw 1.4s var(--ease) forwards}
+  .t3hero .line:after{transform:scaleX(0);animation:t3line 1.6s var(--ease) forwards;animation-delay:var(--d)}
+  .t3hero .bar{opacity:.8;animation:t3line var(--t) linear both}
+}
+@media (prefers-reduced-motion:reduce){.t3hero .top>span{display:none}}

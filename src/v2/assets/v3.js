@@ -157,4 +157,14 @@
     });
     var h = +(location.hash.slice(1)); if (h) go(h - 1);
   }
+
+  // ---------- topic intro: replay / skip ----------
+  $$('[data-intro]').forEach(function (h) {
+    var r = $('[data-replay]', h), k = $('[data-skip]', h);
+    k.addEventListener('click', function () { h.classList.add('skip'); k.hidden = true; });
+    r.addEventListener('click', function () {
+      h.classList.remove('skip'); k.hidden = false;
+      h.classList.add('reset'); void h.offsetWidth; h.classList.remove('reset');
+    });
+  });
 })();
