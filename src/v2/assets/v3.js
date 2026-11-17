@@ -210,4 +210,14 @@
     var car = $('.car'), tsc;
     if (car) car.addEventListener('scroll', function () { clearTimeout(tsc); tsc = setTimeout(function () { var h = location.hash.match(/^#b-(.+)$/); if (h) { mark(h[1]); var sp = $('[data-spine="' + h[1] + '"]'); if (sp) sp.parentNode.scrollTo({ left: sp.offsetLeft - sp.parentNode.clientWidth / 2, behavior: 'auto' }); } }, 150); }, { passive: true });
   }
+  // ---------- people deck: flip cards and era tabs ----------
+  $$('.fl3 .in').forEach(function (b) { b.addEventListener('click', function () { b.setAttribute('aria-pressed', b.getAttribute('aria-pressed') === 'true' ? 'false' : 'true'); }); });
+  var eraTabs = $$('[data-era-tab]');
+  eraTabs.forEach(function (t) {
+    t.addEventListener('click', function () {
+      var e = t.getAttribute('data-era-tab');
+      eraTabs.forEach(function (o) { o.setAttribute('aria-selected', o === t ? 'true' : 'false'); });
+      $$('.fl3').forEach(function (c) { c.hidden = !(e === 'all' || c.getAttribute('data-era') === e); });
+    });
+  });
 })();

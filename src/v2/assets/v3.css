@@ -675,3 +675,28 @@
 .ts3 #gchips{margin-top:18px}
 @media (max-width:979px){.shelf{margin-bottom:22px}}
 @media (min-width:980px){.main>.ts3h{max-width:none!important}.ts3h .in{padding:56px 28px 0}.ts3h h1{font-size:64px}.shelf{gap:4px;justify-content:space-between}.shelf a{width:auto;flex:1;max-width:30px}.ts3h .gl{display:flex}.ts3h .gl span{flex-basis:0}}
+
+/* ---------- people deck (flip cards) ---------- */
+.pp3{padding:30px 22px 0}
+.pp3 .top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px;margin-bottom:22px}
+.pp3 .ey{font-family:var(--ui);font-size:13px;color:#8C6E2E;font-weight:600}
+.pp3 h1{font-family:var(--ui);font-weight:700;font-size:40px;margin:2px 0 0}
+.pp3 .top p{margin:6px 0 0;color:var(--soft);max-width:560px;line-height:1.8}
+.pp3 .h3g{margin:0;padding:0}
+.fl3g{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px}
+.fl3{display:flex;flex-direction:column;gap:8px;perspective:1200px;animation:v3rise .5s var(--ease) both;animation-delay:var(--d)}
+.fl3[hidden]{display:none}
+.fl3 .in{position:relative;display:grid;text-align:start;transition:transform .6s var(--ease);transform-style:preserve-3d}
+.fl3 .in[aria-pressed=true]{transform:rotateY(180deg)}
+.fl3 .fc,.fl3 .bc{grid-area:1/1;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.fl3 .fc{width:auto}
+.fl3 .tip{font-family:var(--ui);font-size:11px;color:var(--faint);text-align:center}
+.fl3 .bc{transform:rotateY(180deg);border-radius:22px;background:var(--ink);color:var(--paper);padding:18px;display:flex;flex-direction:column;gap:10px;border:1px solid var(--gold);overflow:auto}
+.fl3 .bc>b{font-family:var(--ui);font-weight:600;font-size:19px}
+.fl3 .bc .f{display:flex;flex-direction:column;font-size:13.5px;line-height:1.7;border-top:1px solid #2A2D34;padding-top:8px}
+.fl3 .bc small{font-family:var(--ui);font-size:11.5px;color:var(--gold2)}
+.fl3 .go3{align-self:flex-start;display:flex;align-items:center;gap:4px;font-family:var(--ui);font-size:13.5px;color:var(--accent);font-weight:600}
+.fl3 .go3 .ic{width:16px;height:16px}
+.pp3all{font-family:var(--ui);font-weight:600;font-size:22px;margin:48px 22px 6px}
+@media (prefers-reduced-motion:reduce){.fl3 .in[aria-pressed=true] .fc{visibility:hidden}.fl3 .in[aria-pressed=true]{transform:none}.fl3 .in[aria-pressed=true] .bc{transform:none}}
+@media (min-width:980px){.pp3{padding:64px 28px 0}.pp3 h1{font-size:56px}.pp3all{margin:80px auto 10px;font-size:30px}}

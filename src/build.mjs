@@ -421,12 +421,25 @@ ${S.questions?.length ? `<h2>أسئلة للمناقشة</h2><ol class="hq">${S.
 function peoplePages() {
   const list = [...PEOPLE.list].sort((a, b) => (b.prof ? 1 : 0) - (a.prof ? 1 : 0) || b.chapters - a.chapters || a.apps[0].b.order - b.apps[0].b.order);
   const mini = (p) => `<a class="mini" href="${personHref(p, 0)}" data-t="${p.testament}" data-q="${esc(p.label + ' ' + (p.prof ? p.prof.full + ' ' + p.prof.role : ''))}"><div class="in"><div class="im"><span>${esc(p.mono)}</span></div><div class="tx"><b>${esc(p.prof ? p.prof.n : p.label)}</b><small>${esc(p.prof ? p.prof.role : ar(`${shortName(p.apps[0].b)} ${p.apps[0].n}`))}</small></div></div></a>`;
-  const body = `${header({ back: 'index.html', title: 'الشخصيات' })}
+  // design-v3: the curated profiles as a deck of flip cards, grouped by era (from where each first appears).
+  const eraOf = (p) => { const a = p.apps[0]; return p.testament === 'nt' ? 'العهد الجديد' : a.b.id === 'Gen' ? (a.n <= 11 ? 'البدايات' : 'الآباء') : 'الخروج والبرية'; };
+  const curated = PEOPLE.list.filter((p) => p.prof && hasPage(p)).sort((a, b) => a.apps[0].b.order - b.apps[0].b.order || a.apps[0].n - b.apps[0].n);
+  const eras = [...new Set(curated.map(eraOf))];
+  const PBG = ['#26231F', '#1F2A44', '#3A2A2E', '#2A3328', '#33281F', '#2B2F40'];
+  const flip = (p, i) => { const P = p.prof; return `<div class="fl3" data-era="${esc(eraOf(p))}" style="--d:${(i * 0.04).toFixed(2)}s"><button type="button" class="in" aria-pressed="false" aria-label="اقلب بطاقة ${esc(P.n)}">
+<span class="fc h3p"><span class="hd"><b>${esc(P.n)}</b>${P.he ? `<span lang="${p.testament === 'ot' ? 'he' : 'el'}">${esc(P.he)}</span>` : ''}</span><span class="im" style="--bg:${PBG[i % 6]}"><span>${esc([...P.n][0])}</span><em>${esc(P.era || '')}</em></span><span class="rl">${esc(P.role)}</span><span class="ln">${esc(P.line)}</span><span class="cl">${(P.cells || []).slice(0, 3).map(([k, v]) => `<span><small>${esc(k)}</small>${esc(v)}</span>`).join('')}</span><span class="tip">اضغط لتقلب البطاقة</span></span>
+<span class="bc"><b>${esc(P.full)}</b>${(P.facts || []).slice(0, 3).map(([k, v]) => `<span class="f"><small>${esc(k)}</small>${esc(v)}</span>`).join('')}${P.strong ? `<span class="f"><small>القوة</small>${esc(P.strong)}</span>` : ''}${P.weak ? `<span class="f"><small>الضعف</small>${esc(P.weak)}</span>` : ''}</span>
+</button><a class="go3" href="${personHref(p, 0)}">الملف الكامل ${IC.chev}</a></div>`; };
+  const deck = `<section class="pp3"><div class="top"><div><span class="ey">مجموعة بطاقات</span><h1>الشخصيات</h1><p>${ar(curated.length)} بطاقة منسّقة: الاسم، والمعنى، والدور. اقلب البطاقة لترى الحقائق، ونقاط القوة والضعف.</p></div>
+<div class="h3g" role="tablist" aria-label="العصور"><button type="button" role="tab" aria-selected="true" data-era-tab="all">الكل</button>${eras.map((e) => `<button type="button" role="tab" aria-selected="false" data-era-tab="${esc(e)}">${esc(e)}</button>`).join('')}</div></div>
+<div class="fl3g">${curated.map(flip).join('')}</div></section>
+<h2 class="pp3all">كل الشخصيات في الأصحاحات المدروسة</h2>`;
+  const body = `${deck}
 <div class="pad" style="padding-top:8px"><p class="lead" style="font-size:15.5px">بطاقة تعريف لكل شخص في الأصحاحات المدروسة. اقلب البطاقة لتعرف من هو، وأين يظهر، وكيف ترتبط قصته بالمسيح.</p></div>
 <label class="search">${IC.search}<input type="search" id="pq" placeholder="ابحث باسم الشخصية" aria-label="ابحث باسم الشخصية"></label>
 <div class="chips" id="pchips"><button type="button" data-t="all" aria-pressed="true">الكل · ${ar(list.length)}</button><button type="button" data-t="ot" aria-pressed="false">العهد القديم</button><button type="button" data-t="nt" aria-pressed="false">العهد الجديد</button></div>
 <div class="pgrid" id="pgrid">${list.map(mini).join('')}</div>`;
-  write('people.html', page({ title: 'الشخصيات', depth: 0, nav: 'people', body }));
+  write('people.html', page({ title: 'الشخصيات', depth: 0, nav: 'people', body, cls: 'v3' }));
   for (const p of list.filter(hasPage)) {
     const depth = 1;
     const P = p.prof;
