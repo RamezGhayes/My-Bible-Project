@@ -58,6 +58,15 @@ const PIMG = new Map();
 for (const f of fs.readdirSync(path.join(ROOT, 'src/v2/assets')).sort((a, b) => (a.endsWith('.svg') ? 0 : 1) - (b.endsWith('.svg') ? 0 : 1))) { const m = f.match(/^person-(.+)\.(svg|webp|jpg)$/); if (m) PIMG.set(m[1], f); }
 // some people appear under two page ids (e.g. «يثرون» and «رعوئيل»): share one portrait
 for (const [a, b] of Object.entries(JSON.parse(fs.readFileSync(path.join(ROOT, 'docs/portrait-alias.json'), 'utf8')))) if (!PIMG.has(a) && PIMG.has(b)) PIMG.set(a, PIMG.get(b));
+// portrait of a person at a given page depth, and a card template that shows it
+const pimgSrc = (p, depth) => (PIMG.has(p.id) ? `${'../'.repeat(depth)}assets/${PIMG.get(p.id)}` : '');
+const cardWithImg = (p, depth) => {
+  const src = pimgSrc(p, depth);
+  if (src) { p.img = src; p.imgCredit = PIMG.get(p.id).endsWith('.svg') ? 'رسم توضيحي (تجريبي)' : 'صورة تخيلية'; }
+  const html = cardTemplate(p, {});
+  delete p.img; delete p.imgCredit;
+  return html;
+};
 for (const f of fs.readdirSync(path.join(ROOT, 'src/v2/assets'))) fs.copyFileSync(path.join(ROOT, 'src/v2/assets', f), path.join(DIST, 'assets', f));
 
 const PEOPLE = buildPeople(books, content);
@@ -95,7 +104,7 @@ function home() {
 <button type="button" class="hs" data-search style="--d:${(0.8 + words.length * 0.09).toFixed(1)}s">${IC.search}<span>ابحث عن سفر، أو شاهد مثل يو ٣: ١٦، أو شخصية، أو موضوع</span><b>ابحث</b></button>
 <nav class="q" aria-label="انتقال سريع" style="--d:${(1 + words.length * 0.09).toFixed(1)}s"><a href="ot.html">العهد القديم</a><a href="nt.html">العهد الجديد</a><a href="maps.html">الشروح المصوّرة</a><a href="topics.html">الموضوعات</a><a href="people.html">الشخصيات</a></nav>
 </div></section>
-<section class="h3s">${head('دراسة الكتاب المقدس', 'سفراً سفراً، وأصحاحاً أصحاحاً. الكعب الممتلئ سفر مدروس بالكامل.')}
+<section class="h3s">${head('دراسة الكتاب المقدس', 'ادرس الكتاب سفراً بعد سفر، وأصحاحاً بعد أصحاح. كل عمود في الرسم سفر: الممتلئ دُرس كله، ونصف الممتلئ دُرس جزء منه.')}
 <div class="h3tg">${tcard('ot', 'من الخلق إلى الأنبياء: الوعد والانتظار.')}${tcard('nt', 'المسيح، والكنيسة، والرجاء الأخير.')}</div></section>
 <section class="h3s">${head('شروح مصوّرة', 'أحداث ومواضع شرحها النص بالتفصيل، مرسومة لتراها خطوة خطوة.', arrows('x'))}
 <div class="h3r" data-rail="x">${xcards}</div></section>
@@ -265,7 +274,7 @@ function readerHTML(b, n, S, depth, { overlay }) {
     ? `<header class="sh"><a class="b" href="#" aria-label="إغلاق النص">${IC.close}</a><span class="t">${chTitle(b, n)}${S ? ' · ' + md(S.title) : ''}</span><a class="b" href="#study3" aria-label="الدراسة">${IC.menu}</a></header>`
     : `<header class="sh"><a class="b" href="../${b.slug}.html#c${n}" aria-label="الأصحاحات">${IC.back}</a><span class="t">${chTitle(b, n)}</span><span style="width:44px"></span></header>`;
   return `${head}
-<div class="rtools"><span>${esc(config.bibleVersion)}</span><span style="display:flex;gap:6px"><button type="button" data-size="-1" aria-label="تصغير الخط">أ−</button><button type="button" data-size="1" aria-label="تكبير الخط">أ+</button></span><span class="thm3" role="group" aria-label="ألوان القراءة (لهذه الزيارة فقط)">${[['light', 'فاتح'], ['paper', 'ورقي'], ['night', 'ليلي'], ['contrast', 'تباين عالٍ']].map(([k, l]) => `<button type="button" data-theme3="${k}" aria-label="${l}" title="${l}"></button>`).join('')}</span></div>
+<div class="rtools"><span>${esc(config.bibleVersion)}</span><span style="display:flex;gap:6px"><button type="button" class="fsz" data-size="-1" aria-label="تصغير الخط" title="تصغير الخط"><b>أ</b><i>−</i></button><button type="button" class="fsz up" data-size="1" aria-label="تكبير الخط" title="تكبير الخط"><b>أ</b><i>+</i></button></span><span class="thm3" role="group" aria-label="ألوان القراءة (لهذه الزيارة فقط)">${[['light', 'فاتح'], ['paper', 'ورقي'], ['night', 'ليلي'], ['contrast', 'تباين عالٍ']].map(([k, l]) => `<button type="button" data-theme3="${k}" aria-label="${l}" title="${l}"></button>`).join('')}</span></div>
 ${overlay ? '' : `<div class="dh"><span class="ey">${esc(b.name)} · الأصحاح ${ar(n)} من ${ar(b.chapters)}</span><h1>${chTitle(b, n)}</h1></div><div class="soon">دراسة هذا الأصحاح قيد الإعداد. اقرأ النص الآن، وستُضاف قريباً القصة والخريطة والشخصيات والدراسة الكاملة.</div>`}
 <div class="rbody" data-share="${esc(b.name)}|${n}" data-xref="${b.id}.${n}"><p class="shint">اضغط أي آية لتنسخها، أو تحفظها صورة، أو ترى الشواهد المرتبطة بها. والكلمة التي تحتها خط منقّط لها شرح في القاموس.</p><div class="scr" lang="ar">${vs.map((v) => `${per[v.number] ? `</div><div class="peri">${md(per[v.number])}</div><div class="scr">` : ''}<span class="v${v.number >= key[0] && v.number <= key[1] ? ' key' : ''}" id="v${v.number}"><span class="vn">${ar(v.number)}</span>${GL.html(v)}</span> `).join('')}</div></div>${GL.cards}
 ${nav}`;
@@ -311,7 +320,7 @@ function chapterPage(b, n) {
   const XS = explainersFor(b, n);
   for (const x of XS) cards.push(card('#14161C', '#FAF8F4', xStory(x, b, n, depth)));
   if (people.length || groups.length) {
-    const rows = [...people.slice(0, 5).map(({ p, d }) => `<a class="pr" href="#p-${p.id}"><span class="av">${esc(p.mono)}</span><span><b>${esc(p.prof ? p.prof.full : p.label)}</b><small>${esc(p.prof ? p.prof.role : clip(d, 60))}</small></span>${IC.chev}</a>`), ...groups.slice(0, Math.max(0, 4 - people.length)).map((g) => `<div class="pr"><span class="av" style="font-size:16px;color:#888">·</span><span><b>${md(g.n)}</b><small>${esc(clip(g.d, 60))}</small></span></div>`)];
+    const rows = [...people.slice(0, 5).map(({ p, d }) => `<a class="pr" href="#p-${p.id}"><span class="av${pimgSrc(p, depth) ? ' pic' : ''}">${pimgSrc(p, depth) ? `<img src="${pimgSrc(p, depth)}" alt="" loading="lazy">` : esc(p.mono)}</span><span><b>${esc(p.prof ? p.prof.full : p.label)}</b><small>${esc(p.prof ? p.prof.role : clip(d, 60))}</small></span>${IC.chev}</a>`), ...groups.slice(0, Math.max(0, 4 - people.length)).map((g) => `<div class="pr"><span class="av" style="font-size:16px;color:#888">·</span><span><b>${md(g.n)}</b><small>${esc(clip(g.d, 60))}</small></span></div>`)];
     cards.push(card('#17191E', '#FAF8F4', `<div class="lab">الشخصيات</div><h2>من في القصة؟</h2><div>${rows.join('')}</div>`, people.length ? null : null));
   }
   if (kvRef) cards.push(card('#FAF8F4', '#17191E', `<div class="lab">الآية المفتاحية</div><q class="q">${esc(clip(quoteText(kvRef), 260))}</q><span class="ref">${refLabel(kvRef)}</span>`, 'refs'));
@@ -410,7 +419,7 @@ ${XS.map((x) => `<a class="xa" href="${explainHref(x, depth)}"><small>شرح م�
 <div class="dots"></div><div class="hint">اسحب يميناً أو يساراً لتقلب البطاقة</div>
 <div class="who">${people.map(({ p }) => `<button type="button" data-p="${p.id}" aria-pressed="false">${esc(p.prof ? p.prof.n : p.label)}</button>`).join('')}</div>
 <a class="full" data-vfull href="#">الملف الكامل للشخصية</a>
-${people.map(({ p }) => cardTemplate(p, {})).join('')}
+${people.map(({ p }) => cardWithImg(p, depth)).join('')}
 ${people.map(({ p }) => `<a hidden data-pid="${p.id}" href="${personHref(p, depth)}"></a>`).join('')}
 </div>` : '';
   // Printable study sheet: hidden on screen, the only thing printed from a chapter page.
@@ -518,7 +527,17 @@ ${ERA_MAP[e.n] ? `<a class="go" style="margin-top:12px;align-self:flex-start" hr
 function treeHtml() {
   const profiles = {};
   for (const p of PEOPLE.list) if (p.prof && hasPage(p)) profiles[p.prof.id] = { prof: p.prof, href: personHref(p, 0), img: PIMG.has(p.prof.id) ? `assets/${PIMG.get(p.prof.id)}` : '' };
-  write('tree.html', page({ title: 'شجرة العائلة', depth: 0, nav: 'people', body: treePage({ profiles }), cls: 'v3' }));
+  // Tree nodes without a full profile that are the same person as a people page (checked by hand: same verse and
+  // context). Not mapped on purpose: lamech (Noah's father; the people page «لامك» is Cain's line), the king Manasseh,
+  // Eleazar and Jacob of Matthew 1, and Mary (Christ's mother is not pictured).
+  const TREE_PEOPLE = { cain: 'p158t56v', abel: 'p1548w9u', seth: 'pscebrl', enoch: 'p13dxyjt', methuselah: 'p1ig2dy1', shem: 'pscgl4l', ham: 'psce2nf', japheth: 'pc0l4tf', peleg: 'pc0c59m', terah: 'pbyj791', hagar: 'pc0amqh', keturah: 'p158hk81', rebekah: 'pc0ohq7', ishmael: 'p1ofuu2v', leah: 'pc0x5j9', rachel: 'p15hgaz5', esau: 'pc0ugb0', judah: 'p15d5vee', reuben: 'pjkxdne', simeon: 'p13mfeea', levi: 'p1s6xtlw', dan: 'psce48a', benjamin: 'pq4ihwu', dinah: 'pbyjqcu', amram: 'p15lr6nf', asenath: 'p13dklcv', manasseh: 'pc0wfp9', ephraim: 'pn20yv3', tamar: 'p13isqmz', hezron: 'p13h15oj', nahshon: 'pm66z64', elisheba: 'p1dog8a3', rahab: 'p1liwocx', david: 'p1s3owui', josephm: 'p10canbp', john: 'pd599of' };
+  const pages = {};
+  for (const [tid, pid] of Object.entries(TREE_PEOPLE)) {
+    const p = PEOPLE.list.find((x) => x.id === pid);
+    if (!p || !hasPage(p)) throw new Error(`tree: no people page ${pid} for ${tid}`);
+    pages[tid] = { href: personHref(p, 0), img: PIMG.has(pid) ? `assets/${PIMG.get(pid)}` : '' };
+  }
+  write('tree.html', page({ title: 'شجرة العائلة', depth: 0, nav: 'people', body: treePage({ profiles, pages }), cls: 'v3' }));
 }
 treeHtml();
 write('glossary.html', page({ title: 'القاموس: كلمات الكتاب الصعبة', depth: 0, nav: 'home', body: glossaryPage(0), cls: 'v3' }));
@@ -617,7 +636,10 @@ fs.writeFileSync(path.join(DIST, 'manifest.webmanifest'), JSON.stringify({
 {
   const hash = (str) => { let h = 2166136261; for (let i = 0; i < str.length; i++) { h ^= str.charCodeAt(i); h = Math.imul(h, 16777619); } return (h >>> 0).toString(36); };
   const core = ['index.html', 'offline.html', 'assets/v2.css', 'assets/v3.css', 'assets/v2.js', 'assets/v3.js', 'assets/search.js', 'assets/icon.svg'];
-  const ver = hash(core.map((f) => fs.readFileSync(path.join(DIST, f), 'utf8')).join(''));
+  // the version covers every script and stylesheet (not only the core list), so a change to any of them, like the
+  // atonement film in t3d.js, makes browsers drop the old cache instead of serving the old file
+  const allAssets = fs.readdirSync(path.join(DIST, 'assets')).filter((f) => /\.(js|css)$/.test(f)).sort().map((f) => 'assets/' + f);
+  const ver = hash([...core, ...allAssets].map((f) => fs.readFileSync(path.join(DIST, f), 'utf8')).join(''));
   fs.writeFileSync(path.join(DIST, 'sw.js'), `/* offline reading: network first for pages, cache as you go. Version ${ver} */
 const V = 'lmg-${ver}', CORE = ${JSON.stringify(core)};
 self.addEventListener('install', (e) => { e.waitUntil(caches.open(V).then((c) => c.addAll(CORE)).then(() => self.skipWaiting())); });

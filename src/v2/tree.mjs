@@ -108,7 +108,7 @@ const ERAS = [
   }
 ];
 
-export function treePage({ profiles, depth = 0 }) {
+export function treePage({ profiles, pages = {}, depth = 0 }) {
   // Safety net: each name must appear in its verse (letters only, ignoring vowel marks and hamza forms).
   const norm = (s) => s.replace(/[ً-ْٰـ]/g, '').replace(/[ٱأإآ]/g, 'ا');
   const all = [];
@@ -123,7 +123,7 @@ export function treePage({ profiles, depth = 0 }) {
 
   let gen = 0;
   const rel = {};
-  const btn = (p, cls, r = '') => { rel[p.id] = r; return `<button type="button" class="tq ${cls}${profiles[p.id] ? ' pf' : ''}" data-node="${p.id}" aria-pressed="false">${r ? `<small>${esc(r)}</small>` : ''}<b>${esc(p.n)}</b></button>`; };
+  const btn = (p, cls, r = '') => { rel[p.id] = r; return `<button type="button" class="tq ${cls}${profiles[p.id] || pages[p.id] ? ' pf' : ''}" data-node="${p.id}" aria-pressed="false">${r ? `<small>${esc(r)}</small>` : ''}<b>${esc(p.n)}</b></button>`; };
   const row = (r) => {
     gen += 1;
     const side = (xs) => (xs || []).map(([rl, p]) => btn(p, 'sd', rl)).join('');
@@ -136,6 +136,8 @@ export function treePage({ profiles, depth = 0 }) {
     const pr = profiles[p.id], r = rel[p.id];
     const head = `<small>${r ? `${esc(r)} · ` : ''}<a class="r" href="${refHref(p.ref, depth)}">${refLabel(p.ref)}</a></small>`;
     const vs = `<blockquote class="tvq">«${esc(verseText(p.ref))}»</blockquote>`;
+    const pg = pages[p.id];
+    if (!pr && pg) return `<div class="tcd">${head}${pg.img ? `<a class="tpi" href="${pg.href}"><img src="${pg.img}" alt="" loading="lazy"></a>` : ''}<b>${esc(p.n)}</b>${p.note ? `<p>${esc(p.note)}</p>` : ''}${vs}<a class="tpl" href="${pg.href}">صفحة الشخصية ‹</a></div>`;
     if (!pr) return `<div class="tcd">${head}<b>${esc(p.n)}</b>${p.note ? `<p>${esc(p.note)}</p>` : ''}${vs}</div>`;
     const Q = pr.prof;
     return `<div class="tcd">${head}<div class="h3p"><span class="hd"><b>${esc(Q.n)}</b>${Q.he ? `<span lang="he">${esc(Q.he)}</span>` : ''}</span><span class="im${pr.img ? ' pic' : ''}" style="--bg:#2A3328">${pr.img ? `<img src="${pr.img}" alt="" loading="lazy">` : `<span>${esc([...Q.n][0])}</span>`}<em>${esc(Q.era || '')}</em></span><span class="rl">${esc(Q.role)}</span><span class="ln">${esc(Q.line)}</span><span class="cl">${(Q.cells || []).slice(0, 3).map(([k, v]) => `<span><small>${esc(k)}</small>${esc(v)}</span>`).join('')}</span></div>${p.note ? `<p>${esc(p.note)}</p>` : ''}${vs}<a class="full" href="${pr.href}">الملف الكامل للشخصية</a></div>`;
@@ -146,7 +148,7 @@ export function treePage({ profiles, depth = 0 }) {
 <aside class="tr3a"><span class="ey">شجرة العائلة · من آدم إلى المسيح</span><h1>نسل الوعد</h1><p>الخط الأحمر في الوسط هو نسب المسيح جيلاً بعد جيل، مرقّماً بالترتيب: من آدم إلى إبراهيم كما في التكوين ٥ و١١، ومن إبراهيم إلى المسيح كما في متى ١. وحوله الزوجات والإخوة وأهم الأقارب. اضغط أي اسم لترى الآية التي تذكره.</p><p class="tnum">الأرقام ترتيب الأسماء في هذه القائمة، لا العدد الفعلي للأجيال: الأنساب في الكتاب تختصر أحياناً، ومتى نفسه يحذف بعض الأسماء.</p>
 <nav class="tjump" aria-label="المراحل">${ERAS.map((e) => `<a href="#${e.id}">${esc(e.t)}</a>`).join('')}</nav>
 <div class="slot" aria-live="polite">${card(start)}</div>
-<div class="leg"><span><i class="ln"></i>نسب المسيح</span><span><i class="sd"></i>زوجة أو أم</span><span><i class="kn"></i>إخوة وأقارب</span><span><i class="dot" style="background:var(--gold)"></i>له ملف كامل</span></div>
+<div class="leg"><span><i class="ln"></i>نسب المسيح</span><span><i class="sd"></i>زوجة أو أم</span><span><i class="kn"></i>إخوة وأقارب</span><span><i class="dot" style="background:var(--gold)"></i>له صفحة شخصية</span></div>
 <template data-cards>${all.map((p) => `<div data-card="${p.id}">${card(p)}</div>`).join('')}</template>
 </aside>
 <div class="tr4s">${body}

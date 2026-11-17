@@ -756,7 +756,7 @@ html[data-read=night] #read .peri,html[data-read=night] .reader-page .peri{color
 html[data-read=contrast] #read .vn,html[data-read=contrast] .reader-page .vn{color:#FFD873}
 html[data-read=night] #read .sh,html[data-read=contrast] #read .sh{background:var(--rbg);color:var(--rfg);border-color:#2A2D34}
 html[data-read=night] #read .rtools,html[data-read=contrast] #read .rtools,html[data-read=night] .reader-page .rtools,html[data-read=contrast] .reader-page .rtools{color:var(--rfg)}
-html[data-read=night] .rtools button:not(.thm3 button),html[data-read=contrast] .rtools button:not(.thm3 button){background:#2A2D34;color:var(--rfg);border-color:#3A3D45}
+html[data-read=night] .rtools button:not(.thm3 button),html[data-read=contrast] .rtools button:not(.thm3 button),html[data-read=night] .rtools .fsz,html[data-read=contrast] .rtools .fsz{background:#2A2D34;color:var(--rfg);border-color:#3A3D45}
 .xpres{display:inline-flex;align-items:center;gap:8px;margin-top:18px;height:44px;padding:0 18px;border-radius:22px;border:1px solid rgba(215,196,154,.5);color:#F2EEE6;font-family:var(--ui);font-size:13.5px;align-self:flex-start;width:max-content;max-width:100%}
 .xpres:hover{border-color:var(--gold)}
 .xpres .ic{width:18px;height:18px;color:var(--gold2)}
@@ -1051,3 +1051,20 @@ html[data-read=night] .rtools button:not(.thm3 button),html[data-read=contrast] 
 .h3p .im.pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 28%}.h3p .im.pic em{z-index:1}
 .portrait img{object-position:50% 28%}
 .mini .im.pic{background:#1e1c19}.mini .im.pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 28%}
+.tr3a .tcd .tpi{display:block;border-radius:12px;overflow:hidden;background:#2A3328}
+.tr3a .tcd .tpi img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;object-position:50% 28%}
+.tr3a .tcd .tpl{font-family:var(--ui);font-size:14px;color:var(--gold2);text-decoration:none;align-self:flex-start}
+/* font size buttons: a small and a large alef, each with its sign */
+.rtools .fsz{display:inline-flex;align-items:center;justify-content:center;gap:3px;direction:ltr;min-width:48px;height:38px;padding:0 10px;line-height:1}
+.rtools .fsz b{font-family:var(--nas);font-weight:700;font-size:15px;line-height:1}
+.rtools .fsz.up b{font-size:21px}
+.rtools .fsz i{font-style:normal;font-family:var(--body);font-weight:600;font-size:15px;line-height:1;opacity:.75}
+/* chapter numbers: even squares, classic digits, clear active state */
+.scrub{gap:6px}
+.scrub button{min-width:40px;width:40px;height:40px;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;font-family:var(--body);font-size:15px;font-weight:600;color:var(--muted,#6f6a60);line-height:1;padding:0}
+.scrub button:hover{background:rgba(0,0,0,.05)}
+.scrub button.d{color:var(--gold2,var(--gold))}
+.scrub button.on{background:var(--ink);color:#fff}
+.rtools .fsz{color:var(--ink);background:#fff}
+.rtools .fsz i{opacity:1}
+.av.pic img{width:100%;height:100%;object-fit:cover;object-position:50% 25%;display:block}
