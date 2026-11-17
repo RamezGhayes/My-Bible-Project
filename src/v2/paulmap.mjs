@@ -24,6 +24,7 @@ const COLORS = ['#8C2F1E', '#2F5D8C', '#4E7A3A', '#7A4A8C'];
 
 export function paulMapPage({ depth, people, imgOf, personHref }) {
   const u = up(depth);
+  const CRED = JSON.parse(fs.readFileSync(path.join(ROOT, 'docs/place-credits.json'), 'utf8'));
   const OK = new Set(JSON.parse(fs.readFileSync(path.join(ROOT, 'docs/place-approved.json'), 'utf8')));
   const P = (id) => people.find((p) => p.id === id);
   const pchip = (id) => {
@@ -41,7 +42,9 @@ export function paulMapPage({ depth, people, imgOf, personHref }) {
   const placeImg = (c) => {
     if (!OK.has(c)) return '';
     const f = ['webp', 'jpg'].map((x) => `place-${c}.${x}`).find((x) => fs.existsSync(path.join(ROOT, 'src/v2/assets', x)));
-    return f ? `<figure class="pmi"><img src="${u}assets/${f}" alt="" loading="lazy"><figcaption>تصوّر فني</figcaption></figure>` : '';
+    const K = CRED[c];
+    if (f && !K) throw new Error(`paul map: no credit for place-${c}`);
+    return f ? `<figure class="pmi"><img src="${u}assets/${f}" alt="${esc(K.caption)}" loading="lazy"><figcaption><b>الموقع اليوم:</b> ${esc(K.caption)}<small><a href="${esc(K.page)}" rel="noopener">${esc(K.artist)}</a>، ${esc(K.license)}، ويكيميديا كومنز</small></figcaption></figure>` : '';
   };
 
   const data = PJ.map((j, ji) => ({
