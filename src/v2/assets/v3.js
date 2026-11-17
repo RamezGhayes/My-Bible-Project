@@ -239,4 +239,60 @@
     });
     mapv.addEventListener('click', function (e) { if (e.isTrusted && tm && !e.target.closest('.mplay')) stop(); });
   }
+  // ---------- share a verse: tap verses in the reader, then copy or make an image card ----------
+  // Text is copied exactly as shown (Van Dyck). The image is drawn here in the browser; nothing is uploaded.
+  var AR2 = function (n) { return String(n).replace(/\d/g, function (d) { return '٠١٢٣٤٥٦٧٨٩'[d]; }); };
+  $$('[data-share]').forEach(function (box) {
+    var parts = box.getAttribute('data-share').split('|'), book = parts[0], ch = +parts[1];
+    var bar = document.createElement('div'); bar.className = 'shr3'; bar.hidden = true;
+    bar.innerHTML = '<span data-sl></span><button type="button" data-copy>نسخ</button><button type="button" data-img>صورة للمشاركة</button><button type="button" data-clear aria-label="إلغاء التحديد">×</button>';
+    document.body.appendChild(bar);
+    var sel = [];
+    var picked = function () { return sel.slice().sort(function (a, b) { return a - b; }); };
+    var refOf = function () { var p = picked(), a = p[0], z = p[p.length - 1]; return book + ' ' + AR2(ch) + ': ' + AR2(a) + (z > a ? '–' + AR2(z) : ''); };
+    var textOf = function () { return picked().map(function (n) { var v = box.querySelector('#v' + n).cloneNode(true); var vn = v.querySelector('.vn'); if (vn) vn.remove(); return v.textContent.trim(); }).join(' '); };
+    var paint = function () {
+      $$('.v', box).forEach(function (v) { v.classList.toggle('sel3', sel.indexOf(+v.id.slice(1)) >= 0); });
+      bar.hidden = !sel.length; if (sel.length) $('[data-sl]', bar).textContent = refOf();
+    };
+    box.addEventListener('click', function (e) {
+      var v = e.target.closest('.v'); if (!v || e.target.closest('a')) return;
+      var n = +v.id.slice(1), i = sel.indexOf(n);
+      if (i >= 0) sel.splice(i, 1); else if (sel.length < 6) sel.push(n);
+      paint();
+    });
+    $('[data-clear]', bar).addEventListener('click', function () { sel = []; paint(); });
+    $('[data-copy]', bar).addEventListener('click', function () {
+      var t = textOf() + '\n(' + refOf() + ')';
+      var ok = function () { var b = $('[data-copy]', bar); b.textContent = 'نُسخ'; setTimeout(function () { b.textContent = 'نسخ'; }, 1400); };
+      if (navigator.clipboard) navigator.clipboard.writeText(t).then(ok, function () {}); 
+    });
+    $('[data-img]', bar).addEventListener('click', function () {
+      var W = 1080, H = 1350, c = document.createElement('canvas'); c.width = W; c.height = H;
+      var x = c.getContext('2d');
+      var draw = function () {
+        x.fillStyle = '#17191E'; x.fillRect(0, 0, W, H);
+        x.strokeStyle = 'rgba(179,148,89,.35)'; x.lineWidth = 2; x.beginPath(); x.arc(W / 2, -120, 620, 0, Math.PI * 2); x.stroke();
+        x.fillStyle = '#B39459'; x.fillRect(W / 2 - 40, 220, 80, 4);
+        x.direction = 'rtl'; x.textAlign = 'center'; x.fillStyle = '#FAF8F4';
+        var text = textOf(), size = text.length > 420 ? 40 : text.length > 240 ? 48 : 58, lh = size * 1.85;
+        x.font = size + 'px "Noto Naskh Arabic", serif';
+        var words = text.split(/\s+/), lines = [], ln = '';
+        words.forEach(function (w) { var t = ln ? ln + ' ' + w : w; if (x.measureText(t).width > W - 200 && ln) { lines.push(ln); ln = w; } else ln = t; });
+        if (ln) lines.push(ln);
+        var y0 = Math.max(300, (H - lines.length * lh) / 2);
+        lines.forEach(function (l, i) { x.fillText(l, W / 2, y0 + i * lh); });
+        x.font = '600 34px "IBM Plex Sans Arabic", sans-serif'; x.fillStyle = '#D7C49A';
+        x.fillText(refOf(), W / 2, y0 + lines.length * lh + 50);
+        x.font = '500 30px "Readex Pro", sans-serif'; x.fillStyle = '#A8A296'; x.fillText('لمجد الله', W / 2, H - 90);
+        c.toBlob(function (blob) {
+          var name = 'آية-' + refOf().replace(/[\s:–]+/g, '-') + '.png';
+          var file = window.File ? new File([blob], name, { type: 'image/png' }) : null;
+          if (file && navigator.canShare && navigator.canShare({ files: [file] })) { navigator.share({ files: [file], title: refOf() }).catch(function () {}); return; }
+          var a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = name; document.body.appendChild(a); a.click(); setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 500);
+        }, 'image/png');
+      };
+      if (document.fonts && document.fonts.load) Promise.all([document.fonts.load('58px "Noto Naskh Arabic"'), document.fonts.load('600 34px "IBM Plex Sans Arabic"')]).then(draw, draw); else draw();
+    });
+  });
 })();

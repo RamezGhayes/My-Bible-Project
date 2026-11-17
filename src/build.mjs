@@ -15,7 +15,9 @@ import { EXPLAINERS, explainersFor, explainPage, plaguesPresent, storyCard as xS
 const DIST = path.join(ROOT, 'dist');
 fs.rmSync(DIST, { recursive: true, force: true });
 const PAGES = [];
-const write = (rel, html) => { if (rel.endsWith('.html')) { PAGES.push(rel); const url = config.domain + '/' + (rel === 'index.html' ? '' : rel.replace(/index\.html$/, '')); html = html.replace('</head>', `<link rel="canonical" href="${url}">\n<meta property="og:url" content="${url}">\n</head>`); } const f = path.join(DIST, rel); fs.mkdirSync(path.dirname(f), { recursive: true }); fs.writeFileSync(f, html); };
+// Social preview images (1200×630), made by scripts/make-og.py and kept in src/v2/assets as og-*.png.
+const ogFor = (rel) => { const m = rel.match(/^explain\/([a-z]+)(-present)?\.html$/); const k = m ? 'explain-' + m[1] : rel === 'tree.html' ? 'tree' : rel === 'harmony.html' ? 'harmony' : 'default'; return fs.existsSync(path.join(ROOT, 'src/v2/assets', `og-${k}.png`)) ? `og-${k}.png` : 'og-default.png'; };
+const write = (rel, html) => { if (rel.endsWith('.html')) { PAGES.push(rel); const url = config.domain + '/' + (rel === 'index.html' ? '' : rel.replace(/index\.html$/, '')); const og = ogFor(rel); html = html.replace('</head>', `<link rel="canonical" href="${url}">\n<meta property="og:url" content="${url}">\n<meta property="og:image" content="${config.domain}/assets/${og}">\n<meta property="og:image:width" content="1200">\n<meta property="og:image:height" content="630">\n</head>`).replace('<meta name="twitter:card" content="summary">', '<meta name="twitter:card" content="summary_large_image">'); } const f = path.join(DIST, rel); fs.mkdirSync(path.dirname(f), { recursive: true }); fs.writeFileSync(f, html); };
 const readJSON = (rel) => JSON.parse(fs.readFileSync(path.join(ROOT, rel), 'utf8'));
 
 // ---------- content ----------
@@ -255,7 +257,7 @@ function readerHTML(b, n, S, depth, { overlay }) {
   return `${head}
 <div class="rtools"><span>${esc(config.bibleVersion)}</span><span style="display:flex;gap:6px"><button type="button" data-size="-1" aria-label="تصغير الخط">أ−</button><button type="button" data-size="1" aria-label="تكبير الخط">أ+</button></span></div>
 ${overlay ? '' : `<div class="dh"><span class="ey">${esc(b.name)} · الأصحاح ${ar(n)} من ${ar(b.chapters)}</span><h1>${chTitle(b, n)}</h1></div><div class="soon">دراسة هذا الأصحاح قيد الإعداد. اقرأ النص الآن، وستُضاف قريباً القصة والخريطة والشخصيات والدراسة الكاملة.</div>`}
-<div class="rbody"><div class="scr" lang="ar">${vs.map((v) => `${per[v.number] ? `</div><div class="peri">${md(per[v.number])}</div><div class="scr">` : ''}<span class="v${v.number >= key[0] && v.number <= key[1] ? ' key' : ''}" id="v${v.number}"><span class="vn">${ar(v.number)}</span>${esc(v.text)}</span> `).join('')}</div></div>
+<div class="rbody" data-share="${esc(b.name)}|${n}"><p class="shint">اضغط أي آية (حتى ست آيات) لتنسخها أو تحفظها صورة للمشاركة.</p><div class="scr" lang="ar">${vs.map((v) => `${per[v.number] ? `</div><div class="peri">${md(per[v.number])}</div><div class="scr">` : ''}<span class="v${v.number >= key[0] && v.number <= key[1] ? ' key' : ''}" id="v${v.number}"><span class="vn">${ar(v.number)}</span>${esc(v.text)}</span> `).join('')}</div></div>
 ${nav}`;
 }
 
@@ -549,6 +551,15 @@ searchIndex();
 fs.writeFileSync(path.join(DIST, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${PAGES.filter((r) => !r.startsWith('maps/')).map((r) => `<url><loc>${config.domain}/${r === 'index.html' ? '' : r}</loc></url>`).join('\n')}\n</urlset>\n`);
 fs.writeFileSync(path.join(DIST, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap: ${config.domain}/sitemap.xml\n`);
 fs.writeFileSync(path.join(DIST, 'assets/icon.svg'), '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#17191E"/><g fill="none" stroke="#D7C49A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"><path d="M32 19c-6-4-13-5-20-4v30c7-1 14 0 20 4 6-4 13-5 20-4V15c-7-1-14 0-20 4z"/><path d="M32 19v30"/></g></svg>');
+// ---------- social image sources (only with OG=1; scripts/make-og.py turns them into PNGs) ----------
+if (process.env.OG) {
+  const card = (k, ey, title, sub, mo) => fs.writeFileSync(path.join(DIST, `og-src-${k}.html`), `<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><link rel="stylesheet" href="og-fonts.css"><style>html{overflow:hidden;width:1200px;height:630px}body{margin:0;width:1200px;height:630px;background:#17191E;color:#FAF8F4;font-family:'IBM Plex Sans Arabic',sans-serif;display:flex;align-items:center;gap:56px;padding:0 72px;box-sizing:border-box;overflow:hidden;position:relative}.t{flex:1;min-width:0}small{color:#D7C49A;font-size:26px;font-weight:600}h1{font-family:'Readex Pro',sans-serif;font-size:${title.length > 14 ? 72 : 96}px;line-height:1.1;margin:12px 0 0}p{font-size:28px;color:#C9C3B8;margin:18px 0 0;line-height:1.6}.b{position:absolute;bottom:40px;right:72px;font-family:'Readex Pro';font-size:24px;color:#A8A296}.m{display:grid;grid-template-columns:repeat(${mo.length > 8 ? 4 : mo.length > 4 ? 3 : 2},96px);gap:12px}.m i{width:96px;height:96px;border-radius:20px;display:grid;place-items:center}.m svg{width:60%;height:60%}circle.r{fill:none;stroke:#B39459;opacity:.18}</style></head><body><svg style="position:absolute;left:0;top:0" width="1200" height="630"><circle class="r" cx="180" cy="120" r="370"/></svg><div class="t"><small>${ey}</small><h1>${esc(title)}</h1><p>${esc(sub)}</p></div>${mo.length ? `<div class="m">${mo.slice(0, 12).map((c) => `<i style="background:${c.color};color:${c.ink}">${glyph(c.icon, 40)}</i>`).join('')}</div>` : ''}<span class="b">لمجد الله · ${esc(config.domain.replace(/^https?:\/\//, ''))}</span></body></html>`);
+  card('default', 'دراسة الكتاب المقدس من منظور مُصلَح', config.nameAr, 'سفراً سفراً، وأصحاحاً أصحاحاً: النص، والقصة، والدراسة، والشروح المصوّرة.', EXPLAINERS.flatMap((x) => xChips(x)).filter((c, i, a) => a.findIndex((d) => d.icon === c.icon) === i).filter((_, i) => i % 3 === 0).slice(0, 12));
+  for (const x of EXPLAINERS) card(`explain-${x.id}`, `شرح مصوّر · ${bookById[x.book].name}`, x.title, x.sub, xChips(x));
+  card('tree', 'شجرة العائلة · سفر التكوين', 'خط الوعد', 'من آدم إلى أسباط إسرائيل الاثني عشر، وكل اسم مربوط بآيته.', []);
+  card('harmony', 'الأناجيل جنباً إلى جنب', 'إشباع الخمسة الآلاف', 'حادثة واحدة في الأناجيل الأربعة: ما تتفق عليه، وما ينفرد به كل إنجيل.', []);
+}
+
 // ---------- offline reading (PWA) ----------
 // Pages are kept in the browser's cache as you open them, so they can be read again without a connection.
 // This is a cache of public pages only: nothing about the reader is stored.

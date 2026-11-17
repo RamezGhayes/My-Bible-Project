@@ -729,3 +729,14 @@
 .mplay[aria-pressed=true]{background:var(--gold);color:var(--ink)}
 .mplay[aria-pressed=true] span{color:var(--ink)}
 .mk.done{opacity:.75}
+/* ---------- verse sharing ---------- */
+[data-share] .v{cursor:pointer;border-radius:4px;transition:background .2s}
+[data-share] .v.sel3{background:rgba(179,148,89,.28);box-shadow:0 0 0 2px rgba(179,148,89,.28)}
+.shr3{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);z-index:200;display:flex;align-items:center;gap:6px;padding:8px;border-radius:26px;background:var(--ink);color:var(--paper);box-shadow:0 14px 40px rgba(0,0,0,.35);font-family:var(--ui);font-size:13.5px;animation:v3rise .3s var(--ease) both;max-width:calc(100vw - 20px)}
+.shr3[hidden]{display:none}
+.shr3 [data-sl]{padding:0 10px;color:var(--gold2);white-space:nowrap}
+.shr3 button{height:38px;padding:0 14px;border-radius:19px;background:#2A2D34;white-space:nowrap}
+.shr3 [data-img]{background:var(--gold);color:var(--ink);font-weight:600}
+.shr3 [data-clear]{width:38px;padding:0;font-size:18px}
+@media (max-width:600px){.shr3{left:10px;right:10px;transform:none;bottom:12px;justify-content:space-between;flex-wrap:wrap;border-radius:20px}.shr3 [data-sl]{flex-basis:100%;text-align:center;padding:2px 0 4px}.shr3 button{flex:1}.shr3 [data-clear]{flex:none}}
+.shint{margin:0 0 10px;font-family:var(--ui);font-size:12px;color:var(--faint)}
