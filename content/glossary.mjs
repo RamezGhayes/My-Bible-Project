@@ -26,10 +26,10 @@ export const GLOSSARY = [
   {
     id: 'ark', w: 'تابوت العهد', en: 'Ark of the covenant', cat: 'worship', icon: 'ark',
     find: ['تابوت العهد', 'تابوت الرب', 'تابوت الله', 'تابوت الشهادة', 'التابوت', 'تابوتا'], books: ['Exod', 'Lev', 'Num', 'Deut', 'Josh', 'Judg', '1Sam', '2Sam', '1Kgs', '2Kgs', '1Chr', '2Chr', 'Ps', 'Jer', 'Heb', 'Rev'],
-    d: 'صندوق مقدس من خشب السنط مغشّى بالذهب، كان في قدس الأقداس، وهو أقدس ما في المسكن.',
+    d: 'صندوق مقدس من خشب السنط مغشّى بالذهب، وُضع داخل الحجاب في قدس الأقداس.',
     more: 'طوله ذراعان ونصف، وعرضه وارتفاعه ذراع ونصف. يُسمّى أيضاً تابوت الله وتابوت الشهادة. وُضع فيه لوحا العهد وقسط المن وعصا هارون التي أفرخت.',
     refs: ['Exod.25.10', 'Exod.25.22', 'Heb.9.4'],
-    checks: [['Exod.25.10', 'طوله ذراعان ونصف وعرضه ذراع ونصف وارتفاعه ذراع ونصف'], ['Heb.9.4', 'عصا هارون التي افرخت']],
+    checks: [['Exod.25.10', 'طوله ذراعان ونصف وعرضه ذراع ونصف وارتفاعه ذراع ونصف'], ['Heb.9.4', 'عصا هارون التي افرخت'], ['Exod.26.34', 'قدس الاقداس']],
     src: { k: 'easton', t: 'Ark' },
     basis: ['It is distinguished from all others by such titles as the "ark of God" (1 Sam. 3:3), "ark of the covenant" (Josh. 3:6; Heb. 9:4), "ark of the testimony" (Ex. 25:22).', 'It was made of acacia or shittim wood']
   },
@@ -46,7 +46,7 @@ export const GLOSSARY = [
   {
     id: 'cherub', w: 'الكروبيم', en: 'Cherubim', cat: 'worship', icon: 'ark',
     find: ['كروبيم', 'كروبين', 'كروبا', 'كروب'],
-    d: 'كائنات سماوية رمزية تُذكر أولاً عند طرد الإنسان من جنة عدن، ثم على غطاء التابوت حيث وعد الله أن يكلّم موسى من بينهما.',
+    d: 'صور رمزية تُذكر أولاً عند طرد الإنسان من جنة عدن، ثم على غطاء التابوت حيث وعد الله أن يكلّم موسى من بينهما.',
     more: 'كان على الغطاء كروبان، واحد عند كل طرف، وجهاهما نحو الغطاء. ولم يذكر الكتاب شكلهم عند أول ذكر.',
     refs: ['Gen.3.24', 'Exod.25.18', 'Exod.25.22'],
     checks: [['Gen.3.24', 'الكروبيم'], ['Exod.25.22', 'من بين الكروبين']],
@@ -251,7 +251,7 @@ export const GLOSSARY = [
     d: 'عُشر الدخل يُخصَّص لله. عرفه الآباء قبل موسى: أعطى إبراهيم ملكي صادق العشر، ونذر يعقوب العشر.',
     more: 'في الشريعة كانت العشور ميراث اللاويين عوض خدمتهم في خيمة الاجتماع.',
     refs: ['Gen.14.20', 'Gen.28.22', 'Num.18.21', 'Mal.3.10'],
-    checks: [['Gen.14.20', 'فاعطاه عشرا من كل شيء'], ['Num.18.21', 'كل عشر في اسرائيل ميراثا']],
+    checks: [['Gen.14.20', 'فاعطاه عشرا من كل شيء'], ['Num.18.21', 'كل عشر في اسرائيل ميراثا'], ['Gen.28.22', 'اعشره لك']],
     src: { k: 'easton', t: 'Tithe' },
     basis: ['A tenth of the produce of the earth consecrated and set apart for special purposes.', 'Abraham paid tithes to Melchizedek (Gen. 14:20; Heb. 7:6)']
   },
@@ -261,7 +261,7 @@ export const GLOSSARY = [
     d: 'كلمة عبرية معناها عطية أو تقدمة مكرّسة لله. وفاندايك يستعملها لكل تقدمة يقرّبها الإنسان.',
     more: 'في مرقس 7 وبّخ الرب يسوع من يقول عن ماله إنه قربان ليتهرب من إكرام أبيه وأمه.',
     refs: ['Lev.1.2', 'Mark.7.11'],
-    checks: [['Mark.7.11', 'قربان اي هدية']],
+    checks: [['Mark.7.11', 'قربان اي هدية'], ['Lev.1.2', 'قربانا']],
     src: { k: 'easton', t: 'Corban' },
     basis: ['It means a gift or offering consecrated to God.']
   },
@@ -457,7 +457,7 @@ export const GLOSSARY = [
     d: 'كلمة عبرية معناها ثابت وأمين. تُقال في آخر الصلاة لتأكيدها وطلب تحقيقها.',
     more: 'الرب يسوع يبدأ بها كلامه المهم، ويترجمها فاندايك الحق. ويُسمّى المسيح نفسه الآمين، ومواعيد الله كلها فيه النعم وفيه الآمين.',
     refs: ['Ps.41.13', 'Rev.3.14', '2Cor.1.20'],
-    checks: [['Rev.3.14', 'الامين'], ['2Cor.1.20', 'وفيه الامين']],
+    checks: [['Rev.3.14', 'الامين'], ['2Cor.1.20', 'وفيه الامين'], ['Matt.5.18', 'الحق اقول لكم']],
     src: { k: 'easton', t: 'Amen' },
     basis: ['This Hebrew word means firm, and hence also faithful (Rev. 3:14).', 'to confirm the words and invoke the fulfilment of them', 'The promises of God are Amen; i.e., they are all true and sure (2 Cor. 1:20).']
   },
