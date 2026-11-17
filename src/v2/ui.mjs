@@ -21,9 +21,9 @@ export const IC = {
   check: '<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>'
 };
 
-const NAV = [['index.html', 'home', 'الرئيسية', IC.home], ['people.html', 'people', 'الشخصيات', IC.person], ['maps.html', 'maps', 'الخرائط', IC.map]];
+const NAV = [['index.html', 'home', 'الرئيسية', IC.home], ['plans.html', 'plans', 'الخطط', IC.check], ['people.html', 'people', 'الشخصيات', IC.person], ['maps.html', 'maps', 'الخرائط', IC.map]];
 // Desktop top bar. Extra sections register themselves here (topics, library) once their pages exist.
-export const TOPNAV = [['index.html', 'home', 'الرئيسية'], ['ot.html', 'ot', 'العهد القديم'], ['nt.html', 'nt', 'العهد الجديد'], ['people.html', 'people', 'الشخصيات'], ['maps.html', 'maps', 'الخرائط والشروح'], ['topics.html', 'topics', 'الموضوعات'], ['library.html', 'library', 'المكتبة']];
+export const TOPNAV = [['index.html', 'home', 'الرئيسية'], ['plans.html', 'plans', 'خطط القراءة'], ['ot.html', 'ot', 'العهد القديم'], ['nt.html', 'nt', 'العهد الجديد'], ['people.html', 'people', 'الشخصيات'], ['maps.html', 'maps', 'الخرائط والشروح'], ['topics.html', 'topics', 'الموضوعات'], ['library.html', 'library', 'المكتبة']];
 export const BRAND = '<svg class="bm" viewBox="0 0 40 32" aria-hidden="true"><path d="M20 7c-4-3-10-4-16-3v22c6-1 12 0 16 3 4-3 10-4 16-3V4c-6-1-12 0-16 3z"/><path d="M20 7v22"/><path d="M8 10c3 0 6 .5 8 1.6M8 15c3 0 6 .5 8 1.6M24 11.6c2-1.1 5-1.6 8-1.6M24 16.6c2-1.1 5-1.6 8-1.6" opacity=".55"/></svg>';
 
 export function page({ title, depth = 0, nav = null, body, cls = '', after = '' }) {

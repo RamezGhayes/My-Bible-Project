@@ -105,3 +105,11 @@ ${C ? `<article class="lv3x"><small>قبل كل شيء</small><h3>${esc(C.t)}</h
 <template data-steps>${A.items.map((it) => `<i data-id="${it.id}" data-t="${esc(it.t)}" data-s="${esc(it.step)}" data-r="${refLabel(it.ref)}"></i>`).join('')}</template>
 </section>`;
 }
+
+// For reading plans: the first practical application of a chapter, with the name of the voice it rests on.
+export function applyBrief(bookId, n) {
+  const A = APPLY[`${bookId}.${n}`];
+  if (!A) return null;
+  const it = A.items[0];
+  return { t: it.t, q: it.q, ref: it.ref, today: it.today, ask: it.ask, step: it.step, by: voice(it.by, it.ref).n };
+}
