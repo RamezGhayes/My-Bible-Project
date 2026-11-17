@@ -37,7 +37,11 @@ export function paulMapPage({ depth, people, imgOf, personHref }) {
     if (!b) throw new Error(`paul map: unknown book ${l.b}`);
     return `<a class="pml" href="${u}book/${b.slug}.html"><b>${esc(b.name)}</b>${l.n ? `<span>${esc(l.n)}</span>` : ''}</a>`;
   };
+  // Only images checked by hand against the period are shown (docs/place-approved.json): AI reconstructions often
+  // add later things (galleons, domes, castles, ruins, tourists), which would teach the wrong picture.
+  const OK = new Set(JSON.parse(fs.readFileSync(path.join(ROOT, 'docs/place-approved.json'), 'utf8')));
   const placeImg = (c) => {
+    if (!OK.has(c)) return '';
     const f = ['webp', 'jpg'].map((x) => `place-${c}.${x}`).find((x) => fs.existsSync(path.join(ROOT, 'src/v2/assets', x)));
     return f ? `<figure class="pmi"><img src="${u}assets/${f}" alt="" loading="lazy"><figcaption>تصوّر فني للمكان</figcaption></figure>` : '';
   };

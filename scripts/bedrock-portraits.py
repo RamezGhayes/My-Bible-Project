@@ -37,7 +37,7 @@ NEG = ('anime, manga, cartoon, illustration, painting, digital art, CGI, 3d rend
 
 def prompt(pid):
     if SET == 'places':
-        return ('Photorealistic historical reconstruction, wide landscape view, natural light, rich detail, accurate first-century Roman-era architecture. ' + PROMPTS[pid] + ' No text, no modern objects.')
+        return ('Photorealistic historical reconstruction of a living city in the first century AD, as it stood in the time of the apostle Paul, buildings complete and in use, wide view, natural light. Ships, if any, are small ancient Roman merchant ships with one mast and one square sail. ' + PROMPTS[pid] + ' No text.')
     s = PROMPTS[pid].replace('a beautiful young', 'a young').replace('beautiful young', 'young').replace('a beautiful ', 'a ')
     return PRE + s + SUF
 
@@ -69,12 +69,13 @@ def main():
     todo = [i for i in ids if i in PROMPTS and (a.redo or not (OUT / f'{PREFIX}{i}.webp').exists())]
     if a.limit:
         todo = todo[:a.limit]
+    neg = NEG + (', ruins, ruined, broken columns, archaeological site, tourists, galleon, frigate, three-masted ship, two-masted ship, pirate ship, tall ship, dome, mosque, minaret, church, cathedral, bell tower, castle, medieval fortress, crenellated towers, lamp post, modern town' if SET == 'places' else '')
     print(f'{len(todo)} portraits to generate with {a.model} in {a.region}')
     br = boto3.client('bedrock-runtime', region_name=a.region)
     failed = []
     model = a.model
     for n, pid in enumerate(todo, 1):
-        body = {'prompt': prompt(pid), 'negative_prompt': NEG, 'aspect_ratio': '5:4', 'output_format': 'png'}
+        body = {'prompt': prompt(pid), 'negative_prompt': neg, 'aspect_ratio': '5:4', 'output_format': 'png'}
         try:
             try:
                 r = br.invoke_model(modelId=model, body=json.dumps(body))
