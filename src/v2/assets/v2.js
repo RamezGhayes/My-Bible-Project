@@ -324,7 +324,11 @@
   function go(n, smooth) {
     var c = document.getElementById('pl' + n);
     if (!c) return;
-    c.scrollIntoView({ behavior: smooth ? 'smooth' : 'auto', inline: 'center', block: 'nearest' });
+    if (cards.classList.contains('x4c')) {
+      // one card at a time: show the chosen card, keep the number bar in view
+      Array.prototype.forEach.call(cards.children, function (x) { x.classList.toggle('on', x === c); });
+      if (smooth) { var top = document.getElementById('xnums').getBoundingClientRect().top; if (top < 0 || top > window.innerHeight * 0.6) document.getElementById('xnums').scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    } else c.scrollIntoView({ behavior: smooth ? 'smooth' : 'auto', inline: 'center', block: 'nearest' });
     mark(n);
   }
   function mark(n) { nums.forEach(function (b) { b.setAttribute('aria-current', String(b.getAttribute('data-go') === String(n))); }); }
@@ -334,7 +338,7 @@
       e.preventDefault();
       var n = a.getAttribute('data-go');
       go(n, true);
-      if (!a.closest('#xcards') && !a.closest('#xnums')) setTimeout(function () { document.getElementById('xnums').scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 30);
+      if (!cards.classList.contains('x4c') && !a.closest('#xcards') && !a.closest('#xnums')) setTimeout(function () { document.getElementById('xnums').scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 30);
       history.replaceState(null, '', '#pl' + n);
       return;
     }

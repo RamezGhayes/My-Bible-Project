@@ -114,17 +114,21 @@ function explainBody(x, depth) {
     if (k === 'heart') { st = p.heart.who === 'l' ? 'on' : 'mid'; tip = `${p.heart.t} (${refLabel(p.heart.ref)})`; }
     return `<button type="button" class="tc ${st}" style="--c:${p.color}" data-tip="${esc(`الضربة ${ORD[p.n]}: ${tip}`)}" aria-label="الضربة ${ORD[p.n]}">${ar(p.n)}</button>`;
   }).join('');
-  const card = (p) => `<article class="xc" id="pl${p.n}" style="--c:${p.color};--k:${p.ink}">
-<div class="xc-top"><span class="no">الضربة ${ORD[p.n]}</span><span class="cy">${p.cycle === 3 ? 'الضربة الأخيرة' : esc(x.cycles[p.cycle].t)}</span></div>
-<div class="xc-ic">${glyph(p.icon, 92)}</div>
-<h2>${esc(p.name)}</h2>
+  const card = (p) => `<article class="xc x4${p.n === 1 ? ' on' : ''}" id="pl${p.n}" style="--c:${p.color};--k:${p.ink}" aria-labelledby="plh${p.n}">
+<div class="x4v">
+<div class="xc-top"><span class="no">الضربة ${ORD[p.n]} من عشر</span><span class="cy">${p.cycle === 3 ? 'الضربة الأخيرة' : esc(x.cycles[p.cycle].t)}</span></div>
+<div class="xc-ic">${glyph(p.icon, 84)}</div>
+<h2 id="plh${p.n}">${esc(p.name)}</h2>
 <div class="xc-ref">${r(p.ref)} · ${esc(p.by)}</div>
 <blockquote>${vq(p.key)}<small>${refLabel(p.key)}</small></blockquote>
-<div class="xc-sec"><small>ماذا حدث؟</small><p>${md(p.what)}</p></div>
-<div class="xc-god"><div class="h"><small>ضد من؟</small><span class="tg2 ${p.god.tag}">${TAGS[p.god.tag]}</span></div><b>${esc(p.god.n)}</b><p>${md(p.god.d)}</p></div>
-<div class="xc-sec"><small>المعنى والهدف</small><p>${md(p.meaning)}</p></div>
-<div class="xc-sec"><small>فرعون</small><p>${md(p.pharaoh)}</p></div>
-<div class="xc-nav">${p.n > 1 ? `<a href="#pl${p.n - 1}" data-go="${p.n - 1}">${IC.back}${esc(P[p.n - 2].name)}</a>` : '<span></span>'}<a class="ch" href="${chapterHref(b, p.ch, depth)}">${IC.read}${esc(b.name.replace(/^سفر /, ''))} ${ar(p.ch)}</a>${p.n < 10 ? `<a href="#pl${p.n + 1}" data-go="${p.n + 1}">${esc(P[p.n].name)}${IC.chev}</a>` : '<span></span>'}</div>
+</div>
+<div class="x4b">
+<section class="x4s"><h3><i>١</i>ماذا حدث؟</h3><p>${md(p.what)}</p></section>
+<section class="x4s god"><h3><i>٢</i>ضد من؟ <span class="tg2 ${p.god.tag}">${TAGS[p.god.tag]}</span></h3><b>${esc(p.god.n)}</b><p>${md(p.god.d)}</p></section>
+<section class="x4s"><h3><i>٣</i>المعنى والهدف</h3><p>${md(p.meaning)}</p></section>
+<section class="x4s"><h3><i>٤</i>وفرعون؟</h3><p>${md(p.pharaoh)}</p></section>
+<div class="xc-nav">${p.n > 1 ? `<a href="#pl${p.n - 1}" data-go="${p.n - 1}">${IC.back}<span><small>السابقة</small>${esc(P[p.n - 2].name)}</span></a>` : '<span></span>'}<a class="ch" href="${chapterHref(b, p.ch, depth)}">${IC.read}اقرأ ${esc(b.name.replace(/^سفر /, ''))} ${ar(p.ch)}</a>${p.n < 10 ? `<a class="nx" href="#pl${p.n + 1}" data-go="${p.n + 1}"><span><small>التالية</small>${esc(P[p.n].name)}</span>${IC.chev}</a>` : '<span></span>'}</div>
+</div>
 </article>`;
   // Literal Van Dyck fragments for the Passover scene; the build stops if any is not found in the verse.
   const norm = (w) => w.replace(/[ً-ْٰـ]/g, '').replace(/[ٱأإآ]/g, 'ا').replace(/[.،:؛,«»]/g, '');
@@ -175,11 +179,11 @@ ${[0, 1, 2].map((row) => `<span class="rl">الجولة ${['الأولى', 'ال
 <div class="xkeys">${x.cycles.map((c, i) => `<div><b>${ar(i + 1)}</b><span><strong>${esc(c.t)}:</strong> ${md(c.d)}</span></div>`).join('')}</div>
 </section>
 
-<section id="s2" class="p3s">${sh(2, 'الضربات واحدة واحدة', 'اسحب أو اضغط على الأرقام. كل بطاقة: ماذا حدث، وضد من، وماذا تعني.')}
-<div class="xnums" id="xnums">${P.map((p) => `<button type="button" data-go="${p.n}" style="--c:${p.color};--k:${p.ink}" aria-label="الضربة ${ORD[p.n]}: ${esc(p.name)}">${ar(p.n)}</button>`).join('')}</div>
+<section id="s2" class="p3s">${sh(2, 'الضربات واحدة واحدة', 'اختر ضربة من الأزرار. كل بطاقة تجيب عن أربعة أسئلة: ماذا حدث؟ ضد من؟ ماذا تعني؟ وماذا فعل فرعون؟')}
+<div class="xnums x4n" id="xnums">${P.map((p) => `<button type="button" data-go="${p.n}" style="--c:${p.color};--k:${p.ink}" aria-label="الضربة ${ORD[p.n]}: ${esc(p.name)}"><em>${ar(p.n)}</em>${glyph(p.icon, 24)}<span>${esc(p.name)}</span></button>`).join('')}</div>
 </section>
 </div>
-<div class="xcards p3cards" id="xcards">${P.map(card).join('')}</div>
+<div class="xcards p3cards x4c" id="xcards">${P.map(card).join('')}</div>
 <div class="p3b">
 
 <section id="s3" class="p3s">${sh(3, 'القصة تشتد', 'ثلاثة خيوط تمتد عبر الضربات العشر. اختر خيطاً، ثم اضغط أي ضربة.')}
