@@ -28,7 +28,7 @@ const greek = (id) => {
   return (gcache[id] = m);
 };
 // Standard dictionary forms that MorphGNT lists under a variant lemma.
-const EQUIV = { ελεεω: 'ελεαω', δεομαι: 'δεω', πετρωδης: 'πετρωδες' };
+const EQUIV = { ελεεω: 'ελεαω', δεομαι: 'δεω', πετρωδης: 'πετρωδες', δει: 'δεω' };
 const span = (r) => String(r).split(/[;,]/).flatMap((part) => { const [a, z] = part.trim().split(/[-–]/).map(Number); const o = []; for (let i = a; i <= (z || a); i++) o.push(i); return o; });
 
 const args = process.argv.slice(2);
