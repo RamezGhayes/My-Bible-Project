@@ -32,15 +32,19 @@ for (const slug of fs.readdirSync(path.join(ROOT, 'content/books'))) {
   const dir = path.join(ROOT, 'content/books', slug);
   const b = bookBySlug[slug];
   if (!b) throw new Error('Unknown book folder: ' + slug);
-  const c = { intro: null, chapters: {} };
+  const c = { intro: null, chapters: {}, deep: {} };
   if (fs.existsSync(path.join(dir, 'intro.mjs'))) c.intro = (await import(path.join(dir, 'intro.mjs'))).default;
   if (fs.existsSync(path.join(dir, 'chapters'))) {
     for (const f of fs.readdirSync(path.join(dir, 'chapters')).filter((f) => f.endsWith('.mjs'))) c.chapters[+f.replace('.mjs', '')] = (await import(path.join(dir, 'chapters', f))).default;
+  }
+  if (fs.existsSync(path.join(dir, 'deep'))) {
+    for (const f of fs.readdirSync(path.join(dir, 'deep')).filter((f) => f.endsWith('.mjs'))) c.deep[+f.replace('.mjs', '')] = (await import(path.join(dir, 'deep', f))).default;
   }
   content[b.id] = c;
 }
 const TLINKS = topicLinks();
 const study = (b, n) => content[b.id]?.chapters[n];
+const deepOf = (b, n) => content[b.id]?.deep?.[n];
 const studiedCount = (b) => Object.keys(content[b.id]?.chapters || {}).length;
 const isFull = (b) => content[b.id]?.intro && studiedCount(b) === b.chapters;
 const T_NAME = { ot: 'العهد القديم', nt: 'العهد الجديد' };
@@ -417,7 +421,7 @@ ${XS.map((x) => `<a class="xa" href="${explainHref(x, depth)}"><small>شرح م�
 </aside></div></section>`;
   const head = `<section class="ch3h">
 <nav class="crumbs" aria-label="مسار التنقل"><a href="../../${b.testament}.html">${T_NAME[b.testament]}</a><span>‹</span><a href="../${b.slug}.html">${esc(b.name)}</a><span>‹</span><a href="../${b.slug}.html#c${n}">الأصحاحات</a></nav>
-<div class="hd"><span class="big">${ar(n)}</span><div><small>${esc(b.name)} · ${md(S.section)}</small><h1>${md(S.title)}</h1><p>${vWord(vs.length)} · نحو ${ar(mins)} دقائق قراءة</p></div></div>
+${deepOf(b, n) ? modeSwitch(b, n, 'k') : ''}<div class="hd"><span class="big">${ar(n)}</span><div><small>${esc(b.name)} · ${md(S.section)}</small><h1>${md(S.title)}</h1><p>${vWord(vs.length)} · نحو ${ar(mins)} دقائق قراءة</p></div></div>
 <div class="cgo">${prev ? `<a href="${chapterHref(prev.b, prev.n, depth)}" aria-label="السابق: ${chTitle(prev.b, prev.n)}">${IC.chev.replace('class="ic"', 'class="ic" style="transform:scaleX(-1)"')}${chTitle(prev.b, prev.n)}</a>` : ''}<a class="rd" href="#read">${IC.read}اقرأ النص</a><a href="#study3">${IC.list}الدراسة</a>${APPLY[`${b.id}.${n}`] ? `<a class="lv" href="#live3">${IC.person}تطبيقات</a>` : ''}${next ? `<a href="${chapterHref(next.b, next.n, depth)}" aria-label="التالي: ${chTitle(next.b, next.n)}">${chTitle(next.b, next.n)}${IC.chev}</a>` : ''}</div>
 </section>`;
   const foot = `<nav class="ch3n">${prev ? `<a href="${chapterHref(prev.b, prev.n, depth)}"><small>الأصحاح السابق</small><b>${chTitle(prev.b, prev.n)}${study(prev.b, prev.n) ? ' · ' + md(study(prev.b, prev.n).title) : ''}</b></a>` : '<span></span>'}${next ? `<a class="dk" href="${chapterHref(next.b, next.n, depth)}"><small>الأصحاح التالي</small><b>${chTitle(next.b, next.n)}${study(next.b, next.n) ? ' · ' + md(study(next.b, next.n).title) : ''}</b></a>` : ''}</nav>`;
@@ -445,6 +449,87 @@ ${S.questions?.length ? `<h2>أسئلة للمناقشة</h2><ol class="hq">${S.
 </section>`;
   const body = `<div data-chapter="${b.id}:${n}"></div>${handout}`;
   write(`book/${b.slug}/${n}.html`, page({ title: `${chTitle(b, n)}: ${plain(S.title)}`, depth, nav: b.testament, body: head + story + studyHtml + applySection(b, n, depth) + foot + body, cls: 'chapter v3 ch3', after: readerOv + viewerHtml }));
+}
+
+// ---------- deep study (دراسة متعمقة) ----------
+const deepHref = (b, n) => `${n}-study.html`;
+const modeSwitch = (b, n, on) => `<nav class="dmode" aria-label="طريقة الدراسة"><a href="${n}.html"${on === 'k' ? ' aria-current="page"' : ''}><b>خلوة</b><small>قراءة وتأمل</small></a><a href="${deepHref(b, n)}"${on === 'd' ? ' aria-current="page"' : ''}><b>دراسة متعمقة</b><small>آية بآية</small></a></nav>`;
+// Greek/Hebrew written as **...** in content becomes a styled foreign-script span.
+const gmd = (s) => md(s).replace(/<b>([Ͱ-Ͽἀ-῿֐-׿\s’'·,.]+)<\/b>/g, (m, g) => `<span class="gk" lang="${/[֐-׿]/.test(g) ? 'he' : 'el'}" dir="ltr">${g}</span>`);
+const DTAG = { agreed: 'متفق عليه', likely: 'الرأي الراجح', debated: 'قضية تفسيرية' };
+const dtag = (t) => (t && DTAG[t] ? `<span class="dtag ${t}">${DTAG[t]}</span>` : '');
+const vspan = (r) => String(r).split(/[;,]/).flatMap((p) => { const [a, z] = p.trim().split(/[-–]/).map(Number); const o = []; for (let i = a; i <= (z || a); i++) o.push(i); return o; });
+const rlab = (n, r) => { const t = ar(String(r).replace(/\s*[-–]\s*/g, ' – ').replace(/;\s*/g, '، ')); return /[–،]/.test(t) ? `الآيات ${t}` : `الآية ${t}`; };
+
+function deepPage(b, n) {
+  const depth = 2;
+  const S = study(b, n), D = deepOf(b, n);
+  const vs = bible(b.id).chapters[n - 1].verses;
+  const prev = prevOf(b, n), next = nextOf(b, n);
+  const F = D.flow || {};
+  const units = F.units || [];
+  const unitOf = (r) => { const a = vspan(r)[0]; return units.findIndex((u) => { const s = vspan(u.r); return a >= s[0] && a <= s[s.length - 1]; }); };
+  const SEC = [];
+  const sec = (id, t, sub, html) => { if (html) SEC.push({ id, t, html: `<section class="dsec" id="${id}"><header class="dsh"><span class="dn">${ar(SEC.length + 1)}</span><div><h2>${t}</h2><p>${sub}</p></div></header>${html}</section>` }); };
+
+  // 1. flow of thought
+  sec('d-flow', 'مسار الأصحاح', 'كيف يتحرك الفكر من البداية إلى النهاية', `${(F.intro || []).map((p) => `<p class="dbody">${gmd(p)}</p>`).join('')}
+${units.length ? `<div class="dunits">${units.map((u) => `<a class="du" href="#dv${vspan(u.r)[0]}"><span class="dr">${ar(String(u.r).replace('-', ' – '))}</span><span class="dt"><b>${md(u.t)}</b><small>${gmd(u.d || '')}</small></span><span class="dk">${esc(u.kind || '')}</span></a>`).join('')}</div>` : ''}
+${F.threads?.length ? `<h3 class="dh3">خيوط تربط الأصحاح</h3><div class="dgrid">${F.threads.map((t) => `<div class="dcard"><b>${md(t.t)}</b><p>${gmd(t.d)}</p></div>`).join('')}</div>` : ''}
+${F.note ? `<div class="dnote"><b>${md(F.note.t)}</b><p>${gmd(F.note.d)}</p></div>` : ''}`);
+
+  // 2. verse by verse
+  const chips = `<nav class="dchips" aria-label="الآيات">${vs.map((v) => `<a href="#dv${v.number}">${ar(v.number)}</a>`).join('')}</nav>`;
+  let lastU = -2;
+  const blocks = (D.verses || []).map((V) => {
+    const nums = vspan(V.r);
+    const u = unitOf(V.r);
+    const uh = u !== lastU && u >= 0 ? `<div class="dunit" id="du${u}"><span>${ar(String(units[u].r).replace('-', ' – '))}</span><h3>${md(units[u].t)}</h3></div>` : '';
+    lastU = u;
+    const text = nums.map((i) => `<sup>${ar(i)}</sup>${esc(vs[i - 1].text)}`).join(' ');
+    return `${uh}<article class="dv${V.key ? ' key' : ''}" id="dv${nums[0]}">${nums.slice(1).map((i) => `<span id="dv${i}" class="anc"></span>`).join('')}
+<div class="dvh"><span class="dref">${rlab(n, V.r)}</span>${V.key ? '<span class="dkey">آية محورية</span>' : ''}${dtag(V.tag)}</div>
+<p class="dvt">${text}</p>
+${V.notes?.length ? `<ul class="dnotes">${V.notes.map((x) => `<li>${gmd(x)}</li>`).join('')}</ul>` : ''}
+${V.words?.length ? `<div class="dwords">${V.words.map((w) => `<div class="dw"><div class="dwg"><span class="gk" lang="el" dir="ltr">${esc(w.g)}</span>${w.l && w.l !== w.g ? `<small lang="el" dir="ltr">${esc(w.l)}</small>` : ''}</div><div class="dwb"><b>${md(w.t)}</b>${w.p ? `<small>${esc(w.p)}</small>` : ''}<p>${gmd(w.d)}</p></div></div>`).join('')}</div>` : ''}
+${V.views?.length ? `<div class="dviews"><div class="dvlh"><b>قراءات المفسرين</b>${dtag(V.viewsTag)}</div><div class="dvg">${V.views.map((x) => `<div><b>${md(x.t)}</b>${dtag(x.tag)}<p>${gmd(x.d)}</p></div>`).join('')}</div></div>` : ''}
+${V.extra ? `<div class="dnote sm"><b>${md(V.extra.t)}</b>${dtag(V.extra.tag)}<p>${gmd(V.extra.d)}</p></div>` : ''}
+</article>`;
+  }).join('');
+  sec('d-verses', 'الشرح آية بآية', `${vWord(vs.length)}، مع الكلمات اليونانية وتصريفها`, chips + blocks);
+
+  // 3. background
+  sec('d-bg', 'الخلفية التاريخية والثقافية', 'ما كان يعرفه القارئ الأول', D.background?.length ? `<div class="dgrid">${D.background.map((x) => `<div class="dcard"><div class="dch"><b>${md(x.t)}</b>${dtag(x.tag)}</div><p>${gmd(x.d)}</p></div>`).join('')}</div>` : '');
+
+  // 4. Old Testament
+  sec('d-ot', b.testament === 'nt' ? 'العهد القديم في الأصحاح' : 'الأصحاح في ضوء الكتاب كله', 'كل نص في سياقه الأصلي، ثم كيف يُبنى عليه', D.ot?.length ? D.ot.map((o) => `<div class="dot"><div><small>النص في سياقه</small><a class="r" href="${refHref(o.src, depth)}">${refLabel(o.src)}</a><p>${gmd(o.ctx)}</p></div><div><small>في ${esc(shortName(b))} ${ar(n)}${o.at ? `: ${ar(o.at)}` : ''}</small><p>${gmd(o.use)}</p>${dtag(o.tag)}</div><div class="add"><small>ماذا يضيف</small><p>${gmd(o.adds)}</p></div></div>`).join('') : '');
+
+  // 5. theology
+  sec('d-theo', 'اللاهوت', 'العقائد التي يؤسسها الأصحاح', D.theology?.length ? D.theology.map((x) => `<div class="dth"><div class="dthh"><b>${md(x.t)}</b>${x.r ? `<span>${rlab(n, x.r)}</span>` : ''}</div><p class="dbody">${gmd(x.d)}</p>${x.reformed || x.others ? `<div class="dth2">${x.reformed ? `<div><small>في الإيمان المُصلَح</small><p>${gmd(x.reformed)}</p></div>` : ''}${x.others ? `<div><small>قراءات أخرى</small><p>${gmd(x.others)}</p></div>` : ''}</div>` : ''}</div>`).join('') : '');
+
+  // 6. history of interpretation
+  sec('d-hist', 'تاريخ التفسير', 'كيف قرأت الكنيسة هذا الأصحاح عبر القرون', D.history?.length ? `<div class="dhist">${D.history.map((v) => `<div class="dhv"><div><b>${md(v.n)}</b><small>${esc(v.y || '')}</small></div><div><small>${md(v.w || '')}</small><p>${gmd(v.d)}</p></div></div>`).join('')}</div><p class="dfine">ملخصات بتصرّف لأفكارهم من المؤلفات المذكورة، وليست اقتباسات حرفية.</p>` : '');
+
+  // 7. issues
+  sec('d-issues', 'مسائل الخلاف والنص', 'كل رأي بحجته، ومدى الاتفاق عليه', D.issues?.length ? `<div class="dissues">${D.issues.map((x) => `<div class="dis"><div class="dch"><b>${md(x.q)}</b>${dtag(x.tag)}</div>${x.d ? `<p>${gmd(x.d)}</p>` : ''}${x.views?.length ? `<div class="dvg">${x.views.map((y) => `<div><b>${md(y.t)}</b><p>${gmd(y.d)}</p></div>`).join('')}</div>` : ''}${x.note ? `<p class="dfine">${gmd(x.note)}</p>` : ''}</div>`).join('')}</div>` : '');
+
+  // 8. what it teaches
+  sec('d-teach', 'ماذا يعلّمنا الأصحاح', 'خلاصة لاهوتية', D.teaches?.length ? `<div class="dteach">${D.teaches.map((x) => `<div><b>${md(x.t)}</b><p>${gmd(x.d)}</p></div>`).join('')}</div>` : '');
+
+  // 9. further reading
+  sec('d-more', 'للتوسع', 'مراجع موثوقة لمن يريد أن يكمل', D.further?.length ? `<div class="dmore">${D.further.map((x) => `<div><span dir="auto"><b>${esc(x.t)}</b></span><p>${md(x.d)}</p>${x.k ? `<small>${esc(x.k)}</small>` : ''}</div>`).join('')}</div>` : '');
+
+  const head = `<section class="ch3h dph">
+<nav class="crumbs" aria-label="مسار التنقل"><a href="../../${b.testament}.html">${T_NAME[b.testament]}</a><span>‹</span><a href="../${b.slug}.html">${esc(b.name)}</a><span>‹</span><a href="${n}.html">${chTitle(b, n)}</a></nav>
+${modeSwitch(b, n, 'd')}
+<div class="hd"><span class="big">${ar(n)}</span><div><small>${esc(b.name)} · ${md(S.section)}</small><h1>${md(S.title)}</h1><p>${esc(D.lead || '')}</p></div></div>
+<div class="dlegend"><span>${vWord(vs.length)} مشروحة · ${countWord(SEC.length, 'قسم واحد', 'قسمان', 'أقسام', 'قسماً')}</span><span>العلامات: ${dtag('agreed')}${dtag('likely')}${dtag('debated')}</span></div>
+</section>`;
+  const toc = `<aside class="dtoc" aria-label="فهرس الدراسة"><nav>${SEC.map((x, i) => `<a href="#${x.id}"><span>${ar(i + 1)}</span>${x.t}</a>`).join('')}</nav><a class="dback" href="${n}.html">${IC.read}العودة إلى الخلوة</a></aside>`;
+  const nextDeep = next && deepOf(next.b, next.n) && study(next.b, next.n);
+  const foot = `<nav class="ch3n">${prev ? `<a href="${chapterHref(prev.b, prev.n, depth).replace(/\.html$/, deepOf(prev.b, prev.n) && study(prev.b, prev.n) ? '-study.html' : '.html')}"><small>السابق</small><b>${chTitle(prev.b, prev.n)}</b></a>` : '<span></span>'}${next ? `<a class="dk" href="${chapterHref(next.b, next.n, depth).replace(/\.html$/, nextDeep ? '-study.html' : '.html')}"><small>${nextDeep ? 'دراسة الأصحاح التالي' : 'الأصحاح التالي'}</small><b>${chTitle(next.b, next.n)}${study(next.b, next.n) ? ' · ' + md(study(next.b, next.n).title) : ''}</b></a>` : ''}</nav>`;
+  const body = `${head}<div class="dwrap">${toc}<div class="dmain">${SEC.map((x) => x.html).join('')}</div></div>${foot}`;
+  write(`book/${b.slug}/${deepHref(b, n)}`, page({ title: `${chTitle(b, n)}: دراسة متعمقة`, depth, nav: b.testament, body, cls: 'chapter v3 ch3 deep' }));
 }
 
 // ---------- people ----------
@@ -604,7 +689,7 @@ for (const b of books) {
   bookPage(b);
   if (content[b.id]?.intro) aboutPage(b);
   if (previewSkip(b)) continue;
-  for (let n = 1; n <= b.chapters; n++) chapterPage(b, n);
+  for (let n = 1; n <= b.chapters; n++) { chapterPage(b, n); if (deepOf(b, n) && study(b, n)) deepPage(b, n); }
 }
 peoplePages();
 mapsPages();
