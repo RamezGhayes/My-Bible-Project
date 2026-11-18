@@ -27,6 +27,8 @@ const greek = (id) => {
   }
   return (gcache[id] = m);
 };
+// Standard dictionary forms that MorphGNT lists under a variant lemma.
+const EQUIV = { ελεεω: 'ελεαω', δεομαι: 'δεω' };
 const span = (r) => String(r).split(/[;,]/).flatMap((part) => { const [a, z] = part.trim().split(/[-–]/).map(Number); const o = []; for (let i = a; i <= (z || a); i++) o.push(i); return o; });
 
 const args = process.argv.slice(2);
@@ -59,7 +61,7 @@ for (const f of files) {
     const toks = span(v.r).flatMap((i) => G[n + ':' + i] || []);
     const forms = strip(w.g).length ? w.g.split(/\s+/) : [];
     for (const fm of forms) { const t = toks.find((x) => x.w === strip(fm)); if (!t) say(f, `Greek "${fm}" not in ${n}:${v.r}`); }
-    if (w.l) { const t = toks.find((x) => x.w === strip(forms[0] || '')); if (t && t.l !== strip(w.l)) say(f, `lemma of ${w.g} is not ${w.l}`); }
+    if (w.l) { const t = toks.find((x) => x.w === strip(forms[0] || '')); if (t && t.l !== strip(w.l) && EQUIV[strip(w.l)] !== t.l) say(f, `lemma of ${w.g} is not ${w.l}`); }
   }
 }
 console.log(`${files.length} deep files, ${words} Greek words checked, ${problems} problems`);
