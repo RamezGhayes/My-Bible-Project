@@ -7,6 +7,7 @@ import { page, header, IC, plain, clip, firstSentences, chWord, bkWord, vWord, s
 import { buildPeople, cardTemplate, cleanName } from './v2/people.mjs';
 import { paulMapPage } from './v2/paulmap.mjs';
 import { buildPlans } from './v2/plans.mjs';
+import { showcase } from './v2/showcase.mjs';
 import { MAPS, mapForChapter, thumb, mapHref, viewer } from './v2/maps.mjs';
 import { TOPICS, topicLinks, chapterTopicsBlock, topicsIndex, topicPage, topicsHomeSection } from './v2/topics.mjs';
 import { treePage } from './v2/tree.mjs';
@@ -104,11 +105,7 @@ function home() {
 <div class="hplans" data-today-start>${['start', 'mark', 'philippians'].map((id) => PLANS_UI.card(PLANS_UI.PLANS.find((P) => P.id === id), 0)).join('')}</div>
 <div hidden>${PLANS_UI.PLANS.map((P) => PLANS_UI.card(P, 0)).join('')}</div>
 <a class="hxmore" href="plans.html">كل خطط القراءة ${IC.chev}</a></div></section>
-${(() => { // a few well-known faces
-  const pool = PEOPLE.list.filter((p) => PIMG.has(p.id) && hasPage(p));
-  return `<section class="hx hxx hxdark"><div class="hxw hxsplit"><div class="hxh"><span class="hxk">تعرّف على</span><h2>شخصيات الكتاب</h2><p>${ar(PEOPLE.list.filter((p) => PIMG.has(p.id)).length)} شخصية بصورها، وقصة كل واحد، وأين ظهر في الكتاب.</p><a class="hxbtn" href="people.html">كل الشخصيات ${IC.chev}</a></div>
-<div class="hxpeople">${pool.filter((p) => ['abraham', 'moses', 'p1s3owui', 'peter', 'paul', 'joseph', 'sarah', 'pc0ohq7'].includes(p.id)).map((p) => `<a href="${personHref(p, 0)}"><img src="assets/${PIMG.get(p.id)}" alt=""><span>${esc(p.prof ? p.prof.n : p.label)}</span></a>`).join('')}</div></div></section>`;
-})()}
+${showcase({ content, imgOf: (id) => (PIMG.has(id) ? `assets/${PIMG.get(id)}` : ''), plans: PLANS_UI.PLANS })}
 <section class="hx hxx"><div class="hxw">
 <div class="hxh"><span class="hxk">سفراً بعد سفر</span><h2>ادرس الكتاب المقدس</h2><p>مقدمة لكل سفر، ودراسة لكل أصحاح، وتطبيق عملي.</p></div>
 <div class="h3tg">${tcard('ot', 'من الخلق إلى الأنبياء: الوعد والانتظار.')}${tcard('nt', 'المسيح، والكنيسة، والرجاء الأخير.')}</div></div></section>
@@ -122,7 +119,7 @@ ${(() => { // a few well-known faces
 <a class="hxt" href="journey.html"><img src="assets/person-moses.webp" alt=""><span><b>القصة في مراحل</b><small>تاريخ الخلاص على خط واحد</small></span></a>
 </div></div></section>
 <footer class="h3f full"><div><p class="s">${esc(quoteText('2Tim.3.16'))}</p><small>${refLabel('2Tim.3.16')}</small><span>${esc(config.description)} · النص: ${esc(config.bibleVersion)}</span><button type="button" data-splash>شاهد المقدمة مرة أخرى</button></div></footer>`;
-  write('index.html', page({ title: '', depth: 0, nav: 'home', body, cls: 'home v3', after: '<script src="assets/plans.js" defer></script>' }));
+  write('index.html', page({ title: '', depth: 0, nav: 'home', body, cls: 'home v3', after: '<script src="assets/plans.js" defer></script><script src="assets/showcase.js" defer></script>' }));
 }
 
 // ---------- testaments: books carousel ----------
