@@ -16,7 +16,7 @@ export function showcase({ content, imgOf, plans }) {
   const PPL = ['abraham', 'sarah', 'moses', 'joseph', 'peter', 'paul'].map((id) => PROFILES[id]).filter((P) => P && imgOf(P.id));
   const people = `<div class="scp">${PPL.map((P, i) => `<div class="scc${i ? '' : ' on'}"><div class="sci">
 <div class="scf"><img src="${imgOf(P.id)}" alt=""><span><b>${esc(P.n)}</b><small>${esc(P.role)}</small></span></div>
-<div class="scb"><b>${esc(P.n)}</b><small>${esc(P.role)}</small><p>${esc(P.line)}</p><dl>${P.cells.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl></div>
+<div class="scb"><b>${esc(P.n)}</b><small>${esc(P.role)}</small><p>${esc(P.line)}</p><dl>${P.cells.slice(0, 2).map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl></div>
 </div></div>`).join('')}</div>`;
 
   // 2. study: a chapter page that unfolds step by step (Mark 1)
@@ -25,11 +25,11 @@ export function showcase({ content, imgOf, plans }) {
 <p class="scv">${(() => { const v = verseText(S.keyVerse); return /[«»]/.test(v) ? esc(v) : `«${esc(v)}»`; })()}<small>${refLabel(S.keyVerse)}</small></p>
 <div class="scn n1"><i>الفكرة</i>${esc(firstSentences(plain(S.summary[0]), 40))}</div>
 <div class="scn n2"><i>المسيح في النص</i>${esc(firstSentences(plain(S.christ[0]), 40))}</div>
-<div class="scn n3"><i>للتأمل</i>${esc(plain(S.questions[0]))}</div></div>`;
+</div>`;
 
   // 3. plans: a day being read, steps ticked, progress filling
   const P0 = plans.find((p) => p.id === 'start');
-  const steps = ['قبل أن تقرأ', 'اقرأ', 'الآية المفتاحية', 'فكرة الأصحاح', 'المسيح في النص', 'تأمّل', 'طبّق اليوم', 'صلِّ'];
+  const steps = ['اقرأ', 'افهم', 'تأمّل', 'طبّق', 'صلِّ'];
   const plan = `<div class="scl"><div class="sclh"><span>${esc(P0.t)}</span><b>اليوم ٣ من ${ar(P0.days.length)}</b><i class="bar"><i></i></i></div>
 <ol>${steps.map((s, i) => `<li style="--i:${i}"><i>${IC.check}</i>${esc(s)}</li>`).join('')}</ol><span class="scdone">${IC.check} أنهيت قراءة اليوم</span></div>`;
 
@@ -43,7 +43,7 @@ export function showcase({ content, imgOf, plans }) {
 <div class="scmc"><img src="assets/place-paphos.webp" alt=""><span><b>بافوس</b><small>المحطة ٤: الوالي يؤمن (أع ١٣: ١٢)</small></span></div></div>`;
 
   // 5. family line: generations appear one by one
-  const LINE = ['آدم', 'نوح', 'إبراهيم', 'إسحاق', 'يعقوب', 'يهوذا', 'داود', 'يسوع المسيح'];
+  const LINE = ['آدم', 'إبراهيم', 'يعقوب', 'داود', 'يسوع المسيح'];
   const tree = `<div class="sct">${LINE.map((n, i) => `<span style="--i:${i}"${i === LINE.length - 1 ? ' class="end"' : ''}>${esc(n)}</span>`).join('<i></i>')}</div>`;
 
   const SL = [
@@ -53,9 +53,7 @@ export function showcase({ content, imgOf, plans }) {
     ['maps/paul.html', 'رحلات بولس', 'امشِ مع بولس على الخريطة', 'محطة بعد محطة: ماذا حدث، ومن كان هناك، وصورة المكان اليوم.', paul],
     ['tree.html', 'شجرة العائلة', 'نسل الوعد من آدم إلى المسيح', 'نسب المسيح جيلاً بعد جيل، وكل اسم مع الآية التي تذكره.', tree]
   ];
-  return `<section class="hx hxx hxdark hsc" data-sc><div class="hxw hxsplit">
-<div class="sctext">${SL.map(([h, k, t, d], i) => `<div class="sctx${i ? '' : ' on'}"><span class="hxk">${esc(k)}</span><h2>${esc(t)}</h2><p>${esc(d)}</p><a class="hxbtn" href="${h}">افتح ${esc(k)} ${IC.chev}</a></div>`).join('')}
+  return `<div class="sctext">${SL.map(([h, k, t, d], i) => `<div class="sctx${i ? '' : ' on'}"><span class="hxk">${esc(k)}</span><h2>${esc(t)}</h2><p>${esc(d)}</p><a class="hxbtn" href="${h}">افتح ${esc(k)} ${IC.chev}</a></div>`).join('')}
 <div class="scdots" role="tablist">${SL.map(([, k], i) => `<button type="button" role="tab" aria-selected="${i ? 'false' : 'true'}" aria-label="${esc(k)}"><i></i></button>`).join('')}</div></div>
-<div class="scstage">${SL.map(([, , , , html], i) => `<div class="scsl${i ? '' : ' on'}">${html}</div>`).join('')}</div>
-</div></section>`;
+<div class="scstage">${SL.map(([, , , , html], i) => `<div class="scsl${i ? '' : ' on'}">${html}</div>`).join('')}</div>`;
 }

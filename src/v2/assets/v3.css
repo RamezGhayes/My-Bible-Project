@@ -1399,3 +1399,59 @@ body.pmpage #app{max-width:none}
 .scn{font-size:13.5px;line-height:1.7;padding:8px 10px;margin-top:6px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .scl{padding:16px 18px}.scl ol{gap:2px;margin-top:10px}.scl li{padding:4px 8px;font-size:14.5px}.scl li i{width:22px;height:22px}.scdone{height:40px;margin-top:10px}
 @media (max-width:859px){.scstage{height:460px}}
+/* ---------- home v5: section system ---------- */
+.hs4{padding:72px 0;background:var(--paper)}
+.hs4.soft{background:var(--cream)}
+.hs4.dark{background:var(--ink);color:var(--paper)}
+.hs4w{max-width:1140px;margin:0 auto;padding:0 22px}
+.hs4w.split{display:grid;grid-template-columns:1fr;gap:28px;align-items:center}
+.hs4h{text-align:center;max-width:640px;margin:0 auto 34px}
+.hs4h span,.hs4.dark .hxk{display:inline-block;font-family:var(--ui);font-size:12.5px;font-weight:600;letter-spacing:1.5px;color:var(--gold);margin-bottom:10px}
+.hs4h span:before,.hs4h span:after{content:"";display:inline-block;width:22px;height:1px;background:var(--gold);vertical-align:middle;margin:0 10px;opacity:.7}
+.hs4h h2{margin:0 0 10px;font-family:var(--ui);font-size:36px;font-weight:700;line-height:1.25}
+.hs4h p{margin:0;font-family:var(--body);font-size:17px;line-height:1.85;color:var(--soft)}
+.hs4m{display:flex;width:max-content;align-items:center;gap:6px;margin:26px auto 0;font-family:var(--ui);font-size:15px;color:var(--accent);text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:2px}
+.hs4m .ic{width:15px;height:15px}
+.hs4 .hplans{max-width:960px;margin:0 auto}
+.hs4 .htc{max-width:960px;margin:0 auto 14px}
+.hs4.dark .hxh p,.hs4.dark .sctx p{color:#C9C3B8}
+.hs4.dark .sctx h2{margin:0 0 10px;font-family:var(--ui);font-size:32px;font-weight:700;line-height:1.3}
+.hs4.dark .sctx p{font-family:var(--body);font-size:17px;line-height:1.85;margin:0}
+.main>.hs4{max-width:none!important;margin-inline:0!important}
+/* quick access row, resting on the hero */
+.hq{position:relative;z-index:2;margin-top:-46px!important;padding:0 22px}
+.main>.hq{max-width:none!important}
+.hqw{max-width:1040px;margin:0 auto;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.hq a{display:flex;align-items:center;gap:12px;padding:16px;border-radius:16px;background:#fff;border:1px solid var(--line);box-shadow:0 10px 30px rgba(23,25,30,.08);text-decoration:none;color:var(--ink);transition:transform .25s var(--ease),box-shadow .25s}
+.hq a:hover{transform:translateY(-3px);box-shadow:0 16px 36px rgba(23,25,30,.12)}
+.hq i{width:44px;height:44px;border-radius:12px;background:var(--cream);display:grid;place-items:center;color:var(--accent);flex:none}
+.hq i .ic{width:22px;height:22px}
+.hq b{display:block;font-family:var(--ui);font-size:16px;font-weight:700}
+.hq small{font-family:var(--ui);font-size:12.5px;color:var(--soft)}
+.home .h3hero .in{padding:76px 22px 96px}
+.home .h3hero .v{font-size:25px}
+@media (min-width:860px){
+  .hqw{grid-template-columns:repeat(4,1fr)}
+  .hs4w.split{grid-template-columns:5fr 7fr;gap:56px}
+  .hs4{padding:92px 0}
+  .hs4h h2{font-size:40px}
+}
+@media (max-width:600px){.hs4h h2{font-size:28px}.hq a{padding:12px;gap:10px}.hq i{width:38px;height:38px}.hq small{display:none}}
+/* faster, simpler showcase */
+.scdots button[aria-selected=true] i{animation-duration:6s}
+.scsl.on .scn.n1{animation-delay:.9s}.scsl.on .scn.n2{animation-delay:1.8s}
+.scsl.on .scl li{animation-delay:calc(.3s + var(--i) * .55s)}
+.scsl.on .scl li i{animation-delay:calc(.5s + var(--i) * .55s)}
+.scsl.on .sclh .bar i{animation-duration:3s;animation-delay:.3s}
+.scsl.on .scdone{animation-delay:3.2s}
+.scsl.on .scm .rt{animation-duration:3.6s;animation-delay:.2s}
+.scsl.on .scm .pt{animation-delay:calc(.2s + var(--i) * .32s)}
+.scsl.on .scmc{animation-delay:1.6s}
+.scsl.on .sct span{animation-delay:calc(.15s + var(--i) * .55s)}
+.scsl.on .sct i{animation-delay:calc(.4s + var(--i) * .55s)}
+.sct span{min-width:200px;padding:12px 22px;font-size:18px}.sct i{height:22px}
+.scstage{height:440px}
+.home .h3f{margin-top:0}
+.hs4:last-of-type{padding-bottom:92px}
+@media (max-width:600px){.hs4 .hplans{grid-template-columns:1fr}.hs4 .plcard{min-height:0}.hq{margin-top:-34px!important}}
+.hs4.soft+.h3f{border-top:1px solid #E2DACB;background:var(--paper)}

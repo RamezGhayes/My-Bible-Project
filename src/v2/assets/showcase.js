@@ -13,7 +13,7 @@
       if (paused) return;
       if (!back) { cards[k].classList.add('flip'); back = true; }
       else { cards[k].classList.remove('on', 'flip'); k = (k + 1) % cards.length; cards[k].classList.add('on'); back = false; }
-    }, 2200);
+    }, 1500);
   }
   function show(n) {
     i = (n + slides.length) % slides.length;
@@ -26,7 +26,7 @@
     dots.forEach(function (d, k) { d.setAttribute('aria-selected', k === i ? 'true' : 'false'); });
     people(slides[i].querySelector('.scp') !== null);
   }
-  function run() { clearInterval(timer); if (!reduce) timer = setInterval(function () { if (!paused) show(i + 1); }, 9000); }
+  function run() { clearInterval(timer); if (!reduce) timer = setInterval(function () { if (!paused) show(i + 1); }, 6000); }
   dots.forEach(function (d, k) { d.addEventListener('click', function () { show(k); run(); }); });
   root.addEventListener('mouseenter', function () { paused = true; });
   root.addEventListener('mouseleave', function () { paused = false; });

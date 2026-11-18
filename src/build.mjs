@@ -89,6 +89,25 @@ function home() {
   const words = ps.split(/\s+/);
   const T = (h, ic, t, d) => `<a href="${h}"><span class="ti">${ic}</span><span><b>${t}</b><small>${d}</small></span></a>`;
   const head = (t, s, extra = '') => `<div class="h3h"><div><h2>${t}</h2><p>${s}</p></div>${extra}</div>`;
+  // Home sections: one entry per section, drawn by homeSection(). To add a section, add an entry here.
+  // tone: '' (paper), 'soft' (cream) or 'dark'. body: the section's inner HTML.
+  const homeSection = (S) => `<section class="hs4 hxx${S.tone ? ' ' + S.tone : ''}"${S.attr || ''}><div class="hs4w${S.split ? ' split' : ''}">${S.split ? S.body : `<header class="hs4h"><span>${S.k}</span><h2>${S.t}</h2>${S.d ? `<p>${S.d}</p>` : ''}</header>${S.body}${S.more ? `<a class="hs4m" href="${S.more[0]}">${S.more[1]} ${IC.chev}</a>` : ''}`}</div></section>`;
+  const HOME_SECTIONS = [
+    { k: 'كل يوم', t: 'خلوة اليوم', d: 'أصحاح واحد في نحو ٢٠ دقيقة: تقرأ، وتفهم، وتتأمل، وتخرج بخطوة عملية.', more: ['plans.html', 'كل خطط القراءة'],
+      body: `<a class="htc" data-today-card hidden href="plans.html"><span class="pk">تابع من حيث توقفت</span><b data-today-name></b><span data-today-day></span><span class="go">اقرأ الآن ${IC.chev}</span></a>
+<div class="hplans" data-today-start>${['start', 'mark', 'philippians'].map((id) => PLANS_UI.card(PLANS_UI.PLANS.find((P) => P.id === id), 0)).join('')}</div><div hidden>${PLANS_UI.PLANS.map((P) => PLANS_UI.card(P, 0)).join('')}</div>` },
+    { tone: 'dark', split: true, attr: ' data-sc', body: showcase({ content, imgOf: (id) => (PIMG.has(id) ? `assets/${PIMG.get(id)}` : ''), plans: PLANS_UI.PLANS }) },
+    { k: 'سفراً بعد سفر', t: 'ادرس الكتاب المقدس', d: 'مقدمة لكل سفر، ودراسة لكل أصحاح، وتطبيق عملي.',
+      body: `<div class="h3tg">${tcard('ot', 'من الخلق إلى الأنبياء: الوعد والانتظار.')}${tcard('nt', 'المسيح، والكنيسة، والرجاء الأخير.')}</div>` },
+    { tone: 'soft', k: 'بالصور والخرائط', t: 'افهم ما تقرأ', d: 'أماكن وأحداث وعقائد، مرسومة ومشروحة لتراها بعينك.',
+      body: `<div class="hxtiles">${[
+        ['maps/paul.html', 'place-ephesus', 'رحلات بولس', 'على الخريطة، محطة بعد محطة', 'big'],
+        ['tree.html', 'person-abraham', 'شجرة العائلة', 'نسب المسيح من آدم'],
+        ['maps.html', 'person-aaron', 'الشروح المصوّرة', 'المسكن، والضربات، ويوم الكفارة'],
+        ['topics.html', 'place-athens', 'الموضوعات', 'العقائد الكتابية من النص'],
+        ['journey.html', 'person-moses', 'القصة في مراحل', 'تاريخ الخلاص على خط واحد']
+      ].map(([h, img, b, s, c]) => `<a class="hxt${c ? ' ' + c : ''}" href="${h}"><img src="assets/${img}.webp" alt=""><span><b>${b}</b><small>${s}</small></span></a>`).join('')}</div>` }
+  ];
   const body = `${splash}
 <section class="h3hero full">
 <svg class="rings" viewBox="0 0 900 900" aria-hidden="true"><circle cx="450" cy="450" r="440"/><circle cx="450" cy="450" r="360" stroke-dasharray="2 10"/><circle cx="450" cy="450" r="280"/></svg>
@@ -97,27 +116,14 @@ function home() {
 <p class="v" lang="ar">${words.map((w, i) => `<span style="--d:${(0.3 + i * 0.09).toFixed(2)}s">${esc(w)} </span>`).join('')}</p>
 <small class="rf" style="--d:${(0.5 + words.length * 0.09).toFixed(1)}s">${refLabel(config.verseRef)}</small>
 <button type="button" class="hs" data-search style="--d:${(0.8 + words.length * 0.09).toFixed(1)}s">${IC.search}<span>ابحث عن سفر، أو شاهد مثل يو ٣: ١٦، أو شخصية، أو موضوع</span><b>ابحث</b></button>
-<div class="q hcta" style="--d:${(1 + words.length * 0.09).toFixed(1)}s"><a class="p" href="today.html">ابدأ خلوة اليوم</a><a href="nt.html">العهد الجديد</a><a href="ot.html">العهد القديم</a></div>
 </div></section>
-<section class="hx hxx hxtoday"><div class="hxw">
-<div class="hxh"><span class="hxk">كل يوم</span><h2>خلوة اليوم</h2><p>أصحاح واحد في نحو ٢٠ دقيقة: تقرأ، وتفهم، وتتأمل، وتخرج بخطوة عملية.</p></div>
-<a class="htc" data-today-card hidden href="plans.html"><span class="pk">تابع من حيث توقفت</span><b data-today-name></b><span data-today-day></span><span class="go">اقرأ الآن ${IC.chev}</span></a>
-<div class="hplans" data-today-start>${['start', 'mark', 'philippians'].map((id) => PLANS_UI.card(PLANS_UI.PLANS.find((P) => P.id === id), 0)).join('')}</div>
-<div hidden>${PLANS_UI.PLANS.map((P) => PLANS_UI.card(P, 0)).join('')}</div>
-<a class="hxmore" href="plans.html">كل خطط القراءة ${IC.chev}</a></div></section>
-${showcase({ content, imgOf: (id) => (PIMG.has(id) ? `assets/${PIMG.get(id)}` : ''), plans: PLANS_UI.PLANS })}
-<section class="hx hxx"><div class="hxw">
-<div class="hxh"><span class="hxk">سفراً بعد سفر</span><h2>ادرس الكتاب المقدس</h2><p>مقدمة لكل سفر، ودراسة لكل أصحاح، وتطبيق عملي.</p></div>
-<div class="h3tg">${tcard('ot', 'من الخلق إلى الأنبياء: الوعد والانتظار.')}${tcard('nt', 'المسيح، والكنيسة، والرجاء الأخير.')}</div></div></section>
-<section class="hx hxx hxsoft"><div class="hxw">
-<div class="hxh"><span class="hxk">بالصور والخرائط</span><h2>افهم ما تقرأ</h2><p>أماكن وأحداث وعقائد، مرسومة ومشروحة لتراها بعينك.</p></div>
-<div class="hxtiles">
-<a class="hxt big" href="maps/paul.html"><img src="assets/place-ephesus.webp" alt=""><span><b>رحلات بولس</b><small>على الخريطة، محطة بعد محطة</small></span></a>
-<a class="hxt" href="tree.html"><img src="assets/person-abraham.webp" alt=""><span><b>شجرة العائلة</b><small>نسب المسيح من آدم</small></span></a>
-<a class="hxt" href="maps.html"><img src="assets/person-aaron.webp" alt=""><span><b>الشروح المصوّرة</b><small>المسكن، والضربات، ويوم الكفارة</small></span></a>
-<a class="hxt" href="topics.html"><img src="assets/place-athens.webp" alt=""><span><b>الموضوعات</b><small>العقائد الكتابية من النص</small></span></a>
-<a class="hxt" href="journey.html"><img src="assets/person-moses.webp" alt=""><span><b>القصة في مراحل</b><small>تاريخ الخلاص على خط واحد</small></span></a>
-</div></div></section>
+<nav class="hq hxx" aria-label="ابدأ من هنا"><div class="hqw">${[
+  ['plans.html', IC.check, 'خطط القراءة', 'خلوة يومية في ٢٠ دقيقة'],
+  ['nt.html', IC.read, 'العهد الجديد', 'دراسة كاملة لكل الأسفار'],
+  ['ot.html', IC.shelf, 'العهد القديم', 'من التكوين إلى ملاخي'],
+  ['people.html', IC.person, 'الشخصيات', 'وجوه وقصص من الكتاب']
+].map(([h, ic, b, s]) => `<a href="${h}"><i>${ic}</i><span><b>${b}</b><small>${s}</small></span></a>`).join('')}</div></nav>
+${HOME_SECTIONS.map(homeSection).join('\n')}
 <footer class="h3f full"><div><p class="s">${esc(quoteText('2Tim.3.16'))}</p><small>${refLabel('2Tim.3.16')}</small><span>${esc(config.description)} · النص: ${esc(config.bibleVersion)}</span><button type="button" data-splash>شاهد المقدمة مرة أخرى</button></div></footer>`;
   write('index.html', page({ title: '', depth: 0, nav: 'home', body, cls: 'home v3', after: '<script src="assets/plans.js" defer></script><script src="assets/showcase.js" defer></script>' }));
 }
