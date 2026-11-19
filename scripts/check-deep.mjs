@@ -10,7 +10,7 @@ import path from 'node:path';
 import { ROOT, books, bookBySlug, bible, normalize } from '../src/lib.mjs';
 
 const all = normalize(books.map((b) => bible(b.id).chapters.map((c) => c.verses.map((v) => v.text).join(' ')).join(' ')).join(' '));
-const GNT = process.env.GNT_DIR || '/home/claude/gk/sblgnt';
+const GNT = process.env.GNT_DIR || [path.join(ROOT, '.gk/sblgnt'), '/home/claude/gk/sblgnt'].find((d) => fs.existsSync(d)) || path.join(ROOT, '.gk/sblgnt');
 const GNUM = { Matt: 61, Mark: 62, Luke: 63, John: 64, Acts: 65, Rom: 66, '1Cor': 67, '2Cor': 68, Gal: 69, Eph: 70, Phil: 71, Col: 72, '1Thess': 73, '2Thess': 74, '1Tim': 75, '2Tim': 76, Titus: 77, Phlm: 78, Heb: 79, Jas: 80, '1Pet': 81, '2Pet': 82, '1John': 83, '2John': 84, '3John': 85, Jude: 86, Rev: 87 };
 const strip = (s) => s.normalize('NFD').replace(/\p{Mn}/gu, '').replace(/[^\p{L}]/gu, '').toLowerCase();
 const gcache = {};
