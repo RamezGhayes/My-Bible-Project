@@ -27,12 +27,12 @@ for (const f of fs.readdirSync(WLC).filter((x) => x.endsWith('.xml') && x !== 'V
     const key = +c + ':' + +n;
     const words = (out[key] = out[key] || []);
     // ketiv forms are skipped when a qere follows; the qere (inside <note><rdg>) is what is read
-    for (const w of v[2].matchAll(/<w ([^>]*)>([^<]+)<\/w>/g)) {
+    for (const w of v[2].matchAll(/<w ([^>]*)>([\s\S]*?)<\/w>/g)) {
       if (/type="x-ketiv"/.test(w[1])) continue;
       const lemma = (w[1].match(/lemma="([^"]+)"/) || [])[1] || '';
       const nums = lemma.split('/').map((x) => parseInt(x)).filter((x) => !isNaN(x));
       const s = nums.length ? nums[nums.length - 1] : null;
-      words.push({ w: clean(w[2]), s, l: s ? lex[s] || '' : '', m: (w[1].match(/morph="([^"]+)"/) || [])[1] || '' });
+      words.push({ w: clean(w[2].replace(/<[^>]+>/g, '')), s, l: s ? lex[s] || '' : '', m: (w[1].match(/morph="([^"]+)"/) || [])[1] || '' });
     }
   }
   fs.writeFileSync(path.join(GK, 'heb', id + '.json'), JSON.stringify(out));
