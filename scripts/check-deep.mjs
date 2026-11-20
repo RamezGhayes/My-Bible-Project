@@ -60,6 +60,7 @@ for (const f of files) {
   let D;
   try { D = (await import(path.resolve(f) + '?t=' + Date.now())).default; } catch (e) { say(f, 'does not load: ' + e.message); continue; }
   if (src.includes('—')) say(f, 'em dash');
+  for (const m of src.matchAll(/[\u0590-\u05FF]+[\u0600-\u06FF]+[\u0590-\u05FF]*|[\u0600-\u06FF]+[\u0590-\u05FF]+/g)) say(f, `Hebrew and Arabic letters mixed in one word: ${m[0]}`);
   const fixes = [];
   const ok = (q) => all.includes(normalize(q));
   for (const m of src.matchAll(/«([^»]+)»/g)) {
