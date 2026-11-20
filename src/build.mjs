@@ -455,7 +455,8 @@ ${S.questions?.length ? `<h2>أسئلة للمناقشة</h2><ol class="hq">${S.
 const deepHref = (b, n) => `${n}-study.html`;
 const modeSwitch = (b, n, on) => `<nav class="dmode" aria-label="طريقة الدراسة"><a href="${n}.html"${on === 'k' ? ' aria-current="page"' : ''}><b>خلوة</b><small>قراءة وتأمل</small></a><a href="${deepHref(b, n)}"${on === 'd' ? ' aria-current="page"' : ''}><b>دراسة متعمقة</b><small>آية بآية</small></a></nav>`;
 // Greek/Hebrew written as **...** in content becomes a styled foreign-script span.
-const gmd = (s) => md(s).replace(/<b>([Ͱ-Ͽἀ-῿֐-׿\s’'·,.]+)<\/b>/g, (m, g) => `<span class="gk" lang="${/[֐-׿]/.test(g) ? 'he' : 'el'}" dir="ltr">${g}</span>`);
+const wl = (t) => (/[֐-׿]/.test(t) ? 'lang="he" dir="rtl"' : 'lang="el" dir="ltr"');
+const gmd = (s) => md(s).replace(/<b>([Ͱ-Ͽἀ-῿֐-׿\s’'·,.]+)<\/b>/g, (m, g) => (/[֐-׿]/.test(g) ? `<span class="gk" lang="he" dir="rtl">${g}</span>` : `<span class="gk" lang="el" dir="ltr">${g}</span>`));
 const DTAG = { agreed: 'متفق عليه', likely: 'الرأي الراجح', debated: 'قضية تفسيرية' };
 const dtag = (t) => (t && DTAG[t] ? `<span class="dtag ${t}">${DTAG[t]}</span>` : '');
 const vspan = (r) => String(r).split(/[;,]/).flatMap((p) => { const [a, z] = p.trim().split(/[-–]/).map(Number); const o = []; for (let i = a; i <= (z || a); i++) o.push(i); return o; });
@@ -491,12 +492,12 @@ ${F.note ? `<div class="dnote"><b>${md(F.note.t)}</b><p>${gmd(F.note.d)}</p></di
 <div class="dvh"><span class="dref">${rlab(n, V.r)}</span>${V.key ? '<span class="dkey">آية محورية</span>' : ''}${dtag(V.tag)}</div>
 <p class="dvt">${text}</p>
 ${V.notes?.length ? `<ul class="dnotes">${V.notes.map((x) => `<li>${gmd(x)}</li>`).join('')}</ul>` : ''}
-${V.words?.length ? `<div class="dwords">${V.words.map((w) => `<div class="dw"><div class="dwg"><span class="gk" lang="el" dir="ltr">${esc(w.g)}</span>${w.l && w.l !== w.g ? `<small lang="el" dir="ltr">${esc(w.l)}</small>` : ''}</div><div class="dwb"><b>${md(w.t)}</b>${w.p ? `<small>${esc(w.p)}</small>` : ''}<p>${gmd(w.d)}</p></div></div>`).join('')}</div>` : ''}
+${V.words?.length ? `<div class="dwords">${V.words.map((w) => `<div class="dw"><div class="dwg"><span class="gk" ${wl(w.g)}>${esc(w.g)}</span>${w.l && w.l !== w.g ? `<small ${wl(w.l)}>${esc(w.l)}</small>` : ''}</div><div class="dwb"><b>${md(w.t)}</b>${w.p ? `<small>${esc(w.p)}</small>` : ''}<p>${gmd(w.d)}</p></div></div>`).join('')}</div>` : ''}
 ${V.views?.length ? `<div class="dviews"><div class="dvlh"><b>قراءات المفسرين</b>${dtag(V.viewsTag)}</div><div class="dvg">${V.views.map((x) => `<div><b>${md(x.t)}</b>${dtag(x.tag)}<p>${gmd(x.d)}</p></div>`).join('')}</div></div>` : ''}
 ${V.extra ? `<div class="dnote sm"><b>${md(V.extra.t)}</b>${dtag(V.extra.tag)}<p>${gmd(V.extra.d)}</p></div>` : ''}
 </article>`;
   }).join('');
-  sec('d-verses', 'الشرح آية بآية', `${vWord(vs.length)}، مع الكلمات اليونانية وتصريفها`, chips + blocks);
+  sec('d-verses', 'الشرح آية بآية', `${vWord(vs.length)}، مع الكلمات ${b.testament === 'ot' ? 'العبرية' : 'اليونانية'} وتصريفها`, chips + blocks);
 
   // 3. background
   sec('d-bg', 'الخلفية التاريخية والثقافية', 'ما كان يعرفه القارئ الأول', D.background?.length ? `<div class="dgrid">${D.background.map((x) => `<div class="dcard"><div class="dch"><b>${md(x.t)}</b>${dtag(x.tag)}</div><p>${gmd(x.d)}</p></div>`).join('')}</div>` : '');

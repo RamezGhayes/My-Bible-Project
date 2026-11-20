@@ -1483,6 +1483,7 @@ body.pmpage #app{max-width:none}
 .dbody{margin:0;font-size:16.5px;line-height:2.05;color:var(--ink2)}
 .dh3{margin:6px 0 0;font-family:var(--ui);font-size:17px}
 .gk{font-family:'Gentium Plus','Times New Roman',Georgia,serif;color:var(--navy);font-size:1.06em;unicode-bidi:isolate}
+.gk:lang(he),.dwg small:lang(he){font-family:'SBL Hebrew','Ezra SIL','Times New Roman','David',serif;font-size:1.12em}
 .dunits{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden}
 .du{display:grid;grid-template-columns:84px 1fr auto;gap:14px;align-items:center;padding:12px 16px;border-bottom:1px solid #F0EBE1;color:var(--ink)}
 .du:last-child{border-bottom:0}.du:hover{background:#FCFBF8}
