@@ -29,6 +29,18 @@ const greek = (id) => {
 };
 // Standard dictionary forms that MorphGNT lists under a variant lemma.
 const EQUIV = { ελεεω: 'ελεαω', δεομαι: 'δεω', πετρωδης: 'πετρωδες', δει: 'δεω' };
+// Hebrew (OT): .gk/heb/<Book>.json from tools/deep/heb-setup.mjs (OSHB/WLC, KJV verse numbers).
+// A Hebrew g must match (by consonants) a word in the verse range, or failing that, in the chapter or the
+// next/previous chapter (versification shifts); l must be that word's Strong's lemma (by consonants).
+const HEB = path.join(ROOT, '.gk/heb');
+const hcache = {};
+const hebrew = (id) => {
+  if (hcache[id] !== undefined) return hcache[id];
+  const f = path.join(HEB, id + '.json');
+  return (hcache[id] = fs.existsSync(f) ? JSON.parse(fs.readFileSync(f, 'utf8')) : null);
+};
+const hcons = (s) => s.normalize('NFD').replace(/[\u0591-\u05C7]/g, '').replace(/[^\u05D0-\u05EA]/g, '');
+const isHeb = (s) => /[\u05D0-\u05EA]/.test(s);
 const span = (r) => String(r).split(/[;,]/).flatMap((part) => { const [a, z] = part.trim().split(/[-–]/).map(Number); const o = []; for (let i = a; i <= (z || a); i++) o.push(i); return o; });
 
 const FIX = process.argv.includes('--fix');
@@ -48,6 +60,7 @@ for (const f of files) {
   let D;
   try { D = (await import(path.resolve(f) + '?t=' + Date.now())).default; } catch (e) { say(f, 'does not load: ' + e.message); continue; }
   if (src.includes('—')) say(f, 'em dash');
+  for (const m of src.matchAll(/[\u0590-\u05FF]+[\u0600-\u06FF]+[\u0590-\u05FF]*|[\u0600-\u06FF]+[\u0590-\u05FF]+/g)) say(f, `Hebrew and Arabic letters mixed in one word: ${m[0]}`);
   const fixes = [];
   const ok = (q) => all.includes(normalize(q));
   for (const m of src.matchAll(/«([^»]+)»/g)) {
@@ -100,7 +113,19 @@ for (const f of files) {
     for (const fm of forms) { const t = toks.find((x) => x.w === strip(fm)); if (!t) say(f, `Greek "${fm}" not in ${n}:${v.r}`); }
     if (w.l) { const t = toks.find((x) => x.w === strip(forms[0] || '')); if (t && t.l !== strip(w.l) && EQUIV[strip(w.l)] !== t.l) { say(f, `lemma of ${w.g} is not ${w.l} (MorphGNT: ${t.raw})`); if (FIX) fixes.push([`l: '${w.l}'`, `l: '${t.raw}'`]); } }
   }
+  const H = hebrew(b.id);
+  if (H) for (const v of D.verses || []) for (const w of v.words || []) {
+    if (!isHeb(w.g || '')) { say(f, `word "${w.g}" is not Hebrew`); continue; }
+    words++;
+    const inRange = span(v.r).flatMap((i) => H[n + ':' + i] || []);
+    const near = Object.entries(H).filter(([k]) => Math.abs(+k.split(':')[0] - n) <= 1).flatMap(([, x]) => x);
+    const g = hcons(w.g);
+    let hits = inRange.filter((t) => hcons(t.w) === g);
+    if (!hits.length) hits = near.filter((t) => hcons(t.w) === g);
+    if (!hits.length) { say(f, `Hebrew "${w.g}" not in ${n}:${v.r}`); continue; }
+    if (w.l && !hits.some((t) => hcons(t.l) === hcons(w.l))) say(f, `lemma of ${w.g} is not ${w.l} (OSHB: ${[...new Set(hits.map((t) => t.l + ' H' + t.s))].join(', ')})`);
+  }
   if (FIX && fixes.length) { let t = fs.readFileSync(f, 'utf8'); for (const [a, z] of fixes) { t = t.split(a).join(z); console.log(`  fix: ${a} → ${z}`); } fs.writeFileSync(f, t); }
 }
-console.log(`${files.length} deep files, ${words} Greek words checked, ${problems} problems`);
+console.log(`${files.length} deep files, ${words} Greek/Hebrew words checked, ${problems} problems`);
 process.exitCode = problems ? 1 : 0;
