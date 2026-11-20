@@ -7,7 +7,7 @@
 // Usage: node scripts/check-deep.mjs [files or folders]  (default: all deep files)
 import fs from 'node:fs';
 import path from 'node:path';
-import { ROOT, books, bookBySlug, bible, normalize } from '../src/lib.mjs';
+import { ROOT, books, bookBySlug, bible, normalize, parseRef } from '../src/lib.mjs';
 
 const all = normalize(books.map((b) => bible(b.id).chapters.map((c) => c.verses.map((v) => v.text).join(' ')).join(' ')).join(' '));
 const GNT = process.env.GNT_DIR || [path.join(ROOT, '.gk/sblgnt'), '/home/claude/gk/sblgnt'].find((d) => fs.existsSync(d)) || path.join(ROOT, '.gk/sblgnt');
@@ -104,6 +104,8 @@ for (const f of files) {
   for (let i = 1; i <= total; i++) if (seen[i] !== 1) say(f, `verse ${i} covered ${seen[i]} times`);
   const tagged = [...(D.verses || []).flatMap((v) => [v, ...(v.views || []), v.extra].filter(Boolean)), ...(D.background || []), ...(D.ot || []), ...(D.issues || [])];
   for (const x of tagged) if (x.tag && !TAGS.has(x.tag)) say(f, `bad tag ${x.tag}`);
+  // ot[].src must be a single machine reference like Exod.8.19 or Isa.49.24-25 (the build links it)
+  for (const o of D.ot || []) { try { parseRef(o.src); } catch (e) { say(f, `ot src: ${e.message}`); } }
   for (const v of D.verses || []) if (v.viewsTag && !TAGS.has(v.viewsTag)) say(f, `bad viewsTag ${v.viewsTag}`);
   const G = greek(b.id);
   if (G) for (const v of D.verses || []) for (const w of v.words || []) {
