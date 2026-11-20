@@ -51,6 +51,15 @@ for (const f of files) {
   const fixes = [];
   const ok = (q) => all.includes(normalize(q));
   for (const m of src.matchAll(/«([^»]+)»/g)) {
+    // "..." / "…" inside «» is never allowed (normalize() would hide it)
+    if (/\.\.\.|…/.test(m[1])) {
+      say(f, `ellipsis inside quote: «${m[1]}»`);
+      if (FIX) {
+        const parts = m[1].split(/\s*(?:\.\.\.|…)\s*/).filter((x) => x.trim());
+        fixes.push([m[0], parts.every(ok) ? parts.map((x) => `«${x}»`).join(' و') : `"${m[1]}"`]);
+      }
+      continue;
+    }
     if (ok(m[1])) continue;
     say(f, `quote not verbatim: «${m[1]}»`);
     if (!FIX) continue;
