@@ -448,6 +448,25 @@
      "B3": "ب. ٣ (٢٨-٣٠) دعوة يسوع"
     },
     "read": "2026-11-26"
+   },
+   "matthew-12": {
+    "url": "https://enduringword.com/bible-commentary/ar/matthew-12/",
+    "lang": "ar",
+    "secs": {
+     "A1": "أولًا. أ (١-٢) الفريسيون يدينون تلاميذ يسوع بسبب حصادهم المفترض في السبت",
+     "A2": "أولًا. ب (٣-٨) يسوع يدافع عن تلاميذه",
+     "A3": "أولًا. ج (٩-١٤) جدال حول الشفاء في يوم السبت",
+     "A4": "أولًا. د (١٥-٢١) على الرغم من رفض القادة الدينيين له، لا يزال عامة الناس يتبعون يسوع، وهو لا يزال خادم الله المختار",
+     "B1": "ثانيًا. أ (٢٢-٢٤) يسوع يحرر رجلًا يسكنه شيطان",
+     "B2": "ثانيًا. ب (٢٥-٢٩) يسوع يجيب عن الاتهام الموجه له بأنه يعمل بقوة الشيطان",
+     "B3": "ثانيًا. ج (٣٠-٣٢) يسوع يكشف المكان البائس لمن ينسبون أعماله إلى القوة الشيطانية",
+     "B4": "ثانيًا. د (٣٣-٣٧) كلمات القادة الدينيين تفضح فساد قلوبهم",
+     "C1": "ثالثًا. أ (٣٨-٤٠) يسوع يستجيب لطلبة الكتبة والفريسيين",
+     "C2": "ثالثًا. ب (٤١-٤٢) يسوع يعلن الدينونة على القادة الدينيين بواسطة أهل نينوى وملكة التيمن",
+     "C3": "ثالثًا. ج (٤٣-٤٥) العواقب الخطيرة لرفضهم يسوع",
+     "C4": "ثالثًا. د (٤٦-٥٠) يسوع يحدد عائلته الحقيقية"
+    },
+    "read": "2026-11-26"
    }
   }
  },
@@ -1938,6 +1957,83 @@
      30
     ],
     "url": "https://www.gty.org/sermons/2289/jesus-personal-invitation-part-2",
+    "date": ""
+   },
+   "2290": {
+    "t": "The Lord of the Sabbath",
+    "book": "Matthew",
+    "ch": 12,
+    "v": [
+     1,
+     14
+    ],
+    "url": "https://www.gty.org/sermons/2290/the-lord-of-the-sabbath",
+    "date": ""
+   },
+   "2291": {
+    "t": "God's Beloved Servant",
+    "book": "Matthew",
+    "ch": 12,
+    "v": [
+     14,
+     21
+    ],
+    "url": "https://www.gty.org/sermons/2291/gods-beloved-servant",
+    "date": ""
+   },
+   "2292": {
+    "t": "Blaspheming the Holy Spirit, Part 1",
+    "book": "Matthew",
+    "ch": 12,
+    "v": [
+     22,
+     30
+    ],
+    "url": "https://www.gty.org/sermons/2292/blaspheming-the-holy-spirit-part-1",
+    "date": ""
+   },
+   "2293": {
+    "t": "Blaspheming the Holy Spirit, Part 2",
+    "book": "Matthew",
+    "ch": 12,
+    "v": [
+     22,
+     32
+    ],
+    "url": "https://www.gty.org/sermons/2293/blaspheming-the-holy-spirit-part-2",
+    "date": ""
+   },
+   "2294": {
+    "t": "Exposing the Truth About Men's Hearts",
+    "book": "Matthew",
+    "ch": 12,
+    "v": [
+     33,
+     37
+    ],
+    "url": "https://www.gty.org/sermons/2294/exposing-the-truth-about-mens-hearts",
+    "date": ""
+   },
+   "2295": {
+    "t": "Judgment on the Rejectors of Christ",
+    "book": "Matthew",
+    "ch": 12,
+    "v": [
+     38,
+     42
+    ],
+    "url": "https://www.gty.org/sermons/2295/judgment-on-the-rejectors-of-christ",
+    "date": ""
+   },
+   "2296": {
+    "t": "Reformation vs. Relationship",
+    "book": "Matthew",
+    "ch": 12,
+    "v": [
+     43,
+     50
+    ],
+    "url": "https://www.gty.org/sermons/2296/reformation-vs-relationship",
     "date": ""
    }
   }
