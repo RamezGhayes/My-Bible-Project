@@ -197,7 +197,7 @@ ${fix(K.fix, '1Kgs.8.63')}
 <h2 class="ov-h2">العهد الجديد <small>${ar(K.nt.length)} أصحاحاً</small></h2><div class="ov-chips nt">${K.nt.map(chip).join('')}</div>
 ${credit(K.eps)}`));
   // ---- generic pages (content/overview/<id>.mjs) ----
-  const RF = (x, w) => { if (!x.ref) return ''; chk(x.ref, x.has, w); return x.to ? (chk(x.to, x.toHas, w), span(x.ref, x.to, 1)) : a(x.ref, 1); };
+  const RF = (x, w) => { for (const [r, h] of x.also || []) chk(r, h, w); if (!x.ref) return ''; chk(x.ref, x.has, w); return x.to ? (chk(x.to, x.toHas, w), span(x.ref, x.to, 1)) : a(x.ref, 1); };
   const txt = (s) => esc(s).replace(/«([^»]+)»/g, '«$1»');
   const block = (B, w) => {
     if (B.h) return `<h2 class="ov-h2">${esc(B.h)}${B.small ? ` <small>${esc(B.small)}</small>` : ''}</h2>`;
@@ -216,7 +216,7 @@ ${credit(K.eps)}`));
     if (B.steps) return `<ol class="ov-vt">${B.steps.map((x) => `<li>${x.y ? `<small>${esc(x.y)}</small>` : ''}<b>${esc(x.t)}</b> ${tag(x.tag)}${x.d ? `<p>${txt(x.d)}</p>` : ''}${RF(x, w)}</li>`).join('')}</ol>`;
     if (B.cards) return `<div class="ov-cards${B.cols ? ' c' + B.cols : ''}">${B.cards.map((x) => `<div${x.c ? ` style="--c:${x.c}"` : ''}><b>${esc(x.t)}</b> ${tag(x.tag)}${x.s ? `<small>${esc(x.s)}</small>` : ''}${x.d ? `<p>${txt(x.d)}</p>` : ''}${RF(x, w)}</div>`).join('')}</div>`;
     if (B.people) return `<div class="ov-ppl">${B.people.map((x) => `<div><b>${esc(x.n)}</b>${x.d ? `<small>${txt(x.d)}</small>` : ''}${RF(x, w)}</div>`).join('')}</div>`;
-    if (B.bars) { const mx = Math.max(...B.bars.map((x) => x.v)); return `<div class="ov-bars">${B.bars.map((x) => `<div><span class="t"><b>${esc(x.t)}</b>${x.s ? `<small>${esc(x.s)}</small>` : ''}</span><span class="b"><i style="width:${((x.v / mx) * 100).toFixed(1)}%;--c:${x.c || 'var(--gold)'}"></i><em>${esc(x.label || ar(x.v))}</em></span>${RF(x, w)}</div>`).join('')}</div>${B.unit ? `<p class="ov-tot">${esc(B.unit)}</p>` : ''}`; }
+    if (B.bars) { const mx = Math.max(...B.bars.map((x) => x.v)); return `<div class="ov-bars">${B.bars.map((x) => `<div><span class="t"><b>${esc(x.t)}</b>${x.s ? `<small>${esc(x.s)}</small>` : ''}</span><span class="b">${((pc) => `<i style="width:${pc.toFixed(1)}%;--c:${x.c || 'var(--gold)'}"></i><em${pc > 80 ? ' class="in"' : ` style="inset-inline-start:calc(${pc.toFixed(1)}% + 6px)"`}>${esc(x.label || ar(x.v))}</em>`)((x.v / mx) * 100)}</span>${RF(x, w)}</div>`).join('')}</div>${B.unit ? `<p class="ov-tot">${esc(B.unit)}</p>` : ''}`; }
     if (B.table) return `<div class="ov-tbl t${B.table.head.length}" role="table"><div role="row" class="h">${B.table.head.map((c) => `<span role="columnheader">${esc(c)}</span>`).join('')}</div>${B.table.rows.map((r) => `<div role="row">${r.c.map((c, j) => `<span role="${j ? 'cell' : 'rowheader'}">${txt(c)}</span>`).join('')}${r.ref ? `<span role="cell">${RF(r, w)}</span>` : ''}</div>`).join('')}</div>`;
     if (B.html) return B.html;
     throw new Error('Overview ' + w + ': unknown block ' + JSON.stringify(B).slice(0, 80));

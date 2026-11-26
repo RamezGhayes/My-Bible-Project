@@ -515,7 +515,8 @@ html[data-mode=qt] .dso{display:none}
 .ov-bars .t small{font-family:var(--ui);font-size:12px;color:var(--soft)}
 .ov-bars .b{position:relative;height:20px;background:var(--cream);border-radius:6px}
 .ov-bars .b i{position:absolute;inset-block:0;inset-inline-start:0;background:var(--c);border-radius:6px}
-.ov-bars .b em{position:absolute;inset-inline-start:8px;top:0;font-style:normal;font-family:var(--ui);font-size:12px;line-height:20px;color:var(--ink)}
+.ov-bars .b em.in{inset-inline-start:8px;color:#fff}
+.ov-bars .b em{position:absolute;white-space:nowrap;top:0;font-style:normal;font-family:var(--ui);font-size:12px;line-height:20px;color:var(--ink)}
 .ov-tbl.t3>div{grid-template-columns:1.1fr 1.6fr 1fr}
 .ov-tbl.t4>div{grid-template-columns:1fr 1fr 1.4fr 1fr}
 .ov-tbl.t5>div{grid-template-columns:1fr .8fr .8fr 1.6fr 1fr}
