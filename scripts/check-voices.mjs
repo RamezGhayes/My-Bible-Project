@@ -11,6 +11,7 @@ const CMT = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/sources/commentary.
 const vspan = (r) => String(r).split(/[;,]/).flatMap((p) => { const [a, z] = p.trim().split(/[-–]/).map(Number); const o = []; for (let i = a; i <= (z || a); i++) o.push(i); return o; });
 const EN = { Matt: 'Matthew', Mark: 'Mark', Luke: 'Luke', John: 'John', Acts: 'Acts', Rom: 'Romans', '1Cor': '1 Corinthians', '2Cor': '2 Corinthians', Gal: 'Galatians', Eph: 'Ephesians', Phil: 'Philippians', Col: 'Colossians', '1Thess': '1 Thessalonians', '2Thess': '2 Thessalonians', '1Tim': '1 Timothy', '2Tim': '2 Timothy', Titus: 'Titus', Phlm: 'Philemon', Heb: 'Hebrews', Jas: 'James', '1Pet': '1 Peter', '2Pet': '2 Peter', '1John': '1 John', '2John': '2 John', '3John': '3 John', Jude: 'Jude', Rev: 'Revelation' };
 const nz = (t) => t.replace(/[ً-ْٰـ]/g, '').replace(/[ٱأإآ]/g, 'ا').replace(/[.،:؛,!؟«»"]/g, '').replace(/\s+/g, ' ').trim();
+const SERK = ['mac', 'ryle', 'hodge', 'owen', 'piper', 'sproul'];
 let problems = 0, n0 = 0;
 const bad = (m) => { problems++; console.log('✗ ' + m); };
 for (const b of books) {
@@ -33,13 +34,13 @@ for (const b of books) {
         const C = CMT.guzik.chapters[`${b.slug}-${n}`];
         if (!C || !C.secs[v.sec]) bad(`${id}: Guzik section "${v.sec}" not in commentary.json`);
         if (!fs.existsSync(path.join(ROOT, 'data/sources/guzik', `${b.slug}-${n}.md`))) bad(`${id}: no Guzik reading notes`);
-      } else if (v.k === 'mac') {
-        const M = CMT.mac.sermons[v.ser];
-        if (!M) bad(`${id}: sermon ${v.ser} not in commentary.json`);
-        else if ((M.book !== b.name && M.book !== (EN[b.id] || b.id)) || M.ch !== n || sp[0] < M.v[0] || sp[sp.length - 1] > M.v[1]) bad(`${id}: outside sermon ${v.ser} (${M.book} ${M.ch}:${M.v.join('-')})`);
-        if (!fs.existsSync(path.join(ROOT, 'data/sources/mac', `${b.slug}-${n}.md`))) bad(`${id}: no MacArthur reading notes`);
+      } else if (SERK.includes(v.k)) {
+        const M = (v.k === 'mac' ? CMT.mac.sermons : (CMT[v.k] && CMT[v.k].items) || {})[v.ser];
+        if (!M) bad(`${id}: ${v.k} source ${v.ser} not in commentary.json`);
+        else if ((M.book !== b.name && M.book !== (EN[b.id] || b.id)) || M.ch !== n || sp[0] < M.v[0] || sp[sp.length - 1] > M.v[1]) bad(`${id}: outside ${v.k} ${v.ser} (${M.book} ${M.ch}:${M.v.join('-')})`);
+        if (!fs.existsSync(path.join(ROOT, 'data/sources', v.k, `${b.slug}-${n}.md`))) bad(`${id}: no ${v.k} reading notes`);
       } else if (v.k !== 'calvin' && v.k !== 'mhc') bad(`${id}: unknown voice`);
-      if ((v.k === 'guzik' || v.k === 'mac') && v.basis) bad(`${id}: no basis for copyrighted voices`);
+      if ((v.k === 'guzik' || SERK.includes(v.k)) && v.basis) bad(`${id}: no basis for paraphrased voices`);
       if (/—/.test(v.p || '')) bad(`${id}: em dash`);
       for (const m of String(v.p || '').matchAll(/«([^»]+)»/g)) if (!chText.includes(nz(m[1]))) bad(`${id}: «${m[1]}» not Van Dyck text of this chapter`);
     }

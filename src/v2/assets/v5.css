@@ -597,7 +597,7 @@ html[data-mode=qt] .dso{display:none}
 .xr3 .ls{min-height:0;flex:1 1 auto}.xr3 footer{flex:none}
 /* commentators: tabs per commentator, exact source under each comment */
 .vx5h small{font-family:var(--ui);font-size:12px;color:var(--soft)}
-.vx5t{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;margin:2px 0 10px;padding-bottom:2px}
+.vx5t{display:flex;flex-wrap:wrap;gap:6px;overflow-x:auto;scrollbar-width:none;margin:2px 0 10px;padding-bottom:2px}
 .vx5t button{flex:none;display:inline-flex;align-items:center;gap:6px;height:34px;padding:0 14px;border-radius:999px;border:1px solid #CFE0D6;background:#fff;font-family:var(--ui);font-size:13.5px;color:var(--ink)}
 .vx5t button[aria-selected=true]{background:#2F5D4A;border-color:#2F5D4A;color:#fff}
 .vx5t .rd{width:7px;height:7px;border-radius:50%;background:var(--rf,#2F5D4A)}.vx5t button[aria-selected=true] .rd{background:#fff}

@@ -517,6 +517,10 @@ const rfView = (t) => /المُصلَح|المصلح|كالفن|وستمنستر
 const vspan = (r) => String(r).split(/[;,]/).flatMap((p) => { const [a, z] = p.trim().split(/[-–]/).map(Number); const o = []; for (let i = a; i <= (z || a); i++) o.push(i); return o; });
 const VOX = {};
 const CMT = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/sources/commentary.json'), 'utf8'));
+// Paraphrased voices registered per source item (sermon, chapter section, article) in commentary.json: CMT[k].items (MacArthur: CMT.mac.sermons).
+const SERK = ['mac', 'ryle', 'hodge', 'owen', 'piper', 'sproul'];
+const SREG = (k) => (k === 'mac' ? CMT.mac.sermons : (CMT[k] && CMT[k].items) || {});
+const SLAB = { mac: 'عظة', ryle: 'تأملات تفسيرية على الأناجيل، القسم', hodge: 'تفسير، القسم', owen: 'شرح الرسالة إلى العبرانيين، القسم', piper: 'عظة', sproul: '' };
 const bookEn = (b) => ({ Matt: 'Matthew', Mark: 'Mark', Luke: 'Luke', John: 'John', Acts: 'Acts', Rom: 'Romans', '1Cor': '1 Corinthians', '2Cor': '2 Corinthians', Gal: 'Galatians', Eph: 'Ephesians', Phil: 'Philippians', Col: 'Colossians', '1Thess': '1 Thessalonians', '2Thess': '2 Thessalonians', '1Tim': '1 Timothy', '2Tim': '2 Timothy', Titus: 'Titus', Phlm: 'Philemon', Heb: 'Hebrews', Jas: 'James', '1Pet': '1 Peter', '2Pet': '2 Peter', '1John': '1 John', '2John': '2 John', '3John': '3 John', Jude: 'Jude', Rev: 'Revelation' })[b.id] || b.id;
 {
   const flat = (x) => x.replace(/\s+/g, ' ');
@@ -531,9 +535,9 @@ const bookEn = (b) => ({ Matt: 'Matthew', Mark: 'Mark', Luke: 'Luke', John: 'Joh
         if (v.k === 'calvin') { const J = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/sources/calvin', `${b.slug}-${n}.json`), 'utf8')); src = v.at ? J[v.at] : Object.values(J).join('\n'); if (!src) throw new Error(`Voices ${b.slug} ${n}: no Calvin entry at ${v.at}`); }
         else if (v.k === 'mhc') src = fs.readFileSync(path.join(ROOT, 'data/sources/mhc', `${b.slug}-${n}.md`), 'utf8').replace(/[*_]/g, '').replace(/\\/g, '');
         else if (v.k === 'guzik') { const C = CMT.guzik.chapters[`${b.slug}-${n}`]; if (!C || !C.secs[v.sec]) throw new Error(`Voices ${b.slug} ${n} (${v.r}): Guzik section "${v.sec}" is not in data/sources/commentary.json`); if (!fs.existsSync(path.join(ROOT, 'data/sources/guzik', `${b.slug}-${n}.md`))) throw new Error(`Voices ${b.slug} ${n}: no Guzik reading notes`); }
-        else if (v.k === 'mac') { const M = CMT.mac.sermons[v.ser]; if (!M) throw new Error(`Voices ${b.slug} ${n} (${v.r}): MacArthur sermon ${v.ser} is not in data/sources/commentary.json`); const sp = vspan(v.r); if (M.book !== b.name && M.book !== bookEn(b) || M.ch !== n || sp[0] < M.v[0] || sp[sp.length - 1] > M.v[1]) throw new Error(`Voices ${b.slug} ${n} (${v.r}): outside MacArthur ${v.ser} (${M.book} ${M.ch}:${M.v.join('-')})`); }
+        else if (SERK.includes(v.k)) { const M = SREG(v.k)[v.ser]; if (!M) throw new Error(`Voices ${b.slug} ${n} (${v.r}): ${v.k} source ${v.ser} is not in data/sources/commentary.json`); const sp = vspan(v.r); if (M.book !== b.name && M.book !== bookEn(b) || M.ch !== n || sp[0] < M.v[0] || sp[sp.length - 1] > M.v[1]) throw new Error(`Voices ${b.slug} ${n} (${v.r}): outside ${v.k} ${v.ser} (${M.book} ${M.ch}:${M.v.join('-')})`); if (!fs.existsSync(path.join(ROOT, 'data/sources', v.k, `${b.slug}-${n}.md`))) throw new Error(`Voices ${b.slug} ${n}: no ${v.k} reading notes`); }
         else throw new Error(`Voices ${b.slug} ${n}: unknown voice ${v.k}`);
-        if (v.k === 'guzik' || v.k === 'mac') { if (v.basis) throw new Error(`Voices ${b.slug} ${n} (${v.r}): no quoted basis for copyrighted commentators`); }
+        if (v.k === 'guzik' || SERK.includes(v.k)) { if (v.basis) throw new Error(`Voices ${b.slug} ${n} (${v.r}): no quoted basis for copyrighted commentators`); }
         const S = flat(src || '');
         for (const x of v.basis || []) if (!S.includes(flat(x))) throw new Error(`Voices ${b.slug} ${n} (${v.r}): not word for word in ${v.k}: "${x}"`);
         if (/[—]/.test(v.p)) throw new Error(`Voices ${b.slug} ${n} (${v.r}): no em dash in the paraphrase`);
@@ -550,9 +554,14 @@ const VWHO = {
   calvin: { n: 'جون كالفن', d: 'مُصلِح جنيف (1509–1564)', rf: 1 },
   mhc: { n: 'ماثيو هنري', d: 'خادم مشيخي إنجليزي (1662–1714)', rf: 1 },
   mac: { n: 'جون ماك آرثر', d: 'راعي كنيسة جريس في كاليفورنيا (1939–2025)، كالفيني في عقيدة الخلاص' },
-  guzik: { n: 'ديفيد جوزيك', d: 'راعٍ ومعلّم كتابي أمريكي، من كنائس كالفاري تشابل' }
+  guzik: { n: 'ديفيد جوزيك', d: 'راعٍ ومعلّم كتابي أمريكي، من كنائس كالفاري تشابل' },
+  ryle: { n: 'ج. ك. رايل', d: 'أول أسقف لليفربول، إنجيلي مُصلَح (1816–1900)', rf: 1 },
+  hodge: { n: 'تشارلز هودج', d: 'لاهوتي مشيخي في كلية برنستون (1797–1878)', rf: 1 },
+  owen: { n: 'جون أوين', d: 'لاهوتي بيوريتاني إنجليزي (1616–1683)', rf: 1 },
+  sproul: { n: 'ر. س. سبرول', d: 'لاهوتي مشيخي أمريكي، مؤسس خدمات ليجونير (1939–2017)', rf: 1 },
+  piper: { n: 'جون بايبر', d: 'راعٍ ولاهوتي معمداني إصلاحي أمريكي، مؤسس Desiring God (وُلد 1946)' }
 };
-const VORDER = ['calvin', 'mhc', 'mac', 'guzik'];
+const VORDER = ['calvin', 'ryle', 'hodge', 'owen', 'mhc', 'sproul', 'piper', 'mac', 'guzik'];
 const VWORK = (k, b) => (k === 'calvin' ? (b.group === 'gospels' && b.id !== 'John' ? 'تفسير توافق الأناجيل (1555)' : 'تفسير') : 'تفسير الكتاب المقدس كله (1706–1714)');
 const MONTHS = ['يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو', 'يوليو', 'أغسطس', 'سبتمبر', 'أكتوبر', 'نوفمبر', 'ديسمبر'];
 const arDate = (d) => { const [y, m, dd] = d.split('-').map(Number); return `${ar(dd)} ${MONTHS[m - 1]} ${ar(y)}`; };
@@ -560,6 +569,7 @@ const vsrc = (v, b, n) => {
   const bn = esc(b.name.replace(/^إنجيل /, ''));
   if (v.k === 'guzik') { const C = CMT.guzik.chapters[`${b.slug}-${n}`]; return `<p class="vx5s"><b>المصدر:</b> تفسير Enduring Word (${C.lang === 'en' ? 'الأصل الإنجليزي' : 'الترجمة العربية'})، ${bn} ${ar(n)}، قسم «${esc(C.secs[v.sec])}». <a href="${esc(C.url)}" rel="noopener" target="_blank">افتح الصفحة</a></p>`.replace(/«([^»]*)»/g, '"$1"'); }
   if (v.k === 'mac') { const M = CMT.mac.sermons[v.ser]; return `<p class="vx5s"><b>المصدر:</b> عظة "${esc(M.t)}"، ${M.date ? arDate(M.date) + '، ' : ''}على ${bn} ${ar(M.ch)}: ${ar(M.v[0])}–${ar(M.v[1])} (رقم ${esc(v.ser.split('@')[0])}). <a href="${esc(M.url)}" rel="noopener" target="_blank">افتح العظة</a></p>`; }
+  if (SERK.includes(v.k)) { const M = SREG(v.k)[v.ser]; const lab = M.kind || SLAB[v.k] || ''; return `<p class="vx5s"><b>المصدر:</b> ${lab ? lab + ' ' : ''}"${esc(M.t)}"، ${M.date ? arDate(M.date) + '، ' : ''}على ${bn} ${ar(M.ch)}: ${ar(M.v[0])}${M.v[1] !== M.v[0] ? '–' + ar(M.v[1]) : ''}. <a href="${esc(M.url)}" rel="noopener" target="_blank">افتح المصدر</a></p>`; }
   return `<p class="vx5s"><b>المصدر:</b> ${VWORK(v.k, b)}، على ${bn} ${ar(String(v.r).replace('-', '–'))}.</p><details><summary>العبارة الأصلية (بالإنجليزية)</summary>${(v.basis || []).map((x) => `<blockquote dir="ltr" lang="en">${esc(x)}</blockquote>`).join('')}</details>`;
 };
 let vxN = 0;
@@ -571,7 +581,7 @@ const voxBox = (b, n, r) => {
   const tabs = who.length > 1 ? `<div class="vx5t" role="tablist">${who.map((k, i) => `<button type="button" role="tab" data-vt="${id}-${k}" aria-selected="${i ? 'false' : 'true'}">${VWHO[k].n}${VWHO[k].rf ? '<i class="rd" title="مُصلَح"></i>' : ''}</button>`).join('')}</div>` : '';
   const panels = who.map((k, i) => `<div class="vx5p" id="${id}-${k}" role="tabpanel"${i ? ' hidden' : ''}><div class="vx5w"><b>${VWHO[k].n}</b>${VWHO[k].rf ? RTAG : ''}<small>${VWHO[k].d}</small></div>${L.filter((v) => v.k === k).map((v) => `<div class="vx5i"><p>${esc(v.p)}</p>${vsrc(v, b, n)}</div>`).join('')}</div>`).join('');
   const credit = who.includes('guzik') ? `<p class="vx5f" dir="ltr">${esc(CMT.guzik.credit)}</p>` : '';
-  return `<div class="vx5"><div class="vx5h"><b>ماذا قال المفسرون؟</b><small>${ar(who.length)} ${who.length > 2 ? 'مفسرين' : 'مفسران'}</small></div>${tabs}${panels}<p class="vx5f">كلامهم ملخّص بتصرّف بالعربية، مع اسم الكتاب أو العظة والقسم بالضبط. اقتباسات كالفن وهنري الإنجليزية منقولة حرفياً من مصادرها.</p>${credit}</div>`;
+  return `<div class="vx5"><div class="vx5h"><b>ماذا قال المفسرون؟</b><small>${who.length === 1 ? 'مفسر واحد' : who.length === 2 ? 'مفسران' : ar(who.length) + ' مفسرين'}</small></div>${tabs}${panels}<p class="vx5f">كلامهم ملخّص بتصرّف بالعربية، مع اسم الكتاب أو العظة والقسم بالضبط. اقتباسات كالفن وهنري الإنجليزية منقولة حرفياً من مصادرها.</p>${credit}</div>`;
 };
 const DTAG = { agreed: 'متفق عليه', likely: 'الرأي الراجح', debated: 'قضية تفسيرية' };
 const dtag = (t) => (t && DTAG[t] ? `<span class="dtag ${t}">${DTAG[t]}</span>` : '');
