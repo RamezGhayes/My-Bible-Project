@@ -1,0 +1,11 @@
+# Reading notes: David Guzik, Enduring Word (English page), Matthew 1
+Read 2026-11-26 at https://enduringword.com/bible-commentary/matthew-1/ . Our own outline, not his text.
+(Arabic page arabic.enduringword.com/matthew-1-ar/ redirects to the commentary index, so English used.)
+A1 (1): "book of the genealogy" = genealogy / origins / history; Matthew the tax collector (Barclay: first compiler of Jesus' teaching; tax collectors hated); why Matthew first (France); Jewish character (raca 5:22, corban 15:5); ends with 28:19-20; "pro-Jesus" more than "pro-Jewish"; Carson against midrash; Son of David 2 Sam 7:12-16; Son of Abraham Gen 12:3.
+A2 (2-16): Joseph's legal line, Luke 3 Mary's line (Bruce; Carson doubts Mary theory); Poole: records trustworthy, opponents never disproved, 1 Tim 1:4, Titus 3:9; Spurgeon: obscure names, shoot from Jesse. Four women: Tamar Gen 38, Rahab Josh 2; 6:22-23, Ruth 1, wife of Uriah 2 Sam 11 (Carson: Uriah Hittite); grace, identification with sinners (Spurgeon harlot Rahab rustic Ruth; Meyer); Barclay. v16 France: legal ancestry.
+A3 (17): 3x14 for memorization; Joram-Uzziah skips Ahaziah, Joash, Amaziah (2 Chr 26:16-21); Clarke: omissions common; Jehoiakim omitted (2 Chr 36:5-8), Jer 36:30-31 curse; legal not blood son, Mary via Nathan Luke 3:31.
+B1 (18): three stages of marriage; virgin conception plain; rumours (John 8:19, 41); sinless origin needed; Clarke: distressing; Spurgeon: of woman to be man, not of man to be sinless.
+B2 (19): betrothed = husband; just + merciful; Poole: "secretly" = as privately as possible; Spurgeon: gentlest way.
+B3 (20-21): "an angel", maybe Gabriel (Luke 1:19, 26); son of David; Luke 1:35 (Trapp: overshadowing mystery); Carson: no pagan coupling; Jesus common name (Josephus 12), Acts 4:12; Morgan: Salvation of Jehovah; save from penalty, power, presence; "His people"; France: Isa 53, Jer 31:31-34, Ezek 36:24-31.
+B4 (22-23): first fulfilment formula; almah/parthenos (LXX); Immanuel deity + nearness; Trapp; Clarke list of ways God is with us; Spurgeon: Wesley's dying words, no priest needed.
+B5 (24-25): immediate obedience; "till" implies relations after; Carson; France; perpetual virginity not biblical, late; Jesus name above all names.
