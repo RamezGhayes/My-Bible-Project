@@ -120,6 +120,23 @@
      "B4": "ثانياً. د) الآيات (٢٢-٢٣): استقرار العائلة شمالاً في الناصرة خوفاً من أرخيلاوس"
     },
     "read": "2026-11-26"
+   },
+   "mark-13": {
+    "url": "https://enduringword.com/bible-commentary/ar/mark-13/",
+    "lang": "ar",
+    "secs": {
+     "A1": "أولًا. أ (١-٢) يسوع يتنبأ عن دمار الهيكل",
+     "A2": "أولًا. ب (٣-٤) تنبؤات يسوع أثارت سؤالين لدى التلاميذ",
+     "B1": "ثانيًا. أ (٥-٨) يصف يسوع حالة العالم في الفترة ما بين صعوده ومجيئه الثاني",
+     "B2": "ثانيًا. ب (٩-١٣) ما يجب أن يتوقعه التلاميذ في الفترة ما بين صعوده ومجيئه الثاني",
+     "C1": "ثالثًا. أ (١٤أ) العلامة: رجسة الخراب التي قال عنها دانيال النبي",
+     "C2": "ثالثًا. ب (١٤ب-١٨) تحذيرات يسوع عما علينا أن نفعله حين نرى رجسة الخراب",
+     "C3": "ثالثًا. ج (١٩-٢٣) ماذا بعد رجسة الخراب: الضيقة العظيمة",
+     "C4": "ثالثًا. د (٢٤-٢٧) في أعقاب الضيقة العظيمة: سيأتي يسوع المسيح",
+     "C5": "ثالثًا. هـ (٢٨-٣١) يسوع يتحدث أكثر عن توقيت هذه الأحداث",
+     "C6": "ثالثًا. و (٣٢-٣٧) التركيز على السهر والاستعداد"
+    },
+    "read": "2026-11-26"
    }
   }
  },
@@ -456,6 +473,61 @@
      23
     ],
     "url": "https://www.gty.org/sermons/2186/the-king-fulfills-prophecy-part-2"
+   },
+   "41-66": {
+    "t": "The Grim Reality of the Last Days",
+    "date": "",
+    "book": "Mark",
+    "ch": 13,
+    "v": [
+     1,
+     13
+    ],
+    "url": "https://www.gty.org/library/sermons-library/41-66/the-grim-reality-of-the-last-days"
+   },
+   "41-67": {
+    "t": "The Future Tribulation",
+    "date": "",
+    "book": "Mark",
+    "ch": 13,
+    "v": [
+     14,
+     23
+    ],
+    "url": "https://www.gty.org/library/sermons-library/41-67/the-future-tribulation"
+   },
+   "41-68": {
+    "t": "Coming in the Clouds",
+    "date": "",
+    "book": "Mark",
+    "ch": 13,
+    "v": [
+     24,
+     27
+    ],
+    "url": "https://www.gty.org/library/sermons-library/41-68/coming-in-the-clouds"
+   },
+   "41-69": {
+    "t": "The Final Generation, Part 1",
+    "date": "2011-04-03",
+    "book": "Mark",
+    "ch": 13,
+    "v": [
+     28,
+     37
+    ],
+    "url": "https://www.gty.org/library/sermons-library/41-69/the-final-generation-part-1"
+   },
+   "41-70": {
+    "t": "The Final Generation, Part 2",
+    "date": "2011-04-03",
+    "book": "Mark",
+    "ch": 13,
+    "v": [
+     28,
+     37
+    ],
+    "url": "https://www.gty.org/library/sermons-library/41-70/the-final-generation-part-2"
    }
   }
  }
