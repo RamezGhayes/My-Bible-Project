@@ -1,5 +1,6 @@
 // v5: welcome shown on a first visit only, and the reading mode (Quiet Time / Deep Study) kept in this browser.
 (function () {
+  var AR = function (n) { return String(n).replace(/[0-9]/g, function (d) { return '٠١٢٣٤٥٦٧٨٩'[d]; }); };
   var get = function (k) { try { return localStorage.getItem(k); } catch (e) { return null; } };
   var set = function (k, v) { try { localStorage.setItem(k, v); } catch (e) {} };
 
@@ -35,8 +36,8 @@
   if (picks.length) { picks.forEach(function (p) { p.addEventListener('click', function () { window.SolaMode.set(p.getAttribute('data-mode-pick')); paint(); }); }); paint(); }
   var rl = readList();
   var st5 = document.querySelector('[data-start]');
-  if (st5) { var all = [].slice.call(document.querySelectorAll('.cr5[data-key], .chg5 a[data-key]')); var any = all.some(function (a) { return rl.indexOf(a.getAttribute('data-key')) >= 0; }); var nx = all.filter(function (a) { return rl.indexOf(a.getAttribute('data-key')) < 0; })[0]; if (any && nx) { st5.setAttribute('href', nx.getAttribute('href')); st5.firstChild.nodeValue = 'تابع القراءة: الأصحاح ' + (nx.querySelector('em') ? nx.querySelector('em').textContent : nx.textContent) + ' '; } }
-  document.querySelectorAll('.chg5 a[data-key], .cr5[data-key]').forEach(function (a) { if (rl.indexOf(a.getAttribute('data-key')) >= 0) { a.classList.add('read'); a.setAttribute('aria-label', a.textContent + ' (قرأته)'); } });
+  if (st5) { var all = [].slice.call(document.querySelectorAll('.cr5[data-key], .chg5 a[data-key], .car .cc[data-key]')); var any = all.some(function (a) { return rl.indexOf(a.getAttribute('data-key')) >= 0; }); var nx = all.filter(function (a) { return rl.indexOf(a.getAttribute('data-key')) < 0; })[0]; if (any && nx) { st5.setAttribute('href', nx.getAttribute('href')); st5.firstChild.nodeValue = 'تابع القراءة: الأصحاح ' + AR(nx.getAttribute('data-key').split(':')[1]) + ' '; } }
+  document.querySelectorAll('.chg5 a[data-key], .cr5[data-key], .car .cc[data-key]').forEach(function (a) { if (rl.indexOf(a.getAttribute('data-key')) >= 0) { a.classList.add('read');  } });
 
   // ---------- chapter: hub and focused views (hash routing) ----------
   var c5 = document.querySelector('[data-c5]');

@@ -474,3 +474,6 @@ html[data-mode=qt] .dso{display:none}
   .ov-cta{margin-top:-30px}
 }
 @media (max-width:640px){.ov-gos{grid-template-columns:1fr 1fr}.ov-gos div{padding:12px}}
+.v5book .bk5top{padding-bottom:0}
+.v5book .bk5p:last-child{padding-top:10px}
+.v5book .car .cc.read .k span:last-child:after{content:"✓ قرأته";color:var(--ok);font-family:var(--ui);font-size:12px}

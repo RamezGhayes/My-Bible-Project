@@ -170,6 +170,29 @@ function bookPage(b) {
   const TG = { agreed: 'متفق عليه', likely: 'راجح', debated: 'مختلف عليه' };
   const PC = ['#8C2F1E', '#A8584A', '#B39459', '#4E5D32', '#1F2A44', '#4B3D63', '#7A6232', '#34496B'];
   const href = (n) => (skip ? '#' : `${b.slug}/${n}.html`);
+  const vs = bible(b.id).chapters;
+  const cards = vs.map((ch, i) => {
+    const n = i + 1;
+    const S = study(b, n);
+    const href = skip ? '#' : `${b.slug}/${n}.html`;
+    if (S) {
+      const kv = firstRef(S.keyVerse);
+      return `<a class="cc" href="${href}" data-i="${i}" data-key="${b.id}:${n}" data-sec="${esc(plain(S.section).replace(/\s*\([^)]*\)/g, ''))}">
+<div class="k"><span>الأصحاح</span><span data-stat></span></div>
+<div class="num">${ar(n)}</div>
+<h3>${md(S.title)}</h3>
+<p>${esc(firstSentences(S.summary?.[0] || S.where, 110))}</p>
+<div class="pchips">${personChips(S, b).map((p) => `<span>${esc(p)}</span>`).join('')}</div>
+${kv ? `<div class="kv2"><div class="s">${esc(quoteText(kv))}</div><small>${refLabel(kv)}</small></div>` : ''}
+<div class="ft"><span>${vWord(ch.verses.length)}</span><span class="go">اقرأ ${IC.chev}</span></div></a>`;
+    }
+    return `<a class="cc" href="${href}" data-i="${i}" data-key="${b.id}:${n}" data-sec="">
+<div class="k"><span>الأصحاح</span><span data-stat></span></div>
+<div class="num">${ar(n)}</div>
+<h3 style="font-family:var(--ui);font-weight:400;font-size:13px;color:var(--faint)">${skip ? 'النص في النسخة الكاملة من الموقع' : 'النص متاح · الدراسة قيد الإعداد'}</h3>
+<p style="font-family:var(--nas);font-size:16.5px;line-height:1.95">${esc(clip(ch.verses.slice(0, 3).map((v) => v.text).join(' '), 200))}</p>
+<div class="ft" style="margin-top:auto"><span>${vWord(ch.verses.length)}</span><span class="go">اقرأ ${IC.chev}</span></div></a>`;
+  }).join('');
   // sections of the book, from the chapters' own section labels
   const parts = [];
   for (let n = 1; n <= b.chapters; n++) { const S = study(b, n); const lab = S ? plain(S.section).replace(/\s*\([^)]*\)\s*$/, '') : ''; const last = parts[parts.length - 1]; if (last && last.t === lab) last.z = n; else parts.push({ t: lab, a: n, z: n }); }
@@ -181,7 +204,7 @@ function bookPage(b) {
 <div class="bkr5"><div class="tx"><span class="ey">${esc(b.groupName)} · السفر ${ar(b.order)} من ٦٦</span><h1>${esc(shortName(b))}</h1><p class="v">${esc(first)}<small>${refLabel(`${b.id}.1.1`)}</small></p>${I ? `<p class="s">${esc(firstSentences(I.summary, 150))}</p>` : '<p class="s">النص كاملاً متاح الآن، أصحاحاً أصحاحاً. والمقدمة والدراسة لهذا السفر قيد الإعداد.</p>'}</div>
 <aside class="fx5"><dl>${facts.map((f) => `<div><dt>${esc(f.k)}</dt><dd>${md(f.v)}</dd></div>`).join('')}<div><dt>الأصحاحات</dt><dd>${chWord(b.chapters)}${studiedCount(b) ? ` · ${studiedCount(b) === b.chapters ? 'كلها مدروسة' : `${ar(studiedCount(b))} مدروساً`}` : ''}</dd></div></dl>
 <a class="go5" data-start href="${href(1)}">ابدأ القراءة من الأصحاح الأول ${ARW}</a></aside></div>
-${hasMap ? `<div class="map"><small>أقسام السفر · عرض كل قسم يتبع عدد أصحاحاته</small><div class="mbar">${parts.map((q, i) => `<a href="#p${i + 1}" style="flex:${q.z - q.a + 1};--c:${PC[i % PC.length]};--d:${(0.4 + i * 0.1).toFixed(2)}s" title="${esc(q.t)}"></a>`).join('')}</div><div class="mlb">${parts.map((q) => `<span style="flex:${q.z - q.a + 1}"><b>${esc(q.t || 'بلا دراسة بعد')}</b><em>${ar(q.a)}${q.z > q.a ? '–' + ar(q.z) : ''}</em></span>`).join('')}</div></div>` : ''}
+${hasMap ? `<div class="map"><small>أقسام السفر · عرض كل قسم يتبع عدد أصحاحاته</small><div class="mbar">${parts.map((q, i) => `<a href="#c${q.a}" style="flex:${q.z - q.a + 1};--c:${PC[i % PC.length]};--d:${(0.4 + i * 0.1).toFixed(2)}s" title="${esc(q.t)}"></a>`).join('')}</div><div class="mlb">${parts.map((q) => `<span style="flex:${q.z - q.a + 1}"><b>${esc(q.t || 'بلا دراسة بعد')}</b><em>${ar(q.a)}${q.z > q.a ? '–' + ar(q.z) : ''}</em></span>`).join('')}</div></div>` : ''}
 </div></section>`;
   const hasDeep = Object.keys(c?.deep || {}).length > 0;
   const modes = `<section class="mode5" aria-label="اختر طريقة القراءة"><div class="mode5h"><h2>اختر طريقة القراءة</h2><p>تتغير الأقسام التي تراها في كل أصحاح، ويُحفظ اختيارك.</p></div><div class="mode5g" role="radiogroup">
@@ -201,8 +224,12 @@ ${I.context ? `<div class="ctx5">${[['before', 'قبله'], ['now', 'هذا ال
 <details class="acc acc5"><summary><span class="ai">${IC.list}</span><span class="at"><b>مقدمة السفر في ${secWord(I.sections.length)}</b><small>${I.sections.slice(0, 3).map((x) => esc(plain(x.short || x.title || ''))).join('، ')}...</small></span><span class="ar" aria-hidden="true">${IC.chev}</span></summary><div class="acc5b">
 <ol class="secs5">${I.sections.map((x, i) => `<li><a href="${b.slug}/about.html#sec${i + 1}"><em>${ar(i + 1)}</em><span>${md(x.title || x.t || '')}</span>${ARW}</a></li>`).join('')}</ol>
 </div></details></section>` : '';
-  const body = `${hero}<div class="z5 bk5p">${modes}${grid}${about}</div>`;
-  write(`book/${b.slug}.html`, page({ title: b.name, depth: 1, nav: b.testament, body, cls: 'v3 v5hub v5book' }));
+  const carousel = `<section class="bk3s bk3ch"><h2>الأصحاحات</h2><p>اسحب البطاقات، أو اختر رقماً.</p></section>
+<div class="secl" id="secl"></div>
+<div class="car" id="car" data-kind="chapters" data-book="${b.id}" data-total="${b.chapters}">${cards}</div>
+<div class="scrub" id="scrub">${vs.map((_, i) => `<button type="button" data-jump="${i}" data-key="${b.id}:${i + 1}">${ar(i + 1)}</button>`).join('')}</div>`;
+  const body = `${hero}<div class="z5 bk5p bk5top">${modes}</div>${carousel}<div class="z5 bk5p">${about}</div>`;
+  write(`book/${b.slug}.html`, page({ title: b.name, depth: 1, nav: b.testament, body, cls: 'v3 bk3 v5hub v5book' }));
 }
 
 // ---------- book introduction (about) ----------
