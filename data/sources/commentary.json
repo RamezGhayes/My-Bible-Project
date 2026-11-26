@@ -74,6 +74,21 @@
      "D2": "D. 2 (40-41) يسوع يوبخ التلاميذ"
     },
     "read": "2026-11-26"
+   },
+   "mark-5": {
+    "url": "https://enduringword.com/bible-commentary/mark-5/",
+    "lang": "en",
+    "secs": {
+     "A1": "أ. ١ (١-٨) وصف الرجل الذي به روح نجس",
+     "A2": "أ. ٢ (٩-١٣) يسوع يُظهر سلطانه على الأرواح الشريرة",
+     "A3": "أ. ٣ (١٤-١٧) ردّ فعل الحاضرين",
+     "A4": "أ. ٤ (١٨-٢٠) ردّ فعل الرجل المحرَّر",
+     "B1": "ب. ١ (٢١-٢٤) أب يطلب من يسوع أن يشفي ابنته",
+     "B2": "ب. ٢ (٢٥-٣٤) شفاء امرأة من نزف الدم",
+     "B3": "ب. ٣ (٣٥-٣٦) يسوع يدعو يايرس إلى إيمان عظيم بوعد عظيم",
+     "B4": "ب. ٤ (٣٧-٤٣) يسوع يقيم ابنة يايرس من الموت"
+    },
+    "read": "2026-11-26"
    }
   }
  },
@@ -300,6 +315,39 @@
      41
     ],
     "url": "https://www.gty.org/sermons/41-21/calming-the-storm"
+   },
+   "41-22": {
+    "t": "Dominating Powers, Part 1",
+    "date": "",
+    "book": "Mark",
+    "ch": 5,
+    "v": [
+     1,
+     20
+    ],
+    "url": "https://gty.org/library/sermons-library/41-22"
+   },
+   "41-24": {
+    "t": "The Power and Pity of Jesus, Part 1",
+    "date": "",
+    "book": "Mark",
+    "ch": 5,
+    "v": [
+     21,
+     34
+    ],
+    "url": "https://www.gty.org/sermons/41-24/the-power-and-pity-of-jesus-part-1"
+   },
+   "41-25": {
+    "t": "The Power and Pity of Jesus, Part 2",
+    "date": "2010-02-07",
+    "book": "Mark",
+    "ch": 5,
+    "v": [
+     35,
+     43
+    ],
+    "url": "https://www.gty.org/sermons/41-25/The-Power-and-Pity-of-Jesus-Part-2"
    }
   }
  }
