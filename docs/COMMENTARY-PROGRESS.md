@@ -71,8 +71,8 @@ commit لكل أصحاح: `Guzik and MacArthur: luke-<n>`، ثم `git push origi
 
 ## شغال دلوقتي (لو لقيت الملفات دي ناقصة أو مش متعملها commit، الوكيل اتقطع: كمّلها)
 
-- لوقا ٢٣، ٢٤ / يوحنا ١، ٢، ٣: الاتنين.
-- لسه ما بدأش: يوحنا ٤ وما بعده.
+- لوقا ٢٣، ٢٤ / يوحنا ١، ٢، ٣ / يوحنا ٤، ٥، ٦: الاتنين.
+- لسه ما بدأش: يوحنا ٧ وما بعده.
 - مصدر العناوين اللي اشتغل: روابط gty اللي عليها عناوين في صفحات preceptaustin.org/<book>-<n>-commentary. قائمة monergism بترفض القراءة الآلية.
 
 علشان تعرف اللي اتعمل فعلاً: `git log --oneline | grep Guzik` و`node scripts/check-voices.mjs`، وملفات `data/sources/mac/luke-<n>.md`.
