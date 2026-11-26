@@ -563,6 +563,23 @@
      "D2": "رابعًا. ب (٥٧-٥٨) نبي بلا كرامة"
     },
     "read": "2026-11-26"
+   },
+   "matthew-14": {
+    "url": "https://enduringword.com/bible-commentary/ar/matthew-14/",
+    "lang": "ar",
+    "secs": {
+     "A1": "أولًا. أ (١-٢) هيرودس يخشى أن يكون يسوع هو يوحنا المعمدان وقد قام من الأموات",
+     "A2": "أولًا. ب (٣-١٢) معاملة هيرودس القاسية ليوحنا المعمدان",
+     "A3": "أولًا. ج (١٣) يسوع يغادر، غير راغب في الاصطدام بهيرودس",
+     "B1": "ثانيًا. أ (١٤-١٦) يسوع يتعاطف مع الجموع",
+     "B2": "ثانيًا. ب (١٧-١٩) يسوع يوزع الخبز على الجموع",
+     "B3": "ثانيًا. ج (٢٠-٢١) الجموع تشبع",
+     "C1": "ثالثًا. أ (٢٢-٢٤) عاصفة أخرى على بحر الجليل",
+     "C2": "ثالثًا. ب (٢٥-٢٧) يسوع يأتي لمساعدة تلاميذه وتهدئتهم",
+     "C3": "ثالثًا. ج (٢٨-٣٣) خطوة بطرس الجريئة يتبعها افتقار للإيمان",
+     "C4": "ثالثًا. د (٣٤-٣٦) جموع كثيرة تُشفى بلمسة من يسوع"
+    },
+    "read": "2026-11-26"
    }
   }
  },
@@ -2570,6 +2587,61 @@
      58
     ],
     "url": "https://www.gty.org/library/sermons-library/2306/the-power-of-unbelief-part-2",
+    "date": ""
+   },
+   "2307": {
+    "t": "Fear that Forfeits Christ",
+    "book": "Matthew",
+    "ch": 14,
+    "v": [
+     1,
+     13
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2307/fear-that-forfeits-christ",
+    "date": ""
+   },
+   "2308": {
+    "t": "The Miraculous Feeding",
+    "book": "Matthew",
+    "ch": 14,
+    "v": [
+     13,
+     22
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2308/the-miraculous-feeding",
+    "date": ""
+   },
+   "2309": {
+    "t": "Worshiping the Son of God, Part 1",
+    "book": "Matthew",
+    "ch": 14,
+    "v": [
+     22,
+     33
+    ],
+    "url": "https://www.gty.org/sermons/2309/worshiping-the-son-of-god-part-1",
+    "date": ""
+   },
+   "2310": {
+    "t": "Worshiping the Son of God, Part 2",
+    "book": "Matthew",
+    "ch": 14,
+    "v": [
+     22,
+     33
+    ],
+    "url": "https://www.gty.org/sermons/2310/worshiping-the-son-of-god-part-2",
+    "date": ""
+   },
+   "2311": {
+    "t": "Confusing Man's Traditions with God's Commandments, Part 1",
+    "book": "Matthew",
+    "ch": 14,
+    "v": [
+     34,
+     36
+    ],
+    "url": "https://www.gty.org/sermons/2311/confusing-mans-traditions-with-gods-commandments-part-1",
     "date": ""
    }
   }
