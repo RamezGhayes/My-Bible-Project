@@ -83,69 +83,64 @@ const personHref = (p, depth) => (hasPage(p) ? `${up(depth)}people/${p.id}.html`
 // ---------- intro + home (redesign Nov 2026: three calm zones) ----------
 const ARW = '<span class="arw" aria-hidden="true">←</span>';
 const BACK = '<span class="arw" aria-hidden="true">→</span>';
-// The welcome shown on a first visit (v5.js decides, localStorage "sola.intro").
-function introOverlay() {
+// The welcome shown on a first visit only (v5.js decides, localStorage "sola.intro"). Same look as the old splash.
+function introOverlay(ps) {
   return `<div id="intro5" class="i5" hidden role="dialog" aria-modal="true" aria-labelledby="i5t"><div class="i5in">
-<span class="i5m">${BRAND}</span>
-<h2 id="i5t">أهلاً بك في «${esc(config.nameAr)}»</h2>
-<p class="i5l">مكان هادئ لتقرأ الكتاب المقدس وتفهمه، أصحاحاً بعد أصحاح.</p>
-<div class="i5w">
-<div class="i5c qt"><span class="i5e" aria-hidden="true">🕯️</span><b>خلوة يومية</b><small>نحو ٢٠ دقيقة: تقرأ الأصحاح، وتتأمل في آيته المفتاحية، وتصلي.</small></div>
-<div class="i5c ds"><span class="i5e" aria-hidden="true">📖</span><b>دراسة معمّقة</b><small>آية بآية: الكلمات الأصلية، والخلفية، والمسيح في النص.</small></div>
-</div>
-<p class="i5r"><span class="rtag">مُصلَح</span> نقرأ من منظور الإيمان المُصلَح (إقرار وستمنستر، وكالفن)، ونعرض الآراء الأخرى بأمانة، ونذكر من قال كل رأي.</p>
-<button type="button" class="i5go" data-i5-go>ابدأ ${ARW}</button>
-<button type="button" class="i5skip" data-i5-go>تخطَّ</button>
+<div class="wm" id="i5t">${esc(config.nameAr)}</div>
+<div class="vs">${esc(ps)}</div><div class="rf">${refLabel(config.verseRef)}</div>
+<div class="ln"></div>
+<p class="i5l">مكان هادئ لتقرأ الكتاب المقدس وتفهمه، أصحاحاً بعد أصحاح، بطريقتين:</p>
+<div class="i5w"><div><b>الخلوة اليومية</b><small>نحو ٢٠ دقيقة: النص، والآية المفتاحية، والتأمل، والصلاة.</small></div><div><b>الدراسة المعمّقة</b><small>آية بآية: الكلمات الأصلية، والخلفية، والمسيح في النص.</small></div></div>
+<button type="button" data-i5-go>ادخل</button>
+<small>دراسة الكتاب المقدس من منظور مُصلَح، مع عرض الآراء الأخرى بأمانة</small>
 </div></div>`;
 }
 function home() {
   const ps = mainVerse();
+  const words = ps.split(/\s+/);
   const studiedIn = (t) => books.filter((b) => b.testament === t).reduce((n, b) => n + studiedCount(b), 0);
-  const tcard = (t, d) => { const list = books.filter((b) => b.testament === t); const ch = list.reduce((n, b) => n + b.chapters, 0); return `<a class="z5t ${t}" href="${t}.html"><span class="z5k">${bkWord(list.length)} · ${chWord(ch)}</span><b>${T_NAME[t]}</b><span class="z5d">${d}</span><span class="z5b">افتح ${T_NAME[t]} ${ARW}</span></a>`; };
+  const tcard = (t, d) => { const list = books.filter((b) => b.testament === t); const ch = list.reduce((n, b) => n + b.chapters, 0); const st = studiedIn(t); return `<a class="h3t" href="${t}.html"><b>${T_NAME[t]}</b><span class="d">${d}</span><span class="mt"><span>${bkWord(list.length)} · ${chWord(ch)} · ${st === ch ? 'كلها مدروسة' : `${ar(st)} مدروساً`}</span><span class="go">افتح ${IC.chev}</span></span></a>`; };
   const start = PLANS_UI.PLANS.find((P) => P.id === 'start');
-  const ex = [
-    ['people.html', 'person-abraham', 'الشخصيات', 'وجوه وقصص من الكتاب: من هم، وأين ظهروا، وكيف تشير قصتهم إلى المسيح.'],
-    ['maps/paul.html', 'place-ephesus', 'رحلات بولس', 'على الخريطة، محطة بعد محطة، مع الآية والمكان.'],
-    ['journey.html', 'person-moses', 'القصة في مراحل', 'تاريخ الفداء على خط واحد، من الخلق إلى المسيح.']
-  ];
-  const body = `${introOverlay()}
-<section class="z5 z5hero">
-<p class="z5v">${esc(ps)}</p>
-<small class="z5r">${refLabel(config.verseRef)}</small>
-<p class="z5i">اقرأ الكتاب المقدس بهدوء، وافهمه بعمق، من منظور مُصلَح.</p>
-<div class="z5focus">
-<a class="z5card" data-today-card hidden href="plans.html"><span class="z5k">تابع من حيث توقفت</span><b data-today-name></b><span class="z5d" data-today-day></span><span class="z5btn">تابع القراءة ${ARW}</span></a>
-<a class="z5card" data-today-start href="plans/start/1.html"><span class="z5k">ابدأ من هنا · ${ar(start.days.length)} أيام</span><b>${esc(start.t)}</b><span class="z5d">${esc(start.sub)}: أصحاح واحد كل يوم، في نحو ٢٠ دقيقة.</span><span class="z5btn">ابدأ اليوم الأول ${ARW}</span></a>
-<a class="z5more" href="plans.html">كل خطط القراءة ${ARW}</a>
-</div>
-<div hidden>${PLANS_UI.PLANS.map((P) => PLANS_UI.card(P, 0)).join('')}</div>
-</section>
-<section class="z5"><header class="z5h"><h2>ادرس الكتاب المقدس</h2><p>مقدمة لكل سفر، ودراسة لكل أصحاح.</p></header>
-<div class="z5tg">${tcard('ot', 'من الخلق إلى الأنبياء: الوعد والانتظار.')}${tcard('nt', 'المسيح، والكنيسة، والرجاء الأخير.')}</div></section>
-<section class="z5"><header class="z5h"><h2>بالصور والخرائط</h2><p>أماكن وأشخاص وأحداث، لتراها بعينك.</p></header>
-<div class="z5xg">${ex.map(([h, img, b, d]) => `<a class="z5x" href="${h}"><img src="assets/${img}.webp" alt="" loading="lazy"><span><b>${b}</b><small>${d}</small></span></a>`).join('')}</div>
-<a class="z5more c" href="explore.html">كل ما في «استكشف» ${ARW}</a></section>
-<footer class="z5f"><p>${esc(quoteText('2Tim.3.16'))}</p><small>${refLabel('2Tim.3.16')}</small><span>النص: ${esc(config.bibleVersion)}</span><button type="button" data-i5-again>شاهد المقدمة مرة أخرى</button></footer>`;
-  write('index.html', page({ title: '', depth: 0, nav: 'home', body, cls: 'home v5home', after: '<script src="assets/plans.js" defer></script>' }));
+  const S5 = (k, t, d, inner, more, tone) => `<section class="hs4 hxx${tone ? ' ' + tone : ''}"><div class="hs4w"><header class="hs4h"><span>${k}</span><h2>${t}</h2>${d ? `<p>${d}</p>` : ''}</header>${inner}${more ? `<a class="hs4m" href="${more[0]}">${more[1]} ${IC.chev}</a>` : ''}</div></section>`;
+  const body = `${introOverlay(ps)}
+<section class="h3hero full">
+<svg class="rings" viewBox="0 0 900 900" aria-hidden="true"><circle cx="450" cy="450" r="440"/><circle cx="450" cy="450" r="360" stroke-dasharray="2 10"/><circle cx="450" cy="450" r="280"/></svg>
+<div class="in">
+<span class="mark">${BRAND}</span>
+<p class="v" lang="ar">${words.map((w, i) => `<span style="--d:${(0.3 + i * 0.09).toFixed(2)}s">${esc(w)} </span>`).join('')}</p>
+<small class="rf" style="--d:${(0.5 + words.length * 0.09).toFixed(1)}s">${refLabel(config.verseRef)}</small>
+<button type="button" class="hs" data-search style="--d:${(0.8 + words.length * 0.09).toFixed(1)}s">${IC.search}<span>ابحث عن سفر، أو شاهد مثل يو ٣: ١٦، أو شخصية، أو موضوع</span><b>ابحث</b></button>
+</div></section>
+${S5('كل يوم', 'خلوة اليوم', 'أصحاح واحد في نحو ٢٠ دقيقة: تقرأ، وتفهم، وتتأمل، وتصلي.', `<a class="htc" data-today-card hidden href="plans.html"><span class="pk">تابع من حيث توقفت</span><b data-today-name></b><span data-today-day></span><span class="go">اقرأ الآن ${IC.chev}</span></a>
+<a class="htc" data-today-start href="plans/start/1.html"><span class="pk">ابدأ من هنا · ${ar(start.days.length)} أيام</span><b>${esc(start.t)}</b><span>${esc(start.sub)}</span><span class="go">ابدأ اليوم الأول ${IC.chev}</span></a>
+<div hidden>${PLANS_UI.PLANS.map((P) => PLANS_UI.card(P, 0)).join('')}</div>`, ['plans.html', 'كل خطط القراءة'])}
+${S5('سفراً بعد سفر', 'ادرس الكتاب المقدس', 'مقدمة لكل سفر، ودراسة لكل أصحاح، وتطبيق عملي.', `<div class="h3tg">${tcard('ot', 'من الخلق إلى الأنبياء: الوعد والانتظار.')}${tcard('nt', 'المسيح، والكنيسة، والرجاء الأخير.')}</div>`)}
+${S5('بالصور والخرائط', 'افهم ما تقرأ', 'أماكن وأشخاص وأحداث، مرسومة ومشروحة لتراها بعينك.', `<div class="hxtiles x3">${[
+    ['maps/paul.html', 'place-ephesus', 'رحلات بولس', 'على الخريطة، محطة بعد محطة', 'big'],
+    ['people.html', 'person-abraham', 'الشخصيات', 'وجوه وقصص من الكتاب'],
+    ['journey.html', 'person-moses', 'القصة في مراحل', 'تاريخ الفداء على خط واحد']
+  ].map(([h, img, b, s, c]) => `<a class="hxt${c ? ' ' + c : ''}" href="${h}"><img src="assets/${img}.webp" alt=""><span><b>${b}</b><small>${s}</small></span></a>`).join('')}</div>`, ['explore.html', 'كل الأدوات في «استكشف»'], 'soft')}
+<footer class="h3f full"><div><p class="s">${esc(quoteText('2Tim.3.16'))}</p><small>${refLabel('2Tim.3.16')}</small><span>${esc(config.description)} · النص: ${esc(config.bibleVersion)}</span><button type="button" data-i5-again>شاهد المقدمة مرة أخرى</button></div></footer>`;
+  write('index.html', page({ title: '', depth: 0, nav: 'home', body, cls: 'home v3', after: '<script src="assets/plans.js" defer></script>' }));
 }
 // ---------- hubs: «الكتاب المقدس» and «استكشف» ----------
 function hubs() {
-  const tcard = (t, d) => { const list = books.filter((b) => b.testament === t); const ch = list.reduce((n, b) => n + b.chapters, 0); return `<a class="z5t ${t}" href="${t}.html"><span class="z5k">${bkWord(list.length)} · ${chWord(ch)}</span><b>${T_NAME[t]}</b><span class="z5d">${d}</span><span class="z5b">افتح ${ARW}</span></a>`; };
-  write('bible.html', page({ title: 'الكتاب المقدس', depth: 0, nav: 'bible', cls: 'v5hub', body: `<section class="z5 hub5"><a class="back5" href="index.html">${BACK} العودة إلى الرئيسية</a><header class="z5h"><h1>الكتاب المقدس</h1><p>اختر العهد، ثم السفر، ثم الأصحاح.</p></header>
-<div class="z5tg">${tcard('ot', 'من الخلق إلى الأنبياء: الوعد والانتظار.')}${tcard('nt', 'المسيح، والكنيسة، والرجاء الأخير.')}</div></section>` }));
+  const tcard = (t, d) => { const list = books.filter((b) => b.testament === t); const ch = list.reduce((n, b) => n + b.chapters, 0); return `<a class="h3t" href="${t}.html"><b>${T_NAME[t]}</b><span class="d">${d}</span><span class="mt"><span>${bkWord(list.length)} · ${chWord(ch)}</span><span class="go">افتح ${IC.chev}</span></span></a>`; };
+  write('bible.html', page({ title: 'الكتاب المقدس', depth: 0, nav: 'bible', cls: 'v3 v5hub', body: `<section class="hub5h"><a class="back5" href="index.html">${BACK} العودة إلى الرئيسية</a><h1>الكتاب المقدس</h1><p>اختر العهد، ثم السفر، ثم الأصحاح.</p>
+<div class="h3tg bib5">${tcard('ot', 'من الخلق إلى الأنبياء: الوعد والانتظار.')}${tcard('nt', 'المسيح، والكنيسة، والرجاء الأخير.')}</div></section>` }));
   const items = [
-    ['people.html', '👤', 'الشخصيات', 'بطاقة لكل شخص في الأصحاحات المدروسة.'],
-    ['maps.html', '🗺️', 'الخرائط والشروح', 'المسكن، والضربات، ويوم الكفارة، والخروج.'],
-    ['maps/paul.html', '⛵', 'رحلات بولس', 'خريطة تفاعلية، محطة بعد محطة.'],
-    ['journey.html', '🧭', 'القصة في مراحل', 'تاريخ الفداء على خط واحد.'],
-    ['tree.html', '🌳', 'شجرة العائلة', 'نسب المسيح من آدم.'],
-    ['topics.html', '📚', 'الموضوعات', 'العقائد الكتابية بترتيب وستمنستر.'],
-    ['glossary.html', '🔤', 'القاموس', 'كلمات فاندايك الصعبة، بمصدرها.'],
-    ['harmony.html', '📜', 'الأناجيل جنباً إلى جنب', 'حدث واحد في الأناجيل الأربعة.'],
-    ['library.html', '🏛️', 'المكتبة', 'كتب ومراجع مُصلَحة للتوسع.']
+    ['people.html', IC.person, 'الشخصيات', 'بطاقة لكل شخص في الأصحاحات المدروسة.'],
+    ['maps.html', IC.map, 'الخرائط والشروح', 'المسكن، والضربات، ويوم الكفارة، والخروج.'],
+    ['maps/paul.html', IC.map, 'رحلات بولس', 'خريطة تفاعلية، محطة بعد محطة.'],
+    ['journey.html', IC.time, 'القصة في مراحل', 'تاريخ الفداء على خط واحد.'],
+    ['tree.html', IC.web, 'شجرة العائلة', 'نسب المسيح من آدم.'],
+    ['topics.html', IC.list, 'الموضوعات', 'العقائد الكتابية بترتيب وستمنستر.'],
+    ['glossary.html', IC.read, 'القاموس', 'كلمات فاندايك الصعبة، بمصدرها.'],
+    ['harmony.html', IC.shelf, 'الأناجيل جنباً إلى جنب', 'حدث واحد في الأناجيل الأربعة.'],
+    ['library.html', IC.col, 'المكتبة', 'كتب ومراجع مُصلَحة للتوسع.']
   ];
-  write('explore.html', page({ title: 'استكشف', depth: 0, nav: 'explore', cls: 'v5hub', body: `<section class="z5 hub5"><a class="back5" href="index.html">${BACK} العودة إلى الرئيسية</a><header class="z5h"><h1>استكشف</h1><p>أدوات تساعدك على رؤية الكتاب كله: أشخاصه، وأماكنه، وعقائده.</p></header>
-<div class="ex5">${items.map(([h, e, b, d]) => `<a href="${h}"><span class="e" aria-hidden="true">${e}</span><span><b>${b}</b><small>${d}</small></span><span class="g5" aria-hidden="true">←</span></a>`).join('')}</div></section>` }));
+  write('explore.html', page({ title: 'استكشف', depth: 0, nav: 'explore', cls: 'v3 v5hub', body: `<section class="hub5h"><a class="back5" href="index.html">${BACK} العودة إلى الرئيسية</a><h1>استكشف</h1><p>أدوات تساعدك على رؤية الكتاب كله: أشخاصه، وأماكنه، وعقائده.</p>
+<div class="ex5">${items.map(([h, e, b, d]) => `<a href="${h}"><span class="e">${e}</span><span><b>${b}</b><small>${d}</small></span><span class="g5">${IC.chev}</span></a>`).join('')}</div></section>` }));
 }
 
 // ---------- testaments: books carousel ----------
@@ -154,12 +149,9 @@ function testament(t) {
   const groups = [...new Set(list.map((b) => b.groupName))];
   const chs = list.reduce((a, b) => a + b.chapters, 0);
   const card = (b) => { const st = isFull(b) ? '<i class="s5 f" title="دراسة كاملة"></i>' : studiedCount(b) ? '<i class="s5 p" title="دراسة جارية"></i>' : ''; return `<a class="bk5" href="book/${b.slug}.html" id="b-${b.slug}"><b>${esc(shortName(b))}</b><small>${chWord(b.chapters)}</small>${st}</a>`; };
-  const body = `<section class="z5 hub5"><a class="back5" href="bible.html">${BACK} العودة إلى الكتاب المقدس</a>
-<header class="z5h"><h1>${T_NAME[t]}</h1><p>${bkWord(list.length)} · ${chWord(chs)}</p></header>
-<p class="lg5"><span><i class="s5 f"></i>دراسة كاملة</span><span><i class="s5 p"></i>دراسة جارية</span><span><i class="s5"></i>النص متاح</span></p>
-${groups.map((g) => `<section class="grp5"><h2>${esc(g)}</h2><div class="bkg5">${list.filter((b) => b.groupName === g).map(card).join('')}</div></section>`).join('')}
-</section>`;
-  write(`${t}.html`, page({ title: T_NAME[t], depth: 0, nav: t, body, cls: 'v5hub' }));
+  const body = `<section class="bk3h hd5"><svg class="rings" viewBox="0 0 760 760" aria-hidden="true"><circle cx="380" cy="380" r="370"/><circle cx="380" cy="380" r="290" stroke-dasharray="2 10"/></svg><div class="in"><a class="back5 lt" href="bible.html">${BACK} العودة إلى الكتاب المقدس</a><span class="ey">${bkWord(list.length)} · ${chWord(chs)}</span><h1>${T_NAME[t]}</h1><p class="lg5"><span><i class="s5 f"></i>دراسة كاملة</span><span><i class="s5 p"></i>دراسة جارية</span><span><i class="s5"></i>النص متاح</span></p></div></section>
+<div class="z5 bkl5">${groups.map((g) => `<section class="grp5"><h2>${esc(g)}</h2><div class="bkg5">${list.filter((b) => b.groupName === g).map(card).join('')}</div></section>`).join('')}</div>`;
+  write(`${t}.html`, page({ title: T_NAME[t], depth: 0, nav: t, body, cls: 'v3 v5hub' }));
 }
 
 // ---------- book: chapters carousel ----------
@@ -173,7 +165,7 @@ function bookPage(b) {
   const skip = previewSkip(b);
   const I = c?.intro;
   const TG = { agreed: 'متفق عليه', likely: 'راجح', debated: 'مختلف عليه' };
-  const intro = I ? `<details class="acc5"><summary><span>نبذة عن السفر والكاتب</span><i aria-hidden="true"></i></summary><div class="acc5b">
+  const intro = I ? `<details class="acc acc5"><summary><span class="ai">${IC.read}</span><span class="at"><b>نبذة عن السفر والكاتب</b><small>${esc(firstSentences(I.summary, 60))}</small></span><span class="ar" aria-hidden="true">${IC.chev}</span></summary><div class="acc5b">
 <p class="lead5">${md(I.summary)}</p>
 <dl class="facts5">${I.facts.map((f) => `<div><dt>${esc(f.k)}${f.tag && TG[f.tag] ? ` <em class="t-${f.tag}">${TG[f.tag]}</em>` : ''}</dt><dd>${md(f.v)}</dd></div>`).join('')}</dl>
 ${I.context ? `<div class="ctx5">${[['before', 'قبله'], ['now', 'هذا السفر'], ['after', 'بعده']].map(([k, l]) => { const x = I.context[k]; if (!x) return ''; const inner = `<small>${l}</small><b>${md(x.t)}</b>`; return x.href ? `<a href="${up(1)}${x.href}">${inner}</a>` : `<div class="now">${inner}</div>`; }).join('')}</div>` : ''}
@@ -182,15 +174,16 @@ ${I.context ? `<div class="ctx5">${[['before', 'قبله'], ['now', 'هذا ال
 </div></details>` : '';
   const hasDeep = Object.keys(c?.deep || {}).length > 0;
   const modes = `<section class="mode5" aria-label="اختر طريقة القراءة"><h2>اختر طريقة القراءة</h2><div class="mode5g" role="radiogroup">
-<button type="button" class="mc5 qt" role="radio" data-mode-pick="qt" aria-checked="true"><span class="b5">مُفعّل حالياً</span><span class="e" aria-hidden="true">🕯️</span><b>وضع الخلوة اليومية <small>(٢٠ دقيقة)</small></b><span class="d">قراءة مركّزة + الآية المفتاحية + تأمل وتطبيق + صلاة</span></button>
-<button type="button" class="mc5 ds" role="radio" data-mode-pick="ds" aria-checked="false"><span class="b5">مُفعّل حالياً</span><span class="e" aria-hidden="true">📖</span><b>وضع الدراسة المعمّقة</b><span class="d">النص الكامل + الفكرة الرئيسية + المسيح في النص + الخرائط والشروح</span></button>
+<button type="button" class="mc5 qt" role="radio" data-mode-pick="qt" aria-checked="true"><span class="b5">مُفعّل حالياً</span><span class="e">${IC.read}</span><b>وضع الخلوة اليومية <small>(٢٠ دقيقة)</small></b><span class="d">قراءة مركّزة + الآية المفتاحية + تأمل وتطبيق + صلاة</span></button>
+<button type="button" class="mc5 ds" role="radio" data-mode-pick="ds" aria-checked="false"><span class="b5">مُفعّل حالياً</span><span class="e">${IC.list}</span><b>وضع الدراسة المعمّقة</b><span class="d">النص الكامل + الفكرة الرئيسية + المسيح في النص + الخرائط والشروح</span></button>
 </div>${hasDeep ? '' : '<p class="note5">الدراسة المعمّقة آية بآية لهذا السفر قيد الإعداد. في هذا الوضع ستجد كل ما هو متاح من الدراسة الحالية.</p>'}</section>`;
   const grid = `<section class="chs5"><h2>الأصحاحات</h2><div class="chg5">${bible(b.id).chapters.map((_, i) => { const n = i + 1; const S = study(b, n); return `<a href="${skip ? '#' : `${b.slug}/${n}.html`}" data-key="${b.id}:${n}"${deepOf(b, n) && S ? ' data-deep="1"' : ''}${S ? ` title="${esc(plain(S.title))}"` : ''} class="${S ? 'st' : ''}">${ar(n)}</a>`; }).join('')}</div>
 <p class="lg5"><span><i class="s5 f"></i>أصحاح مدروس</span><span><i class="s5"></i>النص فقط</span><span>✓ قرأته</span></p></section>`;
-  const body = `<section class="z5 bk5p"><a class="back5" href="../${b.testament}.html#b-${b.slug}">${BACK} العودة إلى ${T_NAME[b.testament]}</a>
-<header class="bkh5"><span class="z5k">${esc(b.groupName)} · السفر ${ar(b.order)} من ٦٦ · ${chWord(b.chapters)}</span><h1>${esc(b.name)}</h1>${I ? `<p>${esc(firstSentences(I.summary, 90))}</p>` : '<p>النص كاملاً متاح الآن، أصحاحاً أصحاحاً. والمقدمة والدراسة لهذا السفر قيد الإعداد.</p>'}</header>
-${intro}${modes}${grid}</section>`;
-  write(`book/${b.slug}.html`, page({ title: b.name, depth: 1, nav: b.testament, body, cls: 'v5hub v5book' }));
+  const first = bible(b.id).chapters[0].verses[0].text;
+  const body = `<section class="bk3h hd5"><svg class="rings" viewBox="0 0 760 760" aria-hidden="true"><circle cx="380" cy="380" r="370"/><circle cx="380" cy="380" r="290" stroke-dasharray="2 10"/></svg><div class="in"><a class="back5 lt" href="../${b.testament}.html#b-${b.slug}">${BACK} العودة إلى ${T_NAME[b.testament]}</a>
+<span class="ey">${esc(b.groupName)} · السفر ${ar(b.order)} من ٦٦ · ${chWord(b.chapters)}</span><h1>${esc(shortName(b))}</h1><p class="v">${esc(first)}<small>${refLabel(`${b.id}.1.1`)}</small></p></div></section>
+<div class="z5 bk5p">${intro}${modes}${grid}</div>`;
+  write(`book/${b.slug}.html`, page({ title: b.name, depth: 1, nav: b.testament, body, cls: 'v3 v5hub v5book' }));
 }
 
 // ---------- book introduction (about) ----------
@@ -249,7 +242,8 @@ function christPair(b, n, S) {
 }
 const rng = (r) => { const [a, z] = String(r).split(/[-–]/).map(Number); return [a, z || a]; };
 
-function readerHTML(b, n, S, depth, { overlay }) {
+const readerTools = () => `<span>${esc(config.bibleVersion)}</span><span style="display:flex;gap:6px"><button type="button" class="fsz" data-size="-1" aria-label="تصغير الخط" title="تصغير الخط"><b>أ</b><i>−</i></button><button type="button" class="fsz up" data-size="1" aria-label="تكبير الخط" title="تكبير الخط"><b>أ</b><i>+</i></button></span><span class="thm3" role="group" aria-label="ألوان القراءة (لهذه الزيارة فقط)">${[['light', 'فاتح'], ['paper', 'ورقي'], ['night', 'ليلي'], ['contrast', 'تباين عالٍ']].map(([k, l]) => `<button type="button" data-theme3="${k}" aria-label="${l}" title="${l}"></button>`).join('')}</span>`;
+function readerHTML(b, n, S, depth, { overlay, embed }) {
   const vs = bible(b.id).chapters[n - 1].verses;
   const GL = glossChapter(b.id, vs);
   const per = Object.fromEntries((S?.pericopes || []).map((p) => [p.at, p.t]));
@@ -260,8 +254,10 @@ function readerHTML(b, n, S, depth, { overlay }) {
   const head = overlay
     ? `<header class="sh"><a class="b" href="#" aria-label="إغلاق النص">${IC.close}</a><span class="t">${chTitle(b, n)}${S ? ' · ' + md(S.title) : ''}</span><a class="b" href="#study3" aria-label="الدراسة">${IC.menu}</a></header>`
     : `<header class="sh"><a class="b" href="../${b.slug}.html#c${n}" aria-label="الأصحاحات">${IC.back}</a><span class="t">${chTitle(b, n)}</span><span style="width:44px"></span></header>`;
+  if (embed) return `<div class="rtools">${readerTools()}</div>
+<div class="rbody" data-share="${esc(b.name)}|${n}" data-xref="${b.id}.${n}"><p class="shint">اضغط أي آية لتنسخها، أو تحفظها صورة، أو ترى الشواهد المرتبطة بها. والكلمة التي تحتها خط منقّط لها شرح في القاموس.</p><div class="scr" lang="ar">${vs.map((v) => `${per[v.number] ? `</div><div class="peri">${md(per[v.number])}</div><div class="scr">` : ''}<span class="v${v.number >= key[0] && v.number <= key[1] ? ' key' : ''}" id="v${v.number}"><span class="vn">${ar(v.number)}</span>${GL.html(v)}</span> `).join('')}</div></div>${GL.cards}`;
   return `${head}
-<div class="rtools"><span>${esc(config.bibleVersion)}</span><span style="display:flex;gap:6px"><button type="button" class="fsz" data-size="-1" aria-label="تصغير الخط" title="تصغير الخط"><b>أ</b><i>−</i></button><button type="button" class="fsz up" data-size="1" aria-label="تكبير الخط" title="تكبير الخط"><b>أ</b><i>+</i></button></span><span class="thm3" role="group" aria-label="ألوان القراءة (لهذه الزيارة فقط)">${[['light', 'فاتح'], ['paper', 'ورقي'], ['night', 'ليلي'], ['contrast', 'تباين عالٍ']].map(([k, l]) => `<button type="button" data-theme3="${k}" aria-label="${l}" title="${l}"></button>`).join('')}</span></div>
+<div class="rtools">${readerTools()}</div>
 ${overlay ? '' : `<div class="dh"><span class="ey">${esc(b.name)} · الأصحاح ${ar(n)} من ${ar(b.chapters)}</span><h1>${chTitle(b, n)}</h1></div><div class="soon">دراسة هذا الأصحاح قيد الإعداد. اقرأ النص الآن، وستُضاف قريباً القصة والخريطة والشخصيات والدراسة الكاملة.</div>`}
 <div class="rbody" data-share="${esc(b.name)}|${n}" data-xref="${b.id}.${n}"><p class="shint">اضغط أي آية لتنسخها، أو تحفظها صورة، أو ترى الشواهد المرتبطة بها. والكلمة التي تحتها خط منقّط لها شرح في القاموس.</p><div class="scr" lang="ar">${vs.map((v) => `${per[v.number] ? `</div><div class="peri">${md(per[v.number])}</div><div class="scr">` : ''}<span class="v${v.number >= key[0] && v.number <= key[1] ? ' key' : ''}" id="v${v.number}"><span class="vn">${ar(v.number)}</span>${GL.html(v)}</span> `).join('')}</div></div>${GL.cards}
 ${nav}`;
@@ -384,22 +380,6 @@ ${next ? `<a class="btn o" style="margin-top:10px" href="${chapterHref(next.b, n
   }
   half.push(`<a class="tile t-you" href="#s-you"><span class="tl"><span>${countWord(S.questions?.length || 0, 'سؤال واحد', 'سؤالان', 'أسئلة', 'سؤالاً')}</span>${IC.chev}</span><span class="vis">${esc(clip(S.questions?.[0] || '', 90))}</span><span class="tt">للتأمل والتطبيق</span></a>`);
   DET.you = { t: 'للتأمل والتطبيق', ey: 'عِشها', h: `${(S.questions || []).map((q, i) => `<div class="blk"><h3><span class="n">${ar(i + 1)}</span><span>${md(q)}</span></h3></div>`).join('')}${S.apply ? `<div class="applyb"><small>للحياة</small>${arr(S.apply).map((p) => `<p>${md(p)}</p>`).join('')}</div>` : ''}` };
-  const ORDER = ['sum', 'christ', 'map', 'people', 'word', 'bg', 'hard', 'views', 'refs', 'voices', 'you'].filter((k) => DET[k]);
-  const AIC = { sum: IC.list, christ: IC.read, map: IC.map, people: IC.person, word: IC.read, bg: IC.shelf, hard: IC.search, views: IC.web, refs: IC.web, voices: IC.shelf, you: IC.person };
-  const studyHtml = `<section class="ch3st" id="study3"><div class="ch3sh"><div><h2>الدراسة الكاملة</h2><p>افتح ما تحتاجه. كل قسم يُفتح ويُطوى وحده.</p></div></div>
-<div class="ch3sg"><div class="ch3acc">${ORDER.map((k, i) => `<details class="acc" id="s-${k}"${i === 0 ? ' open' : ''}><summary><span class="ai">${AIC[k] || IC.list}</span><span class="at"><b>${esc(DET[k].t)}</b><small>${DET[k].ey}</small></span><span class="ar" aria-hidden="true">${IC.chev}</span></summary><div class="dc">${DET[k].h}</div></details>`).join('')}</div>
-<aside class="ch3as">
-<div class="rd"><small>النص · ${esc(config.bibleVersion)}</small><p>${vs.slice(0, 3).map((v) => `<sup>${ar(v.number)}</sup> ${esc(v.text)}`).join(' ')}…</p><a class="btn3 l" href="#read">${IC.read}اقرأ الأصحاح كاملاً</a></div>
-${XS.map((x) => `<a class="xa" href="${explainHref(x, depth)}"><small>شرح مصوّر</small><b>${esc(x.title)}</b><span>${esc(x.sub)}</span></a>`).join('')}
-<div class="prt"><button type="button" data-print>${IC.read}اطبع ورقة الدراسة</button><span>ورقة للطباعة: الآية المفتاحية، والتقسيم، والأسئلة، ومساحة للكتابة.</span></div>
-</aside></div></section>`;
-  const head = `<section class="ch3h">
-<nav class="crumbs" aria-label="مسار التنقل"><a href="../../${b.testament}.html">${T_NAME[b.testament]}</a><span>‹</span><a href="../${b.slug}.html">${esc(b.name)}</a><span>‹</span><a href="../${b.slug}.html#c${n}">الأصحاحات</a></nav>
-${deepOf(b, n) ? modeSwitch(b, n, 'k') : ''}<div class="hd"><span class="big">${ar(n)}</span><div><small>${esc(b.name)} · ${md(S.section)}</small><h1>${md(S.title)}</h1><p>${vWord(vs.length)} · نحو ${ar(mins)} دقائق قراءة</p></div></div>
-<div class="cgo">${prev ? `<a href="${chapterHref(prev.b, prev.n, depth)}" aria-label="السابق: ${chTitle(prev.b, prev.n)}">${IC.chev.replace('class="ic"', 'class="ic" style="transform:scaleX(-1)"')}${chTitle(prev.b, prev.n)}</a>` : ''}<a class="rd" href="#read">${IC.read}اقرأ النص</a><a href="#study3">${IC.list}الدراسة</a>${APPLY[`${b.id}.${n}`] ? `<a class="lv" href="#live3">${IC.person}تطبيقات</a>` : ''}${next ? `<a href="${chapterHref(next.b, next.n, depth)}" aria-label="التالي: ${chTitle(next.b, next.n)}">${chTitle(next.b, next.n)}${IC.chev}</a>` : ''}</div>
-</section>`;
-  const foot = `<nav class="ch3n">${prev ? `<a href="${chapterHref(prev.b, prev.n, depth)}"><small>الأصحاح السابق</small><b>${chTitle(prev.b, prev.n)}${study(prev.b, prev.n) ? ' · ' + md(study(prev.b, prev.n).title) : ''}</b></a>` : '<span></span>'}${next ? `<a class="dk" href="${chapterHref(next.b, next.n, depth)}"><small>الأصحاح التالي</small><b>${chTitle(next.b, next.n)}${study(next.b, next.n) ? ' · ' + md(study(next.b, next.n).title) : ''}</b></a>` : ''}</nav>`;
-  const readerOv = `<div class="ovl" id="read"><div class="pg">${readerHTML(b, n, S, depth, { overlay: true })}</div></div>`;
   const viewerHtml = people.length ? `<div class="viewer" id="viewer" aria-label="بطاقة الشخصية">
 <div class="vtop"><a href="#" aria-label="إغلاق">${IC.close}</a><span data-vname></span><span style="width:44px"></span></div>
 <div class="stage"><div class="pcard"><div class="pin"></div></div></div>
@@ -421,8 +401,55 @@ ${S.questions?.length ? `<h2>أسئلة للمناقشة</h2><ol class="hq">${S.
 <h2>ملاحظاتي</h2><div class="notes">${'<span class="ln"></span>'.repeat(4)}</div>
 <footer>النص: ${esc(config.bibleVersion)} · ${esc(config.domain.replace(/^https?:\/\//, ''))}/book/${b.slug}/${n}.html</footer>
 </section>`;
-  const body = `<div data-chapter="${b.id}:${n}"></div>${handout}`;
-  write(`book/${b.slug}/${n}.html`, page({ title: `${chTitle(b, n)}: ${plain(S.title)}`, depth, nav: b.testament, body: head + story + studyHtml + applySection(b, n, depth) + foot + body, cls: 'chapter v3 ch3', after: readerOv + viewerHtml }));
+  // ---- hub-and-spoke (redesign Nov 2026): one hub of cards, one focused view per section ----
+  const D = deepOf(b, n);
+  const DS = D ? deepSecs(b, n) : {};
+  const dsec = (...ids) => ids.map((id) => DS[id]?.html || '').join('');
+  const kvHtml = kvRef ? `<figure class="kv5"><blockquote>${esc(quoteText(kvRef))}</blockquote><figcaption>${refLabel(kvRef)}</figcaption></figure><p class="c5p"><a class="lnk5" href="#v${(() => { try { return parseRef(kvRef).vs || 1; } catch { return 1; } })()}">اقرأها في سياقها داخل الأصحاح ${ARW}</a></p>${D ? (() => { const kv = (D.verses || []).find((V) => V.key && (() => { try { const p = parseRef(kvRef); return vspan(V.r).includes(p.vs); } catch { return false; } })()); return kv?.notes?.length ? `<div class="dso"><h3 class="h5">ملاحظات على الآية</h3><ul class="dnotes">${kv.notes.map((x) => `<li>${gmd(x)}</li>`).join('')}</ul></div>` : ''; })() : ''}` : '';
+  const noteKey = `${b.id}:${n}`;
+  const notesBox = `<div class="note5b"><label for="nt5"><b>ملاحظاتي على هذا الأصحاح</b><small>تُحفظ على هذا الجهاز فقط، ولا تُرسل إلى أي مكان.</small></label><textarea id="nt5" data-note="${noteKey}" rows="6" placeholder="اكتب ما لمسك في الأصحاح، أو صلاة، أو خطوة تريد أن تعملها..."></textarea><span class="ns5" data-note-state aria-live="polite"></span></div>`;
+  const prayHtml = `<p class="lead">هذا إرشاد للصلاة من كلمات الأصحاح، وليس صلاة مكتوبة بالنيابة عنك. خذ دقيقتين أو ثلاثاً، وتكلم مع الله بكلماتك.</p>
+<ol class="pray5">
+<li><b>سبّح</b><p>${kvRef ? `اقرأ الآية المفتاحية ببطء: «${esc(quoteText(kvRef))}» (${refLabel(kvRef)}). ماذا تعلن لك عن الله؟ سبّحه على ذلك.` : 'ماذا يعلن لك هذا الأصحاح عن الله؟ سبّحه على ذلك.'}</p></li>
+<li><b>اعترف</b><p>${S.questions?.[0] ? `توقّف عند هذا السؤال: ${md(S.questions[0])} واعترف لله بما كشفه فيك النص.` : 'اعترف لله بما كشفه فيك النص.'}</p></li>
+<li><b>اشكر</b><p>${christ[0] ? `اشكر الله على المسيح كما يظهر في هذا الأصحاح: ${esc(firstSentences(christ[0], 80))}` : 'اشكر الله على المسيح، الذي فيه نلنا كل بركة.'}</p></li>
+<li><b>اطلب</b><p>${S.apply ? `اطلب نعمة لتعيش ما قرأته اليوم: ${esc(firstSentences(arr(S.apply)[0], 70))}` : 'اطلب نعمة لتعيش ما قرأته اليوم، ولأجل من حولك.'}</p></li>
+</ol>
+<p class="c5fine">طريقة السجود والاعتراف والشكر والطلبة من الطرق المعروفة لتنظيم الصلاة. ويعلّم التعليم المختصر لوستمنستر (السؤال ٩٨) أن الصلاة تقديم رغباتنا لله، باسم المسيح، مع الاعتراف بخطايانا والشكر على مراحمه.</p>`;
+  const reflectHtml = `${(S.questions || []).length ? `<ol class="q5">${S.questions.map((q) => `<li>${md(q)}</li>`).join('')}</ol>` : ''}${S.apply ? `<div class="applyb"><small>خطوة للحياة</small>${arr(S.apply).map((p) => `<p>${md(p)}</p>`).join('')}</div>` : ''}${notesBox}${applySection(b, n, depth)}`;
+  const ideaHtml = `<p class="lead">${md(S.where)}</p>${arr(S.summary).map((p) => `<p>${md(p)}</p>`).join('')}<div class="dso">${DET.sum ? `<h3 class="h5">التقسيم وما قبله وما بعده</h3><div class="ctx" style="margin:0 0 18px"><div><small>ما قبله</small><span>${md(S.before)}</span></div><div><small>ما بعده</small><span>${md(S.after)}</span></div></div>${outline.map((o) => `<div class="blk"><a class="rng" href="#v${rng(o.r)[0]}">الآيات ${ar(String(o.r).replace('-', '–'))}</a><p>${md(o.t)}</p></div>`).join('')}` : ''}${dsec('d-flow')}</div>`;
+  const commHtml = D ? dsec('d-verses') : `${DET.word ? DET.word.h : ''}${outline.map((o) => `<div class="blk"><a class="rng" href="#v${rng(o.r)[0]}">الآيات ${ar(String(o.r).replace('-', '–'))}</a><p>${md(o.t)}</p></div>`).join('')}<p class="c5fine">الشرح آية بآية لهذا الأصحاح قيد الإعداد.</p>`;
+  const V = [];
+  const view = (id, e, t, sub, html, modes) => { if (html && String(html).replace(/<[^>]+>/g, '').trim()) V.push({ id, e, t, sub, html, modes }); };
+  view('idea', IC.bulb, 'الفكرة الرئيسية', D ? 'الملخص، والتقسيم، ومسار الفكر' : 'الملخص والتقسيم', ideaHtml, 'qt ds');
+  view('key', IC.key, 'الآية المفتاحية', kvRef ? refLabel(kvRef) : '', kvHtml, 'qt ds');
+  view('christ', IC.cross, 'المسيح في النص', 'من القديم إلى الجديد', `${DET.christ?.h || ''}${dsec('d-ot')}`, 'ds');
+  view('comm', IC.shelf, 'التفسير والسياق', D ? 'آية بآية، مع الكلمات الأصلية' : 'الكلمات والتقسيم', commHtml, 'ds');
+  view('bg', IC.map, 'الخلفية والخرائط', 'الأماكن، والشخصيات، والخلفية التاريخية', `${DET.map?.h || ''}${DET.people ? `<h3 class="h5">الشخصيات</h3>${DET.people.h}` : ''}${DET.bg ? `<h3 class="h5">خلفيات</h3>${DET.bg.h}` : ''}${dsec('d-bg')}${XS.map((x) => `<a class="xa5" href="${explainHref(x, depth)}"><small>شرح مصوّر</small><b>${esc(x.title)}</b><span>${esc(x.sub)}</span></a>`).join('')}`, 'ds');
+  view('theo', IC.col, 'اللاهوت والتعليم', 'العقائد التي يؤسسها الأصحاح', dsec('d-theo', 'd-teach'), 'ds');
+  view('voices', IC.col, 'آراء اللاهوتيين', 'ماذا قال معلمو الكنيسة عبر القرون', `${DET.voices?.h || ''}${dsec('d-hist')}`, 'ds');
+  view('hard', IC.q, 'أسئلة صعبة ومسائل الخلاف', 'كل رأي بحجته، ومدى الاتفاق عليه', `${DET.hard?.h || ''}${DET.views ? `<h3 class="h5">${esc(DET.views.t)}</h3>${DET.views.h}` : ''}${dsec('d-issues')}`, 'ds');
+  view('reflect', IC.pen, 'تأمل وتطبيق عملي', 'أسئلة، وخطوة عملية، وملاحظاتك', reflectHtml, 'qt ds');
+  view('pray', IC.pray, 'صلاة الأصحاح', 'سبّح، واعترف، واشكر، واطلب', prayHtml, 'qt ds');
+  view('more', IC.list, 'شواهد ومراجع للتوسع', 'الكتاب يفسر الكتاب، وكتب موثوقة', `${DET.refs?.h || ''}${dsec('d-more')}`, 'ds');
+  const readSub = `${ar(1)}–${ar(vs.length)}`;
+  const hub = `<section class="c5hub" id="hub" aria-labelledby="c5t">
+<div class="ch3h c5h"><div class="hd"><span class="big">${ar(n)}</span><div><small>${esc(b.name)} · ${md(S.section)}</small><h1 id="c5t">${md(S.title)}</h1><p>${esc(b.name)} · الأصحاح ${ar(n)} من ${ar(b.chapters)}</p></div></div></div>
+<div class="c5hw">
+<a class="c5read" href="#x-read"><span class="e">${IC.read}</span><span><b>اقرأ نص الأصحاح كاملاً (${readSub})</b><small>${vWord(vs.length)} · نحو ${ar(mins)} دقائق · ${esc(config.bibleVersion.split('،')[0])}</small></span>${ARW}</a>
+<div class="c5grid">${V.map((x) => `<a class="c5c" href="#x-${x.id}" data-modes="${x.modes}"><span class="e">${x.e}</span><b>${x.t}</b><small>${esc(plain(x.sub))}</small></a>`).join('')}</div>
+<p class="c5mode qt">أنت في <b>وضع الخلوة اليومية</b>. للتفسير والخلفية والمسيح في النص اختر «الدراسة المعمّقة» من الأعلى.</p>
+<div class="c5tools"><button type="button" data-print>${IC.print}اطبع ورقة الدراسة</button></div>
+<nav class="c5ch" aria-label="أصحاحات أخرى">${prev ? `<a href="${chapterHref(prev.b, prev.n, depth)}"><small>→ السابق</small><b>${chTitle(prev.b, prev.n)}</b></a>` : '<span></span>'}${next ? `<a class="nx" href="${chapterHref(next.b, next.n, depth)}"><small>التالي ←</small><b>${chTitle(next.b, next.n)}</b></a>` : '<span></span>'}</nav>
+</div></section>`;
+  const views = [{ id: 'read', e: IC.read, t: 'نص الأصحاح', sub: '', html: readerHTML(b, n, S, depth, { overlay: false, embed: true }), modes: 'qt ds' }, ...V].map((x) => `<article class="c5v" id="x-${x.id}" data-modes="${x.modes}" data-t="${esc(x.t)}" hidden tabindex="-1" aria-label="${esc(x.t)}">
+<div class="c5in"><header class="c5vh"><span class="e">${x.e}</span><div><span class="z5k">${chTitle(b, n)}</span><h2>${x.t}</h2></div></header>
+<div class="c5body${x.id === 'read' ? ' rd5' : ' dc'}">${x.html}</div>
+<nav class="c5foot"><a href="#" data-c5hub>${BACK} العودة لاختيار قسم آخر</a><a href="#" data-c5next class="nx"></a></nav></div></article>`).join('');
+  const bar = `<div class="c5bar"><div class="c5bw"><a class="back5" data-c5back href="../${b.slug}.html" data-book="${esc(b.name)}" data-here="${esc(chTitle(b, n))}">${BACK} <span>العودة إلى ${esc(b.name)}</span></a>
+<div class="pill5" role="radiogroup" aria-label="وضع القراءة"><button type="button" role="radio" data-mode-pick="qt" aria-checked="true"><span class="lf">وضع </span>الخلوة<span class="lf"> اليومية</span></button><button type="button" role="radio" data-mode-pick="ds" aria-checked="false"><span class="lf">وضع </span>الدراسة المعمّقة</button></div></div></div>`;
+  const body = `<div class="c5" data-c5 data-chapter="${b.id}:${n}">${bar}${hub}${views}</div>${handout}`;
+  write(`book/${b.slug}/${n}.html`, page({ title: `${chTitle(b, n)}: ${plain(S.title)}`, depth, nav: b.testament, body, cls: 'chapter v3 v5ch', after: viewerHtml }));
 }
 
 // ---------- deep study (دراسة متعمقة) ----------
@@ -436,7 +463,7 @@ const dtag = (t) => (t && DTAG[t] ? `<span class="dtag ${t}">${DTAG[t]}</span>` 
 const vspan = (r) => String(r).split(/[;,]/).flatMap((p) => { const [a, z] = p.trim().split(/[-–]/).map(Number); const o = []; for (let i = a; i <= (z || a); i++) o.push(i); return o; });
 const rlab = (n, r) => { const t = ar(String(r).replace(/\s*[-–]\s*/g, ' – ').replace(/;\s*/g, '، ')); return /[–،]/.test(t) ? `الآيات ${t}` : `الآية ${t}`; };
 
-function deepPage(b, n) {
+function deepSecs(b, n) {
   const depth = 2;
   const S = study(b, n), D = deepOf(b, n);
   const vs = bible(b.id).chapters[n - 1].verses;
@@ -445,7 +472,7 @@ function deepPage(b, n) {
   const units = F.units || [];
   const unitOf = (r) => { const a = vspan(r)[0]; return units.findIndex((u) => { const s = vspan(u.r); return a >= s[0] && a <= s[s.length - 1]; }); };
   const SEC = [];
-  const sec = (id, t, sub, html) => { if (html) SEC.push({ id, t, html: `<section class="dsec" id="${id}"><header class="dsh"><span class="dn">${ar(SEC.length + 1)}</span><div><h2>${t}</h2><p>${sub}</p></div></header>${html}</section>` }); };
+  const sec = (id, t, sub, html) => { if (html) SEC.push({ id, t, sub, html: `<section class="dsec" id="${id}"><header class="dsh"><div><h2>${t}</h2><p>${sub}</p></div></header>${html}</section>` }); };
 
   // 1. flow of thought
   sec('d-flow', 'مسار الأصحاح', 'كيف يتحرك الفكر من البداية إلى النهاية', `${(F.intro || []).map((p) => `<p class="dbody">${gmd(p)}</p>`).join('')}
@@ -494,17 +521,7 @@ ${V.extra ? `<div class="dnote sm"><b>${md(V.extra.t)}</b>${dtag(V.extra.tag)}<p
   // 9. further reading
   sec('d-more', 'للتوسع', 'مراجع موثوقة لمن يريد أن يكمل', D.further?.length ? `<div class="dmore">${D.further.map((x) => `<div><span dir="auto"><b>${esc(x.t)}</b></span><p>${md(x.d)}</p>${x.k ? `<small>${esc(x.k)}</small>` : ''}</div>`).join('')}</div>` : '');
 
-  const head = `<section class="ch3h dph">
-<nav class="crumbs" aria-label="مسار التنقل"><a href="../../${b.testament}.html">${T_NAME[b.testament]}</a><span>‹</span><a href="../${b.slug}.html">${esc(b.name)}</a><span>‹</span><a href="${n}.html">${chTitle(b, n)}</a></nav>
-${modeSwitch(b, n, 'd')}
-<div class="hd"><span class="big">${ar(n)}</span><div><small>${esc(b.name)} · ${md(S.section)}</small><h1>${md(S.title)}</h1><p>${esc(D.lead || '')}</p></div></div>
-<div class="dlegend"><span>${vWord(vs.length)} مشروحة · ${countWord(SEC.length, 'قسم واحد', 'قسمان', 'أقسام', 'قسماً')}</span><span>العلامات: ${dtag('agreed')}${dtag('likely')}${dtag('debated')}</span></div>
-</section>`;
-  const toc = `<aside class="dtoc" aria-label="فهرس الدراسة"><nav>${SEC.map((x, i) => `<a href="#${x.id}"><span>${ar(i + 1)}</span>${x.t}</a>`).join('')}</nav><a class="dback" href="${n}.html">${IC.read}العودة إلى الخلوة</a></aside>`;
-  const nextDeep = next && deepOf(next.b, next.n) && study(next.b, next.n);
-  const foot = `<nav class="ch3n">${prev ? `<a href="${chapterHref(prev.b, prev.n, depth).replace(/\.html$/, deepOf(prev.b, prev.n) && study(prev.b, prev.n) ? '-study.html' : '.html')}"><small>السابق</small><b>${chTitle(prev.b, prev.n)}</b></a>` : '<span></span>'}${next ? `<a class="dk" href="${chapterHref(next.b, next.n, depth).replace(/\.html$/, nextDeep ? '-study.html' : '.html')}"><small>${nextDeep ? 'دراسة الأصحاح التالي' : 'الأصحاح التالي'}</small><b>${chTitle(next.b, next.n)}${study(next.b, next.n) ? ' · ' + md(study(next.b, next.n).title) : ''}</b></a>` : ''}</nav>`;
-  const body = `${head}<div class="dwrap">${toc}<div class="dmain">${SEC.map((x) => x.html).join('')}</div></div>${foot}`;
-  write(`book/${b.slug}/${deepHref(b, n)}`, page({ title: `${chTitle(b, n)}: دراسة متعمقة`, depth, nav: b.testament, body, cls: 'chapter v3 ch3 deep' }));
+  return Object.fromEntries(SEC.map((x) => [x.id, x]));
 }
 
 // ---------- people ----------
@@ -665,7 +682,7 @@ for (const b of books) {
   bookPage(b);
   if (content[b.id]?.intro) aboutPage(b);
   if (previewSkip(b)) continue;
-  for (let n = 1; n <= b.chapters; n++) { chapterPage(b, n); if (deepOf(b, n) && study(b, n)) deepPage(b, n); }
+  for (let n = 1; n <= b.chapters; n++) { chapterPage(b, n); if (deepOf(b, n) && study(b, n)) write(`book/${b.slug}/${n}-study.html`, `<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><title>${esc(chTitle(b, n))}: دراسة معمّقة</title><meta name="robots" content="noindex"><script>try{localStorage.setItem('sola.mode','ds')}catch(e){}location.replace('${n}.html'+(location.hash||'#x-comm'))</script><meta http-equiv="refresh" content="0;url=${n}.html#x-comm"></head><body><a href="${n}.html#x-comm">${esc(chTitle(b, n))}: الدراسة المعمّقة</a></body></html>`); }
 }
 peoplePages();
 mapsPages();
