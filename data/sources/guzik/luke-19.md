@@ -1,0 +1,17 @@
+# Reading notes: David Guzik, Enduring Word (Arabic page), Luke 19
+Read 2026-11-26 at https://enduringword.com/bible-commentary/ar/luke-19/ . Our own outline, not his text.
+A1 (1-4): Jericho prosperous (Barclay: palms, balsam; tree easy to climb); chief tax collector rich by extortion (Luke 3:12-13); Morris: title unusual, local supervisor; Trapp: name means "pure", life the opposite; Morrison: same drive for Jesus as for wealth; Maclaren: wish more believers would bear mockery to see Jesus.
+A2 (5-6): Jesus looks up, calls by name (John 10:3), invites Himself; accepted before change was evident, relationship first; Spurgeon: Christ no unwelcome intruder, does not force Himself; came down quickly, received joyfully.
+A3 (7-10): crowd grumbles; half to poor, fourfold restitution; Spurgeon: past has consequences, so restitution; Morris: long list of victims; contrast rich ruler (18:18-27); change real and visible though not instant in every trait; Pate: Zacchaeus sought Jesus but Jesus was seeking him; son of Abraham; seek and save the lost.
+B1 (11): they thought the kingdom would appear immediately; parable corrects: departure, absence, return; Morrison: departure before return; Geldenhuys: Archelaus' journey to Rome opposed by Jewish envoys; differs from Matt 25.
+B2 (12-13): nobleman to far country; ten servants one mina each (about three months' wages), equal distribution unlike Matt 25; trade until I come.
+B3 (14): citizens hated him, "we will not have this man reign"; hostile hearts.
+B4 (15-19): accounting; first ten minas, ten cities; second five, five cities; both credit the master's gift ("your mina"); Barclay: reward for faithfulness is more work and trust; Trapp: the gift not the labour produced it; faithful in little (16:10).
+B5 (20-26): third hid mina in cloth, called master harsh; judged by his own words; mina given to the one with ten; master's aim to develop character; Morris: use gifts or lose them; Clarke: mina = gospel to invest for souls; whoever has will be given more.
+B6 (27): enemies slain; submitting to Jesus' lordship decisive.
+C1 (28): went on ahead to Jerusalem, cross before crown; to be admired not pitied; Geldenhuys: city of the greatest drama; John 11:57.
+C2 (29-34): colt never ridden; "the Lord needs it"; Morris: donkey for peace, warhorse for kings; Clarke: triumph of humility over pride; F.B. Meyer: untouched colt = total devotion, humble unseen service; Pate: poor owned donkeys; Spurgeon: "Lord" and "needs" together; Poole: fulfilled Zech 9:9, not for rest.
+C3 (35-40): garments on colt and road; praise for miracles; Ps 118:26; Pharisees: rebuke them; stones would cry out (Ps 148; 96:11-12); contrast with conqueror's parade; worship defeats the enemy; Spurgeon: disciples had their troubles yet praised; John 12:17-19.
+C4 (41-44): wept over city; Morris: word = lament over lost opportunity; Morgan: cry of frustration at blindness; "this day" tied to Dan 9:25 and Robert Anderson's 483-year calculation; Josephus on siege horrors; Spurgeon: worse is the destruction of the soul.
+C5 (45-48): cleansing; perhaps distinct from John 2 but same purpose; Barclay: inflated prices, commerce made Gentile prayer in outer court nearly impossible; Bruce: buyers and sellers alike needed cleansing, greed corrupted a harmless start; France: no lasting reform; Isa 56:7; Matt 21:13-14; leaders sought to destroy Him, people hung on His words.
+Theology note: C4 entry notes Anderson's calculation is one of several readings of Daniel 9.
