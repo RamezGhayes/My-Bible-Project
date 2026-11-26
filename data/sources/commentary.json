@@ -680,6 +680,24 @@
      "E2": "خامسًا. ٢ (٤٨-٥١) العبد الرديء"
     },
     "read": "2026-11-26"
+   },
+   "matthew-20": {
+    "url": "https://enduringword.com/bible-commentary/matthew-20/",
+    "lang": "en",
+    "secs": {
+     "A1": "أولًا. ١ (١-٢) صاحب الكرم يستأجر فعلة في الصباح الباكر",
+     "A2": "أولًا. ٢ (٣-٧) صاحب الكرم يواصل استئجار الفعلة طوال النهار",
+     "A3": "أولًا. ٣ (٨-١٠) صاحب الكرم يعطي الفعلة أجرتهم",
+     "A4": "أولًا. ٤ (١١-١٥) تذمر الفعلة الأولين",
+     "A5": "أولًا. ٥ (١٦) تطبيق المثل: مبدأ مكافأة الله",
+     "B1": "ثانيًا. ١ (١٧-١٩) يسوع يعلن ثانية ما ينتظره في أورشليم",
+     "B2": "ثانيًا. ٢ (٢٠-٢١) أم يعقوب ويوحنا تطلب لابنيها مكانة خاصة",
+     "B3": "ثانيًا. ٣ (٢٢-٢٣) جواب يسوع: حين تطلبون مكانة خاصة، هل تعلمون ما تطلبون؟",
+     "B4": "ثانيًا. ٤ (٢٤-٢٨) رد فعل التلاميذ، ويسوع يعلن العظمة الحقيقية",
+     "C1": "ثالثًا. ١ (٢٩-٣١) أعميان يلفتان انتباه يسوع",
+     "C2": "ثالثًا. ٢ (٣٢-٣٤) يسوع يشفي الأعميين"
+    },
+    "read": "2026-11-26"
    }
   }
  },
@@ -3106,6 +3124,61 @@
     ],
     "url": "https://www.gty.org/sermons/2374/ready-or-nothere-i-come-part-2",
     "date": "1984-07-22"
+   },
+   "2345@20": {
+    "t": "Equality in the Kingdom",
+    "book": "Matthew",
+    "ch": 20,
+    "v": [
+     1,
+     16
+    ],
+    "url": "https://www.gty.org/sermons/2345/equality-in-the-kingdom",
+    "date": ""
+   },
+   "2346": {
+    "t": "The Sufferings of Christ",
+    "book": "Matthew",
+    "ch": 20,
+    "v": [
+     17,
+     19
+    ],
+    "url": "https://www.gty.org/sermons/2346/the-sufferings-of-christ",
+    "date": ""
+   },
+   "2347": {
+    "t": "How to Be Great in the Kingdom, Part 1",
+    "book": "Matthew",
+    "ch": 20,
+    "v": [
+     20,
+     28
+    ],
+    "url": "https://www.gty.org/sermons/2347/how-to-be-great-in-the-kingdom-part-1",
+    "date": ""
+   },
+   "2348": {
+    "t": "How to Be Great in the Kingdom, Part 2",
+    "book": "Matthew",
+    "ch": 20,
+    "v": [
+     20,
+     28
+    ],
+    "url": "https://www.gty.org/sermons/2348/how-to-be-great-in-the-kingdom-part-2",
+    "date": ""
+   },
+   "2349": {
+    "t": "The Blind Who Saw",
+    "book": "Matthew",
+    "ch": 20,
+    "v": [
+     29,
+     34
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2349/the-blind-who-saw",
+    "date": ""
    }
   }
  }
