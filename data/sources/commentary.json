@@ -376,6 +376,25 @@
      "F3": "سادسًا. ج (٣٣-٣٤) الناس يطلبون من يسوع مغادرة المنطقة"
     },
     "read": "2026-11-26"
+   },
+   "mark-12": {
+    "url": "https://enduringword.com/bible-commentary/mark-12/",
+    "lang": "en",
+    "secs": {
+     "A1": "أ. ١ (١-٨) مثل عن صاحب كرم وكرّاميه",
+     "A2": "أ. ٢ (٩-١٢) يسوع يطبّق المثل",
+     "B1": "ب. ١ (١٣-١٥أ) الفريسيون يحاولون اصطياد يسوع بسؤال عن الجزية",
+     "B2": "ب. ٢ (١٥ب-١٧) يسوع يجيب عن سؤال الجزية",
+     "C1": "ج. ١ (١٨-٢٣) الصدوقيون يسألون يسوع سؤالًا سخيفًا",
+     "C2": "ج. ٢ (٢٤-٢٥) يسوع يصحح فهمهم الخاطئ لحياة القيامة",
+     "C3": "ج. ٣ (٢٦-٢٧) يسوع يبرهن القيامة من الكتب",
+     "C4": "ج. ٤ (٢٨-٣٤) أي وصية هي أولى الكل؟",
+     "D1": "د. ١ (٣٥-٣٧) يسوع يسأل: كيف يكون المسيح ابن داود ورب داود معًا؟",
+     "D2": "د. ٢ (٣٨-٤٠) يسوع يحذر من رياء الكتبة",
+     "D3": "د. ٣ (٤١-٤٢) يسوع يراقب عطاء الأرملة",
+     "D4": "د. ٤ (٤٣-٤٤) يسوع يقيّم عطية الأرملة"
+    },
+    "read": "2026-11-26"
    }
   }
  },
@@ -1603,6 +1622,72 @@
      34
     ],
     "url": "https://www.gty.org/sermons/2261/jesus-power-over-the-supernatural"
+   },
+   "41-60": {
+    "t": "The Rejected Cornerstone",
+    "date": "",
+    "book": "Mark",
+    "ch": 12,
+    "v": [
+     1,
+     12
+    ],
+    "url": "https://gty.org/library/sermons-library/41-60"
+   },
+   "41-61": {
+    "t": "The Pathology of a Religious Hypocrite",
+    "date": "",
+    "book": "Mark",
+    "ch": 12,
+    "v": [
+     13,
+     17
+    ],
+    "url": "https://gty.org/library/sermons-library/41-61"
+   },
+   "41-62": {
+    "t": "Biblical Ignorance in High Places",
+    "date": "",
+    "book": "Mark",
+    "ch": 12,
+    "v": [
+     18,
+     27
+    ],
+    "url": "https://gty.org/library/sermons-library/41-62"
+   },
+   "41-63": {
+    "t": "Loving God",
+    "date": "",
+    "book": "Mark",
+    "ch": 12,
+    "v": [
+     28,
+     34
+    ],
+    "url": "https://gty.org/library/sermons-library/41-63"
+   },
+   "41-64": {
+    "t": "Son of David, Lord of All",
+    "date": "",
+    "book": "Mark",
+    "ch": 12,
+    "v": [
+     35,
+     37
+    ],
+    "url": "https://gty.org/library/sermons-library/41-64"
+   },
+   "41-65": {
+    "t": "Religion and Its Victims",
+    "date": "",
+    "book": "Mark",
+    "ch": 12,
+    "v": [
+     38,
+     44
+    ],
+    "url": "https://www.gty.org/resources/sermons/41-65"
    }
   }
  }
