@@ -517,7 +517,7 @@ const rfView = (t) => /المُصلَح|المصلح|كالفن|وستمنستر
 const vspan = (r) => String(r).split(/[;,]/).flatMap((p) => { const [a, z] = p.trim().split(/[-–]/).map(Number); const o = []; for (let i = a; i <= (z || a); i++) o.push(i); return o; });
 const VOX = {};
 const CMT = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/sources/commentary.json'), 'utf8'));
-const bookEn = (b) => ({ Matt: 'Matthew', Mark: 'Mark', Luke: 'Luke', John: 'John', Acts: 'Acts', Rom: 'Romans' })[b.id] || b.id;
+const bookEn = (b) => ({ Matt: 'Matthew', Mark: 'Mark', Luke: 'Luke', John: 'John', Acts: 'Acts', Rom: 'Romans', '1Cor': '1 Corinthians', '2Cor': '2 Corinthians', Gal: 'Galatians', Eph: 'Ephesians', Phil: 'Philippians', Col: 'Colossians', '1Thess': '1 Thessalonians', '2Thess': '2 Thessalonians', '1Tim': '1 Timothy', '2Tim': '2 Timothy', Titus: 'Titus', Phlm: 'Philemon', Heb: 'Hebrews', Jas: 'James', '1Pet': '1 Peter', '2Pet': '2 Peter', '1John': '1 John', '2John': '2 John', '3John': '3 John', Jude: 'Jude', Rev: 'Revelation' })[b.id] || b.id;
 {
   const flat = (x) => x.replace(/\s+/g, ' ');
   for (const b of books) {
