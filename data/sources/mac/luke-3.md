@@ -1,0 +1,2 @@
+# Reading notes: John MacArthur, sermons on Luke 3 (Grace to You)
+No sermon on Luke 3 could be read in this session. Known from the Luke Vol. 03 series page: 42-35 Setting the Stage for Jesus, Part 1 (3:1, 1999-12-05); 42-36 Setting the Stage for Jesus, Part 2 (3:2-3, 1999-12-12). Further Luke 3 sermons exist (42-37, 42-38 Setting the Stage Parts 3-4; 42-43 True Repentance: God's Highway to the Heart, Part 3) but their ranges were not confirmed. Fetch attempts failed (42-37 robots-blocked; others stopped by a usage limit; web-search budget exhausted). No mac entries written.
