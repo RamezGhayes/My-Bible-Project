@@ -86,14 +86,17 @@ const ARW = '<span class="arw" aria-hidden="true">←</span>';
 const BACK = '<span class="arw" aria-hidden="true">→</span>';
 // The welcome shown on a first visit only (v5.js decides, localStorage "sola.intro"). Same look as the old splash.
 function introOverlay(ps) {
-  return `<div id="intro5" class="i5" hidden role="dialog" aria-modal="true" aria-labelledby="i5t"><div class="i5in">
-<div class="wm" id="i5t">${esc(config.nameAr)}</div>
-<div class="vs">${esc(ps)}</div><div class="rf">${refLabel(config.verseRef)}</div>
-<div class="ln"></div>
-<p class="i5l">مكان هادئ لتقرأ الكتاب المقدس وتفهمه، أصحاحاً بعد أصحاح، بطريقتين:</p>
-<div class="i5w"><div><b>الخلوة اليومية</b><small>نحو ٢٠ دقيقة: النص، والآية المفتاحية، والتأمل، والصلاة.</small></div><div><b>الدراسة المعمّقة</b><small>آية بآية: الكلمات الأصلية، والخلفية، والمسيح في النص.</small></div></div>
-<button type="button" data-i5-go>ادخل</button>
-<small>دراسة الكتاب المقدس من منظور مُصلَح، مع عرض الآراء الأخرى بأمانة</small>
+  return `<div id="intro5" class="i5" hidden role="dialog" aria-modal="true" aria-labelledby="i5t">
+<svg class="i5r" viewBox="0 0 900 900" aria-hidden="true"><circle cx="450" cy="450" r="440"/><circle cx="450" cy="450" r="360" stroke-dasharray="2 10"/><circle cx="450" cy="450" r="280"/></svg>
+<div class="i5in">
+<div class="wm" id="i5t">${BRAND}<span>${esc(config.nameAr)}</span></div>
+<p class="vs">${esc(ps)}</p><div class="rf">${refLabel(config.verseRef)}</div>
+<p class="i5l">مكان هادئ لتقرأ الكتاب المقدس وتفهمه، من منظور مُصلَح. اختر كيف تبدأ:</p>
+<div class="i5w">
+<button type="button" data-i5-mode="qt"><span class="k">كل يوم</span><b>الخلوة اليومية</b><small>أصحاح في نحو ٢٠ دقيقة: النص، والآية المفتاحية، والتأمل، والصلاة.</small><span class="i5g">ابدأ بالخلوة ${IC.chev}</span></button>
+<button type="button" data-i5-mode="ds"><span class="k">آية بآية</span><b>الدراسة المعمّقة</b><small>الكلمات الأصلية، والخلفية، والعهد القديم، والمسيح في النص، وآراء المفسرين.</small><span class="i5g">ابدأ بالدراسة ${IC.chev}</span></button>
+</div>
+<button type="button" class="i5skip" data-i5-go>تصفّح الموقع أولاً</button>
 </div></div>`;
 }
 function home() {

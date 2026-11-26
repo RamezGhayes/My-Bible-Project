@@ -6,10 +6,11 @@
 
   var i5 = document.getElementById('intro5');
   if (i5) {
+    if (i5.parentNode !== document.body) document.body.appendChild(i5);
     var open = function () { i5.hidden = false; i5.classList.remove('out'); var b = i5.querySelector('.i5go'); if (b) b.focus(); };
     var close = function () { set('sola.intro', '1'); i5.classList.add('out'); setTimeout(function () { i5.hidden = true; }, 450); };
     if (!get('sola.intro')) open();
-    i5.addEventListener('click', function (e) { if (e.target.closest('[data-i5-go]')) close(); });
+    i5.addEventListener('click', function (e) { var m = e.target.closest('[data-i5-mode]'); if (m) { try { localStorage.setItem('sola.mode', m.getAttribute('data-i5-mode')); } catch (er) {} document.documentElement.dataset.mode = m.getAttribute('data-i5-mode'); if (window.SolaMode) { var pk = document.querySelectorAll('[data-mode-pick]'); pk.forEach(function (p) { p.setAttribute('aria-checked', p.getAttribute('data-mode-pick') === m.getAttribute('data-i5-mode') ? 'true' : 'false'); }); } close(); var t = document.querySelector(m.getAttribute('data-i5-mode') === 'qt' ? '[data-today-start]:not([hidden]),[data-today-card]:not([hidden])' : '.h3tg'); if (t) setTimeout(function () { t.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 500); return; } if (e.target.closest('[data-i5-go]')) close(); });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !i5.hidden) close(); });
     var again = document.querySelector('[data-i5-again]'); if (again) again.addEventListener('click', open);
   }
