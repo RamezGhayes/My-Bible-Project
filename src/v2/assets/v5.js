@@ -19,4 +19,20 @@
     set: function (m) { set('sola.mode', m === 'ds' ? 'ds' : 'qt'); document.documentElement.dataset.mode = m === 'ds' ? 'ds' : 'qt'; }
   };
   document.documentElement.dataset.mode = window.SolaMode.get();
+
+  // Chapters read in this browser: a chapter page marks itself; the book grid shows a tick.
+  var readList = function () { try { return JSON.parse(get('sola.read') || '[]'); } catch (e) { return []; } };
+  var here = document.querySelector('[data-chapter]');
+  if (here) { var r = readList(), k = here.getAttribute('data-chapter'); if (r.indexOf(k) < 0) { r.push(k); set('sola.read', JSON.stringify(r)); } }
+
+  // Book page: two mode cards, and the chapter links follow the mode.
+  var picks = document.querySelectorAll('[data-mode-pick]');
+  function paint() {
+    var m = window.SolaMode.get();
+    picks.forEach(function (p) { p.setAttribute('aria-checked', p.getAttribute('data-mode-pick') === m ? 'true' : 'false'); });
+    document.querySelectorAll('.chg5 a[data-deep]').forEach(function (a) { var h = a.getAttribute('href').replace(/-study\.html$/, '.html'); a.setAttribute('href', m === 'ds' ? h.replace(/\.html$/, '-study.html') : h); });
+  }
+  if (picks.length) { picks.forEach(function (p) { p.addEventListener('click', function () { window.SolaMode.set(p.getAttribute('data-mode-pick')); paint(); }); }); paint(); }
+  var rl = readList();
+  document.querySelectorAll('.chg5 a[data-key]').forEach(function (a) { if (rl.indexOf(a.getAttribute('data-key')) >= 0) { a.classList.add('read'); a.setAttribute('aria-label', a.textContent + ' (قرأته)'); } });
 })();

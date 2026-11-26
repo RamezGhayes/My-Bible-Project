@@ -152,30 +152,14 @@ function hubs() {
 function testament(t) {
   const list = books.filter((b) => b.testament === t);
   const groups = [...new Set(list.map((b) => b.groupName))];
-  const card = (b, i) => {
-    const c = content[b.id];
-    const st = isFull(b) ? '<span class="st full">دراسة كاملة</span>' : c ? '<span class="st part">دراسة جارية</span>' : '<span class="st">النص متاح</span>';
-    const sum = c?.intro ? clip(c.intro.summary, 220) : 'النص كاملاً متاح الآن، أصحاحاً أصحاحاً. والمقدمة والدراسة لهذا السفر قيد الإعداد.';
-    const done = studiedCount(b);
-    return `<a class="cc bk" href="book/${b.slug}.html" data-i="${i}" data-g="${esc(b.groupName)}" data-slug="${b.slug}" data-book="${b.id}" data-total="${b.chapters}">
-<div class="k"><span>${esc(b.groupName)}</span>${st}</div>
-<div class="num">${esc(shortName(b))}</div>
-<h3>${b.name.startsWith('إنجيل') ? 'الإنجيل بحسب ' + esc(shortName(b)) + ' · ' : ''}السفر ${ar(b.order)} من ٦٦</h3>
-<p style="margin-top:14px">${esc(sum)}</p>
-<div class="kv2"><small>${chWord(b.chapters)}${done && done < b.chapters ? ` · ${ar(done)} مدروس` : ''}</small></div>
-<div class="ft"><span data-prog></span><span class="go">افتح ${IC.chev}</span></div></a>`;
-  };
-  const SPC = { torah: '#8C2F1E', history: '#9A5A24', poetry: '#B39459', major: '#4E5D32', minor: '#6B7A4A', gospels: '#1F2A44', acts: '#2E4A6B', paul: '#4B3D63', general: '#34496B', prophecy: '#5A3A22' };
   const chs = list.reduce((a, b) => a + b.chapters, 0);
-  const gl = groups.map((g) => { const n = list.filter((b) => b.groupName === g).length; return `<span style="flex:${n}">${esc(g)}</span>`; }).join('');
-  const shelf = `<section class="ts3h"><div class="in"><div class="top"><div><span class="ey">${bkWord(list.length)} · ${chWord(chs)}</span><h1>${T_NAME[t]}</h1></div><div class="leg"><span><i class="f"></i>دراسة كاملة</span><span><i class="p"></i>دراسة جارية</span><span><i></i>النص متاح</span></div></div>
-<div class="shelf" role="list">${list.map((b, i) => `<a role="listitem" href="#b-${b.slug}" data-spine="${b.slug}" class="${isFull(b) ? 'f' : studiedCount(b) ? 'p' : ''}" style="--c:${SPC[b.group]};--h:${Math.round(70 + Math.sqrt(b.chapters) * 12)}px;--d:${(i * 0.025).toFixed(3)}s" title="${esc(b.name)} · ${chWord(b.chapters)}"><span>${esc(shortName(b))}</span></a>`).join('')}</div>
-<div class="gl" aria-hidden="true">${gl}</div></div></section>`;
-  const body = `${shelf}
-<div class="chips" id="gchips">${groups.map((g) => `<button type="button" data-g="${esc(g)}" aria-pressed="false">${esc(g)}</button>`).join('')}</div>
-<div class="car" id="car" data-kind="books">${list.map(card).join('')}</div>
-<div class="count" id="ccount"></div>`;
-  write(`${t}.html`, page({ title: T_NAME[t], depth: 0, nav: t, body, cls: 'v3 ts3' }));
+  const card = (b) => { const st = isFull(b) ? '<i class="s5 f" title="دراسة كاملة"></i>' : studiedCount(b) ? '<i class="s5 p" title="دراسة جارية"></i>' : ''; return `<a class="bk5" href="book/${b.slug}.html" id="b-${b.slug}"><b>${esc(shortName(b))}</b><small>${chWord(b.chapters)}</small>${st}</a>`; };
+  const body = `<section class="z5 hub5"><a class="back5" href="bible.html">${BACK} العودة إلى الكتاب المقدس</a>
+<header class="z5h"><h1>${T_NAME[t]}</h1><p>${bkWord(list.length)} · ${chWord(chs)}</p></header>
+<p class="lg5"><span><i class="s5 f"></i>دراسة كاملة</span><span><i class="s5 p"></i>دراسة جارية</span><span><i class="s5"></i>النص متاح</span></p>
+${groups.map((g) => `<section class="grp5"><h2>${esc(g)}</h2><div class="bkg5">${list.filter((b) => b.groupName === g).map(card).join('')}</div></section>`).join('')}
+</section>`;
+  write(`${t}.html`, page({ title: T_NAME[t], depth: 0, nav: t, body, cls: 'v5hub' }));
 }
 
 // ---------- book: chapters carousel ----------
@@ -187,52 +171,26 @@ function personChips(S, b) {
 function bookPage(b) {
   const c = content[b.id];
   const skip = previewSkip(b);
-  const vs = bible(b.id).chapters;
-  const cards = vs.map((ch, i) => {
-    const n = i + 1;
-    const S = study(b, n);
-    const href = skip ? '#' : `${b.slug}/${n}.html`;
-    if (S) {
-      const kv = firstRef(S.keyVerse);
-      return `<a class="cc" href="${href}" data-i="${i}" data-key="${b.id}:${n}" data-sec="${esc(plain(S.section).replace(/\s*\([^)]*\)/g, ''))}">
-<div class="k"><span>الأصحاح</span><span data-stat></span></div>
-<div class="num">${ar(n)}</div>
-<h3>${md(S.title)}</h3>
-<p>${esc(firstSentences(S.summary?.[0] || S.where, 110))}</p>
-<div class="pchips">${personChips(S, b).map((p) => `<span>${esc(p)}</span>`).join('')}</div>
-${kv ? `<div class="kv2"><div class="s">${esc(quoteText(kv))}</div><small>${refLabel(kv)}</small></div>` : ''}
-<div class="ft"><span>${vWord(ch.verses.length)}</span><span class="go">اقرأ ${IC.chev}</span></div></a>`;
-    }
-    return `<a class="cc" href="${href}" data-i="${i}" data-key="${b.id}:${n}" data-sec="">
-<div class="k"><span>الأصحاح</span><span data-stat></span></div>
-<div class="num">${ar(n)}</div>
-<h3 style="font-family:var(--ui);font-weight:400;font-size:13px;color:var(--faint)">${skip ? 'النص في النسخة الكاملة من الموقع' : 'النص متاح · الدراسة قيد الإعداد'}</h3>
-<p style="font-family:var(--nas);font-size:16.5px;line-height:1.95">${esc(clip(ch.verses.slice(0, 3).map((v) => v.text).join(' '), 200))}</p>
-<div class="ft" style="margin-top:auto"><span>${vWord(ch.verses.length)}</span><span class="go">اقرأ ${IC.chev}</span></div></a>`;
-  }).join('');
-  // design-v3 head: hero, map of the book from the chapters' own section labels, facts, place in the story, intro sections.
   const I = c?.intro;
-  const parts = [];
-  for (let n = 1; n <= b.chapters; n++) { const S = study(b, n); const lab = S ? plain(S.section).replace(/\s*\([^)]*\)\s*$/, '') : ''; const last = parts[parts.length - 1]; if (last && last.t === lab) last.z = n; else parts.push({ t: lab, a: n, z: n }); }
-  const PC = ['#8C2F1E', '#A8584A', '#B39459', '#4E5D32', '#1F2A44', '#4B3D63', '#7A6232', '#34496B'];
   const TG = { agreed: 'متفق عليه', likely: 'راجح', debated: 'مختلف عليه' };
-  const first = bible(b.id).chapters[0].verses[0].text;
-  const hero = `<section class="bk3h"><svg class="rings" viewBox="0 0 760 760" aria-hidden="true"><circle cx="380" cy="380" r="370"/><circle cx="380" cy="380" r="290" stroke-dasharray="2 10"/></svg>
-<div class="in"><nav class="crumbs" aria-label="مسار التنقل"><a href="../${b.testament}.html#b-${b.slug}">${T_NAME[b.testament]}</a><span>‹</span><span>${esc(b.groupName)}</span></nav>
-<div class="row"><div class="tx"><span class="ey">${esc(b.groupName)} · السفر ${ar(b.order)} من ٦٦</span><h1>${esc(shortName(b))}</h1><p class="v">${esc(first)}<small>${refLabel(`${b.id}.1.1`)}</small></p>${I ? `<p class="s">${esc(firstSentences(I.summary, 200))}</p>` : '<p class="s">النص كاملاً متاح الآن، أصحاحاً أصحاحاً. والمقدمة والدراسة لهذا السفر قيد الإعداد.</p>'}</div>
-<div class="bt"><a class="p" href="${skip ? '#' : `${b.slug}/1.html`}">${IC.read}ابدأ من الأصحاح الأول</a>${I ? `<a href="${b.slug}/about.html">مقدمة السفر في ${secWord(I.sections.length)}</a>` : ''}<span>${chWord(b.chapters)}${studiedCount(b) ? ` · ${studiedCount(b) === b.chapters ? 'كلها مدروسة' : `${ar(studiedCount(b))} مدروساً`}` : ''}</span></div></div>
-${parts.length > 1 || parts[0]?.t ? `<div class="map"><small>خريطة السفر · عرض كل قسم يتبع عدد أصحاحاته</small><div class="mbar">${parts.map((q, i) => `<a href="#c${q.a}" style="flex:${q.z - q.a + 1};--c:${PC[i % PC.length]};--d:${(0.6 + i * 0.12).toFixed(2)}s" title="${esc(q.t)}"></a>`).join('')}</div><div class="mlb">${parts.map((q) => `<span style="flex:${q.z - q.a + 1}"><b>${esc(q.t || 'بلا دراسة بعد')}</b><em>${ar(q.a)}${q.z > q.a ? '–' + ar(q.z) : ''}</em></span>`).join('')}</div></div>` : ''}
-</div></section>`;
-  const facts = I ? `<section class="bk3s"><div class="bk3f">${I.facts.map((f, i) => `<div style="--d:${(i * 0.06).toFixed(2)}s"><small>${esc(f.k)}${f.tag && TG[f.tag] ? `<em class="t-${f.tag}">${TG[f.tag]}</em>` : ''}</small><span>${md(f.v)}</span></div>`).join('')}</div></section>
-<section class="bk3s"><h2>أين يقع في القصة؟</h2><div class="bk3c">${[['before', 'قبله'], ['now', 'الآن'], ['after', 'بعده']].map(([k, l]) => { const x = I.context[k]; if (!x) return ''; const inner = `<small>${l}</small><b>${md(x.t)}</b><span>${md(x.d)}</span>`; return x.href ? `<a class="${k}" href="${up(1)}${x.href}">${inner}</a>` : `<div class="${k}">${inner}</div>`; }).join(`<i aria-hidden="true">${IC.chev}</i>`)}</div></section>
-<section class="bk3s"><h2>مقدمة السفر في ${secWord(I.sections.length)}</h2><div class="bk3i">${I.sections.map((x, i) => `<a href="${b.slug}/about.html#sec${i + 1}"><em>${ar(i + 1)}</em><b>${md(x.title || x.t || '')}</b>${IC.chev}</a>`).join('')}</div></section>` : '';
-  const body = `${hero}${facts}
-<section class="bk3s bk3ch"><h2>الأصحاحات</h2><p>اسحب البطاقات، أو اختر رقماً.</p></section>
-<div class="secl" id="secl"></div>
-<div class="car" id="car" data-kind="chapters" data-book="${b.id}" data-total="${b.chapters}">${cards}</div>
-<div class="scrub" id="scrub">${vs.map((_, i) => `<button type="button" data-jump="${i}" data-key="${b.id}:${i + 1}">${ar(i + 1)}</button>`).join('')}</div>
-${c?.intro ? `<a class="wide" href="${b.slug}/about.html" style="background:#fff;color:var(--ink);border:1px solid var(--line)">${IC.read}مقدمة السفر في ${secWord(c.intro.sections.length)}</a>` : ''}`;
-  write(`book/${b.slug}.html`, page({ title: b.name, depth: 1, nav: b.testament, body, cls: 'v3 bk3' }));
+  const intro = I ? `<details class="acc5"><summary><span>نبذة عن السفر والكاتب</span><i aria-hidden="true"></i></summary><div class="acc5b">
+<p class="lead5">${md(I.summary)}</p>
+<dl class="facts5">${I.facts.map((f) => `<div><dt>${esc(f.k)}${f.tag && TG[f.tag] ? ` <em class="t-${f.tag}">${TG[f.tag]}</em>` : ''}</dt><dd>${md(f.v)}</dd></div>`).join('')}</dl>
+${I.context ? `<div class="ctx5">${[['before', 'قبله'], ['now', 'هذا السفر'], ['after', 'بعده']].map(([k, l]) => { const x = I.context[k]; if (!x) return ''; const inner = `<small>${l}</small><b>${md(x.t)}</b>`; return x.href ? `<a href="${up(1)}${x.href}">${inner}</a>` : `<div class="now">${inner}</div>`; }).join('')}</div>` : ''}
+<h3>مقدمة السفر في ${secWord(I.sections.length)}</h3>
+<ol class="secs5">${I.sections.map((x, i) => `<li><a href="${b.slug}/about.html#sec${i + 1}"><em>${ar(i + 1)}</em><span>${md(x.title || x.t || '')}</span>${ARW}</a></li>`).join('')}</ol>
+</div></details>` : '';
+  const hasDeep = Object.keys(c?.deep || {}).length > 0;
+  const modes = `<section class="mode5" aria-label="اختر طريقة القراءة"><h2>اختر طريقة القراءة</h2><div class="mode5g" role="radiogroup">
+<button type="button" class="mc5 qt" role="radio" data-mode-pick="qt" aria-checked="true"><span class="b5">مُفعّل حالياً</span><span class="e" aria-hidden="true">🕯️</span><b>وضع الخلوة اليومية <small>(٢٠ دقيقة)</small></b><span class="d">قراءة مركّزة + الآية المفتاحية + تأمل وتطبيق + صلاة</span></button>
+<button type="button" class="mc5 ds" role="radio" data-mode-pick="ds" aria-checked="false"><span class="b5">مُفعّل حالياً</span><span class="e" aria-hidden="true">📖</span><b>وضع الدراسة المعمّقة</b><span class="d">النص الكامل + الفكرة الرئيسية + المسيح في النص + الخرائط والشروح</span></button>
+</div>${hasDeep ? '' : '<p class="note5">الدراسة المعمّقة آية بآية لهذا السفر قيد الإعداد. في هذا الوضع ستجد كل ما هو متاح من الدراسة الحالية.</p>'}</section>`;
+  const grid = `<section class="chs5"><h2>الأصحاحات</h2><div class="chg5">${bible(b.id).chapters.map((_, i) => { const n = i + 1; const S = study(b, n); return `<a href="${skip ? '#' : `${b.slug}/${n}.html`}" data-key="${b.id}:${n}"${deepOf(b, n) && S ? ' data-deep="1"' : ''}${S ? ` title="${esc(plain(S.title))}"` : ''} class="${S ? 'st' : ''}">${ar(n)}</a>`; }).join('')}</div>
+<p class="lg5"><span><i class="s5 f"></i>أصحاح مدروس</span><span><i class="s5"></i>النص فقط</span><span>✓ قرأته</span></p></section>`;
+  const body = `<section class="z5 bk5p"><a class="back5" href="../${b.testament}.html#b-${b.slug}">${BACK} العودة إلى ${T_NAME[b.testament]}</a>
+<header class="bkh5"><span class="z5k">${esc(b.groupName)} · السفر ${ar(b.order)} من ٦٦ · ${chWord(b.chapters)}</span><h1>${esc(b.name)}</h1>${I ? `<p>${esc(firstSentences(I.summary, 90))}</p>` : '<p>النص كاملاً متاح الآن، أصحاحاً أصحاحاً. والمقدمة والدراسة لهذا السفر قيد الإعداد.</p>'}</header>
+${intro}${modes}${grid}</section>`;
+  write(`book/${b.slug}.html`, page({ title: b.name, depth: 1, nav: b.testament, body, cls: 'v5hub v5book' }));
 }
 
 // ---------- book introduction (about) ----------
