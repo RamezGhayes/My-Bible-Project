@@ -580,6 +580,26 @@
      "C4": "ثالثًا. د (٣٤-٣٦) جموع كثيرة تُشفى بلمسة من يسوع"
     },
     "read": "2026-11-26"
+   },
+   "matthew-15": {
+    "url": "https://enduringword.com/bible-commentary/ar/matthew-15/",
+    "lang": "ar",
+    "secs": {
+     "A1": "أولًا. أ (١-٢) قادة أورشليم يسألون يسوع",
+     "A2": "أولًا. ب (٣) يسوع يجيب بسؤال واضعًا تقاليد الإنسان في مقابل إرادة الله",
+     "A3": "أولًا. ج (٤-٦) مثال على كيف أهانت تقاليدهم الله: عدم مساعدة الأهل بموارد قيل إنها تخص الله",
+     "A4": "أولًا. د (٧-٩) يسوع يدين تقليدهم الأجوف بأنه نفاق",
+     "A5": "أولًا. هـ (١٠-١١) يسوع يتحدث إلى الجموع عن التدين الزائف",
+     "A6": "أولًا. و (١٢-١٤) يسوع يحذر تلاميذه من أن ما هو من الله ومن الحق سيدوم ويكون راسخًا",
+     "A7": "أولًا. ز (١٥-٢٠) حالة القلب هي ما يفسد الإنسان حقًا",
+     "B1": "ثانيًا. أ (٢١-٢٢) يسوع يُقابَل بطلب من امرأة أممية",
+     "B2": "ثانيًا. ب (٢٣-٢٤) استجابة يسوع المتحفظة لطلب المرأة الأممية",
+     "B3": "ثانيًا. ج (٢٥-٢٧) الاستغاثة المثابرة من جانب المرأة بيسوع",
+     "B4": "ثانيًا. د (٢٨) يسوع يكافئ الإيمان العظيم الذي للمرأة الأممية",
+     "C1": "ثالثًا. أ (٢٩-٣١) يسوع يشفي الجموع",
+     "C2": "ثالثًا. ب (٣٢-٣٩) إطعام الأربعة آلاف"
+    },
+    "read": "2026-11-26"
    }
   }
  },
@@ -2642,6 +2662,50 @@
      36
     ],
     "url": "https://www.gty.org/sermons/2311/confusing-mans-traditions-with-gods-commandments-part-1",
+    "date": ""
+   },
+   "2311@15": {
+    "t": "Confusing Man's Traditions with God's Commandments, Part 1",
+    "book": "Matthew",
+    "ch": 15,
+    "v": [
+     1,
+     9
+    ],
+    "url": "https://www.gty.org/sermons/2311/confusing-mans-traditions-with-gods-commandments-part-1",
+    "date": ""
+   },
+   "2312": {
+    "t": "Confusing Man's Traditions with God's Commandments, Part 2",
+    "book": "Matthew",
+    "ch": 15,
+    "v": [
+     10,
+     20
+    ],
+    "url": "https://www.gty.org/sermons/2312/confusing-mans-traditions-with-gods-commandments-part-2",
+    "date": ""
+   },
+   "2313": {
+    "t": "The Quality of Great Faith",
+    "book": "Matthew",
+    "ch": 15,
+    "v": [
+     21,
+     28
+    ],
+    "url": "https://www.gty.org/sermons/2313/the-quality-of-great-faith",
+    "date": ""
+   },
+   "2314": {
+    "t": "Compassion for the Outsiders",
+    "book": "Matthew",
+    "ch": 15,
+    "v": [
+     29,
+     39
+    ],
+    "url": "https://www.gty.org/sermons/2314/compassion-for-the-outsiders",
     "date": ""
    }
   }
