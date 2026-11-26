@@ -21,9 +21,10 @@ export const IC = {
   check: '<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>'
 };
 
-const NAV = [['index.html', 'home', 'الرئيسية', IC.home], ['plans.html', 'plans', 'الخطط', IC.check], ['people.html', 'people', 'الشخصيات', IC.person], ['maps.html', 'maps', 'الخرائط', IC.map]];
-// Desktop top bar. Extra sections register themselves here (topics, library) once their pages exist.
-export const TOPNAV = [['index.html', 'home', 'الرئيسية'], ['plans.html', 'plans', 'خطط القراءة'], ['ot.html', 'ot', 'العهد القديم'], ['nt.html', 'nt', 'العهد الجديد'], ['people.html', 'people', 'الشخصيات'], ['maps.html', 'maps', 'الخرائط والشروح'], ['topics.html', 'topics', 'الموضوعات'], ['library.html', 'library', 'المكتبة']];
+// Four main sections (redesign, Nov 2026). Older section keys fold into them for the "current page" mark.
+export const NAVKEY = { ot: 'bible', nt: 'bible', bible: 'bible', overview: 'bible', people: 'explore', maps: 'explore', topics: 'explore', library: 'explore', explore: 'explore', plans: 'plans', home: 'home' };
+const NAV = [['index.html', 'home', 'الرئيسية', IC.home], ['plans.html', 'plans', 'خلوة اليوم', IC.check], ['bible.html', 'bible', 'الكتاب المقدس', IC.read], ['explore.html', 'explore', 'استكشف', IC.web]];
+export const TOPNAV = NAV.map(([h, k, l]) => [h, k, l]);
 export const BRAND = '<svg class="bm" viewBox="0 0 40 32" aria-hidden="true"><path d="M20 7c-4-3-10-4-16-3v22c6-1 12 0 16 3 4-3 10-4 16-3V4c-6-1-12 0-16 3z"/><path d="M20 7v22"/><path d="M8 10c3 0 6 .5 8 1.6M8 15c3 0 6 .5 8 1.6M24 11.6c2-1.1 5-1.6 8-1.6M24 16.6c2-1.1 5-1.6 8-1.6" opacity=".55"/></svg>';
 
 export function page({ title, depth = 0, nav = null, body, cls = '', after = '' }) {
@@ -52,19 +53,21 @@ export function page({ title, depth = 0, nav = null, body, cls = '', after = '' 
 <link rel="stylesheet" href="${FONTS}">
 <link rel="stylesheet" href="${u}assets/v2.css">
 <link rel="stylesheet" href="${u}assets/v3.css">
+<link rel="stylesheet" href="${u}assets/v5.css">
 </head>
 <body class="${cls}" data-root="${u}" data-auth="${esc(JSON.stringify(config.auth || {}))}">
-<header id="top"><div class="in"><a class="brand" href="${u}index.html">${BRAND}<span><b>${esc(config.nameAr)}</b></span></a><nav aria-label="الأقسام">${TOPNAV.map(([h, k, l]) => `<a href="${u}${h}"${k === nav || false ? ' aria-current="page"' : ''}>${l}</a>`).join('')}</nav><button type="button" class="sbtn" data-search aria-label="بحث">${IC.search}<span>ابحث</span></button><a class="acct" href="${u}login.html" data-acct aria-label="حسابي"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg><span data-acct-label>دخول</span></a></div></header>
+<header id="top"><div class="in"><a class="brand" href="${u}index.html">${BRAND}<span><b>${esc(config.nameAr)}</b></span></a><nav aria-label="الأقسام">${TOPNAV.map(([h, k, l]) => `<a href="${u}${h}"${k === NAVKEY[nav] ? ' aria-current="page"' : ''}>${l}</a>`).join('')}</nav><button type="button" class="sbtn" data-search aria-label="بحث">${IC.search}<span>ابحث</span></button><a class="acct" href="${u}login.html" data-acct aria-label="حسابي"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg><span data-acct-label>حسابي</span></a></div></header>
 <div id="app"><main class="main">
 ${body}
 </main>
-${nav ? `<nav id="nav" aria-label="التنقل الرئيسي">${NAV.map(([h, k, l, i]) => `<a href="${u}${h}"${k === nav || (k === 'home' && (nav === 'ot' || nav === 'nt')) ? ' aria-current="page"' : ''}>${i}${l}</a>`).join('')}<button type="button" data-search>${IC.search}بحث</button></nav>` : ''}
+${nav ? `<nav id="nav" aria-label="التنقل الرئيسي">${NAV.map(([h, k, l, i]) => `<a href="${u}${h}"${k === NAVKEY[nav] ? ' aria-current="page"' : ''}>${i}${l}</a>`).join('')}<button type="button" data-search>${IC.search}بحث</button></nav>` : ''}
 </div>
 ${after}
 <div class="srch" id="srch" hidden role="dialog" aria-label="بحث"><div class="sbox"><div class="sin">${IC.search}<input type="search" id="sq" placeholder="ابحث عن سفر، أو أصحاح، أو شخصية، أو اكتب شاهداً مثل يو ٣: ١٦" autocomplete="off" enterkeyhint="search"><button type="button" data-sclose aria-label="إغلاق">${IC.close}</button></div><div class="sres" id="sres"></div></div></div>
 <div class="toast" id="toast" role="status"></div>
 <script src="${u}assets/v2.js"></script>
 <script src="${u}assets/v3.js"></script>
+<script src="${u}assets/v5.js"></script>
 <script type="module" src="${u}assets/account.js"></script>
 </body>
 </html>`;
