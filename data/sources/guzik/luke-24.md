@@ -1,0 +1,14 @@
+# Reading notes: David Guzik, Enduring Word (Arabic page), Luke 24
+Read 2026-11-26 at https://enduringword.com/bible-commentary/ar/luke-24/ . Our own outline, not his text.
+A1 (1-3): rock tomb, rolling stone, seal and guard (Matt 27:62-66); tomb near Golgotha (John 19:41-42); Liefeld: move from Sabbath to first day shows conviction; Trapp: women first refutes theft claim; second anointing since burial hasty; Pate: no description of the moment itself supports authenticity; stone rolled so others could see, not to let Jesus out (John 20:19).
+A2 (4-8): perplexity shows no expectation; angels announced birth to humble (Luke 2:8-15) and resurrection to women; Morris: Jesus not thought of as dead; Clarke on burial places; rebuts wrong tomb (23:55), legend, swoon, theft; "must" (18:31-33); women remembered.
+A3 (9-11): women first witnesses; Mary Magdalene (8:2; Mark 16:9); Joanna wife of Chuza; Pate: women's testimony not valued, Luke's respect; Morris: disciples fully sceptical.
+A4 (12): Peter ran, linen alone, marvelled; John believed (John 20:6-8); Peter forgot Jesus' words; knowing resurrection without Jesus' teaching insufficient; price paid, death no master, love won.
+B1 (13-16): two obscure disciples; Morrison: Lord appears to humble; Pate: Emmaus location uncertain; Geldenhuys/Plummer: Luke's informant one of the two; eyes restrained; Spurgeon: two saints talking, Jesus makes the third.
+B2 (17-24): sad faces; Cleopas' summary; hoped he would redeem Israel; women's report; need eyewitness testimony (John 20:29).
+B3 (25-27): problem of heart not mind; Isa 53:3-5; 50:5-7; Dan 9:26; Zech 12:10; Morrison; seed of woman, Passover, prophet greater than Moses, son of David, Ps 22, Ps 23; Morris: cross the fixed divine purpose through Scripture; "expounded" = stay close to text.
+B4 (28-32): pretended to go further; Spurgeon: "constrained" strong; breaking bread, eyes opened, vanished; Morrison: perhaps recognised by manner or pierced hands, not a sacrament; Word burns the heart; Jesus may be present at our meals.
+B5 (33-35): same hour return; eleven say Lord appeared to Simon; told of the road and breaking of bread; two witnesses at least.
+C1 (36-43): peace greeting (Spurgeon); thought a spirit; hands and feet; glorified body not a ghost; Morgan: not merely spiritual resurrection; scars' purposes; flesh and bones; Morrison and Geldenhuys: joy can hinder faith (Gen 45:26; Job 9:16; Ps 126:1; Acts 12:13-14); ate fish.
+C2 (44-48): Law, Prophets, Psalms fulfilled; opened minds, linked with John 20:22; Morrison: new sight of Scripture; preaching in his name and authority; witnesses; begin at Jerusalem (Isa 2:3; Joel 2:32).
+C3 (49-53): promise of the Father; stay till clothed with power; Bethany, lifted hands, blessed, ascended; Morgan: hands still raised in blessing till he returns; Spurgeon: blessing irreversible; Morris, Barclay: ascension a clear end to appearances; worship, great joy, temple praise.
