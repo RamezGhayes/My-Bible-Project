@@ -395,6 +395,27 @@
      "D4": "د. ٤ (٤٣-٤٤) يسوع يقيّم عطية الأرملة"
     },
     "read": "2026-11-26"
+   },
+   "matthew-9": {
+    "url": "https://enduringword.com/bible-commentary/ar/matthew-9/",
+    "lang": "ar",
+    "secs": {
+     "A1": "أولًا. أ (١-٢) مشلول يتم إحضاره ليسوع",
+     "A2": "أولًا. ب (٣) رد فعل القادة الدينيين",
+     "A3": "أولًا. ج (٤-٥) يسوع يقرأ قلوب الكتبة الشريرة ويطرح سؤالًا",
+     "A4": "أولًا. د (٦-٨) يسوع يؤكد سلطانه على كل من الخطية والمرض",
+     "B1": "ثانيًا. أ (٩) متى يلبي دعوة يسوع بأن يتبعه",
+     "B2": "ثانيًا. ب (١٠-١٣) يسوع يأكل مع جباة الضرائب والخطاة",
+     "C1": "ثالثًا. أ (١٤) تلاميذ يوحنا يطرحون سؤالًا: لماذا لا يصوم تلاميذ يسوع كما يفعلون هم والفريسيون؟",
+     "C2": "ثالثًا. ب (١٥-١٧) المبدأ: الأمور مختلفة الآن بعد أن أتى المسيح",
+     "D1": "رابعًا. أ (١٨-١٩) رئيس بين اليهود يطلب من يسوع أن يشفي ابنته",
+     "D2": "رابعًا. ب (٢٠-٢٢) المرأة تُشفى بإيمانها ولمسة يسوع لها",
+     "D3": "رابعًا. ج (٢٣-٢٦) يسوع، على الرغم من الازدراء به، يُقيم الطفلة الصغيرة من بين الأموات",
+     "E1": "خامسًا. أ (٢٧-٣١) يسوع يشفي رجُلين أعْميين",
+     "E2": "خامسًا. ب (٣٢-٣٤) رجلٌ أخرَس يُشْفى",
+     "E3": "خامسًا. ج (٣٥-٣٨) تعاطف يسوع مع الجموع"
+    },
+    "read": "2026-11-26"
    }
   }
  },
@@ -1688,6 +1709,61 @@
      44
     ],
     "url": "https://www.gty.org/resources/sermons/41-65"
+   },
+   "2262": {
+    "t": "Jesus' Power over Sin",
+    "date": "1980-11-23",
+    "book": "Matthew",
+    "ch": 9,
+    "v": [
+     1,
+     8
+    ],
+    "url": "https://gty.org/library/sermons-library/2262"
+   },
+   "2263": {
+    "t": "Receiving the Sinner/Refusing the Righteous, Part 1",
+    "date": "1980-11-30",
+    "book": "Matthew",
+    "ch": 9,
+    "v": [
+     9,
+     13
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2263/receiving-the-sinnerrefusing-the-righteous-part-1"
+   },
+   "2264": {
+    "t": "Receiving the Sinner/Refusing the Righteous, Part 2",
+    "book": "Matthew",
+    "ch": 9,
+    "v": [
+     9,
+     17
+    ],
+    "url": "https://gty.org/library/sermons-library/2264/receiving-the-sinnerrefusing-the-righteous-part-2",
+    "date": ""
+   },
+   "2265": {
+    "t": "Jesus' Power over Death, Part 1",
+    "book": "Matthew",
+    "ch": 9,
+    "v": [
+     18,
+     26
+    ],
+    "url": "https://www.gty.org/sermons/2265/jesus-power-over-death-part-1",
+    "date": ""
+   },
+   "2266": {
+    "t": "Jesus' Power over Death, Part 2",
+    "book": "Matthew",
+    "ch": 9,
+    "v": [
+     18,
+     26
+    ],
+    "url": "https://www.gty.org/sermons/2266/jesus-power-over-death-part-2",
+    "date": ""
    }
   }
  }
