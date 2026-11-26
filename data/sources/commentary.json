@@ -2450,6 +2450,23 @@
      "B4": "د ) الآيات (٢٠-٢١): الإنسان الجديد وعلاقة الأب بأولاده",
      "B5": "هـ) الآيات (٢٢:٣-١:٤): الإنسان الجديد وعلاقة السيد والعبد"
     }
+   },
+   "colossians-4": {
+    "url": "https://enduringword.com/bible-commentary/ar/colossians-4/",
+    "lang": "ar",
+    "read": "2026-11-27",
+    "secs": {
+     "A1": "أ ) الآيات (٢-٤): الصلاة الشخصية",
+     "A2": "ب) الآيات (٥-٦): الشهادة العلنية",
+     "B1": "أ ) الآيات (٧-٩): تِيخِيكُسُ وأُنِسِيمُسَ، رسوليّ الرسالة",
+     "B2": "ب) الآيات (١٠-١١): تحيات من ثلاثة أصدقاء أمناء لبولس من اليهود",
+     "B3": "ج ) الآيات (١٢-١٣): تحيات من أَبَفْرَاسُ",
+     "B4": "د ) الآية (١٤): تحيات من لُوقَا ودِيمَاس",
+     "B5": "هـ) الآية (١٥): سلّموا على نِمْفَاس واللاودكيين",
+     "B6": "و ) الآية (١٦): توجيهات لنشر فحوى هذه الرسالة",
+     "B7": "ز ) الآية (١٧): كلمة خاصة لأَرْخِبُّس",
+     "B8": "ح ) الآية (١٨): الخلاصة"
+    }
    }
   }
  },
@@ -2863,6 +2880,39 @@
      25
     ],
     "url": "https://www.gty.org/library/sermons-library/2149"
+   },
+   "2150": {
+    "t": "The Speech of the New Man, Part 1",
+    "date": "",
+    "book": "Colossians",
+    "ch": 4,
+    "v": [
+     2,
+     2
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2150"
+   },
+   "2151": {
+    "t": "The Speech of the New Man, Part 2",
+    "date": "",
+    "book": "Colossians",
+    "ch": 4,
+    "v": [
+     2,
+     6
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2151"
+   },
+   "2152": {
+    "t": "With a Little Help from My Friends",
+    "date": "",
+    "book": "Colossians",
+    "ch": 4,
+    "v": [
+     7,
+     18
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2152"
    },
    "2180": {
     "t": "The Gracious King",
@@ -11234,6 +11284,127 @@
      11
     ],
     "url": "https://www.gty.org/library/sermons-library/56-10/men-who-must-be-silenced-part-1"
+   },
+   "56-12": {
+    "t": "Sound Doctrine Backed by Sound Living",
+    "date": "1993-01-31",
+    "book": "Titus",
+    "ch": 2,
+    "v": [
+     1,
+     1
+    ],
+    "url": "https://www.gty.org/resources/sermons/56-12"
+   },
+   "56-13": {
+    "t": "God's Plan for Older Men and Older Women",
+    "date": "1993-02-07",
+    "book": "Titus",
+    "ch": 2,
+    "v": [
+     2,
+     3
+    ],
+    "url": "https://www.gty.org/resources/sermons/56-13"
+   },
+   "56-14": {
+    "t": "God's Plan for Younger Women, Part 1",
+    "date": "1993-03-07",
+    "book": "Titus",
+    "ch": 2,
+    "v": [
+     3,
+     5
+    ],
+    "url": "https://www.gty.org/library/sermons-library/56-14/gods-plan-for-younger-women-part-1"
+   },
+   "56-15": {
+    "t": "God's Plan for Younger Women, Part 2",
+    "date": "1993-03-14",
+    "book": "Titus",
+    "ch": 2,
+    "v": [
+     4,
+     5
+    ],
+    "url": "https://www.gty.org/library/sermons-library/56-15"
+   },
+   "56-16": {
+    "t": "God's Plan for Younger Men",
+    "date": "1993-04-04",
+    "book": "Titus",
+    "ch": 2,
+    "v": [
+     6,
+     8
+    ],
+    "url": "https://www.gty.org/library/sermons-library/56-16"
+   },
+   "56-17": {
+    "t": "God's Plan for Employees",
+    "date": "1993-04-25",
+    "book": "Titus",
+    "ch": 2,
+    "v": [
+     9,
+     10
+    ],
+    "url": "https://www.gty.org/resources/sermons/56-17"
+   },
+   "56-18": {
+    "t": "Saving Grace, Part 1",
+    "date": "1993-05-02",
+    "book": "Titus",
+    "ch": 2,
+    "v": [
+     11,
+     11
+    ],
+    "url": "https://www.gty.org/library/sermons-library/56-18/saving-grace-part-1"
+   },
+   "56-19": {
+    "t": "Saving Grace, Part 2",
+    "date": "1993-05-09",
+    "book": "Titus",
+    "ch": 2,
+    "v": [
+     11,
+     11
+    ],
+    "url": "https://www.gty.org/library/sermons-library/56-19/saving-grace-part-2"
+   },
+   "56-20": {
+    "t": "Saving Grace, Part 3",
+    "date": "1993-06-13",
+    "book": "Titus",
+    "ch": 2,
+    "v": [
+     11,
+     14
+    ],
+    "url": "https://www.gty.org/library/sermons-library/56-20"
+   },
+   "56-21": {
+    "t": "Saving Grace, Part 4",
+    "date": "1993-06-20",
+    "book": "Titus",
+    "ch": 2,
+    "v": [
+     11,
+     14
+    ],
+    "url": "https://www.gty.org/library/sermons-library/56-21/saving-grace-part-4"
+   },
+   "56-22": {
+    "t": "The Preacher's Authority",
+    "date": "1993-06-27",
+    "book": "Titus",
+    "ch": 2,
+    "v": [
+     15,
+     15
+    ],
+    "url": "https://www.gty.org/library/sermons-library/56-22/the-preachers-authority"
    }
   }
  }
