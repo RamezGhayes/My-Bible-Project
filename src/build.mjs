@@ -514,7 +514,10 @@ const RTAG = '<span class="rtag" title="رأي من الإيمان المُصل�
 const isRf = (name) => RF_NAMES.some((k) => String(name || '').includes(k));
 const rfView = (t) => /المُصلَح|المصلح|كالفن|وستمنستر|لاهوت العهد/.test(String(t || ''));
 // Reformed commentators on a chapter: content/books/<book>/voices/<n>.mjs, each basis checked word for word in data/sources.
+const vspan = (r) => String(r).split(/[;,]/).flatMap((p) => { const [a, z] = p.trim().split(/[-–]/).map(Number); const o = []; for (let i = a; i <= (z || a); i++) o.push(i); return o; });
 const VOX = {};
+const CMT = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/sources/commentary.json'), 'utf8'));
+const bookEn = (b) => ({ Matt: 'Matthew', Mark: 'Mark', Luke: 'Luke', John: 'John', Acts: 'Acts', Rom: 'Romans' })[b.id] || b.id;
 {
   const flat = (x) => x.replace(/\s+/g, ' ');
   for (const b of books) {
@@ -527,29 +530,51 @@ const VOX = {};
         let src;
         if (v.k === 'calvin') { const J = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/sources/calvin', `${b.slug}-${n}.json`), 'utf8')); src = v.at ? J[v.at] : Object.values(J).join('\n'); if (!src) throw new Error(`Voices ${b.slug} ${n}: no Calvin entry at ${v.at}`); }
         else if (v.k === 'mhc') src = fs.readFileSync(path.join(ROOT, 'data/sources/mhc', `${b.slug}-${n}.md`), 'utf8').replace(/[*_]/g, '').replace(/\\/g, '');
+        else if (v.k === 'guzik') { const C = CMT.guzik.chapters[`${b.slug}-${n}`]; if (!C || !C.secs[v.sec]) throw new Error(`Voices ${b.slug} ${n} (${v.r}): Guzik section "${v.sec}" is not in data/sources/commentary.json`); if (!fs.existsSync(path.join(ROOT, 'data/sources/guzik', `${b.slug}-${n}.md`))) throw new Error(`Voices ${b.slug} ${n}: no Guzik reading notes`); }
+        else if (v.k === 'mac') { const M = CMT.mac.sermons[v.ser]; if (!M) throw new Error(`Voices ${b.slug} ${n} (${v.r}): MacArthur sermon ${v.ser} is not in data/sources/commentary.json`); const sp = vspan(v.r); if (M.book !== b.name && M.book !== bookEn(b) || M.ch !== n || sp[0] < M.v[0] || sp[sp.length - 1] > M.v[1]) throw new Error(`Voices ${b.slug} ${n} (${v.r}): outside MacArthur ${v.ser} (${M.book} ${M.ch}:${M.v.join('-')})`); }
         else throw new Error(`Voices ${b.slug} ${n}: unknown voice ${v.k}`);
-        const S = flat(src);
-        for (const x of v.basis) if (!S.includes(flat(x))) throw new Error(`Voices ${b.slug} ${n} (${v.r}): not word for word in ${v.k}: "${x}"`);
+        if (v.k === 'guzik' || v.k === 'mac') { if (v.basis) throw new Error(`Voices ${b.slug} ${n} (${v.r}): no quoted basis for copyrighted commentators`); }
+        const S = flat(src || '');
+        for (const x of v.basis || []) if (!S.includes(flat(x))) throw new Error(`Voices ${b.slug} ${n} (${v.r}): not word for word in ${v.k}: "${x}"`);
         if (/[—]/.test(v.p)) throw new Error(`Voices ${b.slug} ${n} (${v.r}): no em dash in the paraphrase`);
         const nz = (t) => t.replace(/[ً-ْٰـ]/g, '').replace(/[ٱأإآ]/g, 'ا').replace(/[.،:؛,!؟«»"]/g, '').replace(/\s+/g, ' ').trim();
         const chText = nz(bible(b.id).chapters[n - 1].verses.map((x) => x.text).join(' '));
         for (const m of v.p.matchAll(/«([^»]+)»/g)) if (!chText.includes(nz(m[1]))) throw new Error(`Voices ${b.slug} ${n} (${v.r}): «${m[1]}» is not Van Dyck text of this chapter`);
-        if (v.basis.some((x) => x.split(/\s+/).length > 40)) throw new Error(`Voices ${b.slug} ${n} (${v.r}): basis too long`);
+        if ((v.basis || []).some((x) => x.split(/\s+/).length > 40)) throw new Error(`Voices ${b.slug} ${n} (${v.r}): basis too long`);
       }
       VOX[`${b.id}:${n}`] = list;
     }
   }
 }
-const VWHO = { calvin: { n: 'جون كالفن', d: 'مُصلِح جنيف (1509–1564)' }, mhc: { n: 'ماثيو هنري', d: 'خادم مشيخي إنجليزي (1662–1714)' } };
+const VWHO = {
+  calvin: { n: 'جون كالفن', d: 'مُصلِح جنيف (1509–1564)', rf: 1 },
+  mhc: { n: 'ماثيو هنري', d: 'خادم مشيخي إنجليزي (1662–1714)', rf: 1 },
+  mac: { n: 'جون ماك آرثر', d: 'راعي كنيسة جريس في كاليفورنيا (1939–2025)، كالفيني في عقيدة الخلاص' },
+  guzik: { n: 'ديفيد جوزيك', d: 'راعٍ ومعلّم كتابي أمريكي، من كنائس كالفاري تشابل' }
+};
+const VORDER = ['calvin', 'mhc', 'mac', 'guzik'];
 const VWORK = (k, b) => (k === 'calvin' ? (b.group === 'gospels' && b.id !== 'John' ? 'تفسير توافق الأناجيل (1555)' : 'تفسير') : 'تفسير الكتاب المقدس كله (1706–1714)');
+const MONTHS = ['يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو', 'يوليو', 'أغسطس', 'سبتمبر', 'أكتوبر', 'نوفمبر', 'ديسمبر'];
+const arDate = (d) => { const [y, m, dd] = d.split('-').map(Number); return `${ar(dd)} ${MONTHS[m - 1]} ${ar(y)}`; };
+const vsrc = (v, b, n) => {
+  const bn = esc(b.name.replace(/^إنجيل /, ''));
+  if (v.k === 'guzik') { const C = CMT.guzik.chapters[`${b.slug}-${n}`]; return `<p class="vx5s"><b>المصدر:</b> تفسير Enduring Word (الترجمة العربية)، ${bn} ${ar(n)}، قسم «${esc(C.secs[v.sec])}». <a href="${esc(C.url)}" rel="noopener" target="_blank">افتح الصفحة</a></p>`.replace(/«([^»]*)»/g, '"$1"'); }
+  if (v.k === 'mac') { const M = CMT.mac.sermons[v.ser]; return `<p class="vx5s"><b>المصدر:</b> عظة "${esc(M.t)}"، ${arDate(M.date)}، على ${bn} ${ar(M.ch)}: ${ar(M.v[0])}–${ar(M.v[1])} (رقم ${esc(v.ser)}). <a href="${esc(M.url)}" rel="noopener" target="_blank">افتح العظة</a></p>`; }
+  return `<p class="vx5s"><b>المصدر:</b> ${VWORK(v.k, b)}، على ${bn} ${ar(String(v.r).replace('-', '–'))}.</p><details><summary>العبارة الأصلية (بالإنجليزية)</summary>${(v.basis || []).map((x) => `<blockquote dir="ltr" lang="en">${esc(x)}</blockquote>`).join('')}</details>`;
+};
+let vxN = 0;
 const voxBox = (b, n, r) => {
   const L = (VOX[`${b.id}:${n}`] || []).filter((v) => { const a = vspan(v.r), z = vspan(r); return a.some((x) => z.includes(x)); });
   if (!L.length) return '';
-  return `<div class="vx5"><div class="vx5h"><b>ماذا قال المفسرون المُصلَحون؟</b>${RTAG}</div>${L.map((v) => `<div class="vx5i"><div class="vx5w"><b>${VWHO[v.k].n}</b><small>${VWHO[v.k].d} · ${VWORK(v.k, b)}، على ${esc(b.name.replace(/^إنجيل /, ''))} ${ar(String(v.r).replace('-', '–'))}</small></div><p>${esc(v.p)}</p><details><summary>النص الأصلي (بالإنجليزية)</summary>${v.basis.map((x) => `<blockquote dir="ltr" lang="en">${esc(x)}</blockquote>`).join('')}</details></div>`).join('')}<p class="vx5f">ملخص بتصرّف لكلامهم، وتحته العبارة الأصلية كما هي في المصدر.</p></div>`;
+  const who = VORDER.filter((k) => L.some((v) => v.k === k));
+  const id = 'vx' + (++vxN);
+  const tabs = who.length > 1 ? `<div class="vx5t" role="tablist">${who.map((k, i) => `<button type="button" role="tab" data-vt="${id}-${k}" aria-selected="${i ? 'false' : 'true'}">${VWHO[k].n}${VWHO[k].rf ? '<i class="rd" title="مُصلَح"></i>' : ''}</button>`).join('')}</div>` : '';
+  const panels = who.map((k, i) => `<div class="vx5p" id="${id}-${k}" role="tabpanel"${i ? ' hidden' : ''}><div class="vx5w"><b>${VWHO[k].n}</b>${VWHO[k].rf ? RTAG : ''}<small>${VWHO[k].d}</small></div>${L.filter((v) => v.k === k).map((v) => `<div class="vx5i"><p>${esc(v.p)}</p>${vsrc(v, b, n)}</div>`).join('')}</div>`).join('');
+  const credit = who.includes('guzik') ? `<p class="vx5f" dir="ltr">${esc(CMT.guzik.credit)}</p>` : '';
+  return `<div class="vx5"><div class="vx5h"><b>ماذا قال المفسرون؟</b><small>${ar(who.length)} ${who.length > 2 ? 'مفسرين' : 'مفسران'}</small></div>${tabs}${panels}<p class="vx5f">كلامهم ملخّص بتصرّف بالعربية، مع اسم الكتاب أو العظة والقسم بالضبط. اقتباسات كالفن وهنري الإنجليزية منقولة حرفياً من مصادرها.</p>${credit}</div>`;
 };
 const DTAG = { agreed: 'متفق عليه', likely: 'الرأي الراجح', debated: 'قضية تفسيرية' };
 const dtag = (t) => (t && DTAG[t] ? `<span class="dtag ${t}">${DTAG[t]}</span>` : '');
-const vspan = (r) => String(r).split(/[;,]/).flatMap((p) => { const [a, z] = p.trim().split(/[-–]/).map(Number); const o = []; for (let i = a; i <= (z || a); i++) o.push(i); return o; });
 const rlab = (n, r) => { const t = ar(String(r).replace(/\s*[-–]\s*/g, ' – ').replace(/;\s*/g, '، ')); return /[–،]/.test(t) ? `الآيات ${t}` : `الآية ${t}`; };
 
 function deepSecs(b, n) {

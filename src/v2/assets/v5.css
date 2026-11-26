@@ -595,3 +595,13 @@ html[data-mode=qt] .dso{display:none}
 .xr3 .ls .xmore{display:block;margin:8px 20px;background:none;border:1px solid var(--line);border-radius:999px;height:38px;width:calc(100% - 40px);font-family:var(--ui);font-size:13.5px;color:var(--ink)}
 .xr3 .all{background:var(--paper);color:var(--ink);border:1px solid var(--line)}
 .xr3 .ls{min-height:0;flex:1 1 auto}.xr3 footer{flex:none}
+/* commentators: tabs per commentator, exact source under each comment */
+.vx5h small{font-family:var(--ui);font-size:12px;color:var(--soft)}
+.vx5t{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;margin:2px 0 10px;padding-bottom:2px}
+.vx5t button{flex:none;display:inline-flex;align-items:center;gap:6px;height:34px;padding:0 14px;border-radius:999px;border:1px solid #CFE0D6;background:#fff;font-family:var(--ui);font-size:13.5px;color:var(--ink)}
+.vx5t button[aria-selected=true]{background:#2F5D4A;border-color:#2F5D4A;color:#fff}
+.vx5t .rd{width:7px;height:7px;border-radius:50%;background:var(--rf,#2F5D4A)}.vx5t button[aria-selected=true] .rd{background:#fff}
+.vx5p[hidden]{display:none}
+.vx5p .vx5w{margin-bottom:2px}
+.vx5s{margin:6px 0 0;font-family:var(--ui);font-size:12.5px;line-height:1.7;color:var(--soft)}
+.vx5s b{font-weight:600;color:#4a463f}.vx5s a{color:var(--accent)}

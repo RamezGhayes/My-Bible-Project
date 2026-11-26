@@ -89,4 +89,12 @@
       ta.addEventListener('input', function () { clearTimeout(tm); tm = setTimeout(function () { set(nk, ta.value); st.textContent = ta.value ? 'حُفظت ملاحظاتك على هذا الجهاز.' : ''; }, 400); });
     }
   }
+
+  // commentator tabs under deep-study verses
+  document.addEventListener('click', function (e) {
+    var t = e.target.closest('[data-vt]'); if (!t) return;
+    var box = t.closest('.vx5');
+    box.querySelectorAll('[data-vt]').forEach(function (b) { b.setAttribute('aria-selected', b === t ? 'true' : 'false'); });
+    box.querySelectorAll('.vx5p').forEach(function (p) { p.hidden = p.id !== t.getAttribute('data-vt'); });
+  });
 })();

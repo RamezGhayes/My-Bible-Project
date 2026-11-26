@@ -1,0 +1,46 @@
+{
+  "about": "Modern commentators read for this site. Each entry names the exact page we read. We paraphrase in Arabic and do not reproduce their text. The build checks that every comment points to a section or sermon listed here, and that its verses fall inside that sermon's passage.",
+  "guzik": {
+    "who": "David Guzik",
+    "work": "The Enduring Word Bible Commentary (Arabic translation on enduringword.com)",
+    "credit": "©1996-present The Enduring Word Bible Commentary by David Guzik – enduringword.com",
+    "permission": "https://enduringword.com/permissions/",
+    "chapters": {
+      "mark-1": {
+        "url": "https://enduringword.com/bible-commentary/ar/mark-1/",
+        "read": "2026-11-26",
+        "secs": {
+          "1": "أولاً. المقدمة: مميزات إنجيل مرقس (أ: رمز الثور، ب: بطرس مصدراً، ج: الزمن والمكان والقراء)",
+          "2A": "ثانياً. أ) الآيات ١ – ٥: خدمة يوحنا المعمدان",
+          "2B": "ثانياً. ب) الآيات ٦ – ٨: يوحنا الرجل والرسالة",
+          "2C": "ثانياً. ج) الآيات ٩ – ١١: معمودية يسوع",
+          "2D": "ثانياً. د) الآيتان ١٢ – ١٣: التجربة في البرية",
+          "3A": "ثالثاً. أ) الآية ١٤أ: بداية الخدمة في الجليل",
+          "3B": "ثالثاً. ب) الآيتان ١٤ب – ١٥: رسالة يسوع",
+          "3C": "ثالثاً. ج) الآيات ١٦ – ٢٠: دعوة الأربعة",
+          "4A": "رابعاً. أ) الآيتان ٢١ – ٢٢: التعليم في المجمع",
+          "4B": "رابعاً. ب) الآيتان ٢٣ – ٢٤: الروح النجس",
+          "4C": "رابعاً. ج) الآيات ٢٥ – ٢٨: انتهار يسوع للروح",
+          "4D": "رابعاً. د) الآيات ٢٩ – ٣١: شفاء حماة بطرس",
+          "4E": "رابعاً. هـ) الآيات ٣٢ – ٣٤: شفاء الجموع",
+          "5A": "خامساً. أ) الآية ٣٥: الصلاة المنفردة",
+          "5B": "خامساً. ب) الآيات ٣٦ – ٣٩: جولة في الجليل",
+          "5C": "خامساً. ج) الآية ٤٠: الأبرص يطلب التطهير",
+          "5D": "خامساً. د) الآيات ٤١ – ٤٥: يسوع يطهّر الأبرص"
+        }
+      }
+    }
+  },
+  "mac": {
+    "who": "John MacArthur",
+    "work": "Sermons on Mark, Grace Community Church (Grace to You sermon library)",
+    "sermons": {
+      "41-2": { "t": "The Herald of the New King", "date": "2009-03-22", "book": "Mark", "ch": 1, "v": [1, 8], "url": "https://www.gty.org/resources/sermons/41-2" },
+      "41-3": { "t": "The Significance of Jesus’ Baptism", "date": "2009-03-29", "book": "Mark", "ch": 1, "v": [9, 11], "url": "https://www.gty.org/library/sermons-library/41-3" },
+      "41-4": { "t": "Jesus’ Strategy for Effective Ministry", "date": "2009-04-05", "book": "Mark", "ch": 1, "v": [12, 20], "url": "https://www.gty.org/resources/sermons/41-4" },
+      "41-5": { "t": "Cosmic Authority", "date": "2009-04-19", "book": "Mark", "ch": 1, "v": [21, 28], "url": "https://www.gty.org/library/sermons-library/41-5" },
+      "41-6": { "t": "Kingdom Power", "date": "2009-04-26", "book": "Mark", "ch": 1, "v": [29, 39], "url": "https://www.gty.org/Resources/Sermons/41-6" },
+      "41-7": { "t": "Jesus Trades Places with a Leper", "date": "2009-05-03", "book": "Mark", "ch": 1, "v": [40, 45], "url": "https://www.gty.org/Resources/Sermons/41-7" }
+    }
+  }
+}
