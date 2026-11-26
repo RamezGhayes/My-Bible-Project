@@ -720,6 +720,23 @@
      "E4": "خامسًا. ٤ (٤٦) تراجع أعداء يسوع"
     },
     "read": "2026-11-26"
+   },
+   "matthew-25": {
+    "url": "https://enduringword.com/bible-commentary/matthew-25/",
+    "lang": "en",
+    "secs": {
+     "A1": "أولًا. ١ (١) عشر عذارى يخرجن للقاء العريس في عرس",
+     "A2": "أولًا. ٢ (٢-١٣) الفتيات اللواتي أُخذن غير مستعدات يُمنعن من الدخول",
+     "B1": "ثانيًا. ١ (١٤-١٥) سيد يعطي عبيده تعليمات قبل سفره البعيد",
+     "B2": "ثانيًا. ٢ (١٦-١٨) العبيد يديرون مال سيدهم",
+     "B3": "ثانيًا. ٣ (١٩-٢٣) محاسبة العبدين الأولين",
+     "B4": "ثانيًا. ٤ (٢٤-٢٥) العبد الثالث يقدم حسابه",
+     "B5": "ثانيًا. ٥ (٢٦-٣٠) دينونة العبد الثالث",
+     "C1": "ثالثًا. ١ (٣١-٣٣) جمع الأمم أمام العرش وفصلهم",
+     "C2": "ثالثًا. ٢ (٣٤-٤٠) دينونة الذين عن اليمين ومكافأتهم",
+     "C3": "ثالثًا. ٣ (٤١-٤٦) دينونة الذين عن اليسار وهلاكهم"
+    },
+    "read": "2026-11-26"
    }
   }
  },
@@ -3256,6 +3273,72 @@
     ],
     "url": "https://www.gty.org/library/sermons-library/2359/whose-son-is-christ",
     "date": ""
+   },
+   "2375": {
+    "t": "The Fate of the Unprepared",
+    "date": "1984-07-29",
+    "book": "Matthew",
+    "ch": 25,
+    "v": [
+     1,
+     13
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2375/the-fate-of-the-unprepared"
+   },
+   "2376": {
+    "t": "The Tragedy of Wasted Opportunity, Part 1",
+    "date": "1984-08-05",
+    "book": "Matthew",
+    "ch": 25,
+    "v": [
+     14,
+     19
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2376/the-tragedy-of-wasted-opportunity-part-1"
+   },
+   "2377": {
+    "t": "The Tragedy of Wasted Opportunity, Part 2",
+    "date": "1984-08-12",
+    "book": "Matthew",
+    "ch": 25,
+    "v": [
+     19,
+     30
+    ],
+    "url": "https://www.gty.org/sermons/2377/the-tragedy-of-wasted-opportunity-part-2"
+   },
+   "2378": {
+    "t": "The Judgment of the Nations, Part 1",
+    "date": "1984-09-09",
+    "book": "Matthew",
+    "ch": 25,
+    "v": [
+     31,
+     32
+    ],
+    "url": "https://www.gty.org/sermons/2378/the-judgment-of-the-nations-part-1"
+   },
+   "2379": {
+    "t": "The Judgment of the Nations, Part 2",
+    "date": "1984-09-16",
+    "book": "Matthew",
+    "ch": 25,
+    "v": [
+     31,
+     32
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2379/the-judgment-of-the-nations-part-2"
+   },
+   "2380": {
+    "t": "The Judgment of the Nations, Part 3",
+    "date": "1984-09-23",
+    "book": "Matthew",
+    "ch": 25,
+    "v": [
+     31,
+     46
+    ],
+    "url": "https://www.gty.org/sermons/2380/the-judgment-of-the-nations-part-3"
    }
   }
  }
