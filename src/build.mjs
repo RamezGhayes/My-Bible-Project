@@ -388,11 +388,11 @@ ${next ? `<a class="btn o" style="margin-top:10px" href="${chapterHref(next.b, n
   }
   if (S.views) {
     tiles.push({ w: 1, h: `<a class="tile w t-views" href="#s-views"><span class="tl"><span>${md(S.views.t || 'قراءتان للنص')}</span>${IC.chev}</span><span class="vis"><span>لاهوت العهد</span><span>التدبيرية</span></span><span class="tt">كيف يُقرأ هذا النص؟</span></a>` });
-    DET.views = { t: plain(S.views.t || 'قراءتان للنص'), ey: 'قراءتان', h: `<div class="blk"><h3>لاهوت العهد</h3><p>${md(S.views.covenant)}</p></div><div class="blk"><h3>التدبيرية</h3><p>${md(S.views.dispensational)}</p></div>${S.views.common ? `<div class="agree"><small>ما نتفق عليه</small><p>${md(S.views.common)}</p></div>` : ''}` };
+    DET.views = { t: plain(S.views.t || 'قراءتان للنص'), ey: 'قراءتان', h: `<div class="blk"><h3>لاهوت العهد ${RTAG}</h3><p>${md(S.views.covenant)}</p></div><div class="blk"><h3>التدبيرية</h3><p>${md(S.views.dispensational)}</p></div>${S.views.common ? `<div class="agree"><small>ما نتفق عليه</small><p>${md(S.views.common)}</p></div>` : ''}` };
   }
   if (S.voices?.length) {
     tiles.push({ w: 1, h: `<a class="tile w t-voice" href="#s-voices"><span class="tl"><span>${countWord(S.voices.length, 'صوت واحد', 'صوتان', 'أصوات', 'صوتاً')}</span>${IC.chev}</span><span class="vis"><q>${esc(firstSentences(S.voices[0].b, 60))}</q><span class="names">${S.voices.map((v) => esc(plain(v.n))).join(' · ')}</span></span><span class="tt">آراء اللاهوتيين</span></a>` });
-    DET.voices = { t: 'آراء اللاهوتيين', ey: 'ماذا قال معلمو الكنيسة', h: `${S.voices.map((v) => `<div class="blk"><h3>${md(v.n)}</h3><span class="who2">${md(v.y || '')}${v.w ? ` · <a href="${up(2)}library.html#${workId(v.n, v.w)}">${md(v.w)}</a>` : ''}</span><p>${md(v.b)}</p></div>`).join('')}<p class="note">ملخصات بتصرّف لأفكارهم، وليست اقتباسات حرفية. الأعمال المذكورة مقترحة للتوسع، وتجدها مصنّفة في <a href="${up(2)}library.html">المكتبة اللاهوتية</a>.</p>` };
+    DET.voices = { t: 'آراء اللاهوتيين', ey: 'ماذا قال معلمو الكنيسة', h: `${S.voices.map((v) => `<div class="blk"><h3>${md(v.n)} ${isRf(v.n) ? RTAG : ''}</h3><span class="who2">${md(v.y || '')}${v.w ? ` · <a href="${up(2)}library.html#${workId(v.n, v.w)}">${md(v.w)}</a>` : ''}</span><p>${md(v.b)}</p></div>`).join('')}<p class="note">ملخصات بتصرّف لأفكارهم، وليست اقتباسات حرفية. الأعمال المذكورة مقترحة للتوسع، وتجدها مصنّفة في <a href="${up(2)}library.html">المكتبة اللاهوتية</a>.</p>` };
   }
   half.push(`<a class="tile t-you" href="#s-you"><span class="tl"><span>${countWord(S.questions?.length || 0, 'سؤال واحد', 'سؤالان', 'أسئلة', 'سؤالاً')}</span>${IC.chev}</span><span class="vis">${esc(clip(S.questions?.[0] || '', 90))}</span><span class="tt">للتأمل والتطبيق</span></a>`);
   DET.you = { t: 'للتأمل والتطبيق', ey: 'عِشها', h: `${(S.questions || []).map((q, i) => `<div class="blk"><h3><span class="n">${ar(i + 1)}</span><span>${md(q)}</span></h3></div>`).join('')}${S.apply ? `<div class="applyb"><small>للحياة</small>${arr(S.apply).map((p) => `<p>${md(p)}</p>`).join('')}</div>` : ''}` };
@@ -460,7 +460,7 @@ ${S.questions?.length ? `<h2>أسئلة للمناقشة</h2><ol class="hq">${S.
 </div></section>`;
   const views = [{ id: 'read', e: IC.read, t: 'نص الأصحاح', sub: '', html: readerHTML(b, n, S, depth, { overlay: false, embed: true }), modes: 'qt ds' }, ...V].map((x) => `<article class="c5v" id="x-${x.id}" data-modes="${x.modes}" data-t="${esc(x.t)}" hidden tabindex="-1" aria-label="${esc(x.t)}">
 <div class="c5in"><header class="c5vh"><span class="e">${x.e}</span><div><span class="z5k">${chTitle(b, n)}</span><h2>${x.t}</h2></div></header>
-<div class="c5body${x.id === 'read' ? ' rd5' : ' dc'}">${x.html}</div>
+<div class="c5body${x.id === 'read' ? ' rd5' : ' dc'}">${x.html}</div>${x.id === 'read' ? `<p class="by5">النص: ${esc(config.bibleVersion)}.</p>` : `<p class="by5">الشرح في هذا القسم من إعداد «لمجد الله». كل رأي منسوب إلى شخص مكتوب معه اسمه ومصدره، والآراء المُصلَحة عليها علامة ${RTAG}.</p>`}
 <nav class="c5foot"><a href="#" data-c5hub>${BACK} العودة لاختيار قسم آخر</a><a href="#" data-c5next class="nx"></a></nav></div></article>`).join('');
   const bar = `<div class="c5bar"><div class="c5bw"><a class="back5" data-c5back href="../${b.slug}.html" data-book="${esc(b.name)}" data-here="${esc(chTitle(b, n))}">${BACK} <span>العودة إلى ${esc(b.name)}</span></a>
 <div class="pill5" role="radiogroup" aria-label="وضع القراءة"><button type="button" role="radio" data-mode-pick="qt" aria-checked="true"><span class="lf">وضع </span>الخلوة<span class="lf"> اليومية</span></button><button type="button" role="radio" data-mode-pick="ds" aria-checked="false"><span class="lf">وضع </span>الدراسة المعمّقة</button></div></div></div>`;
@@ -474,6 +474,45 @@ const modeSwitch = (b, n, on) => `<nav class="dmode" aria-label="طريقة ال
 // Greek/Hebrew written as **...** in content becomes a styled foreign-script span.
 const wl = (t) => (/[֐-׿]/.test(t) ? 'lang="he" dir="rtl"' : 'lang="el" dir="ltr"');
 const gmd = (s) => md(s).replace(/<b>([Ͱ-Ͽἀ-῿֐-׿\s’'·,.]+)<\/b>/g, (m, g) => (/[֐-׿]/.test(g) ? `<span class="gk" lang="he" dir="rtl">${g}</span>` : `<span class="gk" lang="el" dir="ltr">${g}</span>`));
+// Reformed voices get a visible tag. A name counts when it contains one of these.
+const RF_NAMES = ['كالفن', 'ماثيو هنري', 'سبرجن', 'سبرول', 'بايبر', 'كيلر', 'إدواردز', 'هودج', 'وارفيلد', 'بافينك', 'كايبر', 'لويد جونز', 'فوس', 'ريدربوس', 'جون موراي', 'أوين', 'باكستر', 'روثرفورد', 'فيرغسون', 'بيركوف', 'فان تيل', 'هندريكسن', 'بيزا', 'تورتين', 'بونيان', 'وستمنستر', 'بوسطن', 'كلوني', 'كارسون', 'هورتون', 'روبرتسون', 'كلاين', 'فالتكه', 'والتكه', 'غودفري', 'جودفري', 'بوايس', 'بويس'];
+const RTAG = '<span class="rtag" title="رأي من الإيمان المُصلَح">مُصلَح</span>';
+const isRf = (name) => RF_NAMES.some((k) => String(name || '').includes(k));
+const rfView = (t) => /المُصلَح|المصلح|كالفن|وستمنستر|لاهوت العهد/.test(String(t || ''));
+// Reformed commentators on a chapter: content/books/<book>/voices/<n>.mjs, each basis checked word for word in data/sources.
+const VOX = {};
+{
+  const flat = (x) => x.replace(/\s+/g, ' ');
+  for (const b of books) {
+    const dir = path.join(ROOT, 'content/books', b.slug, 'voices');
+    if (!fs.existsSync(dir)) continue;
+    for (const f of fs.readdirSync(dir).filter((x) => x.endsWith('.mjs'))) {
+      const n = +f.replace('.mjs', '');
+      const list = (await import(path.join(dir, f))).default;
+      for (const v of list) {
+        let src;
+        if (v.k === 'calvin') { const J = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/sources/calvin', `${b.slug}-${n}.json`), 'utf8')); src = v.at ? J[v.at] : Object.values(J).join('\n'); if (!src) throw new Error(`Voices ${b.slug} ${n}: no Calvin entry at ${v.at}`); }
+        else if (v.k === 'mhc') src = fs.readFileSync(path.join(ROOT, 'data/sources/mhc', `${b.slug}-${n}.md`), 'utf8').replace(/[*_]/g, '').replace(/\\/g, '');
+        else throw new Error(`Voices ${b.slug} ${n}: unknown voice ${v.k}`);
+        const S = flat(src);
+        for (const x of v.basis) if (!S.includes(flat(x))) throw new Error(`Voices ${b.slug} ${n} (${v.r}): not word for word in ${v.k}: "${x}"`);
+        if (/[—]/.test(v.p)) throw new Error(`Voices ${b.slug} ${n} (${v.r}): no em dash in the paraphrase`);
+        const nz = (t) => t.replace(/[ً-ْٰـ]/g, '').replace(/[ٱأإآ]/g, 'ا').replace(/[.،:؛,!؟«»"]/g, '').replace(/\s+/g, ' ').trim();
+        const chText = nz(bible(b.id).chapters[n - 1].verses.map((x) => x.text).join(' '));
+        for (const m of v.p.matchAll(/«([^»]+)»/g)) if (!chText.includes(nz(m[1]))) throw new Error(`Voices ${b.slug} ${n} (${v.r}): «${m[1]}» is not Van Dyck text of this chapter`);
+        if (v.basis.some((x) => x.split(/\s+/).length > 40)) throw new Error(`Voices ${b.slug} ${n} (${v.r}): basis too long`);
+      }
+      VOX[`${b.id}:${n}`] = list;
+    }
+  }
+}
+const VWHO = { calvin: { n: 'جون كالفن', d: 'مُصلِح جنيف (1509–1564)' }, mhc: { n: 'ماثيو هنري', d: 'خادم مشيخي إنجليزي (1662–1714)' } };
+const VWORK = (k, b) => (k === 'calvin' ? (b.group === 'gospels' && b.id !== 'John' ? 'تفسير توافق الأناجيل (1555)' : 'تفسير') : 'تفسير الكتاب المقدس كله (1706–1714)');
+const voxBox = (b, n, r) => {
+  const L = (VOX[`${b.id}:${n}`] || []).filter((v) => { const a = vspan(v.r), z = vspan(r); return a.some((x) => z.includes(x)); });
+  if (!L.length) return '';
+  return `<div class="vx5"><div class="vx5h"><b>ماذا قال المفسرون المُصلَحون؟</b>${RTAG}</div>${L.map((v) => `<div class="vx5i"><div class="vx5w"><b>${VWHO[v.k].n}</b><small>${VWHO[v.k].d} · ${VWORK(v.k, b)}، على ${esc(b.name.replace(/^إنجيل /, ''))} ${ar(String(v.r).replace('-', '–'))}</small></div><p>${esc(v.p)}</p><details><summary>النص الأصلي (بالإنجليزية)</summary>${v.basis.map((x) => `<blockquote dir="ltr" lang="en">${esc(x)}</blockquote>`).join('')}</details></div>`).join('')}<p class="vx5f">ملخص بتصرّف لكلامهم، وتحته العبارة الأصلية كما هي في المصدر.</p></div>`;
+};
 const DTAG = { agreed: 'متفق عليه', likely: 'الرأي الراجح', debated: 'قضية تفسيرية' };
 const dtag = (t) => (t && DTAG[t] ? `<span class="dtag ${t}">${DTAG[t]}</span>` : '');
 const vspan = (r) => String(r).split(/[;,]/).flatMap((p) => { const [a, z] = p.trim().split(/[-–]/).map(Number); const o = []; for (let i = a; i <= (z || a); i++) o.push(i); return o; });
@@ -512,7 +551,7 @@ ${V.notes?.length ? `<ul class="dnotes">${V.notes.map((x) => `<li>${gmd(x)}</li>
 ${V.words?.length ? `<div class="dwords">${V.words.map((w) => `<div class="dw"><div class="dwg"><span class="gk" ${wl(w.g)}>${esc(w.g)}</span>${w.l && w.l !== w.g ? `<small ${wl(w.l)}>${esc(w.l)}</small>` : ''}</div><div class="dwb"><b>${md(w.t)}</b>${w.p ? `<small>${esc(w.p)}</small>` : ''}<p>${gmd(w.d)}</p></div></div>`).join('')}</div>` : ''}
 ${V.views?.length ? `<div class="dviews"><div class="dvlh"><b>قراءات المفسرين</b>${dtag(V.viewsTag)}</div><div class="dvg">${V.views.map((x) => `<div><b>${md(x.t)}</b>${dtag(x.tag)}<p>${gmd(x.d)}</p></div>`).join('')}</div></div>` : ''}
 ${V.extra ? `<div class="dnote sm"><b>${md(V.extra.t)}</b>${dtag(V.extra.tag)}<p>${gmd(V.extra.d)}</p></div>` : ''}
-</article>`;
+${voxBox(b, n, V.r)}</article>`;
   }).join('');
   sec('d-verses', 'الشرح آية بآية', `${vWord(vs.length)}، مع الكلمات ${b.testament === 'ot' ? 'العبرية' : 'اليونانية'} وتصريفها`, chips + blocks);
 
@@ -523,13 +562,13 @@ ${V.extra ? `<div class="dnote sm"><b>${md(V.extra.t)}</b>${dtag(V.extra.tag)}<p
   sec('d-ot', b.testament === 'nt' ? 'العهد القديم في الأصحاح' : 'الأصحاح في ضوء الكتاب كله', 'كل نص في سياقه الأصلي، ثم كيف يُبنى عليه', D.ot?.length ? D.ot.map((o) => `<div class="dot"><div><small>النص في سياقه</small><a class="r" href="${refHref(o.src, depth)}">${refLabel(o.src)}</a><p>${gmd(o.ctx)}</p></div><div><small>في ${esc(shortName(b))} ${ar(n)}${o.at ? `: ${ar(o.at)}` : ''}</small><p>${gmd(o.use)}</p>${dtag(o.tag)}</div><div class="add"><small>ماذا يضيف</small><p>${gmd(o.adds)}</p></div></div>`).join('') : '');
 
   // 5. theology
-  sec('d-theo', 'اللاهوت', 'العقائد التي يؤسسها الأصحاح', D.theology?.length ? D.theology.map((x) => `<div class="dth"><div class="dthh"><b>${md(x.t)}</b>${x.r ? `<span>${rlab(n, x.r)}</span>` : ''}</div><p class="dbody">${gmd(x.d)}</p>${x.reformed || x.others ? `<div class="dth2">${x.reformed ? `<div><small>في الإيمان المُصلَح</small><p>${gmd(x.reformed)}</p></div>` : ''}${x.others ? `<div><small>قراءات أخرى</small><p>${gmd(x.others)}</p></div>` : ''}</div>` : ''}</div>`).join('') : '');
+  sec('d-theo', 'اللاهوت', 'العقائد التي يؤسسها الأصحاح', D.theology?.length ? D.theology.map((x) => `<div class="dth"><div class="dthh"><b>${md(x.t)}</b>${x.r ? `<span>${rlab(n, x.r)}</span>` : ''}</div><p class="dbody">${gmd(x.d)}</p>${x.reformed || x.others ? `<div class="dth2">${x.reformed ? `<div><small>في الإيمان المُصلَح ${RTAG}</small><p>${gmd(x.reformed)}</p></div>` : ''}${x.others ? `<div><small>قراءات أخرى</small><p>${gmd(x.others)}</p></div>` : ''}</div>` : ''}</div>`).join('') : '');
 
   // 6. history of interpretation
-  sec('d-hist', 'تاريخ التفسير', 'كيف قرأت الكنيسة هذا الأصحاح عبر القرون', D.history?.length ? `<div class="dhist">${D.history.map((v) => `<div class="dhv"><div><b>${md(v.n)}</b><small>${esc(v.y || '')}</small></div><div><small>${md(v.w || '')}</small><p>${gmd(v.d)}</p></div></div>`).join('')}</div><p class="dfine">ملخصات بتصرّف لأفكارهم من المؤلفات المذكورة، وليست اقتباسات حرفية.</p>` : '');
+  sec('d-hist', 'تاريخ التفسير', 'كيف قرأت الكنيسة هذا الأصحاح عبر القرون', D.history?.length ? `<div class="dhist">${D.history.map((v) => `<div class="dhv"><div><b>${md(v.n)}</b>${isRf(v.n) ? RTAG : ''}<small>${esc(v.y || '')}</small></div><div><small>${md(v.w || '')}</small><p>${gmd(v.d)}</p></div></div>`).join('')}</div><p class="dfine">ملخصات بتصرّف لأفكارهم من المؤلفات المذكورة، وليست اقتباسات حرفية.</p>` : '');
 
   // 7. issues
-  sec('d-issues', 'مسائل الخلاف والنص', 'كل رأي بحجته، ومدى الاتفاق عليه', D.issues?.length ? `<div class="dissues">${D.issues.map((x) => `<div class="dis"><div class="dch"><b>${md(x.q)}</b>${dtag(x.tag)}</div>${x.d ? `<p>${gmd(x.d)}</p>` : ''}${x.views?.length ? `<div class="dvg">${x.views.map((y) => `<div><b>${md(y.t)}</b><p>${gmd(y.d)}</p></div>`).join('')}</div>` : ''}${x.note ? `<p class="dfine">${gmd(x.note)}</p>` : ''}</div>`).join('')}</div>` : '');
+  sec('d-issues', 'مسائل الخلاف والنص', 'كل رأي بحجته، ومدى الاتفاق عليه', D.issues?.length ? `<div class="dissues">${D.issues.map((x) => `<div class="dis"><div class="dch"><b>${md(x.q)}</b>${dtag(x.tag)}</div>${x.d ? `<p>${gmd(x.d)}</p>` : ''}${x.views?.length ? `<div class="dvg">${x.views.map((y) => `<div><b>${md(y.t)}</b>${y.rf || rfView(y.t + ' ' + y.d) ? ' ' + RTAG : ''}<p>${gmd(y.d)}</p></div>`).join('')}</div>` : ''}${x.note ? `<p class="dfine">${gmd(x.note)}</p>` : ''}</div>`).join('')}</div>` : '');
 
   // 8. what it teaches
   sec('d-teach', 'ماذا يعلّمنا الأصحاح', 'خلاصة لاهوتية', D.teaches?.length ? `<div class="dteach">${D.teaches.map((x) => `<div><b>${md(x.t)}</b><p>${gmd(x.d)}</p></div>`).join('')}</div>` : '');
