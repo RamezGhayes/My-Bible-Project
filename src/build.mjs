@@ -6,6 +6,7 @@ import { blocks } from './render.mjs';
 import { page, header, IC, plain, clip, firstSentences, chWord, bkWord, vWord, secWord, countWord, BRAND } from './v2/ui.mjs';
 import { buildPeople, cardTemplate, cleanName } from './v2/people.mjs';
 import { paulMapPage } from './v2/paulmap.mjs';
+import { studyRefs } from './v2/studyrefs.mjs';
 import { buildPlans } from './v2/plans.mjs';
 import { buildOverview } from './v2/overview.mjs';
 import { MAPS, mapForChapter, thumb, mapHref, viewer } from './v2/maps.mjs';
@@ -804,21 +805,46 @@ if (process.env.OG) {
   card('harmony', 'الأناجيل جنباً إلى جنب', 'إشباع الخمسة الآلاف', 'حادثة واحدة في الأناجيل الأربعة: ما تتفق عليه، وما ينفرد به كل إنجيل.', []);
 }
 
-// ---------- cross references (Treasury of Scripture Knowledge) ----------
-// One small file per chapter: { verse: [refs...] } in TSK order. Every reference must exist in Van Dyck, or the build stops.
+// ---------- cross references ----------
+// One small file per chapter: { verse: { s: [[ref, why, kind]], o: [[ref, votes]], t: [refs] } }.
+//   s: references our deep study cites for the verse, with the sentence that explains the link (best, shown first).
+//   o: OpenBible.info pairs ranked by readers' votes (neighbouring verses joined), weak ones (< 3 votes) dropped.
+//   t: the rest of the Treasury of Scripture Knowledge, for the "more" list.
+// Every reference must exist in Van Dyck, or the build stops.
 {
   const X = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/sources/tsk-xref.json'), 'utf8')).x;
+  const O = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/sources/openbible-xref.json'), 'utf8')).x;
   const has = (id, c, v) => { const B = bookById[id] && bible(id); return !!(B && B.chapters[c - 1] && B.chapters[c - 1].verses[v - 1]); };
   const per = {};
+  const at = (k) => { const [id, c, v] = k.split('.'); return (((per[id] ||= {})[c] ||= {})[v] ||= {}); };
   for (const [k, refs] of Object.entries(X)) {
-    const [id, c, v] = k.split('.');
     for (const r of refs) { const m = r.match(/^(\w+)\.(\d+)\.(\d+)(?:-(\w+)\.(\d+)\.(\d+))?$/); if (!m || !has(m[1], +m[2], +m[3]) || (m[4] && !has(m[4], +m[5], +m[6]))) throw new Error(`TSK: ${k} -> ${r} not in Van Dyck`); }
-    ((per[id] ||= {})[c] ||= {})[v] = refs.map((r) => r.replace(/^(\w+)\.(\d+)\.(\d+)-\1\.\2\.(\d+)$/, '$1.$2.$3-$4'));
+    at(k).t = refs.map((r) => r.replace(/^(\w+)\.(\d+)\.(\d+)-\1\.\2\.(\d+)$/, '$1.$2.$3-$4'));
+  }
+  for (const [k, list] of Object.entries(O)) {
+    // join neighbouring verses of the same chapter into one range (votes: the highest)
+    const keep = list.filter((x) => x[1] >= 3).map(([r, n]) => { const [b, c, v] = r.split('.'); const [a, z] = v.split('-').map(Number); return { b, c: +c, a, z: z || a, n }; });
+    keep.sort((p, q) => (p.b + p.c).localeCompare(q.b + q.c) || p.a - q.a);
+    const joined = [];
+    for (const x of keep) { const L = joined[joined.length - 1]; if (L && L.b === x.b && L.c === x.c && x.a <= L.z + 1) { L.z = Math.max(L.z, x.z); L.n = Math.max(L.n, x.n); } else joined.push({ ...x }); }
+    joined.sort((p, q) => q.n - p.n);
+    if (joined.length) at(k).o = joined.slice(0, 40).map((x) => [`${x.b}.${x.c}.${x.a}` + (x.z > x.a ? `-${x.z}` : ''), x.n]);
+  }
+  let nS = 0;
+  for (const b of books) for (const [n, d] of Object.entries(content[b.id]?.deep || {})) {
+    const S = studyRefs(b.id, +n, d);
+    for (const [v, list] of Object.entries(S)) { at(`${b.id}.${n}.${v}`).s = list; nS += list.length; }
   }
   for (const [id, chs] of Object.entries(per)) for (const [c, vs] of Object.entries(chs)) {
+    for (const e of Object.values(vs)) {
+      const seen = new Set((e.s || []).map((x) => x[0]));
+      if (e.o) { e.o = e.o.filter((x) => !seen.has(x[0])); e.o.forEach((x) => seen.add(x[0])); if (!e.o.length) delete e.o; }
+      if (e.t) { const cov = (r) => { const [b2, c2, v2] = r.split('.'); const a2 = +v2.split('-')[0]; return [...seen].some((s) => { const [b1, c1, v1] = s.split('.'); const [x, z] = v1.split('-').map(Number); return b1 === b2 && c1 === c2 && a2 >= x && a2 <= (z || x); }); }; e.t = e.t.filter((r) => !cov(r)); if (!e.t.length) delete e.t; }
+    }
     const dir = path.join(DIST, 'xref', id); fs.mkdirSync(dir, { recursive: true });
     fs.writeFileSync(path.join(dir, `${c}.json`), JSON.stringify(vs));
   }
+  console.log('cross references: ' + nS + ' from the studies');
 }
 
 // ---------- offline reading (PWA) ----------

@@ -585,3 +585,13 @@ html[data-mode=qt] .dso{display:none}
 }
 @media (max-width:899px){.pmz{top:8px;left:8px;gap:4px}.pmz button{width:32px;height:32px;font-size:16px}}
 .i5 .wm{display:inline-flex;align-items:center;gap:8px;font-size:17px;font-weight:600}
+/* cross references: grouped, with the reason */
+.xr3 .ls h4{margin:14px 20px 4px;font-family:var(--ui);font-size:13px;font-weight:700;color:var(--ink)}
+.xr3 .ls h4 em{font-style:normal;font-weight:400;color:var(--soft);margin-inline-start:6px;font-size:12px}
+.xr3 .ls a.sw{background:#fff}
+.xr3 .ls a.sw q{display:block;quotes:none;margin-top:4px;padding:6px 10px;border-inline-start:3px solid var(--gold);background:var(--paper);font-family:var(--body);font-size:14px;line-height:1.8;color:#4a463f;border-radius:4px}
+.xr3 .ls .k{font-weight:600;color:#3E7A5A;font-size:11px;border:1px solid #3E7A5A55;border-radius:999px;padding:0 6px;margin-inline-start:4px}
+.xr3 .ls .xst{font-style:normal;color:var(--gold);letter-spacing:1px;font-size:10px;margin-inline-start:6px}.xr3 .ls .xst u{text-decoration:none;color:#d9d3c6}
+.xr3 .ls .xmore{display:block;margin:8px 20px;background:none;border:1px solid var(--line);border-radius:999px;height:38px;width:calc(100% - 40px);font-family:var(--ui);font-size:13.5px;color:var(--ink)}
+.xr3 .all{background:var(--paper);color:var(--ink);border:1px solid var(--line)}
+.xr3 .ls{min-height:0;flex:1 1 auto}.xr3 footer{flex:none}

@@ -377,7 +377,7 @@
     window.openXref = function (key, title) {
       if (!sheet) {
         sheet = document.createElement('div'); sheet.className = 'xr3'; sheet.setAttribute('role', 'dialog'); sheet.setAttribute('aria-label', 'شواهد مرتبطة');
-        sheet.innerHTML = '<div class="pn"><header><div><small>شواهد مرتبطة</small><b data-xt></b></div><button type="button" class="x" aria-label="إغلاق">×</button></header><div class="ls" data-xl></div><footer>المصدر: كنز المعرفة الكتابية (Treasury of Scripture Knowledge)، ملكية عامة. الشواهد فقط، والنص من فاندايك بلا تشكيل. اضغط الشاهد لتقرأه مشكولاً في سياقه.</footer></div>';
+        sheet.innerHTML = '<div class="pn"><header><div><small>شواهد مرتبطة</small><b data-xt></b></div><button type="button" class="x" aria-label="إغلاق">×</button></header><div class="ls" data-xl></div><footer>المصادر: الدراسة المعمّقة في هذا الموقع، وتقييمات OpenBible.info (CC BY)، وكنز المعرفة الكتابية (Treasury of Scripture Knowledge)، ملكية عامة. الشواهد فقط، والنص من فاندايك بلا تشكيل. اضغط الشاهد لتقرأه مشكولاً في سياقه.</footer></div>';
         document.body.appendChild(sheet);
         sheet.addEventListener('click', function (e) { if (e.target === sheet || e.target.closest('.x')) close(); });
         document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
@@ -385,13 +385,22 @@
       $('[data-xt]', sheet).textContent = title; var list = $('[data-xl]', sheet); list.innerHTML = '<p class="shint">جارٍ التحميل…</p>'; sheet.hidden = false;
       var p = key.split('.'), file = 'xref/' + p[0] + '/' + p[1] + '.json';
       var show = function (data) {
-        var refs = (data && data[p[2]]) || [];
-        if (!refs.length) { list.innerHTML = '<p class="shint">لا توجد شواهد مرتبطة بهذه الآية في المصدر.</p>'; return; }
-        var draw = function (n) {
-          list.innerHTML = refs.slice(0, n).map(function (r) { var t = textOf(r); return '<a href="' + hrefOf(r) + '"><small>' + label(r) + '</small><span>' + (t.length > 180 ? t.slice(0, 178).replace(/\s+\S*$/, '') + '…' : t).replace(/[&<>]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]; }) + '</span></a>'; }).join('') + (refs.length > n ? '<button type="button" class="all" data-more>عرض كل الشواهد (' + AR3(refs.length) + ')</button>' : '');
-          var mb = $('[data-more]', list); if (mb) mb.addEventListener('click', function () { draw(refs.length); });
-        };
-        draw(12);
+        var e = (data && data[p[2]]) || {}; if (Array.isArray(e)) e = { t: e };
+        var S = e.s || [], O = e.o || [], T = e.t || [];
+        if (!S.length && !O.length && !T.length) { list.innerHTML = '<p class="shint">لا توجد شواهد مرتبطة بهذه الآية في المصدر.</p>'; return; }
+        var H = function (t) { return String(t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
+        var cut = function (t, n) { return t.length > n ? t.slice(0, n - 2).replace(/\s+\S*$/, '') + '…' : t; };
+        var item = function (r, extra) { return '<a href="' + hrefOf(r) + '"><small>' + label(r) + (extra || '') + '</small><span>' + H(cut(textOf(r), 170)) + '</span></a>'; };
+        var dots = function (n) { var k = n >= 20 ? 3 : n >= 8 ? 2 : 1; return '<i class="xst" title="قوة الارتباط بحسب تقييم القرّاء">' + '●●●'.slice(0, k) + '<u>' + '●●●'.slice(k) + '</u></i>'; };
+        var h = '';
+        if (S.length) h += '<h4>من الدراسة المعمّقة <em>لماذا يرتبط؟</em></h4>' + S.map(function (x) { return '<a class="sw" href="' + hrefOf(x[0]) + '"><small>' + label(x[0]) + (x[2] === 'ot' ? ' <b class="k">العهد القديم</b>' : '') + '</small><span>' + H(cut(textOf(x[0]), 150)) + '</span><q>' + H(x[1]) + '</q></a>'; }).join('');
+        if (O.length) h += '<h4>الأقرب ارتباطاً <em>مرتّبة بحسب تقييم القرّاء</em></h4><div data-o></div>';
+        if (T.length) h += '<button type="button" class="all" data-more>شواهد أخرى من كنز المعرفة (' + AR3(T.length) + ')</button><div data-t></div>';
+        list.innerHTML = h;
+        var oBox = $('[data-o]', list), shown = 0;
+        var drawO = function (n) { if (!oBox) return; shown = Math.min(O.length, n); oBox.innerHTML = O.slice(0, shown).map(function (x) { return item(x[0], ' ' + dots(x[1])); }).join('') + (O.length > shown ? '<button type="button" class="xmore" data-omore>عرض المزيد (' + AR3(O.length - shown) + ')</button>' : ''); var mb = $('[data-omore]', oBox); if (mb) mb.addEventListener('click', function () { drawO(O.length); }); };
+        drawO(S.length ? 5 : 8);
+        var tb = $('[data-more]', list); if (tb) tb.addEventListener('click', function () { $('[data-t]', list).innerHTML = T.map(function (r) { return item(r); }).join(''); tb.remove(); });
       };
       needScript('assets/search.js', function () { return !!window.SIDX; }, function () {
         needScript('assets/bible-search.js', function () { return !!window.BTXT; }, function () {
