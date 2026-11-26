@@ -1,0 +1,14 @@
+# Reading notes: David Guzik, Enduring Word (Arabic page), Luke 23
+Read 2026-11-26 at https://enduringword.com/bible-commentary/ar/luke-23/ . Our own outline, not his text.
+A1 (1-7): leaders bring Jesus to Pilate since Rome withheld execution power; Barclay citing Philo on Pilate's cruelty; three false political charges (sedition, taxes, king) since blasphemy would not move Pilate; Pilate's question partly sarcastic (Bruce; Matt 27:11); brief answer like Matt 26:64; "no fault" from shrewdness not fairness; pressure "from Galilee"; sent to Herod Antipas; Clarke: to win Herod's friendship; Pate: transfer between jurisdictions (Acts 25:21).
+A2 (8-12): Herod wanted entertainment/sign, not sincere; heard John (Mark 6:20) but stayed in sin; Jesus silent; Spurgeon compares silence with response to blind beggars; mocked, splendid robe; Morris: mockery shows he did not take the charge seriously; Pilate and Herod friends via shared rejection; Spurgeon urges reconciliation; three rejecters: envy, fear for popularity, entertainment.
+A3 (13-17): Pilate restates no capital offence; scourging with bone/lead-tipped thongs; unjust punishment of the innocent; Passover release custom.
+A4 (18-25): Barabbas "son of the father", picture of substitution; third appeal; Morris on rising noise; crowd probably Jerusalem locals, not Galilean pilgrims (Luke 19:37-38); delivered by the Father's eternal purpose.
+B1 (26): Jesus weakened (Luke 22:44, beating, sleeplessness, scourging); Edwards: scourging standard preliminary; Simon of Cyrene; sons in early church (Mark 15:21; Rom 16:13).
+B2 (27-31): weep for yourselves; judgment on Jerusalem; green/dry wood = if innocent suffer so, the guilty worse; Spurgeon: prophetic sight of Jerusalem's fall.
+B3 (32-33): two criminals; Golgotha; brutality of crucifixion; Jesus willing (John 10:18); Isa 53:12.
+B4 (34-38): prayer for executioners (Matt 5:44; Isa 53:12); Clarke: ignorance lessens not excuses; garments divided (2 Cor 8:9); love not nails held him; inscription in three languages (John 19:21-22); Trapp: kingship proclaimed to all peoples.
+B5 (39-43): one mocks, one repents; only deathbed conversion in Scripture, warning against delay; Clarke: perhaps first to believe in Christ's intercession; promise exceeds request: today, with me, paradise.
+B6 (44-46): darkness 6th-9th hour; Phlegon, eclipse impossible at full moon; veil torn (Matt 27:51); "It is finished" (John 19:30) debt paid; Father laid sins on Jesus, cup of wrath (Ps 75:8; Jer 25:15; Isa 53:3-5); spirit yielded voluntarily, compared with Gen 2:7.
+B7 (47-49): centurion glorifies God (John 12:32); crowds beat breasts; acquaintances and women at a distance.
+B8 (50-56): Joseph of Arimathea, did not consent; own new tomb; hasty burial before Sabbath; bold disciples (Peter) vs quiet supporters (Joseph, Nicodemus); women see tomb, prepare spices, rest on Sabbath.
