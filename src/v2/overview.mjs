@@ -52,7 +52,7 @@ const ORDER = [
   ['abraham', 'otp'], ['isaac', 'otp'], ['jacob', 'otp'], ['joseph', 'otp'], ['moses', 'otp'], ['joshua', 'otp'], ['judges', 'otp'], ['samuel-saul', 'otp'], ['david', 'otp'], ['solomon', 'otp'], ['ezra-nehemiah', 'otp'],
   ['land-ot', 'geo'], ['exodus', 'geo'], ['land-nt', 'geo'], ['med', 'geo'],
   ['prophets', 'pro'], ['prophets-message', 'pro'],
-  ['between', 'bt'],
+  ['between', 'bt'], ['between-world', 'bt'],
   ['christ', 'nt'], ['christ-years', 'nt'], ['passion', 'nt'], ['acts', 'nt'], ['church', 'nt'], ['paul', 'nt'], ['journeys', 'nt'], ['lessons', 'nt'],
   ['key', 'end']
 ];

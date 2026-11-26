@@ -530,6 +530,6 @@ html[data-mode=qt] .dso{display:none}
   .ov-tbl.t3>div,.ov-tbl.t4>div,.ov-tbl.t5>div,.ov-tbl.t2>div{grid-template-columns:1fr}
   .ov-tbl.t6>div{grid-template-columns:1fr 1fr}
   .ov-tbl.t6>div span[role=rowheader]{grid-column:1/-1}
-  .ov-tbl.t6 .h{display:none}
+  .ov-tbl .h{display:none}
   .ov-tbl>div span[role=cell]{padding-top:2px}
 }
