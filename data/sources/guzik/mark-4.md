@@ -1,0 +1,11 @@
+# Reading notes: David Guzik, Enduring Word (English page), Mark 4
+Read 2026-11-26 at https://enduringword.com/bible-commentary/mark-4/ . The Arabic page (arabic.enduringword.com/ar/mark-04-ar/) redirected, so the English page was used. Our own outline, not his text.
+A1 (1-9): boat as a natural pulpit; parable = truth set beside everyday picture; farmer not careless (sown then ploughed); difference is the soil, so "parable of the soils"; 30/60/100.
+A2 (10-12): mystery = what God must reveal; parable as doorway/riddle needing a key; Robertson: without the key hard to understand; Morgan: not to blind but because already blind; Geldenhuys: so guilt would not accumulate near the cross.
+A3 (13-20): this parable the key to all; preacher sows, soil decides; Clarke: altering the Master's seed a grave offence; Poole: wayside hearers never meditate; Wiersbe: hard hearts must be ploughed (Jer 4:3; Hos 10:12); Spurgeon: faith living on surrounding excitement dies; thorny soil too fertile; fruit the evidence of true reception; Cole, Trapp on the Pharisees.
+B1 (21-23): lamp meant to be seen; duty to share truth like a life-saving cure.
+B2 (24-25): choose teachers of the whole counsel; God responds as we respond; Spurgeon: the hearer gets the measure he brings; momentum both ways.
+C1 (26-29): man plants, God gives growth; Isa 55:11; Robertson: secret of growth in the seed; Isa 42:3; Zech 4:10 small beginnings.
+C2 (30-34): birds read as agents of Satan from the soils parable; Wiersbe: growth will not convert the world, gives Satan an opening; size not a blessing; Expositor's Bible on private explanation.
+D1 (35-39): trouble while obeying; Barclay on lake size; Wiersbe: Jonah's storm from disobedience, theirs from obedience; Morrison: "as he was"; Cole: rest of faith; Morgan: protest at apparent indifference; Spurgeon: sleeping Christ near the helm; Lane: sovereign authority; "rebuke" also used of demons (Luke 4:35); other boats saved.
+D2 (40-41): fear understandable, problem what they did with it; did not trust his promise, accused him of not caring, forgot God's purpose for the Messiah; Spurgeon: unbelief unreasonable; Ps 89:8-9; Morgan: the boat cannot go down with Jesus on board.

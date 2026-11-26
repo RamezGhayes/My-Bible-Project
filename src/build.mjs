@@ -558,7 +558,7 @@ const MONTHS = ['يناير', 'فبراير', 'مارس', 'أبريل', 'ماي�
 const arDate = (d) => { const [y, m, dd] = d.split('-').map(Number); return `${ar(dd)} ${MONTHS[m - 1]} ${ar(y)}`; };
 const vsrc = (v, b, n) => {
   const bn = esc(b.name.replace(/^إنجيل /, ''));
-  if (v.k === 'guzik') { const C = CMT.guzik.chapters[`${b.slug}-${n}`]; return `<p class="vx5s"><b>المصدر:</b> تفسير Enduring Word (الترجمة العربية)، ${bn} ${ar(n)}، قسم «${esc(C.secs[v.sec])}». <a href="${esc(C.url)}" rel="noopener" target="_blank">افتح الصفحة</a></p>`.replace(/«([^»]*)»/g, '"$1"'); }
+  if (v.k === 'guzik') { const C = CMT.guzik.chapters[`${b.slug}-${n}`]; return `<p class="vx5s"><b>المصدر:</b> تفسير Enduring Word (${C.lang === 'en' ? 'الأصل الإنجليزي' : 'الترجمة العربية'})، ${bn} ${ar(n)}، قسم «${esc(C.secs[v.sec])}». <a href="${esc(C.url)}" rel="noopener" target="_blank">افتح الصفحة</a></p>`.replace(/«([^»]*)»/g, '"$1"'); }
   if (v.k === 'mac') { const M = CMT.mac.sermons[v.ser]; return `<p class="vx5s"><b>المصدر:</b> عظة "${esc(M.t)}"، ${arDate(M.date)}، على ${bn} ${ar(M.ch)}: ${ar(M.v[0])}–${ar(M.v[1])} (رقم ${esc(v.ser)}). <a href="${esc(M.url)}" rel="noopener" target="_blank">افتح العظة</a></p>`; }
   return `<p class="vx5s"><b>المصدر:</b> ${VWORK(v.k, b)}، على ${bn} ${ar(String(v.r).replace('-', '–'))}.</p><details><summary>العبارة الأصلية (بالإنجليزية)</summary>${(v.basis || []).map((x) => `<blockquote dir="ltr" lang="en">${esc(x)}</blockquote>`).join('')}</details>`;
 };
