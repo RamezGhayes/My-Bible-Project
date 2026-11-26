@@ -279,6 +279,21 @@
      "C5": "ج. ٥ (٣٥-٣٨ و٩: ١) لماذا يجب أن نحمل الصليب ونتبع يسوع"
     },
     "read": "2026-11-26"
+   },
+   "mark-11": {
+    "url": "https://enduringword.com/bible-commentary/mark-11/",
+    "lang": "en",
+    "secs": {
+     "A1": "أ. ١ (١-٦) الاستعداد للدخول",
+     "A2": "أ. ٢ (٧-١١) التسبيح ليسوع",
+     "B1": "ب. ١ (١٢-١٤) يسوع يلعن تينة",
+     "B2": "ب. ٢ (١٥-١٩) تطهير الهيكل",
+     "B3": "ب. ٣ (٢٠-٢٤) العودة إلى التينة الملعونة",
+     "B4": "ب. ٤ (٢٥-٢٦) الصلاة والغفران",
+     "C1": "ج. ١ (٢٧-٢٨) القادة الدينيون يسألون يسوع",
+     "C2": "ج. ٢ (٢٩-٣٣) يسوع يجيب عن سؤالهم بسؤال"
+    },
+    "read": "2026-11-26"
    }
   }
  },
@@ -1165,6 +1180,50 @@
      1
     ],
     "url": "https://gty.org/library/sermons-library/41-42"
+   },
+   "41-56": {
+    "t": "The False Coronation of the True King",
+    "date": "",
+    "book": "Mark",
+    "ch": 11,
+    "v": [
+     1,
+     11
+    ],
+    "url": "https://www.gty.org/resources/sermons/41-56"
+   },
+   "41-57": {
+    "t": "Nothing but Leaves",
+    "date": "2011-01-16",
+    "book": "Mark",
+    "ch": 11,
+    "v": [
+     12,
+     21
+    ],
+    "url": "https://gty.org/library/sermons-library/41-57"
+   },
+   "41-58": {
+    "t": "The Necessities for Effective Prayer",
+    "date": "",
+    "book": "Mark",
+    "ch": 11,
+    "v": [
+     20,
+     26
+    ],
+    "url": "https://gty.org/library/sermons-library/41-58"
+   },
+   "41-59": {
+    "t": "The Confrontation Over Authority",
+    "date": "",
+    "book": "Mark",
+    "ch": 11,
+    "v": [
+     27,
+     33
+    ],
+    "url": "https://gty.org/library/sermons-library/41-59"
    }
   }
  }
