@@ -261,6 +261,24 @@
      "B7": "ثانيًا. ز (٤٢-٤٧) دفن يسوع"
     },
     "read": "2026-11-26"
+   },
+   "mark-8": {
+    "url": "https://enduringword.com/bible-commentary/mark-8/",
+    "lang": "en",
+    "secs": {
+     "A1": "أ. ١ (١-٤) المسيح يعطي التلاميذ فرصة ليثقوا به",
+     "A2": "أ. ٢ (٥-١٠) يسوع والتلاميذ يُطعمون الجمع",
+     "B1": "ب. ١ (١١-١٢) الفريسيون يطلبون آية من السماء",
+     "B2": "ب. ٢ (١٣-١٥) يسوع يحذّر من خمير الفريسيين وخمير هيرودس",
+     "B3": "ب. ٣ (١٦-٢١) يسوع يسأل التلاميذ عن قلة فهمهم",
+     "B4": "ب. ٤ (٢٢-٢٦) أعمى في بيت صيدا ينال البصر",
+     "C1": "ج. ١ (٢٧-٣٠) بطرس يعترف بأن يسوع هو المسيح",
+     "C2": "ج. ٢ (٣١-٣٢) يسوع يعلن رسالته علانية: أن يتألم ويموت ثم يقوم",
+     "C3": "ج. ٣ (٣٢-٣٣) بطرس ينتهر يسوع ويسوع ينتهر بطرس",
+     "C4": "ج. ٤ (٣٤) في ضوء رسالته يحذّر يسوع من يريدون أن يتبعوه",
+     "C5": "ج. ٥ (٣٥-٣٨ و٩: ١) لماذا يجب أن نحمل الصليب ونتبع يسوع"
+    },
+    "read": "2026-11-26"
    }
   }
  },
@@ -844,10 +862,10 @@
     "t": "Why You Should Be Ashamed",
     "date": "",
     "book": "Mark",
-    "ch": 9,
+    "ch": 8,
     "v": [
-     1,
-     1
+     38,
+     38
     ],
     "url": "https://gty.org/library/sermons-library/41-42"
    },
@@ -1092,6 +1110,61 @@
      47
     ],
     "url": "https://gty.org/library/sermons-library/41-83"
+   },
+   "41-37": {
+    "t": "Spiritual Blindness, Part 1",
+    "date": "",
+    "book": "Mark",
+    "ch": 8,
+    "v": [
+     11,
+     21
+    ],
+    "url": "https://www.gty.org/library/sermons-library/41-37/"
+   },
+   "41-38": {
+    "t": "Spiritual Blindness, Part 2",
+    "date": "",
+    "book": "Mark",
+    "ch": 8,
+    "v": [
+     11,
+     21
+    ],
+    "url": "https://gty.org/library/sermons-library/41-38"
+   },
+   "41-39": {
+    "t": "Jesus’ Power over Blindness",
+    "date": "",
+    "book": "Mark",
+    "ch": 8,
+    "v": [
+     22,
+     26
+    ],
+    "url": "https://gty.org/library/sermons-library/41-39"
+   },
+   "41-41": {
+    "t": "Losing Your Life to Save It",
+    "date": "",
+    "book": "Mark",
+    "ch": 8,
+    "v": [
+     34,
+     38
+    ],
+    "url": "https://gty.org/library/sermons-library/41-41"
+   },
+   "41-42@9": {
+    "t": "Why You Should Be Ashamed",
+    "date": "",
+    "book": "Mark",
+    "ch": 9,
+    "v": [
+     1,
+     1
+    ],
+    "url": "https://gty.org/library/sermons-library/41-42"
    }
   }
  }
