@@ -698,6 +698,28 @@
      "C2": "ثالثًا. ٢ (٣٢-٣٤) يسوع يشفي الأعميين"
     },
     "read": "2026-11-26"
+   },
+   "matthew-22": {
+    "url": "https://enduringword.com/bible-commentary/matthew-22/",
+    "lang": "en",
+    "secs": {
+     "A1": "أولًا. ١ (١-٣) رفض الدعوة الأولى",
+     "A2": "أولًا. ٢ (٤-٧) رفض الدعوة الثانية ورد فعل الملك",
+     "A3": "أولًا. ٣ (٨-١٠) الدعوة الثالثة",
+     "A4": "أولًا. ٤ (١١-١٤) الرجل الذي ليس عليه لباس العرس",
+     "B1": "ثانيًا. ١ (١٥-١٧) بعد مقدمة متملقة يطرح الفريسيون على يسوع سؤالاً محرجاً",
+     "B2": "ثانيًا. ٢ (١٨-٢٢) جواب يسوع: أعطوا ما لقيصر لقيصر وما لله لله",
+     "C1": "ثالثًا. ١ (٢٣-٢٨) الصدوقيون يحاولون السخرية من القيامة",
+     "C2": "ثالثًا. ٢ (٢٩) جواب يسوع: لا تعرفون الكتب ولا قوة الله",
+     "C3": "ثالثًا. ٣ (٣٠-٣٣) حياة القيامة مختلفة",
+     "D1": "رابعًا. ١ (٣٤-٣٦) سؤال ناموسي من الفريسيين: أية وصية هي العظمى؟",
+     "D2": "رابعًا. ٢ (٣٧-٤٠) جواب يسوع: محبة الله ومحبة القريب",
+     "E1": "خامسًا. ١ (٤١-٤٢أ) يسوع يسأل عن نسب المسيا",
+     "E2": "خامسًا. ٢ (٤٢ب) الفريسيون يحددون نسب المسيا",
+     "E3": "خامسًا. ٣ (٤٣-٤٥) يسوع ليس ابن داود فقط بل رب داود أيضاً",
+     "E4": "خامسًا. ٤ (٤٦) تراجع أعداء يسوع"
+    },
+    "read": "2026-11-26"
    }
   }
  },
@@ -3178,6 +3200,61 @@
      34
     ],
     "url": "https://www.gty.org/library/sermons-library/2349/the-blind-who-saw",
+    "date": ""
+   },
+   "2355": {
+    "t": "Responding to a Royal Invitation",
+    "book": "Matthew",
+    "ch": 22,
+    "v": [
+     1,
+     14
+    ],
+    "url": "https://www.gty.org/sermons/2355/responding-to-a-royal-invitation",
+    "date": ""
+   },
+   "2356": {
+    "t": "Our Obligation to God and Government",
+    "book": "Matthew",
+    "ch": 22,
+    "v": [
+     15,
+     22
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2356/our-obligation-to-god-and-government",
+    "date": ""
+   },
+   "2357": {
+    "t": "The God of the Living",
+    "book": "Matthew",
+    "ch": 22,
+    "v": [
+     23,
+     33
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2357/the-god-of-the-living",
+    "date": ""
+   },
+   "2358": {
+    "t": "The Great Commandment",
+    "book": "Matthew",
+    "ch": 22,
+    "v": [
+     34,
+     40
+    ],
+    "url": "https://www.gty.org/sermons/2358/the-great-commandment",
+    "date": ""
+   },
+   "2359": {
+    "t": "Whose Son Is Christ?",
+    "book": "Matthew",
+    "ch": 22,
+    "v": [
+     41,
+     46
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2359/whose-son-is-christ",
     "date": ""
    }
   }
