@@ -641,6 +641,24 @@
      "B5": "ثانيًا. ٥ (٢٧-٣٠) سؤال بطرس الصريح: ماذا يكون لنا لأننا تبعناك؟"
     },
     "read": "2026-11-26"
+   },
+   "matthew-21": {
+    "url": "https://enduringword.com/bible-commentary/matthew-21/",
+    "lang": "en",
+    "secs": {
+     "A1": "أولًا. ١ (١-٦) يسوع يوصي تلاميذه بالإعداد لدخوله الانتصاري إلى أورشليم",
+     "A2": "أولًا. ٢ (٧-١١) يسوع يقبل السجود ويشجعه بوصفه المسيا",
+     "B1": "ثانيًا. ١ (١٢-١٣) يسوع يوقف بالقوة تدنيس الهيكل بالتجارة",
+     "B2": "ثانيًا. ٢ (١٤) يسوع يواصل عمل الله الرحيم في دار الهيكل",
+     "B3": "ثانيًا. ٣ (١٥-١٧) غضب قادة اليهود",
+     "C1": "ثالثًا. ١ (١٨-١٩) يسوع ينتهر شجرة تين",
+     "C2": "ثالثًا. ٢ (٢٠-٢٢) كيف فعل يسوع هذا؟",
+     "D1": "رابعًا. ١ (٢٣-٢٧) القادة الدينيون يسألون يسوع عند رجوعه إلى الهيكل",
+     "D2": "رابعًا. ٢ (٢٨-٣٢) مثل الابنين",
+     "D3": "رابعًا. ٣ (٣٣-٤١) مثل الكرامين الأشرار",
+     "D4": "رابعًا. ٤ (٤٢-٤٦) يسوع يحذر القادة الدينيين من عاقبة رفضهم"
+    },
+    "read": "2026-11-26"
    }
   }
  },
@@ -2912,6 +2930,61 @@
      30
     ],
     "url": "https://www.gty.org/sermons/2345/equality-in-the-kingdom",
+    "date": ""
+   },
+   "2350": {
+    "t": "The Humble Coronation of Christ",
+    "book": "Matthew",
+    "ch": 21,
+    "v": [
+     1,
+     11
+    ],
+    "url": "https://www.gty.org/sermons/2350/the-humble-coronation-of-christ",
+    "date": ""
+   },
+   "2351": {
+    "t": "Purging the Perverted Temple",
+    "book": "Matthew",
+    "ch": 21,
+    "v": [
+     12,
+     17
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2351/purging-the-perverted-temple",
+    "date": ""
+   },
+   "2352": {
+    "t": "The Way of the Fig Tree: Promise Without Performance",
+    "date": "1983-12-04",
+    "book": "Matthew",
+    "ch": 21,
+    "v": [
+     18,
+     22
+    ],
+    "url": "https://gty.org/library/sermons-library/2352"
+   },
+   "2353": {
+    "t": "The Authority of Jesus",
+    "book": "Matthew",
+    "ch": 21,
+    "v": [
+     23,
+     32
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2353/the-authority-of-jesus",
+    "date": ""
+   },
+   "2354": {
+    "t": "Judgment on Christ's Rejectors",
+    "book": "Matthew",
+    "ch": 21,
+    "v": [
+     33,
+     46
+    ],
+    "url": "https://www.gty.org/sermons/2354/judgment-on-christs-rejectors",
     "date": ""
    }
   }
