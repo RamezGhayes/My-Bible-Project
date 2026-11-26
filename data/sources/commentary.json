@@ -191,6 +191,26 @@
      "B3": "ب. ٣ (٣١-٣٧) شفاء الأصم الأعقد"
     },
     "read": "2026-11-26"
+   },
+   "mark-9": {
+    "url": "https://enduringword.com/bible-commentary/mark-9/",
+    "lang": "en",
+    "secs": {
+     "A1": "أ. ١ (٢-٣) يسوع يتجلى أمام تلاميذه",
+     "A2": "أ. ٢ (٤) إيليا وموسى يظهران مع يسوع",
+     "A3": "أ. ٣ (٥-١٠) عرض بطرس غير الحكيم ببناء ثلاث مظال، وجواب الآب",
+     "A4": "أ. ٤ (١١-١٣) مشكلة مجيء إيليا أولًا: سؤال مبني على ملاخي ٤: ٥-٦",
+     "B1": "ب. ١ (١٤-١٨) التلاميذ عاجزون عن إخراج روح",
+     "B2": "ب. ٢ (١٩-٢٧) يسوع يحرر الصبي",
+     "B3": "ب. ٣ (٢٨-٢٩) لماذا لم ينجح التلاميذ؟",
+     "C1": "ج. ١ (٣٠-٣٢) يسوع يذكّر تلاميذه برسالته",
+     "C2": "ج. ٢ (٣٣-٣٤) المجادلة في الطريق",
+     "C3": "ج. ٣ (٣٥-٣٧) العظمة الحقيقية في ملكوت الله",
+     "C4": "ج. ٤ (٣٨-٤٢) العظمة الحقيقية ليست منغلقة بل تحتضن الآخرين",
+     "C5": "ج. ٥ (٤٣-٤٨) الإلحاح في الدخول إلى ملكوت الله",
+     "C6": "ج. ٦ (٤٩-٥٠) يسوع يتكلم عن الملح والنار"
+    },
+    "read": "2026-11-26"
    }
   }
  },
@@ -769,6 +789,72 @@
      37
     ],
     "url": "https://gty.org/library/sermons-library/41-35/to-speak-or-not-to-speak"
+   },
+   "41-42": {
+    "t": "Why You Should Be Ashamed",
+    "date": "",
+    "book": "Mark",
+    "ch": 9,
+    "v": [
+     1,
+     1
+    ],
+    "url": "https://gty.org/library/sermons-library/41-42"
+   },
+   "41-43": {
+    "t": "The Unveiled Son",
+    "date": "",
+    "book": "Mark",
+    "ch": 9,
+    "v": [
+     2,
+     8
+    ],
+    "url": "https://www.gty.org/library/sermons-library/41-43/the-unveiled-son"
+   },
+   "41-44": {
+    "t": "When Does Elijah Come?",
+    "date": "",
+    "book": "Mark",
+    "ch": 9,
+    "v": [
+     9,
+     13
+    ],
+    "url": "https://gty.org/library/sermons-library/41-44"
+   },
+   "41-46": {
+    "t": "The Virtue of Being Last",
+    "date": "",
+    "book": "Mark",
+    "ch": 9,
+    "v": [
+     30,
+     41
+    ],
+    "url": "https://www.gty.org/library/sermons-library/41-46/the-virtue-of-being-last"
+   },
+   "41-45": {
+    "t": "All Things Possible",
+    "date": "",
+    "book": "Mark",
+    "ch": 9,
+    "v": [
+     14,
+     29
+    ],
+    "url": "https://www.gty.org/resources/sermons/41-45"
+   },
+   "41-47": {
+    "t": "Radical Discipleship",
+    "date": "",
+    "book": "Mark",
+    "ch": 9,
+    "v": [
+     42,
+     50
+    ],
+    "url": "https://www.gty.org/resources/sermons/41-47"
    }
   }
  }
