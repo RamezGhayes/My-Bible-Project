@@ -659,6 +659,27 @@
      "D4": "رابعًا. ٤ (٤٢-٤٦) يسوع يحذر القادة الدينيين من عاقبة رفضهم"
     },
     "read": "2026-11-26"
+   },
+   "matthew-24": {
+    "url": "https://enduringword.com/bible-commentary/matthew-24/",
+    "lang": "en",
+    "secs": {
+     "A1": "أولًا. ١ (١-٢) يسوع يتنبأ بخراب الهيكل",
+     "A2": "أولًا. ٢ (٣) نبوة يسوع تثير سؤالين",
+     "B1": "ثانيًا. ١ (٤-٨) أحوال العالم العامة بين الصعود وما قبل المجيء الثاني",
+     "B2": "ثانيًا. ٢ (٩-١٤) ما ينبغي أن يتوقعه التلاميذ بين الصعود والمجيء الثاني",
+     "C1": "ثالثًا. ١ (١٥) العلامة: رجسة الخراب التي قال عنها دانيال",
+     "C2": "ثالثًا. ٢ (١٦-٢٠) ما يجب فعله عند ظهور رجسة الخراب: الهرب فورًا",
+     "C3": "ثالثًا. ٣ (٢١-٢٨) بعد رجسة الخراب: ضيقة عظيمة",
+     "C4": "ثالثًا. ٤ (٢٩-٣١) بعد الضيقة العظيمة: رجوع يسوع المسيح",
+     "C5": "ثالثًا. ٥ (٣٢-٣٥) يسوع يتكلم أكثر عن توقيت هذه الأحداث",
+     "D1": "رابعًا. ١ (٣٦) يوم رجوعه وساعته لا يعرفهما البشر ولا الملائكة",
+     "D2": "رابعًا. ٢ (٣٧-٣٩) مجيئه يكون والعالم كما كان في أيام نوح",
+     "D3": "رابعًا. ٣ (٤٠-٤٤) يسوع يحذر تلاميذه أن يكونوا مستعدين لمجيء غير متوقع",
+     "E1": "خامسًا. ١ (٤٥-٤٧) العبد الأمين",
+     "E2": "خامسًا. ٢ (٤٨-٥١) العبد الرديء"
+    },
+    "read": "2026-11-26"
    }
   }
  },
@@ -2986,6 +3007,105 @@
     ],
     "url": "https://www.gty.org/sermons/2354/judgment-on-christs-rejectors",
     "date": ""
+   },
+   "2366": {
+    "t": "The Signs of Christ's Coming, Part 1",
+    "book": "Matthew",
+    "ch": 24,
+    "v": [
+     1,
+     3
+    ],
+    "url": "https://www.gty.org/sermons/2366/the-signs-of-christs-coming-part-1",
+    "date": ""
+   },
+   "2367": {
+    "t": "The Signs of Christ's Coming, Part 2",
+    "book": "Matthew",
+    "ch": 24,
+    "v": [
+     1,
+     14
+    ],
+    "url": "https://www.gty.org/sermons/2367/the-signs-of-christs-coming-part-2",
+    "date": ""
+   },
+   "2368": {
+    "t": "The Signs of Christ's Coming, Part 3",
+    "book": "Matthew",
+    "ch": 24,
+    "v": [
+     4,
+     14
+    ],
+    "url": "https://gty.org/library/sermons-library/2368",
+    "date": ""
+   },
+   "2369": {
+    "t": "The Abomination of Desolation",
+    "book": "Matthew",
+    "ch": 24,
+    "v": [
+     15,
+     15
+    ],
+    "url": "https://www.gty.org/sermons/2369/The-Abomination-of-Desolation",
+    "date": ""
+   },
+   "2370": {
+    "t": "Warnings of Coming Peril",
+    "book": "Matthew",
+    "ch": 24,
+    "v": [
+     16,
+     28
+    ],
+    "url": "https://www.gty.org/sermons/2370/warnings-of-coming-peril",
+    "date": ""
+   },
+   "2371": {
+    "t": "The Sign of the Son of Man",
+    "book": "Matthew",
+    "ch": 24,
+    "v": [
+     29,
+     31
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2371/the-sign-of-the-son-of-man",
+    "date": ""
+   },
+   "2372": {
+    "t": "Could Jesus Come Today?",
+    "book": "Matthew",
+    "ch": 24,
+    "v": [
+     32,
+     35
+    ],
+    "url": "https://www.gty.org/sermons/2372/could-jesus-come-today",
+    "date": "1984-07-08"
+   },
+   "2373": {
+    "t": "Ready or Not—Here I Come!, Part 1",
+    "book": "Matthew",
+    "ch": 24,
+    "v": [
+     36,
+     42
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2373/ready-or-nothere-i-come-part-1",
+    "date": "1984-07-15"
+   },
+   "2374": {
+    "t": "Ready or Not—Here I Come!, Part 2",
+    "book": "Matthew",
+    "ch": 24,
+    "v": [
+     36,
+     51
+    ],
+    "url": "https://www.gty.org/sermons/2374/ready-or-nothere-i-come-part-2",
+    "date": "1984-07-22"
    }
   }
  }
