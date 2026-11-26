@@ -137,6 +137,28 @@
      "C6": "ثالثًا. و (٣٢-٣٧) التركيز على السهر والاستعداد"
     },
     "read": "2026-11-26"
+   },
+   "mark-14": {
+    "url": "https://enduringword.com/bible-commentary/ar/mark-14/",
+    "lang": "ar",
+    "secs": {
+     "A1": "أولًا. أ (١-٢) عزم الرؤساء على قتل يسوع",
+     "A2": "أولًا. ب (٣) امرأة تسكب الطيب على يسوع",
+     "A3": "أولًا. ج (٤-٩) ردة الفعل على ما فعلته المرأة",
+     "A4": "أولًا. د (١٠-١١) يهوذا يوافق على خيانة يسوع، مغيرًا بذلك خطط القادة اليهود",
+     "B1": "ثانيًا. أ (١٢-١٦) الاستعداد للفصح، أي الاحتفال بذكرى خلاص الشعب",
+     "B2": "ثانيًا. ب (١٧-٢١) يسوع يقدم ليهوذا فرصة للتوبة",
+     "B3": "ثانيًا. ج (٢٢-٢٥) العشاء الأخير",
+     "B4": "ثانيًا. د (٢٦-٣١) يسوع يتنبأ بهروب التلاميذ وبإنكار بطرس",
+     "C1": "ثالثًا. أ (٣٢-٣٦) صلاة يسوع ساعة الألم",
+     "C2": "ثالثًا. ب (٣٧-٤٢) التلاميذ نيام",
+     "C3": "ثالثًا. ج (٤٣-٥٢) القبض على يسوع الناصري في بستان جثسيماني",
+     "D2": "رابعًا. ب (٥٣-٥٩) تهمة يسوع أمام السنهدريم",
+     "D3": "رابعًا. ج (٦٠-٦٢) شهادة يسوع في محاكمته",
+     "D4": "رابعًا. د (٦٣-٦٥) السنهدريم يدين يسوع",
+     "D5": "رابعًا. هـ (٦٦-٧٢) إنكار بطرس"
+    },
+    "read": "2026-11-26"
    }
   }
  },
@@ -528,6 +550,94 @@
      37
     ],
     "url": "https://www.gty.org/library/sermons-library/41-70/the-final-generation-part-2"
+   },
+   "41-71": {
+    "t": "Players in the Drama of the Cross, Part 1",
+    "date": "",
+    "book": "Mark",
+    "ch": 14,
+    "v": [
+     1,
+     16
+    ],
+    "url": "https://gty.org/library/sermons-library/41-71"
+   },
+   "41-72": {
+    "t": "Players in the Drama of the Cross, Part 2",
+    "date": "",
+    "book": "Mark",
+    "ch": 14,
+    "v": [
+     1,
+     16
+    ],
+    "url": "https://gty.org/library/sermons-library/41-72"
+   },
+   "41-73": {
+    "t": "The New Passover",
+    "date": "",
+    "book": "Mark",
+    "ch": 14,
+    "v": [
+     17,
+     26
+    ],
+    "url": "https://gty.org/library/sermons-library/41-73"
+   },
+   "41-74": {
+    "t": "The Prophecy of Failure",
+    "date": "",
+    "book": "Mark",
+    "ch": 14,
+    "v": [
+     27,
+     31
+    ],
+    "url": "https://www.gty.org/library/sermons-library/41-74/the-prophecy-of-failure"
+   },
+   "41-75": {
+    "t": "The Agony of the Cup",
+    "date": "",
+    "book": "Mark",
+    "ch": 14,
+    "v": [
+     32,
+     42
+    ],
+    "url": "https://www.gty.org/resources/sermons/41-75"
+   },
+   "41-76": {
+    "t": "Judas’s Betrayal",
+    "date": "",
+    "book": "Mark",
+    "ch": 14,
+    "v": [
+     43,
+     52
+    ],
+    "url": "https://www.gty.org/library/sermons-library/41-76/judass-betrayal"
+   },
+   "41-77": {
+    "t": "The Ultimate Miscarriage of Justice",
+    "date": "",
+    "book": "Mark",
+    "ch": 14,
+    "v": [
+     53,
+     65
+    ],
+    "url": "https://www.gty.org/library/sermons-library/41-77/the-ultimate-miscarriage-of-justice"
+   },
+   "41-78": {
+    "t": "Peter's Denial: A Warning About Self-Confidence",
+    "date": "",
+    "book": "Mark",
+    "ch": 14,
+    "v": [
+     66,
+     72
+    ],
+    "url": "https://gty.org/library/sermons-library/41-78"
    }
   }
  }
