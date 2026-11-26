@@ -501,6 +501,28 @@
      "C3": "ثالثًا. ٣ (٢٧) يسوع يدفع الضريبة على أي حال وبتدبير معجزي"
     },
     "read": "2026-11-26"
+   },
+   "matthew-6": {
+    "url": "https://enduringword.com/bible-commentary/ar/matthew-6/",
+    "lang": "ar",
+    "secs": {
+     "A1": "أولاً. أ) (١) تحذير يسوع من فعل الصلاح ليرانا الآخرون",
+     "A2": "أولاً. ب) (٢-٤) أمثلة على النوع الخاطئ من العطاء والنوع الصحيح من العطاء",
+     "A3": "أولاً. ج) (٥-٦) أمثلة على النوع الخطأ من الصلاة والنوع الصحيح من الصلاة",
+     "A4": "أولاً. د) (٧-٨) الطريقة الصحيحة للصلاة",
+     "A5": "أولاً. هـ) (٩-١٣) الصلاة النموذجية",
+     "A6": "أولاً. و) (١٤-١٥) المزيد عن أهمية المغفرة",
+     "A7": "أولاً. ز) (١٦-١٨) الطريقة الصحيحة للصوم",
+     "B1": "ثانياً. أ) (١٩-٢١) الاختيار بين كنزين",
+     "B2": "ثانياً. ب) (٢٢-٢٣) الاختيار بين رؤيتين",
+     "B3": "ثانياً. ج) (٢٤) الاختيار بين سيدين",
+     "C1": "ثالثاً. أ) (٢٥) لأن ملكوت الله يفوق جداً المساعي الأرضية فهو يستحق اهتمامنا",
+     "C2": "ثالثاً. ب) (٢٦-٣٠) مثال وحجج ضد القلق",
+     "C3": "ثالثاً. ج) (٣١-٣٢) لديك أب سماوي يعرف احتياجاتك",
+     "C4": "ثالثاً. د) (٣٣) الملخص: ضع ملكوت الله أولاً وسوف يهتم هو بهذه الأمور",
+     "C5": "ثالثاً. هـ) (٣٤) خاتمة بمنطق سليم"
+    },
+    "read": "2026-11-26"
    }
   }
  },
@@ -2222,6 +2244,116 @@
      27
     ],
     "url": "https://gty.org/library/sermons-library/2326",
+    "date": ""
+   },
+   "2228": {
+    "t": "Beware of Hypocrisy",
+    "book": "Matthew",
+    "ch": 6,
+    "v": [
+     1,
+     18
+    ],
+    "url": "https://www.gty.org/sermons/2228/beware-of-hypocrisy",
+    "date": ""
+   },
+   "2229": {
+    "t": "Giving Without Hypocrisy",
+    "book": "Matthew",
+    "ch": 6,
+    "v": [
+     2,
+     4
+    ],
+    "url": "https://www.gty.org/sermons/2229/giving-without-hypocrisy",
+    "date": ""
+   },
+   "2230": {
+    "t": "Praying Without Hypocrisy",
+    "book": "Matthew",
+    "ch": 6,
+    "v": [
+     5,
+     8
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2230/praying-without-hypocrisy",
+    "date": ""
+   },
+   "2234": {
+    "t": "The Paternity of Prayer",
+    "book": "Matthew",
+    "ch": 6,
+    "v": [
+     9,
+     15
+    ],
+    "url": "https://www.gty.org/sermons/2234/the-paternity-of-prayer",
+    "date": ""
+   },
+   "2239": {
+    "t": "The Provision of Prayer, Part 1",
+    "book": "Matthew",
+    "ch": 6,
+    "v": [
+     9,
+     13
+    ],
+    "url": "https://www.gty.org/sermons/2239/the-provision-of-prayer-part-1",
+    "date": ""
+   },
+   "2242": {
+    "t": "The Pardon of Prayer, Part 2",
+    "book": "Matthew",
+    "ch": 6,
+    "v": [
+     9,
+     15
+    ],
+    "url": "https://www.gty.org/sermons/2242/the-pardon-of-prayer-part-2",
+    "date": ""
+   },
+   "2244": {
+    "t": "The Protection of Prayer",
+    "book": "Matthew",
+    "ch": 6,
+    "v": [
+     9,
+     13
+    ],
+    "url": "https://www.gty.org/sermons/2244/the-protection-of-prayer",
+    "date": ""
+   },
+   "2231": {
+    "t": "Fasting Without Hypocrisy, Part 1",
+    "book": "Matthew",
+    "ch": 6,
+    "v": [
+     16,
+     18
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2231/fasting-without-hypocrisy-part-1",
+    "date": ""
+   },
+   "2246": {
+    "t": "Treasures in Heaven, Part 2",
+    "book": "Matthew",
+    "ch": 6,
+    "v": [
+     19,
+     24
+    ],
+    "url": "https://www.gty.org/sermons/2246/treasures-in-heaven-part-2",
+    "date": ""
+   },
+   "2248": {
+    "t": "Overcoming Financial Worry, Part 1",
+    "book": "Matthew",
+    "ch": 6,
+    "v": [
+     25,
+     34
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2248/overcoming-financial-worry-part-1",
     "date": ""
    }
   }
