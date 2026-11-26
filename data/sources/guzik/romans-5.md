@@ -1,0 +1,14 @@
+# Reading notes: David Guzik, Enduring Word (English page), Romans 5
+Read 2026-11-26 at https://enduringword.com/bible-commentary/romans-5/ . Our own outline, not his text. (Arabic page arabic.enduringword.com/ar/romans-05-ar/ redirected to the Arabic index; not readable.)
+A1 (1-2): justified = legal decree reversing 1:18-3:20 verdict; peace with God vs peace of God (Phil 4:7); Eph 2:14; Spurgeon: sin should sting a believer; Morris: "stand" perfect tense; warning vs law after grace (Gal 3:2-3; 5:1-4); Bruce: forgiven rebels brought into high favor; Newell's "Proper Attitude of Man under Grace" (no vows etc.); access: Poole (reconciled to prince but not in presence), Morris (presence chamber, introducer), Wuest/Thayer; Clarke: lasting privilege, remain in household; "rejoice" = boast (Morris); Phillips "happy certainty".
+A2 (3-4): glory in tribulations, strong word (Morris); stresses produce endurance; runner/sailor/soldier; Spurgeon welcome testing; Chuck Smith on praying for patience; Luther: tribulation makes carnal more carnal, spiritual more spiritual; Spurgeon: only Spirit turns trial to patience; golden chain.
+A3 (5): hope does not disappoint; love poured not dripped; Romans not only logic; Spurgeon: love like light to blind eye until Spirit opens; Rom 8:9 vs Eph 5:18, Rom 8:4-5.
+A4 (6-8): love to weak, ungodly, sinners; due time Gal 4:4, world prepared; huper = on behalf of, instead of (John 11:50; Gal 3:13); propitiation 3:25; Spurgeon: died for the worst; no excuse; righteous vs good man; 2 Cor 5:19; Morris: Father and Son one in the cross; cross shows love and human hatred.
+A5 (9-11): Christ bore wrath of 1:18; "much more" not "much less"; Trapp: grace to glory easier than sin to grace; greater-to-lesser argument; Wuest quoting Alford; chastening is correction; everything "through Him".
+B1 (12): Gen 3 historical (Matt 19:4-6); Bruce: Adam = humanity; Adam responsible (1 Tim 2:14); Gen 2:17; Morris: all sinned in Adam; infants die; federal/representative; fairness argument; Ps 51:5; infants of believers 1 Cor 7:14, 2 Sam 12:23, Gen 18:25.
+B2 (13-14): sin before law; law too late and too weak; death reigned Adam to Moses; Adam a type.
+B3 (15-17): gift not like offense; Morris: death reigned because Adam sinned; 100% mortality; gift/justification vs judgment/condemnation.
+B4 (18): two representatives; federal heads; each personally chooses Adam by first sin; gift came to all = offered; Harrison vs universalism.
+B5 (19): disobedience/obedience; fairness of representation; bank robber illustration; Isa 64:6.
+B6 (20a): law does not justify or create sin; flaw against perfect stone; provokes due to sinful heart.
+B7 (20b-21): super-abounded; Titus 2:11-12; eternal life present quality; heat vs cold; Thomas Brooks (fire and water); Bunyan, Mr. Honest "grace reigns".
