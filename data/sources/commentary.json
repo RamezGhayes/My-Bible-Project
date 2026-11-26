@@ -467,6 +467,23 @@
      "C4": "ثالثًا. د (٤٦-٥٠) يسوع يحدد عائلته الحقيقية"
     },
     "read": "2026-11-26"
+   },
+   "matthew-16": {
+    "url": "https://enduringword.com/bible-commentary/matthew-16/",
+    "lang": "en",
+    "secs": {
+     "A1": "أولًا. ١ (١-٤) الفريسيون والصدوقيون يطلبون آية من يسوع",
+     "A2": "أولًا. ٢ (٥-١٢) يسوع يحذر التلاميذ من التعليم الفاسد",
+     "B1": "ثانيًا. ١ (١٣) يسوع يسأل تلاميذه عمّا يقوله الناس عنه",
+     "B2": "ثانيًا. ٢ (١٤-١٦) سؤال حاسم وجواب حاسم",
+     "B3": "ثانيًا. ٣ (١٧-٢٠) يسوع يمدح بطرس على اعترافه الجريء الصحيح",
+     "B4": "ثانيًا. ٤ (٢١) يسوع يبدأ يكشف ملء رسالته",
+     "B5": "ثانيًا. ٥ (٢٢-٢٣) بطرس يقاوم يسوع دون أن يدري",
+     "C1": "ثالثًا. ١ (٢٤) يسوع يعلن أن أتباعه يتبعونه بالموت عن الذات",
+     "C2": "ثالثًا. ٢ (٢٥-٢٧) مفارقة الصليب: وجدان الحياة بإهلاكها",
+     "C3": "ثالثًا. ٣ (٢٨) وعد برؤية ابن الإنسان آتيًا في ملكوته"
+    },
+    "read": "2026-11-26"
    }
   }
  },
@@ -2034,6 +2051,105 @@
      50
     ],
     "url": "https://www.gty.org/sermons/2296/reformation-vs-relationship",
+    "date": ""
+   },
+   "2315": {
+    "t": "Dealing with Spiritual Blindness, Part 1",
+    "book": "Matthew",
+    "ch": 16,
+    "v": [
+     1,
+     4
+    ],
+    "url": "https://www.gty.org/sermons/2315/dealing-with-spiritual-blindness-part-1",
+    "date": ""
+   },
+   "2316": {
+    "t": "Dealing with Spiritual Blindness, Part 2",
+    "book": "Matthew",
+    "ch": 16,
+    "v": [
+     1,
+     12
+    ],
+    "url": "https://www.gty.org/sermons/2316/dealing-with-spiritual-blindness-part-2",
+    "date": ""
+   },
+   "2317": {
+    "t": "The Supreme Confession",
+    "book": "Matthew",
+    "ch": 16,
+    "v": [
+     13,
+     17
+    ],
+    "url": "https://www.gty.org/sermons/2317/the-supreme-confession",
+    "date": ""
+   },
+   "2318": {
+    "t": "The Church that Christ Builds, Part 1",
+    "book": "Matthew",
+    "ch": 16,
+    "v": [
+     13,
+     20
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2318/church-that-christ-builds-the-part-1",
+    "date": ""
+   },
+   "2319": {
+    "t": "The Church that Christ Builds, Part 2",
+    "book": "Matthew",
+    "ch": 16,
+    "v": [
+     13,
+     20
+    ],
+    "url": "https://www.gty.org/sermons/2319/church-that-christ-builds-the-part-2",
+    "date": ""
+   },
+   "2320": {
+    "t": "Offending Christ",
+    "book": "Matthew",
+    "ch": 16,
+    "v": [
+     21,
+     23
+    ],
+    "url": "https://www.gty.org/sermons/2320/offending-christ",
+    "date": ""
+   },
+   "2321": {
+    "t": "Winning by Losing: The Paradox of Discipleship",
+    "book": "Matthew",
+    "ch": 16,
+    "v": [
+     24,
+     28
+    ],
+    "url": "https://www.gty.org/sermons/2321/winning-by-losing-the-paradox-of-discipleship",
+    "date": ""
+   },
+   "2322": {
+    "t": "Preview of the Second Coming, Part 1",
+    "book": "Matthew",
+    "ch": 16,
+    "v": [
+     27,
+     28
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2322/preview-of-the-second-coming-part-1",
+    "date": ""
+   },
+   "2323": {
+    "t": "Preview of the Second Coming, Part 2",
+    "book": "Matthew",
+    "ch": 16,
+    "v": [
+     27,
+     28
+    ],
+    "url": "https://www.gty.org/sermons/2323/preview-of-the-second-coming-part-2",
     "date": ""
    }
   }
