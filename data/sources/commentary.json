@@ -176,6 +176,21 @@
      "C5": "ج. ٥ (٥٣-٥٦) يسوع يشفي كثيرين"
     },
     "read": "2026-11-26"
+   },
+   "mark-7": {
+    "url": "https://enduringword.com/bible-commentary/mark-7/",
+    "lang": "en",
+    "secs": {
+     "A1": "أ. ١ (١-٥) قادة دينيون من أورشليم يسألون عن الأيدي غير المغسولة",
+     "A2": "أ. ٢ (٦-٩) تقليد الناس يُرفع فوق مشيئة الله",
+     "A3": "أ. ٣ (١٠-١٣) ثغرة القربان: إهمال الوالدين بحجة التقوى",
+     "A4": "أ. ٤ (١٤-١٦) يسوع للجمع: الطقس الخارجي والحقيقة الداخلية",
+     "A5": "أ. ٥ (١٧-٢٣) يسوع للتلاميذ: النجاسة تخرج من الداخل",
+     "B1": "ب. ١ (٢٤-٢٦) طلب امرأة أممية",
+     "B2": "ب. ٢ (٢٧-٣٠) يسوع يجيب طلب المرأة",
+     "B3": "ب. ٣ (٣١-٣٧) شفاء الأصم الأعقد"
+    },
+    "read": "2026-11-26"
    }
   }
  },
@@ -721,6 +736,39 @@
      56
     ],
     "url": "https://gty.org/library/sermons-library/41-31"
+   },
+   "41-32": {
+    "t": "Scripture-Twisting Tradition",
+    "date": "2010-04-18",
+    "book": "Mark",
+    "ch": 7,
+    "v": [
+     1,
+     13
+    ],
+    "url": "https://www.gty.org/library/sermons-library/41-32/scripturetwisting-tradition"
+   },
+   "41-33": {
+    "t": "The Inside Story on Defilement",
+    "date": "2010-04-25",
+    "book": "Mark",
+    "ch": 7,
+    "v": [
+     14,
+     23
+    ],
+    "url": "https://www.gty.org/library/sermons-library/41-33/the-inside-story-on-defilement"
+   },
+   "41-35": {
+    "t": "To Speak or Not to Speak",
+    "date": "2010-05-09",
+    "book": "Mark",
+    "ch": 7,
+    "v": [
+     31,
+     37
+    ],
+    "url": "https://gty.org/library/sermons-library/41-35/to-speak-or-not-to-speak"
    }
   }
  }
