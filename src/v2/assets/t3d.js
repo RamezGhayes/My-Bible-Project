@@ -346,22 +346,47 @@ function init(host) {
   function resize() { const w = vp.clientWidth, h = vp.clientHeight; R.setSize(w, h, false); R.domElement.style.width = w + 'px'; R.domElement.style.height = h + 'px'; cam3.aspect = w / h; cam3.updateProjectionMatrix(); }
   resize(); window.addEventListener('resize', resize);
 
-  const ptrs = new Map(); let st = null, moved = false;
-  const dist = () => { const a = [...ptrs.values()]; return a.length < 2 ? 0 : Math.hypot(a[0][0] - a[1][0], a[0][1] - a[1][1]); };
-  vp.addEventListener('pointerdown', (e) => { if (e.target.closest('.p3') || host.classList.contains('tour')) return; ptrs.set(e.pointerId, [e.clientX, e.clientY]); moved = false; st = { x: e.clientX, y: e.clientY, th: tgt.th, ph: tgt.ph, r: tgt.r, d: dist(), tx: tgt.tx, tz: tgt.tz }; });
+  // ---------- pointer: drag = rotate, right-drag / two fingers = pan, wheel / pinch = zoom toward the point ----------
+  const ptrs = new Map(); let st = null, moved = false, dragged = false;
+  const ray = new THREE.Raycaster(), gplane = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0), hit = new THREE.Vector3(), ndc = new THREE.Vector2();
+  const groundAt = (cx, cy) => { const r = vp.getBoundingClientRect(); ndc.set(((cx - r.left) / r.width) * 2 - 1, -((cy - r.top) / r.height) * 2 + 1); ray.setFromCamera(ndc, cam3); return ray.ray.intersectPlane(gplane, hit) ? hit.clone() : null; };
+  const zoomAt = (f, cx, cy) => {
+    const nr = clamp(tgt.r * f, 8, 260), k = 1 - nr / tgt.r; tgt.r = nr;
+    const P = cx == null ? null : groundAt(cx, cy);
+    if (P && k) { tgt.tx = clamp(tgt.tx + (P.x - tgt.tx) * k, -70, 70); tgt.tz = clamp(tgt.tz + (P.z - tgt.tz) * k, -90, 90); }
+  };
+  const panBy = (dx, dy, base) => { const k = tgt.r / 420; tgt.tx = clamp(base.tx - (dx * Math.cos(tgt.th) + dy * Math.sin(tgt.th)) * k, -70, 70); tgt.tz = clamp(base.tz - (-dx * Math.sin(tgt.th) + dy * Math.cos(tgt.th)) * k, -90, 90); };
+  const two = () => { const a = [...ptrs.values()]; return { d: Math.hypot(a[0][0] - a[1][0], a[0][1] - a[1][1]), x: (a[0][0] + a[1][0]) / 2, y: (a[0][1] + a[1][1]) / 2 }; };
+  const snap = (e) => {
+    const a = [...ptrs.values()];
+    st = { x: a[0][0], y: a[0][1], th: tgt.th, ph: tgt.ph, r: tgt.r, tx: tgt.tx, tz: tgt.tz, pan: host.classList.contains('panmode') || !!(e && (e.button === 2 || e.shiftKey || e.ctrlKey || e.metaKey)) };
+    if (a.length >= 2) Object.assign(st, two());
+  };
+  vp.addEventListener('pointerdown', (e) => {
+    if (host.classList.contains('tour') || e.target.closest('button:not(.p3)')) return;
+    ptrs.set(e.pointerId, [e.clientX, e.clientY]); moved = false; dragged = false; snap(e);
+  });
   vp.addEventListener('pointermove', (e) => {
     if (!ptrs.has(e.pointerId) || !st) return; ptrs.set(e.pointerId, [e.clientX, e.clientY]);
-    if (ptrs.size >= 2) { const d = dist(); if (st.d) { tgt.r = clamp(st.r * st.d / d, 8, 260); moved = true; } return; }
+    if (ptrs.size >= 2) {
+      const t = two(); moved = dragged = true;
+      if (st.d) { const f = st.d / t.d; const want = clamp(st.r * f, 8, 260); zoomAt(want / tgt.r, t.x, t.y); }
+      panBy(t.x - st.x, t.y - st.y, st); st.x = t.x; st.y = t.y; st.tx = tgt.tx; st.tz = tgt.tz; st.d = t.d; st.r = tgt.r;
+      return;
+    }
     const dx = e.clientX - st.x, dy = e.clientY - st.y;
-    if (!moved && Math.abs(dx) + Math.abs(dy) > 5) { moved = true; try { vp.setPointerCapture(e.pointerId); } catch (er) {} }
+    if (!moved && Math.abs(dx) + Math.abs(dy) > 6) { moved = dragged = true; host.classList.add('drag'); try { vp.setPointerCapture(e.pointerId); } catch (er) {} }
     if (!moved) return;
-    if (e.shiftKey || e.button === 2) { const k = tgt.r / 400; tgt.tx = st.tx - (dx * Math.cos(tgt.th) + dy * Math.sin(tgt.th)) * k; tgt.tz = st.tz - (-dx * Math.sin(tgt.th) + dy * Math.cos(tgt.th)) * k; return; }
+    if (st.pan) { panBy(dx, dy, st); return; }
     tgt.th = st.th - dx * 0.006; tgt.ph = clamp(st.ph - dy * 0.005, 0.18, 1.45);
   });
-  const up = (e) => { ptrs.delete(e.pointerId); st = ptrs.size ? { x: [...ptrs.values()][0][0], y: [...ptrs.values()][0][1], th: tgt.th, ph: tgt.ph, r: tgt.r, d: dist(), tx: tgt.tx, tz: tgt.tz } : null; };
+  const up = (e) => { ptrs.delete(e.pointerId); host.classList.remove('drag'); if (ptrs.size) snap(); else st = null; };
   vp.addEventListener('pointerup', up); vp.addEventListener('pointercancel', up);
   vp.addEventListener('contextmenu', (e) => e.preventDefault());
-  vp.addEventListener('wheel', (e) => { if (host.classList.contains('tour')) return; e.preventDefault(); tgt.r = clamp(tgt.r * (e.deltaY < 0 ? 0.88 : 1.13), 8, 260); }, { passive: false });
+  vp.addEventListener('wheel', (e) => { if (host.classList.contains('tour')) return; e.preventDefault(); zoomAt(Math.exp(clamp(e.deltaY, -120, 120) * 0.0022), e.clientX, e.clientY); }, { passive: false });
+  vp.addEventListener('dblclick', (e) => { if (host.classList.contains('tour') || e.target.closest('button')) return; zoomAt(0.55, e.clientX, e.clientY); });
+  // keep a pin click from firing after a drag that started on it
+  vp.addEventListener('click', (e) => { if (dragged) { e.stopPropagation(); e.preventDefault(); dragged = false; } }, true);
 
   // ---------- roof / selection ----------
   let open = false;
@@ -381,8 +406,9 @@ function init(host) {
     const b = e.target.closest('[data-c]');
     if (b) {
       const c = b.dataset.c;
-      if (c === 'in') tgt.r = clamp(tgt.r / 1.35, 8, 260);
-      if (c === 'out') tgt.r = clamp(tgt.r * 1.35, 8, 260);
+      if (c === 'in') zoomAt(1 / 1.35);
+      if (c === 'out') zoomAt(1.35);
+      if (c === 'pan') { const on = host.classList.toggle('panmode'); b.setAttribute('aria-pressed', on); b.textContent = on ? 'تدوير' : 'تحريك'; }
       if (c === 'roof') setOpen(!open);
       if (c === 'top') { tgt.ph = tgt.ph > 0.4 ? 0.2 : 0.98; }
       if (c === 'reset') { tgt = homeFor(); setOpen(false); select(null); }

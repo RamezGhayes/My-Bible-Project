@@ -533,3 +533,4 @@ html[data-mode=qt] .dso{display:none}
   .ov-tbl .h{display:none}
   .ov-tbl>div span[role=cell]{padding-top:2px}
 }
+.t3d.drag .p3{pointer-events:none}.t3d.panmode .t3v{cursor:move}.t3c [aria-pressed=true]{background:var(--ink,#1b1b1f);color:#fff}

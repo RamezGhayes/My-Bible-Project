@@ -426,8 +426,8 @@ export function scene3d(depth, mode = 'explore') {
   const J = (o) => esc(JSON.stringify(o));
   return `<div class="t3d" data-mode="${mode}" data-items="${J(items)}" data-steps="${J(steps)}">
 <div class="t3v" role="img" aria-label="مجسم ثلاثي الأبعاد للمسكن"></div>
-<div class="t3c"><button type="button" data-c="in" aria-label="تكبير">+</button><button type="button" data-c="out" aria-label="تصغير">−</button><button type="button" data-c="top" aria-label="منظر علوي">${IC.up}</button><button type="button" data-c="roof" class="w">السقف</button><button type="button" data-c="reset" aria-label="إعادة">↺</button></div>
-<div class="t3hint">اسحب للتدوير · قرّب بإصبعين أو بالعجلة · اضغط على أي قطعة</div>
+<div class="t3c"><button type="button" data-c="in" aria-label="تكبير">+</button><button type="button" data-c="out" aria-label="تصغير">−</button><button type="button" data-c="top" aria-label="منظر علوي">${IC.up}</button><button type="button" data-c="pan" class="w" aria-pressed="false" title="بدّل بين التدوير والتحريك">تحريك</button><button type="button" data-c="roof" class="w">السقف</button><button type="button" data-c="reset" aria-label="إعادة">↺</button></div>
+<div class="t3hint">اسحب للتدوير · إصبعان أو الزر الأيمن للتحريك · العجلة أو إصبعان للتقريب نحو أي مكان · نقرتان للتقريب</div>
 <button type="button" class="t3go" data-c="atone">${glyph('veil', 22)}<span>شاهد يوم الكفارة: محاكاة كاملة</span></button>
 <div class="t3i" hidden></div>
 <div class="t3tour"><div class="th"><span class="n"></span><b class="tt"></b><button type="button" data-c="exit" aria-label="إنهاء الجولة">${IC.close}</button></div><p class="d"></p><blockquote class="v"></blockquote><div class="tn"><button type="button" data-c="prev">${IC.back}السابق</button><span class="dots">${A.steps.map(() => '<i></i>').join('')}</span><button type="button" data-c="next">التالي${IC.chev}</button></div></div>
