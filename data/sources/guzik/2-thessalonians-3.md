@@ -1,0 +1,10 @@
+# Reading notes: David Guzik, Enduring Word (Arabic page), 2 Thessalonians 3
+Read 2026-11-27 at https://enduringword.com/bible-commentary/ar/2-thessalonians-3/ . Our own outline, not his text. Page title: رسالة تسالونيكي الثانية – الإصحاح ٣ – إرشادات للحياة الكنسيّة.
+A1 (1-2): Paul constantly asked prayer (Rom 15:30; 2 Cor 1:11; Eph 6:18-19; Phil 1:19; Col 4:3; 1 Thess 5:25; Phlm 22); success partly depends on saints' prayers (Spurgeon: even weak saints' prayers help servants); word run and be glorified (Isa 55:11); deliverance from unreasonable wicked men, not all have faith.
+A2 (3-5): Lord faithful, establish and guard from evil one (1 Cor 10:13; Luke 22:31-32); confidence of their obedience, God works partly by appealing to willing obedience; direct hearts into love of God and patience of Christ, needed for stability.
+B1 (6): command in name of Lord Jesus; disorderly who do not follow apostolic teaching; Hiebert: present tense = deliberate pattern; 1 Thess 5:14; 1 Cor 5:4-5; goal restoration not punishment; separate only over apostolic teaching, not human traditions.
+B2 (7-9): Paul's example: not disorderly, no free bread, toiled night and day, not because apostles lack right to support but to give a model.
+B3 (10): if anyone will not work, neither eat: concerns unwillingness not inability; God's normal way to meet needs is work.
+B4 (11-13): idle busybodies (Calvin against idle living off others); some perhaps thought work pointless as Jesus coming soon; work quietly, eat own bread (Calvin: do not encourage laziness, honor honest work); v13 do not weary in doing good (Spurgeon: ordinary faithful work is doing good); common excuses for giving up answered.
+B5 (14-15): mark and do not keep company so he is ashamed; not enemy but brother; Calvin: discipline aims at restoring, unlike anathema.
+B6 (16-18): Lord of peace gives peace always (Spurgeon: the Lord Himself gives it); greeting in own hand = mark of authenticity; grace with you all: Morgan: "all" includes those rebuked; Trapp on Paul's constant prayers.
