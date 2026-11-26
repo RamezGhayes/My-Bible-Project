@@ -737,6 +737,25 @@
      "C3": "ثالثًا. ٣ (٤١-٤٦) دينونة الذين عن اليسار وهلاكهم"
     },
     "read": "2026-11-26"
+   },
+   "matthew-23": {
+    "url": "https://enduringword.com/bible-commentary/matthew-23/",
+    "lang": "en",
+    "secs": {
+     "A1": "أولًا. ١ (١-٤) يضعون أحمالاً ثقيلة على الآخرين",
+     "A2": "أولًا. ٢ (٥-١٠) يعملون أعمالهم لكي يُنظروا ويعيشون لمديح الناس",
+     "A3": "أولًا. ٣ (١١-١٢) طريق يسوع: الخدمة والتواضع",
+     "B1": "ثانيًا. ١ (١٣) ويل للذين يغلقون الملكوت",
+     "B2": "ثانيًا. ٢ (١٤) القادة الدينيون يسرقون الضعفاء",
+     "B3": "ثانيًا. ٣ (١٥) القادة الدينيون قادوا المتهودين في الطريق الخطأ",
+     "B4": "ثانيًا. ٤ (١٦-٢٢) القادة الدينيون يحلفون أقساماً كاذبة مخادعة",
+     "B5": "ثانيًا. ٥ (٢٣-٢٤) منشغلون بالتوافه ويهملون أثقل الناموس",
+     "B6": "ثانيًا. ٦ (٢٥-٢٦) القادة الدينيون نجسون من الداخل والخارج",
+     "B7": "ثانيًا. ٧ (٢٧-٢٨) لهم مظهر الصلاح بلا حياة روحية في الداخل",
+     "B8": "ثانيًا. ٨ (٢٩-٣٦) يكرمون الأنبياء الموتى ويقتلون الأنبياء الأحياء",
+     "B9": "ثانيًا. ٩ (٣٧-٣٩) يسوع يرثي أورشليم"
+    },
+    "read": "2026-11-26"
    }
   }
  },
@@ -3339,6 +3358,61 @@
      46
     ],
     "url": "https://www.gty.org/sermons/2380/the-judgment-of-the-nations-part-3"
+   },
+   "2361": {
+    "t": "The Characteristics of False Spiritual Leaders, Part 2",
+    "book": "Matthew",
+    "ch": 23,
+    "v": [
+     1,
+     12
+    ],
+    "url": "https://gty.org/library/sermons-library/2361/the-characteristics-of-false-spiritual-leaders-part-2",
+    "date": ""
+   },
+   "2362": {
+    "t": "The Condemnation of False Spiritual Leaders, Part 1",
+    "book": "Matthew",
+    "ch": 23,
+    "v": [
+     13,
+     15
+    ],
+    "url": "https://www.gty.org/sermons/2362/the-condemnation-of-false-spiritual-leaders-part-1",
+    "date": ""
+   },
+   "2363": {
+    "t": "The Condemnation of False Spiritual Leaders, Part 2",
+    "book": "Matthew",
+    "ch": 23,
+    "v": [
+     16,
+     33
+    ],
+    "url": "https://gty.org/library/sermons-library/2363",
+    "date": ""
+   },
+   "2364": {
+    "t": "Jesus' Last Words to Israel, Part 1",
+    "book": "Matthew",
+    "ch": 23,
+    "v": [
+     32,
+     36
+    ],
+    "url": "https://www.gty.org/sermons/2364/jesus-last-words-to-israel-part-1",
+    "date": ""
+   },
+   "2365": {
+    "t": "Jesus' Last Words to Israel, Part 2",
+    "book": "Matthew",
+    "ch": 23,
+    "v": [
+     37,
+     39
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2365/jesus-last-words-to-israel-part-2",
+    "date": ""
    }
   }
  }
