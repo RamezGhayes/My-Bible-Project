@@ -1,0 +1,12 @@
+# Reading notes: David Guzik, Enduring Word (Arabic page), Philemon 1
+Read 2026-11-27 at https://enduringword.com/bible-commentary/ar/philemon-1/ . Our own outline, not his text. Some cross-reference numbers on the page look garbled (e.g. "1 Cor 4:5-5").
+A1 (1): from prison, probably Rome (Acts 28:30-31), Ephesus unlikely; prisoner of Christ not Rome (Lightfoot: chains Jesus put on him); writes as friend not apostle, unlike his other letters.
+A2 (2-3): Apphia probably wife, Archippus possibly son (Oesterley via Rupprecht); house church (Rom 16:5; Col 4:15), no church buildings before third century (Oesterley); Spurgeon: household can model a church; grace and peace to an individual unusual (Lightfoot).
+A3 (4-7): constant prayer (Rom 9:1; Eph 1:16); saints = all true believers; fellowship of faith = koinonia incl. material sharing (2 Cor 8:4; 9:13; Rom 15:26); Clarke on Philemon's generosity to poor saints.
+B1 (8-11): appeal by love though he could command; age and chains to win sympathy; Onesimus runaway slave met Paul in Rome; Roman asylum at altars; "my son" like Timothy, Titus (1 Cor 4:14-17; Titus 1:4; Gal 4:19); Onesimus = useful, useless now useful; Barclay on change in Christ.
+B2 (12-14): sends back "my heart"; Roman law gave masters near-absolute power, Lightfoot: slaves crucified for lesser offenses; huge slave population (claim of 60 million), branding of runaways; wanted free consent.
+B3 (15-16): God's providence in the separation; forever; no longer slave but beloved brother; Trapp: gentleness to new believers; Bruce: brotherhood in Christ undermines master-slave relation; Spurgeon: changed hearts drive moral change.
+B4 (17-19): receive him as me; charge to my account, signed in own hand; parallel to Christ bearing our debt; Luther: we are all His Onesimus.
+B5 (20-22): refresh my heart, wordplay on Onesimus again; more than I say; prepare lodging, release through prayers (Heb 13:19).
+C1 (23-24): Epaphras, Mark, Aristarchus, Demas, Luke (Col 4:10-17), both letters to Colossae; Oesterley: "fellow prisoner" figurative; Clarke: Demas later deserted (2 Tim 4:10).
+C2 (25): grace; on slavery: Paul never demanded abolition but principles undermine it, heart change then social change; Onesimus had to return and make restitution (2 Cor 5:17); identity in Christ above economic status; Wright on the letter's wisdom; bishop Onesimus of Ephesus c. 110 (Ignatius; Trapp), perhaps helped collect Paul's letters.
