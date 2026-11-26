@@ -477,3 +477,53 @@ html[data-mode=qt] .dso{display:none}
 .v5book .bk5top{padding-bottom:0}
 .v5book .bk5p:last-child{padding-top:10px}
 .v5book .car .cc.read .k span:last-child:after{content:"✓ قرأته";color:var(--ok);font-family:var(--ui);font-size:12px}
+
+/* overview generic blocks */
+.ov-part{margin-top:8px}
+.ov-q{margin:14px 0;padding:18px 20px;border-radius:16px;background:var(--cream);text-align:center}
+.ov-q p{margin:0;font-family:var(--nas);font-size:20px;line-height:2}
+.ov-q .r{font-family:var(--ui);font-size:13px}
+.ov-age .ln{position:relative;height:4px;background:var(--line);border-radius:2px;margin:22px 10px 26px}
+.ov-age .ln span{position:absolute;top:-6px;transform:translateX(50%)}
+.ov-age .ln i{display:block;width:16px;height:16px;border-radius:50%;background:var(--gold);border:3px solid var(--paper)}
+.ov-age ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:8px}
+.ov-age li{display:flex;gap:12px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.ov-age em{font-style:normal;flex:none;min-width:48px;height:48px;padding:0 6px;border-radius:12px;background:var(--ink);color:var(--gold2);display:grid;place-items:center;font-family:var(--ui);font-weight:700;font-size:17px}
+.ov-age li>div{display:flex;flex-direction:column;gap:2px}
+.ov-age b{font-family:var(--ui);font-weight:600;font-size:15px}
+.ov-age small{font-size:14px;line-height:1.75;color:var(--soft)}
+.ov-age .r,.ov-route .r,.ov-cards .r,.ov-ppl .r,.ov-bars .r{font-family:var(--ui);font-size:12.5px}
+.ov-route{list-style:none;margin:10px 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px;counter-reset:rt}
+.ov-route li{position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 12px 10px;display:flex;flex-direction:column;gap:2px}
+.ov-route em{font-style:normal;position:absolute;top:-9px;inset-inline-start:10px;width:24px;height:24px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;font-family:var(--ui);font-size:12px;font-weight:600}
+.ov-route b{font-family:var(--ui);font-weight:700;font-size:15.5px;margin-top:4px}
+.ov-route small{font-size:13.5px;line-height:1.7;color:var(--soft)}
+.ov-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px;margin:10px 0}
+.ov-cards.c2{grid-template-columns:1fr 1fr}.ov-cards.c3{grid-template-columns:repeat(3,1fr)}
+.ov-cards>div{--c:var(--gold);background:#fff;border:1px solid var(--line);border-top:3px solid var(--c);border-radius:14px;padding:14px 16px;display:flex;flex-direction:column;gap:4px}
+.ov-cards b{font-family:var(--ui);font-weight:600;font-size:16px}
+.ov-cards small{font-family:var(--ui);font-size:12.5px;color:#8C6E2E}
+.ov-cards p{margin:0;font-size:15px;line-height:1.85}
+.ov-ppl{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px}
+.ov-ppl>div{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px;display:flex;flex-direction:column;gap:2px}
+.ov-ppl b{font-family:var(--ui);font-weight:700;font-size:16px}
+.ov-ppl small{font-size:14px;line-height:1.7;color:var(--soft)}
+.ov-bars{display:flex;flex-direction:column;gap:6px;margin:10px 0}
+.ov-bars>div{display:grid;grid-template-columns:170px 1fr 110px;gap:10px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:12px;padding:8px 12px}
+.ov-bars .t{display:flex;flex-direction:column}
+.ov-bars .t b{font-family:var(--ui);font-weight:600;font-size:14.5px}
+.ov-bars .t small{font-family:var(--ui);font-size:12px;color:var(--soft)}
+.ov-bars .b{position:relative;height:20px;background:var(--cream);border-radius:6px}
+.ov-bars .b i{position:absolute;inset-block:0;inset-inline-start:0;background:var(--c);border-radius:6px}
+.ov-bars .b em{position:absolute;inset-inline-start:8px;top:0;font-style:normal;font-family:var(--ui);font-size:12px;line-height:20px;color:var(--ink)}
+.ov-tbl.t3>div{grid-template-columns:1.1fr 1.6fr 1fr}
+.ov-tbl.t4>div{grid-template-columns:1fr 1fr 1.4fr 1fr}
+.ov-tbl.t5>div{grid-template-columns:1fr .8fr .8fr 1.6fr 1fr}
+.ov-tbl.t2>div{grid-template-columns:1fr 1.5fr}
+.ov-tbl .r{font-size:13px}
+@media (max-width:640px){
+  .ov-cards.c2,.ov-cards.c3{grid-template-columns:1fr}
+  .ov-bars>div{grid-template-columns:1fr;gap:4px}
+  .ov-tbl.t3>div,.ov-tbl.t4>div,.ov-tbl.t5>div,.ov-tbl.t2>div{grid-template-columns:1fr}
+  .ov-tbl>div span[role=cell]{padding-top:2px}
+}

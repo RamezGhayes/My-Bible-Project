@@ -1,6 +1,7 @@
 // «نظرة عامة على الكتاب المقدس»: a hub and nine short pages, each one topic, with simple infographics.
 // Content: content/overview.mjs. Every reference must exist and every `has` word must be in that verse (build stops otherwise).
 import path from 'node:path';
+import fs from 'node:fs';
 import { ROOT, books, bookById, bible, ar, esc, parseRef, refLabel, refHref, verseText, normalize, shortName, chapterHref } from '../lib.mjs';
 import { IC } from './ui.mjs';
 
@@ -23,17 +24,44 @@ const span = (from, to, d) => {
   return `<a class="r" href="${refHref(from, d)}">${refLabel(from)} – ${right}</a>`;
 };
 
-const PAGES = [
-  ['why', 'لماذا نظرة عامة؟', 'التلسكوب والميكروسكوب، والأبعاد الأربعة'],
-  ['books', 'أسفار الكتاب وترتيبها', '٣٩ سفراً و٢٧ سفراً، والترتيب العبري ٢٤ سفراً'],
-  ['story', 'قصة العهد القديم في أربعة عصور', 'من آدم إلى سليمان: الشخصيات وأين نجدها'],
-  ['split', 'الانقسام والسبي والعودة', 'العصر الخامس: مملكتان، وسبيان، وثلاث عودات'],
-  ['prophets', 'الأنبياء الستة عشر', 'أصحاب الأسفار مرتبين حسب الزمن'],
-  ['between', 'ما بين العهدين', 'أربع مئة سنة: الفرس واليونان والمكابيون والرومان'],
-  ['christ', 'حياة المسيح', 'الأناجيل الأربعة، والخط الزمني، وأسبوع الآلام'],
-  ['acts', 'الكنيسة الأولى ورحلات بولس', 'سفر الأعمال في جزأين'],
-  ['key', 'الأصحاحات المفتاحية', 'خريطة طريق في العهدين']
+// Built-in pages (custom layouts below) and generic pages (content/overview/<id>.mjs), in reading order, by part.
+const BUILTIN = {
+  why: ['لماذا نظرة عامة؟', 'التلسكوب والميكروسكوب، والأبعاد الأربعة'],
+  books: ['أسفار الكتاب وترتيبها', '٣٩ سفراً و٢٧ سفراً، والترتيب العبري ٢٤ سفراً'],
+  story: ['قصة العهد القديم في أربعة عصور', 'من آدم إلى سليمان: الشخصيات وأين نجدها'],
+  split: ['الانقسام والسبي والعودة', 'العصر الخامس: مملكتان، وسبيان، وثلاث عودات'],
+  prophets: ['الأنبياء الستة عشر', 'أصحاب الأسفار مرتبين حسب الزمن'],
+  between: ['ما بين العهدين', 'أربع مئة سنة: الفرس واليونان والمكابيون والرومان'],
+  christ: ['حياة المسيح', 'الأناجيل الأربعة، والخط الزمني، وأسبوع الآلام'],
+  acts: ['الكنيسة الأولى ورحلات بولس', 'سفر الأعمال في جزأين'],
+  key: ['الأصحاحات المفتاحية', 'خريطة طريق في العهدين']
+};
+const PARTS = [
+  ['intro', 'ابدأ هنا', 'لماذا النظرة العامة، وكيف رُتّبت الأسفار'],
+  ['oth', 'تاريخ العهد القديم', 'العصور الخمسة من الخلق إلى العودة من السبي'],
+  ['otp', 'شخصيات العهد القديم بالتفصيل', 'كل شخصية: سنوات عمرها، ومن حولها، وأحداثها، وأماكنها'],
+  ['geo', 'الأرض والخرائط', 'أين جرت القصة'],
+  ['pro', 'الأنبياء', 'من هم، ومتى تنبؤوا، وما رسالة كل واحد'],
+  ['bt', 'بين العهدين', 'أربع مئة سنة صنعت عالم العهد الجديد'],
+  ['nt', 'العهد الجديد', 'حياة المسيح، والكنيسة الأولى، ورحلات بولس'],
+  ['end', 'الخلاصة', 'الأصحاحات المفتاحية، ودروس النظرة العامة']
 ];
+const ORDER = [
+  ['why', 'intro'], ['books', 'intro'],
+  ['story', 'oth'], ['split', 'oth'], ['kings', 'oth'],
+  ['abraham', 'otp'], ['isaac', 'otp'], ['jacob', 'otp'], ['joseph', 'otp'], ['moses', 'otp'], ['joshua', 'otp'], ['judges', 'otp'], ['samuel-saul', 'otp'], ['david', 'otp'], ['solomon', 'otp'], ['ezra-nehemiah', 'otp'],
+  ['land-ot', 'geo'], ['exodus', 'geo'], ['land-nt', 'geo'], ['med', 'geo'],
+  ['prophets', 'pro'], ['prophets-message', 'pro'],
+  ['between', 'bt'],
+  ['christ', 'nt'], ['christ-years', 'nt'], ['passion', 'nt'], ['acts', 'nt'], ['church', 'nt'], ['paul', 'nt'], ['journeys', 'nt'],
+  ['key', 'end'], ['lessons', 'end']
+];
+const GEN = {};
+{
+  const dir = path.join(ROOT, 'content/overview');
+  if (fs.existsSync(dir)) for (const f of fs.readdirSync(dir).filter((x) => x.endsWith('.mjs'))) { const m = (await import(path.join(dir, f))).default; GEN[m.id] = m; }
+}
+const PAGES = ORDER.filter(([id]) => BUILTIN[id] || GEN[id]).map(([id, part]) => [id, ...(BUILTIN[id] || [GEN[id].t, GEN[id].sub]), part]);
 
 export function buildOverview({ write, page }) {
   const S = O.source;
@@ -46,18 +74,18 @@ export function buildOverview({ write, page }) {
 <div class="ov-w">${inner}
 <nav class="c5ch ov-nav">${prev ? `<a href="${prev[0]}.html"><small>${BACK} السابق</small><b>${prev[1]}</b></a>` : '<a href="../overview.html"><small>' + BACK + ' البداية</small><b>كل الأقسام</b></a>'}${next ? `<a class="nx" href="${next[0]}.html"><small>التالي ${FWD}</small><b>${next[1]}</b></a>` : '<span></span>'}</nav></div>`;
   };
+  const idx = (id) => PAGES.findIndex((p) => p[0] === id);
   const out = (id, html) => write(`overview/${id}.html`, page({ title: `${PAGES.find((p) => p[0] === id)[1]} · نظرة عامة`, depth: 1, nav: 'overview', body: html, cls: 'v3 v5hub ovp' }));
 
   // ---- hub ----
   const W = O.why;
   write('overview.html', page({ title: 'نظرة عامة على الكتاب المقدس', depth: 0, nav: 'overview', cls: 'v3 v5hub ovp', body: `<section class="ov-h"><div class="in"><a class="back5 lt" href="bible.html">${BACK} العودة إلى الكتاب المقدس</a><span class="ey">من الخلق إلى الكنيسة الأولى</span><h1>نظرة عامة على الكتاب المقدس</h1><p>${esc(W.lead)}</p></div></section>
 <div class="ov-w"><div class="ov-dims">${W.dims.map((x, i) => `<div><em>${ar(i + 1)}</em><b>${esc(x.t)}</b><small>${esc(x.d)}</small></div>`).join('')}</div>
-<h2 class="ov-h2">الأقسام</h2>
-<div class="ov-grid">${PAGES.map(([id, t, sub], i) => `<a href="overview/${id}.html"><em>${ar(i + 1)}</em><span><b>${t}</b><small>${sub}</small></span>${IC.chev}</a>`).join('')}</div>
+${PARTS.filter(([k]) => PAGES.some((p) => p[3] === k)).map(([k, t, d]) => `<section class="ov-part"><h2 class="ov-h2">${t} <small>${d}</small></h2><div class="ov-grid">${PAGES.map((p, i) => [p, i]).filter(([p]) => p[3] === k).map(([[id, t2, sub], i]) => `<a href="overview/${id}.html"><em>${ar(i + 1)}</em><span><b>${t2}</b><small>${sub}</small></span>${IC.chev}</a>`).join('')}</div></section>`).join('')}
 ${credit('')}</div>` }));
 
   // ---- 1. why ----
-  out('why', shell(0, `<p class="ov-lead">${esc(W.lead)}</p>
+  out('why', shell(idx('why'), `<p class="ov-lead">${esc(W.lead)}</p>
 <div class="ov-pair">${W.pairs.map((x, i) => `<div class="${i ? 'tel' : 'mic'}"><span class="ov-ico" aria-hidden="true">${i ? '<svg viewBox="0 0 48 48"><path d="M6 30l26-14 4 8-26 14z"/><path d="M36 24l6-3M20 34l-4 10M20 34l6 10"/></svg>' : '<svg viewBox="0 0 48 48"><circle cx="22" cy="18" r="8"/><path d="M22 26v8M14 40h20M28 12l8-6"/></svg>'}</span><b>${esc(x.t)}</b><p>${esc(x.d)}</p></div>`).join('')}</div>
 <h2 class="ov-h2">أربعة أبعاد نراها في النظرة العامة</h2>
 <div class="ov-dims">${W.dims.map((x, i) => `<div><em>${ar(i + 1)}</em><b>${esc(x.t)}</b><small>${esc(x.d)}</small></div>`).join('')}</div>
@@ -79,7 +107,7 @@ ${credit(W.eps)}`));
     ['الأنبياء', 'ثمانية', [['يشوع'], ['القضاة'], ['صموئيل', 'سفر واحد'], ['الملوك', 'سفر واحد'], ['إشعياء'], ['إرميا'], ['حزقيال'], ['الاثنا عشر', 'الأنبياء الصغار في سفر واحد']]],
     ['الكتب', 'أحد عشر', [['المزامير'], ['الأمثال'], ['أيوب'], ['نشيد الأنشاد'], ['راعوث'], ['مراثي إرميا'], ['الجامعة'], ['أستير'], ['دانيال'], ['عزرا ونحميا', 'سفر واحد'], ['أخبار الأيام', 'سفر واحد']]]
   ];
-  out('books', shell(1, `<h2 class="ov-h2">العهد القديم: ٣٩ سفراً في خمس مجموعات</h2>${groupBar('ot')}
+  out('books', shell(idx('books'), `<h2 class="ov-h2">العهد القديم: ٣٩ سفراً في خمس مجموعات</h2>${groupBar('ot')}
 <h2 class="ov-h2">نفس الأسفار في الترتيب العبري: ٢٤ سفراً</h2>
 <p class="ov-p">المحتوى واحد، لكن العبرانيين يعدّون بعض الأسفار المقسومة عندنا سفراً واحداً (صموئيل، والملوك، وأخبار الأيام، وعزرا ونحميا، والأنبياء الاثنا عشر)، ويرتبونها في ثلاثة أقسام. ولهذا قال المسيح «موسى والأنبياء والمزامير» (${a(chk('Luke.24.44', 'المزامير', 'books'), 1)}).</p>
 <div class="ov-heb">${HEB.map(([t, n, l]) => `<div><b>${t}</b><small>${n}</small><ol>${l.map(([x, s]) => `<li>${x}${s ? `<small>${s}</small>` : ''}</li>`).join('')}</ol></div>`).join('')}</div>
@@ -94,7 +122,7 @@ ${credit('٣، ١٥')}`));
     if (p.years) chk(p.years[0], p.years[1], w + ' ' + p.n);
     return `<div class="ov-p5"><div class="hd"><b>${esc(p.n)}</b>${span(p.from, p.to, 1)}</div>${p.years ? `<small class="yr">ملك أربعين سنة (${a(p.years[0], 1)})</small>` : ''}<ul>${p.ev.map(([t, r]) => `<li>${esc(t)} <span>${a(r, 1)}</span></li>`).join('')}</ul></div>`;
   };
-  out('story', shell(2, `<p class="ov-lead">يقسّم المحاضر تاريخ العهد القديم إلى خمسة عصور على ورقتين. الورقة الأولى (هنا) أربعة عصور من آدم إلى سليمان، والورقة الثانية هي «الانقسام والسبي والعودة». لكل شخصية بداية ونهاية في النص: هذا فهرسك للقصة.</p>
+  out('story', shell(idx('story'), `<p class="ov-lead">يقسّم المحاضر تاريخ العهد القديم إلى خمسة عصور على ورقتين. الورقة الأولى (هنا) أربعة عصور من آدم إلى سليمان، والورقة الثانية هي «الانقسام والسبي والعودة». لكل شخصية بداية ونهاية في النص: هذا فهرسك للقصة.</p>
 <ol class="ov-eras">${O.eras.map((E, i) => `<li id="${E.id}"><div class="ov-era"><em>${ar(i + 1)}</em><div><h2>${esc(E.t)}</h2><p>${esc(E.sub)}</p></div></div>
 <div class="ov-people">${E.people.map((p) => person(p, E.id)).join('')}</div>
 ${(E.notes || []).map((n) => { chk(n.ref, n.has, E.id); return `<div class="ov-note"><b>${esc(n.t)}</b> ${tag(n.tag)}<p>${esc(n.d)} (${a(n.ref, 1)})</p></div>`; }).join('')}</li>`).join('')}</ol>
@@ -105,7 +133,7 @@ ${credit('٤ – ٦، ٢٩ – ٤٢')}`));
   chk(P.division.ref, P.division.has, 'split'); chk(P.north.end.ref, P.north.end.has, 'split'); chk(P.south.end.ref, P.south.end.has, 'split'); chk(P.fixRef[0], P.fixRef[1], 'split'); chk(P.seventy.ref, P.seventy.has, 'split');
   const span5 = 931 - 586, pos = (y) => (((931 - y) / span5) * 100).toFixed(2);
   const lane = (K, c) => `<div class="ov-lane"><div class="lab"><b>${esc(K.t)}</b><small>العاصمة: ${esc(K.cap)} · ${esc(K.kings)}</small></div><div class="trk"><span style="right:0;width:${pos(K.to)}%;--c:${c}"><em>${ar(K.from)} – ${ar(K.to)} ق.م · نحو ${ar(K.from - K.to)} سنة</em></span></div><p>${esc(K.end.d)} <b>${esc(K.end.y)}</b> (${a(K.end.ref, 1)})</p></div>`;
-  out('split', shell(3, `<div class="ov-note big"><b>${esc(P.division.y)}: انقسام المملكة</b><p>${esc(P.division.d)} (${a(P.division.ref, 1)})</p></div>
+  out('split', shell(idx('split'), `<div class="ov-note big"><b>${esc(P.division.y)}: انقسام المملكة</b><p>${esc(P.division.d)} (${a(P.division.ref, 1)})</p></div>
 <h2 class="ov-h2">مملكتان</h2>
 <div class="ov-lanes">${lane(P.north, '#34496B')}${lane(P.south, '#8C2F1E')}<div class="ov-axis"><span style="right:0">٩٣١</span><span style="right:${pos(722)}%">٧٢٢</span><span style="right:100%">٥٨٦ ق.م</span></div></div>
 ${fix(P.fix, P.fixRef[0])}
@@ -119,7 +147,7 @@ ${credit(P.eps)}`));
   // ---- 5. prophets ----
   const R = O.prophets;
   const REG = (t) => (/الشمال/.test(t) ? 'n' : /الجنوب|يهوذا/.test(t) ? 's' : /بابل|المسبيين/.test(t) ? 'x' : /العائدين/.test(t) ? 'r' : 'f');
-  out('prophets', shell(4, `<p class="ov-lead">${esc(R.lead)}</p>
+  out('prophets', shell(idx('prophets'), `<p class="ov-lead">${esc(R.lead)}</p>
 <div class="ov-leg2"><span class="n">إلى الشمال</span><span class="s">إلى الجنوب</span><span class="x">في السبي</span><span class="r">بعد العودة</span><span class="f">إلى أمة أخرى</span></div>
 <div class="ov-proph">${R.groups.map((G) => `<div><h2>${esc(G.t)}</h2><small>${esc(G.d)}</small>${G.list.map((p) => { chk(p.ref, p.has, 'prophets ' + p.n); return `<div class="pp ${REG(p.to)}"><b>${esc(p.n)}</b><span>${esc(p.y)}${/مختلف/.test(p.y) ? '' : ' ق.م'}</span><small>${esc(p.to)}</small>${tag(p.tag)}${a(p.ref, 1)}</div>`; }).join('')}</div>`).join('')}</div>
 <p class="ov-p">${esc(R.note)}</p>${fix(R.fix)}
@@ -128,7 +156,7 @@ ${credit(R.eps)}`));
   // ---- 6. between ----
   const B = O.between;
   const bspan = 539 - 4, bp = (y) => (((539 - y) / bspan) * 100).toFixed(2);
-  out('between', shell(5, `<p class="ov-lead">${esc(B.lead)}</p>
+  out('between', shell(idx('between'), `<p class="ov-lead">${esc(B.lead)}</p>
 <div class="ov-tl">${B.periods.map((x) => `<span style="right:${bp(x.from)}%;width:${(bp(x.to) - bp(x.from)).toFixed(2)}%;--c:${x.c}"><b>${esc(x.t)}</b><small>${ar(x.from)} – ${ar(x.to)}</small></span>`).join('')}</div>
 <div class="ov-axis2"><span>٥٣٩ ق.م</span><span>٤ ق.م</span></div>
 <div class="ov-periods">${B.periods.map((x) => `<div style="--c:${x.c}"><b>${esc(x.t)}</b><small>${ar(x.from)} – ${ar(x.to)} ق.م تقريباً</small><p>${esc(x.d)}</p></div>`).join('')}</div>
@@ -139,7 +167,7 @@ ${credit(B.eps)}`));
 
   // ---- 7. christ ----
   const C = O.christ;
-  out('christ', shell(6, `<h2 class="ov-h2">أربعة أناجيل، أربع زوايا</h2>
+  out('christ', shell(idx('christ'), `<h2 class="ov-h2">أربعة أناجيل، أربع زوايا</h2>
 <div class="ov-gos">${C.gospels.map((g) => { if (g.ref) chk(g.ref, g.has, 'christ'); return `<div><span>${esc(g.n)}</span><b>${esc(g.a)}</b><small>${esc(g.d)}${g.ref ? ` (${a(g.ref, 1)})` : ''}</small></div>`; }).join('')}</div>
 <p class="ov-p">${esc(C.gospelsBy)}</p>
 <h2 class="ov-h2">الخط الزمني</h2>
@@ -153,7 +181,7 @@ ${credit(C.eps)}`));
   // ---- 8. acts ----
   const A = O.acts;
   chk(A.key.ref, A.key.has, 'acts');
-  out('acts', shell(7, `<div class="ov-note big"><b>خطة السفر في آية</b><p><q>${esc(verseText(A.key.ref))}</q> ${a(A.key.ref, 1)}</p></div>
+  out('acts', shell(idx('acts'), `<div class="ov-note big"><b>خطة السفر في آية</b><p><q>${esc(verseText(A.key.ref))}</q> ${a(A.key.ref, 1)}</p></div>
 <div class="ov-tbl" role="table">${A.table.map((r, i) => `<div role="row" class="${i ? '' : 'h'}">${r.map((c, j) => `<span role="${i ? (j ? 'cell' : 'rowheader') : 'columnheader'}">${esc(c)}</span>`).join('')}</div>`).join('')}</div>
 <h2 class="ov-h2">رحلات بولس</h2>
 <ol class="ov-vt">${A.journeys.map((j) => { chk(j.from, j.fromHas, 'acts ' + j.t); chk(j.to, j.toHas, 'acts ' + j.t); return `<li><b>${esc(j.t)}</b><p>${esc(j.d)}</p>${span(j.from, j.to, 1)}</li>`; }).join('')}</ol>
@@ -163,9 +191,38 @@ ${credit(A.eps)}`));
   // ---- 9. key chapters ----
   const K = O.keyChapters;
   const chip = ([t, r]) => { const p = parseRef(r); return `<a href="${chapterHref(p.book, p.ch, 1)}"><b>${esc(t)}</b><small>${refLabel(r)}</small></a>`; };
-  out('key', shell(8, `<p class="ov-lead">${esc(K.lead)}</p>
+  out('key', shell(idx('key'), `<p class="ov-lead">${esc(K.lead)}</p>
 <h2 class="ov-h2">العهد القديم <small>${ar(K.ot.length)} أصحاحاً</small></h2><div class="ov-chips">${K.ot.map(chip).join('')}</div>
 ${fix(K.fix, '1Kgs.8.63')}
 <h2 class="ov-h2">العهد الجديد <small>${ar(K.nt.length)} أصحاحاً</small></h2><div class="ov-chips nt">${K.nt.map(chip).join('')}</div>
 ${credit(K.eps)}`));
+  // ---- generic pages (content/overview/<id>.mjs) ----
+  const RF = (x, w) => { if (!x.ref) return ''; chk(x.ref, x.has, w); return x.to ? (chk(x.to, x.toHas, w), span(x.ref, x.to, 1)) : a(x.ref, 1); };
+  const txt = (s) => esc(s).replace(/«([^»]+)»/g, '«$1»');
+  const block = (B, w) => {
+    if (B.h) return `<h2 class="ov-h2">${esc(B.h)}${B.small ? ` <small>${esc(B.small)}</small>` : ''}</h2>`;
+    if (B.lead) return `<p class="ov-lead">${txt(B.lead)}</p>`;
+    if (B.p) return `<p class="ov-p">${txt(B.p)}${B.ref ? ` (${RF(B, w)})` : ''}</p>`;
+    if (B.note) return `<div class="ov-note${B.big ? ' big' : ''}"><b>${esc(B.note)}</b> ${tag(B.tag)}<p>${txt(B.d)}${B.ref ? ` (${RF(B, w)})` : ''}</p></div>`;
+    if (B.fix) return `<div class="ov-fix"><b>تصحيح</b><p>${txt(B.fix)}${B.ref ? ` (${RF(B, w)})` : ''}</p></div>`;
+    if (B.quote) { chk(B.quote, B.has, w); return `<blockquote class="ov-q"><p>${esc(verseText(B.quote))}</p>${a(B.quote, 1)}</blockquote>`; }
+    if (B.years) {
+      const ys = B.years.map((y) => +y.age);
+      const lo = Math.min(...ys), hi = Math.max(...ys);
+      return `<div class="ov-age"><div class="ln">${B.years.map((y) => `<span style="right:${(((+y.age - lo) / Math.max(1, hi - lo)) * 100).toFixed(1)}%" title="${esc(y.t)}"><i></i></span>`).join('')}</div>
+<ol>${B.years.map((y) => `<li><em>${ar(y.age)}</em><div><b>${esc(y.t)}</b>${y.d ? `<small>${txt(y.d)}</small>` : ''}${RF(y, w)}</div></li>`).join('')}</ol>${B.unit ? `<p class="ov-tot">${esc(B.unit)}</p>` : ''}</div>`;
+    }
+    if (B.route) return `<ol class="ov-route">${B.route.map((x, i) => `<li><em>${ar(i + 1)}</em><b>${esc(x.n)}</b>${x.d ? `<small>${txt(x.d)}</small>` : ''}${RF(x, w)}</li>`).join('')}</ol>`;
+    if (B.steps) return `<ol class="ov-vt">${B.steps.map((x) => `<li>${x.y ? `<small>${esc(x.y)}</small>` : ''}<b>${esc(x.t)}</b> ${tag(x.tag)}${x.d ? `<p>${txt(x.d)}</p>` : ''}${RF(x, w)}</li>`).join('')}</ol>`;
+    if (B.cards) return `<div class="ov-cards${B.cols ? ' c' + B.cols : ''}">${B.cards.map((x) => `<div${x.c ? ` style="--c:${x.c}"` : ''}><b>${esc(x.t)}</b> ${tag(x.tag)}${x.s ? `<small>${esc(x.s)}</small>` : ''}${x.d ? `<p>${txt(x.d)}</p>` : ''}${RF(x, w)}</div>`).join('')}</div>`;
+    if (B.people) return `<div class="ov-ppl">${B.people.map((x) => `<div><b>${esc(x.n)}</b>${x.d ? `<small>${txt(x.d)}</small>` : ''}${RF(x, w)}</div>`).join('')}</div>`;
+    if (B.bars) { const mx = Math.max(...B.bars.map((x) => x.v)); return `<div class="ov-bars">${B.bars.map((x) => `<div><span class="t"><b>${esc(x.t)}</b>${x.s ? `<small>${esc(x.s)}</small>` : ''}</span><span class="b"><i style="width:${((x.v / mx) * 100).toFixed(1)}%;--c:${x.c || 'var(--gold)'}"></i><em>${esc(x.label || ar(x.v))}</em></span>${RF(x, w)}</div>`).join('')}</div>${B.unit ? `<p class="ov-tot">${esc(B.unit)}</p>` : ''}`; }
+    if (B.table) return `<div class="ov-tbl t${B.table.head.length}" role="table"><div role="row" class="h">${B.table.head.map((c) => `<span role="columnheader">${esc(c)}</span>`).join('')}</div>${B.table.rows.map((r) => `<div role="row">${r.c.map((c, j) => `<span role="${j ? 'cell' : 'rowheader'}">${txt(c)}</span>`).join('')}${r.ref ? `<span role="cell">${RF(r, w)}</span>` : ''}</div>`).join('')}</div>`;
+    if (B.html) return B.html;
+    throw new Error('Overview ' + w + ': unknown block ' + JSON.stringify(B).slice(0, 80));
+  };
+  for (const G of Object.values(GEN)) {
+    if (idx(G.id) < 0) throw new Error('Overview: page ' + G.id + ' is not in ORDER');
+    out(G.id, shell(idx(G.id), G.blocks.map((B) => block(B, G.id)).join('\n') + (G.fixes || []).map((x) => block({ fix: x.d, ref: x.ref, has: x.has }, G.id)).join('') + credit(G.eps)));
+  }
 }
