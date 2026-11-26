@@ -1,0 +1,23 @@
+# Reading notes: David Guzik, Enduring Word (English page), Luke 6
+Read 2026-11-26 at https://enduringword.com/bible-commentary/luke-6/ . Our own outline, not his text. (arabic.enduringword.com/ar/luke-6-ar/ redirects to the general Arabic index.)
+A1 (1-2): "second Sabbath after the first" (Clarke: first Sabbath after Passover; may simply mean "on the Sabbath"); gleaning lawful (Deut 23:25); problem was the day; four violations in rabbinic eyes (reaping, threshing, winnowing, preparing food); 1992 rabbi and the fire; knot rules.
+A2 (3-5): "Have you not even read": Barclay, know Scripture and miss its meaning; David and showbread (1 Sam 21:1-6), need over ritual; Hos 6:6; Isa 58:1-9; Ps 51:17; Morgan: Sabbath use that harms people opposes God's purpose; three reasons the precedent fits; Lord of the Sabbath = claim to deity.
+A3 (6-8): growing resistance yet Jesus still attends synagogue; watching to accuse implicitly admits His power; one can watch Jesus and be far from Him; Pate: leaders may have planted the man and expected a miracle more than the disciples.
+A4 (9-11): never wrong day to do good; Morgan: neglecting compassion desecrates God's ordinances; commanded what the man could not do and supplied the ability; their murderous rage the real Sabbath violation (Mark 7:8-9, 13); approach to God rests on Christ's work.
+B1 (12-13): pressure (Mark 3:6); Spurgeon on the mountain and on one night of prayer; Jesus as man relied on Father and Spirit; Morris: disciple = attached learner; twelve = tribes, new people; apostle = sent one (Pate; Heb 3:1).
+B2 (14-16): names on foundations (Rev 21:14); brothers, partners, Matthew and Zealot Simon; Geldenhuys: Iscariot = man of Kerioth, only Judean; Wiersbe: names in pairs; Bartholomew = Nathanael (John 1:45); Judas son of James = Thaddaeus (Mark 3:18); chose Judas knowingly (John 6:70); "why did He choose me" harder question.
+B3 (17-19): came down with the twelve as a team; level place vs mountain; crowds incl. Tyre and Sidon; power went out (Mark 5:30); serving cost Him.
+B4 (20a): Sermon on the Plain vs Matt 5-7; itinerant preachers repeat; Pate: encouraged disciples, challenged others; between choosing (6:12-16) and sending (9:1-6); Kingdom ethics, not a salvation tract.
+C1 (20b): makarios deep joy (1 Tim 1:11; Barclay self-contained joy); Matt 25:34; Spurgeon: present tense; poor = beggar; poverty of spirit; Spurgeon: lack is the starting point of contact with God.
+C2 (21a): hunger traits; Matt 5:6; hunger for righteous nature, sanctification, righteousness in the world; filled yet keeps longing.
+C3 (21b): godly sorrow (2 Cor 7:10); Phil 3:10; Isa 53:3; Spurgeon: faith without tears suspect; Ps 30:5; "now" in all three; not a social revolutionary: Jesus targets sin.
+C4 (22-23): accusations against early Christians (cannibalism, immorality, fanaticism, splitting families, treason); prophets before; Trapp: martyrs George Roper, Dr Taylor ("almost home"), Lawrence Saunders.
+C5 (24-26): woe = regret and compassion; rich, full, laughing, praised can block coming to Jesus; false prophets; reversal of values.
+D1 (27-28): love shown in doing good, blessing, praying; expect enemies; Barclay: love = seeking highest good.
+D2 (29-30): slap = insult; Jesus resisted evil (temple); 2 Cor 11:20; Rom 13:1-4; France (Mishnah BK 8:6); Barclay: resent no insult; cloak protected by law (Exod 22:26; Deut 24:13); Carson; Morgan: old way insist on rights, new way suffer wrong; love limits giving; Rom 12:21.
+D3 (31): negative form before Jesus (Carson: Hillel); positive broader; goats Matt 25:31-46 guilty for not doing; Spurgeon: "What a kingdom..."; none kept it perfectly.
+D4 (32-35): sinners do that; kingdom character; imitate God kind to unthankful; Spurgeon: day of free grace; Meyer: sons by regeneration.
+D5 (36-38): mercy like the Father; "judge not" not forbidding assessment (6:43-45); unconditional love not unconditional approval; Matt 26:6-13 example; list of ways we judge; Barclay: bosom = pocket; rabbis: God's two measures, justice and mercy.
+E1 (39-42): blind guides (Matt 15:14); disciple becomes like teacher (Rom 8:29; 1 John 3:2; Meyer); speck/plank humour; woman taken in adultery (John 8:7); Spurgeon: gentle Jesus calls critic hypocrite; David and Nathan (2 Sam 12); Carson on Pharisees.
+E2 (43-45): fruit reveals tree; Clarke: no innocent barrenness; Spurgeon: neutral person also for the fire; words reveal heart.
+E3 (46-49): "Lord, Lord" without obedience; Trapp: speak like angels, live like devils; Morgan: the "why" and three-fold condition (coming, hearing, doing); houses look alike, foundation hidden (Spurgeon); storms now and at judgment; Trapp: Judas and Nicodemus; Num 32:23; the Sermon drives us back to the Savior.
