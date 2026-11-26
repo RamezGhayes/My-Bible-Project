@@ -1059,6 +1059,1964 @@
   "who": "John MacArthur",
   "work": "Sermons on Mark, Grace Community Church (Grace to You sermon library)",
   "sermons": {
+   "2180": {
+    "t": "The Gracious King",
+    "date": "1978-01-15",
+    "book": "Matthew",
+    "ch": 1,
+    "v": [
+     1,
+     17
+    ],
+    "url": "https://www.gty.org/sermons/2180/the-gracious-king"
+   },
+   "2181": {
+    "t": "The Virgin Birth",
+    "date": "1978-01-22",
+    "book": "Matthew",
+    "ch": 1,
+    "v": [
+     18,
+     25
+    ],
+    "url": "https://www.gty.org/sermons/2181/the-virgin-birth"
+   },
+   "2182": {
+    "t": "Who Were the Wise Men?",
+    "date": "1978-02-05",
+    "book": "Matthew",
+    "ch": 2,
+    "v": [
+     1,
+     1
+    ],
+    "url": "https://www.gty.org/sermons/2182/who-were-the-wise-men"
+   },
+   "2183": {
+    "t": "Fools and Wise Men, Part 1",
+    "date": "1978-02-12",
+    "book": "Matthew",
+    "ch": 2,
+    "v": [
+     1,
+     3
+    ],
+    "url": "https://www.gty.org/sermons/2183/fools-and-wise-men-part-1"
+   },
+   "2184": {
+    "t": "Fools and Wise Men, Part 2",
+    "date": "1978-02-19",
+    "book": "Matthew",
+    "ch": 2,
+    "v": [
+     4,
+     12
+    ],
+    "url": "https://www.gty.org/sermons/2184/fools-and-wise-men-part-2"
+   },
+   "2185": {
+    "t": "The King Fulfills Prophecy, Part 1",
+    "date": "1978-03-05",
+    "book": "Matthew",
+    "ch": 2,
+    "v": [
+     13,
+     15
+    ],
+    "url": "https://www.gty.org/sermons/2185/the-king-fulfills-prophecy-part-1"
+   },
+   "2186": {
+    "t": "The King Fulfills Prophecy, Part 2",
+    "date": "1978-03-12",
+    "book": "Matthew",
+    "ch": 2,
+    "v": [
+     16,
+     23
+    ],
+    "url": "https://www.gty.org/sermons/2186/the-king-fulfills-prophecy-part-2"
+   },
+   "2187": {
+    "t": "The Greatest Man",
+    "date": "1978-03-19",
+    "book": "Matthew",
+    "ch": 3,
+    "v": [
+     1,
+     6
+    ],
+    "url": "https://www.gty.org/sermons/2187/the-greatest-man"
+   },
+   "2188": {
+    "t": "The Fruits of True Repentance, Part 1",
+    "date": "1978-04-02",
+    "book": "Matthew",
+    "ch": 3,
+    "v": [
+     7,
+     10
+    ],
+    "url": "https://www.gty.org/sermons/2188/the-fruits-of-true-repentance-part-1"
+   },
+   "2189": {
+    "t": "The Fruits of True Repentance, Part 2",
+    "date": "1978-04-09",
+    "book": "Matthew",
+    "ch": 3,
+    "v": [
+     7,
+     12
+    ],
+    "url": "https://www.gty.org/sermons/2189/the-fruits-of-true-repentance-part-2"
+   },
+   "2190": {
+    "t": "The Commissioning of the King",
+    "date": "1978-05-07",
+    "book": "Matthew",
+    "ch": 3,
+    "v": [
+     13,
+     17
+    ],
+    "url": "https://www.gty.org/sermons/2190/the-commissioning-of-the-king"
+   },
+   "2191": {
+    "t": "The Crisis of Temptation, Part 1",
+    "date": "1978-05-14",
+    "book": "Matthew",
+    "ch": 4,
+    "v": [
+     1,
+     2
+    ],
+    "url": "https://www.gty.org/sermons/2191/the-crisis-of-temptation-part-1"
+   },
+   "2192": {
+    "t": "The Crisis of Temptation, Part 2",
+    "book": "Matthew",
+    "ch": 4,
+    "v": [
+     1,
+     11
+    ],
+    "url": "https://www.gty.org/sermons/2192/the-crisis-of-temptation-part-2",
+    "date": ""
+   },
+   "2193": {
+    "t": "The Light Dawns, Part 1",
+    "book": "Matthew",
+    "ch": 4,
+    "v": [
+     12,
+     17
+    ],
+    "url": "https://www.gty.org/sermons/2193/the-light-dawns-part-1",
+    "date": ""
+   },
+   "2194": {
+    "t": "The Light Dawns, Part 2",
+    "book": "Matthew",
+    "ch": 4,
+    "v": [
+     12,
+     17
+    ],
+    "url": "https://www.gty.org/sermons/2194/the-light-dawns-part-2",
+    "date": ""
+   },
+   "2195": {
+    "t": "Fishing for Men",
+    "book": "Matthew",
+    "ch": 4,
+    "v": [
+     18,
+     22
+    ],
+    "url": "https://www.gty.org/sermons/2195/fishing-for-men",
+    "date": ""
+   },
+   "2196": {
+    "t": "The Healing Work of Jesus",
+    "book": "Matthew",
+    "ch": 4,
+    "v": [
+     23,
+     25
+    ],
+    "url": "https://www.gty.org/sermons/2196/the-healing-work-of-jesus",
+    "date": ""
+   },
+   "2197": {
+    "t": "Happiness Is...",
+    "book": "Matthew",
+    "ch": 5,
+    "v": [
+     1,
+     12
+    ],
+    "url": "https://www.gty.org/sermons/2197/happiness-is",
+    "date": ""
+   },
+   "2198": {
+    "t": "Happy Are the Humble",
+    "book": "Matthew",
+    "ch": 5,
+    "v": [
+     3,
+     3
+    ],
+    "url": "https://www.gty.org/sermons/2198/happy-are-the-humble",
+    "date": ""
+   },
+   "2201": {
+    "t": "Happy Are the Hungry",
+    "book": "Matthew",
+    "ch": 5,
+    "v": [
+     6,
+     6
+    ],
+    "url": "https://gty.org/library/sermons-library/2201",
+    "date": ""
+   },
+   "2202": {
+    "t": "Happy Are the Merciful",
+    "book": "Matthew",
+    "ch": 5,
+    "v": [
+     7,
+     7
+    ],
+    "url": "https://www.gty.org/sermons/2202/happy-are-the-merciful",
+    "date": ""
+   },
+   "2206": {
+    "t": "Happy are the Harassed, Part 2",
+    "book": "Matthew",
+    "ch": 5,
+    "v": [
+     10,
+     12
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2206/happy-are-the-harassed-part-2",
+    "date": ""
+   },
+   "2207": {
+    "t": "You are the Salt of the Earth",
+    "book": "Matthew",
+    "ch": 5,
+    "v": [
+     13,
+     16
+    ],
+    "url": "https://www.gty.org/sermons/2207/you-are-the-salt-of-the-earth",
+    "date": ""
+   },
+   "2208": {
+    "t": "You Are the Light of the World",
+    "book": "Matthew",
+    "ch": 5,
+    "v": [
+     13,
+     16
+    ],
+    "url": "https://www.gty.org/sermons/2208/you-are-the-light-of-the-world",
+    "date": ""
+   },
+   "2212": {
+    "t": "Christ and the Law, Part 4",
+    "book": "Matthew",
+    "ch": 5,
+    "v": [
+     17,
+     20
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2212/christ-and-the-law-part-4",
+    "date": ""
+   },
+   "2214": {
+    "t": "Who Is a Murderer?",
+    "book": "Matthew",
+    "ch": 5,
+    "v": [
+     21,
+     26
+    ],
+    "url": "https://www.gty.org/sermons/2214/who-is-a-murderer",
+    "date": ""
+   },
+   "2215": {
+    "t": "Who Is an Adulterer? Part 1",
+    "book": "Matthew",
+    "ch": 5,
+    "v": [
+     27,
+     30
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2215/who-is-an-adulterer-part-1",
+    "date": ""
+   },
+   "2218": {
+    "t": "Divorce and Remarriage, Part 1",
+    "book": "Matthew",
+    "ch": 5,
+    "v": [
+     31,
+     32
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2218/divorce-and-remarriage-part-1",
+    "date": ""
+   },
+   "2222": {
+    "t": "The Spiritual Credibility Gap",
+    "book": "Matthew",
+    "ch": 5,
+    "v": [
+     33,
+     37
+    ],
+    "url": "https://www.gty.org/sermons/2222/the-spiritual-credibility-gap",
+    "date": ""
+   },
+   "2223": {
+    "t": "An Eye for an Eye, Part 1",
+    "book": "Matthew",
+    "ch": 5,
+    "v": [
+     38,
+     42
+    ],
+    "url": "https://www.gty.org/sermons/2223/an-eye-for-an-eye-part-1",
+    "date": ""
+   },
+   "2226": {
+    "t": "Love Your Enemies, Part 2",
+    "book": "Matthew",
+    "ch": 5,
+    "v": [
+     43,
+     48
+    ],
+    "url": "https://gty.org/library/sermons-library/2226",
+    "date": ""
+   },
+   "2228": {
+    "t": "Beware of Hypocrisy",
+    "book": "Matthew",
+    "ch": 6,
+    "v": [
+     1,
+     18
+    ],
+    "url": "https://www.gty.org/sermons/2228/beware-of-hypocrisy",
+    "date": ""
+   },
+   "2229": {
+    "t": "Giving Without Hypocrisy",
+    "book": "Matthew",
+    "ch": 6,
+    "v": [
+     2,
+     4
+    ],
+    "url": "https://www.gty.org/sermons/2229/giving-without-hypocrisy",
+    "date": ""
+   },
+   "2230": {
+    "t": "Praying Without Hypocrisy",
+    "book": "Matthew",
+    "ch": 6,
+    "v": [
+     5,
+     8
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2230/praying-without-hypocrisy",
+    "date": ""
+   },
+   "2231": {
+    "t": "Fasting Without Hypocrisy, Part 1",
+    "book": "Matthew",
+    "ch": 6,
+    "v": [
+     16,
+     18
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2231/fasting-without-hypocrisy-part-1",
+    "date": ""
+   },
+   "2234": {
+    "t": "The Paternity of Prayer",
+    "book": "Matthew",
+    "ch": 6,
+    "v": [
+     9,
+     15
+    ],
+    "url": "https://www.gty.org/sermons/2234/the-paternity-of-prayer",
+    "date": ""
+   },
+   "2239": {
+    "t": "The Provision of Prayer, Part 1",
+    "book": "Matthew",
+    "ch": 6,
+    "v": [
+     9,
+     13
+    ],
+    "url": "https://www.gty.org/sermons/2239/the-provision-of-prayer-part-1",
+    "date": ""
+   },
+   "2242": {
+    "t": "The Pardon of Prayer, Part 2",
+    "book": "Matthew",
+    "ch": 6,
+    "v": [
+     9,
+     15
+    ],
+    "url": "https://www.gty.org/sermons/2242/the-pardon-of-prayer-part-2",
+    "date": ""
+   },
+   "2244": {
+    "t": "The Protection of Prayer",
+    "book": "Matthew",
+    "ch": 6,
+    "v": [
+     9,
+     13
+    ],
+    "url": "https://www.gty.org/sermons/2244/the-protection-of-prayer",
+    "date": ""
+   },
+   "2246": {
+    "t": "Treasures in Heaven, Part 2",
+    "book": "Matthew",
+    "ch": 6,
+    "v": [
+     19,
+     24
+    ],
+    "url": "https://www.gty.org/sermons/2246/treasures-in-heaven-part-2",
+    "date": ""
+   },
+   "2248": {
+    "t": "Overcoming Financial Worry, Part 1",
+    "book": "Matthew",
+    "ch": 6,
+    "v": [
+     25,
+     34
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2248/overcoming-financial-worry-part-1",
+    "date": ""
+   },
+   "2250": {
+    "t": "Stop Criticizing",
+    "book": "Matthew",
+    "ch": 7,
+    "v": [
+     1,
+     6
+    ],
+    "url": "https://www.gty.org/sermons/2250/stop-criticizing",
+    "date": ""
+   },
+   "2251": {
+    "t": "Start Loving",
+    "book": "Matthew",
+    "ch": 7,
+    "v": [
+     7,
+     12
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2251/start-loving",
+    "date": ""
+   },
+   "2252": {
+    "t": "Which Way to Heaven?",
+    "book": "Matthew",
+    "ch": 7,
+    "v": [
+     13,
+     14
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2252/which-way-to-heaven",
+    "date": ""
+   },
+   "2253": {
+    "t": "Beware of False Prophets, Part 1",
+    "book": "Matthew",
+    "ch": 7,
+    "v": [
+     15,
+     20
+    ],
+    "url": "https://www.gty.org/sermons/2253/beware-of-false-prophets-part-1",
+    "date": ""
+   },
+   "2255": {
+    "t": "Empty Words",
+    "book": "Matthew",
+    "ch": 7,
+    "v": [
+     21,
+     23
+    ],
+    "url": "https://gty.org/library/sermons-library/2255",
+    "date": ""
+   },
+   "2256": {
+    "t": "Empty Hearts",
+    "book": "Matthew",
+    "ch": 7,
+    "v": [
+     24,
+     29
+    ],
+    "url": "https://www.gty.org/sermons/2256/empty-hearts",
+    "date": ""
+   },
+   "2257": {
+    "t": "Jesus' Power over Disease, Part 1",
+    "date": "1980-10-19",
+    "book": "Matthew",
+    "ch": 8,
+    "v": [
+     1,
+     4
+    ],
+    "url": "https://www.gty.org/sermons/2257/jesus-power-over-disease-part-1"
+   },
+   "2258": {
+    "t": "Jesus' Power over Disease, Part 2",
+    "date": "1980-10-26",
+    "book": "Matthew",
+    "ch": 8,
+    "v": [
+     5,
+     15
+    ],
+    "url": "https://www.gty.org/sermons/2258/jesus-power-over-disease-part-2"
+   },
+   "2259": {
+    "t": "What Keeps Men from Christ?",
+    "date": "1980-11-02",
+    "book": "Matthew",
+    "ch": 8,
+    "v": [
+     16,
+     22
+    ],
+    "url": "https://www.gty.org/sermons/2259/what-keeps-men-from-christ"
+   },
+   "2260": {
+    "t": "Jesus' Power over the Natural",
+    "date": "1980-11-09",
+    "book": "Matthew",
+    "ch": 8,
+    "v": [
+     23,
+     27
+    ],
+    "url": "https://www.gty.org/sermons/2260/jesus-power-over-the-natural"
+   },
+   "2261": {
+    "t": "Jesus' Power over the Supernatural",
+    "date": "1980-11-16",
+    "book": "Matthew",
+    "ch": 8,
+    "v": [
+     28,
+     34
+    ],
+    "url": "https://www.gty.org/sermons/2261/jesus-power-over-the-supernatural"
+   },
+   "2262": {
+    "t": "Jesus' Power over Sin",
+    "date": "1980-11-23",
+    "book": "Matthew",
+    "ch": 9,
+    "v": [
+     1,
+     8
+    ],
+    "url": "https://gty.org/library/sermons-library/2262"
+   },
+   "2263": {
+    "t": "Receiving the Sinner/Refusing the Righteous, Part 1",
+    "date": "1980-11-30",
+    "book": "Matthew",
+    "ch": 9,
+    "v": [
+     9,
+     13
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2263/receiving-the-sinnerrefusing-the-righteous-part-1"
+   },
+   "2264": {
+    "t": "Receiving the Sinner/Refusing the Righteous, Part 2",
+    "book": "Matthew",
+    "ch": 9,
+    "v": [
+     9,
+     17
+    ],
+    "url": "https://gty.org/library/sermons-library/2264/receiving-the-sinnerrefusing-the-righteous-part-2",
+    "date": ""
+   },
+   "2265": {
+    "t": "Jesus' Power over Death, Part 1",
+    "book": "Matthew",
+    "ch": 9,
+    "v": [
+     18,
+     26
+    ],
+    "url": "https://www.gty.org/sermons/2265/jesus-power-over-death-part-1",
+    "date": ""
+   },
+   "2266": {
+    "t": "Jesus' Power over Death, Part 2",
+    "book": "Matthew",
+    "ch": 9,
+    "v": [
+     18,
+     26
+    ],
+    "url": "https://www.gty.org/sermons/2266/jesus-power-over-death-part-2",
+    "date": ""
+   },
+   "2271": {
+    "t": "Peter: A Lesson in Leadership",
+    "book": "Matthew",
+    "ch": 10,
+    "v": [
+     1,
+     4
+    ],
+    "url": "https://gty.org/library/sermons-library/2271",
+    "date": ""
+   },
+   "2277": {
+    "t": "Principles for an Effective Missionary, Part 1",
+    "date": "1981-06-07",
+    "book": "Matthew",
+    "ch": 10,
+    "v": [
+     5,
+     7
+    ],
+    "url": "https://www.gty.org/sermons/2277/principles-for-an-effective-missionary-part-1"
+   },
+   "2278": {
+    "t": "Principles for an Effective Missionary, Part 2",
+    "date": "1981-06-14",
+    "book": "Matthew",
+    "ch": 10,
+    "v": [
+     8,
+     15
+    ],
+    "url": "https://www.gty.org/sermons/2278/principles-for-an-effective-missionary-part-2"
+   },
+   "2279": {
+    "t": "Sheep Among Wolves, Part 1",
+    "date": "1981-06-21",
+    "book": "Matthew",
+    "ch": 10,
+    "v": [
+     16,
+     23
+    ],
+    "url": "https://www.gty.org/sermons/2279/sheep-among-wolves-part-1"
+   },
+   "2280": {
+    "t": "Sheep Among Wolves, Part 2",
+    "date": "1981-06-28",
+    "book": "Matthew",
+    "ch": 10,
+    "v": [
+     16,
+     23
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2280/sheep-among-wolves-part-2"
+   },
+   "2281": {
+    "t": "Christlikeness: The Goal of Discipleship",
+    "date": "1981-07-05",
+    "book": "Matthew",
+    "ch": 10,
+    "v": [
+     24,
+     25
+    ],
+    "url": "https://gty.org/library/sermons-library/2281"
+   },
+   "2282": {
+    "t": "The Hallmarks of Discipleship, Part 1",
+    "date": "1981-07-12",
+    "book": "Matthew",
+    "ch": 10,
+    "v": [
+     26,
+     31
+    ],
+    "url": "https://www.gty.org/sermons/2282/the-hallmarks-of-discipleship-part-1"
+   },
+   "2284": {
+    "t": "The Hallmarks of Discipleship, Part 3",
+    "date": "1981-08-30",
+    "book": "Matthew",
+    "ch": 10,
+    "v": [
+     34,
+     42
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2284/the-hallmarks-of-discipleship-part-3"
+   },
+   "2285": {
+    "t": "Solving the Problem of Doubt",
+    "date": "1981-09-06",
+    "book": "Matthew",
+    "ch": 11,
+    "v": [
+     1,
+     6
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2285/solving-the-problem-of-doubt"
+   },
+   "2286": {
+    "t": "True Greatness",
+    "date": "1981-09-13",
+    "book": "Matthew",
+    "ch": 11,
+    "v": [
+     7,
+     15
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2286/true-greatness"
+   },
+   "2287": {
+    "t": "Treating Christ with Criticism and Indifference",
+    "date": "1981-09-20",
+    "book": "Matthew",
+    "ch": 11,
+    "v": [
+     16,
+     24
+    ],
+    "url": "https://www.gty.org/sermons/2287/treating-christ-with-criticism-and-indifference"
+   },
+   "2288": {
+    "t": "Jesus' Personal Invitation, Part 1",
+    "book": "Matthew",
+    "ch": 11,
+    "v": [
+     25,
+     30
+    ],
+    "url": "https://www.gty.org/sermons/2288/jesus-personal-invitation-part-1",
+    "date": ""
+   },
+   "2289": {
+    "t": "Jesus' Personal Invitation, Part 2",
+    "book": "Matthew",
+    "ch": 11,
+    "v": [
+     25,
+     30
+    ],
+    "url": "https://www.gty.org/sermons/2289/jesus-personal-invitation-part-2",
+    "date": ""
+   },
+   "2290": {
+    "t": "The Lord of the Sabbath",
+    "book": "Matthew",
+    "ch": 12,
+    "v": [
+     1,
+     14
+    ],
+    "url": "https://www.gty.org/sermons/2290/the-lord-of-the-sabbath",
+    "date": ""
+   },
+   "2291": {
+    "t": "God's Beloved Servant",
+    "book": "Matthew",
+    "ch": 12,
+    "v": [
+     14,
+     21
+    ],
+    "url": "https://www.gty.org/sermons/2291/gods-beloved-servant",
+    "date": ""
+   },
+   "2292": {
+    "t": "Blaspheming the Holy Spirit, Part 1",
+    "book": "Matthew",
+    "ch": 12,
+    "v": [
+     22,
+     30
+    ],
+    "url": "https://www.gty.org/sermons/2292/blaspheming-the-holy-spirit-part-1",
+    "date": ""
+   },
+   "2293": {
+    "t": "Blaspheming the Holy Spirit, Part 2",
+    "book": "Matthew",
+    "ch": 12,
+    "v": [
+     22,
+     32
+    ],
+    "url": "https://www.gty.org/sermons/2293/blaspheming-the-holy-spirit-part-2",
+    "date": ""
+   },
+   "2294": {
+    "t": "Exposing the Truth About Men's Hearts",
+    "book": "Matthew",
+    "ch": 12,
+    "v": [
+     33,
+     37
+    ],
+    "url": "https://www.gty.org/sermons/2294/exposing-the-truth-about-mens-hearts",
+    "date": ""
+   },
+   "2295": {
+    "t": "Judgment on the Rejectors of Christ",
+    "book": "Matthew",
+    "ch": 12,
+    "v": [
+     38,
+     42
+    ],
+    "url": "https://www.gty.org/sermons/2295/judgment-on-the-rejectors-of-christ",
+    "date": ""
+   },
+   "2296": {
+    "t": "Reformation vs. Relationship",
+    "book": "Matthew",
+    "ch": 12,
+    "v": [
+     43,
+     50
+    ],
+    "url": "https://www.gty.org/sermons/2296/reformation-vs-relationship",
+    "date": ""
+   },
+   "2297": {
+    "t": "Kingdom Parables, Part 1",
+    "book": "Matthew",
+    "ch": 13,
+    "v": [
+     1,
+     3
+    ],
+    "url": "https://www.gty.org/resources/study-guides/print/2297/kingdom-parables-part-1",
+    "date": ""
+   },
+   "2298": {
+    "t": "Kingdom Parables, Part 2",
+    "book": "Matthew",
+    "ch": 13,
+    "v": [
+     1,
+     50
+    ],
+    "url": "https://www.gty.org/resources/study-guides/print/2298/kingdom-parables-part-2",
+    "date": ""
+   },
+   "2299": {
+    "t": "The Responses to the Gospel",
+    "book": "Matthew",
+    "ch": 13,
+    "v": [
+     3,
+     23
+    ],
+    "url": "https://www.gty.org/sermons/2299/the-responses-to-the-gospel",
+    "date": ""
+   },
+   "2300": {
+    "t": "The Kingdom and the World",
+    "book": "Matthew",
+    "ch": 13,
+    "v": [
+     24,
+     43
+    ],
+    "url": "https://www.gty.org/sermons/2300/the-kingdom-and-the-world",
+    "date": ""
+   },
+   "2301": {
+    "t": "The Power and Influence of Christ's Kingdom, Part 1",
+    "book": "Matthew",
+    "ch": 13,
+    "v": [
+     31,
+     32
+    ],
+    "url": "https://www.gty.org/sermons/2301/the-power-and-influence-of-christs-kingdom-part-1",
+    "date": ""
+   },
+   "2302": {
+    "t": "The Power and Influence of Christ's Kingdom, Part 2",
+    "book": "Matthew",
+    "ch": 13,
+    "v": [
+     31,
+     33
+    ],
+    "url": "https://www.gty.org/sermons/2302/the-power-and-influence-of-christs-kingdom-part-2",
+    "date": ""
+   },
+   "2303": {
+    "t": "Entering the Kingdom",
+    "book": "Matthew",
+    "ch": 13,
+    "v": [
+     44,
+     46
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2303/entering-the-kingdom",
+    "date": ""
+   },
+   "2304": {
+    "t": "The Furnace of Fire",
+    "book": "Matthew",
+    "ch": 13,
+    "v": [
+     47,
+     52
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2304/the-furnace-of-fire",
+    "date": ""
+   },
+   "2305": {
+    "t": "The Power of Unbelief, Part 1",
+    "book": "Matthew",
+    "ch": 13,
+    "v": [
+     53,
+     58
+    ],
+    "url": "https://www.gty.org/sermons/2305/the-power-of-unbelief-part-1",
+    "date": ""
+   },
+   "2306": {
+    "t": "The Power of Unbelief, Part 2",
+    "book": "Matthew",
+    "ch": 13,
+    "v": [
+     53,
+     58
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2306/the-power-of-unbelief-part-2",
+    "date": ""
+   },
+   "2307": {
+    "t": "Fear that Forfeits Christ",
+    "book": "Matthew",
+    "ch": 14,
+    "v": [
+     1,
+     13
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2307/fear-that-forfeits-christ",
+    "date": ""
+   },
+   "2308": {
+    "t": "The Miraculous Feeding",
+    "book": "Matthew",
+    "ch": 14,
+    "v": [
+     13,
+     22
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2308/the-miraculous-feeding",
+    "date": ""
+   },
+   "2309": {
+    "t": "Worshiping the Son of God, Part 1",
+    "book": "Matthew",
+    "ch": 14,
+    "v": [
+     22,
+     33
+    ],
+    "url": "https://www.gty.org/sermons/2309/worshiping-the-son-of-god-part-1",
+    "date": ""
+   },
+   "2310": {
+    "t": "Worshiping the Son of God, Part 2",
+    "book": "Matthew",
+    "ch": 14,
+    "v": [
+     22,
+     33
+    ],
+    "url": "https://www.gty.org/sermons/2310/worshiping-the-son-of-god-part-2",
+    "date": ""
+   },
+   "2311": {
+    "t": "Confusing Man's Traditions with God's Commandments, Part 1",
+    "book": "Matthew",
+    "ch": 14,
+    "v": [
+     34,
+     36
+    ],
+    "url": "https://www.gty.org/sermons/2311/confusing-mans-traditions-with-gods-commandments-part-1",
+    "date": ""
+   },
+   "2312": {
+    "t": "Confusing Man's Traditions with God's Commandments, Part 2",
+    "book": "Matthew",
+    "ch": 15,
+    "v": [
+     10,
+     20
+    ],
+    "url": "https://www.gty.org/sermons/2312/confusing-mans-traditions-with-gods-commandments-part-2",
+    "date": ""
+   },
+   "2313": {
+    "t": "The Quality of Great Faith",
+    "book": "Matthew",
+    "ch": 15,
+    "v": [
+     21,
+     28
+    ],
+    "url": "https://www.gty.org/sermons/2313/the-quality-of-great-faith",
+    "date": ""
+   },
+   "2314": {
+    "t": "Compassion for the Outsiders",
+    "book": "Matthew",
+    "ch": 15,
+    "v": [
+     29,
+     39
+    ],
+    "url": "https://www.gty.org/sermons/2314/compassion-for-the-outsiders",
+    "date": ""
+   },
+   "2315": {
+    "t": "Dealing with Spiritual Blindness, Part 1",
+    "book": "Matthew",
+    "ch": 16,
+    "v": [
+     1,
+     4
+    ],
+    "url": "https://www.gty.org/sermons/2315/dealing-with-spiritual-blindness-part-1",
+    "date": ""
+   },
+   "2316": {
+    "t": "Dealing with Spiritual Blindness, Part 2",
+    "book": "Matthew",
+    "ch": 16,
+    "v": [
+     1,
+     12
+    ],
+    "url": "https://www.gty.org/sermons/2316/dealing-with-spiritual-blindness-part-2",
+    "date": ""
+   },
+   "2317": {
+    "t": "The Supreme Confession",
+    "book": "Matthew",
+    "ch": 16,
+    "v": [
+     13,
+     17
+    ],
+    "url": "https://www.gty.org/sermons/2317/the-supreme-confession",
+    "date": ""
+   },
+   "2318": {
+    "t": "The Church that Christ Builds, Part 1",
+    "book": "Matthew",
+    "ch": 16,
+    "v": [
+     13,
+     20
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2318/church-that-christ-builds-the-part-1",
+    "date": ""
+   },
+   "2319": {
+    "t": "The Church that Christ Builds, Part 2",
+    "book": "Matthew",
+    "ch": 16,
+    "v": [
+     13,
+     20
+    ],
+    "url": "https://www.gty.org/sermons/2319/church-that-christ-builds-the-part-2",
+    "date": ""
+   },
+   "2320": {
+    "t": "Offending Christ",
+    "book": "Matthew",
+    "ch": 16,
+    "v": [
+     21,
+     23
+    ],
+    "url": "https://www.gty.org/sermons/2320/offending-christ",
+    "date": ""
+   },
+   "2321": {
+    "t": "Winning by Losing: The Paradox of Discipleship",
+    "book": "Matthew",
+    "ch": 16,
+    "v": [
+     24,
+     28
+    ],
+    "url": "https://www.gty.org/sermons/2321/winning-by-losing-the-paradox-of-discipleship",
+    "date": ""
+   },
+   "2322": {
+    "t": "Preview of the Second Coming, Part 1",
+    "book": "Matthew",
+    "ch": 16,
+    "v": [
+     27,
+     28
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2322/preview-of-the-second-coming-part-1",
+    "date": ""
+   },
+   "2323": {
+    "t": "Preview of the Second Coming, Part 2",
+    "book": "Matthew",
+    "ch": 16,
+    "v": [
+     27,
+     28
+    ],
+    "url": "https://www.gty.org/sermons/2323/preview-of-the-second-coming-part-2",
+    "date": ""
+   },
+   "2324": {
+    "t": "Preview of the Second Coming, Part 3",
+    "book": "Matthew",
+    "ch": 17,
+    "v": [
+     1,
+     13
+    ],
+    "url": "https://www.gty.org/sermons/2324/preview-of-the-second-coming-part-3",
+    "date": ""
+   },
+   "2325": {
+    "t": "The Power of Faith",
+    "book": "Matthew",
+    "ch": 17,
+    "v": [
+     14,
+     21
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2325/the-power-of-faith",
+    "date": ""
+   },
+   "2326": {
+    "t": "The Believer as a Citizen",
+    "book": "Matthew",
+    "ch": 17,
+    "v": [
+     22,
+     27
+    ],
+    "url": "https://gty.org/library/sermons-library/2326",
+    "date": ""
+   },
+   "2327": {
+    "t": "Entering the Kingdom",
+    "book": "Matthew",
+    "ch": 18,
+    "v": [
+     1,
+     4
+    ],
+    "url": "https://www.gty.org/sermons/2327/entering-the-kingdom",
+    "date": ""
+   },
+   "2328": {
+    "t": "The Danger of Causing a Christian to Sin",
+    "book": "Matthew",
+    "ch": 18,
+    "v": [
+     5,
+     9
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2328/the-danger-of-causing-a-christian-to-sin",
+    "date": ""
+   },
+   "2329": {
+    "t": "The Care of God's Children",
+    "book": "Matthew",
+    "ch": 18,
+    "v": [
+     10,
+     14
+    ],
+    "url": "https://www.gty.org/sermons/2329/the-care-of-gods-children",
+    "date": ""
+   },
+   "2330": {
+    "t": "The Discipline of God's Children, Part 1",
+    "book": "Matthew",
+    "ch": 18,
+    "v": [
+     15,
+     20
+    ],
+    "url": "https://www.gty.org/sermons/2330/the-discipline-of-gods-children-part-1",
+    "date": ""
+   },
+   "2331": {
+    "t": "The Discipline of God's Children, Part 2",
+    "book": "Matthew",
+    "ch": 18,
+    "v": [
+     15,
+     20
+    ],
+    "url": "https://www.gty.org/sermons/2331/the-discipline-of-gods-children-part-2",
+    "date": ""
+   },
+   "2332": {
+    "t": "The Discipline of God's Children, Part 3",
+    "book": "Matthew",
+    "ch": 18,
+    "v": [
+     15,
+     20
+    ],
+    "url": "https://www.gty.org/sermons/2332/the-discipline-of-gods-children-part-3",
+    "date": ""
+   },
+   "2333": {
+    "t": "Learning to Forgive, Part 1",
+    "book": "Matthew",
+    "ch": 18,
+    "v": [
+     21,
+     35
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2333/learning-to-forgive-part-1",
+    "date": ""
+   },
+   "2334": {
+    "t": "Learning to Forgive, Part 2",
+    "book": "Matthew",
+    "ch": 18,
+    "v": [
+     21,
+     35
+    ],
+    "url": "https://gty.org/library/sermons-library/2334",
+    "date": ""
+   },
+   "2335": {
+    "t": "Learning to Forgive, Part 3",
+    "book": "Matthew",
+    "ch": 18,
+    "v": [
+     21,
+     35
+    ],
+    "url": "https://www.gty.org/sermons/2335/learning-to-forgive-part-3",
+    "date": ""
+   },
+   "2336": {
+    "t": "Jesus' Teaching on Divorce, Part 1",
+    "book": "Matthew",
+    "ch": 19,
+    "v": [
+     1,
+     12
+    ],
+    "url": "https://gty.org/library/sermons-library/2336",
+    "date": ""
+   },
+   "2337": {
+    "t": "Jesus' Teaching on Divorce, Part 2",
+    "book": "Matthew",
+    "ch": 19,
+    "v": [
+     3,
+     9
+    ],
+    "url": "https://www.gty.org/sermons/2337/jesus-teaching-on-divorce-part-2",
+    "date": ""
+   },
+   "2339": {
+    "t": "Jesus' Teaching on Divorce, Part 4",
+    "book": "Matthew",
+    "ch": 19,
+    "v": [
+     1,
+     12
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2339/jesus-teaching-on-divorce-part-4",
+    "date": ""
+   },
+   "2343": {
+    "t": "How to Obtain Eternal Life",
+    "book": "Matthew",
+    "ch": 19,
+    "v": [
+     16,
+     22
+    ],
+    "url": "https://gty.org/library/sermons-library/2343",
+    "date": ""
+   },
+   "2344": {
+    "t": "The Poverty of Riches/ The Riches of Poverty",
+    "book": "Matthew",
+    "ch": 19,
+    "v": [
+     23,
+     29
+    ],
+    "url": "https://www.gty.org/sermons/2344/the-poverty-of-riches-the-riches-of-poverty",
+    "date": ""
+   },
+   "2345": {
+    "t": "Equality in the Kingdom",
+    "book": "Matthew",
+    "ch": 19,
+    "v": [
+     27,
+     30
+    ],
+    "url": "https://www.gty.org/sermons/2345/equality-in-the-kingdom",
+    "date": ""
+   },
+   "2346": {
+    "t": "The Sufferings of Christ",
+    "book": "Matthew",
+    "ch": 20,
+    "v": [
+     17,
+     19
+    ],
+    "url": "https://www.gty.org/sermons/2346/the-sufferings-of-christ",
+    "date": ""
+   },
+   "2347": {
+    "t": "How to Be Great in the Kingdom, Part 1",
+    "book": "Matthew",
+    "ch": 20,
+    "v": [
+     20,
+     28
+    ],
+    "url": "https://www.gty.org/sermons/2347/how-to-be-great-in-the-kingdom-part-1",
+    "date": ""
+   },
+   "2348": {
+    "t": "How to Be Great in the Kingdom, Part 2",
+    "book": "Matthew",
+    "ch": 20,
+    "v": [
+     20,
+     28
+    ],
+    "url": "https://www.gty.org/sermons/2348/how-to-be-great-in-the-kingdom-part-2",
+    "date": ""
+   },
+   "2349": {
+    "t": "The Blind Who Saw",
+    "book": "Matthew",
+    "ch": 20,
+    "v": [
+     29,
+     34
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2349/the-blind-who-saw",
+    "date": ""
+   },
+   "2350": {
+    "t": "The Humble Coronation of Christ",
+    "book": "Matthew",
+    "ch": 21,
+    "v": [
+     1,
+     11
+    ],
+    "url": "https://www.gty.org/sermons/2350/the-humble-coronation-of-christ",
+    "date": ""
+   },
+   "2351": {
+    "t": "Purging the Perverted Temple",
+    "book": "Matthew",
+    "ch": 21,
+    "v": [
+     12,
+     17
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2351/purging-the-perverted-temple",
+    "date": ""
+   },
+   "2352": {
+    "t": "The Way of the Fig Tree: Promise Without Performance",
+    "date": "1983-12-04",
+    "book": "Matthew",
+    "ch": 21,
+    "v": [
+     18,
+     22
+    ],
+    "url": "https://gty.org/library/sermons-library/2352"
+   },
+   "2353": {
+    "t": "The Authority of Jesus",
+    "book": "Matthew",
+    "ch": 21,
+    "v": [
+     23,
+     32
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2353/the-authority-of-jesus",
+    "date": ""
+   },
+   "2354": {
+    "t": "Judgment on Christ's Rejectors",
+    "book": "Matthew",
+    "ch": 21,
+    "v": [
+     33,
+     46
+    ],
+    "url": "https://www.gty.org/sermons/2354/judgment-on-christs-rejectors",
+    "date": ""
+   },
+   "2355": {
+    "t": "Responding to a Royal Invitation",
+    "book": "Matthew",
+    "ch": 22,
+    "v": [
+     1,
+     14
+    ],
+    "url": "https://www.gty.org/sermons/2355/responding-to-a-royal-invitation",
+    "date": ""
+   },
+   "2356": {
+    "t": "Our Obligation to God and Government",
+    "book": "Matthew",
+    "ch": 22,
+    "v": [
+     15,
+     22
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2356/our-obligation-to-god-and-government",
+    "date": ""
+   },
+   "2357": {
+    "t": "The God of the Living",
+    "book": "Matthew",
+    "ch": 22,
+    "v": [
+     23,
+     33
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2357/the-god-of-the-living",
+    "date": ""
+   },
+   "2358": {
+    "t": "The Great Commandment",
+    "book": "Matthew",
+    "ch": 22,
+    "v": [
+     34,
+     40
+    ],
+    "url": "https://www.gty.org/sermons/2358/the-great-commandment",
+    "date": ""
+   },
+   "2359": {
+    "t": "Whose Son Is Christ?",
+    "book": "Matthew",
+    "ch": 22,
+    "v": [
+     41,
+     46
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2359/whose-son-is-christ",
+    "date": ""
+   },
+   "2361": {
+    "t": "The Characteristics of False Spiritual Leaders, Part 2",
+    "book": "Matthew",
+    "ch": 23,
+    "v": [
+     1,
+     12
+    ],
+    "url": "https://gty.org/library/sermons-library/2361/the-characteristics-of-false-spiritual-leaders-part-2",
+    "date": ""
+   },
+   "2362": {
+    "t": "The Condemnation of False Spiritual Leaders, Part 1",
+    "book": "Matthew",
+    "ch": 23,
+    "v": [
+     13,
+     15
+    ],
+    "url": "https://www.gty.org/sermons/2362/the-condemnation-of-false-spiritual-leaders-part-1",
+    "date": ""
+   },
+   "2363": {
+    "t": "The Condemnation of False Spiritual Leaders, Part 2",
+    "book": "Matthew",
+    "ch": 23,
+    "v": [
+     16,
+     33
+    ],
+    "url": "https://gty.org/library/sermons-library/2363",
+    "date": ""
+   },
+   "2364": {
+    "t": "Jesus' Last Words to Israel, Part 1",
+    "book": "Matthew",
+    "ch": 23,
+    "v": [
+     32,
+     36
+    ],
+    "url": "https://www.gty.org/sermons/2364/jesus-last-words-to-israel-part-1",
+    "date": ""
+   },
+   "2365": {
+    "t": "Jesus' Last Words to Israel, Part 2",
+    "book": "Matthew",
+    "ch": 23,
+    "v": [
+     37,
+     39
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2365/jesus-last-words-to-israel-part-2",
+    "date": ""
+   },
+   "2366": {
+    "t": "The Signs of Christ's Coming, Part 1",
+    "book": "Matthew",
+    "ch": 24,
+    "v": [
+     1,
+     3
+    ],
+    "url": "https://www.gty.org/sermons/2366/the-signs-of-christs-coming-part-1",
+    "date": ""
+   },
+   "2367": {
+    "t": "The Signs of Christ's Coming, Part 2",
+    "book": "Matthew",
+    "ch": 24,
+    "v": [
+     1,
+     14
+    ],
+    "url": "https://www.gty.org/sermons/2367/the-signs-of-christs-coming-part-2",
+    "date": ""
+   },
+   "2368": {
+    "t": "The Signs of Christ's Coming, Part 3",
+    "book": "Matthew",
+    "ch": 24,
+    "v": [
+     4,
+     14
+    ],
+    "url": "https://gty.org/library/sermons-library/2368",
+    "date": ""
+   },
+   "2369": {
+    "t": "The Abomination of Desolation",
+    "book": "Matthew",
+    "ch": 24,
+    "v": [
+     15,
+     15
+    ],
+    "url": "https://www.gty.org/sermons/2369/The-Abomination-of-Desolation",
+    "date": ""
+   },
+   "2370": {
+    "t": "Warnings of Coming Peril",
+    "book": "Matthew",
+    "ch": 24,
+    "v": [
+     16,
+     28
+    ],
+    "url": "https://www.gty.org/sermons/2370/warnings-of-coming-peril",
+    "date": ""
+   },
+   "2371": {
+    "t": "The Sign of the Son of Man",
+    "book": "Matthew",
+    "ch": 24,
+    "v": [
+     29,
+     31
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2371/the-sign-of-the-son-of-man",
+    "date": ""
+   },
+   "2372": {
+    "t": "Could Jesus Come Today?",
+    "book": "Matthew",
+    "ch": 24,
+    "v": [
+     32,
+     35
+    ],
+    "url": "https://www.gty.org/sermons/2372/could-jesus-come-today",
+    "date": "1984-07-08"
+   },
+   "2373": {
+    "t": "Ready or Not—Here I Come!, Part 1",
+    "book": "Matthew",
+    "ch": 24,
+    "v": [
+     36,
+     42
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2373/ready-or-nothere-i-come-part-1",
+    "date": "1984-07-15"
+   },
+   "2374": {
+    "t": "Ready or Not—Here I Come!, Part 2",
+    "book": "Matthew",
+    "ch": 24,
+    "v": [
+     36,
+     51
+    ],
+    "url": "https://www.gty.org/sermons/2374/ready-or-nothere-i-come-part-2",
+    "date": "1984-07-22"
+   },
+   "2375": {
+    "t": "The Fate of the Unprepared",
+    "date": "1984-07-29",
+    "book": "Matthew",
+    "ch": 25,
+    "v": [
+     1,
+     13
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2375/the-fate-of-the-unprepared"
+   },
+   "2376": {
+    "t": "The Tragedy of Wasted Opportunity, Part 1",
+    "date": "1984-08-05",
+    "book": "Matthew",
+    "ch": 25,
+    "v": [
+     14,
+     19
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2376/the-tragedy-of-wasted-opportunity-part-1"
+   },
+   "2377": {
+    "t": "The Tragedy of Wasted Opportunity, Part 2",
+    "date": "1984-08-12",
+    "book": "Matthew",
+    "ch": 25,
+    "v": [
+     19,
+     30
+    ],
+    "url": "https://www.gty.org/sermons/2377/the-tragedy-of-wasted-opportunity-part-2"
+   },
+   "2378": {
+    "t": "The Judgment of the Nations, Part 1",
+    "date": "1984-09-09",
+    "book": "Matthew",
+    "ch": 25,
+    "v": [
+     31,
+     32
+    ],
+    "url": "https://www.gty.org/sermons/2378/the-judgment-of-the-nations-part-1"
+   },
+   "2379": {
+    "t": "The Judgment of the Nations, Part 2",
+    "date": "1984-09-16",
+    "book": "Matthew",
+    "ch": 25,
+    "v": [
+     31,
+     32
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2379/the-judgment-of-the-nations-part-2"
+   },
+   "2380": {
+    "t": "The Judgment of the Nations, Part 3",
+    "date": "1984-09-23",
+    "book": "Matthew",
+    "ch": 25,
+    "v": [
+     31,
+     46
+    ],
+    "url": "https://www.gty.org/sermons/2380/the-judgment-of-the-nations-part-3"
+   },
+   "2381": {
+    "t": "Preparing For Christ's Death",
+    "date": "1984-11-11",
+    "book": "Matthew",
+    "ch": 26,
+    "v": [
+     1,
+     16
+    ],
+    "url": "https://www.gty.org/sermons/2381/preparing-for-christs-death"
+   },
+   "2383": {
+    "t": "The Last Passover, Part 2",
+    "date": "1984-11-25",
+    "book": "Matthew",
+    "ch": 26,
+    "v": [
+     20,
+     30
+    ],
+    "url": "https://www.gty.org/sermons/2383/the-last-passover-part-2"
+   },
+   "2384": {
+    "t": "Restoring Deserting Disciples",
+    "date": "1984-12-02",
+    "book": "Matthew",
+    "ch": 26,
+    "v": [
+     31,
+     35
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2384/restoring-deserting-disciples"
+   },
+   "2385": {
+    "t": "The Son in Sorrow, Part 1",
+    "date": "1984-12-09",
+    "book": "Matthew",
+    "ch": 26,
+    "v": [
+     36,
+     39
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2385/the-son-in-sorrow-part-1"
+   },
+   "2386": {
+    "t": "The Son in Sorrow, Part 2",
+    "date": "1984-12-16",
+    "book": "Matthew",
+    "ch": 26,
+    "v": [
+     40,
+     46
+    ],
+    "url": "https://www.gty.org/sermons/2386/the-son-in-sorrow-part-2"
+   },
+   "2387": {
+    "t": "The Traitor's Kiss, Part 1",
+    "date": "1984-12-30",
+    "book": "Matthew",
+    "ch": 26,
+    "v": [
+     47,
+     50
+    ],
+    "url": "https://gty.org/library/sermons-library/2387"
+   },
+   "2388": {
+    "t": "The Traitor's Kiss, Part 2",
+    "date": "1985-01-06",
+    "book": "Matthew",
+    "ch": 26,
+    "v": [
+     50,
+     56
+    ],
+    "url": "https://www.gty.org/sermons/2388/the-traitors-kiss-part-2"
+   },
+   "2389": {
+    "t": "The Illegal, Unjust Trials of Jesus, Part 1",
+    "date": "1985-01-13",
+    "book": "Matthew",
+    "ch": 26,
+    "v": [
+     57,
+     61
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2389/the-illegal-unjust-trials-of-jesus-part-1"
+   },
+   "2390": {
+    "t": "The Illegal, Unjust Trials of Jesus, Part 2",
+    "date": "1985-01-27",
+    "book": "Matthew",
+    "ch": 26,
+    "v": [
+     62,
+     68
+    ],
+    "url": "https://www.gty.org/sermons/2390/the-illegal-unjust-trials-of-jesus-part-2"
+   },
+   "2391": {
+    "t": "The Restoration of a Sinning Saint",
+    "date": "1985-02-03",
+    "book": "Matthew",
+    "ch": 26,
+    "v": [
+     58,
+     75
+    ],
+    "url": "https://www.gty.org/sermons/2391/the-restoration-of-a-sinning-saint"
+   },
+   "2392": {
+    "t": "The Traitor's Suicide",
+    "date": "1985-02-17",
+    "book": "Matthew",
+    "ch": 27,
+    "v": [
+     1,
+     10
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2392/the-traitors-suicide"
+   },
+   "2393": {
+    "t": "What Shall I Do with Jesus? Part 1",
+    "date": "1985-02-24",
+    "book": "Matthew",
+    "ch": 27,
+    "v": [
+     11,
+     18
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2393/"
+   },
+   "2394": {
+    "t": "What Shall I Do with Jesus? Part 2",
+    "date": "1985-03-03",
+    "book": "Matthew",
+    "ch": 27,
+    "v": [
+     19,
+     26
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2394/"
+   },
+   "2395": {
+    "t": "The Wickedness of the Crucifixion, Part 1",
+    "date": "1985-03-17",
+    "book": "Matthew",
+    "ch": 27,
+    "v": [
+     27,
+     37
+    ],
+    "url": "https://www.gty.org/sermons/2395/the-wickedness-of-the-crucifixion-part-1"
+   },
+   "2396": {
+    "t": "The Wickedness of the Crucifixion, Part 2",
+    "date": "1985-03-24",
+    "book": "Matthew",
+    "ch": 27,
+    "v": [
+     38,
+     44
+    ],
+    "url": "https://www.gty.org/sermons/2396/the-wickedness-of-the-crucifixion-part-2"
+   },
+   "2397": {
+    "t": "God's Miraculous Commentary on the Cross",
+    "date": "1985-04-07",
+    "book": "Matthew",
+    "ch": 27,
+    "v": [
+     45,
+     53
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2397"
+   },
+   "2398": {
+    "t": "Responses to the Death of Christ",
+    "date": "1985-04-14",
+    "book": "Matthew",
+    "ch": 27,
+    "v": [
+     54,
+     56
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2398"
+   },
+   "2399": {
+    "t": "The Amazing Burial of Jesus, Part 1",
+    "date": "1985-04-21",
+    "book": "Matthew",
+    "ch": 27,
+    "v": [
+     57,
+     61
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2399/the-amazing-burial-of-jesus-part-1"
+   },
+   "2400": {
+    "t": "The Amazing Burial of Jesus, Part 2",
+    "date": "1985-04-28",
+    "book": "Matthew",
+    "ch": 27,
+    "v": [
+     62,
+     66
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2400/the-amazing-burial-of-jesus-part-2"
+   },
+   "2403": {
+    "t": "The Lie that Proves the Resurrection",
+    "date": "1985-05-26",
+    "book": "Matthew",
+    "ch": 28,
+    "v": [
+     11,
+     15
+    ],
+    "url": "https://www.gty.org/sermons/2403/the-lie-that-proves-the-resurrection"
+   },
+   "2404": {
+    "t": "Making Disciples of All Nations, Part 1",
+    "date": "1985-06-02",
+    "book": "Matthew",
+    "ch": 28,
+    "v": [
+     16,
+     18
+    ],
+    "url": "https://www.gty.org/sermons/2404/making-disciples-of-all-nations-part-1"
+   },
+   "2405": {
+    "t": "Making Disciples of All Nations, Part 2",
+    "date": "1985-06-09",
+    "book": "Matthew",
+    "ch": 28,
+    "v": [
+     18,
+     20
+    ],
+    "url": "https://www.gty.org/sermons/2405/making-disciples-of-all-nations-part-2"
+   },
    "41-2": {
     "t": "The Herald of the New King",
     "date": "2009-03-22",
@@ -1311,83 +3269,6 @@
      43
     ],
     "url": "https://www.gty.org/sermons/41-25/The-Power-and-Pity-of-Jesus-Part-2"
-   },
-   "2180": {
-    "t": "The Gracious King",
-    "date": "1978-01-15",
-    "book": "Matthew",
-    "ch": 1,
-    "v": [
-     1,
-     17
-    ],
-    "url": "https://www.gty.org/sermons/2180/the-gracious-king"
-   },
-   "2181": {
-    "t": "The Virgin Birth",
-    "date": "1978-01-22",
-    "book": "Matthew",
-    "ch": 1,
-    "v": [
-     18,
-     25
-    ],
-    "url": "https://www.gty.org/sermons/2181/the-virgin-birth"
-   },
-   "2182": {
-    "t": "Who Were the Wise Men?",
-    "date": "1978-02-05",
-    "book": "Matthew",
-    "ch": 2,
-    "v": [
-     1,
-     1
-    ],
-    "url": "https://www.gty.org/sermons/2182/who-were-the-wise-men"
-   },
-   "2183": {
-    "t": "Fools and Wise Men, Part 1",
-    "date": "1978-02-12",
-    "book": "Matthew",
-    "ch": 2,
-    "v": [
-     1,
-     3
-    ],
-    "url": "https://www.gty.org/sermons/2183/fools-and-wise-men-part-1"
-   },
-   "2184": {
-    "t": "Fools and Wise Men, Part 2",
-    "date": "1978-02-19",
-    "book": "Matthew",
-    "ch": 2,
-    "v": [
-     4,
-     12
-    ],
-    "url": "https://www.gty.org/sermons/2184/fools-and-wise-men-part-2"
-   },
-   "2185": {
-    "t": "The King Fulfills Prophecy, Part 1",
-    "date": "1978-03-05",
-    "book": "Matthew",
-    "ch": 2,
-    "v": [
-     13,
-     15
-    ],
-    "url": "https://www.gty.org/sermons/2185/the-king-fulfills-prophecy-part-1"
-   },
-   "2186": {
-    "t": "The King Fulfills Prophecy, Part 2",
-    "date": "1978-03-12",
-    "book": "Matthew",
-    "ch": 2,
-    "v": [
-     16,
-     23
-    ],
-    "url": "https://www.gty.org/sermons/2186/the-king-fulfills-prophecy-part-2"
    },
    "41-66": {
     "t": "The Grim Reality of the Last Days",
@@ -1697,50 +3578,6 @@
     ],
     "url": "https://www.gty.org/resources/sermons/41-47"
    },
-   "2187": {
-    "t": "The Greatest Man",
-    "date": "1978-03-19",
-    "book": "Matthew",
-    "ch": 3,
-    "v": [
-     1,
-     6
-    ],
-    "url": "https://www.gty.org/sermons/2187/the-greatest-man"
-   },
-   "2188": {
-    "t": "The Fruits of True Repentance, Part 1",
-    "date": "1978-04-02",
-    "book": "Matthew",
-    "ch": 3,
-    "v": [
-     7,
-     10
-    ],
-    "url": "https://www.gty.org/sermons/2188/the-fruits-of-true-repentance-part-1"
-   },
-   "2189": {
-    "t": "The Fruits of True Repentance, Part 2",
-    "date": "1978-04-09",
-    "book": "Matthew",
-    "ch": 3,
-    "v": [
-     7,
-     12
-    ],
-    "url": "https://www.gty.org/sermons/2189/the-fruits-of-true-repentance-part-2"
-   },
-   "2190": {
-    "t": "The Commissioning of the King",
-    "date": "1978-05-07",
-    "book": "Matthew",
-    "ch": 3,
-    "v": [
-     13,
-     17
-    ],
-    "url": "https://www.gty.org/sermons/2190/the-commissioning-of-the-king"
-   },
    "41-48": {
     "t": "The Truth About Divorce, Part 1",
     "date": "",
@@ -2005,281 +3842,6 @@
     ],
     "url": "https://www.gty.org/sermons/SC12-1/confidence-in-gods-word-as-it-is-written"
    },
-   "2191": {
-    "t": "The Crisis of Temptation, Part 1",
-    "date": "1978-05-14",
-    "book": "Matthew",
-    "ch": 4,
-    "v": [
-     1,
-     2
-    ],
-    "url": "https://www.gty.org/sermons/2191/the-crisis-of-temptation-part-1"
-   },
-   "2192": {
-    "t": "The Crisis of Temptation, Part 2",
-    "book": "Matthew",
-    "ch": 4,
-    "v": [
-     1,
-     11
-    ],
-    "url": "https://www.gty.org/sermons/2192/the-crisis-of-temptation-part-2",
-    "date": ""
-   },
-   "2193": {
-    "t": "The Light Dawns, Part 1",
-    "book": "Matthew",
-    "ch": 4,
-    "v": [
-     12,
-     17
-    ],
-    "url": "https://www.gty.org/sermons/2193/the-light-dawns-part-1",
-    "date": ""
-   },
-   "2194": {
-    "t": "The Light Dawns, Part 2",
-    "book": "Matthew",
-    "ch": 4,
-    "v": [
-     12,
-     17
-    ],
-    "url": "https://www.gty.org/sermons/2194/the-light-dawns-part-2",
-    "date": ""
-   },
-   "2195": {
-    "t": "Fishing for Men",
-    "book": "Matthew",
-    "ch": 4,
-    "v": [
-     18,
-     22
-    ],
-    "url": "https://www.gty.org/sermons/2195/fishing-for-men",
-    "date": ""
-   },
-   "2196": {
-    "t": "The Healing Work of Jesus",
-    "book": "Matthew",
-    "ch": 4,
-    "v": [
-     23,
-     25
-    ],
-    "url": "https://www.gty.org/sermons/2196/the-healing-work-of-jesus",
-    "date": ""
-   },
-   "2197": {
-    "t": "Happiness Is...",
-    "book": "Matthew",
-    "ch": 5,
-    "v": [
-     1,
-     12
-    ],
-    "url": "https://www.gty.org/sermons/2197/happiness-is",
-    "date": ""
-   },
-   "2198": {
-    "t": "Happy Are the Humble",
-    "book": "Matthew",
-    "ch": 5,
-    "v": [
-     3,
-     3
-    ],
-    "url": "https://www.gty.org/sermons/2198/happy-are-the-humble",
-    "date": ""
-   },
-   "2201": {
-    "t": "Happy Are the Hungry",
-    "book": "Matthew",
-    "ch": 5,
-    "v": [
-     6,
-     6
-    ],
-    "url": "https://gty.org/library/sermons-library/2201",
-    "date": ""
-   },
-   "2202": {
-    "t": "Happy Are the Merciful",
-    "book": "Matthew",
-    "ch": 5,
-    "v": [
-     7,
-     7
-    ],
-    "url": "https://www.gty.org/sermons/2202/happy-are-the-merciful",
-    "date": ""
-   },
-   "2206": {
-    "t": "Happy are the Harassed, Part 2",
-    "book": "Matthew",
-    "ch": 5,
-    "v": [
-     10,
-     12
-    ],
-    "url": "https://www.gty.org/library/sermons-library/2206/happy-are-the-harassed-part-2",
-    "date": ""
-   },
-   "2207": {
-    "t": "You are the Salt of the Earth",
-    "book": "Matthew",
-    "ch": 5,
-    "v": [
-     13,
-     16
-    ],
-    "url": "https://www.gty.org/sermons/2207/you-are-the-salt-of-the-earth",
-    "date": ""
-   },
-   "2208": {
-    "t": "You Are the Light of the World",
-    "book": "Matthew",
-    "ch": 5,
-    "v": [
-     13,
-     16
-    ],
-    "url": "https://www.gty.org/sermons/2208/you-are-the-light-of-the-world",
-    "date": ""
-   },
-   "2212": {
-    "t": "Christ and the Law, Part 4",
-    "book": "Matthew",
-    "ch": 5,
-    "v": [
-     17,
-     20
-    ],
-    "url": "https://www.gty.org/library/sermons-library/2212/christ-and-the-law-part-4",
-    "date": ""
-   },
-   "2214": {
-    "t": "Who Is a Murderer?",
-    "book": "Matthew",
-    "ch": 5,
-    "v": [
-     21,
-     26
-    ],
-    "url": "https://www.gty.org/sermons/2214/who-is-a-murderer",
-    "date": ""
-   },
-   "2215": {
-    "t": "Who Is an Adulterer? Part 1",
-    "book": "Matthew",
-    "ch": 5,
-    "v": [
-     27,
-     30
-    ],
-    "url": "https://www.gty.org/library/sermons-library/2215/who-is-an-adulterer-part-1",
-    "date": ""
-   },
-   "2218": {
-    "t": "Divorce and Remarriage, Part 1",
-    "book": "Matthew",
-    "ch": 5,
-    "v": [
-     31,
-     32
-    ],
-    "url": "https://www.gty.org/library/sermons-library/2218/divorce-and-remarriage-part-1",
-    "date": ""
-   },
-   "2222": {
-    "t": "The Spiritual Credibility Gap",
-    "book": "Matthew",
-    "ch": 5,
-    "v": [
-     33,
-     37
-    ],
-    "url": "https://www.gty.org/sermons/2222/the-spiritual-credibility-gap",
-    "date": ""
-   },
-   "2223": {
-    "t": "An Eye for an Eye, Part 1",
-    "book": "Matthew",
-    "ch": 5,
-    "v": [
-     38,
-     42
-    ],
-    "url": "https://www.gty.org/sermons/2223/an-eye-for-an-eye-part-1",
-    "date": ""
-   },
-   "2226": {
-    "t": "Love Your Enemies, Part 2",
-    "book": "Matthew",
-    "ch": 5,
-    "v": [
-     43,
-     48
-    ],
-    "url": "https://gty.org/library/sermons-library/2226",
-    "date": ""
-   },
-   "2257": {
-    "t": "Jesus' Power over Disease, Part 1",
-    "date": "1980-10-19",
-    "book": "Matthew",
-    "ch": 8,
-    "v": [
-     1,
-     4
-    ],
-    "url": "https://www.gty.org/sermons/2257/jesus-power-over-disease-part-1"
-   },
-   "2258": {
-    "t": "Jesus' Power over Disease, Part 2",
-    "date": "1980-10-26",
-    "book": "Matthew",
-    "ch": 8,
-    "v": [
-     5,
-     15
-    ],
-    "url": "https://www.gty.org/sermons/2258/jesus-power-over-disease-part-2"
-   },
-   "2259": {
-    "t": "What Keeps Men from Christ?",
-    "date": "1980-11-02",
-    "book": "Matthew",
-    "ch": 8,
-    "v": [
-     16,
-     22
-    ],
-    "url": "https://www.gty.org/sermons/2259/what-keeps-men-from-christ"
-   },
-   "2260": {
-    "t": "Jesus' Power over the Natural",
-    "date": "1980-11-09",
-    "book": "Matthew",
-    "ch": 8,
-    "v": [
-     23,
-     27
-    ],
-    "url": "https://www.gty.org/sermons/2260/jesus-power-over-the-natural"
-   },
-   "2261": {
-    "t": "Jesus' Power over the Supernatural",
-    "date": "1980-11-16",
-    "book": "Matthew",
-    "ch": 8,
-    "v": [
-     28,
-     34
-    ],
-    "url": "https://www.gty.org/sermons/2261/jesus-power-over-the-supernatural"
-   },
    "41-60": {
     "t": "The Rejected Cornerstone",
     "date": "",
@@ -2346,380 +3908,6 @@
     ],
     "url": "https://www.gty.org/resources/sermons/41-65"
    },
-   "2262": {
-    "t": "Jesus' Power over Sin",
-    "date": "1980-11-23",
-    "book": "Matthew",
-    "ch": 9,
-    "v": [
-     1,
-     8
-    ],
-    "url": "https://gty.org/library/sermons-library/2262"
-   },
-   "2263": {
-    "t": "Receiving the Sinner/Refusing the Righteous, Part 1",
-    "date": "1980-11-30",
-    "book": "Matthew",
-    "ch": 9,
-    "v": [
-     9,
-     13
-    ],
-    "url": "https://www.gty.org/library/sermons-library/2263/receiving-the-sinnerrefusing-the-righteous-part-1"
-   },
-   "2264": {
-    "t": "Receiving the Sinner/Refusing the Righteous, Part 2",
-    "book": "Matthew",
-    "ch": 9,
-    "v": [
-     9,
-     17
-    ],
-    "url": "https://gty.org/library/sermons-library/2264/receiving-the-sinnerrefusing-the-righteous-part-2",
-    "date": ""
-   },
-   "2265": {
-    "t": "Jesus' Power over Death, Part 1",
-    "book": "Matthew",
-    "ch": 9,
-    "v": [
-     18,
-     26
-    ],
-    "url": "https://www.gty.org/sermons/2265/jesus-power-over-death-part-1",
-    "date": ""
-   },
-   "2266": {
-    "t": "Jesus' Power over Death, Part 2",
-    "book": "Matthew",
-    "ch": 9,
-    "v": [
-     18,
-     26
-    ],
-    "url": "https://www.gty.org/sermons/2266/jesus-power-over-death-part-2",
-    "date": ""
-   },
-   "2271": {
-    "t": "Peter: A Lesson in Leadership",
-    "book": "Matthew",
-    "ch": 10,
-    "v": [
-     1,
-     4
-    ],
-    "url": "https://gty.org/library/sermons-library/2271",
-    "date": ""
-   },
-   "2277": {
-    "t": "Principles for an Effective Missionary, Part 1",
-    "date": "1981-06-07",
-    "book": "Matthew",
-    "ch": 10,
-    "v": [
-     5,
-     7
-    ],
-    "url": "https://www.gty.org/sermons/2277/principles-for-an-effective-missionary-part-1"
-   },
-   "2278": {
-    "t": "Principles for an Effective Missionary, Part 2",
-    "date": "1981-06-14",
-    "book": "Matthew",
-    "ch": 10,
-    "v": [
-     8,
-     15
-    ],
-    "url": "https://www.gty.org/sermons/2278/principles-for-an-effective-missionary-part-2"
-   },
-   "2279": {
-    "t": "Sheep Among Wolves, Part 1",
-    "date": "1981-06-21",
-    "book": "Matthew",
-    "ch": 10,
-    "v": [
-     16,
-     23
-    ],
-    "url": "https://www.gty.org/sermons/2279/sheep-among-wolves-part-1"
-   },
-   "2280": {
-    "t": "Sheep Among Wolves, Part 2",
-    "date": "1981-06-28",
-    "book": "Matthew",
-    "ch": 10,
-    "v": [
-     16,
-     23
-    ],
-    "url": "https://www.gty.org/library/sermons-library/2280/sheep-among-wolves-part-2"
-   },
-   "2281": {
-    "t": "Christlikeness: The Goal of Discipleship",
-    "date": "1981-07-05",
-    "book": "Matthew",
-    "ch": 10,
-    "v": [
-     24,
-     25
-    ],
-    "url": "https://gty.org/library/sermons-library/2281"
-   },
-   "2282": {
-    "t": "The Hallmarks of Discipleship, Part 1",
-    "date": "1981-07-12",
-    "book": "Matthew",
-    "ch": 10,
-    "v": [
-     26,
-     31
-    ],
-    "url": "https://www.gty.org/sermons/2282/the-hallmarks-of-discipleship-part-1"
-   },
-   "2284": {
-    "t": "The Hallmarks of Discipleship, Part 3",
-    "date": "1981-08-30",
-    "book": "Matthew",
-    "ch": 10,
-    "v": [
-     34,
-     42
-    ],
-    "url": "https://www.gty.org/library/sermons-library/2284/the-hallmarks-of-discipleship-part-3"
-   },
-   "2285": {
-    "t": "Solving the Problem of Doubt",
-    "date": "1981-09-06",
-    "book": "Matthew",
-    "ch": 11,
-    "v": [
-     1,
-     6
-    ],
-    "url": "https://www.gty.org/library/sermons-library/2285/solving-the-problem-of-doubt"
-   },
-   "2286": {
-    "t": "True Greatness",
-    "date": "1981-09-13",
-    "book": "Matthew",
-    "ch": 11,
-    "v": [
-     7,
-     15
-    ],
-    "url": "https://www.gty.org/library/sermons-library/2286/true-greatness"
-   },
-   "2287": {
-    "t": "Treating Christ with Criticism and Indifference",
-    "date": "1981-09-20",
-    "book": "Matthew",
-    "ch": 11,
-    "v": [
-     16,
-     24
-    ],
-    "url": "https://www.gty.org/sermons/2287/treating-christ-with-criticism-and-indifference"
-   },
-   "2288": {
-    "t": "Jesus' Personal Invitation, Part 1",
-    "book": "Matthew",
-    "ch": 11,
-    "v": [
-     25,
-     30
-    ],
-    "url": "https://www.gty.org/sermons/2288/jesus-personal-invitation-part-1",
-    "date": ""
-   },
-   "2289": {
-    "t": "Jesus' Personal Invitation, Part 2",
-    "book": "Matthew",
-    "ch": 11,
-    "v": [
-     25,
-     30
-    ],
-    "url": "https://www.gty.org/sermons/2289/jesus-personal-invitation-part-2",
-    "date": ""
-   },
-   "2290": {
-    "t": "The Lord of the Sabbath",
-    "book": "Matthew",
-    "ch": 12,
-    "v": [
-     1,
-     14
-    ],
-    "url": "https://www.gty.org/sermons/2290/the-lord-of-the-sabbath",
-    "date": ""
-   },
-   "2291": {
-    "t": "God's Beloved Servant",
-    "book": "Matthew",
-    "ch": 12,
-    "v": [
-     14,
-     21
-    ],
-    "url": "https://www.gty.org/sermons/2291/gods-beloved-servant",
-    "date": ""
-   },
-   "2292": {
-    "t": "Blaspheming the Holy Spirit, Part 1",
-    "book": "Matthew",
-    "ch": 12,
-    "v": [
-     22,
-     30
-    ],
-    "url": "https://www.gty.org/sermons/2292/blaspheming-the-holy-spirit-part-1",
-    "date": ""
-   },
-   "2293": {
-    "t": "Blaspheming the Holy Spirit, Part 2",
-    "book": "Matthew",
-    "ch": 12,
-    "v": [
-     22,
-     32
-    ],
-    "url": "https://www.gty.org/sermons/2293/blaspheming-the-holy-spirit-part-2",
-    "date": ""
-   },
-   "2294": {
-    "t": "Exposing the Truth About Men's Hearts",
-    "book": "Matthew",
-    "ch": 12,
-    "v": [
-     33,
-     37
-    ],
-    "url": "https://www.gty.org/sermons/2294/exposing-the-truth-about-mens-hearts",
-    "date": ""
-   },
-   "2295": {
-    "t": "Judgment on the Rejectors of Christ",
-    "book": "Matthew",
-    "ch": 12,
-    "v": [
-     38,
-     42
-    ],
-    "url": "https://www.gty.org/sermons/2295/judgment-on-the-rejectors-of-christ",
-    "date": ""
-   },
-   "2296": {
-    "t": "Reformation vs. Relationship",
-    "book": "Matthew",
-    "ch": 12,
-    "v": [
-     43,
-     50
-    ],
-    "url": "https://www.gty.org/sermons/2296/reformation-vs-relationship",
-    "date": ""
-   },
-   "2315": {
-    "t": "Dealing with Spiritual Blindness, Part 1",
-    "book": "Matthew",
-    "ch": 16,
-    "v": [
-     1,
-     4
-    ],
-    "url": "https://www.gty.org/sermons/2315/dealing-with-spiritual-blindness-part-1",
-    "date": ""
-   },
-   "2316": {
-    "t": "Dealing with Spiritual Blindness, Part 2",
-    "book": "Matthew",
-    "ch": 16,
-    "v": [
-     1,
-     12
-    ],
-    "url": "https://www.gty.org/sermons/2316/dealing-with-spiritual-blindness-part-2",
-    "date": ""
-   },
-   "2317": {
-    "t": "The Supreme Confession",
-    "book": "Matthew",
-    "ch": 16,
-    "v": [
-     13,
-     17
-    ],
-    "url": "https://www.gty.org/sermons/2317/the-supreme-confession",
-    "date": ""
-   },
-   "2318": {
-    "t": "The Church that Christ Builds, Part 1",
-    "book": "Matthew",
-    "ch": 16,
-    "v": [
-     13,
-     20
-    ],
-    "url": "https://www.gty.org/library/sermons-library/2318/church-that-christ-builds-the-part-1",
-    "date": ""
-   },
-   "2319": {
-    "t": "The Church that Christ Builds, Part 2",
-    "book": "Matthew",
-    "ch": 16,
-    "v": [
-     13,
-     20
-    ],
-    "url": "https://www.gty.org/sermons/2319/church-that-christ-builds-the-part-2",
-    "date": ""
-   },
-   "2320": {
-    "t": "Offending Christ",
-    "book": "Matthew",
-    "ch": 16,
-    "v": [
-     21,
-     23
-    ],
-    "url": "https://www.gty.org/sermons/2320/offending-christ",
-    "date": ""
-   },
-   "2321": {
-    "t": "Winning by Losing: The Paradox of Discipleship",
-    "book": "Matthew",
-    "ch": 16,
-    "v": [
-     24,
-     28
-    ],
-    "url": "https://www.gty.org/sermons/2321/winning-by-losing-the-paradox-of-discipleship",
-    "date": ""
-   },
-   "2322": {
-    "t": "Preview of the Second Coming, Part 1",
-    "book": "Matthew",
-    "ch": 16,
-    "v": [
-     27,
-     28
-    ],
-    "url": "https://www.gty.org/library/sermons-library/2322/preview-of-the-second-coming-part-1",
-    "date": ""
-   },
-   "2323": {
-    "t": "Preview of the Second Coming, Part 2",
-    "book": "Matthew",
-    "ch": 16,
-    "v": [
-     27,
-     28
-    ],
-    "url": "https://www.gty.org/sermons/2323/preview-of-the-second-coming-part-2",
-    "date": ""
-   },
    "2322@17": {
     "t": "Preview of the Second Coming, Part 1",
     "book": "Matthew",
@@ -2742,380 +3930,6 @@
     "url": "https://www.gty.org/sermons/2323/preview-of-the-second-coming-part-2",
     "date": ""
    },
-   "2324": {
-    "t": "Preview of the Second Coming, Part 3",
-    "book": "Matthew",
-    "ch": 17,
-    "v": [
-     1,
-     13
-    ],
-    "url": "https://www.gty.org/sermons/2324/preview-of-the-second-coming-part-3",
-    "date": ""
-   },
-   "2325": {
-    "t": "The Power of Faith",
-    "book": "Matthew",
-    "ch": 17,
-    "v": [
-     14,
-     21
-    ],
-    "url": "https://www.gty.org/library/sermons-library/2325/the-power-of-faith",
-    "date": ""
-   },
-   "2326": {
-    "t": "The Believer as a Citizen",
-    "book": "Matthew",
-    "ch": 17,
-    "v": [
-     22,
-     27
-    ],
-    "url": "https://gty.org/library/sermons-library/2326",
-    "date": ""
-   },
-   "2228": {
-    "t": "Beware of Hypocrisy",
-    "book": "Matthew",
-    "ch": 6,
-    "v": [
-     1,
-     18
-    ],
-    "url": "https://www.gty.org/sermons/2228/beware-of-hypocrisy",
-    "date": ""
-   },
-   "2229": {
-    "t": "Giving Without Hypocrisy",
-    "book": "Matthew",
-    "ch": 6,
-    "v": [
-     2,
-     4
-    ],
-    "url": "https://www.gty.org/sermons/2229/giving-without-hypocrisy",
-    "date": ""
-   },
-   "2230": {
-    "t": "Praying Without Hypocrisy",
-    "book": "Matthew",
-    "ch": 6,
-    "v": [
-     5,
-     8
-    ],
-    "url": "https://www.gty.org/library/sermons-library/2230/praying-without-hypocrisy",
-    "date": ""
-   },
-   "2234": {
-    "t": "The Paternity of Prayer",
-    "book": "Matthew",
-    "ch": 6,
-    "v": [
-     9,
-     15
-    ],
-    "url": "https://www.gty.org/sermons/2234/the-paternity-of-prayer",
-    "date": ""
-   },
-   "2239": {
-    "t": "The Provision of Prayer, Part 1",
-    "book": "Matthew",
-    "ch": 6,
-    "v": [
-     9,
-     13
-    ],
-    "url": "https://www.gty.org/sermons/2239/the-provision-of-prayer-part-1",
-    "date": ""
-   },
-   "2242": {
-    "t": "The Pardon of Prayer, Part 2",
-    "book": "Matthew",
-    "ch": 6,
-    "v": [
-     9,
-     15
-    ],
-    "url": "https://www.gty.org/sermons/2242/the-pardon-of-prayer-part-2",
-    "date": ""
-   },
-   "2244": {
-    "t": "The Protection of Prayer",
-    "book": "Matthew",
-    "ch": 6,
-    "v": [
-     9,
-     13
-    ],
-    "url": "https://www.gty.org/sermons/2244/the-protection-of-prayer",
-    "date": ""
-   },
-   "2231": {
-    "t": "Fasting Without Hypocrisy, Part 1",
-    "book": "Matthew",
-    "ch": 6,
-    "v": [
-     16,
-     18
-    ],
-    "url": "https://www.gty.org/library/sermons-library/2231/fasting-without-hypocrisy-part-1",
-    "date": ""
-   },
-   "2246": {
-    "t": "Treasures in Heaven, Part 2",
-    "book": "Matthew",
-    "ch": 6,
-    "v": [
-     19,
-     24
-    ],
-    "url": "https://www.gty.org/sermons/2246/treasures-in-heaven-part-2",
-    "date": ""
-   },
-   "2248": {
-    "t": "Overcoming Financial Worry, Part 1",
-    "book": "Matthew",
-    "ch": 6,
-    "v": [
-     25,
-     34
-    ],
-    "url": "https://www.gty.org/library/sermons-library/2248/overcoming-financial-worry-part-1",
-    "date": ""
-   },
-   "2250": {
-    "t": "Stop Criticizing",
-    "book": "Matthew",
-    "ch": 7,
-    "v": [
-     1,
-     6
-    ],
-    "url": "https://www.gty.org/sermons/2250/stop-criticizing",
-    "date": ""
-   },
-   "2251": {
-    "t": "Start Loving",
-    "book": "Matthew",
-    "ch": 7,
-    "v": [
-     7,
-     12
-    ],
-    "url": "https://www.gty.org/library/sermons-library/2251/start-loving",
-    "date": ""
-   },
-   "2252": {
-    "t": "Which Way to Heaven?",
-    "book": "Matthew",
-    "ch": 7,
-    "v": [
-     13,
-     14
-    ],
-    "url": "https://www.gty.org/library/sermons-library/2252/which-way-to-heaven",
-    "date": ""
-   },
-   "2253": {
-    "t": "Beware of False Prophets, Part 1",
-    "book": "Matthew",
-    "ch": 7,
-    "v": [
-     15,
-     20
-    ],
-    "url": "https://www.gty.org/sermons/2253/beware-of-false-prophets-part-1",
-    "date": ""
-   },
-   "2255": {
-    "t": "Empty Words",
-    "book": "Matthew",
-    "ch": 7,
-    "v": [
-     21,
-     23
-    ],
-    "url": "https://gty.org/library/sermons-library/2255",
-    "date": ""
-   },
-   "2256": {
-    "t": "Empty Hearts",
-    "book": "Matthew",
-    "ch": 7,
-    "v": [
-     24,
-     29
-    ],
-    "url": "https://www.gty.org/sermons/2256/empty-hearts",
-    "date": ""
-   },
-   "2297": {
-    "t": "Kingdom Parables, Part 1",
-    "book": "Matthew",
-    "ch": 13,
-    "v": [
-     1,
-     3
-    ],
-    "url": "https://www.gty.org/resources/study-guides/print/2297/kingdom-parables-part-1",
-    "date": ""
-   },
-   "2298": {
-    "t": "Kingdom Parables, Part 2",
-    "book": "Matthew",
-    "ch": 13,
-    "v": [
-     1,
-     50
-    ],
-    "url": "https://www.gty.org/resources/study-guides/print/2298/kingdom-parables-part-2",
-    "date": ""
-   },
-   "2299": {
-    "t": "The Responses to the Gospel",
-    "book": "Matthew",
-    "ch": 13,
-    "v": [
-     3,
-     23
-    ],
-    "url": "https://www.gty.org/sermons/2299/the-responses-to-the-gospel",
-    "date": ""
-   },
-   "2300": {
-    "t": "The Kingdom and the World",
-    "book": "Matthew",
-    "ch": 13,
-    "v": [
-     24,
-     43
-    ],
-    "url": "https://www.gty.org/sermons/2300/the-kingdom-and-the-world",
-    "date": ""
-   },
-   "2301": {
-    "t": "The Power and Influence of Christ's Kingdom, Part 1",
-    "book": "Matthew",
-    "ch": 13,
-    "v": [
-     31,
-     32
-    ],
-    "url": "https://www.gty.org/sermons/2301/the-power-and-influence-of-christs-kingdom-part-1",
-    "date": ""
-   },
-   "2302": {
-    "t": "The Power and Influence of Christ's Kingdom, Part 2",
-    "book": "Matthew",
-    "ch": 13,
-    "v": [
-     31,
-     33
-    ],
-    "url": "https://www.gty.org/sermons/2302/the-power-and-influence-of-christs-kingdom-part-2",
-    "date": ""
-   },
-   "2303": {
-    "t": "Entering the Kingdom",
-    "book": "Matthew",
-    "ch": 13,
-    "v": [
-     44,
-     46
-    ],
-    "url": "https://www.gty.org/library/sermons-library/2303/entering-the-kingdom",
-    "date": ""
-   },
-   "2304": {
-    "t": "The Furnace of Fire",
-    "book": "Matthew",
-    "ch": 13,
-    "v": [
-     47,
-     52
-    ],
-    "url": "https://www.gty.org/library/sermons-library/2304/the-furnace-of-fire",
-    "date": ""
-   },
-   "2305": {
-    "t": "The Power of Unbelief, Part 1",
-    "book": "Matthew",
-    "ch": 13,
-    "v": [
-     53,
-     58
-    ],
-    "url": "https://www.gty.org/sermons/2305/the-power-of-unbelief-part-1",
-    "date": ""
-   },
-   "2306": {
-    "t": "The Power of Unbelief, Part 2",
-    "book": "Matthew",
-    "ch": 13,
-    "v": [
-     53,
-     58
-    ],
-    "url": "https://www.gty.org/library/sermons-library/2306/the-power-of-unbelief-part-2",
-    "date": ""
-   },
-   "2307": {
-    "t": "Fear that Forfeits Christ",
-    "book": "Matthew",
-    "ch": 14,
-    "v": [
-     1,
-     13
-    ],
-    "url": "https://www.gty.org/library/sermons-library/2307/fear-that-forfeits-christ",
-    "date": ""
-   },
-   "2308": {
-    "t": "The Miraculous Feeding",
-    "book": "Matthew",
-    "ch": 14,
-    "v": [
-     13,
-     22
-    ],
-    "url": "https://www.gty.org/library/sermons-library/2308/the-miraculous-feeding",
-    "date": ""
-   },
-   "2309": {
-    "t": "Worshiping the Son of God, Part 1",
-    "book": "Matthew",
-    "ch": 14,
-    "v": [
-     22,
-     33
-    ],
-    "url": "https://www.gty.org/sermons/2309/worshiping-the-son-of-god-part-1",
-    "date": ""
-   },
-   "2310": {
-    "t": "Worshiping the Son of God, Part 2",
-    "book": "Matthew",
-    "ch": 14,
-    "v": [
-     22,
-     33
-    ],
-    "url": "https://www.gty.org/sermons/2310/worshiping-the-son-of-god-part-2",
-    "date": ""
-   },
-   "2311": {
-    "t": "Confusing Man's Traditions with God's Commandments, Part 1",
-    "book": "Matthew",
-    "ch": 14,
-    "v": [
-     34,
-     36
-    ],
-    "url": "https://www.gty.org/sermons/2311/confusing-mans-traditions-with-gods-commandments-part-1",
-    "date": ""
-   },
    "2311@15": {
     "t": "Confusing Man's Traditions with God's Commandments, Part 1",
     "book": "Matthew",
@@ -3127,358 +3941,6 @@
     "url": "https://www.gty.org/sermons/2311/confusing-mans-traditions-with-gods-commandments-part-1",
     "date": ""
    },
-   "2312": {
-    "t": "Confusing Man's Traditions with God's Commandments, Part 2",
-    "book": "Matthew",
-    "ch": 15,
-    "v": [
-     10,
-     20
-    ],
-    "url": "https://www.gty.org/sermons/2312/confusing-mans-traditions-with-gods-commandments-part-2",
-    "date": ""
-   },
-   "2313": {
-    "t": "The Quality of Great Faith",
-    "book": "Matthew",
-    "ch": 15,
-    "v": [
-     21,
-     28
-    ],
-    "url": "https://www.gty.org/sermons/2313/the-quality-of-great-faith",
-    "date": ""
-   },
-   "2314": {
-    "t": "Compassion for the Outsiders",
-    "book": "Matthew",
-    "ch": 15,
-    "v": [
-     29,
-     39
-    ],
-    "url": "https://www.gty.org/sermons/2314/compassion-for-the-outsiders",
-    "date": ""
-   },
-   "2327": {
-    "t": "Entering the Kingdom",
-    "book": "Matthew",
-    "ch": 18,
-    "v": [
-     1,
-     4
-    ],
-    "url": "https://www.gty.org/sermons/2327/entering-the-kingdom",
-    "date": ""
-   },
-   "2328": {
-    "t": "The Danger of Causing a Christian to Sin",
-    "book": "Matthew",
-    "ch": 18,
-    "v": [
-     5,
-     9
-    ],
-    "url": "https://www.gty.org/library/sermons-library/2328/the-danger-of-causing-a-christian-to-sin",
-    "date": ""
-   },
-   "2329": {
-    "t": "The Care of God's Children",
-    "book": "Matthew",
-    "ch": 18,
-    "v": [
-     10,
-     14
-    ],
-    "url": "https://www.gty.org/sermons/2329/the-care-of-gods-children",
-    "date": ""
-   },
-   "2330": {
-    "t": "The Discipline of God's Children, Part 1",
-    "book": "Matthew",
-    "ch": 18,
-    "v": [
-     15,
-     20
-    ],
-    "url": "https://www.gty.org/sermons/2330/the-discipline-of-gods-children-part-1",
-    "date": ""
-   },
-   "2331": {
-    "t": "The Discipline of God's Children, Part 2",
-    "book": "Matthew",
-    "ch": 18,
-    "v": [
-     15,
-     20
-    ],
-    "url": "https://www.gty.org/sermons/2331/the-discipline-of-gods-children-part-2",
-    "date": ""
-   },
-   "2332": {
-    "t": "The Discipline of God's Children, Part 3",
-    "book": "Matthew",
-    "ch": 18,
-    "v": [
-     15,
-     20
-    ],
-    "url": "https://www.gty.org/sermons/2332/the-discipline-of-gods-children-part-3",
-    "date": ""
-   },
-   "2333": {
-    "t": "Learning to Forgive, Part 1",
-    "book": "Matthew",
-    "ch": 18,
-    "v": [
-     21,
-     35
-    ],
-    "url": "https://www.gty.org/library/sermons-library/2333/learning-to-forgive-part-1",
-    "date": ""
-   },
-   "2334": {
-    "t": "Learning to Forgive, Part 2",
-    "book": "Matthew",
-    "ch": 18,
-    "v": [
-     21,
-     35
-    ],
-    "url": "https://gty.org/library/sermons-library/2334",
-    "date": ""
-   },
-   "2335": {
-    "t": "Learning to Forgive, Part 3",
-    "book": "Matthew",
-    "ch": 18,
-    "v": [
-     21,
-     35
-    ],
-    "url": "https://www.gty.org/sermons/2335/learning-to-forgive-part-3",
-    "date": ""
-   },
-   "2336": {
-    "t": "Jesus' Teaching on Divorce, Part 1",
-    "book": "Matthew",
-    "ch": 19,
-    "v": [
-     1,
-     12
-    ],
-    "url": "https://gty.org/library/sermons-library/2336",
-    "date": ""
-   },
-   "2337": {
-    "t": "Jesus' Teaching on Divorce, Part 2",
-    "book": "Matthew",
-    "ch": 19,
-    "v": [
-     3,
-     9
-    ],
-    "url": "https://www.gty.org/sermons/2337/jesus-teaching-on-divorce-part-2",
-    "date": ""
-   },
-   "2339": {
-    "t": "Jesus' Teaching on Divorce, Part 4",
-    "book": "Matthew",
-    "ch": 19,
-    "v": [
-     1,
-     12
-    ],
-    "url": "https://www.gty.org/library/sermons-library/2339/jesus-teaching-on-divorce-part-4",
-    "date": ""
-   },
-   "2343": {
-    "t": "How to Obtain Eternal Life",
-    "book": "Matthew",
-    "ch": 19,
-    "v": [
-     16,
-     22
-    ],
-    "url": "https://gty.org/library/sermons-library/2343",
-    "date": ""
-   },
-   "2344": {
-    "t": "The Poverty of Riches/ The Riches of Poverty",
-    "book": "Matthew",
-    "ch": 19,
-    "v": [
-     23,
-     29
-    ],
-    "url": "https://www.gty.org/sermons/2344/the-poverty-of-riches-the-riches-of-poverty",
-    "date": ""
-   },
-   "2345": {
-    "t": "Equality in the Kingdom",
-    "book": "Matthew",
-    "ch": 19,
-    "v": [
-     27,
-     30
-    ],
-    "url": "https://www.gty.org/sermons/2345/equality-in-the-kingdom",
-    "date": ""
-   },
-   "2350": {
-    "t": "The Humble Coronation of Christ",
-    "book": "Matthew",
-    "ch": 21,
-    "v": [
-     1,
-     11
-    ],
-    "url": "https://www.gty.org/sermons/2350/the-humble-coronation-of-christ",
-    "date": ""
-   },
-   "2351": {
-    "t": "Purging the Perverted Temple",
-    "book": "Matthew",
-    "ch": 21,
-    "v": [
-     12,
-     17
-    ],
-    "url": "https://www.gty.org/library/sermons-library/2351/purging-the-perverted-temple",
-    "date": ""
-   },
-   "2352": {
-    "t": "The Way of the Fig Tree: Promise Without Performance",
-    "date": "1983-12-04",
-    "book": "Matthew",
-    "ch": 21,
-    "v": [
-     18,
-     22
-    ],
-    "url": "https://gty.org/library/sermons-library/2352"
-   },
-   "2353": {
-    "t": "The Authority of Jesus",
-    "book": "Matthew",
-    "ch": 21,
-    "v": [
-     23,
-     32
-    ],
-    "url": "https://www.gty.org/library/sermons-library/2353/the-authority-of-jesus",
-    "date": ""
-   },
-   "2354": {
-    "t": "Judgment on Christ's Rejectors",
-    "book": "Matthew",
-    "ch": 21,
-    "v": [
-     33,
-     46
-    ],
-    "url": "https://www.gty.org/sermons/2354/judgment-on-christs-rejectors",
-    "date": ""
-   },
-   "2366": {
-    "t": "The Signs of Christ's Coming, Part 1",
-    "book": "Matthew",
-    "ch": 24,
-    "v": [
-     1,
-     3
-    ],
-    "url": "https://www.gty.org/sermons/2366/the-signs-of-christs-coming-part-1",
-    "date": ""
-   },
-   "2367": {
-    "t": "The Signs of Christ's Coming, Part 2",
-    "book": "Matthew",
-    "ch": 24,
-    "v": [
-     1,
-     14
-    ],
-    "url": "https://www.gty.org/sermons/2367/the-signs-of-christs-coming-part-2",
-    "date": ""
-   },
-   "2368": {
-    "t": "The Signs of Christ's Coming, Part 3",
-    "book": "Matthew",
-    "ch": 24,
-    "v": [
-     4,
-     14
-    ],
-    "url": "https://gty.org/library/sermons-library/2368",
-    "date": ""
-   },
-   "2369": {
-    "t": "The Abomination of Desolation",
-    "book": "Matthew",
-    "ch": 24,
-    "v": [
-     15,
-     15
-    ],
-    "url": "https://www.gty.org/sermons/2369/The-Abomination-of-Desolation",
-    "date": ""
-   },
-   "2370": {
-    "t": "Warnings of Coming Peril",
-    "book": "Matthew",
-    "ch": 24,
-    "v": [
-     16,
-     28
-    ],
-    "url": "https://www.gty.org/sermons/2370/warnings-of-coming-peril",
-    "date": ""
-   },
-   "2371": {
-    "t": "The Sign of the Son of Man",
-    "book": "Matthew",
-    "ch": 24,
-    "v": [
-     29,
-     31
-    ],
-    "url": "https://www.gty.org/library/sermons-library/2371/the-sign-of-the-son-of-man",
-    "date": ""
-   },
-   "2372": {
-    "t": "Could Jesus Come Today?",
-    "book": "Matthew",
-    "ch": 24,
-    "v": [
-     32,
-     35
-    ],
-    "url": "https://www.gty.org/sermons/2372/could-jesus-come-today",
-    "date": "1984-07-08"
-   },
-   "2373": {
-    "t": "Ready or Not—Here I Come!, Part 1",
-    "book": "Matthew",
-    "ch": 24,
-    "v": [
-     36,
-     42
-    ],
-    "url": "https://www.gty.org/library/sermons-library/2373/ready-or-nothere-i-come-part-1",
-    "date": "1984-07-15"
-   },
-   "2374": {
-    "t": "Ready or Not—Here I Come!, Part 2",
-    "book": "Matthew",
-    "ch": 24,
-    "v": [
-     36,
-     51
-    ],
-    "url": "https://www.gty.org/sermons/2374/ready-or-nothere-i-come-part-2",
-    "date": "1984-07-22"
-   },
    "2345@20": {
     "t": "Equality in the Kingdom",
     "book": "Matthew",
@@ -3488,226 +3950,6 @@
      16
     ],
     "url": "https://www.gty.org/sermons/2345/equality-in-the-kingdom",
-    "date": ""
-   },
-   "2346": {
-    "t": "The Sufferings of Christ",
-    "book": "Matthew",
-    "ch": 20,
-    "v": [
-     17,
-     19
-    ],
-    "url": "https://www.gty.org/sermons/2346/the-sufferings-of-christ",
-    "date": ""
-   },
-   "2347": {
-    "t": "How to Be Great in the Kingdom, Part 1",
-    "book": "Matthew",
-    "ch": 20,
-    "v": [
-     20,
-     28
-    ],
-    "url": "https://www.gty.org/sermons/2347/how-to-be-great-in-the-kingdom-part-1",
-    "date": ""
-   },
-   "2348": {
-    "t": "How to Be Great in the Kingdom, Part 2",
-    "book": "Matthew",
-    "ch": 20,
-    "v": [
-     20,
-     28
-    ],
-    "url": "https://www.gty.org/sermons/2348/how-to-be-great-in-the-kingdom-part-2",
-    "date": ""
-   },
-   "2349": {
-    "t": "The Blind Who Saw",
-    "book": "Matthew",
-    "ch": 20,
-    "v": [
-     29,
-     34
-    ],
-    "url": "https://www.gty.org/library/sermons-library/2349/the-blind-who-saw",
-    "date": ""
-   },
-   "2355": {
-    "t": "Responding to a Royal Invitation",
-    "book": "Matthew",
-    "ch": 22,
-    "v": [
-     1,
-     14
-    ],
-    "url": "https://www.gty.org/sermons/2355/responding-to-a-royal-invitation",
-    "date": ""
-   },
-   "2356": {
-    "t": "Our Obligation to God and Government",
-    "book": "Matthew",
-    "ch": 22,
-    "v": [
-     15,
-     22
-    ],
-    "url": "https://www.gty.org/library/sermons-library/2356/our-obligation-to-god-and-government",
-    "date": ""
-   },
-   "2357": {
-    "t": "The God of the Living",
-    "book": "Matthew",
-    "ch": 22,
-    "v": [
-     23,
-     33
-    ],
-    "url": "https://www.gty.org/library/sermons-library/2357/the-god-of-the-living",
-    "date": ""
-   },
-   "2358": {
-    "t": "The Great Commandment",
-    "book": "Matthew",
-    "ch": 22,
-    "v": [
-     34,
-     40
-    ],
-    "url": "https://www.gty.org/sermons/2358/the-great-commandment",
-    "date": ""
-   },
-   "2359": {
-    "t": "Whose Son Is Christ?",
-    "book": "Matthew",
-    "ch": 22,
-    "v": [
-     41,
-     46
-    ],
-    "url": "https://www.gty.org/library/sermons-library/2359/whose-son-is-christ",
-    "date": ""
-   },
-   "2375": {
-    "t": "The Fate of the Unprepared",
-    "date": "1984-07-29",
-    "book": "Matthew",
-    "ch": 25,
-    "v": [
-     1,
-     13
-    ],
-    "url": "https://www.gty.org/library/sermons-library/2375/the-fate-of-the-unprepared"
-   },
-   "2376": {
-    "t": "The Tragedy of Wasted Opportunity, Part 1",
-    "date": "1984-08-05",
-    "book": "Matthew",
-    "ch": 25,
-    "v": [
-     14,
-     19
-    ],
-    "url": "https://www.gty.org/library/sermons-library/2376/the-tragedy-of-wasted-opportunity-part-1"
-   },
-   "2377": {
-    "t": "The Tragedy of Wasted Opportunity, Part 2",
-    "date": "1984-08-12",
-    "book": "Matthew",
-    "ch": 25,
-    "v": [
-     19,
-     30
-    ],
-    "url": "https://www.gty.org/sermons/2377/the-tragedy-of-wasted-opportunity-part-2"
-   },
-   "2378": {
-    "t": "The Judgment of the Nations, Part 1",
-    "date": "1984-09-09",
-    "book": "Matthew",
-    "ch": 25,
-    "v": [
-     31,
-     32
-    ],
-    "url": "https://www.gty.org/sermons/2378/the-judgment-of-the-nations-part-1"
-   },
-   "2379": {
-    "t": "The Judgment of the Nations, Part 2",
-    "date": "1984-09-16",
-    "book": "Matthew",
-    "ch": 25,
-    "v": [
-     31,
-     32
-    ],
-    "url": "https://www.gty.org/library/sermons-library/2379/the-judgment-of-the-nations-part-2"
-   },
-   "2380": {
-    "t": "The Judgment of the Nations, Part 3",
-    "date": "1984-09-23",
-    "book": "Matthew",
-    "ch": 25,
-    "v": [
-     31,
-     46
-    ],
-    "url": "https://www.gty.org/sermons/2380/the-judgment-of-the-nations-part-3"
-   },
-   "2361": {
-    "t": "The Characteristics of False Spiritual Leaders, Part 2",
-    "book": "Matthew",
-    "ch": 23,
-    "v": [
-     1,
-     12
-    ],
-    "url": "https://gty.org/library/sermons-library/2361/the-characteristics-of-false-spiritual-leaders-part-2",
-    "date": ""
-   },
-   "2362": {
-    "t": "The Condemnation of False Spiritual Leaders, Part 1",
-    "book": "Matthew",
-    "ch": 23,
-    "v": [
-     13,
-     15
-    ],
-    "url": "https://www.gty.org/sermons/2362/the-condemnation-of-false-spiritual-leaders-part-1",
-    "date": ""
-   },
-   "2363": {
-    "t": "The Condemnation of False Spiritual Leaders, Part 2",
-    "book": "Matthew",
-    "ch": 23,
-    "v": [
-     16,
-     33
-    ],
-    "url": "https://gty.org/library/sermons-library/2363",
-    "date": ""
-   },
-   "2364": {
-    "t": "Jesus' Last Words to Israel, Part 1",
-    "book": "Matthew",
-    "ch": 23,
-    "v": [
-     32,
-     36
-    ],
-    "url": "https://www.gty.org/sermons/2364/jesus-last-words-to-israel-part-1",
-    "date": ""
-   },
-   "2365": {
-    "t": "Jesus' Last Words to Israel, Part 2",
-    "book": "Matthew",
-    "ch": 23,
-    "v": [
-     37,
-     39
-    ],
-    "url": "https://www.gty.org/library/sermons-library/2365/jesus-last-words-to-israel-part-2",
     "date": ""
    },
    "42-1": {
@@ -4347,248 +4589,6 @@
     ],
     "url": "https://www.gty.org/library/sermons-library/42-133/barriers-to-true-discipleship",
     "date": ""
-   },
-   "2381": {
-    "t": "Preparing For Christ's Death",
-    "date": "1984-11-11",
-    "book": "Matthew",
-    "ch": 26,
-    "v": [
-     1,
-     16
-    ],
-    "url": "https://www.gty.org/sermons/2381/preparing-for-christs-death"
-   },
-   "2383": {
-    "t": "The Last Passover, Part 2",
-    "date": "1984-11-25",
-    "book": "Matthew",
-    "ch": 26,
-    "v": [
-     20,
-     30
-    ],
-    "url": "https://www.gty.org/sermons/2383/the-last-passover-part-2"
-   },
-   "2384": {
-    "t": "Restoring Deserting Disciples",
-    "date": "1984-12-02",
-    "book": "Matthew",
-    "ch": 26,
-    "v": [
-     31,
-     35
-    ],
-    "url": "https://www.gty.org/library/sermons-library/2384/restoring-deserting-disciples"
-   },
-   "2385": {
-    "t": "The Son in Sorrow, Part 1",
-    "date": "1984-12-09",
-    "book": "Matthew",
-    "ch": 26,
-    "v": [
-     36,
-     39
-    ],
-    "url": "https://www.gty.org/library/sermons-library/2385/the-son-in-sorrow-part-1"
-   },
-   "2386": {
-    "t": "The Son in Sorrow, Part 2",
-    "date": "1984-12-16",
-    "book": "Matthew",
-    "ch": 26,
-    "v": [
-     40,
-     46
-    ],
-    "url": "https://www.gty.org/sermons/2386/the-son-in-sorrow-part-2"
-   },
-   "2387": {
-    "t": "The Traitor's Kiss, Part 1",
-    "date": "1984-12-30",
-    "book": "Matthew",
-    "ch": 26,
-    "v": [
-     47,
-     50
-    ],
-    "url": "https://gty.org/library/sermons-library/2387"
-   },
-   "2388": {
-    "t": "The Traitor's Kiss, Part 2",
-    "date": "1985-01-06",
-    "book": "Matthew",
-    "ch": 26,
-    "v": [
-     50,
-     56
-    ],
-    "url": "https://www.gty.org/sermons/2388/the-traitors-kiss-part-2"
-   },
-   "2389": {
-    "t": "The Illegal, Unjust Trials of Jesus, Part 1",
-    "date": "1985-01-13",
-    "book": "Matthew",
-    "ch": 26,
-    "v": [
-     57,
-     61
-    ],
-    "url": "https://www.gty.org/library/sermons-library/2389/the-illegal-unjust-trials-of-jesus-part-1"
-   },
-   "2390": {
-    "t": "The Illegal, Unjust Trials of Jesus, Part 2",
-    "date": "1985-01-27",
-    "book": "Matthew",
-    "ch": 26,
-    "v": [
-     62,
-     68
-    ],
-    "url": "https://www.gty.org/sermons/2390/the-illegal-unjust-trials-of-jesus-part-2"
-   },
-   "2391": {
-    "t": "The Restoration of a Sinning Saint",
-    "date": "1985-02-03",
-    "book": "Matthew",
-    "ch": 26,
-    "v": [
-     58,
-     75
-    ],
-    "url": "https://www.gty.org/sermons/2391/the-restoration-of-a-sinning-saint"
-   },
-   "2392": {
-    "t": "The Traitor's Suicide",
-    "date": "1985-02-17",
-    "book": "Matthew",
-    "ch": 27,
-    "v": [
-     1,
-     10
-    ],
-    "url": "https://www.gty.org/library/sermons-library/2392/the-traitors-suicide"
-   },
-   "2393": {
-    "t": "What Shall I Do with Jesus? Part 1",
-    "date": "1985-02-24",
-    "book": "Matthew",
-    "ch": 27,
-    "v": [
-     11,
-     18
-    ],
-    "url": "https://www.gty.org/library/sermons-library/2393/"
-   },
-   "2394": {
-    "t": "What Shall I Do with Jesus? Part 2",
-    "date": "1985-03-03",
-    "book": "Matthew",
-    "ch": 27,
-    "v": [
-     19,
-     26
-    ],
-    "url": "https://www.gty.org/library/sermons-library/2394/"
-   },
-   "2395": {
-    "t": "The Wickedness of the Crucifixion, Part 1",
-    "date": "1985-03-17",
-    "book": "Matthew",
-    "ch": 27,
-    "v": [
-     27,
-     37
-    ],
-    "url": "https://www.gty.org/sermons/2395/the-wickedness-of-the-crucifixion-part-1"
-   },
-   "2396": {
-    "t": "The Wickedness of the Crucifixion, Part 2",
-    "date": "1985-03-24",
-    "book": "Matthew",
-    "ch": 27,
-    "v": [
-     38,
-     44
-    ],
-    "url": "https://www.gty.org/sermons/2396/the-wickedness-of-the-crucifixion-part-2"
-   },
-   "2397": {
-    "t": "God's Miraculous Commentary on the Cross",
-    "date": "1985-04-07",
-    "book": "Matthew",
-    "ch": 27,
-    "v": [
-     45,
-     53
-    ],
-    "url": "https://www.gty.org/library/sermons-library/2397"
-   },
-   "2398": {
-    "t": "Responses to the Death of Christ",
-    "date": "1985-04-14",
-    "book": "Matthew",
-    "ch": 27,
-    "v": [
-     54,
-     56
-    ],
-    "url": "https://www.gty.org/library/sermons-library/2398"
-   },
-   "2399": {
-    "t": "The Amazing Burial of Jesus, Part 1",
-    "date": "1985-04-21",
-    "book": "Matthew",
-    "ch": 27,
-    "v": [
-     57,
-     61
-    ],
-    "url": "https://www.gty.org/library/sermons-library/2399/the-amazing-burial-of-jesus-part-1"
-   },
-   "2400": {
-    "t": "The Amazing Burial of Jesus, Part 2",
-    "date": "1985-04-28",
-    "book": "Matthew",
-    "ch": 27,
-    "v": [
-     62,
-     66
-    ],
-    "url": "https://www.gty.org/library/sermons-library/2400/the-amazing-burial-of-jesus-part-2"
-   },
-   "2403": {
-    "t": "The Lie that Proves the Resurrection",
-    "date": "1985-05-26",
-    "book": "Matthew",
-    "ch": 28,
-    "v": [
-     11,
-     15
-    ],
-    "url": "https://www.gty.org/sermons/2403/the-lie-that-proves-the-resurrection"
-   },
-   "2404": {
-    "t": "Making Disciples of All Nations, Part 1",
-    "date": "1985-06-02",
-    "book": "Matthew",
-    "ch": 28,
-    "v": [
-     16,
-     18
-    ],
-    "url": "https://www.gty.org/sermons/2404/making-disciples-of-all-nations-part-1"
-   },
-   "2405": {
-    "t": "Making Disciples of All Nations, Part 2",
-    "date": "1985-06-09",
-    "book": "Matthew",
-    "ch": 28,
-    "v": [
-     18,
-     20
-    ],
-    "url": "https://www.gty.org/sermons/2405/making-disciples-of-all-nations-part-2"
    },
    "42-70": {
     "t": "Divine Truth Confronts Human Tradition",

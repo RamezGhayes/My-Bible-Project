@@ -37,12 +37,30 @@
 - لا تنسب للمفسر موقفاً لم تجده في نص العظة نفسه (مثال: حذفنا جملة عن الكفارة المحدودة في متى ٢٠: ٢٨).
 - «» فقط لنص فاندايك الحرفي؛ غير ذلك "".
 
-## الفحص قبل كل commit
+## الأدوات
 
 ```
-node src/build.mjs   # يتوقف لو sec/ser غير مسجل أو r خارج المدى
+node scripts/register-commentary.mjs guzik luke-4 '{"url":"...","lang":"ar","read":"2026-11-26","secs":{"A1":"عنوان القسم كما في الصفحة"}}'
+node scripts/register-commentary.mjs mac 42-150 '{"t":"Title","date":"2003-01-05","book":"Luke","ch":12,"v":[1,7],"url":"..."}'
+node scripts/check-voices.mjs luke 4      # فحص سريع بلا بناء، لازم 0 problems
+node src/build.mjs                        # الجلسة الرئيسية فقط، قبل الـ commit
 ```
-commit لكل أصحاح: `Guzik and MacArthur: luke-<n>`، ثم `git push origin v5`.
+`register-commentary.mjs` بيقفل الملف، فكذا وكيل يقدروا يسجلوا في نفس الوقت. **ممنوع تعديل commentary.json يدوياً.**
+
+## الفحص قبل كل commit
+
+الجلسة الرئيسية: `node scripts/check-voices.mjs` ثم `node src/build.mjs` (يتوقف لو sec/ser غير مسجل أو r خارج المدى).
+commit لكل أصحاح: `Guzik and MacArthur: luke-<n>`، ثم `git push origin v5`، ثم حدّث جدول «الحالة» فوق.
+
+## خطوات الوكيل لكل أصحاح (تُعطى حرفياً)
+
+1. اقرأ `content/books/luke/voices/5.mjs` و`data/sources/mac/luke-5.md` و`data/sources/guzik/luke-5.md` كنموذج.
+2. نص فاندايك: `node tools/deep/bk.mjs <BookId> <n>`.
+3. جوزيك (لو الملف `voices/<n>.mjs` مش فيه guzik): WebFetch على `https://enduringword.com/bible-commentary/ar/<slug>-<n>/`، ولو مش موجودة `https://enduringword.com/bible-commentary/<slug>-<n>/`. اطلب من WebFetch مخطط الأقسام بأرقام الآيات ونقاط كل قسم. سجّل الأقسام (العنوان كما في الصفحة) بـ register-commentary، واكتب الملاحظات في `data/sources/guzik/<slug>-<n>.md`.
+4. ماك آرثر: ابحث `gty.org MacArthur sermon <Book> <n>:<v>`، وافتح العظات بصيغة `https://www.gty.org/resources/sermons/<code>` (الصيغة دي غالباً بتشتغل). العنوان والمدى والتاريخ لازم يتأكدوا من مصدر (الصفحة نفسها، أو صفحة السلسلة على gty، أو قائمة السلسلة على monergism.com اللي فيها العنوان والمدى والتاريخ). متستنتجش العنوان من ترتيب الأكواد بس. سجّل كل عظة اتقرت، واكتب `data/sources/mac/<slug>-<n>.md` (سطر لكل عظة: الكود، العنوان، المدى، التاريخ ومصدره، ونقاطها بصياغتنا، والمقفول/اللي ما اتقرتش).
+5. اكتب/كمّل `content/books/<slug>/voices/<n>.mjs`: لكل مقطع مدخل guzik ومدخل mac لو متاح. غطِّ الأصحاح كله بمقاطع معقولة. حافظ على مدخلات calvin/mhc لو موجودة.
+6. `node scripts/check-voices.mjs <slug> <n>` لازم 0 problems.
+7. ممنوع commit/push/build. التقرير: الأصحاحات، عدد المدخلات، العظات المقفولة، أي ملحوظة اختلاف لاهوتي اتضافت.
 
 ## عناوين gty
 
