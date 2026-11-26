@@ -43,8 +43,8 @@ const PARTS = [
   ['geo', 'الأرض والخرائط', 'أين جرت القصة'],
   ['pro', 'الأنبياء', 'من هم، ومتى تنبؤوا، وما رسالة كل واحد'],
   ['bt', 'بين العهدين', 'أربع مئة سنة صنعت عالم العهد الجديد'],
-  ['nt', 'العهد الجديد', 'حياة المسيح، والكنيسة الأولى، ورحلات بولس'],
-  ['end', 'الخلاصة', 'الأصحاحات المفتاحية، ودروس النظرة العامة']
+  ['nt', 'العهد الجديد', 'حياة المسيح، والكنيسة الأولى، ورحلات بولس وطريقته في الكرازة'],
+  ['end', 'الخلاصة', 'الأصحاحات المفتاحية التي تربط القصة كلها']
 ];
 const ORDER = [
   ['why', 'intro'], ['books', 'intro'],
@@ -53,8 +53,8 @@ const ORDER = [
   ['land-ot', 'geo'], ['exodus', 'geo'], ['land-nt', 'geo'], ['med', 'geo'],
   ['prophets', 'pro'], ['prophets-message', 'pro'],
   ['between', 'bt'],
-  ['christ', 'nt'], ['christ-years', 'nt'], ['passion', 'nt'], ['acts', 'nt'], ['church', 'nt'], ['paul', 'nt'], ['journeys', 'nt'],
-  ['key', 'end'], ['lessons', 'end']
+  ['christ', 'nt'], ['christ-years', 'nt'], ['passion', 'nt'], ['acts', 'nt'], ['church', 'nt'], ['paul', 'nt'], ['journeys', 'nt'], ['lessons', 'nt'],
+  ['key', 'end']
 ];
 const GEN = {};
 {
