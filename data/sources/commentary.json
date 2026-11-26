@@ -104,6 +104,22 @@
      "B5": "ب. ٥ (٢٤-٢٥) يوسف يأخذ مريم امرأته بعد رسالة الملاك"
     },
     "read": "2026-11-26"
+   },
+   "matthew-2": {
+    "url": "https://enduringword.com/bible-commentary/ar/matthew-2/",
+    "lang": "ar",
+    "secs": {
+     "A1": "أولاً. أ) الآيات (١-٢): الرجال الحكماء يصلون إلى أورشليم",
+     "A2": "أولاً. ب) الآية (٣): هيرودس منزعج من الأخبار التي أتى بها المجوس",
+     "A3": "أولاً. ج) الآيات (٤-٦): رؤساء الكهنة والكتبة يعلمون هيرودس بشأن مجيء المسيا",
+     "A4": "أولاً. د) الآيات (٧-٨): هيرودس يحاول استخدام المجوس للعثور على الطفل لكي يقتله",
+     "A5": "أولاً. هـ) الآيات (٩-١٢): يقدم المجوس هدايا ليسوع ويغادرون دون إبلاغ هيرودس",
+     "B1": "ثانياً. أ) الآيات (١٣-١٥): يوسف ومريم ويسوع يجدون ملاذاً في مصر",
+     "B2": "ثانياً. ب) الآيات (١٦-١٨): مذبحة الأبرياء",
+     "B3": "ثانياً. ج) الآيات (١٩-٢١): العودة إلى إسرائيل",
+     "B4": "ثانياً. د) الآيات (٢٢-٢٣): استقرار العائلة شمالاً في الناصرة خوفاً من أرخيلاوس"
+    },
+    "read": "2026-11-26"
    }
   }
  },
@@ -385,6 +401,61 @@
      25
     ],
     "url": "https://www.gty.org/sermons/2181/the-virgin-birth"
+   },
+   "2182": {
+    "t": "Who Were the Wise Men?",
+    "date": "1978-02-05",
+    "book": "Matthew",
+    "ch": 2,
+    "v": [
+     1,
+     1
+    ],
+    "url": "https://www.gty.org/sermons/2182/who-were-the-wise-men"
+   },
+   "2183": {
+    "t": "Fools and Wise Men, Part 1",
+    "date": "1978-02-12",
+    "book": "Matthew",
+    "ch": 2,
+    "v": [
+     1,
+     3
+    ],
+    "url": "https://www.gty.org/sermons/2183/fools-and-wise-men-part-1"
+   },
+   "2184": {
+    "t": "Fools and Wise Men, Part 2",
+    "date": "1978-02-19",
+    "book": "Matthew",
+    "ch": 2,
+    "v": [
+     4,
+     12
+    ],
+    "url": "https://www.gty.org/sermons/2184/fools-and-wise-men-part-2"
+   },
+   "2185": {
+    "t": "The King Fulfills Prophecy, Part 1",
+    "date": "1978-03-05",
+    "book": "Matthew",
+    "ch": 2,
+    "v": [
+     13,
+     15
+    ],
+    "url": "https://www.gty.org/sermons/2185/the-king-fulfills-prophecy-part-1"
+   },
+   "2186": {
+    "t": "The King Fulfills Prophecy, Part 2",
+    "date": "1978-03-12",
+    "book": "Matthew",
+    "ch": 2,
+    "v": [
+     16,
+     23
+    ],
+    "url": "https://www.gty.org/sermons/2186/the-king-fulfills-prophecy-part-2"
    }
   }
  }
