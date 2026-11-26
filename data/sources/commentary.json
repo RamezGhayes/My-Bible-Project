@@ -416,6 +416,24 @@
      "E3": "خامسًا. ج (٣٥-٣٨) تعاطف يسوع مع الجموع"
     },
     "read": "2026-11-26"
+   },
+   "matthew-10": {
+    "url": "https://enduringword.com/bible-commentary/matthew-10/",
+    "lang": "en",
+    "secs": {
+     "A1": "أ. ١ (١-٤) قائمة التلاميذ الاثني عشر",
+     "A2": "أ. ٢ (٥-٦) إلى أين يذهبون: إلى إسرائيل (الشعب اليهودي) فقط",
+     "A3": "أ. ٣ (٧-٨أ) ماذا يعملون: يكرزون ويشفون",
+     "A4": "أ. ٤ (٨ب-١٥) كيف يُعالون في خدمتهم",
+     "B1": "ب. ١ (١٦-١٨) الاضطهاد آتٍ",
+     "B2": "ب. ٢ (١٩-٢٠) حين يُساق التلاميذ أمام الولاة يدافع الله عنهم ويتكلم فيهم",
+     "B3": "ب. ٣ (٢١-٢٣) مدى الاضطهاد: حتى داخل العائلات ومن مدينة إلى مدينة",
+     "B4": "ب. ٤ (٢٤-٢٥) لماذا يجب أن يتوقع التلاميذ الاضطهاد",
+     "B5": "ب. ٥ (٢٦-٣١) لا يخاف التلاميذ وسط الاضطهاد بل يكرزون بالإنجيل بجرأة",
+     "B6": "ب. ٦ (٣٢-٣٩) الموقف الذي يجب أن يتسلح به تلاميذ يسوع",
+     "B7": "ب. ٧ (٤٠-٤٢) المكافأة لمن يقبلون تلاميذ يسوع بخلاف المضطهدين"
+    },
+    "read": "2026-11-26"
    }
   }
  },
@@ -1764,6 +1782,94 @@
     ],
     "url": "https://www.gty.org/sermons/2266/jesus-power-over-death-part-2",
     "date": ""
+   },
+   "2271": {
+    "t": "Peter: A Lesson in Leadership",
+    "book": "Matthew",
+    "ch": 10,
+    "v": [
+     1,
+     4
+    ],
+    "url": "https://gty.org/library/sermons-library/2271",
+    "date": ""
+   },
+   "2277": {
+    "t": "Principles for an Effective Missionary, Part 1",
+    "date": "1981-06-07",
+    "book": "Matthew",
+    "ch": 10,
+    "v": [
+     5,
+     7
+    ],
+    "url": "https://www.gty.org/sermons/2277/principles-for-an-effective-missionary-part-1"
+   },
+   "2278": {
+    "t": "Principles for an Effective Missionary, Part 2",
+    "date": "1981-06-14",
+    "book": "Matthew",
+    "ch": 10,
+    "v": [
+     8,
+     15
+    ],
+    "url": "https://www.gty.org/sermons/2278/principles-for-an-effective-missionary-part-2"
+   },
+   "2279": {
+    "t": "Sheep Among Wolves, Part 1",
+    "date": "1981-06-21",
+    "book": "Matthew",
+    "ch": 10,
+    "v": [
+     16,
+     23
+    ],
+    "url": "https://www.gty.org/sermons/2279/sheep-among-wolves-part-1"
+   },
+   "2280": {
+    "t": "Sheep Among Wolves, Part 2",
+    "date": "1981-06-28",
+    "book": "Matthew",
+    "ch": 10,
+    "v": [
+     16,
+     23
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2280/sheep-among-wolves-part-2"
+   },
+   "2281": {
+    "t": "Christlikeness: The Goal of Discipleship",
+    "date": "1981-07-05",
+    "book": "Matthew",
+    "ch": 10,
+    "v": [
+     24,
+     25
+    ],
+    "url": "https://gty.org/library/sermons-library/2281"
+   },
+   "2282": {
+    "t": "The Hallmarks of Discipleship, Part 1",
+    "date": "1981-07-12",
+    "book": "Matthew",
+    "ch": 10,
+    "v": [
+     26,
+     31
+    ],
+    "url": "https://www.gty.org/sermons/2282/the-hallmarks-of-discipleship-part-1"
+   },
+   "2284": {
+    "t": "The Hallmarks of Discipleship, Part 3",
+    "date": "1981-08-30",
+    "book": "Matthew",
+    "ch": 10,
+    "v": [
+     34,
+     42
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2284/the-hallmarks-of-discipleship-part-3"
    }
   }
  }
