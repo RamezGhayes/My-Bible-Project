@@ -756,6 +756,31 @@
      "B9": "ثانيًا. ٩ (٣٧-٣٩) يسوع يرثي أورشليم"
     },
     "read": "2026-11-26"
+   },
+   "luke-1": {
+    "url": "https://enduringword.com/bible-commentary/ar/luke-1/",
+    "lang": "ar",
+    "secs": {
+     "A1": "أولًا. أ (١-٢) ذكر الروايات السابقة عن حياة يسوع",
+     "A2": "أولًا. ب (٣-٤) لوقا يشرح سبب تدوينه لروايته",
+     "B1": "ثانيًا. أ (٥-٧) الزمن والأشخاص الذين تبدأ بهم سيرة حياة يسوع",
+     "B2": "ثانيًا. ب (٨-١٠) خدمة زكريا في الهيكل",
+     "B3": "ثانيًا. ج (١١-١٧) بشارة الملاك لزكريا",
+     "B4": "ثانيًا. د (١٨-٢٠) شك زكريا وصمته",
+     "B5": "ثانيًا. هـ (٢١-٢٣) ظهور زكريا أمام الجموع",
+     "B6": "ثانيًا. و (٢٤-٢٥) حبل أليصابات وفرحها",
+     "C1": "ثالثًا. أ (٢٦-٢٧) أُرسل جبرائيل إلى مريم في الناصرة",
+     "C2": "ثالثًا. ب (٢٨-٢٩) تحية جبرائيل لمريم",
+     "C3": "ثالثًا. ج (٣٠-٣٣) جبرائيل يعلن ميلاد المسيا من مريم",
+     "C4": "ثالثًا. د (٣٤-٣٧) سؤال مريم وجواب جبرائيل",
+     "C5": "ثالثًا. هـ (٣٨) استجابة الإيمان",
+     "D1": "رابعًا. أ (٣٩-٤١) زيارة مريم لأليصابات",
+     "D2": "رابعًا. ب (٤٢-٤٥) بركة أليصابات لمريم",
+     "D3": "رابعًا. ج (٤٦-٥٦) مريم تسبح الرب",
+     "E1": "خامسًا. أ (٥٧-٦٦) ميلاد يوحنا المعمدان وتسميته",
+     "E2": "خامسًا. ب (٦٧-٨٠) نبوة زكريا"
+    },
+    "read": "2026-11-26"
    }
   }
  },
@@ -3413,6 +3438,138 @@
     ],
     "url": "https://www.gty.org/library/sermons-library/2365/jesus-last-words-to-israel-part-2",
     "date": ""
+   },
+   "42-1": {
+    "t": "Luke: Physician and Historian",
+    "date": "1998-11-08",
+    "book": "Luke",
+    "ch": 1,
+    "v": [
+     1,
+     4
+    ],
+    "url": "https://www.gty.org/sermons/42-1/luke-physician-and-historian"
+   },
+   "42-3": {
+    "t": "Zacharias: The Righteous Priest",
+    "date": "1998-11-22",
+    "book": "Luke",
+    "ch": 1,
+    "v": [
+     5,
+     7
+    ],
+    "url": "https://www.gty.org/sermons/42-3/zacharias-the-righteous-priest"
+   },
+   "42-4": {
+    "t": "God Breaks His Silence: The Revelation to Zacharias",
+    "date": "1998-11-29",
+    "book": "Luke",
+    "ch": 1,
+    "v": [
+     8,
+     17
+    ],
+    "url": "https://www.gty.org/sermons/42-4/god-breaks-his-silence-the-revelation-to-zacharias"
+   },
+   "42-5": {
+    "t": "A Faithful Promise to a Faithless Priest",
+    "date": "1998-12-06",
+    "book": "Luke",
+    "ch": 1,
+    "v": [
+     18,
+     25
+    ],
+    "url": "https://www.gty.org/sermons/42-5/a-faithful-promise-to-a-faithless-priest"
+   },
+   "42-9": {
+    "t": "The Divine Announcement to Mary, Part 2",
+    "date": "1999-01-24",
+    "book": "Luke",
+    "ch": 1,
+    "v": [
+     31,
+     33
+    ],
+    "url": "https://www.gty.org/sermons/42-9/the-divine-announcement-to-mary-part-2"
+   },
+   "42-11": {
+    "t": "Fallacies about the Virgin Birth",
+    "date": "1999-02-14",
+    "book": "Luke",
+    "ch": 1,
+    "v": [
+     34,
+     35
+    ],
+    "url": "https://www.gty.org/sermons/42-11/fallacies-about-the-virgin-birth"
+   },
+   "42-12": {
+    "t": "The Virgin Birth: A Divine Miracle",
+    "date": "1999-03-07",
+    "book": "Luke",
+    "ch": 1,
+    "v": [
+     34,
+     38
+    ],
+    "url": "https://www.gty.org/sermons/42-12/the-virgin-birth-a-divine-miracle"
+   },
+   "42-13": {
+    "t": "Mary and Elizabeth: Confirming Angelic Prophecy",
+    "date": "1999-03-21",
+    "book": "Luke",
+    "ch": 1,
+    "v": [
+     39,
+     45
+    ],
+    "url": "https://www.gty.org/library/sermons-library/42-13/"
+   },
+   "42-14": {
+    "t": "Mary's Praise",
+    "date": "1999-03-28",
+    "book": "Luke",
+    "ch": 1,
+    "v": [
+     46,
+     55
+    ],
+    "url": "https://www.gty.org/sermons/42-14/marys-praise"
+   },
+   "42-15": {
+    "t": "The Miraculous Birth of John the Baptist",
+    "date": "1999-04-11",
+    "book": "Luke",
+    "ch": 1,
+    "v": [
+     56,
+     66
+    ],
+    "url": "https://www.gty.org/library/sermons-library/42-15/the-miraculous-birth-of-john-the-baptist"
+   },
+   "42-16": {
+    "t": "Zachariah's Song of Salvation: Introduction",
+    "date": "1999-04-18",
+    "book": "Luke",
+    "ch": 1,
+    "v": [
+     67,
+     80
+    ],
+    "url": "https://www.gty.org/sermons/42-16/zachariahs-song-of-salvation-introduction"
+   },
+   "42-17": {
+    "t": "Zachariah's Song of Salvation: The Davidic Covenant",
+    "date": "1999-04-25",
+    "book": "Luke",
+    "ch": 1,
+    "v": [
+     67,
+     80
+    ],
+    "url": "https://www.gty.org/sermons/42-17/zachariahs-song-of-salvation-the-davidic-covenant"
    }
   }
  }
