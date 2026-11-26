@@ -211,6 +211,20 @@
      "C6": "ج. ٦ (٤٩-٥٠) يسوع يتكلم عن الملح والنار"
     },
     "read": "2026-11-26"
+   },
+   "matthew-3": {
+    "url": "https://enduringword.com/bible-commentary/matthew-3/",
+    "lang": "en",
+    "secs": {
+     "A1": "أ. ١ (١-٢) رسالة يوحنا المعمدان",
+     "A2": "أ. ٢ (٣-٤) هوية يوحنا المعمدان",
+     "A3": "أ. ٣ (٥-٦) نجاح خدمة يوحنا",
+     "A4": "أ. ٤ (٧-١٢) مواجهة يوحنا للفريسيين والصدوقيين",
+     "B1": "ب. ١ (١٣-١٤) يسوع يأتي إلى يوحنا ليعتمد",
+     "B2": "ب. ٢ (١٥) يسوع يقبل أن يعتمد من يوحنا",
+     "B3": "ب. ٣ (١٦-١٧) الشهادة الإلهية بأن يسوع هو ابن الله"
+    },
+    "read": "2026-11-26"
    }
   }
  },
@@ -855,6 +869,50 @@
      50
     ],
     "url": "https://www.gty.org/resources/sermons/41-47"
+   },
+   "2187": {
+    "t": "The Greatest Man",
+    "date": "1978-03-19",
+    "book": "Matthew",
+    "ch": 3,
+    "v": [
+     1,
+     6
+    ],
+    "url": "https://www.gty.org/sermons/2187/the-greatest-man"
+   },
+   "2188": {
+    "t": "The Fruits of True Repentance, Part 1",
+    "date": "1978-04-02",
+    "book": "Matthew",
+    "ch": 3,
+    "v": [
+     7,
+     10
+    ],
+    "url": "https://www.gty.org/sermons/2188/the-fruits-of-true-repentance-part-1"
+   },
+   "2189": {
+    "t": "The Fruits of True Repentance, Part 2",
+    "date": "1978-04-09",
+    "book": "Matthew",
+    "ch": 3,
+    "v": [
+     7,
+     12
+    ],
+    "url": "https://www.gty.org/sermons/2189/the-fruits-of-true-repentance-part-2"
+   },
+   "2190": {
+    "t": "The Commissioning of the King",
+    "date": "1978-05-07",
+    "book": "Matthew",
+    "ch": 3,
+    "v": [
+     13,
+     17
+    ],
+    "url": "https://www.gty.org/sermons/2190/the-commissioning-of-the-king"
    }
   }
  }
