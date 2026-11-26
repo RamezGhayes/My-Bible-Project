@@ -43,6 +43,21 @@
      "3D": "د) الآيات ٢٥ – ٢٨: جواب يسوع بمبدأين"
     },
     "read": "2026-11-26"
+   },
+   "mark-3": {
+    "url": "https://enduringword.com/bible-commentary/ar/mark-3/",
+    "secs": {
+     "1A": "أولاً. أ) الآيات ١ – ٦: رب السبت يشفي يوم السبت",
+     "1B": "أولاً. ب) الآيات ٧ – ١٢: جمع كثير يأتي إلى يسوع",
+     "1C": "أولاً. ج) الآيات ١٣ – ١٥: يسوع يختار الاثني عشر",
+     "1D": "أولاً. د) الآيات ١٦ – ١٩: أسماء التلاميذ",
+     "2A": "ثانياً. أ) الآيتان ٢٠ – ٢١: أقرباء يسوع يظنونه مختلاً",
+     "2B": "ثانياً. ب) الآية ٢٢: اتهام الكتبة",
+     "2C": "ثانياً. ج) الآيات ٢٣ – ٢٧: الرد على تهمة التحالف مع الشيطان",
+     "2D": "ثانياً. د) الآيات ٢٨ – ٣٠: التجديف على الروح القدس",
+     "2E": "ثانياً. هـ) الآيات ٣١ – ٣٥: عائلة يسوع الحقيقية"
+    },
+    "read": "2026-11-26"
    }
   }
  },
@@ -159,6 +174,61 @@
      28
     ],
     "url": "https://www.gty.org/sermons/41-11/jesus-is-lord-of-the-sabbath-part-1"
+   },
+   "41-12": {
+    "t": "Jesus Is Lord of the Sabbath, Part 2",
+    "date": "2009-06-14",
+    "book": "Mark",
+    "ch": 3,
+    "v": [
+     1,
+     6
+    ],
+    "url": "https://www.gty.org/library/sermons-library/41-12/jesus-is-lord-of-the-sabbath-part-2"
+   },
+   "41-13": {
+    "t": "Mark’s Sweeping Summary of Jesus",
+    "date": "2009-09-20",
+    "book": "Mark",
+    "ch": 3,
+    "v": [
+     7,
+     12
+    ],
+    "url": "https://gty.org/library/sermons-library/41-13"
+   },
+   "41-14": {
+    "t": "Twelve Ordinary Men",
+    "date": "2009-10-11",
+    "book": "Mark",
+    "ch": 3,
+    "v": [
+     13,
+     19
+    ],
+    "url": "https://www.gty.org/sermons/41-14/twelve-ordinary-men"
+   },
+   "41-15": {
+    "t": "Jesus: Liar, Lunatic, or Lord?",
+    "date": "2009-10-25",
+    "book": "Mark",
+    "ch": 3,
+    "v": [
+     20,
+     35
+    ],
+    "url": "https://www.gty.org/library/sermons-library/41-15/"
+   },
+   "41-16": {
+    "t": "The Unforgivable Sin",
+    "date": "2009-11-01",
+    "book": "Mark",
+    "ch": 3,
+    "v": [
+     20,
+     35
+    ],
+    "url": "https://gty.org/library/sermons-library/41-16"
    }
   }
  }
