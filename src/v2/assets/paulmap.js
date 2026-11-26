@@ -4,7 +4,7 @@
   var root = document.getElementById('pm'); if (!root) return;
   var D = JSON.parse(document.getElementById('pmdata').textContent);
   var svg = root.querySelector('.pmsvg'), routes = svg.querySelector('.routes'), pins = svg.querySelector('.pins'), trav = svg.querySelector('.trav');
-  var steps = root.querySelector('.pmsteps'), track = root.querySelector('.pmtrack');
+  var steps = root.querySelector('.pmsteps'), track = root.querySelector('.pmtrack'), side = root.querySelector('.pmside'), pos = root.querySelector('.pmpos');
   var NS = 'http://www.w3.org/2000/svg', W = 1200, H = 680;
   var J = 0, I = -1, vb = [0, 0, W, H], cam = null, run = null, playing = null, lock = false;
   var rgs = [].slice.call(svg.querySelectorAll('.rg'));
@@ -61,6 +61,12 @@
     if (w / h > asp) h = w / asp; else w = h * asp;
     return [(x0 + x1) / 2 - w / 2, (y0 + y1) / 2 - h / 2, w, h];
   }
+  function zoom(f, cx, cy) {
+    var r = svg.getBoundingClientRect(); if (cx == null) { cx = r.left + r.width / 2; cy = r.top + r.height / 2; }
+    var px = vb[0] + (cx - r.left) / r.width * vb[2], py = vb[1] + (cy - r.top) / r.height * vb[3];
+    var w = Math.min(Math.max(vb[2] * f, 180), W * 1.6), h = w * vb[3] / vb[2];
+    vb = [px - (px - vb[0]) * w / vb[2], py - (py - vb[1]) * h / vb[3], w, h]; svg.setAttribute('viewBox', vb.join(' ')); resize();
+  }
   function camera(dur) {
     var st = S(), pts = I < 0 ? st.map(function (s) { return s.xy; }) : [st[I].xy].concat(I > 0 ? [st[I - 1].xy] : [], I < st.length - 1 ? [st[I + 1].xy] : []);
     var to = fit(pts), from = vb.slice(), t0 = performance.now(); dur = reduce ? 0 : dur;
@@ -88,24 +94,28 @@
 
   // ---------- steps and cards ----------
   function buildSteps() {
-    steps.innerHTML = '<button type="button" data-go="-1" class="s0">المقدمة</button>' + S().map(function (s, i) {
-      return '<button type="button" data-go="' + i + '" title="' + s.n.replace(/"/g, '&quot;') + '"><i>' + AR(i + 1) + '</i><span>' + s.c + '</span></button>';
+    steps.innerHTML = '<li><button type="button" data-go="-1" class="s0"><i>•</i><span><b>المقدمة</b><small>نظرة على الرحلة كلها</small></span></button></li>' + S().map(function (s, i) {
+      return '<li><button type="button" data-go="' + i + '"><i>' + AR(i + 1) + '</i><span><b>' + s.c + '</b>' + (s.n !== s.c ? '<small>' + s.n + '</small>' : '') + '</span></button></li>';
     }).join('');
   }
   function paintSteps() {
     steps.querySelectorAll('[data-go]').forEach(function (b) { var i = +b.dataset.go; b.classList.toggle('on', i === I); b.classList.toggle('done', i >= 0 && i < I); });
-    var on = steps.querySelector('.on');
-    if (on) { var r = on.getBoundingClientRect(), sr = steps.getBoundingClientRect(); steps.scrollBy({ left: (r.left + r.width / 2) - (sr.left + sr.width / 2), behavior: reduce ? 'auto' : 'smooth' }); }
+    var n = S().length;
+    pos.textContent = I < 0 ? 'المقدمة' : 'المحطة ' + AR(I + 1) + ' من ' + AR(n);
+    root.querySelector('.pmnav [data-step="-1"]').disabled = I < 0 && J === 0;
+    root.querySelector('.pmnav [data-step="1"]').disabled = I >= n - 1 && J === D.length - 1;
   }
   function row() { return track.querySelector('.pmrow[data-j="' + J + '"]'); }
-  function showCard(smooth) {
+  function showCard() {
     var r = row(), c = r.querySelector('.pmc[data-i="' + I + '"]');
-    r.querySelectorAll('.pmc').forEach(function (x) { x.classList.toggle('on', x === c); });
-    lock = true; clearTimeout(showCard.t);
-    var cr = c.getBoundingClientRect(), tr = track.getBoundingClientRect();
-    track.scrollBy({ left: (cr.left + cr.width / 2) - (tr.left + tr.width / 2), behavior: smooth && !reduce ? 'smooth' : 'auto' });
-    showCard.t = setTimeout(function () { lock = false; }, 800);
+    r.querySelectorAll('.pmc').forEach(function (x) { var on = x === c; x.classList.toggle('on', on); x.hidden = !on; });
+    if (side.scrollTop > 0) side.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+    if (wide()) return;
+    var top = side.getBoundingClientRect().top;
+    if (top < 0 || top > innerHeight * .8) window.scrollTo({ top: scrollY + top - mapH() - 8, behavior: reduce ? 'auto' : 'smooth' });
   }
+  function wide() { return matchMedia('(min-width:900px)').matches; }
+  function mapH() { var m = root.querySelector('.pmmap').getBoundingClientRect(); return m.bottom > 0 ? m.bottom : 0; }
 
   // ---------- state ----------
   function go(j, i, how) {
@@ -117,7 +127,7 @@
     if (tabChange) buildSteps();
     if (forward) { draw(I - 1); camera(900); travel(I - 1, I, function () { draw(); }); }
     else { draw(); camera(tabChange ? 0 : 750); }
-    paintSteps(); if (how !== 'scroll') showCard(!tabChange);
+    paintSteps(); showCard();
     try { history.replaceState(null, '', '#j' + (J + 1) + (I >= 0 ? '-' + (I + 1) : '')); } catch (e) {}
   }
   function step(d) {
@@ -137,6 +147,7 @@
 
   root.addEventListener('click', function (e) {
     var b = e.target.closest('[data-play]'); if (b) return play();
+    b = e.target.closest('[data-z]'); if (b) { var z = b.dataset.z; if (z === 'fit') { go(J, -1, 'jump'); return; } zoom(z === 'in' ? .7 : 1.4); return; }
     if (e.target.closest('a,summary')) { stop(); return; }
     b = e.target.closest('[data-tab]'); if (b) { stop(); return go(+b.dataset.tab, -1, 'jump'); }
     b = e.target.closest('[data-step]'); if (b) { stop(); return step(+b.dataset.step); }
@@ -149,17 +160,18 @@
     if (/input|textarea|summary/i.test(e.target.tagName || '')) return;
     if (e.key === 'ArrowLeft') { stop(); step(1); } else if (e.key === 'ArrowRight') { stop(); step(-1); }
   });
-  // swiping the cards: when scrolling settles, the card nearest the middle becomes the current stop
-  var settle;
-  track.addEventListener('scroll', function () {
-    if (lock) return; clearTimeout(settle);
-    settle = setTimeout(function () {
-      var tr = track.getBoundingClientRect(), mid = tr.left + tr.width / 2, best = null, bd = 1e9;
-      row().querySelectorAll('.pmc').forEach(function (c) { var r = c.getBoundingClientRect(), d = Math.abs(r.left + r.width / 2 - mid); if (d < bd) { bd = d; best = c; } });
-      if (best && +best.dataset.i !== I) { stop(); var i = +best.dataset.i; go(J, i, i === I + 1 ? 'next' : 'scroll'); showCard(true); }
-    }, 160);
-  }, { passive: true });
-  addEventListener('resize', function () { camera(0); showCard(false); });
+  addEventListener('resize', function () { camera(0); });
+
+  var drag = null;
+  svg.addEventListener('pointerdown', function (e) { if (e.target.closest('.pmpin')) return; drag = { x: e.clientX, y: e.clientY, v: vb.slice(), m: false }; });
+  svg.addEventListener('pointermove', function (e) {
+    if (!drag) return; var dx = e.clientX - drag.x, dy = e.clientY - drag.y;
+    if (!drag.m && Math.abs(dx) + Math.abs(dy) < 5) return; if (!drag.m) { drag.m = true; try { svg.setPointerCapture(e.pointerId); } catch (er) {} cancelAnimationFrame(cam); }
+    var r = svg.getBoundingClientRect(), k2 = Math.max(drag.v[2] / r.width, drag.v[3] / r.height);
+    vb = [drag.v[0] - dx * k2, drag.v[1] - dy * k2, drag.v[2], drag.v[3]]; svg.setAttribute('viewBox', vb.join(' '));
+  });
+  ['pointerup', 'pointercancel'].forEach(function (t) { svg.addEventListener(t, function () { drag = null; }); });
+  svg.addEventListener('wheel', function (e) { e.preventDefault(); cancelAnimationFrame(cam); zoom(e.deltaY < 0 ? .85 : 1.18, e.clientX, e.clientY); }, { passive: false });
 
   buildSteps();
   var m = /^#j(\d)(?:-(\d+))?$/.exec(location.hash);

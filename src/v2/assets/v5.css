@@ -534,3 +534,46 @@ html[data-mode=qt] .dso{display:none}
   .ov-tbl>div span[role=cell]{padding-top:2px}
 }
 .t3d.drag .p3{pointer-events:none}.t3d.panmode .t3v{cursor:move}.t3c [aria-pressed=true]{background:var(--ink,#1b1b1f);color:#fff}
+/* ---------- Paul's journeys: map and panel side by side ---------- */
+.pm .pmbody{display:grid;grid-template-columns:minmax(360px,440px) 1fr;height:calc(100dvh - 68px - 59px);min-height:520px}
+.pm .pmmap{height:auto;min-height:0;order:2}
+.pm .pmside{order:1;overflow-y:auto;border-inline-end:1px solid var(--line);background:var(--paper);display:flex;flex-direction:column}
+.pmnav{position:sticky;top:0;z-index:3;display:flex;align-items:center;gap:8px;padding:10px 14px;background:rgba(250,248,244,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.pmnav button{display:inline-flex;align-items:center;gap:6px;height:38px;padding:0 14px;border-radius:999px;border:1px solid var(--line);background:#fff;font-family:var(--ui);font-size:14px;color:var(--ink)}
+.pmnav button .ic{width:16px;height:16px}
+.pmnav button[data-step="1"]{background:var(--jc);border-color:var(--jc);color:#fff}
+.pmnav button:disabled{opacity:.35}
+.pmpos{flex:1;text-align:center;font-family:var(--ui);font-size:14px;font-weight:600;color:var(--jc)}
+.pm .pmtrack{overflow:visible;padding:14px 14px 4px}
+.pm .pmrow{display:block;padding:0}.pm .pmrow[hidden]{display:none}
+.pm .pmc{width:auto;opacity:1;transform:none;cursor:auto;box-shadow:0 6px 22px rgba(23,25,30,.07);border-color:var(--line)}
+.pm .pmc[hidden]{display:none}
+.pm .pmc.on{border-color:color-mix(in srgb,var(--jc) 45%,var(--line))}
+.pmlh{margin:14px 16px 6px;font-family:var(--ui);font-size:13px;font-weight:600;color:var(--soft)}
+.pm .pmsteps{display:flex;flex-direction:column;gap:0;overflow:visible;margin:0;padding:0 10px 24px;list-style:none;border:0;background:none}
+.pm .pmsteps li{position:relative}
+.pm .pmsteps li+li:before{content:"";position:absolute;top:-8px;bottom:calc(100% - 12px);inset-inline-start:24px;width:2px;background:var(--line)}
+.pm .pmsteps button{display:flex;align-items:flex-start;gap:12px;width:100%;height:auto;padding:8px 10px;border-radius:12px;text-align:start;white-space:normal;color:var(--ink);border:1px solid transparent;background:none}
+.pm .pmsteps button i{flex:none;width:28px;height:28px;font-size:12px;background:#fff}
+.pm .pmsteps button span{display:flex;flex-direction:column;min-width:0}
+.pm .pmsteps button b{font-family:var(--ui);font-size:14.5px;font-weight:600}
+.pm .pmsteps button small{font-family:var(--ui);font-size:12.5px;color:var(--soft);line-height:1.5}
+.pm .pmsteps button:hover{background:#fff;border-color:var(--line)}
+.pm .pmsteps button.on{background:#fff;border-color:var(--jc);color:var(--ink)}
+.pm .pmsteps button.on i{background:var(--jc);color:#fff;border-color:var(--jc)}
+.pm .pmsteps button.done i{background:color-mix(in srgb,var(--jc) 18%,#fff);color:var(--jc)}
+.pm .pmsteps .s0 i{border-color:var(--ink);color:var(--ink)}
+.pm .pmsteps .s0.on{background:#fff;color:var(--ink)}.pm .pmsteps .s0.on i{background:var(--ink);color:#fff}
+.pmz{position:absolute;top:12px;left:12px;display:flex;flex-direction:column;gap:6px;z-index:2}
+.pmz button{width:38px;height:38px;border-radius:10px;background:#fff;border:1px solid var(--line);font-size:18px;color:var(--ink);box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.pm .pmsvg{cursor:grab;touch-action:none}.pm .pmsvg:active{cursor:grabbing}
+.pm .pmarr,.pm .pmcards{display:none}
+@media (max-width:899px){
+  .pm .pmbody{display:flex;flex-direction:column;height:auto;min-height:0}
+  .pm .pmmap{order:1;position:sticky;top:56px;z-index:4;height:40vh;min-height:240px;border-bottom:1px solid var(--line)}
+  .pm .pmside{order:2;overflow:visible;border:0}
+  .pmnav{top:calc(56px + max(40vh,240px))}
+  .pm .pmtrack{padding:12px 12px 4px}
+  .pm .pmsvg{touch-action:pan-y}
+}
+@media (max-width:899px){.pmz{top:8px;left:8px;gap:4px}.pmz button{width:32px;height:32px;font-size:16px}}

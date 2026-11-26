@@ -104,11 +104,18 @@ ${details ? `<details class="pmd"><summary>اعرف أكثر</summary>${details}
   return `<div class="pm" id="pm">
 <div class="pmtop"><a class="pmback" href="${u}maps.html" aria-label="الخرائط">${IC.back}</a><h1>رحلات بولس</h1>
 <div class="pmtabs" role="tablist">${PJ.map((j, ji) => `<button type="button" role="tab" data-tab="${ji}" style="--jc:${COLORS[ji]}" aria-selected="${ji ? 'false' : 'true'}"><i></i>${esc(j.tab)}</button>`).join('')}</div></div>
+<div class="pmbody">
+<aside class="pmside">
+<div class="pmnav"><button type="button" data-step="-1" aria-label="المحطة السابقة">${IC.chev}<span>السابق</span></button><b class="pmpos"></b><button type="button" data-step="1" aria-label="المحطة التالية"><span>التالي</span>${IC.back}</button></div>
+<div class="pmtrack">${journeys}</div>
+<h3 class="pmlh">كل محطات الرحلة</h3>
+<ol class="pmsteps" aria-label="المحطات"></ol>
+</aside>
 <div class="pmmap">${svg}
+<div class="pmz"><button type="button" data-z="in" aria-label="تكبير">+</button><button type="button" data-z="out" aria-label="تصغير">−</button><button type="button" data-z="fit" aria-label="الرحلة كاملة">⤢</button></div>
 <button type="button" class="pmplay" data-play>${play}<span>شاهد الرحلة</span></button>
 <p class="pmsrc">الخريطة: Natural Earth. مواقع المدن تقريبية.</p></div>
-<div class="pmsteps" aria-label="المحطات"></div>
-<div class="pmcards"><button type="button" class="pmarr" data-step="-1" aria-label="السابق">${IC.back}</button><div class="pmtrack">${journeys}</div><button type="button" class="pmarr" data-step="1" aria-label="التالي">${IC.chev}</button></div>
+</div>
 <script type="application/json" id="pmdata">${JSON.stringify(data).replace(/</g, '\\u003c')}</script>
 </div>
 <script src="${u}assets/paulmap.js" defer></script>`;
