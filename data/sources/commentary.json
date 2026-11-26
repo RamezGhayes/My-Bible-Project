@@ -2467,6 +2467,23 @@
      "B7": "ز ) الآية (١٧): كلمة خاصة لأَرْخِبُّس",
      "B8": "ح ) الآية (١٨): الخلاصة"
     }
+   },
+   "philemon-1": {
+    "url": "https://enduringword.com/bible-commentary/ar/philemon-1/",
+    "lang": "ar",
+    "read": "2026-11-27",
+    "secs": {
+     "A1": "أ ) الآية (١): الكاتب والمُتلقي.",
+     "A2": "ب) الآيات (٢-٣): تحية الى بيت فِلِيمُون.",
+     "A3": "ج) الآيات (٤-٧): بولس يشكر الله على فِلِيمُون.",
+     "B1": "أ ) الآيات (٨-١١): بولس يتحدث إلى فِلِيمُون بخصوص أُنِسِيمُس.",
+     "B2": "ب) الآيات (١٢-١٤): بولس يرسل أنسيمس إلى فليمون ثانية على أمل السماح له بالعودة إليه.",
+     "B3": "ج ) الآيات (١٥-١٦): بولس يشرح كيف تدخل الله في هرب أنسيمس.",
+     "B4": "د ) الآيات (١٧-١٩): وعد بولس الشخصي بتعويض فليمون.",
+     "B5": "هـ) الآيات (٢٠-٢٢): ثقة بولس بتجاوب فليمون.",
+     "C1": "أ ) الآيات (٢٣-٢٤): بولس يُرسل تحيات إلى فليمون من أصدقاء مشتركين له في روما.",
+     "C2": "ب) الآية (٢٥): ختام الرسالة."
+    }
    }
   }
  },
@@ -11405,6 +11422,83 @@
      15
     ],
     "url": "https://www.gty.org/library/sermons-library/56-22/the-preachers-authority"
+   },
+   "56-23": {
+    "t": "The Christian's Responsibility in a Pagan Society, Part 1",
+    "date": "1993-07-18",
+    "book": "Titus",
+    "ch": 3,
+    "v": [
+     1,
+     2
+    ],
+    "url": "https://www.gty.org/library/sermons-library/56-23"
+   },
+   "56-25": {
+    "t": "He Saved Us",
+    "date": "1993-08-15",
+    "book": "Titus",
+    "ch": 3,
+    "v": [
+     4,
+     7
+    ],
+    "url": "https://www.gty.org/resources/sermons/56-25"
+   },
+   "56-26": {
+    "t": "The Last Word on Relationships",
+    "date": "1993-08-22",
+    "book": "Titus",
+    "ch": 3,
+    "v": [
+     9,
+     15
+    ],
+    "url": "https://www.gty.org/library/sermons-library/56-26"
+   },
+   "57-1": {
+    "t": "A Living Lesson on Forgiveness",
+    "date": "",
+    "book": "Philemon",
+    "ch": 1,
+    "v": [
+     1,
+     3
+    ],
+    "url": "https://www.gty.org/library/sermons-library/57-1"
+   },
+   "57-2": {
+    "t": "The Characteristics of One Who Forgives",
+    "date": "",
+    "book": "Philemon",
+    "ch": 1,
+    "v": [
+     4,
+     7
+    ],
+    "url": "https://www.gty.org/library/sermons-library/57-2"
+   },
+   "57-3": {
+    "t": "The Actions of One Who Forgives",
+    "date": "",
+    "book": "Philemon",
+    "ch": 1,
+    "v": [
+     8,
+     18
+    ],
+    "url": "https://www.gty.org/library/sermons-library/57-3"
+   },
+   "57-4": {
+    "t": "The Motives of One Who Forgives",
+    "date": "",
+    "book": "Philemon",
+    "ch": 1,
+    "v": [
+     19,
+     25
+    ],
+    "url": "https://www.gty.org/resources/sermons/57-4"
    }
   }
  }
