@@ -165,24 +165,40 @@ function bookPage(b) {
   const skip = previewSkip(b);
   const I = c?.intro;
   const TG = { agreed: 'متفق عليه', likely: 'راجح', debated: 'مختلف عليه' };
-  const intro = I ? `<details class="acc acc5"><summary><span class="ai">${IC.read}</span><span class="at"><b>نبذة عن السفر والكاتب</b><small>${esc(firstSentences(I.summary, 60))}</small></span><span class="ar" aria-hidden="true">${IC.chev}</span></summary><div class="acc5b">
+  const PC = ['#8C2F1E', '#A8584A', '#B39459', '#4E5D32', '#1F2A44', '#4B3D63', '#7A6232', '#34496B'];
+  const href = (n) => (skip ? '#' : `${b.slug}/${n}.html`);
+  // sections of the book, from the chapters' own section labels
+  const parts = [];
+  for (let n = 1; n <= b.chapters; n++) { const S = study(b, n); const lab = S ? plain(S.section).replace(/\s*\([^)]*\)\s*$/, '') : ''; const last = parts[parts.length - 1]; if (last && last.t === lab) last.z = n; else parts.push({ t: lab, a: n, z: n }); }
+  const hasMap = parts.length > 1 || !!parts[0]?.t;
+  const first = bible(b.id).chapters[0].verses[0].text;
+  const facts = I ? I.facts.slice(0, 4) : [];
+  const hero = `<section class="bk3h hd5"><svg class="rings" viewBox="0 0 760 760" aria-hidden="true"><circle cx="380" cy="380" r="370"/><circle cx="380" cy="380" r="290" stroke-dasharray="2 10"/></svg><div class="in">
+<a class="back5 lt" href="../${b.testament}.html#b-${b.slug}">${BACK} العودة إلى ${T_NAME[b.testament]}</a>
+<div class="bkr5"><div class="tx"><span class="ey">${esc(b.groupName)} · السفر ${ar(b.order)} من ٦٦</span><h1>${esc(shortName(b))}</h1><p class="v">${esc(first)}<small>${refLabel(`${b.id}.1.1`)}</small></p>${I ? `<p class="s">${esc(firstSentences(I.summary, 150))}</p>` : '<p class="s">النص كاملاً متاح الآن، أصحاحاً أصحاحاً. والمقدمة والدراسة لهذا السفر قيد الإعداد.</p>'}</div>
+<aside class="fx5"><dl>${facts.map((f) => `<div><dt>${esc(f.k)}</dt><dd>${md(f.v)}</dd></div>`).join('')}<div><dt>الأصحاحات</dt><dd>${chWord(b.chapters)}${studiedCount(b) ? ` · ${studiedCount(b) === b.chapters ? 'كلها مدروسة' : `${ar(studiedCount(b))} مدروساً`}` : ''}</dd></div></dl>
+<a class="go5" data-start href="${href(1)}">ابدأ القراءة من الأصحاح الأول ${ARW}</a></aside></div>
+${hasMap ? `<div class="map"><small>أقسام السفر · عرض كل قسم يتبع عدد أصحاحاته</small><div class="mbar">${parts.map((q, i) => `<a href="#p${i + 1}" style="flex:${q.z - q.a + 1};--c:${PC[i % PC.length]};--d:${(0.4 + i * 0.1).toFixed(2)}s" title="${esc(q.t)}"></a>`).join('')}</div><div class="mlb">${parts.map((q) => `<span style="flex:${q.z - q.a + 1}"><b>${esc(q.t || 'بلا دراسة بعد')}</b><em>${ar(q.a)}${q.z > q.a ? '–' + ar(q.z) : ''}</em></span>`).join('')}</div></div>` : ''}
+</div></section>`;
+  const hasDeep = Object.keys(c?.deep || {}).length > 0;
+  const modes = `<section class="mode5" aria-label="اختر طريقة القراءة"><div class="mode5h"><h2>اختر طريقة القراءة</h2><p>تتغير الأقسام التي تراها في كل أصحاح، ويُحفظ اختيارك.</p></div><div class="mode5g" role="radiogroup">
+<button type="button" class="mc5 qt" role="radio" data-mode-pick="qt" aria-checked="true"><span class="e">${IC.read}</span><span class="t"><b>وضع الخلوة اليومية <small>(٢٠ دقيقة)</small></b><span class="d">قراءة مركّزة + الآية المفتاحية + تأمل وتطبيق + صلاة</span></span><span class="b5">مُفعّل حالياً</span></button>
+<button type="button" class="mc5 ds" role="radio" data-mode-pick="ds" aria-checked="false"><span class="e">${IC.list}</span><span class="t"><b>وضع الدراسة المعمّقة</b><span class="d">النص الكامل + الفكرة الرئيسية + المسيح في النص + الخرائط والشروح</span></span><span class="b5">مُفعّل حالياً</span></button>
+</div>${hasDeep ? '' : '<p class="note5">الشرح آية بآية لهذا السفر قيد الإعداد. في وضع الدراسة المعمّقة ستجد كل ما هو متاح من الدراسة الحالية.</p>'}</section>`;
+  const chCard = (n) => { const S = study(b, n); return S ? `<a class="cr5" href="${href(n)}" data-key="${b.id}:${n}"><em>${ar(n)}</em><span>${md(S.title)}</span></a>` : `<a class="cr5 no" href="${href(n)}" data-key="${b.id}:${n}"><em>${ar(n)}</em><span>النص فقط</span></a>`; };
+  const grid = hasMap
+    ? `<section class="chs5"><h2>الأصحاحات</h2>${parts.map((q, i) => `<div class="pt5" id="p${i + 1}" style="--c:${PC[i % PC.length]}"><h3><span>${esc(q.t || 'أصحاحات بلا دراسة بعد')}</span><small>${q.z > q.a ? `الأصحاحات ${ar(q.a)}–${ar(q.z)}` : `الأصحاح ${ar(q.a)}`}</small></h3><div class="crg5">${Array.from({ length: q.z - q.a + 1 }, (_, k) => chCard(q.a + k)).join('')}</div></div>`).join('')}</section>`
+    : `<section class="chs5"><h2>الأصحاحات</h2><div class="chg5">${bible(b.id).chapters.map((_, i) => `<a href="${href(i + 1)}" data-key="${b.id}:${i + 1}">${ar(i + 1)}</a>`).join('')}</div></section>`;
+  const about = I ? `<section class="ab5"><h2>تعرّف على السفر</h2>
+<details class="acc acc5"><summary><span class="ai">${IC.read}</span><span class="at"><b>نبذة عن السفر والكاتب</b><small>الملخص، والحقائق، وأين يقع في القصة</small></span><span class="ar" aria-hidden="true">${IC.chev}</span></summary><div class="acc5b">
 <p class="lead5">${md(I.summary)}</p>
 <dl class="facts5">${I.facts.map((f) => `<div><dt>${esc(f.k)}${f.tag && TG[f.tag] ? ` <em class="t-${f.tag}">${TG[f.tag]}</em>` : ''}</dt><dd>${md(f.v)}</dd></div>`).join('')}</dl>
 ${I.context ? `<div class="ctx5">${[['before', 'قبله'], ['now', 'هذا السفر'], ['after', 'بعده']].map(([k, l]) => { const x = I.context[k]; if (!x) return ''; const inner = `<small>${l}</small><b>${md(x.t)}</b>`; return x.href ? `<a href="${up(1)}${x.href}">${inner}</a>` : `<div class="now">${inner}</div>`; }).join('')}</div>` : ''}
-<h3>مقدمة السفر في ${secWord(I.sections.length)}</h3>
+</div></details>
+<details class="acc acc5"><summary><span class="ai">${IC.list}</span><span class="at"><b>مقدمة السفر في ${secWord(I.sections.length)}</b><small>${I.sections.slice(0, 3).map((x) => esc(plain(x.short || x.title || ''))).join('، ')}...</small></span><span class="ar" aria-hidden="true">${IC.chev}</span></summary><div class="acc5b">
 <ol class="secs5">${I.sections.map((x, i) => `<li><a href="${b.slug}/about.html#sec${i + 1}"><em>${ar(i + 1)}</em><span>${md(x.title || x.t || '')}</span>${ARW}</a></li>`).join('')}</ol>
-</div></details>` : '';
-  const hasDeep = Object.keys(c?.deep || {}).length > 0;
-  const modes = `<section class="mode5" aria-label="اختر طريقة القراءة"><h2>اختر طريقة القراءة</h2><div class="mode5g" role="radiogroup">
-<button type="button" class="mc5 qt" role="radio" data-mode-pick="qt" aria-checked="true"><span class="b5">مُفعّل حالياً</span><span class="e">${IC.read}</span><b>وضع الخلوة اليومية <small>(٢٠ دقيقة)</small></b><span class="d">قراءة مركّزة + الآية المفتاحية + تأمل وتطبيق + صلاة</span></button>
-<button type="button" class="mc5 ds" role="radio" data-mode-pick="ds" aria-checked="false"><span class="b5">مُفعّل حالياً</span><span class="e">${IC.list}</span><b>وضع الدراسة المعمّقة</b><span class="d">النص الكامل + الفكرة الرئيسية + المسيح في النص + الخرائط والشروح</span></button>
-</div>${hasDeep ? '' : '<p class="note5">الدراسة المعمّقة آية بآية لهذا السفر قيد الإعداد. في هذا الوضع ستجد كل ما هو متاح من الدراسة الحالية.</p>'}</section>`;
-  const grid = `<section class="chs5"><h2>الأصحاحات</h2><div class="chg5">${bible(b.id).chapters.map((_, i) => { const n = i + 1; const S = study(b, n); return `<a href="${skip ? '#' : `${b.slug}/${n}.html`}" data-key="${b.id}:${n}"${deepOf(b, n) && S ? ' data-deep="1"' : ''}${S ? ` title="${esc(plain(S.title))}"` : ''} class="${S ? 'st' : ''}">${ar(n)}</a>`; }).join('')}</div>
-<p class="lg5"><span><i class="s5 f"></i>أصحاح مدروس</span><span><i class="s5"></i>النص فقط</span><span>✓ قرأته</span></p></section>`;
-  const first = bible(b.id).chapters[0].verses[0].text;
-  const body = `<section class="bk3h hd5"><svg class="rings" viewBox="0 0 760 760" aria-hidden="true"><circle cx="380" cy="380" r="370"/><circle cx="380" cy="380" r="290" stroke-dasharray="2 10"/></svg><div class="in"><a class="back5 lt" href="../${b.testament}.html#b-${b.slug}">${BACK} العودة إلى ${T_NAME[b.testament]}</a>
-<span class="ey">${esc(b.groupName)} · السفر ${ar(b.order)} من ٦٦ · ${chWord(b.chapters)}</span><h1>${esc(shortName(b))}</h1><p class="v">${esc(first)}<small>${refLabel(`${b.id}.1.1`)}</small></p></div></section>
-<div class="z5 bk5p">${intro}${modes}${grid}</div>`;
+</div></details></section>` : '';
+  const body = `${hero}<div class="z5 bk5p">${modes}${grid}${about}</div>`;
   write(`book/${b.slug}.html`, page({ title: b.name, depth: 1, nav: b.testament, body, cls: 'v3 v5hub v5book' }));
 }
 

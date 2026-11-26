@@ -34,7 +34,9 @@
   }
   if (picks.length) { picks.forEach(function (p) { p.addEventListener('click', function () { window.SolaMode.set(p.getAttribute('data-mode-pick')); paint(); }); }); paint(); }
   var rl = readList();
-  document.querySelectorAll('.chg5 a[data-key]').forEach(function (a) { if (rl.indexOf(a.getAttribute('data-key')) >= 0) { a.classList.add('read'); a.setAttribute('aria-label', a.textContent + ' (قرأته)'); } });
+  var st5 = document.querySelector('[data-start]');
+  if (st5) { var all = [].slice.call(document.querySelectorAll('.cr5[data-key], .chg5 a[data-key]')); var any = all.some(function (a) { return rl.indexOf(a.getAttribute('data-key')) >= 0; }); var nx = all.filter(function (a) { return rl.indexOf(a.getAttribute('data-key')) < 0; })[0]; if (any && nx) { st5.setAttribute('href', nx.getAttribute('href')); st5.firstChild.nodeValue = 'تابع القراءة: الأصحاح ' + (nx.querySelector('em') ? nx.querySelector('em').textContent : nx.textContent) + ' '; } }
+  document.querySelectorAll('.chg5 a[data-key], .cr5[data-key]').forEach(function (a) { if (rl.indexOf(a.getAttribute('data-key')) >= 0) { a.classList.add('read'); a.setAttribute('aria-label', a.textContent + ' (قرأته)'); } });
 
   // ---------- chapter: hub and focused views (hash routing) ----------
   var c5 = document.querySelector('[data-c5]');
