@@ -484,6 +484,23 @@
      "C3": "ثالثًا. ٣ (٢٨) وعد برؤية ابن الإنسان آتيًا في ملكوته"
     },
     "read": "2026-11-26"
+   },
+   "matthew-17": {
+    "url": "https://enduringword.com/bible-commentary/matthew-17/",
+    "lang": "en",
+    "secs": {
+     "A1": "أولًا. ١ (١-٢) تجلّي يسوع أمام تلاميذه",
+     "A2": "أولًا. ٢ (٣) موسى وإيليا يظهران مع يسوع",
+     "A3": "أولًا. ٣ (٤-٥) بطرس يساوي يسوع بموسى وإيليا فيُوبَّخ بصوت من سحابة مجد الله",
+     "A4": "أولًا. ٤ (٦-٨) التلاميذ يتجاوبون بخوف مقدس",
+     "A5": "أولًا. ٥ (٩-١٣) مسألة مجيء إيليا أولًا",
+     "B1": "ثانيًا. ١ (١٤-١٦) شيطان أصعب من أن يقدر عليه التلاميذ",
+     "B2": "ثانيًا. ٢ (١٧-٢١) يسوع يُخرج الشيطان بسهولة",
+     "C1": "ثالثًا. ١ (٢٢-٢٣) يسوع يذكّر تلاميذه بآلامه الآتية",
+     "C2": "ثالثًا. ٢ (٢٤-٢٦) حان وقت دفع ضريبة الهيكل",
+     "C3": "ثالثًا. ٣ (٢٧) يسوع يدفع الضريبة على أي حال وبتدبير معجزي"
+    },
+    "read": "2026-11-26"
    }
   }
  },
@@ -2150,6 +2167,61 @@
      28
     ],
     "url": "https://www.gty.org/sermons/2323/preview-of-the-second-coming-part-2",
+    "date": ""
+   },
+   "2322@17": {
+    "t": "Preview of the Second Coming, Part 1",
+    "book": "Matthew",
+    "ch": 17,
+    "v": [
+     1,
+     8
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2322/preview-of-the-second-coming-part-1",
+    "date": ""
+   },
+   "2323@17": {
+    "t": "Preview of the Second Coming, Part 2",
+    "book": "Matthew",
+    "ch": 17,
+    "v": [
+     1,
+     13
+    ],
+    "url": "https://www.gty.org/sermons/2323/preview-of-the-second-coming-part-2",
+    "date": ""
+   },
+   "2324": {
+    "t": "Preview of the Second Coming, Part 3",
+    "book": "Matthew",
+    "ch": 17,
+    "v": [
+     1,
+     13
+    ],
+    "url": "https://www.gty.org/sermons/2324/preview-of-the-second-coming-part-3",
+    "date": ""
+   },
+   "2325": {
+    "t": "The Power of Faith",
+    "book": "Matthew",
+    "ch": 17,
+    "v": [
+     14,
+     21
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2325/the-power-of-faith",
+    "date": ""
+   },
+   "2326": {
+    "t": "The Believer as a Citizen",
+    "book": "Matthew",
+    "ch": 17,
+    "v": [
+     22,
+     27
+    ],
+    "url": "https://gty.org/library/sermons-library/2326",
     "date": ""
    }
   }
