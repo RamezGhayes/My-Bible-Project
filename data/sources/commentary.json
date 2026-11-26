@@ -541,6 +541,28 @@
      "C6": "خاتمة العظة. و) (٢٨-٢٩) تأثير عظة يسوع على الذين سمعوه"
     },
     "read": "2026-11-26"
+   },
+   "matthew-13": {
+    "url": "https://enduringword.com/bible-commentary/ar/matthew-13/",
+    "lang": "ar",
+    "secs": {
+     "A1": "أولًا. أ (١-٣أ) يسوع يعلم بالأمثال",
+     "A2": "أولًا. ب (٣ب-٩) قصة بسيطة عن زارع وبذر البذور",
+     "A3": "أولًا. ج (١٠-١٧) لماذا استخدم يسوع الأمثال؟ لإخفاء الحقيقة عن الذين لا يستمعون إلى الروح القدس",
+     "A4": "أولًا. د (١٨-٢٣) تفسير مثل الزارع: كل تربة تمثل واحدًا من أربعة ردود أفعال تجاه كلمة الملكوت",
+     "B1": "ثانيًا. أ (٢٤-٣٠) مثل الحنطة والزوان",
+     "B2": "ثانيًا. ب (٣١-٣٢) مثل حبة الخردل",
+     "B3": "ثانيًا. ج (٣٣) مثال آخر للفساد في مجتمع الملكوت: مثل الخمير",
+     "B4": "ثانيًا. د (٣٤-٣٥) تعليم يسوع بالأمثال كان تحقيقًا للنبوة",
+     "B5": "ثانيًا. هـ (٣٦-٤٣) يسوع يشرح مثل الحنطة والزوان",
+     "C1": "ثالثًا. أ (٤٤) مثل الكنز الخفي",
+     "C2": "ثالثًا. ب (٤٥-٤٦) مثل اللؤلؤة الكثيرة الثمن",
+     "C3": "ثالثًا. ج (٤٧-٥٠) مثل الشبكة",
+     "C4": "ثالثًا. د (٥١-٥٢) التلاميذ يدّعون فهم أمثال يسوع",
+     "D1": "رابعًا. أ (٥٣-٥٦) فوجئت الناصرة بأن واحدًا منهم يقوم بمثل هذه الأمور المذهلة",
+     "D2": "رابعًا. ب (٥٧-٥٨) نبي بلا كرامة"
+    },
+    "read": "2026-11-26"
    }
   }
  },
@@ -2438,6 +2460,116 @@
      29
     ],
     "url": "https://www.gty.org/sermons/2256/empty-hearts",
+    "date": ""
+   },
+   "2297": {
+    "t": "Kingdom Parables, Part 1",
+    "book": "Matthew",
+    "ch": 13,
+    "v": [
+     1,
+     3
+    ],
+    "url": "https://www.gty.org/resources/study-guides/print/2297/kingdom-parables-part-1",
+    "date": ""
+   },
+   "2298": {
+    "t": "Kingdom Parables, Part 2",
+    "book": "Matthew",
+    "ch": 13,
+    "v": [
+     1,
+     50
+    ],
+    "url": "https://www.gty.org/resources/study-guides/print/2298/kingdom-parables-part-2",
+    "date": ""
+   },
+   "2299": {
+    "t": "The Responses to the Gospel",
+    "book": "Matthew",
+    "ch": 13,
+    "v": [
+     3,
+     23
+    ],
+    "url": "https://www.gty.org/sermons/2299/the-responses-to-the-gospel",
+    "date": ""
+   },
+   "2300": {
+    "t": "The Kingdom and the World",
+    "book": "Matthew",
+    "ch": 13,
+    "v": [
+     24,
+     43
+    ],
+    "url": "https://www.gty.org/sermons/2300/the-kingdom-and-the-world",
+    "date": ""
+   },
+   "2301": {
+    "t": "The Power and Influence of Christ's Kingdom, Part 1",
+    "book": "Matthew",
+    "ch": 13,
+    "v": [
+     31,
+     32
+    ],
+    "url": "https://www.gty.org/sermons/2301/the-power-and-influence-of-christs-kingdom-part-1",
+    "date": ""
+   },
+   "2302": {
+    "t": "The Power and Influence of Christ's Kingdom, Part 2",
+    "book": "Matthew",
+    "ch": 13,
+    "v": [
+     31,
+     33
+    ],
+    "url": "https://www.gty.org/sermons/2302/the-power-and-influence-of-christs-kingdom-part-2",
+    "date": ""
+   },
+   "2303": {
+    "t": "Entering the Kingdom",
+    "book": "Matthew",
+    "ch": 13,
+    "v": [
+     44,
+     46
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2303/entering-the-kingdom",
+    "date": ""
+   },
+   "2304": {
+    "t": "The Furnace of Fire",
+    "book": "Matthew",
+    "ch": 13,
+    "v": [
+     47,
+     52
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2304/the-furnace-of-fire",
+    "date": ""
+   },
+   "2305": {
+    "t": "The Power of Unbelief, Part 1",
+    "book": "Matthew",
+    "ch": 13,
+    "v": [
+     53,
+     58
+    ],
+    "url": "https://www.gty.org/sermons/2305/the-power-of-unbelief-part-1",
+    "date": ""
+   },
+   "2306": {
+    "t": "The Power of Unbelief, Part 2",
+    "book": "Matthew",
+    "ch": 13,
+    "v": [
+     53,
+     58
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2306/the-power-of-unbelief-part-2",
     "date": ""
    }
   }
