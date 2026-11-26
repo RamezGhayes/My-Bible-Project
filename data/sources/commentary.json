@@ -623,6 +623,24 @@
      "C6": "ثالثًا. ٦ (٣٥) الغفران الحقيقي من القلب مطلوب من كل من غُفر له"
     },
     "read": "2026-11-26"
+   },
+   "matthew-19": {
+    "url": "https://enduringword.com/bible-commentary/matthew-19/",
+    "lang": "en",
+    "secs": {
+     "A1": "أولًا. ١ (١-٢) يسوع يتجه نحو اليهودية وأورشليم",
+     "A2": "أولًا. ٢ (٣) الفريسيون يحاولون اصطياد يسوع",
+     "A3": "أولًا. ٣ (٤-٦) جواب يسوع الأول للفريسيين: ارجعوا إلى الزواج كما أسسه الله",
+     "A4": "أولًا. ٤ (٧-٩) الجدل حول موسى: جواب يسوع الثاني",
+     "A5": "أولًا. ٥ (١٠-١٢) التلاميذ يسألون عن الزواج والبتولية",
+     "A6": "أولًا. ٦ (١٣-١٥) يسوع يبارك الأولاد الصغار",
+     "B1": "ثانيًا. ١ (١٦-١٧) رجل يسأل يسوع عن نيل الحياة الأبدية",
+     "B2": "ثانيًا. ٢ (١٨-٢٠) يسوع يمتحنه بوصايا الناموس الخاصة بعلاقة الإنسان بالإنسان",
+     "B3": "ثانيًا. ٣ (٢١-٢٢) يسوع يمتحنه بوصايا الناموس الخاصة بعلاقة الإنسان بالله",
+     "B4": "ثانيًا. ٤ (٢٣-٢٦) الغنى عائق أمام الملكوت",
+     "B5": "ثانيًا. ٥ (٢٧-٣٠) سؤال بطرس الصريح: ماذا يكون لنا لأننا تبعناك؟"
+    },
+    "read": "2026-11-26"
    }
   }
  },
@@ -2828,6 +2846,72 @@
      35
     ],
     "url": "https://www.gty.org/sermons/2335/learning-to-forgive-part-3",
+    "date": ""
+   },
+   "2336": {
+    "t": "Jesus' Teaching on Divorce, Part 1",
+    "book": "Matthew",
+    "ch": 19,
+    "v": [
+     1,
+     12
+    ],
+    "url": "https://gty.org/library/sermons-library/2336",
+    "date": ""
+   },
+   "2337": {
+    "t": "Jesus' Teaching on Divorce, Part 2",
+    "book": "Matthew",
+    "ch": 19,
+    "v": [
+     3,
+     9
+    ],
+    "url": "https://www.gty.org/sermons/2337/jesus-teaching-on-divorce-part-2",
+    "date": ""
+   },
+   "2339": {
+    "t": "Jesus' Teaching on Divorce, Part 4",
+    "book": "Matthew",
+    "ch": 19,
+    "v": [
+     1,
+     12
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2339/jesus-teaching-on-divorce-part-4",
+    "date": ""
+   },
+   "2343": {
+    "t": "How to Obtain Eternal Life",
+    "book": "Matthew",
+    "ch": 19,
+    "v": [
+     16,
+     22
+    ],
+    "url": "https://gty.org/library/sermons-library/2343",
+    "date": ""
+   },
+   "2344": {
+    "t": "The Poverty of Riches/ The Riches of Poverty",
+    "book": "Matthew",
+    "ch": 19,
+    "v": [
+     23,
+     29
+    ],
+    "url": "https://www.gty.org/sermons/2344/the-poverty-of-riches-the-riches-of-poverty",
+    "date": ""
+   },
+   "2345": {
+    "t": "Equality in the Kingdom",
+    "book": "Matthew",
+    "ch": 19,
+    "v": [
+     27,
+     30
+    ],
+    "url": "https://www.gty.org/sermons/2345/equality-in-the-kingdom",
     "date": ""
    }
   }
