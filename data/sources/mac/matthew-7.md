@@ -1,0 +1,8 @@
+# Reading notes: John MacArthur, sermons on Matthew 7 (Grace to You)
+No dates shown on pages read; "date" omitted. Codes from gty.org URLs found by search. 2254 (Beware of False Prophets, Part 2) not read.
+2250, Stop Criticizing (7:1-6): critical spirit not all judgment; Tolstoy rejected; wrong view of God, others, self; Rom 14:4; James 4:11-12; Rom 2:1; Luke 18:9-14; Ps 51; Prov 18:13; Gal 6:1; John 7:24.
+2251, Start Loving (7:7-12): conditions of promise (1 John 3:22; James 4:3; 1 John 5:14-15); how much more, Holy Spirit in Luke; giving Father frees us to give; Golden Rule = law and prophets (Lev 19:18; Rom 13:8-10; James 2:8); Hillel, Confucius, Epictetus negative forms; regeneration, Rom 5:5; Edersheim; Ryle.
+2252, Which Way to Heaven? (7:13-14): sermon page robots-disallowed; read the gty.org study-guide print page https://www.gty.org/resources/study-guides/print/2252/which-way-to-heaven . Choice; divine vs self righteousness; gates, ways, destinations, crowds; Deut 30:19; Josh 24:15; 1 Kgs 18:21; Prov 14:12; Bunyan.
+2253, Beware of False Prophets, Part 1 (7:15-20): definition; danger; deception (sheep's clothing); damnation; Jer 14:14; 23; Deut 13:1-5; Zech 13:4; 2 Cor 11:13-15; Acts 20:29; Didache; Broadus.
+2255, Empty Words (7:21-23): page heading read "Empty Words and Empty Hearts"; title from search result. Ryle false prophets to false professors; empty words vs empty hearts; 2 Cor 13:5; "know" Amos 3:2; Ps 6:8; Balaam, Saul (Num 23:5; 1 Sam 10:10-11); Deut 13; Morgan sanctuary blasphemy; Stott.
+2256, Empty Hearts (7:24-29): two builders same place; rock = obedience; James 1:22-25; Luke 6:47-48; dig deep; John 8:31; 1 John 2:3; Titus 1:16; Ps 18:2; C.S. Lewis dentist; 28-29 amazement is not conversion.

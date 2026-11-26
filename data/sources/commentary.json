@@ -523,6 +523,24 @@
      "C5": "ثالثاً. هـ) (٣٤) خاتمة بمنطق سليم"
     },
     "read": "2026-11-26"
+   },
+   "matthew-7": {
+    "url": "https://enduringword.com/bible-commentary/ar/matthew-7/",
+    "lang": "ar",
+    "secs": {
+     "A1": "أولاً. أ) (١-٢) بيان موجز عن إصدار الحكم على الآخرين",
+     "A2": "أولاً. ب) (٣-٥) توضيح لمبدأ يسوع فيما يتعلق بالحكم على الآخرين",
+     "A3": "أولاً. ج) (٦) موازنة المحبة بالتمييز",
+     "B1": "ثانياً. أ) (٧-٨) يدعونا يسوع إلى الاستمرار في السؤال والطلب والقرع",
+     "B2": "ثانياً. ب) (٩-١١) يسوع يوضح طبيعة الله المعطاءة",
+     "C1": "خاتمة العظة. أ) (١٢) القاعدة الذهبية: ملخص تعليم يسوع الأخلاقي في معاملتنا للآخرين",
+     "C2": "خاتمة العظة. ب) (١٣-١٤) الاختيار بين طريقين وواحدة من وجهتين",
+     "C3": "خاتمة العظة. ج) (١٥-٢٠) خطر الأنبياء الكذبة والتمييز بين شجرتين من ثمارهما",
+     "C4": "خاتمة العظة. د) (٢١-٢٣) القرار بين ادعاءين بسيادة يسوع: واحد خاطئ وآخر حقيقي",
+     "C5": "خاتمة العظة. هـ) (٢٤-٢٧) القرار بين بنّاءين ومصيرهما",
+     "C6": "خاتمة العظة. و) (٢٨-٢٩) تأثير عظة يسوع على الذين سمعوه"
+    },
+    "read": "2026-11-26"
    }
   }
  },
@@ -2354,6 +2372,72 @@
      34
     ],
     "url": "https://www.gty.org/library/sermons-library/2248/overcoming-financial-worry-part-1",
+    "date": ""
+   },
+   "2250": {
+    "t": "Stop Criticizing",
+    "book": "Matthew",
+    "ch": 7,
+    "v": [
+     1,
+     6
+    ],
+    "url": "https://www.gty.org/sermons/2250/stop-criticizing",
+    "date": ""
+   },
+   "2251": {
+    "t": "Start Loving",
+    "book": "Matthew",
+    "ch": 7,
+    "v": [
+     7,
+     12
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2251/start-loving",
+    "date": ""
+   },
+   "2252": {
+    "t": "Which Way to Heaven?",
+    "book": "Matthew",
+    "ch": 7,
+    "v": [
+     13,
+     14
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2252/which-way-to-heaven",
+    "date": ""
+   },
+   "2253": {
+    "t": "Beware of False Prophets, Part 1",
+    "book": "Matthew",
+    "ch": 7,
+    "v": [
+     15,
+     20
+    ],
+    "url": "https://www.gty.org/sermons/2253/beware-of-false-prophets-part-1",
+    "date": ""
+   },
+   "2255": {
+    "t": "Empty Words",
+    "book": "Matthew",
+    "ch": 7,
+    "v": [
+     21,
+     23
+    ],
+    "url": "https://gty.org/library/sermons-library/2255",
+    "date": ""
+   },
+   "2256": {
+    "t": "Empty Hearts",
+    "book": "Matthew",
+    "ch": 7,
+    "v": [
+     24,
+     29
+    ],
+    "url": "https://www.gty.org/sermons/2256/empty-hearts",
     "date": ""
    }
   }
