@@ -600,6 +600,29 @@
      "C2": "ثالثًا. ب (٣٢-٣٩) إطعام الأربعة آلاف"
     },
     "read": "2026-11-26"
+   },
+   "matthew-18": {
+    "url": "https://enduringword.com/bible-commentary/matthew-18/",
+    "lang": "en",
+    "secs": {
+     "A1": "أولًا. ١ (١) التلاميذ يطرحون سؤالًا",
+     "A2": "أولًا. ٢ (٢-٤) يسوع يقيم ولدًا مثالًا للتواضع",
+     "A3": "أولًا. ٣ (٥-٦) ويل لمن يُعثر أحد هؤلاء",
+     "A4": "أولًا. ٤ (٧) العثرات لا بد أن تأتي، لكن لا يكن لنا نصيب في الإعثار",
+     "A5": "أولًا. ٥ (٨-٩) في ضوء الدينونة يستحق الأمر التضحية في الحرب ضد الخطية",
+     "A6": "أولًا. ٦ (١٠) إشارة أخرى إلى مسؤوليتنا في حراسة صغار الله",
+     "A7": "أولًا. ٧ (١١-١٤) على التلاميذ أن يشاركوا يسوع قلبه ويعتنوا بالأفراد",
+     "B1": "ثانيًا. ١ (١٥) إن أخطأ إليك أحد فاذهب وواجهه مباشرة",
+     "B2": "ثانيًا. ٢ (١٦-١٨) من يُصرّ على عدم التوبة في الكنيسة يُعزل عن الشركة",
+     "B3": "ثانيًا. ٣ (١٩-٢٠) قوة الشركة وبركتها التي يُحرم منها غير التائب",
+     "C1": "ثالثًا. ١ (٢١-٢٢) سؤال بطرس عن الغفران وجواب يسوع",
+     "C2": "ثالثًا. ٢ (٢٣-٢٤) دَين العبد الأول",
+     "C3": "ثالثًا. ٣ (٢٥-٢٧) السيد يُسقط الدين",
+     "C4": "ثالثًا. ٤ (٢٨-٣٠) العبد المسامَح يرفض أن يسامح",
+     "C5": "ثالثًا. ٥ (٣١-٣٤) دينونة العبد غير المسامِح",
+     "C6": "ثالثًا. ٦ (٣٥) الغفران الحقيقي من القلب مطلوب من كل من غُفر له"
+    },
+    "read": "2026-11-26"
    }
   }
  },
@@ -2706,6 +2729,105 @@
      39
     ],
     "url": "https://www.gty.org/sermons/2314/compassion-for-the-outsiders",
+    "date": ""
+   },
+   "2327": {
+    "t": "Entering the Kingdom",
+    "book": "Matthew",
+    "ch": 18,
+    "v": [
+     1,
+     4
+    ],
+    "url": "https://www.gty.org/sermons/2327/entering-the-kingdom",
+    "date": ""
+   },
+   "2328": {
+    "t": "The Danger of Causing a Christian to Sin",
+    "book": "Matthew",
+    "ch": 18,
+    "v": [
+     5,
+     9
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2328/the-danger-of-causing-a-christian-to-sin",
+    "date": ""
+   },
+   "2329": {
+    "t": "The Care of God's Children",
+    "book": "Matthew",
+    "ch": 18,
+    "v": [
+     10,
+     14
+    ],
+    "url": "https://www.gty.org/sermons/2329/the-care-of-gods-children",
+    "date": ""
+   },
+   "2330": {
+    "t": "The Discipline of God's Children, Part 1",
+    "book": "Matthew",
+    "ch": 18,
+    "v": [
+     15,
+     20
+    ],
+    "url": "https://www.gty.org/sermons/2330/the-discipline-of-gods-children-part-1",
+    "date": ""
+   },
+   "2331": {
+    "t": "The Discipline of God's Children, Part 2",
+    "book": "Matthew",
+    "ch": 18,
+    "v": [
+     15,
+     20
+    ],
+    "url": "https://www.gty.org/sermons/2331/the-discipline-of-gods-children-part-2",
+    "date": ""
+   },
+   "2332": {
+    "t": "The Discipline of God's Children, Part 3",
+    "book": "Matthew",
+    "ch": 18,
+    "v": [
+     15,
+     20
+    ],
+    "url": "https://www.gty.org/sermons/2332/the-discipline-of-gods-children-part-3",
+    "date": ""
+   },
+   "2333": {
+    "t": "Learning to Forgive, Part 1",
+    "book": "Matthew",
+    "ch": 18,
+    "v": [
+     21,
+     35
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2333/learning-to-forgive-part-1",
+    "date": ""
+   },
+   "2334": {
+    "t": "Learning to Forgive, Part 2",
+    "book": "Matthew",
+    "ch": 18,
+    "v": [
+     21,
+     35
+    ],
+    "url": "https://gty.org/library/sermons-library/2334",
+    "date": ""
+   },
+   "2335": {
+    "t": "Learning to Forgive, Part 3",
+    "book": "Matthew",
+    "ch": 18,
+    "v": [
+     21,
+     35
+    ],
+    "url": "https://www.gty.org/sermons/2335/learning-to-forgive-part-3",
     "date": ""
    }
   }
