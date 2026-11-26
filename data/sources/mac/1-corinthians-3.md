@@ -1,0 +1,4 @@
+# Reading notes: John MacArthur, sermons on 1 Corinthians 3 (Grace to You)
+Read 2026-11-26. Codes, titles, ranges, dates from the series page https://www.gty.org/sermons/series/7132/1-corinthians-vol-01.
+1817, The Disease of Division (3:1-9), 1975-06-29: read at gty.org/library/sermons-library/1817. Cause, symptoms, cure; world and flesh; Michael Green cyclist analogy; brethren; pneumatikos, psuchikos, sarkinos, sarkikos, sarx (Rom 7); position vs practice; sin not less heinous in believer; babes = ignorance; 18 months Paul then Apollos; James 1:25; milk and meat same doctrine (1 Cor 2:10; 1 Pet 2:1-2); envy and strife; Gal 5:19-21; selfishness mother of division; diakonoi as table waiters; faucet and brush; India missionary one convert; God's field and building.
+NOT READ (session web limit hit): 1818 The Judgment of the Believer's Works (3:10-17), 1975-07-06; 1819 All Things are Yours (3:18-23), 1975-07-13. Not registered, no voices.
