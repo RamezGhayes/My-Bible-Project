@@ -324,6 +324,36 @@
      "B4": "ب. ٤ (٢٣-٢٥) وصف خدمة يسوع في الجليل"
     },
     "read": "2026-11-26"
+   },
+   "matthew-5": {
+    "url": "https://enduringword.com/bible-commentary/ar/matthew-5/",
+    "lang": "ar",
+    "secs": {
+     "A1": "أولاً. أ) (١) يسوع يستعد ليعلّم تلاميذه",
+     "A2": "أولاً. ب) (٢) يسوع يشرع في التعليم",
+     "B1": "ثانياً. أ) (٣) الأساس: المسكنة بالروح",
+     "B2": "ثانياً. ب) (٤) رد الفعل المقدس على المسكنة بالروح: الحزن",
+     "B3": "ثانياً. ج) (٥) الخطوة التالية: الوداعة",
+     "B4": "ثانياً. د) (٦) رغبة المسكين بالروح والحزين والوديع: البر",
+     "B5": "ثانياً. هـ) (٧) طوبى للرحماء",
+     "B6": "ثانياً. و) (٨) طوبى لأنقياء القلب",
+     "B7": "ثانياً. ز) (٩) طوبى لصانعي السلام",
+     "B8": "ثانياً. ح) (١٠-١٢) ردة فعل العالم تجاه هذه النوعية من البشر: الاضطهاد",
+     "C1": "ثالثاً. أ) (١٣) يجب أن يكون أتباع يسوع كالملح",
+     "C2": "ثالثاً. ب) (١٤-١٦) يجب أن يكون أتباع يسوع كالنور",
+     "D1": "رابعاً. أ) (١٧-١٨) علاقة يسوع بالشريعة",
+     "D2": "رابعاً. ب) (١٩-٢٠) علاقة التلميذ بالناموس",
+     "E1": "خامساً. أ) (٢١-٢٢) يسوع يفسر وصية لا تقتل",
+     "E2": "خامساً. ب) (٢٣-٢٦) المزيد عن مشكلة العلاقات الشخصية",
+     "E3": "خامساً. ج) (٢٧-٢٨) يسوع يفسر وصية لا تزن",
+     "E4": "خامساً. د) (٢٩-٣٠) موقفنا في الحرب ضد الخطيئة",
+     "E5": "خامساً. هـ) (٣١-٣٢) يسوع يفسر الوصية الخاصة بالطلاق",
+     "E6": "خامساً. و) (٣٣-٣٧) يسوع يفسر الوصية المتعلقة بالقسم",
+     "E7": "خامساً. ز) (٣٨-٤٢) يسوع يفسر قانون القصاص",
+     "E8": "خامساً. ح) (٤٣-٤٧) يسوع يفسر قانون المحبة تجاه القريب",
+     "E9": "خامساً. ط) (٤٨) خلاصة التفسير الحقيقي: كونوا أنتم كاملين"
+    },
+    "read": "2026-11-26"
    }
   }
  },
@@ -1341,6 +1371,160 @@
      25
     ],
     "url": "https://www.gty.org/sermons/2196/the-healing-work-of-jesus",
+    "date": ""
+   },
+   "2197": {
+    "t": "Happiness Is...",
+    "book": "Matthew",
+    "ch": 5,
+    "v": [
+     1,
+     12
+    ],
+    "url": "https://www.gty.org/sermons/2197/happiness-is",
+    "date": ""
+   },
+   "2198": {
+    "t": "Happy Are the Humble",
+    "book": "Matthew",
+    "ch": 5,
+    "v": [
+     3,
+     3
+    ],
+    "url": "https://www.gty.org/sermons/2198/happy-are-the-humble",
+    "date": ""
+   },
+   "2201": {
+    "t": "Happy Are the Hungry",
+    "book": "Matthew",
+    "ch": 5,
+    "v": [
+     6,
+     6
+    ],
+    "url": "https://gty.org/library/sermons-library/2201",
+    "date": ""
+   },
+   "2202": {
+    "t": "Happy Are the Merciful",
+    "book": "Matthew",
+    "ch": 5,
+    "v": [
+     7,
+     7
+    ],
+    "url": "https://www.gty.org/sermons/2202/happy-are-the-merciful",
+    "date": ""
+   },
+   "2206": {
+    "t": "Happy are the Harassed, Part 2",
+    "book": "Matthew",
+    "ch": 5,
+    "v": [
+     10,
+     12
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2206/happy-are-the-harassed-part-2",
+    "date": ""
+   },
+   "2207": {
+    "t": "You are the Salt of the Earth",
+    "book": "Matthew",
+    "ch": 5,
+    "v": [
+     13,
+     16
+    ],
+    "url": "https://www.gty.org/sermons/2207/you-are-the-salt-of-the-earth",
+    "date": ""
+   },
+   "2208": {
+    "t": "You Are the Light of the World",
+    "book": "Matthew",
+    "ch": 5,
+    "v": [
+     13,
+     16
+    ],
+    "url": "https://www.gty.org/sermons/2208/you-are-the-light-of-the-world",
+    "date": ""
+   },
+   "2212": {
+    "t": "Christ and the Law, Part 4",
+    "book": "Matthew",
+    "ch": 5,
+    "v": [
+     17,
+     20
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2212/christ-and-the-law-part-4",
+    "date": ""
+   },
+   "2214": {
+    "t": "Who Is a Murderer?",
+    "book": "Matthew",
+    "ch": 5,
+    "v": [
+     21,
+     26
+    ],
+    "url": "https://www.gty.org/sermons/2214/who-is-a-murderer",
+    "date": ""
+   },
+   "2215": {
+    "t": "Who Is an Adulterer? Part 1",
+    "book": "Matthew",
+    "ch": 5,
+    "v": [
+     27,
+     30
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2215/who-is-an-adulterer-part-1",
+    "date": ""
+   },
+   "2218": {
+    "t": "Divorce and Remarriage, Part 1",
+    "book": "Matthew",
+    "ch": 5,
+    "v": [
+     31,
+     32
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2218/divorce-and-remarriage-part-1",
+    "date": ""
+   },
+   "2222": {
+    "t": "The Spiritual Credibility Gap",
+    "book": "Matthew",
+    "ch": 5,
+    "v": [
+     33,
+     37
+    ],
+    "url": "https://www.gty.org/sermons/2222/the-spiritual-credibility-gap",
+    "date": ""
+   },
+   "2223": {
+    "t": "An Eye for an Eye, Part 1",
+    "book": "Matthew",
+    "ch": 5,
+    "v": [
+     38,
+     42
+    ],
+    "url": "https://www.gty.org/sermons/2223/an-eye-for-an-eye-part-1",
+    "date": ""
+   },
+   "2226": {
+    "t": "Love Your Enemies, Part 2",
+    "book": "Matthew",
+    "ch": 5,
+    "v": [
+     43,
+     48
+    ],
+    "url": "https://gty.org/library/sermons-library/2226",
     "date": ""
    }
   }

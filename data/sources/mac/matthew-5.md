@@ -1,0 +1,16 @@
+# Reading notes: John MacArthur, sermons on Matthew 5 (Grace to You)
+No dates shown on the sermon pages read (some mention 1979 in passing); "date" omitted. Series pages Matthew Vol. 02-04 robots-disallowed. Codes are those in gty.org URLs found by search.
+2197, Happiness Is... (5:1-12; used for 1-2): Mal 4:6 curse vs blessing; Rev 22:3; makarios of God (1 Tim 1:11; 6:15); 2 Pet 1:4; four Jewish groups; 1 Sam 16:7; Jer 31:33; Thomas Watson; Seneca; sitting = authority; disciples primary audience.
+2198, Happy Are the Humble (5:3): ptochos vs penes, Lazarus Luke 16; Isa 57:15; 66:2; Ps 51:17; Jacob, Isaiah 6, Gideon Judg 6:15; Luke 18:9-14; Augustine; Luther; James Boyce lion/lamb new nature; Lloyd-Jones; Watson castle.
+2201, Happy Are the Hungry (5:6): present participles; righteousness direct object = all of it; Jer 2:13; Ps 63:1; 107:9; tests; Lenski; Watson; Darby; Lloyd-Jones.
+2202, Happy Are the Merciful (5:7): significance, source, substance, sequel; Titus 3:5; Eph 2:4; Lam 3:22-23; James 2:13; Matt 18:21-35; Lloyd-Jones "something before he does something"; Augustine; Barnhouse; Portia.
+2206, Happy are the Harassed, Part 2 (5:10-12): persecution, promise, posture; John 15:18-21; 2 Tim 3:12; Joseph, Jeremiah, Heb 11; Rom 8:18; 2 Tim 4:8; Knox; Chrysostom; Stan Dale; Savonarola.
+2207, You are the Salt of the Earth (5:13-16): world decaying; plural emphatic "ye"; salt functions; Gen 18:23-32; 2 Chr 13:5; Lev 2:13; G. Campbell Morgan; Moody/Wilson.
+2208, You Are the Light of the World (5:13-16): salt = character, light = proclamation; Ps 27:1; 36:9; 119:105; 2 Cor 4:6; influence not salvation lost; glory of Father; Lloyd-Jones revival vs French revolution; M'Cheyne; Fenelon; William Thompson salt.
+2212, Christ and the Law, Part 4 (5:17-20): Luke 18:9-14; law permanent; Gal 3:24; Pharisee righteousness external, partial, redefined, self-centered (Matt 23:23-25; Luke 16:15); absolute righteousness (Matt 5:48; 1 Pet 1:15; Lev 11:44); imputed (Rom 3:21-22; 1 Cor 1:30; Phil 3:4-9).
+2214, Who Is a Murderer? (5:21-26): heart; 1 John 3:15; Eph 4:26; Gen 4; 9:6; Num 35; Isa 1:11-17; Jer 7:9; Two Gun Crowley; Rabbi Simon ben Eleazar "raca".
+2215, Who Is an Adulterer? Part 1 (5:27-30): 27-30 spirit, 31-32 law of marriage; Deut 6:5; 10:12, 16; Matt 22:37-40; 1 Cor 6:13-20; 2 Cor 5:21; John Newton.
+2218, Divorce and Remarriage, Part 1 (5:31-32): rabbinic laxity, Deut 24:1-4; Gen 2:23-24; Matt 19:6-8; Mark 10:5-9; Mal 2:13-16; Gen 3:16; four views; exception deferred.
+2222, The Spiritual Credibility Gap (5:33-37): Mosaic oath principles (Num 30:2; Lev 19:12; Deut 6:13); "King's X" loopholes; God everywhere; Matt 12:34; 23:16; Prov 12:22; Peter's oath Matt 26:69-74; Barclay compartments.
+2223, An Eye for an Eye, Part 1 (5:38-42): civil principle for courts (Ex 21:22-25; Lev 24:19-20; Deut 19:15-21); Lev 19:18; Prov 24:29; 25:21; Rom 13; 1 Cor 9; C.S. Lewis; Tolstoy rejected; Arthur Pink.
+2226, Love Your Enemies, Part 2 (5:43-48): page fetched at gty.org/library/sermons-library/2226 (page showed no title; title from search result). Dropped "as thyself", added "hate enemy"; OT never taught hatred (Ex 23:4-5; Deut 22:1-4; Job 31:29; Prov 25:21; 17:5); Luke 10:25-37; five ascending principles, fifth "imitate your God" tied to v48; David/Saul, Shimei, Stephen, Dirk Willumzoon.
