@@ -434,6 +434,20 @@
      "B7": "ب. ٧ (٤٠-٤٢) المكافأة لمن يقبلون تلاميذ يسوع بخلاف المضطهدين"
     },
     "read": "2026-11-26"
+   },
+   "matthew-11": {
+    "url": "https://enduringword.com/bible-commentary/matthew-11/",
+    "lang": "en",
+    "secs": {
+     "A1": "أ. ١ (١-٣) تلاميذ يوحنا المعمدان يسألون يسوع نيابة عنه: هل أنت حقاً المسيا (الآتي)؟",
+     "A2": "أ. ٢ (٤-٦) جواب يسوع لتلاميذ يوحنا: أخبروا يوحنا أن النبوات عن المسيا تتم",
+     "A3": "أ. ٣ (٧-١٥) يسوع يتكلم عن يوحنا",
+     "A4": "أ. ٤ (١٦-١٩) يسوع يوبّخ الذين لا يرضيهم لا خدمة يوحنا ولا خدمته",
+     "B1": "ب. ١ (٢٠-٢٤) يسوع يوبّخ المدن التي لم تتب مع أنها رأت خدمة يوحنا وخدمته",
+     "B2": "ب. ٢ (٢٥-٢٧) يسوع يسبّح من أجل الذين يقبلون رسالته",
+     "B3": "ب. ٣ (٢٨-٣٠) دعوة يسوع"
+    },
+    "read": "2026-11-26"
    }
   }
  },
@@ -1870,6 +1884,61 @@
      42
     ],
     "url": "https://www.gty.org/library/sermons-library/2284/the-hallmarks-of-discipleship-part-3"
+   },
+   "2285": {
+    "t": "Solving the Problem of Doubt",
+    "date": "1981-09-06",
+    "book": "Matthew",
+    "ch": 11,
+    "v": [
+     1,
+     6
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2285/solving-the-problem-of-doubt"
+   },
+   "2286": {
+    "t": "True Greatness",
+    "date": "1981-09-13",
+    "book": "Matthew",
+    "ch": 11,
+    "v": [
+     7,
+     15
+    ],
+    "url": "https://www.gty.org/library/sermons-library/2286/true-greatness"
+   },
+   "2287": {
+    "t": "Treating Christ with Criticism and Indifference",
+    "date": "1981-09-20",
+    "book": "Matthew",
+    "ch": 11,
+    "v": [
+     16,
+     24
+    ],
+    "url": "https://www.gty.org/sermons/2287/treating-christ-with-criticism-and-indifference"
+   },
+   "2288": {
+    "t": "Jesus' Personal Invitation, Part 1",
+    "book": "Matthew",
+    "ch": 11,
+    "v": [
+     25,
+     30
+    ],
+    "url": "https://www.gty.org/sermons/2288/jesus-personal-invitation-part-1",
+    "date": ""
+   },
+   "2289": {
+    "t": "Jesus' Personal Invitation, Part 2",
+    "book": "Matthew",
+    "ch": 11,
+    "v": [
+     25,
+     30
+    ],
+    "url": "https://www.gty.org/sermons/2289/jesus-personal-invitation-part-2",
+    "date": ""
    }
   }
  }
