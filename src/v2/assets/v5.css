@@ -520,10 +520,15 @@ html[data-mode=qt] .dso{display:none}
 .ov-tbl.t4>div{grid-template-columns:1fr 1fr 1.4fr 1fr}
 .ov-tbl.t5>div{grid-template-columns:1fr .8fr .8fr 1.6fr 1fr}
 .ov-tbl.t2>div{grid-template-columns:1fr 1.5fr}
+.ov-tbl.t6>div{grid-template-columns:1fr 1.3fr 1.1fr .8fr .9fr .9fr}
+.ov-tbl.t6 span{font-size:13.5px;padding:10px}
 .ov-tbl .r{font-size:13px}
 @media (max-width:640px){
   .ov-cards.c2,.ov-cards.c3{grid-template-columns:1fr}
   .ov-bars>div{grid-template-columns:1fr;gap:4px}
   .ov-tbl.t3>div,.ov-tbl.t4>div,.ov-tbl.t5>div,.ov-tbl.t2>div{grid-template-columns:1fr}
+  .ov-tbl.t6>div{grid-template-columns:1fr 1fr}
+  .ov-tbl.t6>div span[role=rowheader]{grid-column:1/-1}
+  .ov-tbl.t6 .h{display:none}
   .ov-tbl>div span[role=cell]{padding-top:2px}
 }
