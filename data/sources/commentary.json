@@ -308,6 +308,22 @@
      "C4": "ثالثًا. د (١٩-٢٠) صعود يسوع؛ التلاميذ العاملون"
     },
     "read": "2026-11-26"
+   },
+   "matthew-4": {
+    "url": "https://enduringword.com/bible-commentary/matthew-4/",
+    "lang": "en",
+    "secs": {
+     "A1": "أ. ١ (١-٢) يسوع يُقتاد إلى مكان التجربة",
+     "A2": "أ. ٢ (٣-٤) التجربة الأولى: مخاطبة شهوة الجسد",
+     "A3": "أ. ٣ (٥-٧) التجربة الثانية: مخاطبة تعظم المعيشة",
+     "A4": "أ. ٤ (٨-١٠) التجربة الثالثة: مخاطبة شهوة العيون",
+     "A5": "أ. ٥ (١١) إبليس يتركه والملائكة تخدمه",
+     "B1": "ب. ١ (١٢-١٦) يسوع يحمل النور إلى الجليل تتميماً للنبوة",
+     "B2": "ب. ٢ (١٧) وصف عام لرسالة يسوع",
+     "B3": "ب. ٣ (١٨-٢٢) دعوة أربعة رجال ليكونوا تلاميذ",
+     "B4": "ب. ٤ (٢٣-٢٥) وصف خدمة يسوع في الجليل"
+    },
+    "read": "2026-11-26"
    }
   }
  },
@@ -1260,6 +1276,72 @@
      20
     ],
     "url": "https://www.gty.org/sermons/SC12-1/confidence-in-gods-word-as-it-is-written"
+   },
+   "2191": {
+    "t": "The Crisis of Temptation, Part 1",
+    "date": "1978-05-14",
+    "book": "Matthew",
+    "ch": 4,
+    "v": [
+     1,
+     2
+    ],
+    "url": "https://www.gty.org/sermons/2191/the-crisis-of-temptation-part-1"
+   },
+   "2192": {
+    "t": "The Crisis of Temptation, Part 2",
+    "book": "Matthew",
+    "ch": 4,
+    "v": [
+     1,
+     11
+    ],
+    "url": "https://www.gty.org/sermons/2192/the-crisis-of-temptation-part-2",
+    "date": ""
+   },
+   "2193": {
+    "t": "The Light Dawns, Part 1",
+    "book": "Matthew",
+    "ch": 4,
+    "v": [
+     12,
+     17
+    ],
+    "url": "https://www.gty.org/sermons/2193/the-light-dawns-part-1",
+    "date": ""
+   },
+   "2194": {
+    "t": "The Light Dawns, Part 2",
+    "book": "Matthew",
+    "ch": 4,
+    "v": [
+     12,
+     17
+    ],
+    "url": "https://www.gty.org/sermons/2194/the-light-dawns-part-2",
+    "date": ""
+   },
+   "2195": {
+    "t": "Fishing for Men",
+    "book": "Matthew",
+    "ch": 4,
+    "v": [
+     18,
+     22
+    ],
+    "url": "https://www.gty.org/sermons/2195/fishing-for-men",
+    "date": ""
+   },
+   "2196": {
+    "t": "The Healing Work of Jesus",
+    "book": "Matthew",
+    "ch": 4,
+    "v": [
+     23,
+     25
+    ],
+    "url": "https://www.gty.org/sermons/2196/the-healing-work-of-jesus",
+    "date": ""
    }
   }
  }
