@@ -225,6 +225,26 @@
      "B3": "ب. ٣ (١٦-١٧) الشهادة الإلهية بأن يسوع هو ابن الله"
     },
     "read": "2026-11-26"
+   },
+   "mark-10": {
+    "url": "https://enduringword.com/bible-commentary/mark-10/",
+    "lang": "en",
+    "secs": {
+     "A1": "أ. ١ (١-٢) امتحان من الفريسيين: هل يحل للرجل أن يطلّق امرأته؟",
+     "A2": "أ. ٢ (٣-٩) يسوع يؤكد الزواج وقصد الله فيه",
+     "A3": "أ. ٣ (١٠-١٢) يسوع يوضح الأمر لتلاميذه",
+     "A4": "أ. ٤ (١٣-١٦) يسوع يبارك الأولاد ويجعلهم مثالًا لكيفية قبول ملكوت الله",
+     "B1": "ب. ١ (١٧-١٨) رجل متلهف يسأل يسوع",
+     "B2": "ب. ٢ (١٩-٢٢) نصيحة يسوع للشاب",
+     "B3": "ب. ٣ (٢٣-٢٧) صعوبة الغنى",
+     "B4": "ب. ٤ (٢٨-٣١) مكافأتنا وحل مشكلة الغنى",
+     "B5": "ب. ٥ (٣٢-٣٤) يسوع يعلن ثانية مصيره الآتي في أورشليم",
+     "C1": "ج. ١ (٣٥-٣٧) يعقوب ويوحنا يطلبان مراكز رفيعة",
+     "C2": "ج. ٢ (٣٨-٤١) جواب يسوع: فكّرا في التضحية لا في المجد الذاتي",
+     "C3": "ج. ٣ (٤٢-٤٥) يسوع يصف العظمة الحقيقية",
+     "C4": "ج. ٤ (٤٦-٥٢) في الطريق إلى أورشليم يُشفى رجل أعمى"
+    },
+    "read": "2026-11-26"
    }
   }
  },
@@ -913,6 +933,94 @@
      17
     ],
     "url": "https://www.gty.org/sermons/2190/the-commissioning-of-the-king"
+   },
+   "41-48": {
+    "t": "The Truth About Divorce, Part 1",
+    "date": "",
+    "book": "Mark",
+    "ch": 10,
+    "v": [
+     1,
+     9
+    ],
+    "url": "https://www.gty.org/sermons/print/GAV-41-48/la-verdad-acerca-del-divorcio-1a-parte"
+   },
+   "41-49": {
+    "t": "The Truth About Divorce, Part 2",
+    "date": "",
+    "book": "Mark",
+    "ch": 10,
+    "v": [
+     1,
+     12
+    ],
+    "url": "https://www.gty.org/resources/sermons/41-49"
+   },
+   "41-50": {
+    "t": "Why Jesus Blessed the Little Children",
+    "date": "",
+    "book": "Mark",
+    "ch": 10,
+    "v": [
+     13,
+     16
+    ],
+    "url": "https://gty.org/library/sermons-library/41-50"
+   },
+   "41-51": {
+    "t": "The Blasphemy of the Rich Young Ruler",
+    "date": "2010-12-05",
+    "book": "Mark",
+    "ch": 10,
+    "v": [
+     17,
+     22
+    ],
+    "url": "https://gty.org/library/sermons-library/41-51"
+   },
+   "41-52": {
+    "t": "God’s Perspective on Spiritual Wealth",
+    "date": "",
+    "book": "Mark",
+    "ch": 10,
+    "v": [
+     23,
+     31
+    ],
+    "url": "https://gty.org/library/sermons-library/41-52"
+   },
+   "41-53": {
+    "t": "A Preview of Messianic Suffering",
+    "date": "",
+    "book": "Mark",
+    "ch": 10,
+    "v": [
+     32,
+     34
+    ],
+    "url": "https://gty.org/library/sermons-library/41-53"
+   },
+   "41-54": {
+    "t": "The Greatness of Being a Slave",
+    "date": "",
+    "book": "Mark",
+    "ch": 10,
+    "v": [
+     35,
+     45
+    ],
+    "url": "https://www.gty.org/library/sermons-library/41-54/the-greatness-of-being-a-slave"
+   },
+   "41-55": {
+    "t": "The Final Miracle of Mercy",
+    "date": "",
+    "book": "Mark",
+    "ch": 10,
+    "v": [
+     46,
+     52
+    ],
+    "url": "https://gty.org/library/sermons-library/41-55"
    }
   }
  }
