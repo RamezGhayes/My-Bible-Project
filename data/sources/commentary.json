@@ -245,6 +245,22 @@
      "C4": "ج. ٤ (٤٦-٥٢) في الطريق إلى أورشليم يُشفى رجل أعمى"
     },
     "read": "2026-11-26"
+   },
+   "mark-15": {
+    "url": "https://enduringword.com/bible-commentary/ar/mark-15/",
+    "lang": "ar",
+    "secs": {
+     "A1": "أولًا. أ (١-٥) المثول الأول أمام بيلاطس",
+     "A2": "أولًا. ب (٦-١٥) المثول الثاني أمام بيلاطس",
+     "B1": "ثانيًا. أ (١٦-٢٠) يسوع يتعرض للضرب والسخرية",
+     "B2": "ثانيًا. ب (٢١-٢٣) أخذوا يسوع إلى الجلجثة",
+     "B3": "ثانيًا. ج (٢٤-٢٦) صلب يسوع المسيح",
+     "B4": "ثانيًا. د (٢٧-٣٢) سخروا من يسوع المعلق على الصليب",
+     "B5": "ثانيًا. هـ (٣٣-٣٧) كلمات يسوع الأخيرة على الصليب",
+     "B6": "ثانيًا. و (٣٨-٤١) النتائج الواضحة والفورية لموت المسيح",
+     "B7": "ثانيًا. ز (٤٢-٤٧) دفن يسوع"
+    },
+    "read": "2026-11-26"
    }
   }
  },
@@ -1021,6 +1037,61 @@
      52
     ],
     "url": "https://gty.org/library/sermons-library/41-55"
+   },
+   "41-79": {
+    "t": "Pilate Before Jesus",
+    "date": "",
+    "book": "Mark",
+    "ch": 15,
+    "v": [
+     1,
+     15
+    ],
+    "url": "https://gty.org/library/sermons-library/41-79"
+   },
+   "41-80": {
+    "t": "The Shameful Scorn of Jesus Christ",
+    "date": "",
+    "book": "Mark",
+    "ch": 15,
+    "v": [
+     15,
+     21
+    ],
+    "url": "https://www.gty.org/library/sermons-library/41-80/the-shameful-scorn-of-jesus-christ"
+   },
+   "41-81": {
+    "t": "Divine Mercy for the Blasphemers",
+    "date": "",
+    "book": "Mark",
+    "ch": 15,
+    "v": [
+     22,
+     39
+    ],
+    "url": "https://gty.org/library/sermons-library/41-81"
+   },
+   "41-82": {
+    "t": "God Visits Calvary",
+    "date": "",
+    "book": "Mark",
+    "ch": 15,
+    "v": [
+     22,
+     41
+    ],
+    "url": "https://gty.org/library/sermons-library/41-82"
+   },
+   "41-83": {
+    "t": "How God Buried His Son",
+    "date": "",
+    "book": "Mark",
+    "ch": 15,
+    "v": [
+     42,
+     47
+    ],
+    "url": "https://gty.org/library/sermons-library/41-83"
    }
   }
  }
