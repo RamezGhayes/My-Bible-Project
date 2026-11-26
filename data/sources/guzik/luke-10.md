@@ -1,0 +1,14 @@
+# Reading notes: David Guzik, Enduring Word (English page), Luke 10
+Read 2026-11-26 at https://enduringword.com/bible-commentary/luke-10/ . Our own outline, not his text. (Arabic page not reachable: arabic.enduringword.com/ar/luke-09-ar/ redirects to the Arabic index; search budget then exhausted.)
+A1 (1-3): time short, villages unreached; seventy may echo Sinai elders (Exod 24:1, 9), Sanhedrin, Septuagint; new leadership order; unnamed (Morrison: happy obscurity; Judas among Twelve); pairs (Clarke: concord, support); harvest Matt 9:37-38; pray, sending is God's work (Spurgeon on "drive out"); lambs among wolves: trust not manipulation (Spurgeon: sheep outnumber wolves).
+A2 (4-8): travel light; skip greetings (Morrison on tedium); son of peace = good reputation (Clarke); stay, eat what offered; labourer worthy, wages not charity.
+A3 (9): healing shows kingdom in mercy; heal and preach together; Pate: engiken arrived or about to arrive, pointing to death and resurrection.
+A4 (10-16): dust = public warning; still declare nearness; Sodom, Tyre/Sidon vs Chorazin, Bethsaida, Capernaum; more light more accountability; degrees of judgment; Capernaum exalted by Jesus' residence; Gospels selective; rejecting messengers = rejecting Jesus and Father.
+B1 (17-20): all returned safe (Spurgeon); demons not in commission (cf. 9:1-2); credited His name (Meyer: name as living power); Satan's fall like lightning possibly first fall (Ezek 28:14-16); four falls (Job 1:12; 1 Kgs 22:21; Zech 3:1; Rev 12:9; 20:1-3, 10); gospel advance weakens Satan; warning against pride (Morgan: self-glorification); share Christ's victory (Meyer); names written in heaven (Trapp: like Paul's Roman citizenship).
+B2 (21-22): only place Jesus "rejoiced" (Geldenhuys: exceptional exultation); in the Spirit; joy at servants' success (Morrison); humble used (1 Cor 1:27-29); Father-Son mutual knowledge; Son reveals Father.
+B3 (23-24): privileged era; prophets and kings longed; our age privileges; pattern of ministry list.
+C1 (25-29): lawyer perhaps sincere; eternal life quality now; three mistakes; 1 John 4:20-21; Pate: sarcastic tone.
+C2 (30-35): Jericho road dangers (Barclay; Pate citing Josephus); priest and Levite (Clarke: broke the law); excuses rejected; Samaritan shocking; compassion, initiative, own resources, future; oil and wine; picture of Jesus.
+C3 (36-37): "to whom am I a neighbour" (Morgan); lawyer would not say "Samaritan"; love the one in front of us even an enemy; Maclaren: world changes when Christians attend to sorrows before them; eternal life first by trusting Jesus.
+D1 (38-40): Bethany friends; Clarke: sitting at feet, Acts 22:3 Gamaliel; Martha distracted; Mary served but put Jesus first.
+D2 (41-42): loving words; one thing; Ps 27:4; Luke 18:22; Phil 3:13-14; Morgan: strength at His feet; Spurgeon: Martha and Mary spirits; three kinds of followers.
