@@ -159,6 +159,23 @@
      "D5": "رابعًا. هـ (٦٦-٧٢) إنكار بطرس"
     },
     "read": "2026-11-26"
+   },
+   "mark-6": {
+    "url": "https://enduringword.com/bible-commentary/mark-6/",
+    "lang": "en",
+    "secs": {
+     "A1": "أ. ١ (١-٣) أهل وطنه يعثرون به",
+     "A2": "أ. ٢ (٤-٦) ردّ يسوع على رفض أهل وطنه",
+     "A3": "أ. ٣ (٧-١٣) إرسال الاثني عشر للكرازة",
+     "B1": "ب. ١ (١٤-١٦) هيرودس يسمع بخدمة يسوع فيتحيّر",
+     "B2": "ب. ٢ (١٧-٢٩) الموت المشين ليوحنا المعمدان",
+     "C1": "ج. ١ (٣٠-٣٤) تحنّن يسوع على الجمع",
+     "C2": "ج. ٢ (٣٥-٤٤) يسوع يُشبع الجمع",
+     "C3": "ج. ٣ (٤٥-٤٦) يسوع ينصرف ليصلي",
+     "C4": "ج. ٤ (٤٧-٥٢) يسوع يمشي على الماء",
+     "C5": "ج. ٥ (٥٣-٥٦) يسوع يشفي كثيرين"
+    },
+    "read": "2026-11-26"
    }
   }
  },
@@ -638,6 +655,72 @@
      72
     ],
     "url": "https://gty.org/library/sermons-library/41-78"
+   },
+   "41-26": {
+    "t": "Amazing Unbelief",
+    "date": "2010-02-21",
+    "book": "Mark",
+    "ch": 6,
+    "v": [
+     1,
+     6
+    ],
+    "url": "https://www.gty.org/library/sermons-library/41-26/amazing-unbelief"
+   },
+   "41-27": {
+    "t": "Ordinary Men, Extraordinary Calling, Part 1",
+    "date": "2010-02-28",
+    "book": "Mark",
+    "ch": 6,
+    "v": [
+     6,
+     9
+    ],
+    "url": "https://gty.org/library/sermons-library/41-27"
+   },
+   "41-28": {
+    "t": "Ordinary Men, Extraordinary Calling, Part 2",
+    "date": "2010-03-07",
+    "book": "Mark",
+    "ch": 6,
+    "v": [
+     10,
+     32
+    ],
+    "url": "https://www.gty.org/library/sermons-library/41-28/ordinary-men-extraordinary-calling-part-2"
+   },
+   "41-29": {
+    "t": "The Murder of the Greatest Prophet",
+    "date": "2010-03-14",
+    "book": "Mark",
+    "ch": 6,
+    "v": [
+     14,
+     29
+    ],
+    "url": "https://www.gty.org/library/sermons-library/41-29/the-murder-of-the-greatest-prophet"
+   },
+   "41-30": {
+    "t": "The Creator Provides",
+    "date": "2010-03-21",
+    "book": "Mark",
+    "ch": 6,
+    "v": [
+     30,
+     44
+    ],
+    "url": "https://www.gty.org/library/sermons-library/41-30/the-creator-provides"
+   },
+   "41-31": {
+    "t": "Jesus Walks on Water",
+    "date": "2010-03-28",
+    "book": "Mark",
+    "ch": 6,
+    "v": [
+     45,
+     56
+    ],
+    "url": "https://gty.org/library/sermons-library/41-31"
    }
   }
  }
