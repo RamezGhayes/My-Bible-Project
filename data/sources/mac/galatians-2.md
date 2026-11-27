@@ -1,0 +1,6 @@
+# Reading notes: John MacArthur, sermons on Galatians 2 (Grace to You)
+Read 2026-11-27. Codes, titles, ranges, dates from series page https://www.gty.org/sermons/series/48v1/galatians-vol-01 .
+48-7, Paul's Gospel Ministry Confirmed, Part 1 (2:1-10), 2017-05-21: covers 2:1-5 in depth; visit = Acts 15; Judaizers at Antioch; fourteen years; by revelation; privately; Titus test case vs Timothy circumcised for access (Acts 16); false brethren agents of Satan, tares (Matt 13:24-30, 36-43); not yield an hour; Peter at Acts 15; baptism and sacraments add nothing.
+48-8, Paul's Gospel Ministry Confirmed, Part 2 (2:1-10), 2017-05-28: robots-blocked, not used. Block 6-10 has no mac entry.
+48-9, The Danger of Adding to the Gospel (2:11-12), 2017-06-04: robots-blocked, not used.
+48-10, Keeping the Gospel Pure (2:13-21), 2017-06-11: hypocrisy personal and doctrinal; orthopodeo walk straight; public rebuke (1 Tim 5:20), Augustine; justification legal declaration, opposite of condemnation; eis into; three times in v16; me genoito; Judaizers promote sin; legalism and antinomianism both define life by law, Christian by union with Christ (Rom 6; 8:1; Col 2); Luther article of standing or falling; Bildad (Job 25); Nicodemus; regeneration.

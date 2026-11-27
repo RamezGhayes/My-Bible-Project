@@ -1,0 +1,3 @@
+# Reading notes: John Piper, sermon on Galatians 5 (Desiring God)
+Read 2026-11-27. Date not shown; page does not name speaker but it is a Desiring God message, speaker refers to "my beloved teacher Daniel Fuller".
+the-war-within-flesh-versus-spirit, The War Within: Flesh Versus Spirit (5:16-26; focus 16-18, 22-24): read at desiringgod.org/messages/the-war-within-flesh-versus-spirit. v16 promise not command (NASB vs RSV); flesh = ego filling emptiness; war a sign of Spirit; serenity in sin is death; led passive, locomotive not pace car; Rom 8:3-4; love first fruit; v24 captured the capital, pockets of resistance; Gal 2:20; tension 17 and 24; John 15:4-5; George Muller, Hudson Taylor, Ruth Fuller promises.

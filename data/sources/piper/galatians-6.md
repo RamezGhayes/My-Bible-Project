@@ -1,0 +1,3 @@
+# Reading notes: John Piper, sermon on Galatians 6 (Desiring God)
+Read 2026-11-27. Date not shown (conclusion of a six-month Galatians series).
+only-a-new-creation-counts, Only a New Creation Counts (6:11-16): read at desiringgod.org/messages/only-a-new-creation-counts. Handwriting marks conclusion; legalist mindset morality as vehicle of pride, avoid persecution, gain praise; cross strips pride; world crucified two senses (Phil 3:8; 2 Cor 6:8-9; 1 Cor 4:13); new creation (Gal 2:20; 5:6; John 3:3; Rom 6:4); rule = mindset of 14-15; satanic delusion; four contrasts (Gal 1:10; 5:11; 2 Cor 12:10; Eph 6:6); Jonathan Edwards humble broken-hearted joy; Hafvenstein dust in light beam.
