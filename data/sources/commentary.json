@@ -3264,6 +3264,25 @@
      "C3": "ثالثاً. ج) الآيات (٢٤-٢٦): خط سير رحلة بولس وبرنابا إلى الوطن",
      "C4": "ثالثاً. د) الآيات (٢٧-٢٨): وصول بولس وبرنابا إلى أنطاكية"
     }
+   },
+   "acts-15": {
+    "url": "https://enduringword.com/bible-commentary/ar/acts-15/",
+    "lang": "ar",
+    "read": "2026-11-27",
+    "secs": {
+     "A1": "أولاً. أ) الآية (١): قوم من اليهودية يعرضون قضيتهم",
+     "A2": "أولاً. ب) الآيات (٢-٤): رد بولس وبرنابا على تعليم هؤلاء الرجال من اليهودية",
+     "A3": "أولاً. ج) الآية (٥): تأكيد الرجال من اليهودية على تعاليمهم",
+     "B1": "ثانياً. أ) الآيات (٦-١١): بطرس الرسول يقدم رأيه في خضم المباحثة الكثيرة",
+     "B2": "ثانياً. ب) الآية (١٢): شارك بولس وبرنابا عن عمل الله بين الأمم وأكدا على كلام بطرس عن عمل الله بينهم",
+     "B3": "ثانياً. ج) الآيات (١٣-٢١): يعقوب أخو يسوع يدعم كلام بطرس وبولس",
+     "B4": "ثانياً. د) الآية (٢٢): أرسلوا بولس وبرنابا ويهوذا وسيلا حاملين قرار المجلس",
+     "B5": "ثانياً. هـ) الآيات (٢٣-٢٩): كتبوا رسالة بالقرار",
+     "C1": "ثالثاً. أ) الآيات (٣٠-٣١): فرح المؤمنين الأمم في كنيسة أنطاكية برسالة المجلس",
+     "C2": "ثالثاً. ب) الآيات (٣٢-٣٥): استمرار الخدمة في أنطاكية",
+     "D1": "رابعاً. أ) الآية (٣٦): اقترح بولس عودته مع برنابا إلى كل المدن التي زرعوا فيها كنائس في رحلتهم التبشيرية الأولى",
+     "D2": "رابعاً. ب) الآيات (٣٧-٤١): الانقسام الذي حدث بين بولس وبرنابا حول مسألة أخذ يوحنا مرقس معهم"
+    }
    }
   }
  },
@@ -3525,7 +3544,6 @@
    },
    "1728": {
     "t": "The Transformed Life, Part 1",
-    "date": "1973-01-28",
     "book": "Acts",
     "ch": 9,
     "v": [
@@ -3536,7 +3554,6 @@
    },
    "1729": {
     "t": "The Transformed Life, Part 2",
-    "date": "1973-02-04",
     "book": "Acts",
     "ch": 9,
     "v": [
@@ -3547,7 +3564,6 @@
    },
    "1730": {
     "t": "The Transformed Life, Part 3",
-    "date": "1973-02-11",
     "book": "Acts",
     "ch": 9,
     "v": [
@@ -3558,7 +3574,6 @@
    },
    "1731": {
     "t": "The Transformed Life, Part 4",
-    "date": "1973-02-18",
     "book": "Acts",
     "ch": 9,
     "v": [
@@ -3569,7 +3584,6 @@
    },
    "1732": {
     "t": "Marks of an Effective Personal Ministry, Part 1",
-    "date": "1973-03-04",
     "book": "Acts",
     "ch": 9,
     "v": [
@@ -3579,19 +3593,17 @@
     "url": "https://gty.org/library/sermons-library/1732/marks-of-an-effective-personal-ministry-part-1"
    },
    "1733": {
-    "t": "Marks of an Effective Personal Ministry, Part 2",
-    "date": "1973-03-11",
+    "t": "The Marks of Effective Personal Ministry",
     "book": "Acts",
     "ch": 9,
     "v": [
-     36,
+     32,
      43
     ],
     "url": "https://www.gty.org/library/sermons-library/1733"
    },
    "1734": {
     "t": "The Salvation of the Gentiles, Part 1",
-    "date": "1973-03-25",
     "book": "Acts",
     "ch": 10,
     "v": [
@@ -3602,7 +3614,6 @@
    },
    "1735": {
     "t": "The Salvation of the Gentiles, Part 2",
-    "date": "1973-04-08",
     "book": "Acts",
     "ch": 10,
     "v": [
@@ -3613,7 +3624,6 @@
    },
    "1736": {
     "t": "The Salvation of the Gentiles, Part 3",
-    "date": "1973-04-15",
     "book": "Acts",
     "ch": 10,
     "v": [
@@ -3624,7 +3634,6 @@
    },
    "1737": {
     "t": "The Salvation of the Gentiles, Part 4",
-    "date": "1973-04-22",
     "book": "Acts",
     "ch": 10,
     "v": [
@@ -3635,7 +3644,6 @@
    },
    "1738": {
     "t": "The Salvation of the Gentiles, Part 5",
-    "date": "1973-04-29",
     "book": "Acts",
     "ch": 10,
     "v": [
@@ -3646,7 +3654,6 @@
    },
    "1739": {
     "t": "The First Gentile Church",
-    "date": "1973-05-06",
     "book": "Acts",
     "ch": 11,
     "v": [
@@ -3657,7 +3664,6 @@
    },
    "1740": {
     "t": "The Stupidity of Fighting God",
-    "date": "1973-05-13",
     "book": "Acts",
     "ch": 12,
     "v": [
@@ -3755,6 +3761,66 @@
      28
     ],
     "url": "https://www.gty.org/library/sermons-library/1749"
+   },
+   "1750": {
+    "t": "Is Salvation by Law or Grace? Part 1",
+    "book": "Acts",
+    "ch": 15,
+    "v": [
+     1,
+     12
+    ],
+    "url": "https://www.gty.org/resources/sermons/1750"
+   },
+   "1751": {
+    "t": "Is Salvation by Law or Grace? Part 2",
+    "book": "Acts",
+    "ch": 15,
+    "v": [
+     13,
+     18
+    ],
+    "url": "https://www.gty.org/library/sermons-library/1751"
+   },
+   "1752": {
+    "t": "Is Salvation by Law or Grace? Part 3",
+    "book": "Acts",
+    "ch": 15,
+    "v": [
+     19,
+     21
+    ],
+    "url": "https://www.gty.org/library/sermons-library/1752"
+   },
+   "1753": {
+    "t": "Is Salvation by Law or Grace? Part 4",
+    "book": "Acts",
+    "ch": 15,
+    "v": [
+     22,
+     24
+    ],
+    "url": "https://www.gty.org/library/sermons-library/1753"
+   },
+   "1754": {
+    "t": "Is Salvation by Law or Grace? Part 5",
+    "book": "Acts",
+    "ch": 15,
+    "v": [
+     25,
+     35
+    ],
+    "url": "https://www.gty.org/resources/sermons/1754"
+   },
+   "1755": {
+    "t": "Evangelism the Right Way",
+    "book": "Acts",
+    "ch": 15,
+    "v": [
+     36,
+     41
+    ],
+    "url": "https://www.gty.org/resources/sermons/1755"
    },
    "1759": {
     "t": "Men Who Turned the World Upside Down, Part 1",
@@ -14227,6 +14293,16 @@
      25
     ],
     "url": "https://www.gty.org/library/sermons-library/43-116/peter-do-you-love-me"
+   },
+   "1755@16": {
+    "t": "Evangelism the Right Way",
+    "book": "Acts",
+    "ch": 16,
+    "v": [
+     1,
+     10
+    ],
+    "url": "https://www.gty.org/resources/sermons/1755"
    }
   }
  },
@@ -15791,6 +15867,479 @@
     ],
     "url": "https://gracegems.org/Ryle/mark16.htm",
     "kind": "تأملات تفسيرية على الأناجيل، القسم"
+   },
+   "matthew-1-1-17": {
+    "t": "Matthew 1:1-17",
+    "book": "Matthew",
+    "ch": 1,
+    "v": [
+     1,
+     17
+    ],
+    "url": "https://gracegems.org/Ryle/m01.htm",
+    "kind": "تأملات تفسيرية على الأناجيل، القسم"
+   },
+   "matthew-1-18-25": {
+    "t": "Matthew 1:18-25",
+    "book": "Matthew",
+    "ch": 1,
+    "v": [
+     18,
+     25
+    ],
+    "url": "https://gracegems.org/Ryle/m01.htm",
+    "kind": "تأملات تفسيرية على الأناجيل، القسم"
+   },
+   "matthew-2-1-12": {
+    "t": "Matthew 2:1-12",
+    "book": "Matthew",
+    "ch": 2,
+    "v": [
+     1,
+     12
+    ],
+    "url": "https://gracegems.org/Ryle/m02.htm",
+    "kind": "تأملات تفسيرية على الأناجيل، القسم"
+   },
+   "matthew-2-13-23": {
+    "t": "Matthew 2:13-23",
+    "book": "Matthew",
+    "ch": 2,
+    "v": [
+     13,
+     23
+    ],
+    "url": "https://gracegems.org/Ryle/m02.htm",
+    "kind": "تأملات تفسيرية على الأناجيل، القسم"
+   },
+   "matthew-3-1-12": {
+    "t": "Matthew 3:1-12",
+    "book": "Matthew",
+    "ch": 3,
+    "v": [
+     1,
+     12
+    ],
+    "url": "https://gracegems.org/Ryle/m03.htm",
+    "kind": "تأملات تفسيرية على الأناجيل، القسم"
+   },
+   "matthew-3-13-17": {
+    "t": "Matthew 3:13-17",
+    "book": "Matthew",
+    "ch": 3,
+    "v": [
+     13,
+     17
+    ],
+    "url": "https://gracegems.org/Ryle/m03.htm",
+    "kind": "تأملات تفسيرية على الأناجيل، القسم"
+   },
+   "matthew-4-1-11": {
+    "t": "Matthew 4:1-11",
+    "book": "Matthew",
+    "ch": 4,
+    "v": [
+     1,
+     11
+    ],
+    "url": "https://gracegems.org/Ryle/m04.htm",
+    "kind": "تأملات تفسيرية على الأناجيل، القسم"
+   },
+   "matthew-4-12-25": {
+    "t": "Matthew 4:12-25",
+    "book": "Matthew",
+    "ch": 4,
+    "v": [
+     12,
+     25
+    ],
+    "url": "https://gracegems.org/Ryle/m04.htm",
+    "kind": "تأملات تفسيرية على الأناجيل، القسم"
+   },
+   "matthew-5-1-12": {
+    "t": "Matthew 5:1-12",
+    "book": "Matthew",
+    "ch": 5,
+    "v": [
+     1,
+     12
+    ],
+    "url": "https://gracegems.org/Ryle/m05.htm",
+    "kind": "تأملات تفسيرية على الأناجيل، القسم"
+   },
+   "matthew-5-13-20": {
+    "t": "Matthew 5:13-20",
+    "book": "Matthew",
+    "ch": 5,
+    "v": [
+     13,
+     20
+    ],
+    "url": "https://gracegems.org/Ryle/m05.htm",
+    "kind": "تأملات تفسيرية على الأناجيل، القسم"
+   },
+   "matthew-5-21-37": {
+    "t": "Matthew 5:21-37",
+    "book": "Matthew",
+    "ch": 5,
+    "v": [
+     21,
+     37
+    ],
+    "url": "https://gracegems.org/Ryle/m05.htm",
+    "kind": "تأملات تفسيرية على الأناجيل، القسم"
+   },
+   "matthew-5-38-48": {
+    "t": "Matthew 5:38-48",
+    "book": "Matthew",
+    "ch": 5,
+    "v": [
+     38,
+     48
+    ],
+    "url": "https://gracegems.org/Ryle/m05.htm",
+    "kind": "تأملات تفسيرية على الأناجيل، القسم"
+   },
+   "matthew-6-1-8": {
+    "t": "Matthew 6:1-8",
+    "book": "Matthew",
+    "ch": 6,
+    "v": [
+     1,
+     8
+    ],
+    "url": "https://gracegems.org/Ryle/m06.htm",
+    "kind": "تأملات تفسيرية على الأناجيل، القسم"
+   },
+   "matthew-6-9-15": {
+    "t": "Matthew 6:9-15",
+    "book": "Matthew",
+    "ch": 6,
+    "v": [
+     9,
+     15
+    ],
+    "url": "https://gracegems.org/Ryle/m06.htm",
+    "kind": "تأملات تفسيرية على الأناجيل، القسم"
+   },
+   "matthew-6-16-24": {
+    "t": "Matthew 6:16-24",
+    "book": "Matthew",
+    "ch": 6,
+    "v": [
+     16,
+     24
+    ],
+    "url": "https://gracegems.org/Ryle/m06.htm",
+    "kind": "تأملات تفسيرية على الأناجيل، القسم"
+   },
+   "matthew-6-25-34": {
+    "t": "Matthew 6:25-34",
+    "book": "Matthew",
+    "ch": 6,
+    "v": [
+     25,
+     34
+    ],
+    "url": "https://gracegems.org/Ryle/m06.htm",
+    "kind": "تأملات تفسيرية على الأناجيل، القسم"
+   },
+   "matthew-7-1-11": {
+    "t": "Matthew 7:1-11",
+    "book": "Matthew",
+    "ch": 7,
+    "v": [
+     1,
+     11
+    ],
+    "url": "https://gracegems.org/Ryle/m07.htm",
+    "kind": "تأملات تفسيرية على الأناجيل، القسم"
+   },
+   "matthew-7-12-20": {
+    "t": "Matthew 7:12-20",
+    "book": "Matthew",
+    "ch": 7,
+    "v": [
+     12,
+     20
+    ],
+    "url": "https://gracegems.org/Ryle/m07.htm",
+    "kind": "تأملات تفسيرية على الأناجيل، القسم"
+   },
+   "matthew-7-21-29": {
+    "t": "Matthew 7:21-29",
+    "book": "Matthew",
+    "ch": 7,
+    "v": [
+     21,
+     29
+    ],
+    "url": "https://gracegems.org/Ryle/m07.htm",
+    "kind": "تأملات تفسيرية على الأناجيل، القسم"
+   },
+   "matthew-8-1-15": {
+    "t": "Matthew 8:1-15",
+    "book": "Matthew",
+    "ch": 8,
+    "v": [
+     1,
+     15
+    ],
+    "url": "https://gracegems.org/Ryle/m08.htm",
+    "kind": "تأملات تفسيرية على الأناجيل، القسم"
+   },
+   "matthew-8-16-27": {
+    "t": "Matthew 8:16-27",
+    "book": "Matthew",
+    "ch": 8,
+    "v": [
+     16,
+     27
+    ],
+    "url": "https://gracegems.org/Ryle/m08.htm",
+    "kind": "تأملات تفسيرية على الأناجيل، القسم"
+   },
+   "matthew-8-28-34": {
+    "t": "Matthew 8:28-34",
+    "book": "Matthew",
+    "ch": 8,
+    "v": [
+     28,
+     34
+    ],
+    "url": "https://gracegems.org/Ryle/m08.htm",
+    "kind": "تأملات تفسيرية على الأناجيل، القسم"
+   },
+   "matthew-9-1-13": {
+    "t": "Matthew 9:1-13",
+    "book": "Matthew",
+    "ch": 9,
+    "v": [
+     1,
+     13
+    ],
+    "url": "https://gracegems.org/Ryle/m09.htm",
+    "kind": "تأملات تفسيرية على الأناجيل، القسم"
+   },
+   "matthew-9-14-26": {
+    "t": "Matthew 9:14-26",
+    "book": "Matthew",
+    "ch": 9,
+    "v": [
+     14,
+     26
+    ],
+    "url": "https://gracegems.org/Ryle/m09.htm",
+    "kind": "تأملات تفسيرية على الأناجيل، القسم"
+   },
+   "matthew-9-27-38": {
+    "t": "Matthew 9:27-38",
+    "book": "Matthew",
+    "ch": 9,
+    "v": [
+     27,
+     38
+    ],
+    "url": "https://gracegems.org/Ryle/m09.htm",
+    "kind": "تأملات تفسيرية على الأناجيل، القسم"
+   },
+   "matthew-10-1-15": {
+    "t": "Matthew 10:1-15",
+    "book": "Matthew",
+    "ch": 10,
+    "v": [
+     1,
+     15
+    ],
+    "url": "https://gracegems.org/Ryle/m10.htm",
+    "kind": "تأملات تفسيرية على الأناجيل، القسم"
+   },
+   "matthew-10-16-23": {
+    "t": "Matthew 10:16-23",
+    "book": "Matthew",
+    "ch": 10,
+    "v": [
+     16,
+     23
+    ],
+    "url": "https://gracegems.org/Ryle/m10.htm",
+    "kind": "تأملات تفسيرية على الأناجيل، القسم"
+   },
+   "matthew-10-24-33": {
+    "t": "Matthew 10:24-33",
+    "book": "Matthew",
+    "ch": 10,
+    "v": [
+     24,
+     33
+    ],
+    "url": "https://gracegems.org/Ryle/m10.htm",
+    "kind": "تأملات تفسيرية على الأناجيل، القسم"
+   },
+   "matthew-10-34-42": {
+    "t": "Matthew 10:34-42",
+    "book": "Matthew",
+    "ch": 10,
+    "v": [
+     34,
+     42
+    ],
+    "url": "https://gracegems.org/Ryle/m10.htm",
+    "kind": "تأملات تفسيرية على الأناجيل، القسم"
+   },
+   "matthew-11-1-15": {
+    "t": "Matthew 11:1-15",
+    "book": "Matthew",
+    "ch": 11,
+    "v": [
+     1,
+     15
+    ],
+    "url": "https://gracegems.org/Ryle/m11.htm",
+    "kind": "تأملات تفسيرية على الأناجيل، القسم"
+   },
+   "matthew-11-16-24": {
+    "t": "Matthew 11:16-24",
+    "book": "Matthew",
+    "ch": 11,
+    "v": [
+     16,
+     24
+    ],
+    "url": "https://gracegems.org/Ryle/m11.htm",
+    "kind": "تأملات تفسيرية على الأناجيل، القسم"
+   },
+   "matthew-11-25-30": {
+    "t": "Matthew 11:25-30",
+    "book": "Matthew",
+    "ch": 11,
+    "v": [
+     25,
+     30
+    ],
+    "url": "https://gracegems.org/Ryle/m11.htm",
+    "kind": "تأملات تفسيرية على الأناجيل، القسم"
+   },
+   "matthew-12-1-13": {
+    "t": "Matthew 12:1-13",
+    "book": "Matthew",
+    "ch": 12,
+    "v": [
+     1,
+     13
+    ],
+    "url": "https://gracegems.org/Ryle/m12.htm",
+    "kind": "تأملات تفسيرية على الأناجيل، القسم"
+   },
+   "matthew-12-14-21": {
+    "t": "Matthew 12:14-21",
+    "book": "Matthew",
+    "ch": 12,
+    "v": [
+     14,
+     21
+    ],
+    "url": "https://gracegems.org/Ryle/m12.htm",
+    "kind": "تأملات تفسيرية على الأناجيل، القسم"
+   },
+   "matthew-12-22-37": {
+    "t": "Matthew 12:22-37",
+    "book": "Matthew",
+    "ch": 12,
+    "v": [
+     22,
+     37
+    ],
+    "url": "https://gracegems.org/Ryle/m12.htm",
+    "kind": "تأملات تفسيرية على الأناجيل، القسم"
+   },
+   "matthew-12-38-50": {
+    "t": "Matthew 12:38-50",
+    "book": "Matthew",
+    "ch": 12,
+    "v": [
+     38,
+     50
+    ],
+    "url": "https://gracegems.org/Ryle/m12.htm",
+    "kind": "تأملات تفسيرية على الأناجيل، القسم"
+   },
+   "matthew-13-1-23": {
+    "t": "Matthew 13:1-23",
+    "book": "Matthew",
+    "ch": 13,
+    "v": [
+     1,
+     23
+    ],
+    "url": "https://gracegems.org/Ryle/m13.htm",
+    "kind": "تأملات تفسيرية على الأناجيل، القسم"
+   },
+   "matthew-13-24-43": {
+    "t": "Matthew 13:24-43",
+    "book": "Matthew",
+    "ch": 13,
+    "v": [
+     24,
+     43
+    ],
+    "url": "https://gracegems.org/Ryle/m13.htm",
+    "kind": "تأملات تفسيرية على الأناجيل، القسم"
+   },
+   "matthew-13-44-50": {
+    "t": "Matthew 13:44-50",
+    "book": "Matthew",
+    "ch": 13,
+    "v": [
+     44,
+     50
+    ],
+    "url": "https://gracegems.org/Ryle/m13.htm",
+    "kind": "تأملات تفسيرية على الأناجيل، القسم"
+   },
+   "matthew-13-51-58": {
+    "t": "Matthew 13:51-58",
+    "book": "Matthew",
+    "ch": 13,
+    "v": [
+     51,
+     58
+    ],
+    "url": "https://gracegems.org/Ryle/m13.htm",
+    "kind": "تأملات تفسيرية على الأناجيل، القسم"
+   },
+   "matthew-14-1-12": {
+    "t": "Matthew 14:1-12",
+    "book": "Matthew",
+    "ch": 14,
+    "v": [
+     1,
+     12
+    ],
+    "url": "https://gracegems.org/Ryle/m14.htm",
+    "kind": "تأملات تفسيرية على الأناجيل، القسم"
+   },
+   "matthew-14-13-21": {
+    "t": "Matthew 14:13-21",
+    "book": "Matthew",
+    "ch": 14,
+    "v": [
+     13,
+     21
+    ],
+    "url": "https://gracegems.org/Ryle/m14.htm",
+    "kind": "تأملات تفسيرية على الأناجيل، القسم"
+   },
+   "matthew-14-22-36": {
+    "t": "Matthew 14:22-36",
+    "book": "Matthew",
+    "ch": 14,
+    "v": [
+     22,
+     36
+    ],
+    "url": "https://gracegems.org/Ryle/m14.htm",
+    "kind": "تأملات تفسيرية على الأناجيل، القسم"
    }
   }
  },
@@ -15904,6 +16453,102 @@
      6
     ],
     "url": "https://learn.ligonier.org/sermons/mark-lord-sabbath",
+    "kind": "عظة"
+   },
+   "mark-calling-disciples": {
+    "t": "The Calling of the Disciples",
+    "date": "2006-01-15",
+    "book": "Mark",
+    "ch": 3,
+    "v": [
+     7,
+     19
+    ],
+    "url": "https://learn.ligonier.org/sermons/mark-calling-disciples",
+    "kind": "عظة"
+   },
+   "mark-unpardonable-sin": {
+    "t": "The Unpardonable Sin",
+    "date": "2006-01-22",
+    "book": "Mark",
+    "ch": 3,
+    "v": [
+     20,
+     30
+    ],
+    "url": "https://learn.ligonier.org/sermons/mark-unpardonable-sin",
+    "kind": "عظة"
+   },
+   "mark-parable-sower": {
+    "t": "The Parable of the Sower",
+    "date": "2006-02-05",
+    "book": "Mark",
+    "ch": 4,
+    "v": [
+     1,
+     20
+    ],
+    "url": "https://learn.ligonier.org/sermons/mark-parable-sower",
+    "kind": "عظة"
+   },
+   "mark-parables-kingdom": {
+    "t": "Parables of the Kingdom",
+    "date": "2006-02-26",
+    "book": "Mark",
+    "ch": 4,
+    "v": [
+     21,
+     33
+    ],
+    "url": "https://learn.ligonier.org/sermons/mark-parables-kingdom",
+    "kind": "عظة"
+   },
+   "mark-calming-sea": {
+    "t": "Calming the Sea",
+    "date": "2006-03-12",
+    "book": "Mark",
+    "ch": 4,
+    "v": [
+     35,
+     41
+    ],
+    "url": "https://learn.ligonier.org/sermons/mark-calming-sea",
+    "kind": "عظة"
+   },
+   "mark-gadarene-demoniac": {
+    "t": "The Gadarene Demoniac",
+    "date": "2006-03-26",
+    "book": "Mark",
+    "ch": 5,
+    "v": [
+     1,
+     8
+    ],
+    "url": "https://learn.ligonier.org/sermons/mark-gadarene-demoniac",
+    "kind": "عظة"
+   },
+   "mark-a-fearful-deliverance": {
+    "t": "A Fearful Deliverance",
+    "date": "2006-04-02",
+    "book": "Mark",
+    "ch": 5,
+    "v": [
+     9,
+     20
+    ],
+    "url": "https://learn.ligonier.org/sermons/mark-a-fearful-deliverance",
+    "kind": "عظة"
+   },
+   "mark-jairus-daughter": {
+    "t": "Jairus' Daughter",
+    "date": "2006-04-23",
+    "book": "Mark",
+    "ch": 5,
+    "v": [
+     21,
+     43
+    ],
+    "url": "https://learn.ligonier.org/sermons/mark-jairus-daughter",
     "kind": "عظة"
    }
   }
