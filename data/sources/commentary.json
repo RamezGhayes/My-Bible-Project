@@ -3461,7 +3461,7 @@
    },
    "1700": {
     "t": "Resources for Finishing Our Lord's Unfinished Work, Part 1",
-    "date": "1972-04-30",
+    "date": "",
     "book": "Acts",
     "ch": 1,
     "v": [
@@ -3472,7 +3472,7 @@
    },
    "1701": {
     "t": "Resources for Finishing Our Lord's Unfinished Work, Part 2",
-    "date": "1972-05-07",
+    "date": "",
     "book": "Acts",
     "ch": 1,
     "v": [
@@ -3483,7 +3483,7 @@
    },
    "1702": {
     "t": "Resources for Finishing Our Lord's Unfinished Work, Part 3",
-    "date": "1972-05-14",
+    "date": "",
     "book": "Acts",
     "ch": 1,
     "v": [
@@ -3494,7 +3494,7 @@
    },
    "1705": {
     "t": "Peter's Sermon: Explaining Pentecost",
-    "date": "1972-06-04",
+    "date": "",
     "book": "Acts",
     "ch": 2,
     "v": [
@@ -3505,7 +3505,7 @@
    },
    "1706": {
     "t": "Peter's Sermon: Exalting Christ, Part 1",
-    "date": "1972-06-11",
+    "date": "",
     "book": "Acts",
     "ch": 2,
     "v": [
@@ -3516,7 +3516,7 @@
    },
    "1708": {
     "t": "Peter's Sermon: The Appeal and Results",
-    "date": "1972-07-02",
+    "date": "",
     "book": "Acts",
     "ch": 2,
     "v": [
@@ -3527,7 +3527,7 @@
    },
    "1709": {
     "t": "The First Fellowship",
-    "date": "1972-07-09",
+    "date": "",
     "book": "Acts",
     "ch": 2,
     "v": [
@@ -3538,7 +3538,7 @@
    },
    "1710": {
     "t": "A Miracle to Confirm the Word",
-    "date": "1972-08-20",
+    "date": "",
     "book": "Acts",
     "ch": 3,
     "v": [
@@ -3549,7 +3549,7 @@
    },
    "1711": {
     "t": "Peter Preaches Christ",
-    "date": "1972-08-27",
+    "date": "",
     "book": "Acts",
     "ch": 3,
     "v": [
@@ -3560,7 +3560,7 @@
    },
    "1713": {
     "t": "The Necessity of Repentance",
-    "date": "1972-09-17",
+    "date": "",
     "book": "Acts",
     "ch": 3,
     "v": [
@@ -3571,7 +3571,7 @@
    },
    "1715": {
     "t": "How to Handle Persecution, Part 2",
-    "date": "1972-10-01",
+    "date": "",
     "book": "Acts",
     "ch": 4,
     "v": [
@@ -4209,6 +4209,149 @@
      38
     ],
     "url": "https://www.gty.org/resources/sermons/1780"
+   },
+   "1781": {
+    "t": "The Courage of Conviction, Part 1",
+    "date": "",
+    "book": "Acts",
+    "ch": 21,
+    "v": [
+     1,
+     6
+    ],
+    "url": "https://www.gty.org/resources/sermons/1781"
+   },
+   "1782": {
+    "t": "The Courage of Conviction, Part 2",
+    "date": "",
+    "book": "Acts",
+    "ch": 21,
+    "v": [
+     7,
+     9
+    ],
+    "url": "https://www.gty.org/resources/sermons/1782"
+   },
+   "1783": {
+    "t": "The Courage of Conviction, Part 3",
+    "date": "",
+    "book": "Acts",
+    "ch": 21,
+    "v": [
+     10,
+     16
+    ],
+    "url": "https://www.gty.org/resources/sermons/1783"
+   },
+   "1784": {
+    "t": "Paul's Arrest, Part 1",
+    "date": "",
+    "book": "Acts",
+    "ch": 21,
+    "v": [
+     17,
+     26
+    ],
+    "url": "https://www.gty.org/resources/sermons/1784"
+   },
+   "1785": {
+    "t": "Paul's Arrest, Part 2",
+    "date": "",
+    "book": "Acts",
+    "ch": 21,
+    "v": [
+     27,
+     40
+    ],
+    "url": "https://www.gty.org/resources/sermons/1785"
+   },
+   "1786": {
+    "t": "Paul's Arrest, Part 3",
+    "date": "",
+    "book": "Acts",
+    "ch": 22,
+    "v": [
+     1,
+     15
+    ],
+    "url": "https://www.gty.org/resources/sermons/1786"
+   },
+   "1787": {
+    "t": "Paul's Arrest, Part 4",
+    "date": "",
+    "book": "Acts",
+    "ch": 22,
+    "v": [
+     15,
+     30
+    ],
+    "url": "https://www.gty.org/library/sermons-library/1787"
+   },
+   "1788": {
+    "t": "Paul's Clear Conscience",
+    "date": "",
+    "book": "Acts",
+    "ch": 22,
+    "v": [
+     30,
+     30
+    ],
+    "url": "https://www.gty.org/resources/sermons/1788"
+   },
+   "1789": {
+    "t": "Confrontation and Consolation",
+    "date": "",
+    "book": "Acts",
+    "ch": 23,
+    "v": [
+     4,
+     11
+    ],
+    "url": "https://www.gty.org/resources/sermons/1789"
+   },
+   "1790": {
+    "t": "Providential Protection",
+    "date": "",
+    "book": "Acts",
+    "ch": 23,
+    "v": [
+     12,
+     35
+    ],
+    "url": "https://www.gty.org/library/sermons-library/1790"
+   },
+   "1791": {
+    "t": "Paul's Trial Before Felix, Part 1: The Case Against Paul",
+    "date": "",
+    "book": "Acts",
+    "ch": 24,
+    "v": [
+     1,
+     9
+    ],
+    "url": "https://www.gty.org/resources/sermons/1791"
+   },
+   "1792": {
+    "t": "Paul's Trial Before Felix, Part 2: Paul's Defense Begun",
+    "date": "",
+    "book": "Acts",
+    "ch": 24,
+    "v": [
+     10,
+     16
+    ],
+    "url": "https://www.gty.org/resources/sermons/1792"
+   },
+   "1793": {
+    "t": "Paul's Trial Before Felix, Part 3: The Tragedy of Postponing Salvation",
+    "date": "",
+    "book": "Acts",
+    "ch": 24,
+    "v": [
+     17,
+     27
+    ],
+    "url": "https://gty.org/resources/sermons/1793/pauls-trial-before-felix--part-3-the-tragedy-of-postponing-salvation"
    },
    "1810": {
     "t": "Called to be Saints",
@@ -9228,7 +9371,7 @@
    },
    "42-197": {
     "t": "Heaven's Joy: Recovering the Lost",
-    "date": "",
+    "date": "2005-11-06",
     "book": "Luke",
     "ch": 15,
     "v": [
@@ -9239,7 +9382,7 @@
    },
    "42-198": {
     "t": "Recovering the Lost Sheep",
-    "date": "",
+    "date": "2005-11-13",
     "book": "Luke",
     "ch": 15,
     "v": [
@@ -9250,7 +9393,7 @@
    },
    "42-199": {
     "t": "Recovering the Lost Coin",
-    "date": "",
+    "date": "2005-11-20",
     "book": "Luke",
     "ch": 15,
     "v": [
@@ -9261,7 +9404,7 @@
    },
    "42-201": {
     "t": "The Tale of Two Sons, Part 1",
-    "date": "",
+    "date": "2005-12-05",
     "book": "Luke",
     "ch": 15,
     "v": [
@@ -9272,7 +9415,7 @@
    },
    "42-202": {
     "t": "The Tale of Two Sons, Part 2",
-    "date": "",
+    "date": "2005-12-11",
     "book": "Luke",
     "ch": 15,
     "v": [
@@ -9283,7 +9426,7 @@
    },
    "42-203": {
     "t": "The Tale of Two Sons, Part 3",
-    "date": "",
+    "date": "2005-12-18",
     "book": "Luke",
     "ch": 15,
     "v": [
@@ -9437,7 +9580,7 @@
    },
    "42-39": {
     "t": "A Voice Crying in the Wilderness, Part 1",
-    "date": "",
+    "date": "2000-01-09",
     "book": "Luke",
     "ch": 3,
     "v": [
@@ -9448,7 +9591,7 @@
    },
    "42-40": {
     "t": "A Voice Crying in the Wilderness, Part 2",
-    "date": "",
+    "date": "2000-01-16",
     "book": "Luke",
     "ch": 3,
     "v": [
@@ -9492,7 +9635,7 @@
    },
    "42-44": {
     "t": "True Repentance: God's Highway to the Heart, Part 4",
-    "date": "",
+    "date": "2000-02-20",
     "book": "Luke",
     "ch": 3,
     "v": [
@@ -9503,7 +9646,7 @@
    },
    "42-45": {
     "t": "The Legacy of John the Baptist",
-    "date": "",
+    "date": "2000-02-27",
     "book": "Luke",
     "ch": 3,
     "v": [
@@ -9514,7 +9657,7 @@
    },
    "42-46": {
     "t": "The Messiah's Divine Confirmation, Part 1",
-    "date": "",
+    "date": "2000-03-05",
     "book": "Luke",
     "ch": 3,
     "v": [
@@ -9525,7 +9668,7 @@
    },
    "42-47": {
     "t": "The Messiah's Divine Confirmation, Part 2",
-    "date": "",
+    "date": "2000-03-12",
     "book": "Luke",
     "ch": 3,
     "v": [
@@ -9536,7 +9679,7 @@
    },
    "42-48": {
     "t": "The Messiah's Royal Lineage",
-    "date": "",
+    "date": "2000-04-02",
     "book": "Luke",
     "ch": 3,
     "v": [
@@ -9821,7 +9964,7 @@
     "url": "https://www.gty.org/library/sermons-library/42-246"
    },
    "42-247": {
-    "t": "A Diagnosis of the Christ-Rejecters",
+    "t": "The Diagnosis of the Christ Rejecters",
     "date": "",
     "book": "Luke",
     "ch": 20,
@@ -9998,7 +10141,7 @@
    },
    "42-267": {
     "t": "Sinister Players in the Sovereign Plan of Redemption",
-    "date": "",
+    "date": "2008-01-13",
     "book": "Luke",
     "ch": 22,
     "v": [
@@ -10020,7 +10163,7 @@
    },
    "42-269": {
     "t": "The Final Passover, the First Communion",
-    "date": "",
+    "date": "2008-02-03",
     "book": "Luke",
     "ch": 22,
     "v": [
@@ -10031,7 +10174,7 @@
    },
    "42-270": {
     "t": "Table Talk on Trouble and Triumph, Part 1",
-    "date": "",
+    "date": "2008-02-17",
     "book": "Luke",
     "ch": 22,
     "v": [
@@ -10042,7 +10185,7 @@
    },
    "42-271": {
     "t": "Table Talk on Trouble and Triumph, Part 2",
-    "date": "",
+    "date": "2008-02-24",
     "book": "Luke",
     "ch": 22,
     "v": [
@@ -10053,7 +10196,7 @@
    },
    "42-272": {
     "t": "Table Talk on Trouble and Triumph, Part 3",
-    "date": "",
+    "date": "2008-03-02",
     "book": "Luke",
     "ch": 22,
     "v": [
@@ -10064,7 +10207,7 @@
    },
    "42-273": {
     "t": "Four Features of Triumphant Prayer",
-    "date": "",
+    "date": "2008-03-09",
     "book": "Luke",
     "ch": 22,
     "v": [
@@ -10075,7 +10218,7 @@
    },
    "42-274": {
     "t": "A Traitorous Kiss for the Triumphant Savior",
-    "date": "",
+    "date": "2008-03-16",
     "book": "Luke",
     "ch": 22,
     "v": [
@@ -10086,7 +10229,7 @@
    },
    "42-275": {
     "t": "The Danger of Spiritual Over-Confidence",
-    "date": "",
+    "date": "2008-04-06",
     "book": "Luke",
     "ch": 22,
     "v": [
@@ -10097,7 +10240,7 @@
    },
    "42-276": {
     "t": "The Sinless Savior Before the Sinister Sanhedrin, Part 1",
-    "date": "",
+    "date": "2008-04-20",
     "book": "Luke",
     "ch": 22,
     "v": [
@@ -12253,7 +12396,7 @@
    },
    "53-1": {
     "t": "A Church to Be Proud Of",
-    "date": "1992-01-05",
+    "date": "",
     "book": "2 Thessalonians",
     "ch": 1,
     "v": [
@@ -12264,7 +12407,7 @@
    },
    "53-2": {
     "t": "The Vengeance of the Lord Jesus, Part 1",
-    "date": "1992-01-12",
+    "date": "",
     "book": "2 Thessalonians",
     "ch": 1,
     "v": [
@@ -12275,7 +12418,7 @@
    },
    "53-3": {
     "t": "The Vengeance of the Lord Jesus, Part 2",
-    "date": "1992-01-19",
+    "date": "",
     "book": "2 Thessalonians",
     "ch": 1,
     "v": [
@@ -12286,7 +12429,7 @@
    },
    "53-4": {
     "t": "The Vengeance of the Lord Jesus, Part 3",
-    "date": "1992-01-26",
+    "date": "",
     "book": "2 Thessalonians",
     "ch": 1,
     "v": [
@@ -12297,7 +12440,7 @@
    },
    "53-5": {
     "t": "Praying for the Right Things, Part 1",
-    "date": "1992-02-09",
+    "date": "",
     "book": "2 Thessalonians",
     "ch": 1,
     "v": [
@@ -12308,7 +12451,7 @@
    },
    "53-6": {
     "t": "Praying for the Right Things, Part 2",
-    "date": "1992-02-16",
+    "date": "",
     "book": "2 Thessalonians",
     "ch": 1,
     "v": [
@@ -12319,7 +12462,7 @@
    },
    "53-7": {
     "t": "The Coming Man of Sin, Part 1",
-    "date": "1992-02-23",
+    "date": "",
     "book": "2 Thessalonians",
     "ch": 2,
     "v": [
@@ -12330,7 +12473,7 @@
    },
    "53-8": {
     "t": "The Coming Man of Sin, Part 2",
-    "date": "1992-03-01",
+    "date": "",
     "book": "2 Thessalonians",
     "ch": 2,
     "v": [
@@ -12341,7 +12484,7 @@
    },
    "53-9": {
     "t": "The Coming Man of Sin, Part 3",
-    "date": "1992-03-08",
+    "date": "",
     "book": "2 Thessalonians",
     "ch": 2,
     "v": [
@@ -12352,7 +12495,7 @@
    },
    "53-10": {
     "t": "The Coming Man of Sin, Part 4",
-    "date": "1992-04-12",
+    "date": "",
     "book": "2 Thessalonians",
     "ch": 2,
     "v": [
@@ -12363,7 +12506,7 @@
    },
    "53-11": {
     "t": "The Coming Man of Sin, Part 5",
-    "date": "1992-04-26",
+    "date": "",
     "book": "2 Thessalonians",
     "ch": 2,
     "v": [
@@ -12374,7 +12517,7 @@
    },
    "53-12": {
     "t": "The Coming Man of Sin, Part 6",
-    "date": "1992-05-24",
+    "date": "",
     "book": "2 Thessalonians",
     "ch": 2,
     "v": [
@@ -12385,7 +12528,7 @@
    },
    "53-13": {
     "t": "The Pastor's Desire for His People",
-    "date": "1992-05-30",
+    "date": "",
     "book": "2 Thessalonians",
     "ch": 3,
     "v": [
@@ -12594,7 +12737,7 @@
    },
    "53-14": {
     "t": "Work: A Noble Christian Duty, Part 1",
-    "date": "1992-07-05",
+    "date": "",
     "book": "2 Thessalonians",
     "ch": 3,
     "v": [
@@ -12605,7 +12748,7 @@
    },
    "53-15": {
     "t": "Work: A Noble Christian Duty, Part 2",
-    "date": "1992-07-12",
+    "date": "",
     "book": "2 Thessalonians",
     "ch": 3,
     "v": [
@@ -12616,7 +12759,7 @@
    },
    "53-16": {
     "t": "Work: A Noble Christian Duty, Part 3",
-    "date": "1992-07-19",
+    "date": "",
     "book": "2 Thessalonians",
     "ch": 3,
     "v": [
@@ -12627,7 +12770,7 @@
    },
    "53-17": {
     "t": "Peace in Every Circumstance",
-    "date": "1992-07-26",
+    "date": "",
     "book": "2 Thessalonians",
     "ch": 3,
     "v": [
@@ -13133,7 +13276,7 @@
    },
    "56-1": {
     "t": "Commitments of a Powerful Leader, Part 1",
-    "date": "1992-10-18",
+    "date": "",
     "book": "Titus",
     "ch": 1,
     "v": [
@@ -13144,7 +13287,7 @@
    },
    "56-2": {
     "t": "Commitments of a Powerful Leader, Part 2",
-    "date": "1992-10-25",
+    "date": "",
     "book": "Titus",
     "ch": 1,
     "v": [
@@ -13155,7 +13298,7 @@
    },
    "56-3": {
     "t": "Commitments of a Powerful Leader, Part 3",
-    "date": "1992-11-08",
+    "date": "",
     "book": "Titus",
     "ch": 1,
     "v": [
@@ -13166,7 +13309,7 @@
    },
    "56-4": {
     "t": "Commitments of a Powerful Leader, Part 4",
-    "date": "1992-11-15",
+    "date": "",
     "book": "Titus",
     "ch": 1,
     "v": [
@@ -13177,7 +13320,7 @@
    },
    "56-5": {
     "t": "The Moral Character of a Pastor",
-    "date": "1992-11-22",
+    "date": "",
     "book": "Titus",
     "ch": 1,
     "v": [
@@ -13188,7 +13331,7 @@
    },
    "56-6": {
     "t": "The Required Character for a Pastor: Family Leadership",
-    "date": "1992-11-29",
+    "date": "",
     "book": "Titus",
     "ch": 1,
     "v": [
@@ -13199,7 +13342,7 @@
    },
    "56-7": {
     "t": "The Qualifications for a Pastor, Part 1: Noble Character, Part 1",
-    "date": "1992-12-06",
+    "date": "",
     "book": "Titus",
     "ch": 1,
     "v": [
@@ -13210,7 +13353,7 @@
    },
    "56-8": {
     "t": "The Qualifications for a Pastor, Part 2: Noble Character, Part 2",
-    "date": "1992-12-13",
+    "date": "",
     "book": "Titus",
     "ch": 1,
     "v": [
@@ -13221,7 +13364,7 @@
    },
    "56-9": {
     "t": "The Qualifications for a Pastor, Part 3: Teaching Skill",
-    "date": "1992-12-27",
+    "date": "",
     "book": "Titus",
     "ch": 1,
     "v": [
@@ -13232,7 +13375,7 @@
    },
    "56-10": {
     "t": "Men Who Must Be Silenced, Part 1",
-    "date": "1993-01-17",
+    "date": "",
     "book": "Titus",
     "ch": 1,
     "v": [
@@ -13243,7 +13386,7 @@
    },
    "56-12": {
     "t": "Sound Doctrine Backed by Sound Living",
-    "date": "1993-01-31",
+    "date": "",
     "book": "Titus",
     "ch": 2,
     "v": [
@@ -13254,7 +13397,7 @@
    },
    "56-13": {
     "t": "God's Plan for Older Men and Older Women",
-    "date": "1993-02-07",
+    "date": "",
     "book": "Titus",
     "ch": 2,
     "v": [
@@ -13265,7 +13408,7 @@
    },
    "56-14": {
     "t": "God's Plan for Younger Women, Part 1",
-    "date": "1993-03-07",
+    "date": "",
     "book": "Titus",
     "ch": 2,
     "v": [
@@ -13276,7 +13419,7 @@
    },
    "56-15": {
     "t": "God's Plan for Younger Women, Part 2",
-    "date": "1993-03-14",
+    "date": "",
     "book": "Titus",
     "ch": 2,
     "v": [
@@ -13287,7 +13430,7 @@
    },
    "56-16": {
     "t": "God's Plan for Younger Men",
-    "date": "1993-04-04",
+    "date": "",
     "book": "Titus",
     "ch": 2,
     "v": [
@@ -13298,7 +13441,7 @@
    },
    "56-17": {
     "t": "God's Plan for Employees",
-    "date": "1993-04-25",
+    "date": "",
     "book": "Titus",
     "ch": 2,
     "v": [
@@ -13309,7 +13452,7 @@
    },
    "56-18": {
     "t": "Saving Grace, Part 1",
-    "date": "1993-05-02",
+    "date": "",
     "book": "Titus",
     "ch": 2,
     "v": [
@@ -13320,7 +13463,7 @@
    },
    "56-19": {
     "t": "Saving Grace, Part 2",
-    "date": "1993-05-09",
+    "date": "",
     "book": "Titus",
     "ch": 2,
     "v": [
@@ -13331,7 +13474,7 @@
    },
    "56-20": {
     "t": "Saving Grace, Part 3",
-    "date": "1993-06-13",
+    "date": "",
     "book": "Titus",
     "ch": 2,
     "v": [
@@ -13342,7 +13485,7 @@
    },
    "56-21": {
     "t": "Saving Grace, Part 4",
-    "date": "1993-06-20",
+    "date": "",
     "book": "Titus",
     "ch": 2,
     "v": [
@@ -13353,7 +13496,7 @@
    },
    "56-22": {
     "t": "The Preacher's Authority",
-    "date": "1993-06-27",
+    "date": "",
     "book": "Titus",
     "ch": 2,
     "v": [
@@ -13364,7 +13507,7 @@
    },
    "56-23": {
     "t": "The Christian's Responsibility in a Pagan Society, Part 1",
-    "date": "1993-07-18",
+    "date": "",
     "book": "Titus",
     "ch": 3,
     "v": [
@@ -13375,7 +13518,7 @@
    },
    "56-25": {
     "t": "He Saved Us",
-    "date": "1993-08-15",
+    "date": "",
     "book": "Titus",
     "ch": 3,
     "v": [
@@ -13386,7 +13529,7 @@
    },
    "56-26": {
     "t": "The Last Word on Relationships",
-    "date": "1993-08-22",
+    "date": "",
     "book": "Titus",
     "ch": 3,
     "v": [
@@ -14625,6 +14768,17 @@
      10
     ],
     "url": "https://www.gty.org/resources/sermons/1755"
+   },
+   "1788@23": {
+    "t": "Paul's Clear Conscience",
+    "date": "",
+    "book": "Acts",
+    "ch": 23,
+    "v": [
+     1,
+     3
+    ],
+    "url": "https://www.gty.org/resources/sermons/1788"
    }
   }
  },
