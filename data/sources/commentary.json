@@ -3228,6 +3228,42 @@
      "D4": "رابعاً. د) الآيات (٤٩-٥٠): البركة والمقاومة",
      "D5": "رابعاً. هـ) الآيات (٥١-٥٢): ردة فعل بولس وبرنابا نتيجة طردهم من أنطاكية بيسيدية"
     }
+   },
+   "acts-17": {
+    "url": "https://enduringword.com/bible-commentary/ar/acts-17/",
+    "lang": "ar",
+    "read": "2026-11-27",
+    "secs": {
+     "A1": "أولاً. أ) الآيات (١-٤): بولس يكرز في تسالونيكي ثلاثة سبوت",
+     "A2": "أولاً. ب) الآيات (٥-٨): المزيد من العنف ضد بولس وسيلا",
+     "A3": "أولاً. ج) الآيات (٩-١٠أ): رحيل بولس وسيلا عن تسالونيكي ليلاً",
+     "B1": "ثانياً. أ) الآيات (١٠ب-١٢): المزيد من الكرازة الناجحة في بيرية",
+     "B2": "ثانياً. ب) الآيات (١٣-١٥): هروب بولس من بيرية",
+     "C1": "ثانياً [كذا في الصفحة]. أ) الآيات (١٦-١٧): انزعجت روح بولس من الكرازة في مدينة أثينا",
+     "C2": "ثانياً [كذا]. ب) الآيات (١٨-٢١): رسالة بولس الحديثة فتحت أمامه باباً للحديث في مركز المدينة الثقافي أريوس باغوس",
+     "C3": "ثانياً [كذا]. ج) الآيات (٢٢-٢٣): بولس يبدأ عظته على تلة مارس (أريوس باغوس)",
+     "C4": "ثانياً [كذا]. د) الآيات (٢٤-٢٩): بولس يخبر الأثينويين عن الإله الحي",
+     "C5": "ثانياً [كذا]. هـ) الآيات (٣٠-٣١): أخبر بولس الأثينيين ما عليهم فعله بسبب طبيعة الله",
+     "C6": "ثانياً [كذا]. و) الآيات (٣٢-٣٤): ردة فعل المستمعين في أريوس باغوس"
+    }
+   },
+   "acts-14": {
+    "url": "https://enduringword.com/bible-commentary/ar/acts-14/",
+    "lang": "ar",
+    "read": "2026-11-27",
+    "secs": {
+     "A1": "أولاً. أ) الآية (١): نجاح خدمة بولس وبرنابا التبشيرية في إيقونية",
+     "A2": "أولاً. ب) الآيات (٢-٦): الخدمة الناجحة خلقت المعارضة ودفعت بولس وبرنابا خارج إيقونية",
+     "B1": "ثانياً. أ) الآيات (٧-١٠): شفاء رجل كسيح في لسترة",
+     "B2": "ثانياً. ب) الآيات (١١-١٣): أعلن الجمهور المتحمس في لسترة أن بولس وبرنابا كانا آلهة يونانية يزوران الأرض",
+     "B3": "ثانياً. ج) الآيات (١٤-١٨): بولس يناشد الحشد بتمييز الإله الحق بدلاً من عبادة بولس وبرنابا",
+     "B4": "ثانياً. د) الآيات (١٩-٢٠أ): الاضطهاد يلاحق بولس",
+     "B5": "ثانياً. هـ) الآيات (٢٠ب-٢١أ): بولس يترك لسترة متجهاً نحو مدينة دربة حيث لاقى المزيد من النجاح في الخدمة",
+     "C1": "ثالثاً. أ) الآيات (٢١ب-٢٢): رسالة بولس وبرنابا في رحلة العودة",
+     "C2": "ثالثاً. ب) الآية (٢٣): خدمة بولس وبرنابا في رحلة العودة إلى الوطن في أنطاكية السورية",
+     "C3": "ثالثاً. ج) الآيات (٢٤-٢٦): خط سير رحلة بولس وبرنابا إلى الوطن",
+     "C4": "ثالثاً. د) الآيات (٢٧-٢٨): وصول بولس وبرنابا إلى أنطاكية"
+    }
    }
   }
  },
@@ -3636,7 +3672,7 @@
     "ch": 13,
     "v": [
      1,
-     4
+     2
     ],
     "url": "https://www.gty.org/resources/sermons/1741"
    },
@@ -3645,7 +3681,7 @@
     "book": "Acts",
     "ch": 13,
     "v": [
-     4,
+     2,
      13
     ],
     "url": "https://www.gty.org/library/sermons-library/1742"
@@ -3689,6 +3725,102 @@
      52
     ],
     "url": "https://www.gty.org/library/sermons-library/1746"
+   },
+   "1747": {
+    "t": "Qualities of a Great Missionary, Part 1",
+    "book": "Acts",
+    "ch": 14,
+    "v": [
+     1,
+     10
+    ],
+    "url": "https://www.gty.org/resources/sermons/1747"
+   },
+   "1748": {
+    "t": "Qualities of a Great Missionary, Part 2",
+    "book": "Acts",
+    "ch": 14,
+    "v": [
+     10,
+     21
+    ],
+    "url": "https://www.gty.org/resources/sermons/1748"
+   },
+   "1749": {
+    "t": "Qualities of a Great Missionary, Part 3",
+    "book": "Acts",
+    "ch": 14,
+    "v": [
+     19,
+     28
+    ],
+    "url": "https://www.gty.org/library/sermons-library/1749"
+   },
+   "1759": {
+    "t": "Men Who Turned the World Upside Down, Part 1",
+    "date": "1973-10-21",
+    "book": "Acts",
+    "ch": 17,
+    "v": [
+     1,
+     12
+    ],
+    "url": "https://www.gty.org/library/sermons-library/1759"
+   },
+   "1760": {
+    "t": "Men Who Turned the World Upside Down, Part 2",
+    "date": "1973-11-11",
+    "book": "Acts",
+    "ch": 17,
+    "v": [
+     1,
+     17
+    ],
+    "url": "https://www.gty.org/library/sermons-library/1760"
+   },
+   "1761": {
+    "t": "God's Man Confronts Satan's City",
+    "date": "1973-11-18",
+    "book": "Acts",
+    "ch": 17,
+    "v": [
+     16,
+     34
+    ],
+    "url": "https://www.gty.org/resources/sermons/1761"
+   },
+   "1762": {
+    "t": "Getting to Know the Unknown God, Part 1",
+    "date": "1973-11-25",
+    "book": "Acts",
+    "ch": 17,
+    "v": [
+     16,
+     24
+    ],
+    "url": "https://www.gty.org/library/sermons-library/1762"
+   },
+   "1763": {
+    "t": "Getting to Know the Unknown God, Part 2",
+    "date": "1973-12-02",
+    "book": "Acts",
+    "ch": 17,
+    "v": [
+     22,
+     29
+    ],
+    "url": "https://www.gty.org/library/sermons-library/1763"
+   },
+   "1764": {
+    "t": "Getting to Know the Unknown God, Part 3",
+    "date": "1973-12-09",
+    "book": "Acts",
+    "ch": 17,
+    "v": [
+     22,
+     34
+    ],
+    "url": "https://www.gty.org/resources/sermons/1764"
    },
    "1810": {
     "t": "Called to be Saints",
@@ -15483,6 +15615,182 @@
     ],
     "url": "https://gracegems.org/Ryle/mark13.htm",
     "kind": "تأملات تفسيرية على الأناجيل، القسم"
+   },
+   "mark-14-1-9": {
+    "t": "Mark 14:1-9",
+    "book": "Mark",
+    "ch": 14,
+    "v": [
+     1,
+     9
+    ],
+    "url": "https://gracegems.org/Ryle/mark14.htm",
+    "kind": "تأملات تفسيرية على الأناجيل، القسم"
+   },
+   "mark-14-10-16": {
+    "t": "Mark 14:10-16",
+    "book": "Mark",
+    "ch": 14,
+    "v": [
+     10,
+     16
+    ],
+    "url": "https://gracegems.org/Ryle/mark14.htm",
+    "kind": "تأملات تفسيرية على الأناجيل، القسم"
+   },
+   "mark-14-17-25": {
+    "t": "Mark 14:17-25",
+    "book": "Mark",
+    "ch": 14,
+    "v": [
+     17,
+     25
+    ],
+    "url": "https://gracegems.org/Ryle/mark14.htm",
+    "kind": "تأملات تفسيرية على الأناجيل، القسم"
+   },
+   "mark-14-26-31": {
+    "t": "Mark 14:26-31",
+    "book": "Mark",
+    "ch": 14,
+    "v": [
+     26,
+     31
+    ],
+    "url": "https://gracegems.org/Ryle/mark14.htm",
+    "kind": "تأملات تفسيرية على الأناجيل، القسم"
+   },
+   "mark-14-32-42": {
+    "t": "Mark 14:32-42",
+    "book": "Mark",
+    "ch": 14,
+    "v": [
+     32,
+     42
+    ],
+    "url": "https://gracegems.org/Ryle/mark14.htm",
+    "kind": "تأملات تفسيرية على الأناجيل، القسم"
+   },
+   "mark-14-43-51": {
+    "t": "Mark 14:43-51",
+    "book": "Mark",
+    "ch": 14,
+    "v": [
+     43,
+     51
+    ],
+    "url": "https://gracegems.org/Ryle/mark14.htm",
+    "kind": "تأملات تفسيرية على الأناجيل، القسم"
+   },
+   "mark-14-53-65": {
+    "t": "Mark 14:53-65",
+    "book": "Mark",
+    "ch": 14,
+    "v": [
+     53,
+     65
+    ],
+    "url": "https://gracegems.org/Ryle/mark14.htm",
+    "kind": "تأملات تفسيرية على الأناجيل، القسم"
+   },
+   "mark-14-66-72": {
+    "t": "Mark 14:66-72",
+    "book": "Mark",
+    "ch": 14,
+    "v": [
+     66,
+     72
+    ],
+    "url": "https://gracegems.org/Ryle/mark14.htm",
+    "kind": "تأملات تفسيرية على الأناجيل، القسم"
+   },
+   "mark-15-1-15": {
+    "t": "Mark 15:1-15",
+    "book": "Mark",
+    "ch": 15,
+    "v": [
+     1,
+     15
+    ],
+    "url": "https://gracegems.org/Ryle/mark15.htm",
+    "kind": "تأملات تفسيرية على الأناجيل، القسم"
+   },
+   "mark-15-16-32": {
+    "t": "Mark 15:16-32",
+    "book": "Mark",
+    "ch": 15,
+    "v": [
+     16,
+     32
+    ],
+    "url": "https://gracegems.org/Ryle/mark15.htm",
+    "kind": "تأملات تفسيرية على الأناجيل، القسم"
+   },
+   "mark-15-33-38": {
+    "t": "Mark 15:33-38",
+    "book": "Mark",
+    "ch": 15,
+    "v": [
+     33,
+     38
+    ],
+    "url": "https://gracegems.org/Ryle/mark15.htm",
+    "kind": "تأملات تفسيرية على الأناجيل، القسم"
+   },
+   "mark-15-39-47": {
+    "t": "Mark 15:39-47",
+    "book": "Mark",
+    "ch": 15,
+    "v": [
+     39,
+     47
+    ],
+    "url": "https://gracegems.org/Ryle/mark15.htm",
+    "kind": "تأملات تفسيرية على الأناجيل، القسم"
+   },
+   "mark-16-1-8": {
+    "t": "Mark 16:1-8",
+    "book": "Mark",
+    "ch": 16,
+    "v": [
+     1,
+     8
+    ],
+    "url": "https://gracegems.org/Ryle/mark16.htm",
+    "kind": "تأملات تفسيرية على الأناجيل، القسم"
+   },
+   "mark-16-9-14": {
+    "t": "Mark 16:9-14",
+    "book": "Mark",
+    "ch": 16,
+    "v": [
+     9,
+     14
+    ],
+    "url": "https://gracegems.org/Ryle/mark16.htm",
+    "kind": "تأملات تفسيرية على الأناجيل، القسم"
+   },
+   "mark-16-15-18": {
+    "t": "Mark 16:15-18",
+    "book": "Mark",
+    "ch": 16,
+    "v": [
+     15,
+     18
+    ],
+    "url": "https://gracegems.org/Ryle/mark16.htm",
+    "kind": "تأملات تفسيرية على الأناجيل، القسم"
+   },
+   "mark-16-19-20": {
+    "t": "Mark 16:19-20",
+    "book": "Mark",
+    "ch": 16,
+    "v": [
+     19,
+     20
+    ],
+    "url": "https://gracegems.org/Ryle/mark16.htm",
+    "kind": "تأملات تفسيرية على الأناجيل، القسم"
    }
   }
  },
@@ -15548,6 +15856,54 @@
      45
     ],
     "url": "https://learn.ligonier.org/sermons/mark-jesus-heals-many",
+    "kind": "عظة"
+   },
+   "mark-healing-paralytic": {
+    "t": "Healing the Paralytic",
+    "date": "2005-12-18",
+    "book": "Mark",
+    "ch": 2,
+    "v": [
+     1,
+     12
+    ],
+    "url": "https://learn.ligonier.org/sermons/mark-healing-paralytic",
+    "kind": "عظة"
+   },
+   "mark-new-wine-skins": {
+    "t": "New Wine Skins",
+    "date": "2006-01-01",
+    "book": "Mark",
+    "ch": 2,
+    "v": [
+     13,
+     22
+    ],
+    "url": "https://learn.ligonier.org/sermons/mark-new-wine-skins",
+    "kind": "عظة"
+   },
+   "mark-lord-sabbath": {
+    "t": "Lord of the Sabbath",
+    "date": "2006-01-08",
+    "book": "Mark",
+    "ch": 2,
+    "v": [
+     23,
+     28
+    ],
+    "url": "https://learn.ligonier.org/sermons/mark-lord-sabbath",
+    "kind": "عظة"
+   },
+   "mark-lord-sabbath@3": {
+    "t": "Lord of the Sabbath",
+    "date": "2006-01-08",
+    "book": "Mark",
+    "ch": 3,
+    "v": [
+     1,
+     6
+    ],
+    "url": "https://learn.ligonier.org/sermons/mark-lord-sabbath",
     "kind": "عظة"
    }
   }
