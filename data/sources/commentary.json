@@ -2843,6 +2843,19 @@
      "B5": "ثانيًا. ٥ (١٧-١٨) الكلمات الختامية"
     },
     "read": "2026-11-27"
+   },
+   "2-corinthians-8": {
+    "url": "https://enduringword.com/bible-commentary/2-corinthians-8/",
+    "lang": "en",
+    "secs": {
+     "A1": "أولًا. ١ (١-٥) مثال مؤمني مكدونية",
+     "A2": "أولًا. ٢ (٦-٨) تشجيع بولس الرقيق والحكيم على العطاء",
+     "A3": "أولًا. ٣ (٩) المثال الثاني للعطاء: ربنا يسوع",
+     "B1": "ثانيًا. ١ (١٠-١٢) أكملوا ما سبق أن أردتموه",
+     "B2": "ثانيًا. ٢ (١٣-١٥) افهموا القضية التي تعطون لأجلها",
+     "B3": "ثانيًا. ٣ (١٦-٢٤) كيف تستقبلون تيطس ورفيقيه حين يأتون لأجل الجمع"
+    },
+    "read": "2026-11-27"
    }
   }
  },
@@ -12892,6 +12905,50 @@
      10
     ],
     "url": "https://gty.org/library/sermons-library/48-41"
+   },
+   "47-56": {
+    "t": "A Biblical Model for Giving, Part 2",
+    "date": "1995-12-03",
+    "book": "2 Corinthians",
+    "ch": 8,
+    "v": [
+     1,
+     2
+    ],
+    "url": "https://www.gty.org/library/sermons-library/47-56/a-biblical-model-for-giving-part-2"
+   },
+   "47-60": {
+    "t": "Stewardship with Integrity, Part 1",
+    "date": "1996-01-28",
+    "book": "2 Corinthians",
+    "ch": 8,
+    "v": [
+     10,
+     12
+    ],
+    "url": "https://www.gty.org/library/sermons-library/47-60/stewardship-with-integrity-part-1"
+   },
+   "47-61": {
+    "t": "Stewardship with Integrity, Part 2",
+    "book": "2 Corinthians",
+    "ch": 8,
+    "v": [
+     10,
+     17
+    ],
+    "url": "https://www.gty.org/library/sermons-library/47-61/stewardship-with-integrity-part-2",
+    "date": ""
+   },
+   "47-62": {
+    "t": "Stewardship with Integrity, Part 3",
+    "book": "2 Corinthians",
+    "ch": 8,
+    "v": [
+     18,
+     24
+    ],
+    "url": "https://www.gty.org/library/sermons-library/47-62/stewardship-with-integrity-part-3",
+    "date": ""
    }
   }
  },
@@ -13192,6 +13249,39 @@
      23
     ],
     "url": "https://www.ccel.org/ccel/h/hodge/ephesians/cache/ephesians.txt",
+    "kind": "تفسير"
+   },
+   "2cor-8-1-8": {
+    "t": "An Exposition of the Second Epistle to the Corinthians, 8:1-8",
+    "book": "2 Corinthians",
+    "ch": 8,
+    "v": [
+     1,
+     8
+    ],
+    "url": "https://monergism.com/thethreshold/sdg/hodge/An%20Exposition%20of%20Second%20Corinthians%20-%20Charles%20Hodge.pdf",
+    "kind": "تفسير"
+   },
+   "2cor-8-9-15": {
+    "t": "An Exposition of the Second Epistle to the Corinthians, 8:9-15",
+    "book": "2 Corinthians",
+    "ch": 8,
+    "v": [
+     9,
+     15
+    ],
+    "url": "https://monergism.com/thethreshold/sdg/hodge/An%20Exposition%20of%20Second%20Corinthians%20-%20Charles%20Hodge.pdf",
+    "kind": "تفسير"
+   },
+   "2cor-8-16-24": {
+    "t": "An Exposition of the Second Epistle to the Corinthians, 8:16-24",
+    "book": "2 Corinthians",
+    "ch": 8,
+    "v": [
+     16,
+     24
+    ],
+    "url": "https://monergism.com/thethreshold/sdg/hodge/An%20Exposition%20of%20Second%20Corinthians%20-%20Charles%20Hodge.pdf",
     "kind": "تفسير"
    }
   }
