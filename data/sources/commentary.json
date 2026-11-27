@@ -14130,6 +14130,50 @@
     ],
     "url": "https://monergism.com/thethreshold/sdg/hodge/An%20Exposition%20of%20Second%20Corinthians%20-%20Charles%20Hodge.pdf",
     "kind": "تفسير"
+   },
+   "romans-1-1-17": {
+    "t": "Romans 1:1-17 (Analysis, Commentary, Doctrine, Remarks)",
+    "book": "Romans",
+    "ch": 1,
+    "v": [
+     1,
+     17
+    ],
+    "url": "https://truthaccordingtoscripture.com/commentaries/hdg/romans-1.php",
+    "kind": "تفسير رسالة رومية، القسم"
+   },
+   "romans-1-18-32": {
+    "t": "Romans 1:18-32 (Analysis, Commentary, Doctrine, Remarks)",
+    "book": "Romans",
+    "ch": 1,
+    "v": [
+     18,
+     32
+    ],
+    "url": "https://truthaccordingtoscripture.com/commentaries/hdg/romans-1.php",
+    "kind": "تفسير رسالة رومية، القسم"
+   },
+   "romans-2-1-16": {
+    "t": "Romans 2:1-16 (Analysis, Commentary, Doctrine, Remarks)",
+    "book": "Romans",
+    "ch": 2,
+    "v": [
+     1,
+     16
+    ],
+    "url": "https://truthaccordingtoscripture.com/commentaries/hdg/romans-2.php",
+    "kind": "تفسير رسالة رومية، القسم"
+   },
+   "romans-2-17-29": {
+    "t": "Romans 2:17-29 (Analysis, Commentary, Doctrine, Remarks)",
+    "book": "Romans",
+    "ch": 2,
+    "v": [
+     17,
+     29
+    ],
+    "url": "https://truthaccordingtoscripture.com/commentaries/hdg/romans-2.php",
+    "kind": "تفسير رسالة رومية، القسم"
    }
   }
  },
@@ -14733,6 +14777,122 @@
     ],
     "url": "https://learn.ligonier.org/sermons/mark-jesus-heals-many",
     "kind": "عظة"
+   }
+  }
+ },
+ "owen": {
+  "who": "John Owen",
+  "work": "An Exposition of the Epistle to the Hebrews (1668-1684), public domain",
+  "items": {
+   "hebrews-1-1-2": {
+    "t": "Hebrews 1:1-2",
+    "book": "Hebrews",
+    "ch": 1,
+    "v": [
+     1,
+     2
+    ],
+    "url": "https://www.studylight.org/commentaries/eng/joc/hebrews-1.html",
+    "kind": "شرح الرسالة إلى العبرانيين، القسم"
+   },
+   "hebrews-1-3": {
+    "t": "Hebrews 1:3",
+    "book": "Hebrews",
+    "ch": 1,
+    "v": [
+     3,
+     3
+    ],
+    "url": "https://www.studylight.org/commentaries/eng/joc/hebrews-1.html",
+    "kind": "شرح الرسالة إلى العبرانيين، القسم"
+   },
+   "hebrews-1-4": {
+    "t": "Hebrews 1:4",
+    "book": "Hebrews",
+    "ch": 1,
+    "v": [
+     4,
+     4
+    ],
+    "url": "https://www.studylight.org/commentaries/eng/joc/hebrews-1.html",
+    "kind": "شرح الرسالة إلى العبرانيين، القسم"
+   },
+   "hebrews-1-5": {
+    "t": "Hebrews 1:5",
+    "book": "Hebrews",
+    "ch": 1,
+    "v": [
+     5,
+     5
+    ],
+    "url": "https://www.studylight.org/commentaries/eng/joc/hebrews-1.html",
+    "kind": "شرح الرسالة إلى العبرانيين، القسم"
+   },
+   "hebrews-1-6": {
+    "t": "Hebrews 1:6",
+    "book": "Hebrews",
+    "ch": 1,
+    "v": [
+     6,
+     6
+    ],
+    "url": "https://www.studylight.org/commentaries/eng/joc/hebrews-1.html",
+    "kind": "شرح الرسالة إلى العبرانيين، القسم"
+   },
+   "hebrews-1-7": {
+    "t": "Hebrews 1:7",
+    "book": "Hebrews",
+    "ch": 1,
+    "v": [
+     7,
+     7
+    ],
+    "url": "https://www.monergism.com/thethreshold/sdg/owen/An%20Exposition%20of%20the%20Epistle%20to%20-%20John%20Owen3.pdf",
+    "kind": "شرح الرسالة إلى العبرانيين، القسم"
+   },
+   "hebrews-1-8-9": {
+    "t": "Hebrews 1:8-9",
+    "book": "Hebrews",
+    "ch": 1,
+    "v": [
+     8,
+     9
+    ],
+    "url": "https://www.monergism.com/thethreshold/sdg/owen/An%20Exposition%20of%20the%20Epistle%20to%20-%20John%20Owen3.pdf",
+    "kind": "شرح الرسالة إلى العبرانيين، القسم"
+   },
+   "hebrews-1-10-12": {
+    "t": "Hebrews 1:10-12",
+    "book": "Hebrews",
+    "ch": 1,
+    "v": [
+     10,
+     12
+    ],
+    "url": "https://www.monergism.com/thethreshold/sdg/owen/An%20Exposition%20of%20the%20Epistle%20to%20-%20John%20Owen3.pdf",
+    "kind": "شرح الرسالة إلى العبرانيين، القسم"
+   },
+   "hebrews-1-13": {
+    "t": "Hebrews 1:13",
+    "book": "Hebrews",
+    "ch": 1,
+    "v": [
+     13,
+     13
+    ],
+    "url": "https://www.monergism.com/thethreshold/sdg/owen/An%20Exposition%20of%20the%20Epistle%20to%20-%20John%20Owen3.pdf",
+    "kind": "شرح الرسالة إلى العبرانيين، القسم"
+   },
+   "hebrews-1-14": {
+    "t": "Hebrews 1:14",
+    "book": "Hebrews",
+    "ch": 1,
+    "v": [
+     14,
+     14
+    ],
+    "url": "https://www.monergism.com/thethreshold/sdg/owen/An%20Exposition%20of%20the%20Epistle%20to%20-%20John%20Owen3.pdf",
+    "kind": "شرح الرسالة إلى العبرانيين، القسم"
    }
   }
  }
