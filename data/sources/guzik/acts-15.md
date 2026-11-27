@@ -1,0 +1,14 @@
+# Reading notes: David Guzik, Enduring Word (Arabic page), Acts 15
+Read 2026-11-27 at https://enduringword.com/bible-commentary/ar/acts-15/ (Arabic page exists; headings read verbatim in a second fetch). Our own outline, not his text.
+A1 (1): men from Judea: no salvation without circumcision; equal acceptance of Gentiles without law at stake; contrast 13:38-39; Gal 2:16; dispute about the core of the gospel; Satan uses works-salvation then division; greatest threat to ministry in Acts.
+A2 (2-4): confronted error, didn't ignore it; church sent them to apostles and elders; joy in Phoenicia/Samaria; doctrinal disputes engaged honestly.
+A3 (5): Pharisees: justification by law-keeping, so faith plus obedience; Paul ex-Pharisee (Phil 3:5) saw Jesus as only way not improvement; Lystra rejection of syncretism (14:14-15); opponents' OT texts (Ex 12:48-49; Isa 56:6); adding law denies grace alone.
+B1 (6-11): faith alone or faith plus law; Peter: God chose, knows hearts, gave Spirit, no distinction (10:28), purified by faith; yoke no one could bear (Israel's history); testing God; saved by grace like them (Peter reverses usual framing); Gal 2:3; 3:2-3.
+B2 (12): silence shows honest hearts willing to be persuaded; testimony supports doctrine.
+B3 (13-21): James brother of Jesus, not apostle killed (12:2; Matt 13:55; Jude 1; James 1:1); leadership from character; James presided, not Peter; ethne vs laos: God taking a "people" from the nations startling; Amos 9:11-12; four abstentions practical for table fellowship and not offending Jewish believers (Moses read every Sabbath); sexual prohibition = Lev 18 kinship marriages; three of four about food; not bound by law, concessions in love; councils accountable to Scripture, decisions can err yet God bless; settle by Scripture.
+B4 (22): apostles, elders, whole church chose Judas Barsabbas and Silas.
+B5 (23-29): letter to mixed churches of Antioch, Syria, Cilicia, not all Gentile churches; Holy Spirit treated as partner; settled once: grace through faith, obedience fruit; church meetings should look like this.
+C1 (30-31): Gentiles rejoiced at the comfort.
+C2 (32-35): Judas and Silas prophets encouraged and strengthened; Silas stayed (as page reports); Word kept spreading because error resolved correctly.
+D1 (36): revisit the churches; strengthening existing churches part of ministry.
+D2 (37-41): Luke doesn't say who was right, he won't decide; personal not doctrinal; Barnabas the encourager, maybe affected by Judaizing pressure (Gal 2:13); Barnabas Mark's cousin (Col 4:10); later Paul valued Mark (Col 4:10; Phlm 24; 2 Tim 4:11); Silas: leader (15:22), prophet (15:32), Roman citizen (16:37), likely Greek speaker, possibly 1 Pet 5:12, 1 Thess 1:1; God uses division but people responsible; Matt 5:23-24; providence no excuse for quarrels.
