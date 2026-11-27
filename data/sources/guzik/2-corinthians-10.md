@@ -1,0 +1,10 @@
+# Reading notes: David Guzik, Enduring Word (English page), 2 Corinthians 10
+Read 2026-11-27 at https://enduringword.com/bible-commentary/2-corinthians-10/ . Our own outline, not his text.
+A1 (1): change of tone; some think chs. 10-13 separate letter, Guzik thinks unlikely; meekness and gentleness of Christ; critics: meek in person, bold in letters; lowliness and boldness coexist, as in Jesus.
+A2 (2): "some" = vocal minority; accused of walking according to the flesh; apostolic title cheapened today.
+A3 (3-6): in the flesh, not warring after it; spiritual weapons (Eph 6:10-18) vs fleshly ones (manipulation, image, smooth talk, lording, programs); Jesus' victory through humble obedience (Phil 2:6-8); strongholds = wrong thoughts against knowledge of God (Rom 12:2); Romans destroyed rocky pirate fortresses in Cilicia; every thought captive (1 Cor 6:19-20); punish disobedience after obedience fulfilled, Roman discipline; Redpath: forgive and forget not counterattack; Calvin: human wisdom opposed to God's grace; Clarke: Reformation pulled down papal system; Trapp; Poole: discipline gradual and patient.
+A4 (7): judged by outward appearance; later early-Christian description of Paul short, bald; Calvin: Paul lacked qualities that earn respect.
+A5 (8-11): "boast" reluctant; authority for edification not destruction, applied to home, work, government; letters weighty, presence weak; perhaps ill in Corinth; weakness gave room for God's power; will act in person as letters sound.
+B1 (12): measuring by themselves not wise; both errors; Clarke: self-commenders proud; Trapp: nearer God, more one sees one's flaws.
+B2 (13-16): sphere (lanes of racetrack, Isthmian Games at Corinth); includes Corinth since he founded it; sphere enlarged as they grow; not building on another's work; troublemakers took credit; Clarke condemns intruders making factions.
+B3 (17-18): Jer 9:23-24 glory in the Lord, not wisdom, might, riches; approval from the Lord; Hughes: self-commendation in church a sign of unfitness.
