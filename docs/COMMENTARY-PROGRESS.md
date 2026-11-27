@@ -54,7 +54,7 @@
 
 | k | المفسر | على إيه | المصدر |
 |---|---|---|---|
-| `ryle` | ج. ك. رايل | الأناجيل الأربعة | Expository Thoughts on the Gospels (ملكية عامة): ccel.org، gracegems.org، monergism |
+| `ryle` | ج. ك. رايل | الأناجيل الأربعة. **تم: مرقس ١ – ٤** | Expository Thoughts on the Gospels (ملكية عامة). **اللي اشتغل:** `https://gracegems.org/Ryle/mark01.htm` (رقمين للأصحاح؛ الفهرس mark00.htm). اطلب من WebFetch مخطط مفصّل، وبعدين اسأله تاني عن الشواهد بالظبط وهل بيشرح آية معينة (الملخص بيألف أحياناً). مجلد مرقس فيه التأملات بس من غير حواشي |
 | `hodge` | تشارلز هودج | رومية، ١ و٢ كورنثوس، أفسس | تفاسيره (ملكية عامة): ccel.org، archive.org |
 | `owen` | جون أوين | العبرانيين | An Exposition of the Epistle to the Hebrews (ملكية عامة): ccel.org، monergism |
 | `sproul` | ر. س. سبرول | كل العهد الجديد حيث يوجد | ligonier.org (عظات ومقالات وتفاسيره)، عليها حقوق |
