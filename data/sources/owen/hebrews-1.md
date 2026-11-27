@@ -3,9 +3,11 @@
 - URLs read (2026-11-27):
   - https://www.studylight.org/commentaries/eng/joc/hebrews-1.html (page ~500000 chars, read with WebFetch offsets 0, 100000, 200000, 300000, 400000; covers 1:1 to the middle of 1:7, then the page ends). This edition adds bracketed editor footnotes citing 19th-century writers (Stuart, Tholuck, Ebrard, Bleek, Turner, Craik ...): NOT used, not attributed to Owen.
   - https://www.monergism.com/thethreshold/sdg/owen/An Exposition of the Epistle to - John Owen3.pdf (1.66M chars; read offsets 0, 400000, 500000, 600000): 1:7 complete, 1:8-14.
+- **Source replaced (2026-11-27, third session):** monergism.com disallows ClaudeBot/anthropic-ai and reserves rights against AI use in its robots.txt, so it is no longer used. Verses 1:3 (upholding) and 1:7-14 were re-read from the public-domain Goold edition, vol. 20 (1862), scanned PDF: https://wesleyscholar.com/wp-content/uploads/2020/03/Works-of-Owen-vol-20-Hebrews-Pt-3.pdf (1.7M chars; 1:1-2 at 0-200k, 1:3 at ~200-300k, 1:4-5 at ~300-400k, 1:7-9 at ~500-600k, 1:10-14 at ~600-700k, 1:14 end and ch. 2 start at ~700-800k). The 1:7-14 entries matched this edition; registry URLs now point here.
+- Gaps filled from that edition: 1:3 upholding (Ezekiel vision, preservation and rule, observations I-II, uses); 1:9 (dia touto as congruity not strict cause, three senses of "thy God", three anointings, fellows) plus the 8-9 observations; 1:14 (seven reasons God uses angels, eight ends of their ministry, four differences from the Spirit's motions, uses incl. against one guardian angel per person).
 - Not usable: ccbiblestudy.org .doc (binary); curl to archive.org blocked by proxy.
 - Registered: owen hebrews-1-1-2, -3, -4, -5, -6, -7, -8-9, -10-12, -13, -14.
-- Gaps: end of the 1:9 discussion (dia touto vs epi touto) fell between two fetch windows; 6th reason for angelic ministry in 1:14 cut off; 1:3 "upholding" detail partly summarized.
+- Former gaps (now filled, see above): end of the 1:9 discussion (dia touto vs epi touto) fell between two fetch windows; 6th reason for angelic ministry in 1:14 cut off; 1:3 "upholding" detail partly summarized.
 
 ## Outline in our own words
 - Chapter scope: secure perseverance by setting forth the Son, absolutely and compared with angels.
