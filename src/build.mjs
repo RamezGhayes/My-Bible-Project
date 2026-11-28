@@ -783,7 +783,101 @@ function searchIndex() {
 
 // ---------- run ----------
 const PLANS_UI = buildPlans({ content, write, page, people: PEOPLE, personHref, pimg: (id, d) => (PIMG.has(id) ? `${'../'.repeat(d)}assets/${PIMG.get(id)}` : ''), topicLinks, explainersFor, explainHref, mapForChapter });
+// Prototype of the new home page (home-v6.html, not linked, noindex): the story as one gold line, your place,
+// three doors, the 66 books as a shelf, faces from the Bible, places. Styles assets/home6.css, script assets/home6.js.
+function home6() {
+  const ps = mainVerse();
+  const words = ps.split(/\s+/);
+  const GC = { torah: '#8C2F1E', history: '#9A5A24', poetry: '#B39459', major: '#4E5D32', minor: '#6B7A4A', gospels: '#1F2A44', acts: '#34496B', paul: '#4B3D63', general: '#5A6B8C', prophecy: '#7A6232' };
+  const ST = [
+    ['الخلق', 'تكوين ١ – ٢', 'الله يخلق عالماً حسناً، والإنسان على صورته.', 'story'],
+    ['الطوفان', 'تكوين ٦ – ٩', 'دينونة ونعمة، وعهد علامته القوس في السحاب.', 'story'],
+    ['الوعد', 'تكوين ١٢', 'إبراهيم يخرج من أرضه، وفي نسله تتبارك الأمم.', 'abraham'],
+    ['سيناء', 'خروج ١٩ – ٢٠', 'شعب مفدي يقف أمام إله قدوس، ويأخذ الشريعة.', 'moses'],
+    ['الهيكل', '١ ملوك ٦ – ٨', 'الله يسكن وسط شعبه في أورشليم.', 'solomon'],
+    ['السبي', '٢ ملوك ٢٥', 'المملكة تسقط، والأنبياء يعدون بعهد جديد.', 'split'],
+    ['الميلاد', 'لوقا ٢', 'المخلّص يولد في بيت لحم، مدينة داود.', 'christ'],
+    ['الصليب والقيامة', 'الأناجيل', 'قلب القصة كلها: موت المسيح وقيامته.', 'passion'],
+    ['كل شيء جديد', 'رؤيا ٢١ – ٢٢', 'سماء جديدة وأرض جديدة، والله يسكن مع شعبه.', 'key']
+  ];
+  // landmarks along one horizon (viewBox 1200 x 230, baseline y=190), from right (creation) to left (new creation)
+  const LM = [
+    '<path d="M1110 190V150"/><circle cx="1110" cy="128" r="24"/><circle cx="1101" cy="122" r="3"/><circle cx="1119" cy="134" r="3"/>',
+    '<path d="M935 190q12-14 24 0t24 0t24 0t24 0t24 0"/><path d="M958 170h58l-9 11h-40z"/><path d="M970 170v-11h34v11"/>',
+    '<path d="M820 190L860 140L900 190"/><path d="M852 190L860 172L868 190"/><circle cx="846" cy="112" r="1.6" class="f"/><circle cx="872" cy="100" r="1.6" class="f"/><circle cx="893" cy="117" r="1.6" class="f"/><circle cx="832" cy="98" r="1.2" class="f"/>',
+    '<path d="M668 190L735 98L802 190"/><path d="M712 112q10-12 22-4q12-10 23 4"/><path d="M725 190l10-30l10 30"/>',
+    '<path d="M552 190V176H648V190"/><path d="M566 176V142M582 176V142M598 176V142M614 176V142M630 176V142"/><path d="M548 142L600 114L652 142Z"/>',
+    '<path d="M420 190V173H433V157H447V141H493V157H507V173H520V190"/><path d="M462 141V128H478V141"/>',
+    '<path d="M330 190V168L355 150L380 168V190"/><path d="M355 90L359 100L369 104L359 108L355 118L351 108L341 104L351 100Z" class="f"/>',
+    '<path d="M180 190Q240 152 300 190"/><path d="M240 168V104M223 121H257"/>',
+    '<path d="M40 190V140H62V190M70 190V118H120V190M128 190V142H150V190"/><path d="M86 190V162A9 9 0 0 1 104 162V190"/><path d="M95 104V92M76 108L70 98M114 108L120 98"/>'
+  ];
+  const lx = [1110, 985, 860, 735, 600, 470, 355, 240, 95];
+  const line = `<svg class="h6-line" viewBox="0 0 1200 230" role="img" aria-label="القصة كلها في خط واحد، من الخلق إلى كل شيء جديد">
+<path class="hz" d="M1200 190H0"/>
+${LM.map((g, i) => `<g class="lm" data-st="${i}" style="--i:${i}" tabindex="0" role="button" aria-label="${ST[i][0]}"><rect x="${lx[i] - 62}" y="80" width="124" height="140" class="hit"/>${g}<text x="${lx[i]}" y="215">${ST[i][0]}</text></g>`).join('')}
+<circle class="walker" r="4" cx="1180" cy="190"><animate attributeName="cx" from="1190" to="10" dur="26s" repeatCount="indefinite"/></circle>
+</svg>`;
+  const withPic = PEOPLE.list.slice().sort((a, b) => a.apps[0].b.order - b.apps[0].b.order || a.apps[0].n - b.apps[0].n).filter((p) => hasPage(p) && /\.webp$/.test(PIMG.get(p.id) || '') && p.prof);
+  const face = (p) => `<a class="h6-face" href="people/${p.id}.html"><img src="assets/${PIMG.get(p.id)}" alt="" loading="lazy"><span>${esc(p.prof ? p.prof.n : p.label)}</span></a>`;
+  const half = Math.ceil(Math.min(withPic.length, 40) / 2), r1 = withPic.slice(0, half), r2 = withPic.slice(half, half * 2);
+  const groups = [...new Set(books.map((b) => b.group))];
+  const shelf = `<div class="h6-shelfw"><div class="h6-shelf" role="list">${groups.map((g) => `<div class="sg" role="presentation">${books.filter((b) => b.group === g).map((b, i) => `<a role="listitem" class="sp" href="book/${b.slug}.html" style="--c:${GC[g]};--h:${Math.round(64 + Math.sqrt(b.chapters) * 14)}px;--i:${b.order}" aria-label="${esc(shortName(b))}"><i></i><span>${esc(shortName(b))}<small>${ar(b.chapters)}</small></span></a>`).join('')}</div>`).join('')}</div>
+<div class="h6-plank" aria-hidden="true"></div></div>
+<div class="h6-legend">${groups.map((g) => `<span><i style="background:${GC[g]}"></i>${esc(books.find((b) => b.group === g).groupName)}</span>`).join('')}</div>`;
+  const places = ['jerusalem', 'antioch', 'ephesus', 'philippi', 'corinth', 'athens', 'malta', 'rome'];
+  const PN = { jerusalem: 'أورشليم', antioch: 'أنطاكية', ephesus: 'أفسس', philippi: 'فيلبي', corinth: 'كورنثوس', athens: 'أثينا', malta: 'مالطة', rome: 'روما' };
+  const start = PLANS_UI.PLANS.find((P) => P.id === 'start');
+  const door = (href, img, k, t, d) => `<a class="h6-door" href="${href}"><img src="assets/${img}.webp" alt="" loading="lazy"><span class="tx"><small>${k}</small><b>${t}</b><span>${d}</span><i>${IC.chev}</i></span></a>`;
+  const body = `<section class="h6-hero"><div class="in">
+<p class="h6-hi" data-hi>نعمة وسلام</p>
+<p class="h6-v" lang="ar">${words.map((w, i) => `<span style="--d:${(0.2 + i * 0.07).toFixed(2)}s">${esc(w)} </span>`).join('')}</p>
+<small class="h6-rf">${refLabel(config.verseRef)}</small>
+<button type="button" class="h6-search" data-search>${IC.search}<span>ابحث عن سفر، أو شاهد مثل يو ٣: ١٦، أو شخصية</span></button>
+</div>
+<div class="h6-story"><p class="h6-k">القصة كلها في خط واحد</p><div class="h6-sc">${line}</div>
+<div class="h6-cap" aria-live="polite"><span class="n" data-cap-n>١</span><div><b data-cap-t>${ST[0][0]}</b><small data-cap-r>${ST[0][1]}</small><p data-cap-d>${ST[0][2]}</p></div><a data-cap-a href="overview.html#s-${ST[0][3]}">اقرأ المحطة ${IC.chev}</a></div></div>
+</section>
+
+<section class="h6-sec h6-place"><div class="w">
+<a class="h6-mine" data-today-card hidden href="plans.html"><small>خلوتك</small><b data-today-name></b><span data-today-day></span></a>
+<a class="h6-mine" data-today-start href="plans/start/1.html"><small>ابدأ من هنا · ${ar(start.days.length)} أيام</small><b>${esc(start.t)}</b><span>${esc(start.sub)}</span></a>
+<a class="h6-mine" data-last hidden href="#"><small>آخر أصحاح قرأته</small><b data-last-t></b><span>كمّل القراءة</span></a>
+<a class="h6-mine" data-ovj href="overview.html"><small>رحلة النظرة العامة</small><b data-ovj-t>٣٢ محطة قصيرة</b><span class="bar"><i data-ovj-bar></i></span></a>
+<div hidden>${PLANS_UI.PLANS.map((P) => PLANS_UI.card(P, 0)).join('')}</div>
+</div></section>
+
+<section class="h6-sec"><div class="w">
+<header class="h6-h"><h2>من أين تبدأ؟</h2><p>ثلاثة أبواب. اختر واحداً.</p></header>
+<div class="h6-doors">
+${door('plans.html', 'person-pbyh5cb', 'كل يوم', 'اقرأ', 'خلوة في نحو ٢٠ دقيقة: تقرأ، وتفهم، وتصلي.')}
+${door('bible.html', 'person-moses', 'سفراً بعد سفر', 'ادرس', 'مقدمة لكل سفر، ودراسة لكل أصحاح.')}
+${door('overview.html', 'person-abraham', 'الصورة الكاملة', 'افهم', 'القصة من الخلق إلى الكنيسة الأولى.')}
+</div></div></section>
+
+<section class="h6-sec h6-lib"><div class="w">
+<header class="h6-h"><h2>المكتبة</h2><p>ستة وستون سفراً على رف واحد. ارتفاع كل سفر بعدد أصحاحاته.</p></header>
+${shelf}
+</div></section>
+
+<section class="h6-sec h6-faces"><div class="w"><header class="h6-h"><h2>وجوه من الكتاب</h2><p>أشخاص حقيقيون، وقصص حقيقية.</p></header></div>
+<div class="h6-mq"><div class="row">${r1.map(face).join('')}${r1.map(face).join('')}</div></div>
+<div class="h6-mq rev"><div class="row">${r2.map(face).join('')}${r2.map(face).join('')}</div></div>
+<div class="w"><a class="h6-more" href="people.html">كل الشخصيات ${IC.chev}</a></div></section>
+
+<section class="h6-sec"><div class="w">
+<header class="h6-h"><h2>أماكن من الرحلات</h2><p>صور حقيقية للمدن التي مرّ بها بولس.</p></header>
+<div class="h6-places">${places.map((p) => `<a href="maps/paul.html"><img src="assets/place-${p}.webp" alt="" loading="lazy"><span>${PN[p]}</span></a>`).join('')}</div>
+<div class="h6-tools">${[['people.html', 'الشخصيات'], ['maps.html', 'الخرائط والشروح'], ['journey.html', 'الخط الزمني'], ['topics.html', 'الموضوعات'], ['glossary.html', 'القاموس'], ['harmony.html', 'الأناجيل جنباً إلى جنب']].map(([h, t]) => `<a href="${h}">${t}</a>`).join('')}</div>
+</div></section>
+
+<footer class="h3f full"><div><p class="s">${esc(quoteText('2Tim.3.16'))}</p><small>${refLabel('2Tim.3.16')}</small><span>${esc(config.description)} · النص: ${esc(config.bibleVersion)}</span></div></footer>
+<script>window.H6=${JSON.stringify({ st: ST, bk: Object.fromEntries(books.map((b) => [b.id, [b.slug, shortName(b)]])) }).replace(/</g, '\\u003c')};</script>`;
+  write('home-v6.html', page({ title: 'الرئيسية (تجربة)', depth: 0, nav: 'home', body, cls: 'home v3 h6', head: '<meta name="robots" content="noindex"><link rel="stylesheet" href="assets/home6.css">', after: '<script src="assets/plans.js" defer></script><script src="assets/home6.js" defer></script>' }));
+}
+
 home();
+home6();
 hubs();
 await buildOverview({ write, page });
 // ---------- sign in (works once site.config.json auth keys are set; see docs/login-setup.md) ----------
