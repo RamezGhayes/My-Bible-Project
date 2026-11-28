@@ -35,7 +35,7 @@ const NAV = [['index.html', 'home', 'الرئيسية', IC.home], ['plans.html',
 export const TOPNAV = NAV.map(([h, k, l]) => [h, k, l]);
 export const BRAND = '<svg class="bm" viewBox="0 0 40 32" aria-hidden="true"><path d="M20 7c-4-3-10-4-16-3v22c6-1 12 0 16 3 4-3 10-4 16-3V4c-6-1-12 0-16 3z"/><path d="M20 7v22"/><path d="M8 10c3 0 6 .5 8 1.6M8 15c3 0 6 .5 8 1.6M24 11.6c2-1.1 5-1.6 8-1.6M24 16.6c2-1.1 5-1.6 8-1.6" opacity=".55"/></svg>';
 
-export function page({ title, depth = 0, nav = null, body, cls = '', after = '' }) {
+export function page({ title, depth = 0, nav = null, body, cls = '', after = '', head = '' }) {
   const u = up(depth);
   const full = title ? `${title} · ${config.nameAr} | ${config.nameEn}` : `${config.nameAr} | ${config.nameEn} · ${config.tagline}`;
   return `<!DOCTYPE html>
@@ -62,6 +62,7 @@ export function page({ title, depth = 0, nav = null, body, cls = '', after = '' 
 <link rel="stylesheet" href="${u}assets/v2.css">
 <link rel="stylesheet" href="${u}assets/v3.css">
 <link rel="stylesheet" href="${u}assets/v5.css">
+${head}
 </head>
 <body class="${cls}" data-root="${u}" data-auth="${esc(JSON.stringify(config.auth || {}))}">
 <header id="top"><div class="in"><a class="brand" href="${u}index.html">${BRAND}<span><b>${esc(config.nameAr)}</b></span></a><nav aria-label="الأقسام">${TOPNAV.map(([h, k, l]) => `<a href="${u}${h}"${k === NAVKEY[nav] ? ' aria-current="page"' : ''}>${l}</a>`).join('')}</nav><button type="button" class="sbtn" data-search aria-label="بحث">${IC.search}<span>ابحث</span></button><a class="acct" href="${u}login.html" data-acct aria-label="حسابي"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg><span data-acct-label>حسابي</span></a></div></header>

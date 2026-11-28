@@ -9,6 +9,7 @@ import { paulMapPage } from './v2/paulmap.mjs';
 import { studyRefs } from './v2/studyrefs.mjs';
 import { buildPlans } from './v2/plans.mjs';
 import { buildOverview } from './v2/overview.mjs';
+import { booksStrip, GROUP_COLOR } from './v2/booksatlas.mjs';
 import { MAPS, mapForChapter, thumb, mapHref, viewer } from './v2/maps.mjs';
 import { TOPICS, topicLinks, chapterTopicsBlock, topicsIndex, topicPage, topicsHomeSection } from './v2/topics.mjs';
 import { treePage } from './v2/tree.mjs';
@@ -120,22 +121,23 @@ ${S5('كل يوم', 'خلوة اليوم', 'أصحاح واحد في نحو ٢٠
 <a class="htc" data-today-start href="plans/start/1.html"><span class="pk">ابدأ من هنا · ${ar(start.days.length)} أيام</span><b>${esc(start.t)}</b><span>${esc(start.sub)}</span><span class="go">ابدأ اليوم الأول ${IC.chev}</span></a>
 <div hidden>${PLANS_UI.PLANS.map((P) => PLANS_UI.card(P, 0)).join('')}</div>`, ['plans.html', 'كل خطط القراءة'])}
 ${S5('سفراً بعد سفر', 'ادرس الكتاب المقدس', 'مقدمة لكل سفر، ودراسة لكل أصحاح، وتطبيق عملي.', `<div class="h3tg">${tcard('ot', 'من الخلق إلى الأنبياء: الوعد والانتظار.')}${tcard('nt', 'المسيح، والكنيسة، والرجاء الأخير.')}</div>`)}
+${S5('في لمحة', 'الكتاب كله في صفحة واحدة', 'ستة وستون سفراً، وقصة واحدة. اضغط على أي سفر لترى مكانه في القصة وأهم أصحاحاته.', `<div class="hob"><div class="tp"><b>نظرة عامة على أسفار الكتاب المقدس</b><span>${ar(books.length)} سفراً · ${ar(books.reduce((n, b) => n + b.chapters, 0))} أصحاحاً</span></div>${booksStrip(0)}<div class="ob-lg">${[...new Set(books.map((b) => b.group))].map((g) => `<span><i style="background:${GROUP_COLOR[g]}"></i>${esc(books.find((b) => b.group === g).groupName)}</span>`).join('')}</div></div>`, ['overview/books.html', 'افتح نظرة عامة على الأسفار'])}
 ${S5('بالصور والخرائط', 'افهم ما تقرأ', 'أماكن وأشخاص وأحداث، مرسومة ومشروحة لتراها بعينك.', `<div class="hxtiles x3">${[
     ['maps/paul.html', 'place-ephesus', 'رحلات بولس', 'على الخريطة، محطة بعد محطة', 'big'],
     ['people.html', 'person-abraham', 'الشخصيات', 'وجوه وقصص من الكتاب'],
     ['journey.html', 'person-moses', 'القصة في مراحل', 'تاريخ الفداء على خط واحد']
   ].map(([h, img, b, s, c]) => `<a class="hxt${c ? ' ' + c : ''}" href="${h}"><img src="assets/${img}.webp" alt=""><span><b>${b}</b><small>${s}</small></span></a>`).join('')}</div>`, ['explore.html', 'كل الأدوات في «استكشف»'], 'soft')}
 <footer class="h3f full"><div><p class="s">${esc(quoteText('2Tim.3.16'))}</p><small>${refLabel('2Tim.3.16')}</small><span>${esc(config.description)} · النص: ${esc(config.bibleVersion)}</span><button type="button" data-i5-again>شاهد المقدمة مرة أخرى</button></div></footer>`;
-  write('index.html', page({ title: '', depth: 0, nav: 'home', body, cls: 'home v3', after: '<script src="assets/plans.js" defer></script>' }));
+  write('index.html', page({ title: '', depth: 0, nav: 'home', body, cls: 'home v3', head: '<link rel="stylesheet" href="assets/ovbooks.css">', after: '<script src="assets/plans.js" defer></script>' }));
 }
 // ---------- hubs: «الكتاب المقدس» and «استكشف» ----------
 function hubs() {
   const tcard = (t, d) => { const list = books.filter((b) => b.testament === t); const ch = list.reduce((n, b) => n + b.chapters, 0); return `<a class="h3t" href="${t}.html"><b>${T_NAME[t]}</b><span class="d">${d}</span><span class="mt"><span>${bkWord(list.length)} · ${chWord(ch)}</span><span class="go">افتح ${IC.chev}</span></span></a>`; };
   write('bible.html', page({ title: 'الكتاب المقدس', depth: 0, nav: 'bible', cls: 'v3 v5hub', body: `<section class="hub5h"><a class="back5" href="index.html">${BACK} العودة إلى الرئيسية</a><h1>الكتاب المقدس</h1><p>اختر العهد، ثم السفر، ثم الأصحاح.</p>
 <div class="h3tg bib5">${tcard('ot', 'من الخلق إلى الأنبياء: الوعد والانتظار.')}${tcard('nt', 'المسيح، والكنيسة، والرجاء الأخير.')}</div>
-<a class="ov-cta" href="overview.html"><span><small>ابدأ من هنا إن كنت جديداً</small><b>نظرة عامة على الكتاب المقدس</b><span>القصة كلها في تسعة أقسام قصيرة: العصور، والشخصيات، والأنبياء، وما بين العهدين، وحياة المسيح.</span></span>${IC.chev}</a></section>` }));
+<a class="ov-cta" href="overview.html"><span><small>ابدأ من هنا إن كنت جديداً</small><b>نظرة عامة على الكتاب المقدس</b><span>الأسفار الستة والستون في صفحة تفاعلية، ثم القصة كلها في صفحات قصيرة مصوّرة: العصور، والشخصيات، والأنبياء، وما بين العهدين، وحياة المسيح.</span></span>${IC.chev}</a></section>` }));
   const items = [
-    ['overview.html', IC.time, 'نظرة عامة على الكتاب المقدس', 'القصة كلها في تسعة أقسام قصيرة.'],
+    ['overview.html', IC.time, 'نظرة عامة على الكتاب المقدس', 'الأسفار الستة والستون، والقصة كلها في صفحات مصوّرة.'],
     ['people.html', IC.person, 'الشخصيات', 'بطاقة لكل شخص في الأصحاحات المدروسة.'],
     ['maps.html', IC.map, 'الخرائط والشروح', 'المسكن، والضربات، ويوم الكفارة، والخروج.'],
     ['maps/paul.html', IC.map, 'رحلات بولس', 'خريطة تفاعلية، محطة بعد محطة.'],
@@ -783,7 +785,7 @@ function searchIndex() {
 const PLANS_UI = buildPlans({ content, write, page, people: PEOPLE, personHref, pimg: (id, d) => (PIMG.has(id) ? `${'../'.repeat(d)}assets/${PIMG.get(id)}` : ''), topicLinks, explainersFor, explainHref, mapForChapter });
 home();
 hubs();
-buildOverview({ write, page });
+await buildOverview({ write, page });
 // ---------- sign in (works once site.config.json auth keys are set; see docs/login-setup.md) ----------
 write('login.html', page({ title: 'تسجيل الدخول', depth: 0, nav: 'login', cls: 'v3 loginpage', body: `<section class="lg" data-login>
 <div class="lgart" aria-hidden="true"><img src="assets/person-p129y7pi.webp" alt=""><div><p>«${esc(quoteText('Ps.119.105'))}»</p><small>${refLabel('Ps.119.105')}</small></div></div>

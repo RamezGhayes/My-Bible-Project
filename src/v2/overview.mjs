@@ -4,6 +4,7 @@ import path from 'node:path';
 import fs from 'node:fs';
 import { ROOT, books, bookById, bible, ar, esc, parseRef, refLabel, refHref, verseText, normalize, shortName, chapterHref } from '../lib.mjs';
 import { IC } from './ui.mjs';
+import { buildBooksAtlas, GROUP_COLOR } from './booksatlas.mjs';
 
 const O = (await import(path.join(ROOT, 'content/overview.mjs'))).default;
 const BACK = '<span class="arw" aria-hidden="true">→</span>';
@@ -27,7 +28,7 @@ const span = (from, to, d) => {
 // Built-in pages (custom layouts below) and generic pages (content/overview/<id>.mjs), in reading order, by part.
 const BUILTIN = {
   why: ['لماذا نظرة عامة؟', 'التلسكوب والميكروسكوب، والأبعاد الأربعة'],
-  books: ['أسفار الكتاب وترتيبها', '٣٩ سفراً و٢٧ سفراً، والترتيب العبري ٢٤ سفراً'],
+  books: ['نظرة عامة على أسفار الكتاب المقدس', 'الأسفار الستة والستون: مكانها في القصة، وترتيبها، وأهم أصحاحاتها'],
   story: ['قصة العهد القديم في أربعة عصور', 'من آدم إلى سليمان: الشخصيات وأين نجدها'],
   split: ['الانقسام والسبي والعودة', 'العصر الخامس: مملكتان، وسبيان، وثلاث عودات'],
   prophets: ['الأنبياء الستة عشر', 'أصحاب الأسفار مرتبين حسب الزمن'],
@@ -63,7 +64,7 @@ const GEN = {};
 }
 const PAGES = ORDER.filter(([id]) => BUILTIN[id] || GEN[id]).map(([id, part]) => [id, ...(BUILTIN[id] || [GEN[id].t, GEN[id].sub]), part]);
 
-export function buildOverview({ write, page }) {
+export async function buildOverview({ write, page }) {
   const S = O.source;
   const credit = (eps) => `<p class="ov-src">مبني على سلسلة «${esc(S.series)}» (${ar(S.count)} حلقة) لـ${esc(S.who)}، ${esc(S.role)}${eps ? `، الحلقات ${eps}` : ''}. <a href="${S.url}" rel="noopener" target="_blank">قائمة الحلقات على يوتيوب</a>. كل شاهد هنا مُراجَع على نص فاندايك، وما خالف فيه المحاضرُ النصَّ أو التأريخَ الشائع مكتوب تحت «تصحيح».</p>`;
   const fix = (t, ref) => (t ? `<div class="ov-fix"><b>تصحيح</b><p>${esc(t)}${ref ? ` (${a(ref, 1)})` : ''}</p></div>` : '');
@@ -75,13 +76,36 @@ export function buildOverview({ write, page }) {
 <nav class="c5ch ov-nav">${prev ? `<a href="${prev[0]}.html"><small>${BACK} السابق</small><b>${prev[1]}</b></a>` : '<a href="../overview.html"><small>' + BACK + ' البداية</small><b>كل الأقسام</b></a>'}${next ? `<a class="nx" href="${next[0]}.html"><small>التالي ${FWD}</small><b>${next[1]}</b></a>` : '<span></span>'}</nav></div>`;
   };
   const idx = (id) => PAGES.findIndex((p) => p[0] === id);
-  const out = (id, html) => write(`overview/${id}.html`, page({ title: `${PAGES.find((p) => p[0] === id)[1]} · نظرة عامة`, depth: 1, nav: 'overview', body: html, cls: 'v3 v5hub ovp' }));
+  const out = (id, html, extra = '') => write(`overview/${id}.html`, page({ title: `${PAGES.find((p) => p[0] === id)[1]} · نظرة عامة`, depth: 1, nav: 'overview', body: html, cls: 'v3 v5hub ovp' + extra, head: '<link rel="stylesheet" href="../assets/ovbooks.css">' }));
 
-  // ---- hub ----
+  // ---- hub (BibleProject-style collection: pictures, a featured card, parts with picture cards) ----
   const W = O.why;
-  write('overview.html', page({ title: 'نظرة عامة على الكتاب المقدس', depth: 0, nav: 'overview', cls: 'v3 v5hub ovp', body: `<section class="ov-h"><div class="in"><a class="back5 lt" href="bible.html">${BACK} العودة إلى الكتاب المقدس</a><span class="ey">من الخلق إلى الكنيسة الأولى</span><h1>نظرة عامة على الكتاب المقدس</h1><p>${esc(W.lead)}</p></div></section>
-<div class="ov-w"><div class="ov-dims">${W.dims.map((x, i) => `<div><em>${ar(i + 1)}</em><b>${esc(x.t)}</b><small>${esc(x.d)}</small></div>`).join('')}</div>
-${PARTS.filter(([k]) => PAGES.some((p) => p[3] === k)).map(([k, t, d]) => `<section class="ov-part"><h2 class="ov-h2">${t} <small>${d}</small></h2><div class="ov-grid">${PAGES.map((p, i) => [p, i]).filter(([p]) => p[3] === k).map(([[id, t2, sub], i]) => `<a href="overview/${id}.html"><em>${ar(i + 1)}</em><span><b>${t2}</b><small>${sub}</small></span>${IC.chev}</a>`).join('')}</div></section>`).join('')}
+  const PCOL = { intro: '#B39459', oth: '#8C2F1E', otp: '#9A5A24', geo: '#4E5D32', pro: '#6B7A4A', bt: '#7A6232', nt: '#1F2A44', end: '#4B3D63' };
+  const THUMB = { story: 'person-noah', kings: 'person-p1jxvx0j', abraham: 'person-abraham', isaac: 'person-isaac', jacob: 'person-jacob', joseph: 'person-joseph', moses: 'person-moses', joshua: 'person-joshua', david: 'person-pbyh5cb', exodus: 'person-aaron', med: 'place-malta', prophets: 'person-p13x78wo', 'prophets-message': 'person-p1mmagrk', christ: 'person-pd599of', passion: 'place-jerusalem', acts: 'place-antioch', church: 'person-peter', paul: 'person-paul', journeys: 'place-corinth', lessons: 'place-athens' };
+  for (const v of Object.values(THUMB)) if (!fs.existsSync(path.join(ROOT, 'src/v2/assets', v + '.webp'))) throw new Error('Overview hub: missing ' + v);
+  const ICO = {
+    intro: '<path d="M6 30l26-14 4 8-26 14z"/><path d="M36 24l6-3M20 34l-4 10M20 34l6 10"/>',
+    oth: '<path d="M10 14h22a6 6 0 0 1 0 12H16a6 6 0 0 0 0 12h22"/><path d="M10 14a4 4 0 0 0 0 8"/>',
+    otp: '<path d="M6 38L24 10l18 28z"/><path d="M24 10v28M18 38l6-10 6 10"/>',
+    geo: '<path d="M17 8L6 12v28l11-4 14 4 11-4V8l-11 4z"/><path d="M17 8v28M31 12v28"/>',
+    pro: '<path d="M14 8h20v32H14z"/><path d="M19 15h10M19 21h10M19 27h6"/>',
+    bt: '<path d="M6 16l18-8 18 8M9 16v20M18 16v20M30 16v20M39 16v20M5 40h38"/>',
+    nt: '<circle cx="12" cy="36" r="3"/><circle cx="36" cy="12" r="3"/><path d="M14.5 34C24 30 18 20 26 18s8-4 8-4"/>',
+    end: '<circle cx="16" cy="24" r="7"/><path d="M23 24h19M36 24v6M41 24v5"/>'
+  };
+  const card = ([id, t2, sub, part], i) => `<a class="ovh-card" href="overview/${id}.html" style="--c:${PCOL[part]}"><span class="im">${THUMB[id] ? `<img src="assets/${THUMB[id]}.webp" alt="" loading="lazy">` : `<span class="gl"><svg viewBox="0 0 48 48" aria-hidden="true">${ICO[part]}</svg></span>`}<span class="no">${ar(i + 1)}</span></span><span class="tx"><b>${t2}</b><small>${sub}</small></span></a>`;
+  const legend = [...new Set(books.map((b) => b.group))].map((g) => `<span><i style="background:${GROUP_COLOR[g]}"></i>${esc(books.find((b) => b.group === g).groupName)}</span>`).join('');
+  const strip = `<div class="ob-strip" aria-hidden="true">${books.map((b, i) => `<span style="flex:${b.chapters};--c:${GROUP_COLOR[b.group]};--i:${i}"></span>`).join('')}</div>`;
+  const COL = ['person-adam', 'person-noah', 'person-abraham', 'person-moses', 'person-pbyh5cb', 'person-p13x78wo', 'person-pd599of', 'person-paul'];
+  const parts = PARTS.filter(([k]) => PAGES.some((p) => p[3] === k && p[0] !== 'books'));
+  write('overview.html', page({ title: 'نظرة عامة على الكتاب المقدس', depth: 0, nav: 'overview', cls: 'v3 v5hub ovp ovh', head: '<link rel="stylesheet" href="assets/ovbooks.css">', body: `<section class="ovh-hero"><div class="in"><a class="back5 lt" href="bible.html">${BACK} العودة إلى الكتاب المقدس</a>
+<div class="ovh-col" aria-hidden="true">${COL.map((c, i) => `<span style="--i:${i}"><img src="assets/${c}.webp" alt=""></span>`).join('')}</div>
+<span class="ey">من الخلق إلى الكنيسة الأولى</span><h1>نظرة عامة على الكتاب المقدس</h1><p>${esc(W.lead)}</p>
+<nav class="ovh-toc" aria-label="الأقسام">${parts.map(([k, t]) => `<a href="#p-${k}">${t}</a>`).join('')}</nav></div></section>
+<div class="ovh-w">
+<a class="ovh-feat" href="overview/books.html"><span class="tx"><small>ابدأ من هنا</small><b>نظرة عامة على أسفار الكتاب المقدس</b><p>الأسفار الستة والستون في صفحة واحدة تفاعلية: افتح أي سفر لترى مكانه في القصة وكاتبه وأهم أصحاحاته، وقارن الترتيبين، وتتبّع القصة من الخلق إلى السماء الجديدة.</p><span class="ob-go">افتح الصفحة ${IC.chev}</span></span><span class="vis">${strip}<span class="ob-lg">${legend}</span></span></a>
+<div class="ovh-dims">${W.dims.map((x) => `<div><b>${esc(x.t)}</b><small>${esc(x.d)}</small></div>`).join('')}</div>
+${parts.map(([k, t, d], n) => `<section class="ovh-part" id="p-${k}"><header class="ovh-ph" style="--c:${PCOL[k]}"><em>${ar(n + 1)}</em><div><h2>${t}</h2><p>${d}</p></div></header><div class="ovh-cards">${PAGES.map((p, i) => [p, i]).filter(([p]) => p[3] === k && p[0] !== 'books').map(([p, i]) => card(p, i)).join('')}</div></section>`).join('')}
 ${credit('')}</div>` }));
 
   // ---- 1. why ----
@@ -92,28 +116,13 @@ ${credit('')}</div>` }));
 <p class="ov-p">والبعد العملي الأهم عند المحاضر هو الشواهد: أن تعرف أين تبدأ كل شخصية في الكتاب وأين تنتهي، فيصير عندك فهرس للقصة كلها.</p>
 ${credit(W.eps)}`));
 
-  // ---- 2. books ----
-  const groupBar = (t) => {
-    const list = books.filter((b) => b.testament === t);
-    const groups = [...new Set(list.map((b) => b.group))].map((g) => ({ g, n: list.find((b) => b.group === g).groupName, bs: list.filter((b) => b.group === g) }));
-    const total = list.reduce((s, b) => s + b.chapters, 0);
-    const COL = { torah: '#8C2F1E', history: '#9A5A24', poetry: '#B39459', major: '#4E5D32', minor: '#6B7A4A', gospels: '#1F2A44', acts: '#34496B', paul: '#4B3D63', general: '#5A6B8C', prophecy: '#7A6232' };
-    return `<div class="ov-bar">${groups.map((x) => { const ch = x.bs.reduce((s, b) => s + b.chapters, 0); return `<span style="flex:${ch};--c:${COL[x.g]}" title="${esc(x.n)}: ${ar(ch)} أصحاحاً"></span>`; }).join('')}</div>
-<div class="ov-legend">${groups.map((x) => { const ch = x.bs.reduce((s, b) => s + b.chapters, 0); return `<div style="--c:${COL[x.g]}"><b><i></i>${esc(x.n)} <small>${ar(x.bs.length)} ${x.bs.length > 2 && x.bs.length < 11 ? 'أسفار' : x.bs.length === 1 ? 'سفر' : 'سفراً'} · ${ar(ch)} أصحاحاً</small></b><span>${x.bs.map((b) => `<a href="../book/${b.slug}.html">${esc(shortName(b))}</a>`).join('')}</span></div>`; }).join('')}</div>
-<p class="ov-tot">المجموع: ${ar(list.length)} سفراً، ${ar(total)} أصحاحاً، ${ar(list.reduce((s, b) => s + bible(b.id).chapters.reduce((u, c) => u + c.verses.length, 0), 0))} آية في فاندايك. عرض كل لون يتبع عدد أصحاحاته.</p>`;
-  };
-  const HEB = [
-    ['التوراة', 'خمسة أسفار', [['التكوين'], ['الخروج'], ['اللاويين'], ['العدد'], ['التثنية']]],
-    ['الأنبياء', 'ثمانية', [['يشوع'], ['القضاة'], ['صموئيل', 'سفر واحد'], ['الملوك', 'سفر واحد'], ['إشعياء'], ['إرميا'], ['حزقيال'], ['الاثنا عشر', 'الأنبياء الصغار في سفر واحد']]],
-    ['الكتب', 'أحد عشر', [['المزامير'], ['الأمثال'], ['أيوب'], ['نشيد الأنشاد'], ['راعوث'], ['مراثي إرميا'], ['الجامعة'], ['أستير'], ['دانيال'], ['عزرا ونحميا', 'سفر واحد'], ['أخبار الأيام', 'سفر واحد']]]
-  ];
-  out('books', shell(idx('books'), `<h2 class="ov-h2">العهد القديم: ٣٩ سفراً في خمس مجموعات</h2>${groupBar('ot')}
-<h2 class="ov-h2">نفس الأسفار في الترتيب العبري: ٢٤ سفراً</h2>
-<p class="ov-p">المحتوى واحد، لكن العبرانيين يعدّون بعض الأسفار المقسومة عندنا سفراً واحداً (صموئيل، والملوك، وأخبار الأيام، وعزرا ونحميا، والأنبياء الاثنا عشر)، ويرتبونها في ثلاثة أقسام. ولهذا قال المسيح «موسى والأنبياء والمزامير» (${a(chk('Luke.24.44', 'المزامير', 'books'), 1)}).</p>
-<div class="ov-heb">${HEB.map(([t, n, l]) => `<div><b>${t}</b><small>${n}</small><ol>${l.map(([x, s]) => `<li>${x}${s ? `<small>${s}</small>` : ''}</li>`).join('')}</ol></div>`).join('')}</div>
-<p class="ov-tot">٥ + ٨ + ١١ = ٢٤ سفراً عبرياً = ٣٩ سفراً في ترتيبنا.</p>
-<h2 class="ov-h2">العهد الجديد: ٢٧ سفراً</h2>${groupBar('nt')}
-${credit('٣، ١٥')}`));
+  // ---- 2. books: the interactive books overview (booksatlas.mjs) ----
+  {
+    const i = idx('books'), prev = PAGES[i - 1], next = PAGES[i + 1];
+    const navh = `<nav class="c5ch ov-nav">${prev ? `<a href="${prev[0]}.html"><small>${BACK} السابق</small><b>${prev[1]}</b></a>` : '<span></span>'}${next ? `<a class="nx" href="${next[0]}.html"><small>التالي ${FWD}</small><b>${next[1]}</b></a>` : '<span></span>'}</nav>`;
+    const pageHref = (id) => { const p = PAGES.find((x) => x[0] === id); return p ? { href: `${id}.html`, t: p[1] } : null; };
+    out('books', await buildBooksAtlas({ depth: 1, a, nav: navh, credit: credit('٢، ٣، ١٥، ٧٤'), pageHref }), ' obp');
+  }
 
   // ---- 3. story (eras 1–4) ----
   const person = (p, w) => {
