@@ -137,9 +137,9 @@ ${credit}
 </section>
 ${nav}
 </div>
-<div class="ob-sheet" id="obsheet" hidden role="dialog" aria-modal="true" aria-labelledby="obsh-t"><div class="bg" data-close></div><div class="pn" tabindex="-1"><button type="button" class="x" data-close aria-label="إغلاق">${IC.close}</button><div class="ct" id="obsh-c"></div></div></div>
+<div class="ob-sheet" id="obsheet" hidden role="dialog" aria-modal="true" aria-labelledby="obsh-t"><div class="bg" data-close></div><div class="pn" tabindex="-1"><button type="button" class="x" data-close aria-label="إغلاق">${IC.close}</button><div class="ct" id="obsh-c"></div><div class="ob-peek" hidden></div></div></div>
 <script>window.OVB=${JSON.stringify(DATA).replace(/</g, '\\u003c')};</script>
-<script src="${u}assets/ovbooks.js" defer></script>`;
+<script src="${u}assets/ovpeek.js" defer></script><script src="${u}assets/ovbooks.js" defer></script>`;
   return html;
 }
 

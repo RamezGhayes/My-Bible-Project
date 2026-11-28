@@ -83,15 +83,27 @@ export async function buildOverview({ write, page }) {
   const THUMB = { story: 'person-noah', kings: 'person-p1jxvx0j', abraham: 'person-abraham', isaac: 'person-isaac', jacob: 'person-jacob', joseph: 'person-joseph', moses: 'person-moses', joshua: 'person-joshua', david: 'person-pbyh5cb', exodus: 'person-aaron', med: 'place-malta', prophets: 'person-p13x78wo', 'prophets-message': 'person-p1mmagrk', christ: 'person-pd599of', passion: 'place-jerusalem', acts: 'place-antioch', church: 'person-peter', paul: 'person-paul', journeys: 'place-corinth', lessons: 'place-athens' };
   for (const v of Object.values(THUMB)) if (!fs.existsSync(path.join(ROOT, 'src/v2/assets', v + '.webp'))) throw new Error('Overview hub: missing ' + v);
 
-  const row = ([id, t2, sub], i) => `<a href="overview/${id}.html">${THUMB[id] ? `<img src="assets/${THUMB[id]}.webp" alt="" loading="lazy">` : `<span class="ob-ph">${ar(i + 1)}</span>`}<span><b>${t2}</b><small>${sub}</small></span></a>`;
-  const strip = `<div class="ob-strip" aria-hidden="true">${books.map((b, i) => `<span style="flex:${b.chapters};--c:${GROUP_COLOR[b.group]};--i:${i}"></span>`).join('')}</div>`;
-  const parts = PARTS.filter(([k]) => PAGES.some((p) => p[3] === k && p[0] !== 'books'));
+  // The hub is one journey: every step opens in a large window over this page (assets/ovjourney.js), so the reader never leaves it.
+  const STEPS = PAGES.filter((p) => p[0] !== 'books');
+  const stepNo = (id) => STEPS.findIndex((p) => p[0] === id);
+  const row = ([id, t2, sub]) => `<a href="overview/${id}.html" data-step="${id}">${THUMB[id] ? `<img src="assets/${THUMB[id]}.webp" alt="" loading="lazy">` : `<span class="ob-ph">${ar(stepNo(id) + 1)}</span>`}<span><b>${t2}</b><small>${sub}</small></span><span class="ok" aria-hidden="true">${IC.check}</span></a>`;
+  const strip = `<div class="ob-strip sm" aria-hidden="true">${books.map((b, i) => `<span style="flex:${b.chapters};--c:${GROUP_COLOR[b.group]};--i:${i}"></span>`).join('')}</div>`;
+  const parts = PARTS.filter(([k]) => STEPS.some((p) => p[3] === k));
+  const OVJ = { steps: STEPS.map(([id, t, sub, part]) => ({ id, t, sub, part: PARTS.find((x) => x[0] === part)[1] })) };
   write('overview.html', page({ title: 'نظرة عامة على الكتاب المقدس', depth: 0, nav: 'overview', cls: 'v3 v5hub ovp ovh', head: '<link rel="stylesheet" href="assets/ovbooks.css">', body: `<section class="ovh-hero"><div class="in"><a class="ob-back" href="bible.html"><span aria-hidden="true">→</span> الكتاب المقدس</a>
-<h1>نظرة عامة على الكتاب المقدس</h1><p>القصة كلها من الخلق إلى الكنيسة الأولى، في محطات قصيرة. ابدأ بالأسفار، ثم سِر مع القصة بالترتيب.</p></div></section>
+<h1>نظرة عامة على الكتاب المقدس</h1><p>القصة كلها في ${ar(STEPS.length)} محطة قصيرة، من الخلق إلى الكنيسة الأولى.</p>
+<div class="ovh-go"><a class="ovh-cta" href="overview/${STEPS[0][0]}.html" data-start><span data-start-l>ابدأ الرحلة</span>${IC.chev}</a><span class="ovh-prog" hidden><i><i></i></i><small data-prog></small></span></div></div></section>
 <div class="ovh-w">
-<a class="ovh-feat" href="overview/books.html"><span class="tp"><span><small>ابدأ من هنا</small><b>أسفار الكتاب المقدس</b></span><span class="go2">${IC.chev}</span></span>${strip}</a>
-<ol class="ovh-path">${parts.map(([k, t, d], n) => `<li class="ovh-part" id="p-${k}"><i>${ar(n + 1)}</i><h2>${t}</h2><p>${d}</p><div class="ovh-list">${PAGES.map((p, i) => [p, i]).filter(([p]) => p[3] === k && p[0] !== 'books').map(([p, i]) => row(p, i)).join('')}</div></li>`).join('')}</ol>
-${credit('')}</div>` }));
+<ol class="ovh-path">${parts.map(([k, t, d], n) => `<li class="ovh-part" id="p-${k}"><i>${ar(n + 1)}</i><h2>${t}</h2><p>${d}</p><div class="ovh-list">${STEPS.filter((p) => p[3] === k).map(row).join('')}</div></li>`).join('')}</ol>
+<a class="ovh-feat" href="overview/books.html"><span class="tp"><span><small>أداة</small><b>تصفّح الأسفار الستة والستين</b></span><span class="go2">${IC.chev}</span></span>${strip}</a>
+${credit('')}</div>
+<div class="ob-sheet jm" id="obsheet" hidden role="dialog" aria-modal="true" aria-labelledby="jm-t"><div class="bg" data-close></div><div class="pn" tabindex="-1">
+<header class="jm-h"><button type="button" class="x" data-close aria-label="إغلاق">${IC.close}</button><small data-jm-k></small><h2 id="jm-t" data-jm-t></h2><span class="jm-bar"><i data-jm-bar></i></span></header>
+<div class="ct" id="jm-c"></div>
+<footer class="jm-f"><button type="button" data-jm-prev>${BACK} <span></span></button><button type="button" class="nx" data-jm-next><span></span> ${FWD}</button></footer>
+<div class="ob-peek" hidden></div></div></div>
+<script>window.OVJ=${JSON.stringify(OVJ).replace(/</g, '\\u003c')};</script>
+<script src="assets/ovpeek.js" defer></script><script src="assets/ovjourney.js" defer></script>` }));
 
   // ---- 1. why ----
   out('why', shell(idx('why'), `<p class="ov-lead">${esc(W.lead)}</p>

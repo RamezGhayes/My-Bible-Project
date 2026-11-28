@@ -41,11 +41,12 @@
   // ---------- the side panel ----------
   var sheet = $('#obsheet'); if (sheet) document.body.appendChild(sheet);
   var pane = sheet && $('.pn', sheet), box = $('#obsh-c'), lastFocus = null, current = null;
+  var closePeek = window.obPeek ? window.obPeek(box, $('.ob-peek', sheet)) : function () {};
   var open = function (kind, id, push) {
     var html = kind === 'b' ? bookHTML(BOOK[id]) : unitHTML(UNIT[id]);
     if (!html) return;
     current = { kind: kind, id: id };
-    box.innerHTML = html;
+    closePeek(); box.innerHTML = html;
     if (sheet.hidden) { lastFocus = document.activeElement; sheet.hidden = false; document.documentElement.style.overflow = 'hidden'; }
     box.scrollTop = 0; pane.focus({ preventScroll: true });
     wire();
@@ -92,7 +93,7 @@
       '<div class="sh-bd"><p class="sh-lead">' + esc(b.s) + '</p>' +
       ((b.who || b.when) ? '<div class="sh-sec"><h3>الكاتب والزمن</h3><div class="sh-kv">' + (b.who ? '<div><span>الكاتب</span><p style="margin:0">' + esc(b.who) + tag(b.whoTag) + '</p></div>' : '') + (b.when ? '<div><span>الزمن</span><p style="margin:0">' + esc(b.when) + tag(b.whenTag) + '</p></div>' : '') + '</div></div>' : '') +
       '<div class="sh-sec"><h3>مكانه في القصة</h3>' + b.units.map(function (id) { var u = UNIT[id], rg = u.range && u.range[b.id] ? ' · الأصحاحات ' + u.range[b.id] : ''; return '<button type="button" class="sh-u" data-go-u="' + id + '">' + thumb(u) + '<span><b>' + esc(u.t) + '</b><small>' + esc(ERA[u.era].t) + rg + '</small></span>' + IC.chev + '</button>'; }).join('') + '</div>' +
-      (keys.length ? '<div class="sh-sec"><h3>أصحاحات مفتاحية</h3><div class="sh-keys">' + keys.slice(0, 4).map(function (k) { return '<a href="' + k.href + '"><b>' + esc(k.t) + '</b><em>' + esc(k.label) + '</em><span>' + esc(k.d) + '</span></a>'; }).join('') + '</div></div>' : '') +
+      (keys.length ? '<div class="sh-sec"><h3>أصحاحات مفتاحية</h3><div class="sh-keys">' + keys.slice(0, 4).map(function (k) { return '<a href="' + k.href + '" data-pk="' + esc(k.label) + '"><b>' + esc(k.t) + '</b><em>' + esc(k.label) + '</em><span>' + esc(k.d) + '</span></a>'; }).join('') + '</div></div>' : '') +
       '<div class="sh-sec"><h3>الأصحاحات</h3><div class="sh-chs">' + chs + '</div><small>' + (r ? 'قرأت ' + AR(r) + ' من ' + AR(b.ch) : 'الأصحاح المقروء يظهر بالأخضر') + '</small></div>' +
       '<div class="sh-act"><a class="pri" href="' + b.href + '">صفحة السفر</a><a href="' + b.ch1 + '1.html">ابدأ القراءة</a></div>' +
       pn('b', D.books, b.i, function (x) { return x.n; }) + '</div>';
