@@ -306,3 +306,13 @@
 .ovh-list a .ok .ic{width:14px;height:14px}
 .ovh-list a.seen .ok{background:var(--ok);color:#fff}
 .ovh-feat{margin-top:10px}
+
+/* staying inside the overview */
+.ov-nolink{color:inherit;text-decoration:none;border:0;cursor:text}
+span.ov-nolink.r{color:var(--soft)}
+.ob-peek.fx{position:fixed;inset:auto 16px 86px 16px;max-width:620px;margin:0 auto;z-index:70}
+@media (min-width:980px){.ob-peek.fx{bottom:24px}}
+.jm-deep{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 14px;margin:16px 0 0;padding:12px 14px;border-radius:14px;background:#fff;border:1px solid var(--line);font-family:var(--ui);font-size:14px;color:var(--soft)}
+.jm-deep button{font-family:var(--ui);font-size:13.5px;color:#fff;background:var(--ink);border-radius:10px;padding:8px 14px}
+.sh-exit{margin-top:28px;padding:14px 16px;border-radius:14px;background:var(--cream);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 14px;font-family:var(--ui);font-size:14px;color:var(--soft)}
+.sh-exit a{display:inline-flex;align-items:center;gap:4px;color:var(--ink);font-weight:500;text-decoration:none;border-bottom:1px solid var(--gold2)}

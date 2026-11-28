@@ -101,35 +101,7 @@ function introOverlay(ps) {
 <button type="button" class="i5skip" data-i5-go>تصفّح الموقع أولاً</button>
 </div></div>`;
 }
-function home() {
-  const ps = mainVerse();
-  const words = ps.split(/\s+/);
-  const studiedIn = (t) => books.filter((b) => b.testament === t).reduce((n, b) => n + studiedCount(b), 0);
-  const tcard = (t, d) => { const list = books.filter((b) => b.testament === t); const ch = list.reduce((n, b) => n + b.chapters, 0); const st = studiedIn(t); return `<a class="h3t" href="${t}.html"><b>${T_NAME[t]}</b><span class="d">${d}</span><span class="mt"><span>${bkWord(list.length)} · ${chWord(ch)} · ${st === ch ? 'كلها مدروسة' : `${ar(st)} مدروساً`}</span><span class="go">افتح ${IC.chev}</span></span></a>`; };
-  const start = PLANS_UI.PLANS.find((P) => P.id === 'start');
-  const S5 = (k, t, d, inner, more, tone) => `<section class="hs4 hxx${tone ? ' ' + tone : ''}"><div class="hs4w"><header class="hs4h"><span>${k}</span><h2>${t}</h2>${d ? `<p>${d}</p>` : ''}</header>${inner}${more ? `<a class="hs4m" href="${more[0]}">${more[1]} ${IC.chev}</a>` : ''}</div></section>`;
-  const body = `${introOverlay(ps)}
-<section class="h3hero full">
-<svg class="rings" viewBox="0 0 900 900" aria-hidden="true"><circle cx="450" cy="450" r="440"/><circle cx="450" cy="450" r="360" stroke-dasharray="2 10"/><circle cx="450" cy="450" r="280"/></svg>
-<div class="in">
-<span class="mark">${BRAND}</span>
-<p class="v" lang="ar">${words.map((w, i) => `<span style="--d:${(0.3 + i * 0.09).toFixed(2)}s">${esc(w)} </span>`).join('')}</p>
-<small class="rf" style="--d:${(0.5 + words.length * 0.09).toFixed(1)}s">${refLabel(config.verseRef)}</small>
-<button type="button" class="hs" data-search style="--d:${(0.8 + words.length * 0.09).toFixed(1)}s">${IC.search}<span>ابحث عن سفر، أو شاهد مثل يو ٣: ١٦، أو شخصية، أو موضوع</span><b>ابحث</b></button>
-</div></section>
-${S5('كل يوم', 'خلوة اليوم', 'أصحاح واحد في نحو ٢٠ دقيقة: تقرأ، وتفهم، وتتأمل، وتصلي.', `<a class="htc" data-today-card hidden href="plans.html"><span class="pk">تابع من حيث توقفت</span><b data-today-name></b><span data-today-day></span><span class="go">اقرأ الآن ${IC.chev}</span></a>
-<a class="htc" data-today-start href="plans/start/1.html"><span class="pk">ابدأ من هنا · ${ar(start.days.length)} أيام</span><b>${esc(start.t)}</b><span>${esc(start.sub)}</span><span class="go">ابدأ اليوم الأول ${IC.chev}</span></a>
-<div hidden>${PLANS_UI.PLANS.map((P) => PLANS_UI.card(P, 0)).join('')}</div>`, ['plans.html', 'كل خطط القراءة'])}
-${S5('سفراً بعد سفر', 'ادرس الكتاب المقدس', 'مقدمة لكل سفر، ودراسة لكل أصحاح، وتطبيق عملي.', `<div class="h3tg">${tcard('ot', 'من الخلق إلى الأنبياء: الوعد والانتظار.')}${tcard('nt', 'المسيح، والكنيسة، والرجاء الأخير.')}</div>`)}
-${S5('في لمحة', 'الكتاب كله في صفحة واحدة', 'ستة وستون سفراً، وقصة واحدة.', `<div class="hob">${booksStrip(0)}<div class="ft"><span>التكوين</span><span>الرؤيا</span></div></div>`, ['overview/books.html', 'تصفّح الأسفار'])}
-${S5('بالصور والخرائط', 'افهم ما تقرأ', 'أماكن وأشخاص وأحداث، مرسومة ومشروحة لتراها بعينك.', `<div class="hxtiles x3">${[
-    ['maps/paul.html', 'place-ephesus', 'رحلات بولس', 'على الخريطة، محطة بعد محطة', 'big'],
-    ['people.html', 'person-abraham', 'الشخصيات', 'وجوه وقصص من الكتاب'],
-    ['journey.html', 'person-moses', 'القصة في مراحل', 'تاريخ الفداء على خط واحد']
-  ].map(([h, img, b, s, c]) => `<a class="hxt${c ? ' ' + c : ''}" href="${h}"><img src="assets/${img}.webp" alt=""><span><b>${b}</b><small>${s}</small></span></a>`).join('')}</div>`, ['explore.html', 'كل الأدوات في «استكشف»'], 'soft')}
-<footer class="h3f full"><div><p class="s">${esc(quoteText('2Tim.3.16'))}</p><small>${refLabel('2Tim.3.16')}</small><span>${esc(config.description)} · النص: ${esc(config.bibleVersion)}</span><button type="button" data-i5-again>شاهد المقدمة مرة أخرى</button></div></footer>`;
-  write('index.html', page({ title: '', depth: 0, nav: 'home', body, cls: 'home v3', head: '<link rel="stylesheet" href="assets/ovbooks.css">', after: '<script src="assets/plans.js" defer></script>' }));
-}
+// The old home() was replaced by home6() (Nov 2026); see PROJECT-LOG section 28.
 // ---------- hubs: «الكتاب المقدس» and «استكشف» ----------
 function hubs() {
   const tcard = (t, d) => { const list = books.filter((b) => b.testament === t); const ch = list.reduce((n, b) => n + b.chapters, 0); return `<a class="h3t" href="${t}.html"><b>${T_NAME[t]}</b><span class="d">${d}</span><span class="mt"><span>${bkWord(list.length)} · ${chWord(ch)}</span><span class="go">افتح ${IC.chev}</span></span></a>`; };
@@ -783,8 +755,8 @@ function searchIndex() {
 
 // ---------- run ----------
 const PLANS_UI = buildPlans({ content, write, page, people: PEOPLE, personHref, pimg: (id, d) => (PIMG.has(id) ? `${'../'.repeat(d)}assets/${PIMG.get(id)}` : ''), topicLinks, explainersFor, explainHref, mapForChapter });
-// Prototype of the new home page (home-v6.html, not linked, noindex): the story as one gold line, your place,
-// three doors, the 66 books as a shelf, faces from the Bible, places. Styles assets/home6.css, script assets/home6.js.
+// The home page (index.html): the story as one gold line, your place, three doors, the 66 books as a shelf,
+// faces from the Bible, places. Every block says what it is and where a click goes. Styles assets/home6.css, script assets/home6.js.
 function home6() {
   const ps = mainVerse();
   const words = ps.split(/\s+/);
@@ -828,55 +800,56 @@ ${LM.map((g, i) => `<g class="lm" data-st="${i}" style="--i:${i}" tabindex="0" r
   const places = ['jerusalem', 'antioch', 'ephesus', 'philippi', 'corinth', 'athens', 'malta', 'rome'];
   const PN = { jerusalem: 'أورشليم', antioch: 'أنطاكية', ephesus: 'أفسس', philippi: 'فيلبي', corinth: 'كورنثوس', athens: 'أثينا', malta: 'مالطة', rome: 'روما' };
   const start = PLANS_UI.PLANS.find((P) => P.id === 'start');
-  const door = (href, img, k, t, d) => `<a class="h6-door" href="${href}"><img src="assets/${img}.webp" alt="" loading="lazy"><span class="tx"><small>${k}</small><b>${t}</b><span>${d}</span><i>${IC.chev}</i></span></a>`;
-  const body = `<section class="h6-hero"><div class="in">
+  const STEPS0 = 'why';
+  const door = (href, img, k, t, d, go) => `<a class="h6-door" href="${href}"><img src="assets/${img}.webp" alt="" loading="lazy"><span class="tx"><small>${k}</small><b>${t}</b><span>${d}</span><em>${go} ${IC.chev}</em></span></a>`;
+  const body = `${introOverlay(ps)}<section class="h6-hero"><div class="in">
 <p class="h6-hi" data-hi>نعمة وسلام</p>
 <p class="h6-v" lang="ar">${words.map((w, i) => `<span style="--d:${(0.2 + i * 0.07).toFixed(2)}s">${esc(w)} </span>`).join('')}</p>
 <small class="h6-rf">${refLabel(config.verseRef)}</small>
 <button type="button" class="h6-search" data-search>${IC.search}<span>ابحث عن سفر، أو شاهد مثل يو ٣: ١٦، أو شخصية</span></button>
 </div>
-<div class="h6-story"><p class="h6-k">القصة كلها في خط واحد</p><div class="h6-sc">${line}</div>
-<div class="h6-cap" aria-live="polite"><span class="n" data-cap-n>١</span><div><b data-cap-t>${ST[0][0]}</b><small data-cap-r>${ST[0][1]}</small><p data-cap-d>${ST[0][2]}</p></div><a data-cap-a href="overview.html#s-${ST[0][3]}">اقرأ المحطة ${IC.chev}</a></div></div>
+<div class="h6-story"><p class="h6-k"><b>القصة كلها في خط واحد</b><span>تسع محطات من الخلق إلى كل شيء جديد. اضغط على أي محطة.</span></p><div class="h6-sc">${line}</div>
+<div class="h6-cap" aria-live="polite"><span class="n" data-cap-n>١</span><div><b data-cap-t>${ST[0][0]}</b><small data-cap-r>${ST[0][1]}</small><p data-cap-d>${ST[0][2]}</p></div></div>
+<div class="h6-go"><a class="pri" href="overview.html#s-${STEPS0}">ابدأ رحلة النظرة العامة من أولها ${IC.chev}</a><a class="sec" data-cap-a href="overview.html#s-${ST[0][3]}">اقرأ عن <span data-cap-t2>${ST[0][0]}</span> فقط</a></div></div>
 </section>
 
-<section class="h6-sec h6-place"><div class="w">
-<a class="h6-mine" data-today-card hidden href="plans.html"><small>خلوتك</small><b data-today-name></b><span data-today-day></span></a>
-<a class="h6-mine" data-today-start href="plans/start/1.html"><small>ابدأ من هنا · ${ar(start.days.length)} أيام</small><b>${esc(start.t)}</b><span>${esc(start.sub)}</span></a>
+<section class="h6-sec h6-place"><div class="w"><header class="h6-h sm"><h2>مكانك</h2><p>من حيث توقفت.</p></header><div class="h6-mines">
+<a class="h6-mine" data-today-card hidden href="plans.html"><small>خلوة اليوم</small><b data-today-name></b><span data-today-day></span></a>
+<a class="h6-mine" data-today-start href="plans/start/1.html"><small>خلوة اليوم · ابدأ خطة من ${ar(start.days.length)} أيام</small><b>${esc(start.t)}</b><span>${esc(start.sub)}</span></a>
 <a class="h6-mine" data-last hidden href="#"><small>آخر أصحاح قرأته</small><b data-last-t></b><span>كمّل القراءة</span></a>
-<a class="h6-mine" data-ovj href="overview.html"><small>رحلة النظرة العامة</small><b data-ovj-t>٣٢ محطة قصيرة</b><span class="bar"><i data-ovj-bar></i></span></a>
-<div hidden>${PLANS_UI.PLANS.map((P) => PLANS_UI.card(P, 0)).join('')}</div>
+<a class="h6-mine" data-ovj href="overview.html"><small>رحلة النظرة العامة</small><b data-ovj-t>لم تبدأ بعد · ٣٢ محطة</b><span class="bar"><i data-ovj-bar></i></span></a>
+</div><div hidden>${PLANS_UI.PLANS.map((P) => PLANS_UI.card(P, 0)).join('')}</div>
 </div></section>
 
 <section class="h6-sec"><div class="w">
-<header class="h6-h"><h2>من أين تبدأ؟</h2><p>ثلاثة أبواب. اختر واحداً.</p></header>
+<header class="h6-h"><h2>من أين تبدأ؟</h2><p>ثلاثة أقسام، لكل قسم هدف واحد.</p></header>
 <div class="h6-doors">
-${door('plans.html', 'person-pbyh5cb', 'كل يوم', 'اقرأ', 'خلوة في نحو ٢٠ دقيقة: تقرأ، وتفهم، وتصلي.')}
-${door('bible.html', 'person-moses', 'سفراً بعد سفر', 'ادرس', 'مقدمة لكل سفر، ودراسة لكل أصحاح.')}
-${door('overview.html', 'person-abraham', 'الصورة الكاملة', 'افهم', 'القصة من الخلق إلى الكنيسة الأولى.')}
+${door('plans.html', 'person-pbyh5cb', 'خلوة اليوم', 'اقرأ', 'خطط قراءة يومية: تقرأ، وتفهم، وتصلي في نحو ٢٠ دقيقة.', 'اختر خطة')}
+${door('bible.html', 'person-moses', 'الكتاب المقدس', 'ادرس', 'سفراً بعد سفر: مقدمة لكل سفر، ودراسة لكل أصحاح.', 'افتح المكتبة')}
+${door('overview.html', 'person-abraham', 'النظرة العامة', 'افهم', 'رحلة من ٣٢ محطة قصيرة، من الخلق إلى الكنيسة الأولى.', 'ابدأ الرحلة')}
 </div></div></section>
 
 <section class="h6-sec h6-lib"><div class="w">
-<header class="h6-h"><h2>المكتبة</h2><p>ستة وستون سفراً على رف واحد. ارتفاع كل سفر بعدد أصحاحاته.</p></header>
+<header class="h6-h"><h2>المكتبة</h2><p>الأسفار الستة والستون على رف واحد، وطول كل سفر بعدد أصحاحاته. اضغط على سفر لتفتح صفحته.</p></header>
 ${shelf}
 </div></section>
 
-<section class="h6-sec h6-faces"><div class="w"><header class="h6-h"><h2>وجوه من الكتاب</h2><p>أشخاص حقيقيون، وقصص حقيقية.</p></header></div>
+<section class="h6-sec h6-faces"><div class="w"><header class="h6-h"><h2>وجوه من الكتاب</h2><p>اضغط على أي وجه لتقرأ قصة صاحبه.</p></header></div>
 <div class="h6-mq"><div class="row">${r1.map(face).join('')}${r1.map(face).join('')}</div></div>
 <div class="h6-mq rev"><div class="row">${r2.map(face).join('')}${r2.map(face).join('')}</div></div>
 <div class="w"><a class="h6-more" href="people.html">كل الشخصيات ${IC.chev}</a></div></section>
 
 <section class="h6-sec"><div class="w">
-<header class="h6-h"><h2>أماكن من الرحلات</h2><p>صور حقيقية للمدن التي مرّ بها بولس.</p></header>
+<header class="h6-h"><h2>أماكن من الرحلات</h2><p>صور حقيقية للمدن التي مرّ بها بولس. اضغط على مدينة لتراها على الخريطة.</p></header>
 <div class="h6-places">${places.map((p) => `<a href="maps/paul.html"><img src="assets/place-${p}.webp" alt="" loading="lazy"><span>${PN[p]}</span></a>`).join('')}</div>
-<div class="h6-tools">${[['people.html', 'الشخصيات'], ['maps.html', 'الخرائط والشروح'], ['journey.html', 'الخط الزمني'], ['topics.html', 'الموضوعات'], ['glossary.html', 'القاموس'], ['harmony.html', 'الأناجيل جنباً إلى جنب']].map(([h, t]) => `<a href="${h}">${t}</a>`).join('')}</div>
+<p class="h6-tk">أدوات أخرى</p><div class="h6-tools">${[['people.html', 'الشخصيات'], ['maps.html', 'الخرائط والشروح'], ['journey.html', 'الخط الزمني'], ['topics.html', 'الموضوعات'], ['glossary.html', 'القاموس'], ['harmony.html', 'الأناجيل جنباً إلى جنب']].map(([h, t]) => `<a href="${h}">${t}</a>`).join('')}</div>
 </div></section>
 
 <footer class="h3f full"><div><p class="s">${esc(quoteText('2Tim.3.16'))}</p><small>${refLabel('2Tim.3.16')}</small><span>${esc(config.description)} · النص: ${esc(config.bibleVersion)}</span></div></footer>
 <script>window.H6=${JSON.stringify({ st: ST, bk: Object.fromEntries(books.map((b) => [b.id, [b.slug, shortName(b)]])) }).replace(/</g, '\\u003c')};</script>`;
-  write('home-v6.html', page({ title: 'الرئيسية (تجربة)', depth: 0, nav: 'home', body, cls: 'home v3 h6', head: '<meta name="robots" content="noindex"><link rel="stylesheet" href="assets/home6.css">', after: '<script src="assets/plans.js" defer></script><script src="assets/home6.js" defer></script>' }));
+  write('index.html', page({ title: '', depth: 0, nav: 'home', body, cls: 'home v3 h6', head: '<link rel="stylesheet" href="assets/home6.css">', after: '<script src="assets/plans.js" defer></script><script src="assets/home6.js" defer></script>' }));
 }
 
-home();
 home6();
 hubs();
 await buildOverview({ write, page });

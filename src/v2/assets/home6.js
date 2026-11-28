@@ -18,17 +18,17 @@
     if (i === cur || !D.st[i]) return; cur = i; var s = D.st[i];
     marks.forEach(function (m, j) { m.classList.toggle('on', j === i); });
     $('[data-cap-n]').textContent = AR(i + 1);
-    $('[data-cap-t]').textContent = s[0]; $('[data-cap-r]').textContent = s[1]; $('[data-cap-d]').textContent = s[2];
+    $('[data-cap-t]').textContent = s[0]; $('[data-cap-t2]').textContent = s[0]; $('[data-cap-r]').textContent = s[1]; $('[data-cap-d]').textContent = s[2];
     $('[data-cap-a]').setAttribute('href', 'overview.html#s-' + s[3]);
     var sc = $('.h6-sc'); if (sc && sc.scrollWidth > sc.clientWidth + 4) { var r = marks[i].getBoundingClientRect(), c = sc.getBoundingClientRect(); sc.scrollBy({ left: r.left + r.width / 2 - (c.left + c.width / 2), behavior: reduce ? 'auto' : 'smooth' }); }
     cap.classList.remove('swap'); void cap.offsetWidth; cap.classList.add('swap');
   };
   var stop = function () { clearInterval(timer); timer = null; };
   marks.forEach(function (m, i) {
-    m.addEventListener('mouseenter', function () { stop(); show(i); });
+    m.addEventListener('mouseenter', function () { if (window.matchMedia && matchMedia('(hover: hover)').matches) { stop(); show(i); } });
     m.addEventListener('focus', function () { stop(); show(i); });
-    m.addEventListener('click', function () { if (cur === i) location.href = $('[data-cap-a]').getAttribute('href'); else { stop(); show(i); } });
-    m.addEventListener('keydown', function (e) { if (e.key === 'Enter') location.href = $('[data-cap-a]').getAttribute('href'); });
+    m.addEventListener('click', function () { stop(); show(i); });
+    m.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); stop(); show(i); } });
   });
   show(0);
   if (!reduce) setTimeout(function () { var i = 0; timer = setInterval(function () { i = (cur + 1) % D.st.length; show(i); }, 3800); }, 3600);
@@ -41,7 +41,7 @@
       if (bk) { a.hidden = false; a.setAttribute('href', 'book/' + bk[0] + '/' + p[1] + '.html'); $('[data-last-t]').textContent = bk[1] + ' ' + AR(p[1]); }
     }
     var seen = JSON.parse(get('sola.ovj') || '[]');
-    if (seen.length) { $('[data-ovj-t]').textContent = 'وصلت إلى المحطة ' + AR(seen.length) + ' من ٣٢'; $('[data-ovj-bar]').style.width = Math.round(seen.length / 32 * 100) + '%'; }
+    if (seen.length) { $('[data-ovj-t]').textContent = 'قرأت ' + AR(seen.length) + ' من ٣٢ محطة'; $('[data-ovj-bar]').style.width = Math.round(seen.length / 32 * 100) + '%'; }
   } catch (e) {}
 
   // reveal sections as they arrive

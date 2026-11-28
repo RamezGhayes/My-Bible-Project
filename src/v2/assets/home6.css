@@ -20,7 +20,9 @@
 
 /* the story line */
 .h6-story{position:relative;max-width:1240px;margin:46px auto 0;padding:0 20px 26px}
-.h6-k{font-family:var(--ui);font-size:12.5px;color:#8E887D;text-align:center;margin:0 0 4px;letter-spacing:.3px}
+.h6-k{text-align:center;margin:0 0 8px}
+.h6-k b{display:block;font-family:var(--nas);font-weight:700;font-size:22px;color:#fff}
+.h6-k span{font-family:var(--ui);font-size:13px;color:#9C968A}
 .h6-line{display:block;width:100%;height:auto;overflow:visible}
 .h6-line path,.h6-line circle:not(.walker){fill:none;stroke:var(--gold2);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 .h6-line .f{fill:var(--gold2)!important;stroke:none!important}
@@ -54,7 +56,8 @@
 
 /* your place */
 .h6-place{padding-top:0}
-.h6-place .w{position:relative;z-index:2;margin-top:-1px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;padding-top:26px}
+.h6-place{padding-top:64px}
+.h6-mines{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
 .h6-mine{display:flex;flex-direction:column;gap:3px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px 18px;text-decoration:none;color:var(--ink);transition:transform .2s var(--ease),box-shadow .2s,border-color .2s}
 .h6-mine[hidden]{display:none}
 .h6-mine:hover{transform:translateY(-3px);border-color:var(--gold2);box-shadow:0 14px 30px -22px rgba(23,25,30,.6)}
@@ -68,7 +71,7 @@
 .h6-doors{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .h6-door{position:relative;display:block;aspect-ratio:3/4;border-radius:24px;overflow:hidden;color:#fff;text-decoration:none;background:var(--ink)}
 .h6-door img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;transition:transform .9s var(--ease),filter .4s}
-.h6-door:after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(23,25,30,.92) 8%,rgba(23,25,30,.25) 55%,rgba(23,25,30,0) 80%)}
+.h6-door:after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(23,25,30,.95) 12%,rgba(23,25,30,.55) 50%,rgba(23,25,30,0) 82%)}
 .h6-door .tx{position:absolute;inset:auto 0 0 0;z-index:1;padding:24px;display:flex;flex-direction:column;gap:2px}
 .h6-door small{font-family:var(--ui);font-size:12.5px;color:var(--gold2)}
 .h6-door b{font-family:var(--nas);font-weight:700;font-size:40px;line-height:1.25}
@@ -151,3 +154,21 @@
 .h6-door .tx{padding-left:84px}
 .h6-more{display:flex;width:fit-content;align-items:center;gap:4px}
 @media (max-width:640px){.h6-shelfw{width:auto;overflow-x:auto;scrollbar-width:none}.h6-shelf{overflow:visible;width:max-content;padding-top:40px}.h6-plank{width:auto}}
+
+.h6-go{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:10px 18px;margin:14px auto 0}
+.h6-go .pri{display:inline-flex;align-items:center;gap:6px;font-family:var(--ui);font-weight:500;font-size:14.5px;color:var(--ink);background:var(--gold2);border-radius:999px;padding:11px 20px;text-decoration:none;transition:transform .15s var(--ease)}
+.h6-go .pri:hover{transform:translateY(-1px)}
+.h6-go .sec{font-family:var(--ui);font-size:13.5px;color:#C9C3B8;text-decoration:none;border-bottom:1px solid #4A463E;padding-bottom:2px}
+.h6-go .sec:hover{color:#fff;border-color:var(--gold2)}
+.h6-cap{justify-content:center}
+.h6-h.sm{text-align:right;margin-bottom:14px}
+.h6-h.sm h2{font-size:24px}
+.h6-h.sm p{font-size:14.5px;margin-top:2px}
+.h6-door em{position:absolute;left:22px;bottom:24px;display:inline-flex;align-items:center;gap:4px;font-style:normal;font-family:var(--ui);font-size:13.5px;color:#fff;background:rgba(255,255,255,.14);border-radius:999px;padding:9px 14px;transition:background .25s,color .25s}
+.h6-door:hover em{background:var(--gold2);color:var(--ink)}
+.h6-door .tx{padding-left:24px;padding-bottom:78px}
+.h6-door span{max-width:none}
+.h6-tk{text-align:center;font-family:var(--ui);font-size:13px;color:var(--faint);margin:40px 0 0}
+.h6-tools{margin-top:12px}
+@media (max-width:640px){.h6-go .pri{width:calc(100% - 28px);justify-content:center}}
+@media (max-width:640px){.h6-doors a,.h6-doors a:last-child{aspect-ratio:auto;min-height:360px}.h6-door .tx{padding-bottom:74px}}

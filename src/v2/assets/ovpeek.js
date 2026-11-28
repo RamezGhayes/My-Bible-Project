@@ -8,7 +8,20 @@
     if (!cache[url]) cache[url] = fetch(url).then(function (r) { if (!r.ok) throw 0; return r.text(); }).then(function (t) { return new DOMParser().parseFromString(t, 'text/html'); });
     return cache[url];
   };
-  window.obPeek = function (container, card) {
+  // inside the overview, links that would leave it (chapters, book pages, people, maps) become plain text,
+  // so the reader stays in the journey. Verse links stay (they open the peek), and links between overview pages stay.
+  window.obKeepIn = function (root, base) {
+    Array.prototype.forEach.call(root.querySelectorAll('a[href]'), function (a) {
+      var u; try { u = new URL(a.getAttribute('href'), base || a.baseURI); } catch (x) { return; }
+      if (u.origin !== location.origin) return;
+      if (/\/overview(\/[a-z0-9-]+)?(\.html)?$/.test(u.pathname)) return;
+      if (/\/book\/[^/]+\/\d+\.html$/.test(u.pathname) && /^#v\d+$/.test(u.hash)) return;
+      if (a.closest('.ov-src')) return;
+      var sp = document.createElement('span'); sp.className = a.className + ' ov-nolink'; sp.innerHTML = a.innerHTML; a.replaceWith(sp);
+    });
+  };
+  window.obPeek = function (container, card, opt) {
+    opt = opt || {};
     var close = function () { card.classList.remove('on'); setTimeout(function () { card.hidden = true; }, 200); };
     container.addEventListener('click', function (e) {
       var a = e.target.closest('a[href]'); if (!a || e.metaKey || e.ctrlKey) return;
@@ -24,7 +37,7 @@
         var parts = [];
         for (var v = from; v <= to; v++) { var el = doc.getElementById('v' + v); if (!el) continue; var c = el.cloneNode(true); var n = c.querySelector('.vn'); if (n) n.remove(); parts.push(c.textContent.trim()); }
         card.querySelector('.pk-t').textContent = parts.join(' ') || 'تعذّر عرض الآية.';
-        card.insertAdjacentHTML('beforeend', '<a class="pk-a" href="' + u.pathname + u.hash + '">اقرأ الأصحاح كاملاً</a>');
+        if (opt.chapter !== false) card.insertAdjacentHTML('beforeend', '<a class="pk-a" href="' + u.pathname + u.hash + '">اقرأ الأصحاح كاملاً</a>');
       }).catch(function () { card.querySelector('.pk-t').textContent = 'تعذّر تحميل الآية الآن.'; });
     });
     return close;

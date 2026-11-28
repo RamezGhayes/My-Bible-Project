@@ -14,7 +14,7 @@
   var sheet = $('#obsheet'); document.body.appendChild(sheet);
   var pane = $('.pn', sheet), body = $('#jm-c'), peek = $('.ob-peek', sheet), prevB = $('[data-jm-prev]'), nextB = $('[data-jm-next]');
   var cur = -1, lastFocus = null, cache = {};
-  var closePeek = window.obPeek ? window.obPeek(body, peek) : function () {};
+  var closePeek = window.obPeek ? window.obPeek(body, peek, { chapter: false }) : function () {};
 
   // ---------- hub: progress and "continue" ----------
   var paint = function () {
@@ -37,17 +37,18 @@
       var base = new URL('overview/' + id + '.html', location.href);
       $$('[href]', w).forEach(function (n) { var h = n.getAttribute('href'); if (h && h[0] !== '#' && !/^[a-z]+:/i.test(h)) n.setAttribute('href', new URL(h, base).pathname + new URL(h, base).hash); });
       $$('[src]', w).forEach(function (n) { n.setAttribute('src', new URL(n.getAttribute('src'), base).pathname); });
+      if (window.obKeepIn) window.obKeepIn(w, location.href);
       return w.innerHTML;
     });
     return cache[id];
   };
 
-  var open = function (i, push) {
+  var open = function (i, push, deep) {
     if (i < 0 || i >= N) return;
     cur = i; var s = D.steps[i];
     if (sheet.hidden) { lastFocus = document.activeElement; sheet.hidden = false; document.documentElement.style.overflow = 'hidden'; }
     closePeek();
-    $('[data-jm-k]').textContent = s.part + ' · ' + AR(i + 1) + ' من ' + AR(N);
+    $('[data-jm-k]').textContent = 'النظرة العامة · المحطة ' + AR(i + 1) + ' من ' + AR(N) + ' · ' + s.part;
     $('[data-jm-t]').textContent = s.t;
     $('[data-jm-bar]').style.width = ((i + 1) / N * 100) + '%';
     body.innerHTML = '<div class="jm-load"><i></i><i></i><i></i></div>';
@@ -57,7 +58,9 @@
     if (p) prevB.querySelector('span').textContent = p.t;
     load(s.id).then(function (html) {
       if (cur !== i) return;
-      body.innerHTML = '<p class="jm-sub"></p>' + html; body.firstChild.textContent = s.sub;
+      body.innerHTML = (deep && i > 0 ? '<div class="jm-deep"><span>أنت في رحلة النظرة العامة، وهذه المحطة رقم ' + AR(i + 1) + '.</span><button type="button" data-jm-first>ابدأ من المحطة الأولى</button></div>' : '') + '<p class="jm-sub"></p>' + html;
+      body.querySelector('.jm-sub').textContent = s.sub;
+      var f = body.querySelector('[data-jm-first]'); if (f) f.onclick = function () { open(0); };
       body.classList.remove('in'); void body.offsetWidth; body.classList.add('in');
     }).catch(function () { body.innerHTML = '<p class="jm-sub">تعذّر التحميل. <a href="overview/' + s.id + '.html">افتح الصفحة</a></p>'; });
     if (seen.indexOf(s.id) < 0) { seen.push(s.id); set('sola.ovj', JSON.stringify(seen)); paint(); }
@@ -72,7 +75,7 @@
     var row = lastFocus && lastFocus.closest && lastFocus.closest('[data-step]');
     if (row) row.focus({ preventScroll: true });
   };
-  var route = function () { var m = location.hash.match(/^#s-(.+)$/); if (m && m[1] in IDX) open(IDX[m[1]], false); else close(true); };
+  var route = function () { var m = location.hash.match(/^#s-(.+)$/); if (m && m[1] in IDX) open(IDX[m[1]], false, true); else close(true); };
 
   // ---------- events ----------
   document.addEventListener('click', function (e) {

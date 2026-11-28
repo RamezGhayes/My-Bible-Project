@@ -71,12 +71,12 @@ export async function buildOverview({ write, page }) {
   const shell = (i, inner) => {
     const [id, t, sub] = PAGES[i];
     const prev = PAGES[i - 1], next = PAGES[i + 1];
-    return `<section class="ov-h"><div class="in"><a class="back5 lt" href="../overview.html">${BACK} العودة إلى نظرة عامة</a><span class="ey">نظرة عامة على الكتاب المقدس · ${ar(i + 1)} من ${ar(PAGES.length)}</span><h1>${t}</h1><p>${sub}</p></div></section>
+    return `<section class="ov-h"><div class="in"><a class="back5 lt" href="../overview.html">${BACK} العودة إلى نظرة عامة</a><span class="ey">نظرة عامة على الكتاب المقدس · ${(() => { const J = PAGES.filter((p) => p[0] !== 'books'); const k = J.findIndex((p) => p[0] === PAGES[i][0]); return k < 0 ? 'أداة' : `المحطة ${ar(k + 1)} من ${ar(J.length)}`; })()}</span><h1>${t}</h1><p>${sub}</p></div></section>
 <div class="ov-w">${inner}
 <nav class="c5ch ov-nav">${prev ? `<a href="${prev[0]}.html"><small>${BACK} السابق</small><b>${prev[1]}</b></a>` : '<a href="../overview.html"><small>' + BACK + ' البداية</small><b>كل الأقسام</b></a>'}${next ? `<a class="nx" href="${next[0]}.html"><small>التالي ${FWD}</small><b>${next[1]}</b></a>` : '<span></span>'}</nav></div>`;
   };
   const idx = (id) => PAGES.findIndex((p) => p[0] === id);
-  const out = (id, html, extra = '') => write(`overview/${id}.html`, page({ title: `${PAGES.find((p) => p[0] === id)[1]} · نظرة عامة`, depth: 1, nav: 'overview', body: html, cls: 'v3 v5hub ovp' + extra, head: '<link rel="stylesheet" href="../assets/ovbooks.css">' }));
+  const out = (id, html, extra = '') => write(`overview/${id}.html`, page({ title: `${PAGES.find((p) => p[0] === id)[1]} · نظرة عامة`, depth: 1, nav: 'overview', body: html, cls: 'v3 v5hub ovp' + extra, head: '<link rel="stylesheet" href="../assets/ovbooks.css">', after: id === 'books' ? '' : '<script src="../assets/ovpeek.js" defer></script><script src="../assets/ovpage.js" defer></script>' }));
 
   // ---- hub (BibleProject-style collection: pictures, a featured card, parts with picture cards) ----
   const W = O.why;
