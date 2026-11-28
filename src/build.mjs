@@ -9,7 +9,7 @@ import { paulMapPage } from './v2/paulmap.mjs';
 import { studyRefs } from './v2/studyrefs.mjs';
 import { buildPlans } from './v2/plans.mjs';
 import { buildOverview } from './v2/overview.mjs';
-import { booksStrip, GROUP_COLOR } from './v2/booksatlas.mjs';
+import { booksStrip } from './v2/booksatlas.mjs';
 import { MAPS, mapForChapter, thumb, mapHref, viewer } from './v2/maps.mjs';
 import { TOPICS, topicLinks, chapterTopicsBlock, topicsIndex, topicPage, topicsHomeSection } from './v2/topics.mjs';
 import { treePage } from './v2/tree.mjs';
@@ -121,7 +121,7 @@ ${S5('كل يوم', 'خلوة اليوم', 'أصحاح واحد في نحو ٢٠
 <a class="htc" data-today-start href="plans/start/1.html"><span class="pk">ابدأ من هنا · ${ar(start.days.length)} أيام</span><b>${esc(start.t)}</b><span>${esc(start.sub)}</span><span class="go">ابدأ اليوم الأول ${IC.chev}</span></a>
 <div hidden>${PLANS_UI.PLANS.map((P) => PLANS_UI.card(P, 0)).join('')}</div>`, ['plans.html', 'كل خطط القراءة'])}
 ${S5('سفراً بعد سفر', 'ادرس الكتاب المقدس', 'مقدمة لكل سفر، ودراسة لكل أصحاح، وتطبيق عملي.', `<div class="h3tg">${tcard('ot', 'من الخلق إلى الأنبياء: الوعد والانتظار.')}${tcard('nt', 'المسيح، والكنيسة، والرجاء الأخير.')}</div>`)}
-${S5('في لمحة', 'الكتاب كله في صفحة واحدة', 'ستة وستون سفراً، وقصة واحدة. اضغط على أي سفر لترى مكانه في القصة وأهم أصحاحاته.', `<div class="hob"><div class="tp"><b>نظرة عامة على أسفار الكتاب المقدس</b><span>${ar(books.length)} سفراً · ${ar(books.reduce((n, b) => n + b.chapters, 0))} أصحاحاً</span></div>${booksStrip(0)}<div class="ob-lg">${[...new Set(books.map((b) => b.group))].map((g) => `<span><i style="background:${GROUP_COLOR[g]}"></i>${esc(books.find((b) => b.group === g).groupName)}</span>`).join('')}</div></div>`, ['overview/books.html', 'افتح نظرة عامة على الأسفار'])}
+${S5('في لمحة', 'الكتاب كله في صفحة واحدة', 'ستة وستون سفراً، وقصة واحدة.', `<div class="hob">${booksStrip(0)}<div class="ft"><span>التكوين</span><span>الرؤيا</span></div></div>`, ['overview/books.html', 'تصفّح الأسفار'])}
 ${S5('بالصور والخرائط', 'افهم ما تقرأ', 'أماكن وأشخاص وأحداث، مرسومة ومشروحة لتراها بعينك.', `<div class="hxtiles x3">${[
     ['maps/paul.html', 'place-ephesus', 'رحلات بولس', 'على الخريطة، محطة بعد محطة', 'big'],
     ['people.html', 'person-abraham', 'الشخصيات', 'وجوه وقصص من الكتاب'],
